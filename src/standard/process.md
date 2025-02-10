@@ -51,7 +51,7 @@ constructor accepts an optional PagedValue.
 
 The function passed to a process must accept at least one parameter which 
 will be passed the instance of the process itself and at most two parameters 
-if the process was intitalized with a PagedValue.
+if the process was initialized with a PagedValue.
 
 ##### Parameters
 
@@ -171,7 +171,7 @@ constructor accepts an optional PagedValue.
 
 The function passed to a process must accept at least one parameter which 
 will be passed the instance of the process itself and at most two parameters 
-if the process was intitalized with a PagedValue.
+if the process was initialized with a PagedValue.
 
 ##### Parameters
 
@@ -209,7 +209,9 @@ process is in an invalid state.
 #### await()
 
 Awaits for the process to finish running and returns it's exit code or `-1` 
-if the process is in an invalid state.
+if the process is in an invalid state. Await can be used without `start()`.
+If `await()` is called without a previous call to start(), the await
+automatically calls start().
 
 ##### Returns
 

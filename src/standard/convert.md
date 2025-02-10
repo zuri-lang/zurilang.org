@@ -33,7 +33,7 @@ representation.
 
 #### decimal\_to\_hex(n)
 
-Converts the given decimal based number to an hexadeccimal string.
+Converts the given decimal based number to an hexadecimal string.
 
 ##### Parameters
 

@@ -323,7 +323,7 @@ Converts the value into a string.
 
 #### to\_bool()
 
-Convertss the value into a boolean.
+Converts the value into a boolean.
 
 ##### Returns
 

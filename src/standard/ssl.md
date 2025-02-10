@@ -461,7 +461,7 @@ the file is read and the resultant bytes of the file content is streamed to the 
 - number greater than -1 if successful indicating the total number of bytes sent or -1 if it fails.
 ##### Notes
 
-- the flags parameter is currently redundant and is kept only to remanin compatible with future plans for this method.
+- the flags parameter is currently redundant and is kept only to remain compatible with future plans for this method.
 
 #### receive(length, flags)
 
@@ -481,7 +481,7 @@ until it has received the total number of bytes required (whichever comes first)
 - string
 ##### Notes
 
-- the flags parameter is currently redundant and is kept only to remanin compatible with future plans for this method.
+- the flags parameter is currently redundant and is kept only to remain compatible with future plans for this method.
 
 #### read(length)
 
@@ -513,7 +513,7 @@ the queue full, the client may receive an error with an indication of `ECONNREFU
 Alternatively, if the underlying protocol supports retransmission, the request may be ignored 
 so that retries may succeed.
 
-When the `queue_length` is ommited or set to -1, the method will use the default queue limit of 
+When the `queue_length` is omitted or set to -1, the method will use the default queue limit of
 the current platform which is usually equal to `SOMAXCONN`.
 
 ##### Parameters

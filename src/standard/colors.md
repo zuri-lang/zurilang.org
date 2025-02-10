@@ -138,7 +138,7 @@ Converts the given hexadecimal color to its ANSI-16 number.
 - number
 ##### Notes
 
-- For use with `text()`, this should be prefered over `hex_to_ansi256`
+- For use with `text()`, this should be preferred over `hex_to_ansi256`
 
 
 
@@ -155,7 +155,7 @@ Converts the given hexadecimal color to its terminal compatible color.
 - number
 ##### Notes
 
-- For use with `text()`, this should be prefered over `hex_to_ansi256` and `hex_to_ansi`
+- For use with `text()`, this should be preferred over `hex_to_ansi256` and `hex_to_ansi`
 - _color_ can include the '#' character. E.g. `#ff0`.
 
 

@@ -67,7 +67,7 @@ By default, all these options are set to their exported values, adhering to the 
 
 - **childless\_tags** &#8674; _readonly_ _list_:
 
-  Tags which contain arbitary non-parsed content
+  Tags which contain arbitrary non-parsed content
 For example: `<script>` JavaScript should not be parsed
 
 - **closing\_tags** &#8674; _readonly_ _list_:

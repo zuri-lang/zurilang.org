@@ -25,7 +25,7 @@ Decodes a base64 string into it's corresponding bytes.
 
 ##### Parameters
 
-- _strinf_ **data**
+- _string_ **data**
 
 ##### Returns
 

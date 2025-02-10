@@ -210,7 +210,7 @@ For example, parsing the commandline
 blade test.b install 5 --verbose
 ``` 
 
-may yeild such a result as similar to the one below.
+may yield such a result as similar to the one below.
 
 ```
 {options: {verbose: true}, command: {name: install, value: 5}}

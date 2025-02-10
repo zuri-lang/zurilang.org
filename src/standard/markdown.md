@@ -231,7 +231,7 @@ Function used to decode link url to a human-readable format`
 
 #### Markdown(preset_name, options)
 
-Creates parser instanse with given config. Can be called without `new`.
+Creates parser instance with given config. Can be called without `new`.
 ##### preset_name:
 Markdown provides named presets as a convenience to quickly
 enable/disable active syntax rules and options for common use cases.
@@ -250,18 +250,18 @@ enable/disable active syntax rules and options for common use cases.
 - __breaks__ - `false`. Set `true` to convert `\n` in paragraphs into `<br>`.
 - __lang_prefix__ - `language-`. CSS language class prefix for fenced blocks.
   Can be useful for external highlighters.
-- __linkify__ - `false`. Set `true` to autoconvert URL-like text to links.
+- __linkify__ - `false`. Set `true` to auto convert URL-like text to links.
 - __typographer__  - `false`. Set `true` to enable [some language-neutral
   replacement](https://github.com/blade-lang/blade/blob/master/libs/markdown/rules_core/replacements.b) +
-  quotes beautification (smartquotes).
+  quotes beautification (smart quotes).
 - __quotes__ - `“”‘’`, String or Array. Double + single quotes replacement
-  pairs, when typographer enabled and smartquotes on. For example, you can
+  pairs, when typographer enabled and smart quotes on. For example, you can
   use `'«»„“'` for Russian, `'„“‚‘'` for German, and
   `['«\xA0', '\xA0»', '‹\xA0', '\xA0›']` for French (including nbsp).
 - __highlight__ - `nil`. Highlighter def for fenced code blocks.
   Highlighter `def (str, lang)` should return escaped HTML. It can also
   return empty string if the source was not changed and should be escaped
-  externaly. If result starts with <pre... internal wrapper is skipped.
+  externally. If result starts with <pre... internal wrapper is skipped.
 ##### Example
 ```blade
 import markdown
@@ -435,7 +435,7 @@ Helper class, used by [[markdown#core]], [[markdown#block]] and
 - enable/disable rules
 - add/replace rules
 - allow assign rules to additional named chains (in the same)
-- cacheing lists of active rules
+- caching lists of active rules
 You will not need use this class directly until write plugins. For simple
 rules control use [[markdown.disable]], [[markdown.enable]] and
 [[markdown.use]].

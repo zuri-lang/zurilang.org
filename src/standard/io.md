@@ -96,7 +96,7 @@ else, gets a single character.
 
 #### readline(message, secure, obscure_text)
 
-Reads an entire line from standard input. If a _messagge_ is given, the 
+Reads an entire line from standard input. If a _message_ is given, the
 message will be printed before it begins to wait for a user input. If 
 _secure_ is `true`, the user's input will not be printing and _obscure_text_ 
 will be printed instead.
@@ -120,7 +120,7 @@ will be printed instead.
 
 ### _class_ TTY
 
-class TTY is an interface to TTY terminals this class contains definitions 
+class TTY is an interface to TTY terminals this class contains definitions
 to control TTY terminals
 
 #### Fields
@@ -371,9 +371,7 @@ The returned attributes is a dict containing the TTY_ flags
 #### set\_attr(option, attrs)
 
 set_attr(option: number, attrs: dict)
-
 sets the attributes of the current tty session
-
 - option: one ot the TCSA options above (see their description above)
 - attrs a dictionary of the TTY_ flags listed above
 - one can safely omit any of the TTY_ flags listed above and Blade will fill in the default values as it exists.

@@ -353,6 +353,10 @@ def run(root_dir, submodule, max_nesting) {
       # ignore the other modules if single module is selected.
       if submodule and !source.starts_with(submodule)
         continue
+
+      # skip drafts
+      if module_name.ends_with('.draft')
+        continue
   
       var working_source = '${root_dir.rtrim("/")}/${source}'
   

@@ -49,7 +49,7 @@ server.listen()
 Not only is it super simple to create an HTTP server, it is also very easy to create 
 a TLS/HTTPS server with few modifications.
 
-The following code creates a TLS versionof the same server we created above.
+The following code creates a TLS version of the same server we created above.
 
 ```blade
 import http
@@ -81,7 +81,7 @@ following content types:
 - application/x-www-form-urlencoded
 - application/json
 
-In the abscence of any content-type in the request header or reponse header from a 
+In the absence of any content-type in the request header or response header from a
 server as the case may be, the module defaults to the `application/x-www-form-urlencoded` 
 content type.
 
@@ -564,7 +564,7 @@ Creates an new TLSServer instance.
 
 
 
-@throws Exception, SocketExcepion, HttpException
+@throws Exception, SocketException, HttpException
 
 ##### Parameters
 
@@ -671,6 +671,16 @@ and data (if given).
 - _dict?_ **options**
 
 
+#### to\_string()
+
+Returns the request as a string.
+
+
+#### to\_json()
+
+Returns the request as a JSON object.
+
+
 
 ### _class_ HttpException < _Exception_
 
@@ -709,7 +719,7 @@ socket.IP_LOCAL (127.0.0.1)
 
   The working Socket instance for the HttpServer.
 
-- **resuse\_address** &#8674; _bool_:
+- **reuse\_address** &#8674; _bool_:
 
   A boolean value indicating whether to reuse socket addresses or not.
 Default value is `true`.
@@ -838,6 +848,20 @@ not match a registered route and no `on_receive()` handler is set.
 - _function(2)_ **handler**
 
 
+#### serve\_files(base_path, directory, cache_age, tag)
+
+Setup the given base_path to serve static files from the given directory.
+If cache is set to true, and a default value is not set for tag, static
+file tagging will be automatically enabled.
+
+##### Parameters
+
+- _string_ **base_path**
+- _string_ **directory**
+- _number?_ **cache_age**: = 0
+- _bool?_ **tag**: = false
+
+
 #### listen()
 
 Binds to the instance port and host and starts listening for incoming 
@@ -961,6 +985,16 @@ of the server's certificate. This makes the connection A LOT LESS SECURE.
 files in the body
 
 #### Methods
+
+#### HttpClient(base_url) &#8674; Constructor
+
+If the _base_url_ param is set, all calls to HTTP method functions will automatically
+prepend requested url with the base url if they do not start with the base url.
+
+##### Parameters
+
+- _string?_ **base_url**: : The base url for the HTTP client requests
+
 
 #### send\_request(uri, method, data, headers, options)
 
@@ -1203,7 +1237,7 @@ when visiting HTTPS/SSL/TLS secured websites.
 
 Writes data to the response stream. 
 
-> This method should be prefered over writing directly to the body 
+> This method should be preferred over writing directly to the body
 > property to prevent unexpected behaviors.
 
 ##### Parameters
@@ -1272,6 +1306,29 @@ parameter is not given, the function defaults to `302`.
 
 - When supplying a status, it must be a 30x
 
+#### render(path, variables)
+
+A shorthand method that renders a template using  Blade's template
+module default settings.
+Follow the [template module documentation](https://bladelang.org/standard/template)
+to know more about setting up your project to render from templates.
+>*NOTE**
+ >
+> The default template root directory is a directory called
+> "templates" in the current working directory. To use render, ensure
+> that the directory exists as the template instance used for `render()`
+> does not have the `auto_init` parameter set to true. This is intentional
+> to discourage misuse and/or unintended behaviors.
+Support for template rendering in HttpResponse class is lazy loaded and
+will not be enabled until the first attempt to render a template. This
+helps reduce the overhead for use cases where rending is never needed.
+
+##### Parameters
+
+- _string_ **path**
+- _dict?_ **variables**
+
+
 #### content\_type(mimetype)
 
 Sets the content type of the HTTP response.
@@ -1279,6 +1336,40 @@ Sets the content type of the HTTP response.
 ##### Parameters
 
 - _string_ **mimetype**
+
+
+#### to\_string()
+
+Returns the response details in a string
+
+
+#### as\_text()
+
+Returns the body of an HTTP response as a string or an empty
+string if the response is empty.
+
+##### Returns
+
+- string
+
+#### as\_dict()
+
+Returns the body of an HTTP response as a dictionary.
+>*NOTE:**
+ >
+> Call this method only if you're certain that the response
+> is a JSON response or have set the header `Accepts` and/or
+> `Content-Type` to accept only `application/json` responses
+> only because the method will raise and Exception if the
+> response does not contain a valid JSON in the body.
+
+##### Returns
+
+- string
+
+#### to\_json()
+
+Returns the response as a JSON object
 
 
 

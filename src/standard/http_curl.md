@@ -597,7 +597,7 @@ socket.IP_LOCAL (127.0.0.1)
 
   The working Socket instance for the HttpServer.
 
-- **resuse\_address** &#8674; _bool_:
+- **reuse\_address** &#8674; _bool_:
 
   A boolean value indicating whether to reuse socket addresses or not.
 Default value is `true`.

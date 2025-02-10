@@ -64,6 +64,22 @@ given name or nil if the object contains no property with a matching name.
 
 
 
+#### get\_props(object)
+
+Returns all properties of an instance or value in a module or an empty
+list if the instance or module has no property.
+
+##### Parameters
+
+- _instance|module_ **object**
+- _string_ **name**
+
+##### Returns
+
+- list[string]
+
+
+
 #### set\_prop(object, name, value)
 
 Sets the named property of the object to value.
@@ -347,14 +363,17 @@ Returns a pointer to the given memory address.
 
 
 
-#### set\_global(fn, name)
+#### set\_global(value, name)
 
-Sets a function or class as globally accessible in all modules, function 
-and scopes.
+Sets any given value as globally accessible in all modules, function
+and scopes with the given name.
+If name is not given and the value is a class or function, the name
+will automatically be set to the name of the class or function
+respectively otherwise, an Exception will be raised.
 
 ##### Parameters
 
-- _function|class_ **fn**
+- _any_ **value**
 - _string?_ **name**
 
 

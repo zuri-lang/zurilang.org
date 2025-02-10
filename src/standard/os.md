@@ -197,7 +197,7 @@ true
 
 #### create\_dir(path, permission, recursive)
 
-Creates the given directory with the specified permission and optionaly 
+Creates the given directory with the specified permission and optionally
 add new files into it if any is given.
 
 ##### Parameters
@@ -340,7 +340,7 @@ Exit the current process and quits the Blade runtime.
 
 #### join\_paths(...)
 
-Concatenates the given paths together into a format that is valied on the 
+Concatenates the given paths together into a format that is valid on the
 current operating system.
 
 Example,

@@ -127,7 +127,7 @@ true
 
 Blade supports all standard bitwise operations and they look the same as they appear in any other
 programming language. If you are coming from a language such as Java, then it's important to note
-that due to how Blade represents numbers internally, blade does not support the unsigned right shift operator (`>>>`) and unsigned left shift operator (`<<<`). 
+that due to how Blade represents numbers internally, blade does not support the unsigned left shift operator (`<<<`). 
 
 Every bitwise operator except the NOT (`~`) operator operates on binary information (i.e. on two 
 objects). The operators are as follows:
@@ -135,11 +135,12 @@ objects). The operators are as follows:
 | Operator | Name         | Description |
 |----------|--------------|-------------|
 | x `&` y  | AND          | Does a "bitwise and". |
-| x `|` y  | OR           | Does a "bitwise or". |
-| x `^` y  | Exclusive OR | Returns the complement of x. This is the same as -x - 1. |
+| x `\|` y  | OR           | Does a "bitwise or". |
+| x `^` y  | Exclusive OR | Returns the complement of _x_. This is the same as _-x - 1_. |
 | `~`x     | NOT          | Does a "bitwise exclusive or". |
-| x `>>` y | Right Shift  | Returns x with the bits shifted to the right by y places. |
-| x `<<` y | Left Shift   | Returns x with the bits shifted to the left by y places. |
+| x `>>` y | Right Shift  | Returns _x_ with the bits shifted to the right by _y_ places. |
+| x `<<` y | Left Shift   | Returns _x_ with the bits shifted to the left by _y_ places. |
+| x `>>>` y | Right Unsigned Shift  | Returns a number whose binary representation is _x_ shifted by _y_. |
 
 For example:
 
@@ -171,7 +172,7 @@ The following table lists all operators from highest precedence to lowest in Bla
 | Mulplicative | `*`, `/`, `%`, `**`, `//` |
 | Additive | `+`, `-` |
 | Range | `..` |
-| Shift | `<<`, `>>` |
+| Shift | `<<`, `>>`, `>>>` |
 | Bitwise AND | `&` |
 | Bitwise XOR | `^` |
 | Bitwise OR | `|` |
@@ -180,7 +181,7 @@ The following table lists all operators from highest precedence to lowest in Bla
 | Logical and | `and` |
 | Logical or | `or` |
 | Tenary | `?`, `:` |
-| Assignment | `=`, `&=`, `|=`, `*=`, `+=`, `-=`, `/=`, `**=`, `%=`, `>>=`, `<<=`, `^=`, `//=` |
+| Assignment | `=`, `&=`, `\|=`, `*=`, `+=`, `-=`, `/=`, `**=`, `%=`, `>>=`, `<<=`, `>>>=`, `^=`, `//=` |
 
 <br>
 

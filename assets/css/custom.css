@@ -143,6 +143,22 @@ h2[id]:hover::after, h3[id]:hover::after, h4[id]:hover::after {
   color: #238ccc;
 }
 
+/* [class^=language-] .k {
+  color: #51a2e7;
+}
+
+[class^=language-] .m {
+  color: #e57895;
+}
+
+[class^=language-] .n {
+  color: #39cb7a;
+}
+
+[class^=language-] .e {
+  color: #ff4a5f;
+} */
+
 @media (prefers-color-scheme: dark) {
   h2[id]::after, h3[id]::after, h4[id]::after {
     color: color-mix(in srgb, var(--static-color), black 60%);

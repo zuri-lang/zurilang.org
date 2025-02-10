@@ -6,7 +6,7 @@ arbitrary number of RFC combinations but this does not strictly conform to
 RFC1738.
 
 The scope of URL in this module have not been limited to HTTP or any protocol 
-for that matter. However, where deducable, the module tries to conform to the 
+for that matter. However, where deductible, the module tries to conform to the
 most appropriate URL for the specified scheme.
 
 Constructing a URL is vey simple. Here is an example.
@@ -94,7 +94,7 @@ a malformed url.
 
 ### _class_ UrlMalformedException < _Exception_
 
-Excpetion thrown when a url is malformed
+Exception thrown when a url is malformed
 
 #### Methods
 
@@ -149,12 +149,12 @@ usually used to convey data to endpoint based on the GET method.
 
 - **username**:
 
-  Username information for authentication are sometimes embeded in urls. When such information 
+  Username information for authentication are sometimes embedded in urls. When such information
 exist, this property holds the information
 
 - **password**:
 
-  Password information for authentication are sometimes embeded in urls. When such information 
+  Password information for authentication are sometimes embedded in urls. When such information
 exist, this property holds the information
 
 - **has\_slash**:
@@ -163,7 +163,7 @@ exist, this property holds the information
 
 - **empty\_path** &#8674; _bool_:
 
-  `true` if the original url contains a path segement even if its just an `/` and false if the 
+  `true` if the original url contains a path segment even if its just an `/` and false if the
 path value of `/` was implied.
 
 #### Methods

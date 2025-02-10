@@ -50,7 +50,7 @@ This function returns `true` if the extraction was successful and `false` otherw
 Compresses the given path (file or directory) into the destination zip archive.
 
 
-> When an exception is thrown becase max size exceeded, some files could 
+> When an exception is thrown because max size was exceeded, some files could
 > have already been compressed. In this case, the zip archive will should still 
 > be usable but not all desired files will be contained in it.
 
@@ -220,7 +220,7 @@ This function returns `true` if the operation succeeds or `false` otherwise.
 ### _class_ ZipArchive
 
 ZipArchive provides a class for zip archive creation, 
-manuipulation and extraction.
+manipulation and extraction.
 
 #### Methods
 

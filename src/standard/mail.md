@@ -119,7 +119,7 @@ properties.
 
 - __headers__: A dictionary containing the key/value pair contained in the 
    mail message header.
-- __body__: A dictionary containing the different segements of a mail body such 
+- __body__: A dictionary containing the different segments of a mail body such
    as its plain text and html counterpart.
 - __attachments__: A list of attachments contained in the Mail message.
 
@@ -210,7 +210,7 @@ Tests the connection to the SMTP server
 
 #### verify(address)
 
-Verifys an email address
+Verifies an email address
 
 ##### Parameters
 
@@ -282,7 +282,7 @@ Executes an POP3 command.
 ##### Parameters
 
 - _string_ **command**: The command to execute.
-- _string?_ **path**: The path segement of the request url.
+- _string?_ **path**: The path segment of the request url.
 - _bool?_ **no_transfer**: Set to `true` if the command will return the requested data 
 
 ##### Returns
@@ -428,7 +428,7 @@ Executes an IMAP command.
 ##### Parameters
 
 - _string_ **command**: The command to execute.
-- _string?_ **path**: The path segement of the request url.
+- _string?_ **path**: The path segment of the request url.
 
 ##### Returns
 

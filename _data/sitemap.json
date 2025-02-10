@@ -155,6 +155,10 @@
         "source": "/standard/date", 
         "title": "date"
       }, 
+      "/standard/enum": {
+        "source": "/standard/enum", 
+        "title": "enum"
+      }, 
       "/standard/hash": {
         "source": "/standard/hash", 
         "title": "hash"
@@ -166,6 +170,10 @@
       "/standard/http": {
         "source": "/standard/http", 
         "title": "http"
+      }, 
+      "/standard/http_curl": {
+        "source": "/standard/http_curl", 
+        "title": "http_curl"
       }, 
       "/standard/imagine": {
         "source": "/standard/imagine", 
@@ -207,6 +215,10 @@
         "source": "/standard/reflect", 
         "title": "reflect"
       }, 
+      "/standard/sha3": {
+        "source": "/standard/sha3", 
+        "title": "sha3"
+      }, 
       "/standard/socket": {
         "source": "/standard/socket", 
         "title": "socket"
@@ -227,6 +239,10 @@
         "source": "/standard/template", 
         "title": "template"
       }, 
+      "/standard/thread": {
+        "source": "/standard/thread", 
+        "title": "thread"
+      }, 
       "/standard/types": {
         "source": "/standard/types", 
         "title": "types"
@@ -242,14 +258,6 @@
       "/standard/zlib": {
         "source": "/standard/zlib", 
         "title": "zlib"
-      }, 
-      "/standard/http_curl": {
-        "source": "/standard/http_curl", 
-        "title": "http_curl"
-      }, 
-      "/standard/array": {
-        "source": "/standard/array", 
-        "title": "array"
       }
     }
   }, 

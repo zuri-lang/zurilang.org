@@ -273,7 +273,7 @@ Returns the whirlpool hash of the given string or bytes.
 
 #### snefru(str)
 
-Returns the snefru cyrptographic hash of the given string or bytes.
+Returns the Snefru cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -287,7 +287,7 @@ Returns the snefru cyrptographic hash of the given string or bytes.
 
 #### siphash(key, str)
 
-Returns the siphash cyrptographic hash of the given string or bytes.
+Returns the SipHash cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -302,7 +302,7 @@ Returns the siphash cyrptographic hash of the given string or bytes.
 
 #### gost(str)
 
-Returns the gost cyrptographic hash of the given string or bytes.
+Returns the Gost cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -332,7 +332,7 @@ Computes an HMAC with the key and str using the given method.
 
 #### hmac\_md2(key, str)
 
-Returns the HMAC-MD2 cyrptographic hash of the given string or bytes.
+Returns the HMAC-MD2 cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -347,7 +347,7 @@ Returns the HMAC-MD2 cyrptographic hash of the given string or bytes.
 
 #### hmac\_md4(key, str)
 
-Returns the HMAC-MD4 cyrptographic hash of the given string or bytes.
+Returns the HMAC-MD4 cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -362,7 +362,7 @@ Returns the HMAC-MD4 cyrptographic hash of the given string or bytes.
 
 #### hmac\_md5(key, str)
 
-Returns the HMAC-MD5 cyrptographic hash of the given string or bytes.
+Returns the HMAC-MD5 cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -377,7 +377,7 @@ Returns the HMAC-MD5 cyrptographic hash of the given string or bytes.
 
 #### hmac\_sha1(key, str)
 
-Returns the HMAC-SHA1 cyrptographic hash of the given string or bytes.
+Returns the HMAC-SHA1 cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -392,7 +392,7 @@ Returns the HMAC-SHA1 cyrptographic hash of the given string or bytes.
 
 #### hmac\_sha224(key, str)
 
-Returns the HMAC-SHA224 cyrptographic hash of the given string or bytes.
+Returns the HMAC-SHA224 cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -407,7 +407,7 @@ Returns the HMAC-SHA224 cyrptographic hash of the given string or bytes.
 
 #### hmac\_sha256(key, str)
 
-Returns the HMAC-SHA256 cyrptographic hash of the given string or bytes.
+Returns the HMAC-SHA256 cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -422,7 +422,7 @@ Returns the HMAC-SHA256 cyrptographic hash of the given string or bytes.
 
 #### hmac\_sha384(key, str)
 
-Returns the HMAC-SHA384 cyrptographic hash of the given string or bytes.
+Returns the HMAC-SHA384 cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -437,7 +437,7 @@ Returns the HMAC-SHA384 cyrptographic hash of the given string or bytes.
 
 #### hmac\_sha512(key, str)
 
-Returns the HMAC-SHA512 cyrptographic hash of the given string or bytes.
+Returns the HMAC-SHA512 cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -452,7 +452,7 @@ Returns the HMAC-SHA512 cyrptographic hash of the given string or bytes.
 
 #### hmac\_whirlpool(key, str)
 
-Returns the HMAC-WHIRLPOOL cyrptographic hash of the given string or bytes.
+Returns the HMAC-WHIRLPOOL cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -467,7 +467,7 @@ Returns the HMAC-WHIRLPOOL cyrptographic hash of the given string or bytes.
 
 #### hmac\_snefru(key, str)
 
-Returns the HMAC-SNEFRU cyrptographic hash of the given string or bytes.
+Returns the HMAC-SNEFRU cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
@@ -482,7 +482,7 @@ Returns the HMAC-SNEFRU cyrptographic hash of the given string or bytes.
 
 #### hmac\_gost(key, str)
 
-Returns the HMAC-GOST cyrptographic hash of the given string or bytes.
+Returns the HMAC-GOST cryptographic hash of the given string or bytes.
 
 ##### Parameters
 
