@@ -85,294 +85,305 @@ function is the idiomatic way to create threads.
 
 ### Renaming a thread
 
-## Properties
+## Fields
 
-- **cpu\_count** &#8674; _number_:
-
-  The number of CPU cores available on the current device.
+**cpu\_count** &#8674; _number_
+:  The number of CPU cores available on the current device.
 
 
 ## Functions
 
-#### thread(delegate, stack_size)
+thread(_delegate_, _stack_size_) {#thread.thread}
 
-Returns a new instance of Thread.
-
-
-
-@see Constructor
-
-##### Parameters
-
-- _function_ **delegate**
-- _number?_ **stack_size**
-
-##### Returns
-
-- Thread
+: Returns a new instance of Thread.
+  
+  
+  
+  @see Constructor
 
 
+  - **@params**:
+    - _function_ **delegate**
+    - _number?_ **stack_size**
 
-#### start(delegate, args)
+  {.params}
+  - **@returns**: _Thread_
 
-Creates a new thread and automatically starts the thread 
-using the default options and arguments.
 
-##### Parameters
 
-- _function_ **delegate**
-- _list_ **args**
+start(_delegate_, _args_) {#thread.start}
 
+: Creates a new thread and automatically starts the thread 
+  using the default options and arguments.
+
+
+  - **@params**:
+    - _function_ **delegate**
+    - _list_ **args**
+
+  {.params}
 
 
 
 ## Classes
 
-### _class_ Thread
+_class_ **Thread** {#thread.Thread .class}
 
-The thread class exposes methods to manage creating, running, 
-and controlling threads.
+: The thread class exposes methods to manage creating, running, 
+  and controlling threads.
+  
+  @class
 
-@class
 
-#### Methods
 
-#### Thread(delegate, stack_size) &#8674; Constructor
+  .Thread(_delegate_, _stack_size_) &#8674; Constructor {#thread.Thread.Thread}
 
-The delegate function passed to the constructor may accept zero 
-or more parameters. When it accepts no parameter, the function 
-will be called without any argument when run otherwise, it will 
-be called with as many argument as it can receive.
+  : The delegate function passed to the constructor may accept zero 
+    or more parameters. When it accepts no parameter, the function 
+    will be called without any argument when run otherwise, it will 
+    be called with as many argument as it can receive.
+    
+    When a delegate accepts arguments, the first argument passed 
+    will always be the thread object itself followed by the arguments 
+    it received from start.
+    
+    For example, in the following thread execution, the first 
+    parameter _t_ in the delegate will receive the thread object 
+    itself.
+    
+    ```blade
+    var th = Thread(@(t) {
+      echo t.get_id()
+    })
+    
+    th.start(21)
+    ```
+    
+    The delegate function doesn't raise an exception because parameter 
+    _t_ never received the `start()` argument but the thread itself. 
+    In the next example, the function accepts the start argument. Note 
+    that the start argument was received starting from the second 
+    argument.
+    
+    ```blade
+    var th = Thread(@(t, balance) {
+      echo balance
+    })
+    
+    th.start(21)
+    ```
+    
+    The optional second parameter allows us to set the size of the stack
+    used for the thread when started.
+
+
+    - **@params**:
+      - _function_ **delegate**
+      - _number?_ **stack_size**
+
+    {.params}
 
-When a delegate accepts arguments, the first argument passed 
-will always be the thread object itself followed by the arguments 
-it received from start.
 
-For example, in the following thread execution, the first 
-parameter _t_ in the delegate will receive the thread object 
-itself.
+  .start(_..._) {#thread.Thread.start}
 
-```blade
-var th = Thread(@(t) {
-  echo t.get_id()
-})
+  : Starts the thread by putting it in the running state and passing 
+    any argument to the function to the thread function itself.
+    
+    If no argument is provided, no argument is passed to the function 
+    otherwise, arguments will be passed to the thread function only 
+    when the thread function is only able to accept them.
+    
+    >*NOTE:** A thread can only be started once.
 
-th.start(21)
-```
 
-The delegate function doesn't raise an exception because parameter 
-_t_ never received the `start()` argument but the thread itself. 
-In the next example, the function accepts the start argument. Note 
-that the start argument was received starting from the second 
-argument.
+    - **@params**:
+      - _any..._ **args**
 
-```blade
-var th = Thread(@(t, balance) {
-  echo balance
-})
+    {.params}
 
-th.start(21)
-```
 
-The optional second parameter allows us to set the size of the stack
-used for the thread when started.
+  .start\_from\_list(_args_) {#thread.Thread.start_from_list}
 
-##### Parameters
+  : Same as `start()` but takes the argument from a list instead.
 
-- _function_ **delegate**
-- _number?_ **stack_size**
 
+    - **@params**:
+      - _list_ **args**
 
-#### start(...)
+    {.params}
 
-Starts the thread by putting it in the running state and passing 
-any argument to the function to the thread function itself.
 
-If no argument is provided, no argument is passed to the function 
-otherwise, arguments will be passed to the thread function only 
-when the thread function is only able to accept them.
+  .cancel() {#thread.Thread.cancel}
 
->*NOTE:** A thread can only be started once.
+  : Terminates the thread by sending kill signals to the thread 
+    and freeing all associated resources afterwards. If the thread 
+    has already been cancelled, then it does nothing.
+    
+    Returns `true` if the thread was successfully terminated and all 
+    resources freed otherwise it returns `false`.
 
-##### Parameters
 
-- _any..._ **args**
+    - **@returns**: _bool_
 
 
-#### start\_from\_list(args)
+  .detach() {#thread.Thread.detach}
 
-Same as `start()` but takes the argument from a list instead.
+  : Marks this thread as a detached thread.
+    
+    When a detached thread terminates, its resources are automatically 
+    released back to the system without the need for another thread to 
+    join with the terminated thread.
+    
+    Once a thread is detached, it can't be awaited anymore.
+    
+    The detached attribute merely determines the behavior of the
+    system when the thread terminates; it does not prevent the thread
+    from being terminated if the process terminates (or equivalently, if 
+    the main thread returns).
+    
+    Either `await() or `detach()` should be called for each thread that 
+    an application creates, so that system resources for the thread can 
+    be released.  (But note that the resources of any threads for which 
+    one of these actions has not been done will be freed when the process 
+    terminates.).
+    
+    If the thread was already detached, it simply returns `true` and 
+    does nothing.
 
-##### Parameters
 
-- _list_ **args**
+    - **@returns**: _bool_
 
 
-#### cancel()
+  .await() {#thread.Thread.await}
 
-Terminates the thread by sending kill signals to the thread 
-and freeing all associated resources afterwards. If the thread 
-has already been cancelled, then it does nothing.
+  : Suspends execution until the thread terminates. If the thread 
+    has already terminated, it returns immediately.
+    
+    Multiple threads can call `await()` at the same time, but only 
+    one of them will be actively waiting while others will remain in 
+    a suspended state until the thread exits. If `await()` is called 
+    from another cancelled thread, then this thread will remain 
+    awaitable.
+    
+    Failure to join with a thread that is joinable (i.e., one that is
+    not detached), produces a "zombie thread".  Avoid doing this,
+    since each zombie thread consumes some system resources, and when
+    enough zombie threads have accumulated, it will no longer be
+    possible to create new threads (or processes).
+    
+    All of the threads in an application are peers: any thread can join
+    with any other thread in the process.
 
-Returns `true` if the thread was successfully terminated and all 
-resources freed otherwise it returns `false`.
 
-##### Returns
 
-- bool
 
-#### detach()
+  .sleep(_duration_) {#thread.Thread.sleep}
 
-Marks this thread as a detached thread.
+  : Causes the current thread to sleep for the specified number of seconds.
 
-When a detached thread terminates, its resources are automatically 
-released back to the system without the need for another thread to 
-join with the terminated thread.
 
-Once a thread is detached, it can't be awaited anymore.
+    - **@params**:
+      - _number_ **duration**
 
-The detached attribute merely determines the behavior of the
-system when the thread terminates; it does not prevent the thread
-from being terminated if the process terminates (or equivalently, if 
-the main thread returns).
+    {.params}
 
-Either `await() or `detach()` should be called for each thread that 
-an application creates, so that system resources for the thread can 
-be released.  (But note that the resources of any threads for which 
-one of these actions has not been done will be freed when the process 
-terminates.).
 
-If the thread was already detached, it simply returns `true` and 
-does nothing.
+  .yield() {#thread.Thread.yield}
 
-##### Returns
+  : Causes the calling thread to relinquish the CPU.
+    
+    The thread is moved to the end of the queue for its static 
+    priority and a new thread gets to run.
+    
+    If the calling thread is the only thread in the highest 
+    priority list at that time, it will continue to run after a 
+    call to `yield()`.
+    
+    On success, returns `true` and otherwise `false`.
 
-- bool
 
-#### await()
+    - **@returns**: _bool_
 
-Suspends execution until the thread terminates. If the thread 
-has already terminated, it returns immediately.
 
-Multiple threads can call `await()` at the same time, but only 
-one of them will be actively waiting while others will remain in 
-a suspended state until the thread exits. If `await()` is called 
-from another cancelled thread, then this thread will remain 
-awaitable.
+  .set\_name(_name_) {#thread.Thread.set_name}
 
-Failure to join with a thread that is joinable (i.e., one that is
-not detached), produces a "zombie thread".  Avoid doing this,
-since each zombie thread consumes some system resources, and when
-enough zombie threads have accumulated, it will no longer be
-possible to create new threads (or processes).
+  : Sets the internal name for the calling thread to string 
+    value specified by name argument.
+    
+    By default, all the threads inherit the program name. 
+    The `set_name()` function can be used to set a unique name 
+    for a thread, which can be useful for debugging 
+    multithreaded applications. The thread name should be a 
+    meaningful string, whose length is restricted to 15 
+    characters.
+    
+    Returns `true` if successful and `false` otherwise.
 
-All of the threads in an application are peers: any thread can join
-with any other thread in the process.
 
+    - **@params**:
+      - _string_ **name**
 
-#### sleep(duration)
+    {.params}
+    - **@returns**: _bool_
 
-Causes the current thread to sleep for the specified number of seconds.
 
-##### Parameters
+  .get\_name() {#thread.Thread.get_name}
 
-- _number_ **duration**
+  : Returns the name of the current thread.
 
 
-#### yield()
+    - **@returns**: _string_
 
-Causes the calling thread to relinquish the CPU.
 
-The thread is moved to the end of the queue for its static 
-priority and a new thread gets to run.
+  .set\_stack\_size(_size_) {#thread.Thread.set_stack_size}
 
-If the calling thread is the only thread in the highest 
-priority list at that time, it will continue to run after a 
-call to `yield()`.
+  : sets the stack size attribute of the thread attributes 
+    object to the value specified in _size_.
+    
+    The stack size attribute determines the minimum size 
+    (in bytes) that will be allocated for the thread when created.
+    
+    Some systems have a minimum stack size and setting the 
+    number below that can lead to undefined behaviors. For 
+    this reason, the minimum stack size allowed is `16384` 
+    bytes (16kb) and the default stack size when not set is 
+    65536 bytes (64kb). 
+    
+    On some systems, this setting will be ignored if _size_ 
+    is not a multiple of the system page size.
 
-On success, returns `true` and otherwise `false`.
 
-##### Returns
+    - **@params**:
+      - _number_ **size**
 
-- bool
+    {.params}
 
-#### set\_name(name)
 
-Sets the internal name for the calling thread to string 
-value specified by name argument.
+  .get\_stack\_size() {#thread.Thread.get_stack_size}
 
-By default, all the threads inherit the program name. 
-The `set_name()` function can be used to set a unique name 
-for a thread, which can be useful for debugging 
-multithreaded applications. The thread name should be a 
-meaningful string, whose length is restricted to 15 
-characters.
+  : Returns the size of the stack allocated to the thread 
+    when created.
 
-Returns `true` if successful and `false` otherwise.
 
-##### Parameters
+    - **@returns**: _number_
 
-- _string_ **name**
 
-##### Returns
+  .get\_id() {#thread.Thread.get_id}
 
-- bool
+  : Returns the ID of the current thread.
 
-#### get\_name()
 
-Returns the name of the current thread.
+    - **@returns**: _number_
 
-##### Returns
 
-- string
+  .is\_alive() {#thread.Thread.is_alive}
 
-#### set\_stack\_size(size)
+  : Returns true if the thread is started and alive (running) 
+    or false if not.
 
-sets the stack size attribute of the thread attributes 
-object to the value specified in _size_.
 
-The stack size attribute determines the minimum size 
-(in bytes) that will be allocated for the thread when created.
+    - **@returns**: _bool_
 
-Some systems have a minimum stack size and setting the 
-number below that can lead to undefined behaviors. For 
-this reason, the minimum stack size allowed is `16384` 
-bytes (16kb) and the default stack size when not set is 
-65536 bytes (64kb). 
-
-On some systems, this setting will be ignored if _size_ 
-is not a multiple of the system page size.
-
-##### Parameters
-
-- _number_ **size**
-
-
-#### get\_stack\_size()
-
-Returns the size of the stack allocated to the thread 
-when created.
-
-##### Returns
-
-- number
-
-#### get\_id()
-
-Returns the ID of the current thread.
-
-##### Returns
-
-- number
-
-#### is\_alive()
-
-Returns true if the thread is started and alive (running) 
-or false if not.
-
-##### Returns
-
-- bool
 
 
 

@@ -151,262 +151,260 @@ _See below for more info_
 
 ## Functions
 
-#### open(path)
+open(_path_) {#sqlite.open}
 
-Returns an handle to a sqlite3 database. If _path_ is not given, 
-it will create an in-memory sqlite database.
+: Returns an handle to a sqlite3 database. If _path_ is not given, 
+  it will create an in-memory sqlite database.
 
-##### Parameters
 
-- _string?_ **path**
+  - **@params**:
+    - _string?_ **path**
 
-##### Returns
-
-- SQLite3
+  {.params}
+  - **@returns**: _SQLite3_
 
 
 
 ## Classes
 
-### _class_ SQLite3
+_class_ **SQLite3** {#sqlite.SQLite3 .class}
 
-SQLite3 management class
+: SQLite3 management class
 
-#### Fields
 
-- **path**:
+  **.path**
+  :  The path to the SQLite3 file
+    @default = :memory:
 
-  The path to the SQLite3 file
-@default = :memory:
 
-#### Methods
+  .SQLite3(_path_) &#8674; Constructor {#sqlite.SQLite3.SQLite3}
 
-#### SQLite3(path) &#8674; Constructor
+  : > **@notes**:
+    > 
+    > - The database doesn't need to exist.
 
+    - **@params**:
+      - _string_ **path**
 
+    {.params}
 
-##### Parameters
 
-- _string_ **path**
+  .open() {#sqlite.SQLite3.open}
 
-##### Notes
+  : Opens the handle to a database file
 
-- The database doesn't need to exist.
 
-#### open()
 
-Opens the handle to a database file
 
+  .close() {#sqlite.SQLite3.close}
 
-#### close()
+  : Closes the handle to the database and return `true` if successfully
+    closed or `false` otherwise.
 
-Closes the handle to the database and return `true` if successfully
-closed or `false` otherwise.
 
-##### Returns
+    - **@returns**: _boolean_
 
-- boolean
 
-#### exec(query, params)
+  .exec(_query_, _params_) {#sqlite.SQLite3.exec}
 
-Executes a query string as is and returns `true` if the
-query was executed or `false` otherwise.
+  : Executes a query string as is and returns `true` if the
+    query was executed or `false` otherwise.
+    
+    
+    
+    
+    
+    
+    @throws SQLiteException if an error occured
 
 
+    > **@notes**:
+    > 
+    > - this method does not return a query result
 
+    > - this method takes optional params like `query()` (see below).
 
+    - **@params**:
+      - _string_ **query**
+      - _list|dict|nil_ **params**
 
+    {.params}
+    - **@returns**: _boolean_
 
-@throws SQLiteException if an error occured
 
-##### Parameters
+  .last\_insert\_id() {#sqlite.SQLite3.last_insert_id}
 
-- _string_ **query**
-- _list|dict|nil_ **params**
+  : The id of the last insert operation.
+    
+    Returns: `-1` if the last insert failed, 
+      `0` if no insert statement has been executed or 
+      A number greater than 0 if it succeeded
+     
+    
+    @throws SQLiteException if database is not opened
 
-##### Returns
 
-- boolean
-##### Notes
+    - **@returns**: _number_
 
-- this method does not return a query result
-- this method takes optional params like `query()` (see below).
 
-#### last\_insert\_id()
+  .query(_sql_, _params_) {#sqlite.SQLite3.query}
 
-The id of the last insert operation.
+  : query(sql: string [, params: list | dict])
+    
+    Executes and sql query and returns the result of the execution.
+    
+    1. Pass a list as _params_ if you have unnamed parameterized queries.
+    
+    For example,
+    
+    ```blade
+    sqlite.query('SELECT FROM users WHERE id = ? AND name = ?', [3, 'James'])
+     ```
+    2. Or pass a dictionary as _params_ if you use named paramters
+    
+    For Example,
+    
+    ```blade
+    sqlite.query(
+      'SELECT FROM user WHERE id = :id AND name = :name', 
+       {':id': 1, ':name': 'James'}
+    )
+    ```
+    
+    
+    
+    
+    @throws SQLiteException if an error occured.
 
-Returns: `-1` if the last insert failed, 
-  `0` if no insert statement has been executed or 
-  A number greater than 0 if it succeeded
- 
 
-@throws SQLiteException if database is not opened
+    - **@params**:
+      - _string_ **sql**
+      - _list|dict|nil_ **params**
 
-##### Returns
+    {.params}
+    - **@returns**: _SQLite3Cursor_
 
-- number
 
-#### query(sql, params)
+  .fetch(_sql_, _params_) {#sqlite.SQLite3.fetch}
 
-query(sql: string [, params: list | dict])
+  : Runs an SQL query and returns the result as a list of dictionaries.
 
-Executes and sql query and returns the result of the execution.
 
-1. Pass a list as _params_ if you have unnamed parameterized queries.
+    > **@notes**:
+    > 
+    > - if the result is empty or the query is not a SELECT, it returns an empty list.
 
-For example,
+    - **@params**:
+      - _string_ **sql**
+      - _list|dict|nil_ **params**
 
-```blade
-sqlite.query('SELECT FROM users WHERE id = ? AND name = ?', [3, 'James'])
- ```
-2. Or pass a dictionary as _params_ if you use named paramters
+    {.params}
+    - **@returns**: _list[dictionary]_
 
-For Example,
 
-```blade
-sqlite.query(
-  'SELECT FROM user WHERE id = :id AND name = :name', 
-   {':id': 1, ':name': 'James'}
-)
-```
 
 
+_class_ **SQLiteException** < _Exception_ {#sqlite.SQLiteException .class}
 
+: General Exception for SQLite
 
-@throws SQLiteException if an error occured.
 
-##### Parameters
 
-- _string_ **sql**
-- _list|dict|nil_ **params**
 
-##### Returns
+_class_ **SQLite3Cursor** {#sqlite.SQLite3Cursor .class}
 
-- SQLite3Cursor
+: A cursor for navigation through sql results
 
-#### fetch(sql, params)
 
-Runs an SQL query and returns the result as a list of dictionaries.
+  ~ Properties
 
-##### Parameters
+    - __@iterable__
 
-- _string_ **sql**
-- _list|dict|nil_ **params**
+  **.connection** &#8674; _readonly_
+  :  The SQLite3 connection that owns this cursor
 
-##### Returns
+  **.row\_count** &#8674; _readonly_
+  :  The number of rows in the cursor
 
-- list[dictionary]
-##### Notes
+  **.modified\_count** &#8674; _readonly_
+  :  This value hold the number of rows modified, inserted or deleted by the the query that 
+    owns this cursor provided the query is one of INSERT, UPDATE or DELETE statement.
+    Executing any other type of SQL statement does not change this value from 0.
+    
+    Only changes made directly by the INSERT, UPDATE or DELETE statement are considered 
+    - auxiliary changes caused by triggers, foreign key actions or REPLACE constraint 
+    resolution are not counted.
+    
+    Changes to a view that are intercepted by INSTEAD OF triggers are not counted. 
+    The value returned by `modified_count` immediately after an INSERT, UPDATE or DELETE 
+    statement run on a view is always zero. Only changes made to real tables are counted.
+    
+    
+    
+    > If a separate thread makes changes on the same database connection at the exact time 
+    > the original query was also making a change, the result of this value will become 
+    > undependable.
 
-- if the result is empty or the query is not a SELECT, it returns an empty list.
+  **.columns** &#8674; _readonly_
+  :  A list of the columns available in the result set.
 
 
+  .SQLite3Cursor(_db_, _cursor_) &#8674; Constructor {#sqlite.SQLite3Cursor.SQLite3Cursor}
 
-### _class_ SQLiteException < _Exception_
+  : > **@notes**:
+    > 
+    > - SQLite3Cursor should NEVER be maually instantiated.
 
-General Exception for SQLite
+    - **@params**:
+      - _SQLite3_ **db**
+      - _ptr_ **cursor**
 
+    {.params}
 
 
-### _class_ SQLite3Cursor
+  .close() {#sqlite.SQLite3Cursor.close}
 
-A cursor for navigation through sql results
+  : Closes the cursor and prevents further reading.
 
 
-#### Properties
+    - **@returns**: _bool_
 
- - __@iterable__
 
-#### Fields
+  .has\_next() {#sqlite.SQLite3Cursor.has_next}
 
-- **connection** &#8674; _readonly_:
+  : Returns `true` if there are more rows in the result set not yet retrieved, 
+    otherwise it returns `false`.
 
-  The SQLite3 connection that owns this cursor
 
-- **row\_count** &#8674; _readonly_:
+    - **@returns**: _boolean_
 
-  The number of rows in the cursor
 
-- **modified\_count** &#8674; _readonly_:
+  .get(_index_) {#sqlite.SQLite3Cursor.get}
 
-  This value hold the number of rows modified, inserted or deleted by the the query that 
-owns this cursor provided the query is one of INSERT, UPDATE or DELETE statement.
-Executing any other type of SQL statement does not change this value from 0.
+  : Returns the value of the column matching the index in the current result set.
+    
+    
+    
+    
+    
+    
+    @throws SQLiteException if no matching column can be found.
 
-Only changes made directly by the INSERT, UPDATE or DELETE statement are considered 
-- auxiliary changes caused by triggers, foreign key actions or REPLACE constraint 
-resolution are not counted.
 
-Changes to a view that are intercepted by INSTEAD OF triggers are not counted. 
-The value returned by `modified_count` immediately after an INSERT, UPDATE or DELETE 
-statement run on a view is always zero. Only changes made to real tables are counted.
+    > **@notes**:
+    > 
+    > - If index is a number, it returns the value in the column at the given index. 
 
+    > - Index must be lower than columns.length() in this case.
 
+    > - If index is a string, it returns the value in the column with the given name.
 
-> If a separate thread makes changes on the same database connection at the exact time 
-> the original query was also making a change, the result of this value will become 
-> undependable.
+    - **@params**:
+      - _number|string_ **index**
 
-- **columns** &#8674; _readonly_:
+    {.params}
+    - **@returns**: _string_
 
-  A list of the columns available in the result set.
-
-#### Methods
-
-#### SQLite3Cursor(db, cursor) &#8674; Constructor
-
-
-
-##### Parameters
-
-- _SQLite3_ **db**
-- _ptr_ **cursor**
-
-##### Notes
-
-- SQLite3Cursor should NEVER be maually instantiated.
-
-#### close()
-
-Closes the cursor and prevents further reading.
-
-##### Returns
-
-- bool
-
-#### has\_next()
-
-Returns `true` if there are more rows in the result set not yet retrieved, 
-otherwise it returns `false`.
-
-##### Returns
-
-- boolean
-
-#### get(index)
-
-Returns the value of the column matching the index in the current result set.
-
-
-
-
-
-
-@throws SQLiteException if no matching column can be found.
-
-##### Parameters
-
-- _number|string_ **index**
-
-##### Returns
-
-- string
-##### Notes
-
-- If index is a number, it returns the value in the column at the given index. 
-- Index must be lower than columns.length() in this case.
-- If index is a string, it returns the value in the column with the given name.
 
 
 

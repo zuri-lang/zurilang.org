@@ -32,377 +32,363 @@ Try it out!
 
 ## Functions
 
-#### has\_prop(object, name)
+has\_prop(_object_, _name_) {#reflect.has_prop}
 
-Returns `true` if instance has the property or module has a value with 
-the given name or `false` if not.
+: Returns `true` if instance has the property or module has a value with 
+  the given name or `false` if not.
 
-##### Parameters
 
-- _instance|module_ **object**
-- _string_ **name**
+  - **@params**:
+    - _instance|module_ **object**
+    - _string_ **name**
 
-##### Returns
+  {.params}
+  - **@returns**: _bool_
 
-- bool
 
 
+get\_prop(_object_, _name_) {#reflect.get_prop}
 
-#### get\_prop(object, name)
+: Returns the property of the instance or value in the module matching the 
+  given name or nil if the object contains no property with a matching name.
 
-Returns the property of the instance or value in the module matching the 
-given name or nil if the object contains no property with a matching name.
 
-##### Parameters
+  - **@params**:
+    - _instance|module_ **object**
+    - _string_ **name**
 
-- _instance|module_ **object**
-- _string_ **name**
+  {.params}
+  - **@returns**: _any_
 
-##### Returns
 
-- any
 
+get\_props(_object_) {#reflect.get_props}
 
+: Returns all properties of an instance or value in a module or an empty
+  list if the instance or module has no property.
 
-#### get\_props(object)
 
-Returns all properties of an instance or value in a module or an empty
-list if the instance or module has no property.
+  - **@params**:
+    - _instance|module_ **object**
+    - _string_ **name**
 
-##### Parameters
+  {.params}
+  - **@returns**: _list[string]_
 
-- _instance|module_ **object**
-- _string_ **name**
 
-##### Returns
 
-- list[string]
+set\_prop(_object_, _name_, _value_) {#reflect.set_prop}
 
+: Sets the named property of the object to value.
 
 
-#### set\_prop(object, name, value)
+  > **@notes**:
+  > 
+  > - if the property already exist, it overwrites it.
 
-Sets the named property of the object to value.
+  - **@params**:
+    - _instance_ **object**
+    - _string_ **name**
+    - _any_ **value**
 
-##### Parameters
+  {.params}
+  - **@returns**: _bool: `true` if a new property was set, `false` if a property was updated_
 
-- _instance_ **object**
-- _string_ **name**
-- _any_ **value**
 
-##### Returns
 
-- bool: `true` if a new property was set, `false` if a property was updated
-##### Notes
+del\_prop(_object_, _name_) {#reflect.del_prop}
 
-- if the property already exist, it overwrites it.
+: Deletes the named property from the instance
 
 
+  - **@params**:
+    - _instance|module_ **object**
+    - _string_ **name**
 
-#### del\_prop(object, name)
+  {.params}
+  - **@returns**: _bool_
 
-Deletes the named property from the instance
 
-##### Parameters
 
-- _instance|module_ **object**
-- _string_ **name**
+has\_method(_object_, _name_) {#reflect.has_method}
 
-##### Returns
+: Returns true if class of the instance has the method name or
+  false if not.
 
-- bool
 
+  - **@params**:
+    - _instance_ **object**
+    - _string_ **name**
 
+  {.params}
+  - **@returns**: _bool_
 
-#### has\_method(object, name)
 
-Returns true if class of the instance has the method name or
-false if not.
 
-##### Parameters
+has\_decorator(_object_, _name_) {#reflect.has_decorator}
 
-- _instance_ **object**
-- _string_ **name**
+: Returns true if class of the instance implements the decorator name or
+  false if not.
 
-##### Returns
 
-- bool
+  - **@params**:
+    - _instance_ **object**
+    - _string_ **name**
 
+  {.params}
+  - **@returns**: _bool_
 
 
-#### has\_decorator(object, name)
 
-Returns true if class of the instance implements the decorator name or
-false if not.
+get\_method(_object_, _name_) {#reflect.get_method}
 
-##### Parameters
+: Returns the method in a class instance matching the given name
+  or nil if the class of the instance contains no method with
+  a matching name.
 
-- _instance_ **object**
-- _string_ **name**
 
-##### Returns
+  - **@params**:
+    - _instance_ **object**
+    - _string_ **name**
 
-- bool
+  {.params}
+  - **@returns**: _function_
 
 
 
-#### get\_method(object, name)
+get\_decorator(_object_, _name_) {#reflect.get_decorator}
 
-Returns the method in a class instance matching the given name
-or nil if the class of the instance contains no method with
-a matching name.
+: Returns the decorator function matching the given name in the class 
+  of the given instance.
 
-##### Parameters
 
-- _instance_ **object**
-- _string_ **name**
+  > **@notes**:
+  > 
+  > - the name of a decorator excludes the `@` character.
 
-##### Returns
+  - **@params**:
+    - _instance_ **object**
+    - _string_ **name**
 
-- function
+  {.params}
+  - **@returns**: _function_
 
 
 
-#### get\_decorator(object, name)
+bind\_method(_object_, _method_) {#reflect.bind_method}
 
-Returns the decorator function matching the given name in the class 
-of the given instance.
+: Binds the given function to the instance, allowing you to access 
+  the instance itself in the function via the `self` keyword in 
+  the function.
 
-##### Parameters
 
-- _instance_ **object**
-- _string_ **name**
+  - **@params**:
+    - _instance_ **object**
+    - _function_ **method**
 
-##### Returns
+  {.params}
+  - **@returns**: _function_
 
-- function
-##### Notes
 
-- the name of a decorator excludes the `@` character.
 
+get\_type(_object_) {#reflect.get_type}
 
+: Returns the type of an instance as string
 
-#### bind\_method(object, method)
 
-Binds the given function to the instance, allowing you to access 
-the instance itself in the function via the `self` keyword in 
-the function.
+  - **@params**:
+    - _instance_ **object**
 
-##### Parameters
+  {.params}
+  - **@returns**: _string_
 
-- _instance_ **object**
-- _function_ **method**
 
-##### Returns
 
-- function
+get\_function\_metadata(_function_) {#reflect.get_function_metadata}
 
+: Returns the metadata of a function as a dictionary. 
+  This dictionary contains the following keys:
+  
+  - `name`: The name of the function
+  - `arity`: The number of none variable (...) arguments the function defines.
+  - `is_variadic`: If the function accepts variable arguments
+  - `captured_vars`: The number of variables captured (only greater than zero for captures).
+  - `module`: The name of the module from where the function was defined.
+  - `file`: The file in which the function was defined.
 
 
-#### get\_type(object)
+  > **@notes**:
+  > 
+  > - This function does not work for built-in functions
 
-Returns the type of an instance as string
+  - **@params**:
+    - _function_ **object**
 
-##### Parameters
+  {.params}
+  - **@returns**: _dictionary_
 
-- _instance_ **object**
 
-##### Returns
 
-- string
+get\_class\_metadata(_klass_) {#reflect.get_class_metadata}
 
+: Returns the metadata of a class as a dictionary. 
+  This dictionary contains the following keys:
+  
+  - `name`: The name of the class.
+  - `properties`: a list of the name of non-static properties defined in the class
+  - `static_properties`: a list of the name of static properties defined in the class
+  - `methods`: a list of the name of methods defined in the class
+  - `superclass`: The name of the class it inherits from.
 
 
-#### get\_function\_metadata(function)
+  - **@params**:
+    - _class_ **klass**
 
-Returns the metadata of a function as a dictionary. 
-This dictionary contains the following keys:
+  {.params}
+  - **@returns**: _dictionary_
 
-- `name`: The name of the function
-- `arity`: The number of none variable (...) arguments the function defines.
-- `is_variadic`: If the function accepts variable arguments
-- `captured_vars`: The number of variables captured (only greater than zero for captures).
-- `module`: The name of the module from where the function was defined.
-- `file`: The file in which the function was defined.
 
-##### Parameters
 
-- _function_ **object**
+get\_module\_metadata(_module_) {#reflect.get_module_metadata}
 
-##### Returns
+: Returns the metadata of an imported module as a dictionary. 
+  This dictionary contains the following keys:
+  
+  - `name`: The name of the module.
+  - `file`: The file from which the module was imported.
+  - `has_preloader`: `true` if the module is a C extension with a preloader and `false` otherwise.
+  - `has_unloader`: `true` if the module is a C extension with a unloader and `false` otherwise.
+  - `definitions`: A list of the name of objects defined in the module.
 
-- dictionary
-##### Notes
 
-- This function does not work for built-in functions
+  - **@params**:
+    - _module_ **module**
 
+  {.params}
+  - **@returns**: _dictionary_
 
 
-#### get\_class\_metadata(klass)
 
-Returns the metadata of a class as a dictionary. 
-This dictionary contains the following keys:
+get\_class(_object_) {#reflect.get_class}
 
-- `name`: The name of the class.
-- `properties`: a list of the name of non-static properties defined in the class
-- `static_properties`: a list of the name of static properties defined in the class
-- `methods`: a list of the name of methods defined in the class
-- `superclass`: The name of the class it inherits from.
+: Returns the class value of an instance as an object that can be 
+  used to create a new instance of that same class.
 
-##### Parameters
 
-- _class_ **klass**
+  - **@params**:
+    - _instance_ **object**
 
-##### Returns
+  {.params}
+  - **@returns**: _class_
 
-- dictionary
 
 
+is\_ptr(_value_) {#reflect.is_ptr}
 
-#### get\_module\_metadata(module)
+: Returns `true` if _value_ is a pointer, `false` otherwise.
 
-Returns the metadata of an imported module as a dictionary. 
-This dictionary contains the following keys:
 
-- `name`: The name of the module.
-- `file`: The file from which the module was imported.
-- `has_preloader`: `true` if the module is a C extension with a preloader and `false` otherwise.
-- `has_unloader`: `true` if the module is a C extension with a unloader and `false` otherwise.
-- `definitions`: A list of the name of objects defined in the module.
+  - **@params**:
+    - _any_ **value**
 
-##### Parameters
+  {.params}
+  - **@returns**: _bool_
 
-- _module_ **module**
 
-##### Returns
 
-- dictionary
+get\_ptr(_value_) {#reflect.get_ptr}
 
+: Returns a pointer to the given value.
 
 
-#### get\_class(object)
+  - **@params**:
+    - _any_ **value**
 
-Returns the class value of an instance as an object that can be 
-used to create a new instance of that same class.
+  {.params}
+  - **@returns**: _ptr_
 
-##### Parameters
 
-- _instance_ **object**
 
-##### Returns
+set\_ptr(_pointer_, _value_) {#reflect.set_ptr}
 
-- class
+: Sets the value at the given pointer's address to the given value.
 
 
+  - **@params**:
+    - _ptr_ **pointer**
+    - _any_ **value**
 
-#### is\_ptr(value)
+  {.params}
 
-Returns `true` if _value_ is a pointer, `false` otherwise.
 
-##### Parameters
 
-- _any_ **value**
+get\_address(_value_) {#reflect.get_address}
 
-##### Returns
+: Returns a the address of the pointer to the value in memory.
 
-- bool
 
+  - **@params**:
+    - _any_ **value**
 
+  {.params}
+  - **@returns**: _ptr_
 
-#### get\_ptr(value)
 
-Returns a pointer to the given value.
 
-##### Parameters
+ptr\_from\_address(_address_) {#reflect.ptr_from_address}
 
-- _any_ **value**
+: Returns a pointer to the given memory address.
 
-##### Returns
 
-- ptr
+  - **@params**:
+    - _number_ **address**
 
+  {.params}
+  - **@returns**: _ptr_
 
 
-#### set\_ptr(pointer, value)
 
-Sets the value at the given pointer's address to the given value.
+set\_global(_value_, _name_) {#reflect.set_global}
 
-##### Parameters
+: Sets any given value as globally accessible in all modules, function
+  and scopes with the given name.
+  If name is not given and the value is a class or function, the name
+  will automatically be set to the name of the class or function
+  respectively otherwise, an Exception will be raised.
 
-- _ptr_ **pointer**
-- _any_ **value**
 
+  - **@params**:
+    - _any_ **value**
+    - _string?_ **name**
 
+  {.params}
 
 
-#### get\_address(value)
 
-Returns a the address of the pointer to the value in memory.
+run\_script(_path_) {#reflect.run_script}
 
-##### Parameters
+: Runs the content of a given script in-place as if it were part of the 
+  current module.
 
-- _any_ **value**
 
-##### Returns
+  - **@params**:
+    - _string_ **path**
 
-- ptr
+  {.params}
 
 
 
-#### ptr\_from\_address(address)
+call\_function(_function_, _args_) {#reflect.call_function}
 
-Returns a pointer to the given memory address.
+: Calls a function with the given arguments.
 
-##### Parameters
 
-- _number_ **address**
+  - **@params**:
+    - _function_ **function**
+    - _list_ **args**
 
-##### Returns
-
-- ptr
-
-
-
-#### set\_global(value, name)
-
-Sets any given value as globally accessible in all modules, function
-and scopes with the given name.
-If name is not given and the value is a class or function, the name
-will automatically be set to the name of the class or function
-respectively otherwise, an Exception will be raised.
-
-##### Parameters
-
-- _any_ **value**
-- _string?_ **name**
-
-
-
-
-#### run\_script(path)
-
-Runs the content of a given script in-place as if it were part of the 
-current module.
-
-##### Parameters
-
-- _string_ **path**
-
-
-
-
-#### call\_function(function, args)
-
-Calls a function with the given arguments.
-
-##### Parameters
-
-- _function_ **function**
-- _list_ **args**
-
-##### Returns
-
-- any
+  {.params}
+  - **@returns**: _any_
 
 
 

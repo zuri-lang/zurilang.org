@@ -8,351 +8,339 @@ alternative.
 
 ## Functions
 
-#### of(value)
+of(_value_) {#types.of}
 
-Returns the name of the type of value
+: Returns the name of the type of value
 
-##### Parameters
 
-- _any_ **value**
+  > **@notes**:
+  > 
+  > - method implemented as part of core language features
 
-##### Returns
+  - **@params**:
+    - _any_ **value**
 
-- string
-##### Notes
+  {.params}
+  - **@returns**: _string_
 
-- method implemented as part of core language features
 
 
+digit(_value_) {#types.digit}
 
-#### digit(value)
+: Returns true if the value is a character and digit,
+  otherwise returns false.
 
-Returns true if the value is a character and digit,
-otherwise returns false.
 
-##### Parameters
+  - **@params**:
+    - _char_ **value**
 
-- _char_ **value**
+  {.params}
+  - **@returns**: _bool_
 
-##### Returns
 
-- bool
 
+alpha(_value_) {#types.alpha}
 
+: Returns true if the value is a character and alphabetic,
+  otherwise returns false.
 
-#### alpha(value)
 
-Returns true if the value is a character and alphabetic,
-otherwise returns false.
+  - **@params**:
+    - _char_ **value**
 
-##### Parameters
+  {.params}
+  - **@returns**: _bool_
 
-- _char_ **value**
 
-##### Returns
 
-- bool
+int(_value_) {#types.int}
 
+: Returns true if the value is an integer or false otherwise.
 
 
-#### int(value)
+  - **@params**:
+    - _any_ **value**
 
-Returns true if the value is an integer or false otherwise.
+  {.params}
+  - **@returns**: _bool_
 
-##### Parameters
 
-- _any_ **value**
 
-##### Returns
+bool(_value_) {#types.bool}
 
-- bool
+: Returns true if the value is a boolean or false otherwise.
 
 
+  - **@params**:
+    - _any_ **value**
 
-#### bool(value)
+  {.params}
+  - **@returns**: _bool_
 
-Returns true if the value is a boolean or false otherwise.
 
-##### Parameters
 
-- _any_ **value**
+number(_value_) {#types.number}
 
-##### Returns
+: Returns true if the value is a number or false otherwise.
 
-- bool
 
+  > **@notes**:
+  > 
+  > - this method also returns true for integers.
 
+  - **@params**:
+    - _any_ **value**
 
-#### number(value)
+  {.params}
+  - **@returns**: _bool_
 
-Returns true if the value is a number or false otherwise.
 
-##### Parameters
 
-- _any_ **value**
+char(_value_) {#types.char}
 
-##### Returns
+: Returns true if the value is a single character or false otherwise.
 
-- bool
-##### Notes
 
-- this method also returns true for integers.
+  - **@params**:
+    - _any_ **value**
 
+  {.params}
+  - **@returns**: _bool_
 
 
-#### char(value)
 
-Returns true if the value is a single character or false otherwise.
+string(_value_) {#types.string}
 
-##### Parameters
+: Returns true if the value is a string or false otherwise.
 
-- _any_ **value**
 
-##### Returns
+  - **@params**:
+    - _any_ **value**
 
-- bool
+  {.params}
+  - **@returns**: _bool_
 
 
 
-#### string(value)
+bytes(_value_) {#types.bytes}
 
-Returns true if the value is a string or false otherwise.
+: Returns true if the value is a bytes or false otherwise.
 
-##### Parameters
 
-- _any_ **value**
+  - **@params**:
+    - _any_ **value**
 
-##### Returns
+  {.params}
+  - **@returns**: _bool_
 
-- bool
 
 
+list(_value_) {#types.list}
 
-#### bytes(value)
+: Returns true if the value is a list or false otherwise.
 
-Returns true if the value is a bytes or false otherwise.
 
-##### Parameters
+  - **@params**:
+    - _any_ **value**
 
-- _any_ **value**
+  {.params}
+  - **@returns**: _bool_
 
-##### Returns
 
-- bool
 
+dict(_value_) {#types.dict}
 
+: Returns true if the value is a dictionary or false otherwise.
 
-#### list(value)
 
-Returns true if the value is a list or false otherwise.
+  - **@params**:
+    - _any_ **value**
 
-##### Parameters
+  {.params}
+  - **@returns**: _bool_
 
-- _any_ **value**
 
-##### Returns
 
-- bool
+object(_value_) {#types.object}
 
+: Returns true if the value is an object or false otherwise.
 
 
-#### dict(value)
+  - **@params**:
+    - _any_ **value**
 
-Returns true if the value is a dictionary or false otherwise.
+  {.params}
+  - **@returns**: _bool_
 
-##### Parameters
 
-- _any_ **value**
 
-##### Returns
+function(_value_) {#types.function}
 
-- bool
+: Returns true if the value is a function or false otherwise.
 
 
+  - **@params**:
+    - _any_ **value**
 
-#### object(value)
+  {.params}
+  - **@returns**: _bool_
 
-Returns true if the value is an object or false otherwise.
 
-##### Parameters
 
-- _any_ **value**
+is\_a\_class(_value_) {#types.is_a_class}
 
-##### Returns
+: Returns true if the value is a class or false otherwise.
 
-- bool
 
+  - **@params**:
+    - _any_ **value**
 
+  {.params}
+  - **@returns**: _bool_
 
-#### function(value)
 
-Returns true if the value is a function or false otherwise.
 
-##### Parameters
+file(_value_) {#types.file}
 
-- _any_ **value**
+: Returns true if the value is a file or false otherwise.
 
-##### Returns
 
-- bool
+  - **@params**:
+    - _any_ **value**
 
+  {.params}
+  - **@returns**: _bool_
 
 
-#### is\_a\_class(value)
 
-Returns true if the value is a class or false otherwise.
+iterable(_value_) {#types.iterable}
 
-##### Parameters
+: Returns true if the value is an iterable or false otherwise.
 
-- _any_ **value**
 
-##### Returns
+  - **@params**:
+    - _any_ **value**
 
-- bool
+  {.params}
+  - **@returns**: _bool_
 
 
 
-#### file(value)
+callable(_value_) {#types.callable}
 
-Returns true if the value is a file or false otherwise.
+: Returns true if the value is a callable function or class and false 
+  otherwise.
 
-##### Parameters
 
-- _any_ **value**
+  - **@params**:
+    - _any_ **value**
 
-##### Returns
+  {.params}
+  - **@returns**: _bool_
 
-- bool
 
 
+instance(_value_, _type_) {#types.instance}
 
-#### iterable(value)
+: Returns true if the value is an instance the given class, false
+  otherwise.
 
-Returns true if the value is an iterable or false otherwise.
 
-##### Parameters
+  - **@params**:
+    - _any_ **value**
+    - _class_ **type**
 
-- _any_ **value**
-
-##### Returns
-
-- bool
-
-
-
-#### callable(value)
-
-Returns true if the value is a callable function or class and false 
-otherwise.
-
-##### Parameters
-
-- _any_ **value**
-
-##### Returns
-
-- bool
-
-
-
-#### instance(value, type)
-
-Returns true if the value is an instance the given class, false
-otherwise.
-
-##### Parameters
-
-- _any_ **value**
-- _class_ **type**
-
-##### Returns
-
-- bool
+  {.params}
+  - **@returns**: _bool_
 
 
 
 ## Classes
 
-### _class_ Convert
+_class_ **Convert** {#types.Convert .class}
 
-The Convert class handles conversion from one type to another
-
-#### Methods
-
-#### Convert(value) &#8674; Constructor
+: The Convert class handles conversion from one type to another
 
 
+  .Convert(_value_) &#8674; Constructor {#types.Convert.Convert}
 
-##### Parameters
+  : - **@params**:
+      - _any_ **value**
 
-- _any_ **value**
+    {.params}
 
 
-#### to\_int()
+  .to\_int() {#types.Convert.to_int}
 
-Converts the value into an integer.
+  : Converts the value into an integer.
 
-##### Returns
 
-- bool
-##### Notes
+    > **@notes**:
+    > 
+    > - classes may override the return value by declaring a `to_int()` function.
 
-- classes may override the return value by declaring a `to_int()` function.
+    - **@returns**: _bool_
 
-#### to\_number()
 
-Converts the value into a number.
+  .to\_number() {#types.Convert.to_number}
 
-##### Returns
+  : Converts the value into a number.
 
-- bool
-##### Notes
 
-- classes may override the return value by declaring a `to_number()` function.
+    > **@notes**:
+    > 
+    > - classes may override the return value by declaring a `to_number()` function.
 
-#### to\_string()
+    - **@returns**: _bool_
 
-Converts the value into a string.
 
-##### Returns
+  .to\_string() {#types.Convert.to_string}
 
-- bool
-##### Notes
+  : Converts the value into a string.
 
-- classes may override the return value by declaring a `to_string()` function.
 
-#### to\_bool()
+    > **@notes**:
+    > 
+    > - classes may override the return value by declaring a `to_string()` function.
 
-Converts the value into a boolean.
+    - **@returns**: _bool_
 
-##### Returns
 
-- bool
-##### Notes
+  .to\_bool() {#types.Convert.to_bool}
 
-- classes may override the return value by declaring a `to_bool()` function.
+  : Converts the value into a boolean.
 
-#### to\_list()
 
-Converts the value into a list.
+    > **@notes**:
+    > 
+    > - classes may override the return value by declaring a `to_bool()` function.
 
-##### Returns
+    - **@returns**: _bool_
 
-- bool
-##### Notes
 
-- classes may override the return value by declaring a `to_list()` function.
+  .to\_list() {#types.Convert.to_list}
 
-#### to\_dict()
+  : Converts the value into a list.
 
-Converts the value value into a dictionary.
 
-##### Returns
+    > **@notes**:
+    > 
+    > - classes may override the return value by declaring a `to_list()` function.
 
-- bool
-##### Notes
+    - **@returns**: _bool_
 
-- classes may override the return value by declaring a `to_dict()` function.
+
+  .to\_dict() {#types.Convert.to_dict}
+
+  : Converts the value value into a dictionary.
+
+
+    > **@notes**:
+    > 
+    > - classes may override the return value by declaring a `to_dict()` function.
+
+    - **@returns**: _bool_
+
 
 
 

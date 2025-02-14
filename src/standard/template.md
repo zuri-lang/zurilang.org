@@ -389,561 +389,590 @@ you'll need to escape the first `{` with a `%` sign. For example, `%{! name !}` 
 
 ## Functions
 
-#### length(value)
+length(_value_) {#template.length}
 
-Template function to return the length of an iterable.
+: Template function to return the length of an iterable.
+  
+  Example:
+  
+  ```wire
+  {{ value|length }}
+  ```
+  
+  If _value_ is **Example**, output will be **7**.
 
-Example:
 
-```wire
-{{ value|length }}
-```
 
-If _value_ is **Example**, output will be **7**.
 
 
+upper(_value_) {#template.upper}
 
+: Template function to convert a string or an object's string representation 
+  to upper case variant.
+  
+  Example:
+  
+  ```wire
+  {{ value|upper }}
+  ```
+  
+  If _value_ is **Example text**, output will be **EXAMPLE TEXT**.
 
-#### upper(value)
 
-Template function to convert a string or an object's string representation 
-to upper case variant.
 
-Example:
 
-```wire
-{{ value|upper }}
-```
 
-If _value_ is **Example text**, output will be **EXAMPLE TEXT**.
+lower(_value_) {#template.lower}
 
+: Template function to convert a string or an object's string representation 
+  to lower case variant.
+  
+  Example:
+  
+  ```wire
+  {{ value|lower }}
+  ```
+  
+  If _value_ is **I'm LOVING this**, output will be **i'm loving this**.
 
 
 
-#### lower(value)
 
-Template function to convert a string or an object's string representation 
-to lower case variant.
 
-Example:
+is(_value_, _expected_) {#template.is}
 
-```wire
-{{ value|lower }}
-```
+: Template function to check if object _value_ is same as the _expected_.
+  
+  Example:
+  
+  ```wire
+  {{ value|is='Jane' }}
+  ```
+  
+  If value was **Jane**, it will return `true`.
+  
+  You can also pass another variable name, a number or one of `true`, 
+  `false`, and `nil` directly (without quotes).
 
-If _value_ is **I'm LOVING this**, output will be **i'm loving this**.
 
+  - **@params**:
+    - _any_ **expected**
 
+  {.params}
 
 
-#### is(value, expected)
 
-Template function to check if object _value_ is same as the _expected_.
+not(_value_, _expected_) {#template.not}
 
-Example:
+: Template function to check if object _value_ is NOT the same as _expected_.
+  
+  Example:
+  
+  ```wire
+  {{ value|not=false }}
+  ```
+  
+  If value was __true__, it will return `false`.
+  
+  It accepts the same set of parameters accepted by the `is` template modifier.
 
-```wire
-{{ value|is='Jane' }}
-```
 
-If value was **Jane**, it will return `true`.
+  - **@params**:
+    - _any_ **expected**
 
-You can also pass another variable name, a number or one of `true`, 
-`false`, and `nil` directly (without quotes).
+  {.params}
 
-##### Parameters
 
-- _any_ **expected**
 
+empty(_value_) {#template.empty}
 
+: Template function to check if an iterable is empty.
+  
+  Example:
+  
+  ```wire
+  {{ value|empty }}
+  ```
+  
+  If value is an _empty string_, it will return `true`.
 
 
-#### not(value, expected)
 
-Template function to check if object _value_ is NOT the same as _expected_.
 
-Example:
 
-```wire
-{{ value|not=false }}
-```
+reverse(_value_) {#template.reverse}
 
-If value was __true__, it will return `false`.
+: Template function to reverse a string or the string representation of an object.
+  
+  Example:
+  
+  ```wire
+  {{ value|reverse }}
+  ```
+  
+  If value is **banana**, output will be **ananab**.
 
-It accepts the same set of parameters accepted by the `is` template modifier.
 
-##### Parameters
 
-- _any_ **expected**
 
 
+string(_value_) {#template.string}
 
+: Template function to convert an object of any type to a string.
+  
+  Example:
+  
+  ```wire
+  {{ value|string }}
+  ```
+  
+  If value was a list `[1,2,3]`, output will be the string **[1, 2, 3]**.
 
-#### empty(value)
 
-Template function to check if an iterable is empty.
 
-Example:
 
-```wire
-{{ value|empty }}
-```
 
-If value is an _empty string_, it will return `true`.
+trim(_value_) {#template.trim}
 
+: Template function to trim a string.
+  
+  Example:
+  
+  ```wire
+  {{ value|trim }}
+  ```
+  
+  If value is `   Jane   `, output will be `Jane`.
 
 
 
-#### reverse(value)
 
-Template function to reverse a string or the string representation of an object.
 
-Example:
+title(_value_) {#template.title}
 
-```wire
-{{ value|reverse }}
-```
+: Template function to convert a string to a title case.
+  
+  Example:
+  
+  ```wire
+  {{ value|title }}
+  ```
+  
+  If value is **jane IS a fine girl**, output will be **Jane Is A Fine Girl**.
 
-If value is **banana**, output will be **ananab**.
 
 
 
 
-#### string(value)
+alt(_value_, _alternative_) {#template.alt}
 
-Template function to convert an object of any type to a string.
+: Template function to return a default string value if the value 
+  passed resolves to a Blade false expression. For example, when a 
+  string is empty or nil.
+  
+  Example:
+  
+  ```wire
+  {{ value|alt=30 }}
+  ```
+  
+  If value is **-1**, out put will be **30**.
 
-Example:
 
-```wire
-{{ value|string }}
-```
+  - **@params**:
+    - _string_ **alternative**
 
-If value was a list `[1,2,3]`, output will be the string **[1, 2, 3]**.
+  {.params}
 
 
 
+first(_value_) {#template.first}
 
-#### trim(value)
+: Template function to return the first item in an iterable.
+  
+  Example:
+  
+  ```wire
+  {{ value|first }}
+  ```
+  
+  If value is a list `['mango', 'apple', 'oranges']`, output will be **mango**.
 
-Template function to trim a string.
 
-Example:
 
-```wire
-{{ value|trim }}
-```
 
-If value is `   Jane   `, output will be `Jane`.
 
+last(_value_) {#template.last}
 
+: Template function to return the last item in an iterable.
+  
+  Example:
+  
+  ```wire
+  {{ value|last }}
+  ```
+  
+  If value is a list `['mango', 'apple', 'oranges']`, output will be **oranges**.
 
 
-#### title(value)
 
-Template function to convert a string to a title case.
 
-Example:
 
-```wire
-{{ value|title }}
-```
+line\_breaks(_value_) {#template.line_breaks}
 
-If value is **jane IS a fine girl**, output will be **Jane Is A Fine Girl**.
+: Template function to replace newlines with HTML line breaks.
+  
+  Example:
+  
+  ```wire
+  {{ value|line_breaks }}
+  ```
+  
+  If value is `Hello\nWorld`, output will be `Hello<br/>World`.
 
 
 
 
-#### alt(value, alternative)
 
-Template function to return a default string value if the value 
-passed resolves to a Blade false expression. For example, when a 
-string is empty or nil.
+lpad(_value_, _count_) {#template.lpad}
 
-Example:
+: Template function to left pad a string.
+  
+  Example:
+  
+  ```wire
+  {{ value|lpad=10 }}
+  ```
+  
+  If value is `Jane`, output will be `      Jane`.
 
-```wire
-{{ value|alt=30 }}
-```
 
-If value is **-1**, out put will be **30**.
+  - **@params**:
+    - _number_ **count.**
 
-##### Parameters
+  {.params}
 
-- _string_ **alternative**
 
 
+rpad(_value_, _count_) {#template.rpad}
 
+: Template function to right pad a string.
+  
+  Example:
+  
+  ```wire
+  {{ value|rpad=10 }}
+  ```
+  
+  If value is `Jane`, output will be `Jane      `.
 
-#### first(value)
 
-Template function to return the first item in an iterable.
+  - **@params**:
+    - _number_ **count.**
 
-Example:
+  {.params}
 
-```wire
-{{ value|first }}
-```
 
-If value is a list `['mango', 'apple', 'oranges']`, output will be **mango**.
 
+join(_value_, _glue_) {#template.join}
 
+: Template function to join an iterable using a string glue.
+  
+  Example:
+  
+  ```wire
+  {{ value|join='-' }}
+  ```
+  
+  If value is a list `['a', 'b', 'c']`, output will be **a-b-c**.
 
 
-#### last(value)
+  - **@params**:
+    - _string_ **glue**
 
-Template function to return the last item in an iterable.
+  {.params}
 
-Example:
 
-```wire
-{{ value|last }}
-```
 
-If value is a list `['mango', 'apple', 'oranges']`, output will be **oranges**.
+url\_encode(_value_) {#template.url_encode}
 
+: Template function to return the url encoded value of a string.
+  
+  Example:
+  
+  ```wire
+  {{ value|url_encode }}
+  ```
+  
+  If value is **https://www.example.org/foo?a=b&c=d**, output will be **https://www.example.org/foo%3Fa%3Db&c%3Dd**.
 
 
 
-#### line\_breaks(value)
 
-Template function to replace newlines with HTML line breaks.
 
-Example:
+json(_value_) {#template.json}
 
-```wire
-{{ value|line_breaks }}
-```
+: Template string to return the JSON encoded string for a value.
+  
+  Example:
+  
+  ```wire
+  {{ value|json }}
+  ```
+  
+  If value is a dictionary `{name: 'Xavier'}`, output will be **{"name":"Xavier"}**.
 
-If value is `Hello\nWorld`, output will be `Hello<br/>World`.
 
 
 
 
-#### lpad(value, count)
+template(_auto_init_) &#8674; Exported {#template.template}
 
-Template function to left pad a string.
+: Default function exporting the [[Template]] class that allows function 
+  initialization. See [[Template]].
 
-Example:
 
-```wire
-{{ value|lpad=10 }}
-```
+  - **@params**:
+    - _bool_ **auto_init**
 
-If value is `Jane`, output will be `      Jane`.
-
-##### Parameters
-
-- _number_ **count.**
-
-
-
-
-#### rpad(value, count)
-
-Template function to right pad a string.
-
-Example:
-
-```wire
-{{ value|rpad=10 }}
-```
-
-If value is `Jane`, output will be `Jane      `.
-
-##### Parameters
-
-- _number_ **count.**
-
-
-
-
-#### join(value, glue)
-
-Template function to join an iterable using a string glue.
-
-Example:
-
-```wire
-{{ value|join='-' }}
-```
-
-If value is a list `['a', 'b', 'c']`, output will be **a-b-c**.
-
-##### Parameters
-
-- _string_ **glue**
-
-
-
-
-#### url\_encode(value)
-
-Template function to return the url encoded value of a string.
-
-Example:
-
-```wire
-{{ value|url_encode }}
-```
-
-If value is **https://www.example.org/foo?a=b&c=d**, output will be **https://www.example.org/foo%3Fa%3Db&c%3Dd**.
-
-
-
-
-#### json(value)
-
-Template string to return the JSON encoded string for a value.
-
-Example:
-
-```wire
-{{ value|json }}
-```
-
-If value is a dictionary `{name: 'Xavier'}`, output will be **{"name":"Xavier"}**.
-
-
-
-
-#### template(auto_init) &#8674; Exported
-
-Default function exporting the [[Template]] class that allows function 
-initialization. See [[Template]].
-
-##### Parameters
-
-- _bool_ **auto_init**
-
+  {.params}
 
 
 
 ## Classes
 
-### _class_ Template
+_class_ **Template** {#template.Template .class}
+
+: Template string and file processing class.
+  
+  ##### Usage
+  
+  You can render templates directly from strings
+  
+  ```blade
+  import template
+  var tpl = template()
+  
+  tpl.render_string('{{ name }}', {name: 'John Doe'})
+  ```
+  
+  Or from files located in your defined root directory. See [[Template.set_root]]
+  
+  ```blade
+  tpl.render('my_template', {name: 'John Doe'})
+  ```
+  
+  You can enable initialize your templates with the auto_init option to allow 
+  [[Template]] create the root directory if it does not exist. The default root 
+  directory is a directory "`templates`" in the current working directory.
+  
+  For example,
+  
+  ```blade
+  var tpl = template(true)
+  
+  # Optionally set the root directory to another directory.
+  tpl.set_root('/my/custom/path')
+  ```
+  
+  The root directory will become the root search path for the `<include />` tag.
+  
+  The default extension for a template file is the `.html` extension. This extension 
+  allows furnishes the interoperability between Blade's Wire templates and HTML5 since the
+  former is based on the later anyway and allows us to leverage the already near 
+  omnipresent support that HTML files have had over the years. This behavior can be 
+  changed using the [[Template.set_extension]] function to change the extension to any 
+  desired string.
+  
+  For example,
+  
+  ```blade
+  tpl.set_extension('.wire')
+  
+  # render a template from file
+  tpl.render('welcome')
+  ```
+  
+  This will cause [[Template.render]] to look for the file "`welcome.wire`" in the root 
+  directory and will return an error if the file could not be found and no file matches 
+  exactly "`welcome`" in the directory.
+
+
+
+  .Template(_auto_init_) &#8674; Constructor {#template.Template.Template}
+
+  : The constructor of the Template class.
+    
+    
+       directory will be automatically created on [[Template.set_root]] or 
+       [[Template.render]].
+
+
+    - **@params**:
+      - _bool_ **auto_init** : A boolean flag to control whether template root 
+
+
+    {.params}
+
+
+  .set\_root(_path_) {#template.Template.set_root}
+
+  : Set the template files root directory for [[Template.render]]. Returns `true` if 
+    the directory was automatically created (See [[Template._auto_init]]) or `false` 
+    if it wasn't.
+    
+    If your template contains or will contain an `<include />` tag, the path given 
+    here will become the root of the include search path.
+
+
+    - **@params**:
+      - _string_ **path**
+
+    {.params}
+    - **@returns**: _bool_
+
+
+  .set\_extension(_ext_) {#template.Template.set_extension}
+
+  : Sets the default file extension to be used when [[Template.render]] and/or the 
+    `<include />` tag searches for template files in the root directory when the path 
+    given does not match an existing file and does not end with another extension.
+
+
+    - **@params**:
+      - _string_ **ext**
+
+    {.params}
+
+
+  .register\_function(_name_, _function_) {#template.Template.register_function}
+
+  : Registers a function that can be used to process variables in the template. 
+    The given function must accept a minimum of one argument which will receive
+    the value of the value to be processed and at most two arguments, the second of 
+    which will receive arguments passed to the function as a string.
+    
+    ##### Example
+    
+    ```blade
+    def firstname_function(value) {
+      return value.split(' ')[0]
+    }
+    
+    tpl.register_function('firstname', firstname_function)
+    ```
+    
+    The registered function can be used in the template to process variables.
+    For example,
+    
+    ```wire
+    <div>{{ my_user|firstname }}</div>
+    ```
+
+
+    - **@params**:
+      - _string_ **name**
+      - _function_ **function**
+
+    {.params}
+
+
+  .register\_element(_name_, _element_) {#template.Template.register_element}
+
+  : Registers a custom HTML element for the template. The function passed must 
+    take exactly two (2) arguments the first of which will receive the the
+    template object itself and the second the HTML as an object of {{html}}.
+    
+    ##### Example
+    
+    ```blade
+    def inline_input(wire, value) {
+      return ...
+    }
+    
+    tpl.register_element('inline-input', my_custom_function)
+    ```
+    
+    The above registered element can then be used in the template. For example,
+    
+    ```wire
+    <inline-input value="{{ my_var }}" />
+    ```
+
+
+    - **@params**:
+      - _string_ **name**
+      - _function(2)_ **element**
+
+    {.params}
+
+
+  .render\_string(_source_, _variables_, _path_) {#template.Template.render_string}
+
+  : Process and render template contained in the given string. The variables 
+    dictionary is used to pass variable data to the template being processed. 
+    
+    If a variable is required in the template and is missing in the variables 
+    dictionary or the variables dictionary was not passed to the `render_string()` 
+    call, the process dies with an Exception. The third argument allows specifying 
+    the source file/path of the template being processed and will default to 
+    `<source>` when not passed.
+    
+    The path argument may be of important if the string was read from a file or a 
+    similar source to provide information on the source of wrong template data such as 
+    line and column information.
+    
+    ##### Example
+    
+    ```blade
+    tpl.render_string('<div>{{ name }}</div>', {name: 'Johnson'})
+    ```
+    
+    The above template should return
+    
+    ```wire
+    <div>Johnson</div>
+    ```
+
+
+    - **@params**:
+      - _string_ **source**
+      - _dict?_ **variables**
+      - _string?_ **path**
+
+    {.params}
+    - **@returns**: _string_
+
+
+  .render(_path_, _variables_) {#template.Template.render}
+
+  : Process and render template contained in the given template file. The template 
+    path should be a path relative to the root directory (See [[Template]]) and may 
+    or not carry any extension. If the template file uses the template _extension_ 
+    (default: `.html`), the path argument may exclude the extension from the path
+    altogether provided there is a file with a matching name that may or not have the 
+    default extension (See [[Template.set_extension]]). 
+    
+    The variables dictionary is used to pass variable data to the template being 
+    processed and behaves exactly the same way as with [[Template.render_string]].
+    
+    ##### Example
+    
+    ```blade
+    tpl.render('my_template')
+    ```
+    
+    The above example renders the template as is and will raise if any variable is found in it.
+    You can pass a variable the same way you do with [[Template.render_string]].
+
+
+    - **@params**:
+      - _string_ **path**
+      - _dict?_ **variables**
+
+    {.params}
+    - **@returns**: _string_
 
-Template string and file processing class.
-
-##### Usage
-
-You can render templates directly from strings
-
-```blade
-import template
-var tpl = template()
-
-tpl.render_string('{{ name }}', {name: 'John Doe'})
-```
-
-Or from files located in your defined root directory. See [[Template.set_root]]
-
-```blade
-tpl.render('my_template', {name: 'John Doe'})
-```
-
-You can enable initialize your templates with the auto_init option to allow 
-[[Template]] create the root directory if it does not exist. The default root 
-directory is a directory "`templates`" in the current working directory.
-
-For example,
-
-```blade
-var tpl = template(true)
-
-# Optionally set the root directory to another directory.
-tpl.set_root('/my/custom/path')
-```
-
-The root directory will become the root search path for the `<include />` tag.
-
-The default extension for a template file is the `.html` extension. This extension 
-allows furnishes the interoperability between Blade's Wire templates and HTML5 since the
-former is based on the later anyway and allows us to leverage the already near 
-omnipresent support that HTML files have had over the years. This behavior can be 
-changed using the [[Template.set_extension]] function to change the extension to any 
-desired string.
-
-For example,
-
-```blade
-tpl.set_extension('.wire')
-
-# render a template from file
-tpl.render('welcome')
-```
-
-This will cause [[Template.render]] to look for the file "`welcome.wire`" in the root 
-directory and will return an error if the file could not be found and no file matches 
-exactly "`welcome`" in the directory.
-
-#### Methods
-
-#### Template(auto_init) &#8674; Constructor
-
-The constructor of the Template class.
-
-
-   directory will be automatically created on [[Template.set_root]] or 
-   [[Template.render]].
-
-##### Parameters
-
-- _bool_ **auto_init**: : A boolean flag to control whether template root 
-
-
-#### set\_root(path)
-
-Set the template files root directory for [[Template.render]]. Returns `true` if 
-the directory was automatically created (See [[Template._auto_init]]) or `false` 
-if it wasn't.
-
-If your template contains or will contain an `<include />` tag, the path given 
-here will become the root of the include search path.
-
-##### Parameters
-
-- _string_ **path**
-
-##### Returns
-
-- bool
-
-#### set\_extension(ext)
-
-Sets the default file extension to be used when [[Template.render]] and/or the 
-`<include />` tag searches for template files in the root directory when the path 
-given does not match an existing file and does not end with another extension.
-
-##### Parameters
-
-- _string_ **ext**
-
-
-#### register\_function(name, function)
-
-Registers a function that can be used to process variables in the template. 
-The given function must accept a minimum of one argument which will receive
-the value of the value to be processed and at most two arguments, the second of 
-which will receive arguments passed to the function as a string.
-
-##### Example
-
-```blade
-def firstname_function(value) {
-  return value.split(' ')[0]
-}
-
-tpl.register_function('firstname', firstname_function)
-```
-
-The registered function can be used in the template to process variables.
-For example,
-
-```wire
-<div>{{ my_user|firstname }}</div>
-```
-
-##### Parameters
-
-- _string_ **name**
-- _function_ **function**
-
-
-#### register\_element(name, element)
-
-Registers a custom HTML element for the template. The function passed must 
-take exactly two (2) arguments the first of which will receive the the
-template object itself and the second the HTML as an object of {{html}}.
-
-##### Example
-
-```blade
-def inline_input(wire, value) {
-  return ...
-}
-
-tpl.register_element('inline-input', my_custom_function)
-```
-
-The above registered element can then be used in the template. For example,
-
-```wire
-<inline-input value="{{ my_var }}" />
-```
-
-##### Parameters
-
-- _string_ **name**
-- _function(2)_ **element**
-
-
-#### render\_string(source, variables, path)
-
-Process and render template contained in the given string. The variables 
-dictionary is used to pass variable data to the template being processed. 
-
-If a variable is required in the template and is missing in the variables 
-dictionary or the variables dictionary was not passed to the `render_string()` 
-call, the process dies with an Exception. The third argument allows specifying 
-the source file/path of the template being processed and will default to 
-`<source>` when not passed.
-
-The path argument may be of important if the string was read from a file or a 
-similar source to provide information on the source of wrong template data such as 
-line and column information.
-
-##### Example
-
-```blade
-tpl.render_string('<div>{{ name }}</div>', {name: 'Johnson'})
-```
-
-The above template should return
-
-```wire
-<div>Johnson</div>
-```
-
-##### Parameters
-
-- _string_ **source**
-- _dict?_ **variables**
-- _string?_ **path**
-
-##### Returns
-
-- string
-
-#### render(path, variables)
-
-Process and render template contained in the given template file. The template 
-path should be a path relative to the root directory (See [[Template]]) and may 
-or not carry any extension. If the template file uses the template _extension_ 
-(default: `.html`), the path argument may exclude the extension from the path
-altogether provided there is a file with a matching name that may or not have the 
-default extension (See [[Template.set_extension]]). 
-
-The variables dictionary is used to pass variable data to the template being 
-processed and behaves exactly the same way as with [[Template.render_string]].
-
-##### Example
-
-```blade
-tpl.render('my_template')
-```
-
-The above example renders the template as is and will raise if any variable is found in it.
-You can pass a variable the same way you do with [[Template.render_string]].
-
-##### Parameters
-
-- _string_ **path**
-- _dict?_ **variables**
-
-##### Returns
-
-- string
 
 
 

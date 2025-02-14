@@ -87,1289 +87,1199 @@ content type.
 
 That been said, it gives the tools required to craft any request body of your choice.
 
-## Properties
+## Fields
 
-- **CONTINUE** &#8674; _readonly_ _int_:
+**CONTINUE** &#8674; _readonly_ _int_
+:  100 continue.
 
-  100 continue.
+**SWITCHING\_PROTOCOLS** &#8674; _readonly_ _int_
+:  101 switching protocols.
 
-- **SWITCHING\_PROTOCOLS** &#8674; _readonly_ _int_:
+**PROCESSING** &#8674; _readonly_ _int_
+:  102 processing.
 
-  101 switching protocols.
+**OK** &#8674; _readonly_ _int_
+:  200 ok.
 
-- **PROCESSING** &#8674; _readonly_ _int_:
+**CREATED** &#8674; _readonly_ _int_
+:  201 created.
 
-  102 processing.
+**ACCEPTED** &#8674; _readonly_ _int_
+:  202 accepted.
 
-- **OK** &#8674; _readonly_ _int_:
+**NON\_AUTHORITATIVE\_INFORMATION** &#8674; _readonly_ _int_
+:  203 non authoritative information.
 
-  200 ok.
+**NO\_CONTENT** &#8674; _readonly_ _int_
+:  204 no content.
 
-- **CREATED** &#8674; _readonly_ _int_:
+**RESET\_CONTENT** &#8674; _readonly_ _int_
+:  205 reset content.
 
-  201 created.
+**PARTIAL\_CONTENT** &#8674; _readonly_ _int_
+:  206 partial content.
 
-- **ACCEPTED** &#8674; _readonly_ _int_:
+**MULTI\_STATUS** &#8674; _readonly_ _int_
+:  207 multi status.
 
-  202 accepted.
+**ALREADY\_REPORTED** &#8674; _readonly_ _int_
+:  208 already reported.
 
-- **NON\_AUTHORITATIVE\_INFORMATION** &#8674; _readonly_ _int_:
+**IM\_USED** &#8674; _readonly_ _int_
+:  226 im used.
 
-  203 non authoritative information.
+**MULTIPLE\_CHOICES** &#8674; _readonly_ _int_
+:  300 multiple choices.
 
-- **NO\_CONTENT** &#8674; _readonly_ _int_:
+**MOVED\_PERMANENTLY** &#8674; _readonly_ _int_
+:  301 moved permanently.
 
-  204 no content.
+**FOUND** &#8674; _readonly_ _int_
+:  302 found.
 
-- **RESET\_CONTENT** &#8674; _readonly_ _int_:
+**SEE\_OTHER** &#8674; _readonly_ _int_
+:  303 see other.
 
-  205 reset content.
+**NOT\_MODIFIED** &#8674; _readonly_ _int_
+:  304 not modified.
 
-- **PARTIAL\_CONTENT** &#8674; _readonly_ _int_:
+**USE\_PROXY** &#8674; _readonly_ _int_
+:  305 use proxy.
 
-  206 partial content.
+**TEMPORARY\_REDIRECT** &#8674; _readonly_ _int_
+:  307 temporary redirect.
 
-- **MULTI\_STATUS** &#8674; _readonly_ _int_:
+**PERMANENT\_REDIRECT** &#8674; _readonly_ _int_
+:  308 permanent redirect.
 
-  207 multi status.
+**BAD\_REQUEST** &#8674; _readonly_ _int_
+:  400 bad request.
 
-- **ALREADY\_REPORTED** &#8674; _readonly_ _int_:
+**UNAUTHORIZED** &#8674; _readonly_ _int_
+:  401 unauthorized.
 
-  208 already reported.
+**PAYMENT\_REQUIRED** &#8674; _readonly_ _int_
+:  402 payment required.
 
-- **IM\_USED** &#8674; _readonly_ _int_:
+**FORBIDDEN** &#8674; _readonly_ _int_
+:  403 forbidden.
 
-  226 im used.
+**NOT\_FOUND** &#8674; _readonly_ _int_
+:  404 not found.
 
-- **MULTIPLE\_CHOICES** &#8674; _readonly_ _int_:
+**METHOD\_NOT\_ALLOWED** &#8674; _readonly_ _int_
+:  405 method not allowed.
 
-  300 multiple choices.
+**NOT\_ACCEPTABLE** &#8674; _readonly_ _int_
+:  406 not acceptable.
 
-- **MOVED\_PERMANENTLY** &#8674; _readonly_ _int_:
+**PROXY\_AUTHENTICATION\_REQUIRED** &#8674; _readonly_ _int_
+:  407 proxy authentication required.
 
-  301 moved permanently.
+**REQUEST\_TIMEOUT** &#8674; _readonly_ _int_
+:  408 request timeout.
 
-- **FOUND** &#8674; _readonly_ _int_:
+**CONFLICT** &#8674; _readonly_ _int_
+:  409 conflict.
 
-  302 found.
+**GONE** &#8674; _readonly_ _int_
+:  410 gone.
 
-- **SEE\_OTHER** &#8674; _readonly_ _int_:
+**LENGTH\_REQUIRED** &#8674; _readonly_ _int_
+:  411 length required.
 
-  303 see other.
+**PRECONDITION\_FAILED** &#8674; _readonly_ _int_
+:  412 precondition failed.
 
-- **NOT\_MODIFIED** &#8674; _readonly_ _int_:
+**PAYLOAD\_TOO\_LARGE** &#8674; _readonly_ _int_
+:  413 payload too large.
 
-  304 not modified.
+**REQUEST\_URI\_TOO\_LONG** &#8674; _readonly_ _int_
+:  414 request uri too long.
 
-- **USE\_PROXY** &#8674; _readonly_ _int_:
+**UNSUPPORTED\_MEDIA\_TYPE** &#8674; _readonly_ _int_
+:  415 unsupported media type.
 
-  305 use proxy.
+**REQUESTED\_RANGE\_NOT\_SATISFIABLE** &#8674; _readonly_ _int_
+:  416 requested range not satisfiable.
 
-- **TEMPORARY\_REDIRECT** &#8674; _readonly_ _int_:
+**EXPECTATION\_FAILED** &#8674; _readonly_ _int_
+:  417 expectation failed.
 
-  307 temporary redirect.
+**TEAPOT** &#8674; _readonly_ _int_
+:  418 teapot.
 
-- **PERMANENT\_REDIRECT** &#8674; _readonly_ _int_:
+**MISDIRECTED\_REQUEST** &#8674; _readonly_ _int_
+:  421 misdirected request.
 
-  308 permanent redirect.
+**UNPROCESSABLE\_ENTITY** &#8674; _readonly_ _int_
+:  422 unprocessable entity.
 
-- **BAD\_REQUEST** &#8674; _readonly_ _int_:
+**LOCKED** &#8674; _readonly_ _int_
+:  423 locked.
 
-  400 bad request.
+**FAILED\_DEPENDENCY** &#8674; _readonly_ _int_
+:  424 failed dependency.
 
-- **UNAUTHORIZED** &#8674; _readonly_ _int_:
+**UPGRADE\_REQUIRED** &#8674; _readonly_ _int_
+:  426 upgrade required.
 
-  401 unauthorized.
+**PRECONDITION\_REQUIRED** &#8674; _readonly_ _int_
+:  428 precondition required.
 
-- **PAYMENT\_REQUIRED** &#8674; _readonly_ _int_:
+**TOO\_MANY\_REQUESTS** &#8674; _readonly_ _int_
+:  429 too many requests.
 
-  402 payment required.
+**REQUEST\_HEADER\_FIELDS\_TOO\_LARGE** &#8674; _readonly_ _int_
+:  431 request header fields too large.
 
-- **FORBIDDEN** &#8674; _readonly_ _int_:
+**CONNECTION\_CLOSED\_WITHOUT\_RESPONSE** &#8674; _readonly_ _int_
+:  444 connection closed without response.
 
-  403 forbidden.
+**UNAVAILABLE\_FOR\_LEGAL\_REASONS** &#8674; _readonly_ _int_
+:  451 unavailable for legal reasons.
 
-- **NOT\_FOUND** &#8674; _readonly_ _int_:
+**CLIENT\_CLOSED\_REQUEST** &#8674; _readonly_ _int_
+:  499 client closed request.
 
-  404 not found.
+**INTERNAL\_SERVER\_ERROR** &#8674; _readonly_ _int_
+:  500 internal server error.
 
-- **METHOD\_NOT\_ALLOWED** &#8674; _readonly_ _int_:
+**NOT\_IMPLEMENTED** &#8674; _readonly_ _int_
+:  501 not implemented.
 
-  405 method not allowed.
+**BAD\_GATEWAY** &#8674; _readonly_ _int_
+:  502 bad gateway.
 
-- **NOT\_ACCEPTABLE** &#8674; _readonly_ _int_:
+**SERVICE\_UNAVAILABLE** &#8674; _readonly_ _int_
+:  503 service unavailable.
 
-  406 not acceptable.
+**GATEWAY\_TIMEOUT** &#8674; _readonly_ _int_
+:  504 gateway timeout.
 
-- **PROXY\_AUTHENTICATION\_REQUIRED** &#8674; _readonly_ _int_:
+**HTTP\_VERSION\_NOT\_SUPPORTED** &#8674; _readonly_ _int_
+:  505 http version not supported.
 
-  407 proxy authentication required.
+**VARIANT\_ALSO\_NEGOTIATES** &#8674; _readonly_ _int_
+:  506 variant also negotiates.
 
-- **REQUEST\_TIMEOUT** &#8674; _readonly_ _int_:
+**INSUFFICIENT\_STORAGE** &#8674; _readonly_ _int_
+:  507 insufficient storage.
 
-  408 request timeout.
+**LOOP\_DETECTED** &#8674; _readonly_ _int_
+:  508 loop detected.
 
-- **CONFLICT** &#8674; _readonly_ _int_:
+**NOT\_EXTENDED** &#8674; _readonly_ _int_
+:  510 not extended.
 
-  409 conflict.
+**NETWORK\_AUTHENTICATION\_REQUIRED** &#8674; _readonly_ _int_
+:  511 network authentication required.
 
-- **GONE** &#8674; _readonly_ _int_:
+**NETWORK\_CONNECT\_TIMEOUT\_ERROR** &#8674; _readonly_ _int_
+:  599 network connect timeout error.
 
-  410 gone.
-
-- **LENGTH\_REQUIRED** &#8674; _readonly_ _int_:
-
-  411 length required.
-
-- **PRECONDITION\_FAILED** &#8674; _readonly_ _int_:
-
-  412 precondition failed.
-
-- **PAYLOAD\_TOO\_LARGE** &#8674; _readonly_ _int_:
-
-  413 payload too large.
-
-- **REQUEST\_URI\_TOO\_LONG** &#8674; _readonly_ _int_:
-
-  414 request uri too long.
-
-- **UNSUPPORTED\_MEDIA\_TYPE** &#8674; _readonly_ _int_:
-
-  415 unsupported media type.
-
-- **REQUESTED\_RANGE\_NOT\_SATISFIABLE** &#8674; _readonly_ _int_:
-
-  416 requested range not satisfiable.
-
-- **EXPECTATION\_FAILED** &#8674; _readonly_ _int_:
-
-  417 expectation failed.
-
-- **TEAPOT** &#8674; _readonly_ _int_:
-
-  418 teapot.
-
-- **MISDIRECTED\_REQUEST** &#8674; _readonly_ _int_:
-
-  421 misdirected request.
-
-- **UNPROCESSABLE\_ENTITY** &#8674; _readonly_ _int_:
-
-  422 unprocessable entity.
-
-- **LOCKED** &#8674; _readonly_ _int_:
-
-  423 locked.
-
-- **FAILED\_DEPENDENCY** &#8674; _readonly_ _int_:
-
-  424 failed dependency.
-
-- **UPGRADE\_REQUIRED** &#8674; _readonly_ _int_:
-
-  426 upgrade required.
-
-- **PRECONDITION\_REQUIRED** &#8674; _readonly_ _int_:
-
-  428 precondition required.
-
-- **TOO\_MANY\_REQUESTS** &#8674; _readonly_ _int_:
-
-  429 too many requests.
-
-- **REQUEST\_HEADER\_FIELDS\_TOO\_LARGE** &#8674; _readonly_ _int_:
-
-  431 request header fields too large.
-
-- **CONNECTION\_CLOSED\_WITHOUT\_RESPONSE** &#8674; _readonly_ _int_:
-
-  444 connection closed without response.
-
-- **UNAVAILABLE\_FOR\_LEGAL\_REASONS** &#8674; _readonly_ _int_:
-
-  451 unavailable for legal reasons.
-
-- **CLIENT\_CLOSED\_REQUEST** &#8674; _readonly_ _int_:
-
-  499 client closed request.
-
-- **INTERNAL\_SERVER\_ERROR** &#8674; _readonly_ _int_:
-
-  500 internal server error.
-
-- **NOT\_IMPLEMENTED** &#8674; _readonly_ _int_:
-
-  501 not implemented.
-
-- **BAD\_GATEWAY** &#8674; _readonly_ _int_:
-
-  502 bad gateway.
-
-- **SERVICE\_UNAVAILABLE** &#8674; _readonly_ _int_:
-
-  503 service unavailable.
-
-- **GATEWAY\_TIMEOUT** &#8674; _readonly_ _int_:
-
-  504 gateway timeout.
-
-- **HTTP\_VERSION\_NOT\_SUPPORTED** &#8674; _readonly_ _int_:
-
-  505 http version not supported.
-
-- **VARIANT\_ALSO\_NEGOTIATES** &#8674; _readonly_ _int_:
-
-  506 variant also negotiates.
-
-- **INSUFFICIENT\_STORAGE** &#8674; _readonly_ _int_:
-
-  507 insufficient storage.
-
-- **LOOP\_DETECTED** &#8674; _readonly_ _int_:
-
-  508 loop detected.
-
-- **NOT\_EXTENDED** &#8674; _readonly_ _int_:
-
-  510 not extended.
-
-- **NETWORK\_AUTHENTICATION\_REQUIRED** &#8674; _readonly_ _int_:
-
-  511 network authentication required.
-
-- **NETWORK\_CONNECT\_TIMEOUT\_ERROR** &#8674; _readonly_ _int_:
-
-  599 network connect timeout error.
-
-- **map** &#8674; _readonly_ _dictionary_:
-
-  A map of status code to their string representation..
+**map** &#8674; _readonly_ _dictionary_
+:  A map of status code to their string representation..
 
 
 ## Functions
 
-#### set\_headers(headers)
+set\_headers(_headers_) {#http.set_headers}
 
-Sets the default request headers for the current module instance.
- 
-This function returns HttpClient in order to allow for idiomatic 
-chaining such as:
-
-```blade
-import http
-echo http.set_headers({
-  'Authorization': 'Bearer SomeAPIBearerToken',
-  'Host': 'example.com',
-}).get('http://example.com/current-user').body.to_string()
-```
-
-##### Parameters
-
-- _dict_ **headers**
-
-##### Returns
-
-- HttpClient
+: Sets the default request headers for the current module instance.
+   
+  This function returns HttpClient in order to allow for idiomatic 
+  chaining such as:
+  
+  ```blade
+  import http
+  echo http.set_headers({
+    'Authorization': 'Bearer SomeAPIBearerToken',
+    'Host': 'example.com',
+  }).get('http://example.com/current-user').body.to_string()
+  ```
 
 
+  - **@params**:
+    - _dict_ **headers**
 
-#### get(url, headers)
+  {.params}
+  - **@returns**: _HttpClient_
 
-Sends an Http GET request and returns an HttpResponse
-or throws one of SocketException or Exception if it fails.
 
-##### Parameters
 
-- _string_ **url**
-- _dict?_ **headers**
+get(_url_, _headers_) {#http.get}
 
-##### Returns
+: Sends an Http GET request and returns an HttpResponse
+  or throws one of SocketException or Exception if it fails.
 
-- HttpResponse
-##### Raises Exception
 
-- Exception
+  - **@params**:
+    - _string_ **url**
+    - _dict?_ **headers**
+
+  {.params}
+  - **@returns**: _HttpResponse_
+  - **@raises**:
+    - Exception
 @raises
 
 
 
-#### post(url, data, headers)
+post(_url_, _data_, _headers_) {#http.post}
 
-Sends an Http POST request and returns an HttpResponse.
+: Sends an Http POST request and returns an HttpResponse.
 
-##### Parameters
 
-- _string_ **url**
-- _string|bytes|nil_ **data**
-- _dict?_ **headers**
+  - **@params**:
+    - _string_ **url**
+    - _string|bytes|nil_ **data**
+    - _dict?_ **headers**
 
-##### Returns
-
-- HttpResponse
-##### Raises Exception
-
-- Exception
+  {.params}
+  - **@returns**: _HttpResponse_
+  - **@raises**:
+    - Exception
 @raises
 
 
 
-#### put(url, data, headers)
+put(_url_, _data_, _headers_) {#http.put}
 
-Sends an Http PUT request and returns an HttpResponse.
+: Sends an Http PUT request and returns an HttpResponse.
 
-##### Parameters
 
-- _string_ **url**
-- _string|bytes|nil_ **data**
-- _dict?_ **headers**
+  - **@params**:
+    - _string_ **url**
+    - _string|bytes|nil_ **data**
+    - _dict?_ **headers**
 
-##### Returns
-
-- HttpResponse
-##### Raises Exception
-
-- Exception
+  {.params}
+  - **@returns**: _HttpResponse_
+  - **@raises**:
+    - Exception
 @raises
 
 
 
-#### patch(url, data, headers)
+patch(_url_, _data_, _headers_) {#http.patch}
 
-Sends an Http PATCH request and returns an HttpResponse.
+: Sends an Http PATCH request and returns an HttpResponse.
 
-##### Parameters
 
-- _string_ **url**
-- _string|bytes|nil_ **data**
-- _dict?_ **headers**
+  - **@params**:
+    - _string_ **url**
+    - _string|bytes|nil_ **data**
+    - _dict?_ **headers**
 
-##### Returns
-
-- HttpResponse
-##### Raises Exception
-
-- Exception
+  {.params}
+  - **@returns**: _HttpResponse_
+  - **@raises**:
+    - Exception
 @raises
 
 
 
-#### delete(url, headers)
+delete(_url_, _headers_) {#http.delete}
 
-Sends an Http DELETE request and returns an HttpResponse.
+: Sends an Http DELETE request and returns an HttpResponse.
 
-##### Parameters
 
-- _string_ **url**
-- _dict?_ **headers**
+  - **@params**:
+    - _string_ **url**
+    - _dict?_ **headers**
 
-##### Returns
-
-- HttpResponse
-##### Raises Exception
-
-- Exception
+  {.params}
+  - **@returns**: _HttpResponse_
+  - **@raises**:
+    - Exception
 @raises
 
 
 
-#### options(url, headers)
+options(_url_, _headers_) {#http.options}
 
-Sends an Http OPTIONS request and returns an HttpResponse.
+: Sends an Http OPTIONS request and returns an HttpResponse.
 
-##### Parameters
 
-- _string_ **url**
-- _dict?_ **headers**
+  - **@params**:
+    - _string_ **url**
+    - _dict?_ **headers**
 
-##### Returns
-
-- HttpResponse
-##### Raises Exception
-
-- Exception
+  {.params}
+  - **@returns**: _HttpResponse_
+  - **@raises**:
+    - Exception
 @raises
 
 
 
-#### trace(url, headers)
+trace(_url_, _headers_) {#http.trace}
 
-Sends an Http TRACE request and returns an HttpResponse.
+: Sends an Http TRACE request and returns an HttpResponse.
 
-##### Parameters
 
-- _string_ **url**
-- _dict?_ **headers**
+  - **@params**:
+    - _string_ **url**
+    - _dict?_ **headers**
 
-##### Returns
-
-- HttpResponse
-##### Raises Exception
-
-- Exception
+  {.params}
+  - **@returns**: _HttpResponse_
+  - **@raises**:
+    - Exception
 @raises
 
 
 
-#### head(url, headers)
+head(_url_, _headers_) {#http.head}
 
-Sends an Http HEAD request and returns an HttpResponse.
+: Sends an Http HEAD request and returns an HttpResponse.
 
-##### Parameters
 
-- _string_ **url**
-- _dict?_ **headers**
+  - **@params**:
+    - _string_ **url**
+    - _dict?_ **headers**
 
-##### Returns
-
-- HttpResponse
-##### Raises Exception
-
-- Exception
+  {.params}
+  - **@returns**: _HttpResponse_
+  - **@raises**:
+    - Exception
 @raises
 
 
 
-#### client()
+client() {#http.client}
 
-Returns the default shared client.
-
-##### Returns
-
-- HttpClient
+: Returns the default shared client.
 
 
+  - **@returns**: _HttpClient_
 
-#### server(port, address)
 
-Creates an new HttpServer instance.
 
-##### Parameters
+server(_port_, _address_) {#http.server}
 
-- _int_ **port**
-- _string_ **address**
+: Creates an new HttpServer instance.
 
-##### Returns
 
-- HttpServer
-##### Raises Exception
+  - **@params**:
+    - _int_ **port**
+    - _string_ **address**
 
-- Exception
+  {.params}
+  - **@returns**: _HttpServer_
+  - **@raises**:
+    - Exception
 @raises
 
 
 
-#### tls\_server(port, host)
+tls\_server(_port_, _host_) {#http.tls_server}
 
-Creates an new TLSServer instance.
+: Creates an new TLSServer instance.
+  
+  
+  
+  @throws Exception, SocketException, HttpException
 
 
+  - **@params**:
+    - _int_ **port**
+    - _string?_ **host**
 
-@throws Exception, SocketException, HttpException
-
-##### Parameters
-
-- _int_ **port**
-- _string?_ **host**
-
-##### Returns
-
-- TLSServer
+  {.params}
+  - **@returns**: _TLSServer_
 
 
 
 ## Classes
 
-### _class_ HttpRequest
+_class_ **HttpRequest** {#http.HttpRequest .class}
 
-Http request handler and object.
+: Http request handler and object.
 
 
+  ~ Properties
 
-#### Properties
+    - __@printable__
+    - __@serializable__
 
- - __@printable__
- - __@serializable__
+  **.request\_uri** &#8674; _string_
+  :  The original request URL as sent in the raw request.
 
-#### Fields
+  **.path** &#8674; _string_
+  :  The requested path or file. E.g. if the Request URI is `/users?sort=desc`, 
+    then the path is `/users`.
 
-- **request\_uri** &#8674; _string_:
+  **.method** &#8674; _string_
+  :  The HTTP method of the request: GET (the default), POST, PUT, etc.
 
-  The original request URL as sent in the raw request.
+  **.host** &#8674; _string_
+  :  The hostname derived from the `Host` header or the first instance of 
+    `X-Forwarded-Host` if set.
 
-- **path** &#8674; _string_:
+  **.ip** &#8674; _string_
+  :  The IP address of the remote client that initiated the request.
 
-  The requested path or file. E.g. if the Request URI is `/users?sort=desc`, 
-then the path is `/users`.
+  **.ipv6** &#8674; _string_
+  :  The IPv6 address of the remote client that initiated the request.
 
-- **method** &#8674; _string_:
+  **.headers** &#8674; _dictionary_
+  :  A dictionary containing the headers sent with the request.
 
-  The HTTP method of the request: GET (the default), POST, PUT, etc.
+  **.queries** &#8674; _dictionary_
+  :  A dictionary containing the entries of the URI query string.
 
-- **host** &#8674; _string_:
+  **.cookies** &#8674; _{list|dictionary_
+  :  A list or dictionary containing the cookies sent with the request.
 
-  The hostname derived from the `Host` header or the first instance of 
-`X-Forwarded-Host` if set.
+  **.body** &#8674; _dictionary_
+  :  A dictionary containing all data submitted in the request body.
 
-- **ip** &#8674; _string_:
+  **.files** &#8674; _dictionary_
+  :  A dictionary containing the data of all files uploaded in the request.
 
-  The IP address of the remote client that initiated the request.
+  **.http\_version** &#8674; _string_
+  :  The HTTP version used for the request.
 
-- **ipv6** &#8674; _string_:
 
-  The IPv6 address of the remote client that initiated the request.
+  .parse(_raw_data_, _client_) {#http.HttpRequest.parse}
 
-- **headers** &#8674; _dictionary_:
+  : Parses a raw HTTP request string into a correct HttpRequest.
 
-  A dictionary containing the headers sent with the request.
 
-- **queries** &#8674; _dictionary_:
+    - **@params**:
+      - _string_ **raw_data**
+      - _Socket|TLSSocket|nil_ **client**
 
-  A dictionary containing the entries of the URI query string.
+    {.params}
+    - **@returns**: _boolean_
 
-- **cookies** &#8674; _{list|dictionary_:
 
-  A list or dictionary containing the cookies sent with the request.
+  .send(_uri_, _method_, _data_, _headers_, _options_) {#http.HttpRequest.send}
 
-- **body** &#8674; _dictionary_:
+  : Send HTTP requests to the given uri for the given method 
+    and data (if given).
 
-  A dictionary containing all data submitted in the request body.
 
-- **files** &#8674; _dictionary_:
+    - **@params**:
+      - _url_ **uri**
+      - _string_ **method**
+      - _string|bytes|dict|nil_ **data**
+      - _dict?_ **headers**
+      - _dict?_ **options**
 
-  A dictionary containing the data of all files uploaded in the request.
+    {.params}
 
-- **http\_version** &#8674; _string_:
 
-  The HTTP version used for the request.
+  .to\_string() {#http.HttpRequest.to_string}
 
-#### Methods
+  : Returns the request as a string.
 
-#### parse(raw_data, client)
 
-Parses a raw HTTP request string into a correct HttpRequest.
 
-##### Parameters
 
-- _string_ **raw_data**
-- _Socket|TLSSocket|nil_ **client**
+  .to\_json() {#http.HttpRequest.to_json}
 
-##### Returns
+  : Returns the request as a JSON object.
 
-- boolean
 
-#### send(uri, method, data, headers, options)
 
-Send HTTP requests to the given uri for the given method 
-and data (if given).
 
-##### Parameters
 
-- _url_ **uri**
-- _string_ **method**
-- _string|bytes|dict|nil_ **data**
-- _dict?_ **headers**
-- _dict?_ **options**
 
+_class_ **HttpException** < _Exception_ {#http.HttpException .class}
 
-#### to\_string()
+: HTTP related Exceptions.
 
-Returns the request as a string.
 
+  ~ Properties
 
-#### to\_json()
+    - __@printable__
 
-Returns the request as a JSON object.
 
 
+_class_ **HttpServer** {#http.HttpServer .class}
 
-### _class_ HttpException < _Exception_
+: HTTP server.
 
-HTTP related Exceptions.
 
+  ~ Properties
 
+    - __@printable__
 
-#### Properties
+  **.host** &#8674; _string_
+  :  The host address to which this server will be bound. Default value is 
+    socket.IP_LOCAL (127.0.0.1)
 
- - __@printable__
+  **.port** &#8674; _number_
+  :  The port to which this server will be bound to on the host.
 
+  **.socket** &#8674; _{Socket_
+  :  The working Socket instance for the HttpServer.
 
+  **.reuse\_address** &#8674; _bool_
+  :  A boolean value indicating whether to reuse socket addresses or not.
+    Default value is `true`.
 
-### _class_ HttpServer
+  **.read\_timeout** &#8674; _number_
+  :  The timeout in milliseconds after which an attempt to read clients 
+    request data will be terminated. Default value is 2,000 (2 seconds).
 
-HTTP server.
+  **.write\_timeout** &#8674; _number_
+  :  The timeout in milliseconds after which an attempt to write response data to 
+    clients will be terminated. 
+    
+    If we cannot send response to a client after the stipulated time, it will be 
+    assumed such clients have disconnected and existing connections for that 
+    client will be closed and their respective sockets will be discarded. Default 
+    value is 2,000 (2 seconds).
 
 
+  .HttpServer(_port_, _host_) &#8674; Constructor {#http.HttpServer.HttpServer}
 
-#### Properties
+  : - **@params**:
+      - _int_ **port**
+      - _string?_ **host**
 
- - __@printable__
+    {.params}
 
-#### Fields
 
-- **host** &#8674; _string_:
+  .close() {#http.HttpServer.close}
 
-  The host address to which this server will be bound. Default value is 
-socket.IP_LOCAL (127.0.0.1)
+  : Stops the server.
 
-- **port** &#8674; _number_:
 
-  The port to which this server will be bound to on the host.
 
-- **socket** &#8674; _{Socket_:
 
-  The working Socket instance for the HttpServer.
+  .on\_connect(_function_) {#http.HttpServer.on_connect}
 
-- **reuse\_address** &#8674; _bool_:
+  : Adds a function to be called when a new client connects.
 
-  A boolean value indicating whether to reuse socket addresses or not.
-Default value is `true`.
 
-- **read\_timeout** &#8674; _number_:
+    > **@notes**:
+    > 
+    > - Function _function_ MUST accept at one parameter which will be passed the client Socket object.
 
-  The timeout in milliseconds after which an attempt to read clients 
-request data will be terminated. Default value is 2,000 (2 seconds).
+    > - Multiple `on_connect()` may be set on a single instance.
 
-- **write\_timeout** &#8674; _number_:
+    - **@params**:
+      - _function(1)_ **function**
 
-  The timeout in milliseconds after which an attempt to write response data to 
-clients will be terminated. 
+    {.params}
 
-If we cannot send response to a client after the stipulated time, it will be 
-assumed such clients have disconnected and existing connections for that 
-client will be closed and their respective sockets will be discarded. Default 
-value is 2,000 (2 seconds).
 
-#### Methods
+  .on\_disconnect(_function_) {#http.HttpServer.on_disconnect}
 
-#### HttpServer(port, host) &#8674; Constructor
+  : Adds a function to be called when a new client disconnects.
 
 
+    > **@notes**:
+    > 
+    > - Function _function_ MUST accept at one parameter which will be passed the client.
 
-##### Parameters
+    > - Multiple `on_disconnect()` may be set on a single instance.
 
-- _int_ **port**
-- _string?_ **host**
+    - **@params**:
+      - _function(1)_ **function**
 
+    {.params}
 
-#### close()
 
-Stops the server.
+  .on\_receive(_handler_) {#http.HttpServer.on_receive}
 
+  : Adds a function to be called when the server receives a message from a client.
+    
+    > Function _fn_ MUST accept TWO parameters. First parameter will accept the HttpRequest 
+    > object and the second will accept the HttpResponse object.
 
-#### on\_connect(function)
 
-Adds a function to be called when a new client connects.
+    > **@notes**:
+    > 
+    > - Multiple `on_receive()` may be set on a single instance.
 
-##### Parameters
+    - **@params**:
+      - _function(2)_ **handler**
 
-- _function(1)_ **function**
+    {.params}
 
-##### Notes
 
-- Function _function_ MUST accept at one parameter which will be passed the client Socket object.
-- Multiple `on_connect()` may be set on a single instance.
+  .on\_reply(_function_) {#http.HttpServer.on_reply}
 
-#### on\_disconnect(function)
+  : Adds a function to be called when the server sends a reply to a client.
+    
+    > Function _function_ MUST accept one parameter which will be passed the HttpResponse object.
 
-Adds a function to be called when a new client disconnects.
 
-##### Parameters
+    > **@notes**:
+    > 
+    > - Multiple `on_sent()` may be set on a single instance.
 
-- _function(1)_ **function**
+    - **@params**:
+      - _function(1)_ **function**
 
-##### Notes
+    {.params}
 
-- Function _function_ MUST accept at one parameter which will be passed the client.
-- Multiple `on_disconnect()` may be set on a single instance.
 
-#### on\_receive(handler)
+  .on\_error(_function_) {#http.HttpServer.on_error}
 
-Adds a function to be called when the server receives a message from a client.
+  : Adds a function to be called when the server encounters an error with a client.
+    
+    > Function _function_ MUST accept two parameters. The first argument will be passed the 
+    > `Exception` object and the second will be passed the client `Socket` object.
 
-> Function _fn_ MUST accept TWO parameters. First parameter will accept the HttpRequest 
-> object and the second will accept the HttpResponse object.
 
-##### Parameters
+    > **@notes**:
+    > 
+    > - Multiple `on_error()` may be set on a single instance.
 
-- _function(2)_ **handler**
+    - **@params**:
+      - _function(2)_ **function**
 
-##### Notes
+    {.params}
 
-- Multiple `on_receive()` may be set on a single instance.
 
-#### on\_reply(function)
+  .handle(_method_, _path_, _handler_) {#http.HttpServer.handle}
 
-Adds a function to be called when the server sends a reply to a client.
+  : Sets up a request handler that will be called when a request with the given method 
+    has a path that matches the one specified.
 
-> Function _function_ MUST accept one parameter which will be passed the HttpResponse object.
 
-##### Parameters
+    - **@params**:
+      - _string_ **method**
+      - _string_ **path**
+      - _function(2)_ **handler**
 
-- _function(1)_ **function**
+    {.params}
 
-##### Notes
 
-- Multiple `on_sent()` may be set on a single instance.
+  .none\_handler(_handler_) {#http.HttpServer.none_handler}
 
-#### on\_error(function)
+  : Sets up the handle to invoke when a request is not processed. That is, when it does 
+    not match a registered route and no `on_receive()` handler is set.
 
-Adds a function to be called when the server encounters an error with a client.
 
-> Function _function_ MUST accept two parameters. The first argument will be passed the 
-> `Exception` object and the second will be passed the client `Socket` object.
+    - **@params**:
+      - _function(2)_ **handler**
 
-##### Parameters
+    {.params}
 
-- _function(2)_ **function**
 
-##### Notes
+  .serve\_files(_base_path_, _directory_, _cache_age_, _tag_) {#http.HttpServer.serve_files}
 
-- Multiple `on_error()` may be set on a single instance.
+  : Setup the given base_path to serve static files from the given directory.
+    If cache is set to true, and a default value is not set for tag, static
+    file tagging will be automatically enabled.
 
-#### handle(method, path, handler)
 
-Sets up a request handler that will be called when a request with the given method 
-has a path that matches the one specified.
+    - **@params**:
+      - _string_ **base_path**
+      - _string_ **directory**
+      - _number?_ **cache_age** = 0
 
-##### Parameters
+      - _bool?_ **tag** = false
 
-- _string_ **method**
-- _string_ **path**
-- _function(2)_ **handler**
 
+    {.params}
 
-#### none\_handler(handler)
 
-Sets up the handle to invoke when a request is not processed. That is, when it does 
-not match a registered route and no `on_receive()` handler is set.
+  .listen() {#http.HttpServer.listen}
 
-##### Parameters
+  : Binds to the instance port and host and starts listening for incoming 
+    connection from HTTP clients.
 
-- _function(2)_ **handler**
 
 
-#### serve\_files(base_path, directory, cache_age, tag)
 
-Setup the given base_path to serve static files from the given directory.
-If cache is set to true, and a default value is not set for tag, static
-file tagging will be automatically enabled.
 
-##### Parameters
 
-- _string_ **base_path**
-- _string_ **directory**
-- _number?_ **cache_age**: = 0
-- _bool?_ **tag**: = false
+_class_ **TLSServer** < _HttpServer_ {#http.TLSServer .class}
 
+: TLS server
 
-#### listen()
 
-Binds to the instance port and host and starts listening for incoming 
-connection from HTTP clients.
+  ~ Properties
 
+    - __@printable__
 
+  **.cert\_file** &#8674; _string_
+  :  The SSL/TLS certificate file that will be used be used by a secured server for
+    serving requests.
 
-### _class_ TLSServer < _HttpServer_
+  **.private\_key\_file** &#8674; _string_
+  :  The SSL/TLS private key file that will be used be used by a secured server for 
+    serving requests.
 
-TLS server
+  **.verify\_certs** &#8674; _boolean_
+  :  This value controls whether the client certificate should be verified 
+    or not.
 
 
+  .TLSServer(_port_, _host_) &#8674; Constructor {#http.TLSServer.TLSServer}
 
-#### Properties
+  : - **@params**:
+      - _int_ **port**
+      - _string?_ **host**
 
- - __@printable__
+    {.params}
 
-#### Fields
 
-- **cert\_file** &#8674; _string_:
+  .load\_certs(_cert_file_, _private_key_file_) {#http.TLSServer.load_certs}
 
-  The SSL/TLS certificate file that will be used be used by a secured server for
-serving requests.
+  : Loads the given SSL/TLS certificate pairs for the given SSL/TLS context.
 
-- **private\_key\_file** &#8674; _string_:
 
-  The SSL/TLS private key file that will be used be used by a secured server for 
-serving requests.
+    - **@params**:
+      - _string|file_ **cert_file**
+      - _string|file|nil_ **private_key_file**
 
-- **verify\_certs** &#8674; _boolean_:
+    {.params}
+    - **@returns**: _bool_
 
-  This value controls whether the client certificate should be verified 
-or not.
 
-#### Methods
+  .listen() {#http.TLSServer.listen}
 
-#### TLSServer(port, host) &#8674; Constructor
+  : Binds to the instance port and host and starts listening for incoming 
+    connection from HTTPS clients.
 
 
 
-##### Parameters
 
-- _int_ **port**
-- _string?_ **host**
 
 
-#### load\_certs(cert_file, private_key_file)
+_class_ **HttpClient** {#http.HttpClient .class}
 
-Loads the given SSL/TLS certificate pairs for the given SSL/TLS context.
+: Handles http requests.
+  
+  @note This client do not currently support the compress, deflate and gzip transfer encoding.
 
-##### Parameters
 
-- _string|file_ **cert_file**
-- _string|file|nil_ **private_key_file**
+  **.user\_agent** &#8674; _string_
+  :  The user agent of the client used to make the request. 
+    Default value &mdash; `Blade HTTP Client/1.0`.
 
-##### Returns
+  **.follow\_redirect** &#8674; _bool_
+  :  Indicates if we receive a redirect from a server, this flag tells us whether 
+    we should follow it or not. Default value is `true`.
 
-- bool
+  **.verify\_hostname** &#8674; _bool_
+  :  Indicates if the site you're connecting to uses a different host name that what
+    they have mentioned in their server certificate's commonName (or subjectAltName) 
+    fields, connection will fail. You can skip this check by setting to true, but this 
+    will make the connection less secure.
 
-#### listen()
+  **.verify\_peer** &#8674; _bool_
+  :  Indicates if you want to connect to a site who isn't using a certificate that is
+    signed by one of the certs in the CA bundle you have, you can skip the verification 
+    of the server's certificate. This makes the connection A LOT LESS SECURE.
 
-Binds to the instance port and host and starts listening for incoming 
-connection from HTTPS clients.
+  **.referer** &#8674; _string_
+  :  The site that refers us to the current site
 
+  **.ca\_cert** &#8674; _string_
+  :  If you have a CA cert for the server stored someplace else than in the default bundle.
 
+  **.connect\_timeout** &#8674; _number_
+  :  The connect timeout duration in milliseconds. Default value is 60,000 (1 minute).
 
-### _class_ HttpClient
+  **.receive\_timeout** &#8674; _number_
+  :  The receive timeout duration in milliseconds. Default value is 2,000 (2 seconds).
 
-Handles http requests.
+  **.headers** &#8674; _dict_
+  :  A dictionary of headers sent along with the request.
 
-@note This client do not currently support the compress, deflate and gzip transfer encoding.
+  **.no\_expect** &#8674; _bool_
+  :  Indicates whether to remove the expect header or not only applies to requests with 
+    files in the body
 
-#### Fields
 
-- **user\_agent** &#8674; _string_:
+  .HttpClient(_base_url_) &#8674; Constructor {#http.HttpClient.HttpClient}
 
-  The user agent of the client used to make the request. 
-Default value &mdash; `Blade HTTP Client/1.0`.
+  : If the _base_url_ param is set, all calls to HTTP method functions will automatically
+    prepend requested url with the base url if they do not start with the base url.
 
-- **follow\_redirect** &#8674; _bool_:
 
-  Indicates if we receive a redirect from a server, this flag tells us whether 
-we should follow it or not. Default value is `true`.
+    - **@params**:
+      - _string?_ **base_url** : The base url for the HTTP client requests
 
-- **verify\_hostname** &#8674; _bool_:
 
-  Indicates if the site you're connecting to uses a different host name that what
-they have mentioned in their server certificate's commonName (or subjectAltName) 
-fields, connection will fail. You can skip this check by setting to true, but this 
-will make the connection less secure.
+    {.params}
 
-- **verify\_peer** &#8674; _bool_:
 
-  Indicates if you want to connect to a site who isn't using a certificate that is
-signed by one of the certs in the CA bundle you have, you can skip the verification 
-of the server's certificate. This makes the connection A LOT LESS SECURE.
+  .send\_request(_uri_, _method_, _data_, _headers_, _options_) {#http.HttpClient.send_request}
 
-- **referer** &#8674; _string_:
+  : Sends an Http request and returns a HttpResponse.
+    
+    
+    
+    
+    
+       This can be very useful if you want to reuse the same 
+       instance for multiple requests and headers scenarios.
 
-  The site that refers us to the current site
 
-- **ca\_cert** &#8674; _string_:
+    - **@params**:
+      - _string_ **uri**
+      - _string?_ **method** : Default value is `GET`.
 
-  If you have a CA cert for the server stored someplace else than in the default bundle.
+      - _string|dict|nil_ **data**
+      - _dict?_ **headers** : To override the instance options. 
 
-- **connect\_timeout** &#8674; _number_:
+      - _dict?_ **client** request options
 
-  The connect timeout duration in milliseconds. Default value is 60,000 (1 minute).
 
-- **receive\_timeout** &#8674; _number_:
-
-  The receive timeout duration in milliseconds. Default value is 2,000 (2 seconds).
-
-- **headers** &#8674; _dict_:
-
-  A dictionary of headers sent along with the request.
-
-- **no\_expect** &#8674; _bool_:
-
-  Indicates whether to remove the expect header or not only applies to requests with 
-files in the body
-
-#### Methods
-
-#### HttpClient(base_url) &#8674; Constructor
-
-If the _base_url_ param is set, all calls to HTTP method functions will automatically
-prepend requested url with the base url if they do not start with the base url.
-
-##### Parameters
-
-- _string?_ **base_url**: : The base url for the HTTP client requests
-
-
-#### send\_request(uri, method, data, headers, options)
-
-Sends an Http request and returns a HttpResponse.
-
-
-
-
-
-   This can be very useful if you want to reuse the same 
-   instance for multiple requests and headers scenarios.
-
-##### Parameters
-
-- _string_ **uri**
-- _string?_ **method**: : Default value is `GET`.
-- _string|dict|nil_ **data**
-- _dict?_ **headers**: : To override the instance options. 
-- _dict?_ **client**: request options
-
-##### Returns
-
-- HttpResponse
-##### Raises Exception
-
-- SocketException
+    {.params}
+    - **@returns**: _HttpResponse_
+    - **@raises**:
+      - SocketException
 @raises
 
-#### get(url, headers)
 
-Sends an Http GET request and returns an HttpResponse.
+  .get(_url_, _headers_) {#http.HttpClient.get}
 
-##### Parameters
+  : Sends an Http GET request and returns an HttpResponse.
 
-- _string_ **url**
-- _dict?_ **headers**
 
-##### Returns
+    - **@params**:
+      - _string_ **url**
+      - _dict?_ **headers**
 
-- HttpResponse
-##### Raises Exception
-
-- Exception
+    {.params}
+    - **@returns**: _HttpResponse_
+    - **@raises**:
+      - Exception
 @raises
 
-#### post(url, data, headers)
 
-Sends an Http POST request and returns an HttpResponse.
+  .post(_url_, _data_, _headers_) {#http.HttpClient.post}
 
-##### Parameters
+  : Sends an Http POST request and returns an HttpResponse.
 
-- _string_ **url**
-- _string|bytes|nil_ **data**
-- _dict?_ **headers**
 
-##### Returns
+    - **@params**:
+      - _string_ **url**
+      - _string|bytes|nil_ **data**
+      - _dict?_ **headers**
 
-- HttpResponse
-##### Raises Exception
-
-- Exception
+    {.params}
+    - **@returns**: _HttpResponse_
+    - **@raises**:
+      - Exception
 @raises
 
-#### put(url, data, headers)
 
-Sends an Http PUT request and returns an HttpResponse.
+  .put(_url_, _data_, _headers_) {#http.HttpClient.put}
 
-##### Parameters
+  : Sends an Http PUT request and returns an HttpResponse.
 
-- _string_ **url**
-- _string|bytes|nil_ **data**
-- _dict?_ **headers**
 
-##### Returns
+    - **@params**:
+      - _string_ **url**
+      - _string|bytes|nil_ **data**
+      - _dict?_ **headers**
 
-- HttpResponse
-##### Raises Exception
-
-- Exception
+    {.params}
+    - **@returns**: _HttpResponse_
+    - **@raises**:
+      - Exception
 @raises
 
-#### patch(url, data, headers)
 
-Sends an Http PATCH request and returns an HttpResponse.
+  .patch(_url_, _data_, _headers_) {#http.HttpClient.patch}
 
-##### Parameters
+  : Sends an Http PATCH request and returns an HttpResponse.
 
-- _string_ **url**
-- _string|bytes|nil_ **data**
-- _dict?_ **headers**
 
-##### Returns
+    - **@params**:
+      - _string_ **url**
+      - _string|bytes|nil_ **data**
+      - _dict?_ **headers**
 
-- HttpResponse
-##### Raises Exception
-
-- Exception
+    {.params}
+    - **@returns**: _HttpResponse_
+    - **@raises**:
+      - Exception
 @raises
 
-#### delete(url, headers)
 
-Sends an Http DELETE request and returns an HttpResponse.
+  .delete(_url_, _headers_) {#http.HttpClient.delete}
 
-##### Parameters
+  : Sends an Http DELETE request and returns an HttpResponse.
 
-- _string_ **url**
-- _dict?_ **headers**
 
-##### Returns
+    - **@params**:
+      - _string_ **url**
+      - _dict?_ **headers**
 
-- HttpResponse
-##### Raises Exception
-
-- Exception
+    {.params}
+    - **@returns**: _HttpResponse_
+    - **@raises**:
+      - Exception
 @raises
 
-#### options(url, headers)
 
-Sends an Http OPTIONS request and returns an HttpResponse.
+  .options(_url_, _headers_) {#http.HttpClient.options}
 
-##### Parameters
+  : Sends an Http OPTIONS request and returns an HttpResponse.
 
-- _string_ **url**
-- _dict?_ **headers**
 
-##### Returns
+    - **@params**:
+      - _string_ **url**
+      - _dict?_ **headers**
 
-- HttpResponse
-##### Raises Exception
-
-- Exception
+    {.params}
+    - **@returns**: _HttpResponse_
+    - **@raises**:
+      - Exception
 @raises
 
-#### trace(url, headers)
 
-Sends an Http TRACE request and returns an HttpResponse.
+  .trace(_url_, _headers_) {#http.HttpClient.trace}
 
-##### Parameters
+  : Sends an Http TRACE request and returns an HttpResponse.
 
-- _string_ **url**
-- _dict?_ **headers**
 
-##### Returns
+    - **@params**:
+      - _string_ **url**
+      - _dict?_ **headers**
 
-- HttpResponse
-##### Raises Exception
-
-- Exception
+    {.params}
+    - **@returns**: _HttpResponse_
+    - **@raises**:
+      - Exception
 @raises
 
-#### head(url, headers)
 
-Sends an Http HEAD request and returns an HttpResponse.
+  .head(_url_, _headers_) {#http.HttpClient.head}
 
-##### Parameters
+  : Sends an Http HEAD request and returns an HttpResponse.
 
-- _string_ **url**
-- _dict?_ **headers**
 
-##### Returns
+    - **@params**:
+      - _string_ **url**
+      - _dict?_ **headers**
 
-- HttpResponse
-##### Raises Exception
-
-- Exception
+    {.params}
+    - **@returns**: _HttpResponse_
+    - **@raises**:
+      - Exception
 @raises
 
 
 
-### _class_ HttpResponse
 
-Represents the response to an Http request.
+_class_ **HttpResponse** {#http.HttpResponse .class}
 
+: Represents the response to an Http request.
 
 
-#### Properties
+  ~ Properties
 
- - __@printable__
- - __@serializable__
+    - __@printable__
+    - __@serializable__
 
-#### Fields
+  **.version** &#8674; _string_
+  :  The HTTP version of the response
 
-- **version** &#8674; _string_:
+  **.status** &#8674; _number_
+  :  The HTTP response status code
 
-  The HTTP version of the response
+  **.headers** &#8674; _dictionary_
+  :  The HTTP response headers
 
-- **status** &#8674; _number_:
+  **.time\_taken** &#8674; _number_
+  :  Total time taken for the HTTP request that generated this HttpResponse to complete
 
-  The HTTP response status code
+  **.redirects** &#8674; _number_
+  :  The number of times the HTTP request that generated this HttpResponse was redirected.
 
-- **headers** &#8674; _dictionary_:
+  **.responder** &#8674; _string_
+  :  The final URL that provided the HttpResponse. This will sometimes 
+    differ from the original request URI.
 
-  The HTTP response headers
+  **.body** &#8674; _bytes_
+  :  The content of the HTTP response as bytes
 
-- **time\_taken** &#8674; _number_:
+  **.cookies** &#8674; _list_
+  :  The cookies to be sent back to the client
 
-  Total time taken for the HTTP request that generated this HttpResponse to complete
+  **.certificate** &#8674; _dict|nil_
+  :  The SSL certificate for the secure connection. This is only available 
+    when visiting HTTPS/SSL/TLS secured websites.
 
-- **redirects** &#8674; _number_:
 
-  The number of times the HTTP request that generated this HttpResponse was redirected.
+  .HttpResponse(_body_, _status_, _headers_, _cookies_, _version_, _time_taken_, _redirects_, _responder_) &#8674; Constructor {#http.HttpResponse.HttpResponse}
 
-- **responder** &#8674; _string_:
+  : - **@params**:
+      - _string_ **body**
+      - _int_ **status**
+      - _dict_ **headers**
+      - _list[string]_ **cookies**
+      - _string_ **version**
+      - _number_ **time_taken**
+      - _int_ **redirects**
+      - _string_ **responder**
 
-  The final URL that provided the HttpResponse. This will sometimes 
-differ from the original request URI.
+    {.params}
 
-- **body** &#8674; _bytes_:
 
-  The content of the HTTP response as bytes
+  .write(_data_) {#http.HttpResponse.write}
 
-- **cookies** &#8674; _list_:
+  : Writes data to the response stream. 
+    
+    > This method should be preferred over writing directly to the body
+    > property to prevent unexpected behaviors.
 
-  The cookies to be sent back to the client
 
-- **certificate** &#8674; _dict|nil_:
+    - **@params**:
+      - _string|bytes_ **data**
 
-  The SSL certificate for the secure connection. This is only available 
-when visiting HTTPS/SSL/TLS secured websites.
+    {.params}
 
-#### Methods
 
-#### HttpResponse(body, status, headers, cookies, version, time_taken, redirects, responder) &#8674; Constructor
+  .json(_data_, _status_code_) {#http.HttpResponse.json}
 
+  : Writes a json encoded data to the response stream and sets the response 
+    `Content-Type` to `application/json`. If the status code is given, the
+    response will be sent with the given status code.
 
 
-##### Parameters
+    - **@params**:
+      - _any_ **data**
+      - _number?_ **status_code**
 
-- _string_ **body**
-- _int_ **status**
-- _dict_ **headers**
-- _list[string]_ **cookies**
-- _string_ **version**
-- _number_ **time_taken**
-- _int_ **redirects**
-- _string_ **responder**
+    {.params}
 
 
-#### write(data)
+  .file(_path_, _status_code_) {#http.HttpResponse.file}
 
-Writes data to the response stream. 
+  : Writes a file into the response stream and sets the `Content-Type` to the 
+    correct mimetype for the file. If the status code is given, the
+    response will be sent with the given status code.
 
-> This method should be preferred over writing directly to the body
-> property to prevent unexpected behaviors.
 
-##### Parameters
+    - **@params**:
+      - _string_ **path**
+      - _number?_ **status_code**
 
-- _string|bytes_ **data**
+    {.params}
 
 
-#### json(data, status_code)
+  .set\_cookie(_key_, _value_, _domain_, _path_, _expires_, _secure_, _extras_) {#http.HttpResponse.set_cookie}
 
-Writes a json encoded data to the response stream and sets the response 
-`Content-Type` to `application/json`. If the status code is given, the
-response will be sent with the given status code.
+  : Sets a cookie to be send back to a client with the given _key_ and _value_. 
+    When other parameters are given, they are used to construct a correct Set-Cookie 
+    header based on their named properties.
 
-##### Parameters
 
-- _any_ **data**
-- _number?_ **status_code**
+    - **@params**:
+      - _string_ **key**
+      - _string_ **value**
+      - _string?_ **domain**
+      - _string?_ **path**
+      - _string?_ **expires**
+      - _bool?_ **secure**
+      - _string?_ **extras**
 
+    {.params}
 
-#### file(path, status_code)
 
-Writes a file into the response stream and sets the `Content-Type` to the 
-correct mimetype for the file. If the status code is given, the
-response will be sent with the given status code.
+  .redirect(_location_, _status_) {#http.HttpResponse.redirect}
 
-##### Parameters
+  : Redirects the client to a new location. This function simultaneously sets 
+    the `Location` header and returns a 30x status code. If the `status` 
+    parameter is not given, the function defaults to `302`.
+    
+    
+    
+    
+    @throw HttpException
 
-- _string_ **path**
-- _number?_ **status_code**
 
+    > **@notes**:
+    > 
+    > - When supplying a status, it must be a 30x
 
-#### set\_cookie(key, value, domain, path, expires, secure, extras)
+    - **@params**:
+      - _string_ **location**
+      - _string?_ **status**
 
-Sets a cookie to be send back to a client with the given _key_ and _value_. 
-When other parameters are given, they are used to construct a correct Set-Cookie 
-header based on their named properties.
+    {.params}
 
-##### Parameters
 
-- _string_ **key**
-- _string_ **value**
-- _string?_ **domain**
-- _string?_ **path**
-- _string?_ **expires**
-- _bool?_ **secure**
-- _string?_ **extras**
+  .render(_path_, _variables_) {#http.HttpResponse.render}
 
+  : A shorthand method that renders a template using  Blade's template
+    module default settings.
+    Follow the [template module documentation](https://bladelang.org/standard/template)
+    to know more about setting up your project to render from templates.
+    >*NOTE**
+     >
+    > The default template root directory is a directory called
+    > "templates" in the current working directory. To use render, ensure
+    > that the directory exists as the template instance used for `render()`
+    > does not have the `auto_init` parameter set to true. This is intentional
+    > to discourage misuse and/or unintended behaviors.
+    Support for template rendering in HttpResponse class is lazy loaded and
+    will not be enabled until the first attempt to render a template. This
+    helps reduce the overhead for use cases where rending is never needed.
 
-#### redirect(location, status)
 
-Redirects the client to a new location. This function simultaneously sets 
-the `Location` header and returns a 30x status code. If the `status` 
-parameter is not given, the function defaults to `302`.
+    - **@params**:
+      - _string_ **path**
+      - _dict?_ **variables**
 
+    {.params}
 
 
+  .content\_type(_mimetype_) {#http.HttpResponse.content_type}
 
-@throw HttpException
+  : Sets the content type of the HTTP response.
 
-##### Parameters
 
-- _string_ **location**
-- _string?_ **status**
+    - **@params**:
+      - _string_ **mimetype**
 
-##### Notes
+    {.params}
 
-- When supplying a status, it must be a 30x
 
-#### render(path, variables)
+  .to\_string() {#http.HttpResponse.to_string}
 
-A shorthand method that renders a template using  Blade's template
-module default settings.
-Follow the [template module documentation](https://bladelang.org/standard/template)
-to know more about setting up your project to render from templates.
->*NOTE**
- >
-> The default template root directory is a directory called
-> "templates" in the current working directory. To use render, ensure
-> that the directory exists as the template instance used for `render()`
-> does not have the `auto_init` parameter set to true. This is intentional
-> to discourage misuse and/or unintended behaviors.
-Support for template rendering in HttpResponse class is lazy loaded and
-will not be enabled until the first attempt to render a template. This
-helps reduce the overhead for use cases where rending is never needed.
+  : Returns the response details in a string
 
-##### Parameters
 
-- _string_ **path**
-- _dict?_ **variables**
 
 
-#### content\_type(mimetype)
+  .as\_text() {#http.HttpResponse.as_text}
 
-Sets the content type of the HTTP response.
+  : Returns the body of an HTTP response as a string or an empty
+    string if the response is empty.
 
-##### Parameters
 
-- _string_ **mimetype**
+    - **@returns**: _string_
 
 
-#### to\_string()
+  .as\_dict() {#http.HttpResponse.as_dict}
 
-Returns the response details in a string
+  : Returns the body of an HTTP response as a dictionary.
+    >*NOTE:**
+     >
+    > Call this method only if you're certain that the response
+    > is a JSON response or have set the header `Accepts` and/or
+    > `Content-Type` to accept only `application/json` responses
+    > only because the method will raise and Exception if the
+    > response does not contain a valid JSON in the body.
 
 
-#### as\_text()
+    - **@returns**: _string_
 
-Returns the body of an HTTP response as a string or an empty
-string if the response is empty.
 
-##### Returns
+  .to\_json() {#http.HttpResponse.to_json}
 
-- string
+  : Returns the response as a JSON object
 
-#### as\_dict()
 
-Returns the body of an HTTP response as a dictionary.
->*NOTE:**
- >
-> Call this method only if you're certain that the response
-> is a JSON response or have set the header `Accepts` and/or
-> `Content-Type` to accept only `application/json` responses
-> only because the method will raise and Exception if the
-> response does not contain a valid JSON in the body.
 
-##### Returns
-
-- string
-
-#### to\_json()
-
-Returns the response as a JSON object
 
 
 

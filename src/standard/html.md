@@ -46,118 +46,108 @@ By default, all these options are set to their exported values, adhering to the 
 
 > Note: This applies to any function within the module that accepts an `options` argument.
 
-## Properties
+## Fields
 
-- **name2codepoint** &#8674; _dict_:
+**name2codepoint** &#8674; _dict_
+:  Dictionary of HTML entity name to the Unicode code point
 
-  Dictionary of HTML entity name to the Unicode code point
+**html5** &#8674; _dict_
+:  Dictionary of HTML5 named character references to the equivalent Unicode character(s).
 
-- **html5** &#8674; _dict_:
+**codepoint2name** &#8674; _dict_
+:  Dictionary of Unicode code point to the HTML entity name
 
-  Dictionary of HTML5 named character references to the equivalent Unicode character(s).
+**entitydefs**
+:  Dictionary of HTML entity name to the character
+  (or a character reference if the character is outside the Latin-1 range)
 
-- **codepoint2name** &#8674; _dict_:
+**childless\_tags** &#8674; _readonly_ _list_
+:  Tags which contain arbitrary non-parsed content
+  For example: `<script>` JavaScript should not be parsed
 
-  Dictionary of Unicode code point to the HTML entity name
+**closing\_tags** &#8674; _readonly_ _list_
+:  Tags which auto-close because they cannot be nested
+  For example: `<p>Outer<p>Inner is <p>Outer</p><p>Inner</p>`
 
-- **entitydefs**:
+**tag\_ancestors** &#8674; _readonly_ _list_
+:  Closing tags which have ancestor tags which may exist within 
+  them which prevent the closing tag from auto-closing.
+  For example: in `<li><ul><li></ul></li>`, the top-level `<li>` 
+  should not auto-close.
 
-  Dictionary of HTML entity name to the character
-(or a character reference if the character is outside the Latin-1 range)
-
-- **childless\_tags** &#8674; _readonly_ _list_:
-
-  Tags which contain arbitrary non-parsed content
-For example: `<script>` JavaScript should not be parsed
-
-- **closing\_tags** &#8674; _readonly_ _list_:
-
-  Tags which auto-close because they cannot be nested
-For example: `<p>Outer<p>Inner is <p>Outer</p><p>Inner</p>`
-
-- **tag\_ancestors** &#8674; _readonly_ _list_:
-
-  Closing tags which have ancestor tags which may exist within 
-them which prevent the closing tag from auto-closing.
-For example: in `<li><ul><li></ul></li>`, the top-level `<li>` 
-should not auto-close.
-
-- **void\_tags** &#8674; _readonly_ _list_:
-
-  Tags which do not need the closing tag
-For example: `<img>` does not need `</img>`
+**void\_tags** &#8674; _readonly_ _list_
+:  Tags which do not need the closing tag
+  For example: `<img>` does not need `</img>`
 
 
 ## Functions
 
-#### decode(str, options)
+decode(_str_, _options_) {#html.decode}
 
-Decodes an HTML string into a list of nodes (described above) 
-representing the structure of the HTML document.
-
-The _options_ argument is an optional argument that allows the caller 
-to modify how HTML is decoded using one or more of the HTML options 
-described above. For example, one can pass the `void_tags` option to 
-declare a custom tag as self-closing and thus avoid an error from not 
-closing such tags.
-
-Example,
-
-```blade
-import html
-echo html.decode('<p>Hello World!</p>')
-```
-
-The code above should output the following:
-
-```
-[{type: element, name: p, attributes: [], children: [{type: text, content: Hello World!}]}]
-```
-
-You can include information about the position of the node in the source by setting the 
-`with_position` option to `true`.
-
-For example:
-
-```blade
-import html
-echo html.decode('<img>', {with_position: true})
-```
-
-The code should output the nodes with the position information.
-
-```
-[{type: element, name: img, attributes: [], children: [], position: {start: {index: 0, line: 1, column: 1}, end: {index: 5, line: 1, column: 6}}}]
-```
-
-##### Parameters
-
-- _string_ **str**
-- _dict?_ **options**
-
-##### Returns
-
-- list
+: Decodes an HTML string into a list of nodes (described above) 
+  representing the structure of the HTML document.
+  
+  The _options_ argument is an optional argument that allows the caller 
+  to modify how HTML is decoded using one or more of the HTML options 
+  described above. For example, one can pass the `void_tags` option to 
+  declare a custom tag as self-closing and thus avoid an error from not 
+  closing such tags.
+  
+  Example,
+  
+  ```blade
+  import html
+  echo html.decode('<p>Hello World!</p>')
+  ```
+  
+  The code above should output the following:
+  
+  ```
+  [{type: element, name: p, attributes: [], children: [{type: text, content: Hello World!}]}]
+  ```
+  
+  You can include information about the position of the node in the source by setting the 
+  `with_position` option to `true`.
+  
+  For example:
+  
+  ```blade
+  import html
+  echo html.decode('<img>', {with_position: true})
+  ```
+  
+  The code should output the nodes with the position information.
+  
+  ```
+  [{type: element, name: img, attributes: [], children: [], position: {start: {index: 0, line: 1, column: 1}, end: {index: 5, line: 1, column: 6}}}]
+  ```
 
 
+  - **@params**:
+    - _string_ **str**
+    - _dict?_ **options**
 
-#### encode(nodes, options)
+  {.params}
+  - **@returns**: _list_
 
-Encodes the list of `elements` into an HTML string.
 
-The _options_ argument is an optional argument that allows the caller 
-to modify how HTML is encoded using one or more of the HTML options 
-described above. For example, one can pass the `void_tags` option to 
-declare a custom tag as self-closing.
 
-##### Parameters
+encode(_nodes_, _options_) {#html.encode}
 
-- _list_ **nodes**
-- _dict?_ **options**
+: Encodes the list of `elements` into an HTML string.
+  
+  The _options_ argument is an optional argument that allows the caller 
+  to modify how HTML is encoded using one or more of the HTML options 
+  described above. For example, one can pass the `void_tags` option to 
+  declare a custom tag as self-closing.
 
-##### Returns
 
-- string
+  - **@params**:
+    - _list_ **nodes**
+    - _dict?_ **options**
+
+  {.params}
+  - **@returns**: _string_
 
 
 

@@ -35,212 +35,204 @@ get a hexadecimal string from the digest.
 
 ## Functions
 
-#### keccak\_224(message)
+keccak\_224(_message_) {#sha3.keccak_224}
 
-Returns the Keccak-224 cryptographic hash of the given string or bytes.
+: Returns the Keccak-224 cryptographic hash of the given string or bytes.
 
-##### Parameters
 
-- _string|bytes_ **message**
+  - **@params**:
+    - _string|bytes_ **message**
 
-##### Returns
+  {.params}
+  - **@returns**: _string_
 
-- string
 
 
+keccak\_256(_message_) {#sha3.keccak_256}
 
-#### keccak\_256(message)
+: Returns the Keccak-256 cryptographic hash of the given string or bytes.
 
-Returns the Keccak-256 cryptographic hash of the given string or bytes.
 
-##### Parameters
+  - **@params**:
+    - _string|bytes_ **message**
 
-- _string|bytes_ **message**
+  {.params}
+  - **@returns**: _string_
 
-##### Returns
 
-- string
 
+keccak\_384(_message_) {#sha3.keccak_384}
 
+: Returns the Keccak-384 cryptographic hash of the given string or bytes.
 
-#### keccak\_384(message)
 
-Returns the Keccak-384 cryptographic hash of the given string or bytes.
+  - **@params**:
+    - _string|bytes_ **message**
 
-##### Parameters
+  {.params}
+  - **@returns**: _string_
 
-- _string|bytes_ **message**
 
-##### Returns
 
-- string
+keccak\_512(_message_) {#sha3.keccak_512}
 
+: Returns the Keccak-512 cryptographic hash of the given string or bytes.
 
 
-#### keccak\_512(message)
+  - **@params**:
+    - _string|bytes_ **message**
 
-Returns the Keccak-512 cryptographic hash of the given string or bytes.
+  {.params}
+  - **@returns**: _string_
 
-##### Parameters
 
-- _string|bytes_ **message**
 
-##### Returns
+sha3\_224(_message_) {#sha3.sha3_224}
 
-- string
+: Returns the SHA3-224 cryptographic hash of the given string or bytes.
 
 
+  - **@params**:
+    - _string|bytes_ **message**
 
-#### sha3\_224(message)
+  {.params}
+  - **@returns**: _string_
 
-Returns the SHA3-224 cryptographic hash of the given string or bytes.
 
-##### Parameters
 
-- _string|bytes_ **message**
+sha3\_256(_message_) {#sha3.sha3_256}
 
-##### Returns
+: Returns the SHA3-256 cryptographic hash of the given string or bytes.
 
-- string
 
+  - **@params**:
+    - _string|bytes_ **message**
 
+  {.params}
+  - **@returns**: _string_
 
-#### sha3\_256(message)
 
-Returns the SHA3-256 cryptographic hash of the given string or bytes.
 
-##### Parameters
+sha3\_384(_message_) {#sha3.sha3_384}
 
-- _string|bytes_ **message**
+: Returns the SHA3-384 cryptographic hash of the given string or bytes.
 
-##### Returns
 
-- string
+  - **@params**:
+    - _string|bytes_ **message**
 
+  {.params}
+  - **@returns**: _string_
 
 
-#### sha3\_384(message)
 
-Returns the SHA3-384 cryptographic hash of the given string or bytes.
+sha3\_512(_message_) {#sha3.sha3_512}
 
-##### Parameters
+: Returns the SHA3-512 cryptographic hash of the given string or bytes.
 
-- _string|bytes_ **message**
 
-##### Returns
+  - **@params**:
+    - _string|bytes_ **message**
 
-- string
+  {.params}
+  - **@returns**: _string_
 
 
 
-#### sha3\_512(message)
+shake128(_length_, _message_) {#sha3.shake128}
 
-Returns the SHA3-512 cryptographic hash of the given string or bytes.
+: Returns the SHAKE-128 cryptographic hash of the given string or bytes computed to the given length.
 
-##### Parameters
 
-- _string|bytes_ **message**
+  - **@params**:
+    - _number_ **length**
+    - _string|bytes_ **message**
 
-##### Returns
+  {.params}
+  - **@returns**: _string_
 
-- string
 
 
+shake256(_length_, _message_) {#sha3.shake256}
 
-#### shake128(length, message)
+: Returns the SHAKE-256 cryptographic hash of the given string or bytes computed to the given length.
 
-Returns the SHAKE-128 cryptographic hash of the given string or bytes computed to the given length.
 
-##### Parameters
+  - **@params**:
+    - _number_ **length**
+    - _string|bytes_ **message**
 
-- _number_ **length**
-- _string|bytes_ **message**
-
-##### Returns
-
-- string
-
-
-
-#### shake256(length, message)
-
-Returns the SHAKE-256 cryptographic hash of the given string or bytes computed to the given length.
-
-##### Parameters
-
-- _number_ **length**
-- _string|bytes_ **message**
-
-##### Returns
-
-- string
+  {.params}
+  - **@returns**: _string_
 
 
 
 ## Classes
 
-### _class_ Keccak
+_class_ **Keccak** {#sha3.Keccak .class}
 
-Keccak hash manipulation class.
-
-#### Methods
-
-#### Keccak(bits, padding, length) &#8674; Constructor
+: Keccak hash manipulation class.
 
 
 
-##### Parameters
+  .Keccak(_bits_, _padding_, _length_) &#8674; Constructor {#sha3.Keccak.Keccak}
 
-- _number_ **bits**: : Capacity
-- _number_ **padding**: : Padding value - 1 for Keccak, 6 for SHA3 and 31 for SHAKE
-- _number?_ **length**: : Optional length of the output hash in bits. If not given bits is taken as default.
+  : - **@params**:
+      - _number_ **bits** : Capacity
+
+      - _number_ **padding** : Padding value - 1 for Keccak, 6 for SHA3 and 31 for SHAKE
+
+      - _number?_ **length** : Optional length of the output hash in bits. If not given bits is taken as default.
 
 
-#### init()
+    {.params}
 
-Initializes the hash functionality and prepares it for a new round.
 
-##### Returns
+  .init() {#sha3.Keccak.init}
 
-- self
+  : Initializes the hash functionality and prepares it for a new round.
 
-#### update(message)
 
-Update the hash with additional message data.
+    - **@returns**: _self_
 
-##### Parameters
 
-- _string|bytes_ **message**
+  .update(_message_) {#sha3.Keccak.update}
 
-##### Returns
+  : Update the hash with additional message data.
 
-- self
 
-#### digest(message)
+    - **@params**:
+      - _string|bytes_ **message**
 
-Finalize the hash with additional message data and returns 
-the message digest.
+    {.params}
+    - **@returns**: _self_
 
-##### Parameters
 
-- _string|bytes_ **message**
+  .digest(_message_) {#sha3.Keccak.digest}
 
-##### Returns
+  : Finalize the hash with additional message data and returns 
+    the message digest.
 
-- bytes
 
-#### hash(message)
+    - **@params**:
+      - _string|bytes_ **message**
 
-All-in-one method to initialize a new round, update the 
-message and generate the final hash digest.
+    {.params}
+    - **@returns**: _bytes_
 
-##### Parameters
 
-- _string|bytes_ **message**
+  .hash(_message_) {#sha3.Keccak.hash}
 
-##### Returns
+  : All-in-one method to initialize a new round, update the 
+    message and generate the final hash digest.
 
-- string
+
+    - **@params**:
+      - _string|bytes_ **message**
+
+    {.params}
+    - **@returns**: _string_
+
 
 
 

@@ -44,91 +44,96 @@ Example,
 
 ## Functions
 
-#### encode(value, compact, max_depth)
+encode(_value_, _compact_, _max_depth_) {#json.encode}
 
-JSON encodes the given value with a recursive depth up to `max_depth`.
-
-If _compact_ is `false`, the resulting json string will be 
-tightly packed. i.e. spaces will be trimmed from objects and arrays. Otherwise, 
-the JSON output will be pretty formatted.
-
-##### Parameters
-
-- _any_ **value**
-- _bool?_ **compact**: : Default value is `true`.
-- _number?_ **max_depth**: : is the maximum recursive depth for encoding, default = 1024.
-
-##### Returns
-
-- string
-##### Notes
-
-- pretty formatting use 2 spaces instead of tabs.
+: JSON encodes the given value with a recursive depth up to `max_depth`.
+  
+  If _compact_ is `false`, the resulting json string will be 
+  tightly packed. i.e. spaces will be trimmed from objects and arrays. Otherwise, 
+  the JSON output will be pretty formatted.
 
 
+  > **@notes**:
+  > 
+  > - pretty formatting use 2 spaces instead of tabs.
 
-#### decode(value, allow_comments)
+  - **@params**:
+    - _any_ **value**
+    - _bool?_ **compact** : Default value is `true`.
 
-Decodes the input JSON string into Blade objects
+    - _number?_ **max_depth** : is the maximum recursive depth for encoding, default = 1024.
 
-##### Parameters
 
-- _string_ **value**: : The string to decode
-- _bool?_ **allow_comments**: : Can be set to enable/disable C-style comments in json [default = true]
-
-##### Returns
-
-- object
+  {.params}
+  - **@returns**: _string_
 
 
 
-#### parse(path)
+decode(_value_, _allow_comments_) {#json.decode}
 
-Parses a file containing json data.
+: Decodes the input JSON string into Blade objects
 
-##### Parameters
 
-- _string_ **path**
+  - **@params**:
+    - _string_ **value** : The string to decode
 
-##### Returns
+    - _bool?_ **allow_comments** : Can be set to enable/disable C-style comments in json [default = true]
 
-- object
+
+  {.params}
+  - **@returns**: _object_
+
+
+
+parse(_path_) {#json.parse}
+
+: Parses a file containing json data.
+
+
+  - **@params**:
+    - _string_ **path**
+
+  {.params}
+  - **@returns**: _object_
 
 
 
 ## Classes
 
-### _class_ Encoder
+_class_ **Encoder** {#json.Encoder .class}
 
-Blade to JSON encoding class
-
-#### Methods
-
-#### Encoder(compact, max_depth) &#8674; Constructor
+: Blade to JSON encoding class
 
 
 
-##### Parameters
+  .Encoder(_compact_, _max_depth_) &#8674; Constructor {#json.Encoder.Encoder}
 
-- _bool?_ **compact**: : Default value is `false`.
-- _number?_ **max_depth**: : Default value is `1024`.
+  : > **@notes**:
+    > 
+    > - Depth starts from zero
 
-##### Notes
+    > - Set max_depth to `0` to disable max depth
 
-- Depth starts from zero
-- Set max_depth to `0` to disable max depth
+    - **@params**:
+      - _bool?_ **compact** : Default value is `false`.
 
-#### encode(value)
+      - _number?_ **max_depth** : Default value is `1024`.
 
-Encodes a value to it's corresponding JSON string.
 
-##### Parameters
+    {.params}
 
-- _any_ **value**
 
-##### Returns
+  .encode(_value_) {#json.Encoder.encode}
 
-- string
+  : Encodes a value to it's corresponding JSON string.
+
+
+    - **@params**:
+      - _any_ **value**
+
+    {.params}
+    - **@returns**: _string_
+
 
 
 

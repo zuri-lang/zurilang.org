@@ -31,515 +31,509 @@ The library does not install any signal handler.  The decoder checks
 the consistency of the compressed data, so the library should never crash
 even in the case of corrupted input.
 
-## Properties
+## Fields
 
-- **version** &#8674; _number_:
+**version** &#8674; _number_
+:  ZLib version string.
 
-  ZLib version string.
+**NO\_COMPRESSION** &#8674; _number_
+:  No compression level.
 
-- **NO\_COMPRESSION** &#8674; _number_:
+**BEST\_SPEED** &#8674; _number_
+:  Best speed compression.
 
-  No compression level.
+**BEST\_COMPRESSION** &#8674; _number_
+:  Best compression level.
 
-- **BEST\_SPEED** &#8674; _number_:
+**DEFAULT\_COMPRESSION** &#8674; _number_
+:  Default compression level.
 
-  Best speed compression.
+**FILTERED** &#8674; _number_
+:  Filtered compression strategy.
 
-- **BEST\_COMPRESSION** &#8674; _number_:
+**HUFFMAN\_ONLY**
+:  huffman only compression strategy
 
-  Best compression level.
+**RLE** &#8674; _number_
+:  Rle compression strategy.
 
-- **DEFAULT\_COMPRESSION** &#8674; _number_:
+**FIXED** &#8674; _number_
+:  Fixed compression strategy.
 
-  Default compression level.
+**DEFAULT\_STRATEGY** &#8674; _number_
+:  Default compression strategy.
 
-- **FILTERED** &#8674; _number_:
+**DEFAULT\_MEMORY\_LEVEL** &#8674; _number_
+:  Default memory level
 
-  Filtered compression strategy.
-
-- **HUFFMAN\_ONLY**:
-
-  huffman only compression strategy
-
-- **RLE** &#8674; _number_:
-
-  Rle compression strategy.
-
-- **FIXED** &#8674; _number_:
-
-  Fixed compression strategy.
-
-- **DEFAULT\_STRATEGY** &#8674; _number_:
-
-  Default compression strategy.
-
-- **DEFAULT\_MEMORY\_LEVEL** &#8674; _number_:
-
-  Default memory level
-
-- **MAX\_WBITS** &#8674; _number_:
-
-  Maximum windows bit.
+**MAX\_WBITS** &#8674; _number_
+:  Maximum windows bit.
 
 
 ## Functions
 
-#### adler32(data, initial)
+adler32(_data_, _initial_) {#zlib.adler32}
+
+: Updates a running Adler-32 checksum with the bytes buf[0..len-1] and
+  return the updated checksum.
+
+
+  > **@notes**:
+  > 
+  > - An Adler-32 checksum is almost as reliable as a CRC-32 but can be computed much faster.
+
+  - **@params**:
+    - _bytes|string_ **data**
+    - _number?_ **intial**
+
+  {.params}
+  - **@returns**: _number_
+
+
+
+crc32(_data_, _initial_) {#zlib.crc32}
+
+: Update a running CRC-32 cheksum with the bytes buf[0..len-1] and return the
+  updated CRC-32 checksum.
+
+
+  - **@params**:
+    - _bytes|string_ **data**
+    - _number?_ **intial**
+
+  {.params}
+  - **@returns**: _number_
+
+
+
+compress(_data_, _level_, _strategy_, _wbits_, _memory_level_) {#zlib.compress}
+
+: Compress compresses as much data as possible, and stops when the input
+  buffer becomes empty or the output buffer becomes full.
+  
+  -  The compression `level` must be DEFAULT_COMPRESSION, or between 0 and 9:
+     1 gives best speed, 9 gives best compression, 0 gives no compression at all
+     (the input data is simply copied a block at a time).  DEFAULT_COMPRESSION
+     requests a default compromise between speed and compression (currently
+     equivalent to level 6)
+  
+  -  The `wbits` parameter is the base two logarithm of the window size
+     (the size of the history buffer).  It should be in the range 8..15 for this
+     version of the library.  Larger values of this parameter result in better
+     compression at the expense of memory usage.  The default value is 15.
+  
+     For the current implementation of compress(), a `wbits` value of 8 (a
+     window size of 256 bytes) is not supported.  As a result, a request for 8
+     will result in 9 (a 512-byte window).
+  
+     `wbits` can also be -8..-15 for raw compress.  In this case, `-wbits`
+     determines the window size.  compress() will then generate raw compress data
+     with no zlib header or trailer, and will not compute a check value.
+  
+     `wbits` can also be greater than 15 for optional gzip encoding.  Add
+     16 to `wbits` to write a simple gzip header and trailer around the
+     compressed data instead of a zlib wrapper.  The gzip header will have no
+     file name, no extra data, no comment, no modification time (set to zero), no
+     header crc, and the operating system will be set to the appropriate value,
+     if the operating system can be determined by the runtime.
+  
+     For raw compress or gzip encoding, a request for a 256-byte window is
+     rejected as invalid, since only the zlib header provides a means of
+     transmitting the window size to the uncompressor.
+  
+  -  The `strategy` parameter is used to tune the compression algorithm.  Use the
+     value DEFAULT_STRATEGY for normal data, FILTERED for data produced by a
+     filter (or predictor), HUFFMAN_ONLY to force Huffman encoding only (no
+     string match), or RLE to limit match distances to one (run-length
+     encoding).  Filtered data consists mostly of small values with a somewhat
+     random distribution.  In this case, the compression algorithm is tuned to
+     compress them better.  The effect of FILTERED is to force more Huffman
+     coding and less string matching; it is somewhat intermediate between
+     DEFAULT_STRATEGY and HUFFMAN_ONLY.  RLE is designed to be almost as
+     fast as HUFFMAN_ONLY, but give better compression for PNG image data.  The
+     strategy parameter only affects the compression ratio but not the
+     correctness of the compressed output even if it is not set appropriately.
+     FIXED prevents the use of dynamic Huffman codes, allowing for a simpler
+     decoder for special applications.
+  
+  -  The `memory_level` parameter specifies how much memory should be allocated
+     for the internal compression state.  memory_level 1 uses minimum memory but is
+     slow and reduces compression ratio; memory_level 9 uses maximum memory for
+     optimal speed.  The default value is 8.
 
-Updates a running Adler-32 checksum with the bytes buf[0..len-1] and
-return the updated checksum.
 
-##### Parameters
+  - **@params**:
+    - _bytes|string_ **data**
+    - _int?_ **level** : Default value is `DEFAULT_COMPRESSION`.
 
-- _bytes|string_ **data**
-- _number?_ **intial**
+    - _int?_ **strategy** : Default value is `DEFAULT_STRATEGY`.
 
-##### Returns
+    - _int?_ **wbits** : Default value is `MAX_WBITS`.
 
-- number
-##### Notes
+    - _int?_ **memory_level** : Default value is `DEFAULT_MEMORY_LEVEL`.
 
-- An Adler-32 checksum is almost as reliable as a CRC-32 but can be computed much faster.
 
+  {.params}
+  - **@returns**: _bytes_
 
 
-#### crc32(data, initial)
 
-Update a running CRC-32 cheksum with the bytes buf[0..len-1] and return the
-updated CRC-32 checksum.
+uncompress(_data_, _wbits_) {#zlib.uncompress}
 
-##### Parameters
+: Uncompress decompresses as much data as possible, and stops when the input
+  buffer becomes empty or the output buffer becomes full.
+  
+  -  In this implementation, uncompress() always flushes as much output as
+     possible to the output buffer, and always uses the faster approach on the
+     first call.
+  
+  -  The `wbits` parameter is the base two logarithm of the maximum window
+     size (the size of the history buffer).  It should be in the range 8..15 for
+     this version of the library.  The default value is 15.  `wbits` must be greater than or equal to the `wbits` value
+     provided to compress() while compressing, or it must be equal to 15 if
+     compress() is used with the default values.  If a compressed stream with a 
+     larger window size is given as input, uncompress() will return with the error 
+     code data error instead of trying to allocate a larger window.
+  
+     `wbits` can also be zero to request that uncompress use the window size in
+     the zlib header of the compressed stream.
+  
+     `wbits` can also be -8..-15 for raw uncompress.  In this case, `-wbits`
+     determines the window size.  uncompress() will then process raw compress data,
+     not looking for a zlib or gzip header, not generating a check value, and not
+     looking for any check values for comparison at the end of the stream.  This
+     is for use with other formats that use the compress compressed data format
+     such as zip.  Those formats provide their own check values.  If a custom
+     format is developed using the raw compress format for compressed data, it is
+     recommended that a check value such as an Adler-32 or a CRC-32 be applied to
+     the uncompressed data as is done in the zlib, gzip, and zip formats.  For
+     most applications, the zlib format should be used as is.  Note that comments
+     on the use in compress() applies to the magnitude of `wbits`.
+  
+     `wbits` can also be greater than 15 for optional gzip decoding.  Add
+     32 to `wbits` to enable zlib and gzip decoding with automatic header
+     detection, or add 16 to decode only the gzip format (the zlib format will
+     return a data error).  uncompress() will not automatically decode concatenated 
+     gzip streams.
+  
+  -  uncompress() can uncompress either zlib-wrapped or gzip-wrapped compress data.
+     If the compression uses gzip-wrapper, the correct `wbits` may need to be set.
 
-- _bytes|string_ **data**
-- _number?_ **intial**
 
-##### Returns
+  - **@params**:
+    - _bytes|string_ **data**
+    - _int?_ **wbits** : Default value is `MAX_WBITS`.
 
-- number
 
+  {.params}
+  - **@returns**: _bytes_
 
 
-#### compress(data, level, strategy, wbits, memory_level)
 
-Compress compresses as much data as possible, and stops when the input
-buffer becomes empty or the output buffer becomes full.
+deflate(_data_) {#zlib.deflate}
 
--  The compression `level` must be DEFAULT_COMPRESSION, or between 0 and 9:
-   1 gives best speed, 9 gives best compression, 0 gives no compression at all
-   (the input data is simply copied a block at a time).  DEFAULT_COMPRESSION
-   requests a default compromise between speed and compression (currently
-   equivalent to level 6)
+: Compress data using the default options for Deflate.
 
--  The `wbits` parameter is the base two logarithm of the window size
-   (the size of the history buffer).  It should be in the range 8..15 for this
-   version of the library.  Larger values of this parameter result in better
-   compression at the expense of memory usage.  The default value is 15.
 
-   For the current implementation of compress(), a `wbits` value of 8 (a
-   window size of 256 bytes) is not supported.  As a result, a request for 8
-   will result in 9 (a 512-byte window).
+  - **@params**:
+    - _bytes|string_ **data**
 
-   `wbits` can also be -8..-15 for raw compress.  In this case, `-wbits`
-   determines the window size.  compress() will then generate raw compress data
-   with no zlib header or trailer, and will not compute a check value.
+  {.params}
+  - **@returns**: _bytes_
 
-   `wbits` can also be greater than 15 for optional gzip encoding.  Add
-   16 to `wbits` to write a simple gzip header and trailer around the
-   compressed data instead of a zlib wrapper.  The gzip header will have no
-   file name, no extra data, no comment, no modification time (set to zero), no
-   header crc, and the operating system will be set to the appropriate value,
-   if the operating system can be determined by the runtime.
 
-   For raw compress or gzip encoding, a request for a 256-byte window is
-   rejected as invalid, since only the zlib header provides a means of
-   transmitting the window size to the uncompressor.
 
--  The `strategy` parameter is used to tune the compression algorithm.  Use the
-   value DEFAULT_STRATEGY for normal data, FILTERED for data produced by a
-   filter (or predictor), HUFFMAN_ONLY to force Huffman encoding only (no
-   string match), or RLE to limit match distances to one (run-length
-   encoding).  Filtered data consists mostly of small values with a somewhat
-   random distribution.  In this case, the compression algorithm is tuned to
-   compress them better.  The effect of FILTERED is to force more Huffman
-   coding and less string matching; it is somewhat intermediate between
-   DEFAULT_STRATEGY and HUFFMAN_ONLY.  RLE is designed to be almost as
-   fast as HUFFMAN_ONLY, but give better compression for PNG image data.  The
-   strategy parameter only affects the compression ratio but not the
-   correctness of the compressed output even if it is not set appropriately.
-   FIXED prevents the use of dynamic Huffman codes, allowing for a simpler
-   decoder for special applications.
+undeflate(_data_) {#zlib.undeflate}
 
--  The `memory_level` parameter specifies how much memory should be allocated
-   for the internal compression state.  memory_level 1 uses minimum memory but is
-   slow and reduces compression ratio; memory_level 9 uses maximum memory for
-   optimal speed.  The default value is 8.
+: Uncompress a deflated data using default options.
 
-##### Parameters
 
-- _bytes|string_ **data**
-- _int?_ **level**: : Default value is `DEFAULT_COMPRESSION`.
-- _int?_ **strategy**: : Default value is `DEFAULT_STRATEGY`.
-- _int?_ **wbits**: : Default value is `MAX_WBITS`.
-- _int?_ **memory_level**: : Default value is `DEFAULT_MEMORY_LEVEL`.
+  - **@params**:
+    - _bytes|string_ **data**
 
-##### Returns
+  {.params}
+  - **@returns**: _bytes_
 
-- bytes
 
 
+gzip(_data_) {#zlib.gzip}
 
-#### uncompress(data, wbits)
+: Compress data using the default options for GZip.
 
-Uncompress decompresses as much data as possible, and stops when the input
-buffer becomes empty or the output buffer becomes full.
 
--  In this implementation, uncompress() always flushes as much output as
-   possible to the output buffer, and always uses the faster approach on the
-   first call.
+  - **@params**:
+    - _bytes|string_ **data**
 
--  The `wbits` parameter is the base two logarithm of the maximum window
-   size (the size of the history buffer).  It should be in the range 8..15 for
-   this version of the library.  The default value is 15.  `wbits` must be greater than or equal to the `wbits` value
-   provided to compress() while compressing, or it must be equal to 15 if
-   compress() is used with the default values.  If a compressed stream with a 
-   larger window size is given as input, uncompress() will return with the error 
-   code data error instead of trying to allocate a larger window.
+  {.params}
+  - **@returns**: _bytes_
 
-   `wbits` can also be zero to request that uncompress use the window size in
-   the zlib header of the compressed stream.
 
-   `wbits` can also be -8..-15 for raw uncompress.  In this case, `-wbits`
-   determines the window size.  uncompress() will then process raw compress data,
-   not looking for a zlib or gzip header, not generating a check value, and not
-   looking for any check values for comparison at the end of the stream.  This
-   is for use with other formats that use the compress compressed data format
-   such as zip.  Those formats provide their own check values.  If a custom
-   format is developed using the raw compress format for compressed data, it is
-   recommended that a check value such as an Adler-32 or a CRC-32 be applied to
-   the uncompressed data as is done in the zlib, gzip, and zip formats.  For
-   most applications, the zlib format should be used as is.  Note that comments
-   on the use in compress() applies to the magnitude of `wbits`.
 
-   `wbits` can also be greater than 15 for optional gzip decoding.  Add
-   32 to `wbits` to enable zlib and gzip decoding with automatic header
-   detection, or add 16 to decode only the gzip format (the zlib format will
-   return a data error).  uncompress() will not automatically decode concatenated 
-   gzip streams.
+ungzip(_data_) {#zlib.ungzip}
 
--  uncompress() can uncompress either zlib-wrapped or gzip-wrapped compress data.
-   If the compression uses gzip-wrapper, the correct `wbits` may need to be set.
+: Uncompress a GZipped data using default options.
 
-##### Parameters
 
-- _bytes|string_ **data**
-- _int?_ **wbits**: : Default value is `MAX_WBITS`.
+  - **@params**:
+    - _bytes|string_ **data**
 
-##### Returns
+  {.params}
+  - **@returns**: _bytes_
 
-- bytes
 
 
+gzopen(_path_, _mode_) {#zlib.gzopen}
 
-#### deflate(data)
+: Opens a gzip (.gz) file for reading or writing.  The mode parameter is as
+  in `file` ("rb" or "wb") but can also include a compression level ("wb9") or
+  a strategy: 'f' for filtered data as in "wb6f", 'h' for Huffman-only
+  compression as in "wb1h", 'R' for run-length encoding as in "wb1R", or 'F'
+  for fixed code compression as in "wb9F".  (See the description of
+  `compress()` for more information about the strategy parameter.)  'T' will
+  request transparent writing or appending with no compression and not using
+  the gzip format.
+  
+  "a" can be used instead of "w" to request that the gzip stream that will
+  be written be appended to the file.  "+" will result in an error, since
+  reading and writing to the same gzip file is not supported.  The addition of
+  "x" when writing will create the file exclusively, which fails if the file
+  already exists.  On systems that support it, the addition of "e" when
+  reading or writing will set the flag to close the file on an execve() call.
+  
+  These functions, as well as gzip, will read and decode a sequence of gzip
+  streams in a file.  The append function of gzopen() can be used to create
+  such a file. When appending, gzopen does not test whether the file begins with 
+  a gzip stream, nor does it look for the end of the gzip streams to begin 
+  appending.  gzopen will simply append a gzip stream to the existing file.
+  
+  gzopen can be used to read a file which is not in gzip format; in this
+  case read will directly read from the file without decompression.  When
+  reading, this will be detected automatically by looking for the magic two-byte 
+  gzip header.
+  
+  gzopen throws an error if the file could not be opened, if there was insufficient 
+  memory to allocate the gzFile state, or if an invalid mode was specified (an 'r', 
+  'w', or 'a' was not provided, or '+' was provided).
 
-Compress data using the default options for Deflate.
 
-##### Parameters
+  - **@params**:
+    - _string_ **path**
+    - _string?_ **mode** : Default value is `rb`.
 
-- _bytes|string_ **data**
 
-##### Returns
-
-- bytes
-
-
-
-#### undeflate(data)
-
-Uncompress a deflated data using default options.
-
-##### Parameters
-
-- _bytes|string_ **data**
-
-##### Returns
-
-- bytes
-
-
-
-#### gzip(data)
-
-Compress data using the default options for GZip.
-
-##### Parameters
-
-- _bytes|string_ **data**
-
-##### Returns
-
-- bytes
-
-
-
-#### ungzip(data)
-
-Uncompress a GZipped data using default options.
-
-##### Parameters
-
-- _bytes|string_ **data**
-
-##### Returns
-
-- bytes
-
-
-
-#### gzopen(path, mode)
-
-Opens a gzip (.gz) file for reading or writing.  The mode parameter is as
-in `file` ("rb" or "wb") but can also include a compression level ("wb9") or
-a strategy: 'f' for filtered data as in "wb6f", 'h' for Huffman-only
-compression as in "wb1h", 'R' for run-length encoding as in "wb1R", or 'F'
-for fixed code compression as in "wb9F".  (See the description of
-`compress()` for more information about the strategy parameter.)  'T' will
-request transparent writing or appending with no compression and not using
-the gzip format.
-
-"a" can be used instead of "w" to request that the gzip stream that will
-be written be appended to the file.  "+" will result in an error, since
-reading and writing to the same gzip file is not supported.  The addition of
-"x" when writing will create the file exclusively, which fails if the file
-already exists.  On systems that support it, the addition of "e" when
-reading or writing will set the flag to close the file on an execve() call.
-
-These functions, as well as gzip, will read and decode a sequence of gzip
-streams in a file.  The append function of gzopen() can be used to create
-such a file. When appending, gzopen does not test whether the file begins with 
-a gzip stream, nor does it look for the end of the gzip streams to begin 
-appending.  gzopen will simply append a gzip stream to the existing file.
-
-gzopen can be used to read a file which is not in gzip format; in this
-case read will directly read from the file without decompression.  When
-reading, this will be detected automatically by looking for the magic two-byte 
-gzip header.
-
-gzopen throws an error if the file could not be opened, if there was insufficient 
-memory to allocate the gzFile state, or if an invalid mode was specified (an 'r', 
-'w', or 'a' was not provided, or '+' was provided).
-
-##### Parameters
-
-- _string_ **path**
-- _string?_ **mode**: : Default value is `rb`.
-
-##### Returns
-
-- ptr
+  {.params}
+  - **@returns**: _ptr_
 
 
 
 ## Classes
 
-### _class_ GZ
+_class_ **GZ** {#zlib.GZ .class}
 
-class GZ
+: class GZ
 
-#### Methods
 
-#### GZ(path, mode) &#8674; Constructor
+  .GZ(_path_, _mode_) &#8674; Constructor {#zlib.GZ.GZ}
 
-GZ(path: string [, mode: string = 'rb'])
+  : GZ(path: string [, mode: string = 'rb'])
+    
+    
+    
+    @see `gzopen()`
 
 
+    - **@params**:
+      - _string_ **path**
+      - _string?_ **mode** : Default value is `rb`.
 
-@see `gzopen()`
 
-##### Parameters
+    {.params}
 
-- _string_ **path**
-- _string?_ **mode**: : Default value is `rb`.
 
+  .read(_length_) {#zlib.GZ.read}
 
-#### read(length)
+  : Reads the given number of uncompressed bytes from the compressed file.  If
+    the input file is not in gzip format, `read()` copies the given number of
+    bytes into the buffer directly from the file.
+    
+    After reaching the end of a gzip stream in the input, _read_ will continue
+    to read, looking for another gzip stream.  Any number of gzip streams may be
+    concatenated in the input file, and will all be decompressed by `read()`.
+    If something other than a gzip stream is encountered after a gzip stream,
+    that remaining trailing garbage is ignored (and no error is returned).
+    
+    read can be used to read a gzip file that is being concurrently written.
+    Upon reaching the end of the input, read will return with the available
+    data. Note that read does not return -1 in the event of an incomplete gzip stream.  
+    This error is deferred until `close()`, which will return false if the last read 
+    ended in the middle of a gzip stream.  Alternatively, gzerror can be used before 
+    close to detect this case.
+    
+    read returns the number of uncompressed bytes actually read, less than
+    length for end of file, or -1 for error.  If len is too large to fit in an integer,
+    then nothing is read, -1 is returned.
 
-Reads the given number of uncompressed bytes from the compressed file.  If
-the input file is not in gzip format, `read()` copies the given number of
-bytes into the buffer directly from the file.
 
-After reaching the end of a gzip stream in the input, _read_ will continue
-to read, looking for another gzip stream.  Any number of gzip streams may be
-concatenated in the input file, and will all be decompressed by `read()`.
-If something other than a gzip stream is encountered after a gzip stream,
-that remaining trailing garbage is ignored (and no error is returned).
+    - **@params**:
+      - _number_ **length**
 
-read can be used to read a gzip file that is being concurrently written.
-Upon reaching the end of the input, read will return with the available
-data. Note that read does not return -1 in the event of an incomplete gzip stream.  
-This error is deferred until `close()`, which will return false if the last read 
-ended in the middle of a gzip stream.  Alternatively, gzerror can be used before 
-close to detect this case.
+    {.params}
+    - **@returns**: _bytes_
 
-read returns the number of uncompressed bytes actually read, less than
-length for end of file, or -1 for error.  If len is too large to fit in an integer,
-then nothing is read, -1 is returned.
 
-##### Parameters
+  .write(_data_) {#zlib.GZ.write}
 
-- _number_ **length**
+  : Writes the given number of uncompressed bytes into the compressed file.
+    write returns the number of uncompressed bytes written or 0 in case of
+    error.
 
-##### Returns
 
-- bytes
+    - **@params**:
+      - _bytes|string_ **data**
 
-#### write(data)
+    {.params}
+    - **@returns**: _number_
 
-Writes the given number of uncompressed bytes into the compressed file.
-write returns the number of uncompressed bytes written or 0 in case of
-error.
 
-##### Parameters
+  .eof() {#zlib.GZ.eof}
 
-- _bytes|string_ **data**
+  : Returns `true` if the end-of-file indicator has been set while reading,
+    `false` otherwise.  Note that the end-of-file indicator is set only if the
+    read tried to go past the end of the input, but came up short.  Therefore,
+    `eof()` may return `false` even if there is no more data to read, in the event 
+    that the last read request was for the exact number of bytes remaining in the 
+    input file.  This will happen if the input file size is an exact multiple of 
+    the buffer size.
+    If eof() returns true, then the read functions will return no more data,
+    unless the end-of-file indicator is reset by gzclearerr() and the input file
+    has grown since the previous end of file was detected.
 
-##### Returns
 
-- number
+    - **@returns**: _bool_
 
-#### eof()
 
-Returns `true` if the end-of-file indicator has been set while reading,
-`false` otherwise.  Note that the end-of-file indicator is set only if the
-read tried to go past the end of the input, but came up short.  Therefore,
-`eof()` may return `false` even if there is no more data to read, in the event 
-that the last read request was for the exact number of bytes remaining in the 
-input file.  This will happen if the input file size is an exact multiple of 
-the buffer size.
-If eof() returns true, then the read functions will return no more data,
-unless the end-of-file indicator is reset by gzclearerr() and the input file
-has grown since the previous end of file was detected.
+  .direct() {#zlib.GZ.direct}
 
-##### Returns
+  : Returns `true` if file is being copied directly while reading, or `false`
+    if file is a gzip stream being decompressed.
+    
+    If the input file is empty, direct() will return true, since the input
+    does not contain a gzip stream.
+    
+    If direct() is used immediately after gzopen() it will cause buffers to be 
+    allocated to allow reading the file to determine if it is a gzip file.
+    
+    When writing, direct() returns true if transparent writing was requested 
+    ("wT" for the gzopen() mode), or false otherwise.
+    
+    > Note: direct() is not needed when writing.  Transparent writing must be 
+    explicitly requested, so the application already knows the answer.
 
-- bool
 
-#### direct()
+    - **@returns**: _bool_
 
-Returns `true` if file is being copied directly while reading, or `false`
-if file is a gzip stream being decompressed.
 
-If the input file is empty, direct() will return true, since the input
-does not contain a gzip stream.
+  .close() {#zlib.GZ.close}
 
-If direct() is used immediately after gzopen() it will cause buffers to be 
-allocated to allow reading the file to determine if it is a gzip file.
+  : Flushes all pending output if necessary, closes the compressed file and
+    deallocates the (de)compression state.  Note that once file is closed, you
+    cannot call gzerror with file, since its structures have been deallocated.
+    close must not be called more than once on the same file, just as free
+    must not be called more than once on the same allocation.
+    
+    close will return `true` on success or `false` otherwise.
 
-When writing, direct() returns true if transparent writing was requested 
-("wT" for the gzopen() mode), or false otherwise.
 
-> Note: direct() is not needed when writing.  Transparent writing must be 
-explicitly requested, so the application already knows the answer.
+    - **@returns**: _bool_
 
-##### Returns
 
-- bool
+  .set\_params(_level_, _strategy_) {#zlib.GZ.set_params}
 
-#### close()
+  : Dynamically update the compression level or strategy.  See the description
+    of `compress()` for the meaning of these parameters.  Previously provided
+    data is flushed before the parameter change.
 
-Flushes all pending output if necessary, closes the compressed file and
-deallocates the (de)compression state.  Note that once file is closed, you
-cannot call gzerror with file, since its structures have been deallocated.
-close must not be called more than once on the same file, just as free
-must not be called more than once on the same allocation.
 
-close will return `true` on success or `false` otherwise.
+    - **@params**:
+      - _number_ **level**
+      - _number_ **strategy**
 
-##### Returns
+    {.params}
+    - **@returns**: _bool_
 
-- bool
 
-#### set\_params(level, strategy)
+  .seek(_offset_, _whence_) {#zlib.GZ.seek}
 
-Dynamically update the compression level or strategy.  See the description
-of `compress()` for the meaning of these parameters.  Previously provided
-data is flushed before the parameter change.
+  : Sets the starting position for the next read or write on the given
+    compressed file.  The offset represents a number of bytes in the
+    uncompressed data stream. The whence parameter is defined as in `io` 
+    module; the value SEEK_END is not supported.
+    
+    If the file is opened for reading, this function is emulated but can be
+    extremely slow.  If the file is opened for writing, only forward seeks are
+    supported; `seek()` then compresses a sequence of zeroes up to the new
+    starting position.
+    
+    seek returns the resulting offset location as measured in bytes from
+    the beginning of the uncompressed stream, or -1 in case of error, in
+    particular if the file is opened for writing and the new starting position
+    would be before the current position.
 
-##### Parameters
 
-- _number_ **level**
-- _number_ **strategy**
+    - **@params**:
+      - _int_ **offset**
+      - _int?_ **whence** : Default value is `SEEK_SET`.
 
-##### Returns
 
-- bool
+    {.params}
+    - **@returns**: _number_
 
-#### seek(offset, whence)
 
-Sets the starting position for the next read or write on the given
-compressed file.  The offset represents a number of bytes in the
-uncompressed data stream. The whence parameter is defined as in `io` 
-module; the value SEEK_END is not supported.
+  .rewind() {#zlib.GZ.rewind}
 
-If the file is opened for reading, this function is emulated but can be
-extremely slow.  If the file is opened for writing, only forward seeks are
-supported; `seek()` then compresses a sequence of zeroes up to the new
-starting position.
+  : Rewinds the given file. This function is supported only for reading.
 
-seek returns the resulting offset location as measured in bytes from
-the beginning of the uncompressed stream, or -1 in case of error, in
-particular if the file is opened for writing and the new starting position
-would be before the current position.
 
-##### Parameters
+    > **@notes**:
+    > 
+    > - `rewind()` is equivalent to `seek(0, SEEK_SET)`.
 
-- _int_ **offset**
-- _int?_ **whence**: : Default value is `SEEK_SET`.
+    - **@returns**: _number_
 
-##### Returns
 
-- number
+  .tell() {#zlib.GZ.tell}
 
-#### rewind()
+  : Returns the starting position for the next read or write on the given
+    compressed file.  This position represents a number of bytes in the
+    uncompressed data stream, and is zero when starting.
 
-Rewinds the given file. This function is supported only for reading.
 
-##### Returns
+    > **@notes**:
+    > 
+    > - `tell()` is equivalent to `seek(0, SEEK_CUR)`.
 
-- number
-##### Notes
+    - **@returns**: _number_
 
-- `rewind()` is equivalent to `seek(0, SEEK_SET)`.
 
-#### tell()
+  .offset() {#zlib.GZ.offset}
 
-Returns the starting position for the next read or write on the given
-compressed file.  This position represents a number of bytes in the
-uncompressed data stream, and is zero when starting.
+  : Returns the current offset in the file being read or written.  This offset
+    includes the count of bytes that precede the gzip stream, for example when
+    appending.  When reading, the offset does not include as yet unused buffered 
+    input.  This information can be used for a progress indicator.  On error, 
+    offset() returns -1.
 
-##### Returns
 
-- number
-##### Notes
+    - **@returns**: _number_
 
-- `tell()` is equivalent to `seek(0, SEEK_CUR)`.
 
-#### offset()
+  .clear\_error() {#zlib.GZ.clear_error}
 
-Returns the current offset in the file being read or written.  This offset
-includes the count of bytes that precede the gzip stream, for example when
-appending.  When reading, the offset does not include as yet unused buffered 
-input.  This information can be used for a progress indicator.  On error, 
-offset() returns -1.
+  : Clears the error and end-of-file flags for file. This is useful for continuing 
+    to read a gzip file that is being written concurrently.
 
-##### Returns
 
-- number
 
-#### clear\_error()
-
-Clears the error and end-of-file flags for file. This is useful for continuing 
-to read a gzip file that is being written concurrently.
 
 
 

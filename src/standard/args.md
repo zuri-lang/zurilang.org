@@ -64,165 +64,168 @@ Usage: myprogram call
   Make a phone call
 ```
 
-## Properties
+## Fields
 
-- **NONE**:
+**NONE**
+:  value type none
 
-  value type none
+**INT**
+:  value type integer (allows numbers, but floors them to integers)
 
-- **INT**:
+**NUMBER**
+:  value type number
 
-  value type integer (allows numbers, but floors them to integers)
+**BOOL**
+:  value type boolean (accepts `1` and `0` as well as `true` 
+  and `false` as valid values).
 
-- **NUMBER**:
+**STRING**
+:  value type string
 
-  value type number
+**LIST**
+:  value type for list
 
-- **BOOL**:
-
-  value type boolean (accepts `1` and `0` as well as `true` 
-and `false` as valid values).
-
-- **STRING**:
-
-  value type string
-
-- **LIST**:
-
-  value type for list
-
-- **CHOICE**:
-
-  value type enumeration choices.
+**CHOICE**
+:  value type enumeration choices.
 
 
 ## Classes
 
-### _class_ ArgsException < _Exception_
+_class_ **ArgsException** < _Exception_ {#args.ArgsException .class}
 
-Commandline argument exception.
-
-
-
-### _class_ Parser
-
-A configurable commandline parser.
-
-#### Fields
-
-- **commands**:
-
-  A list of commands supported by the parser.
-
-- **indexes**:
-
-  A list of positional values supported by the parser.
-
-#### Methods
-
-#### Parser(name, default_help) &#8674; Constructor
+: Commandline argument exception.
 
 
 
-##### Parameters
 
-- _string_ **name**: : Refers to the name of the cli program.
-- _bool?_ **default_help**: : Whether to show help when no command or option is matched or not &mdash; Default value is `true`.
+_class_ **Parser** {#args.Parser .class}
+
+: A configurable commandline parser.
 
 
-#### add\_option(name, help, opts)
+  **.commands**
+  :  A list of commands supported by the parser.
 
-Adds a support for a new command to the parser.
+  **.indexes**
+  :  A list of positional values supported by the parser.
 
-The `opts` dictionary can contain one or more of:
 
-- `short_name`: A shorter version of the option name parsed via 
-single hyphens (`-`) without the hyphen. For example, short_name `v` 
-will match `-v` in the commandline.
-- `type`: type must be one of the args types and will indicate 
-how the parsed data should be interpreted in the final result.
-- `value`: tells the parser the default value for this option.
-- `choices`: a list of allowed options or a dictionary of allowed 
-options with their respective descriptions.
+  .Parser(_name_, _default_help_) &#8674; Constructor {#args.Parser.Parser}
 
-##### Parameters
+  : - **@params**:
+      - _string_ **name** : Refers to the name of the cli program.
 
-- _string_ **name**
-- _string?_ **help**
-- _dict?_ **opts**
+      - _bool?_ **default_help** : Whether to show help when no command or option is matched or not &mdash; Default value is `true`.
 
-##### Notes
 
-- the `choices` option only works for type `CHOICE`.
+    {.params}
 
-#### add\_command(name, help, opts)
 
-Adds a support for a new command to the parser.
+  .add\_option(_name_, _help_, _opts_) {#args.Parser.add_option}
 
-The `opts` dictionary can contain one or more of:
+  : Adds a support for a new command to the parser.
+    
+    The `opts` dictionary can contain one or more of:
+    
+    - `short_name`: A shorter version of the option name parsed via 
+    single hyphens (`-`) without the hyphen. For example, short_name `v` 
+    will match `-v` in the commandline.
+    - `type`: type must be one of the args types and will indicate 
+    how the parsed data should be interpreted in the final result.
+    - `value`: tells the parser the default value for this option.
+    - `choices`: a list of allowed options or a dictionary of allowed 
+    options with their respective descriptions.
 
-- `type`: type must be one of the args types and will indicate 
-how the parsed data should be interpreted in the final result.
-- `choices`: a list of allowed options or a dictionary of allowed 
-options with their respective descriptions.
-- The `action` property must be a function.
 
-##### Parameters
+    > **@notes**:
+    > 
+    > - the `choices` option only works for type `CHOICE`.
 
-- _string_ **name**
-- _string?_ **help**
-- _dict?_ **opts**
+    - **@params**:
+      - _string_ **name**
+      - _string?_ **help**
+      - _dict?_ **opts**
 
-##### Notes
+    {.params}
 
-- the `choices` option only works for type `CHOICE`.
 
-#### add\_index(name, help, opts)
+  .add\_command(_name_, _help_, _opts_) {#args.Parser.add_command}
 
-Adds a support for a new positional argument to the parser.
+  : Adds a support for a new command to the parser.
+    
+    The `opts` dictionary can contain one or more of:
+    
+    - `type`: type must be one of the args types and will indicate 
+    how the parsed data should be interpreted in the final result.
+    - `choices`: a list of allowed options or a dictionary of allowed 
+    options with their respective descriptions.
+    - The `action` property must be a function.
 
-The `opts` dictionary can contain one or more of:
 
-- `type`: type must be one of the args types and will indicate 
-how the parsed data should be interpreted in the final result.
-- `value`: tells the parser the default value for this index.
-- `choices`: a list of allowed options or a dictionary of allowed 
-values with their respective descriptions.
+    > **@notes**:
+    > 
+    > - the `choices` option only works for type `CHOICE`.
 
-##### Parameters
+    - **@params**:
+      - _string_ **name**
+      - _string?_ **help**
+      - _dict?_ **opts**
 
-- _string_ **name**
-- _string?_ **help**
-- _dict?_ **opts**
+    {.params}
 
-##### Notes
 
-- the `choices` option only works for type `CHOICE`.
+  .add\_index(_name_, _help_, _opts_) {#args.Parser.add_index}
 
-#### parse()
+  : Adds a support for a new positional argument to the parser.
+    
+    The `opts` dictionary can contain one or more of:
+    
+    - `type`: type must be one of the args types and will indicate 
+    how the parsed data should be interpreted in the final result.
+    - `value`: tells the parser the default value for this index.
+    - `choices`: a list of allowed options or a dictionary of allowed 
+    values with their respective descriptions.
 
-Parses the commandline arguments and returns a dictionary of command 
-and options.
 
-For example, parsing the commandline
+    > **@notes**:
+    > 
+    > - the `choices` option only works for type `CHOICE`.
 
-```
-blade test.b install 5 --verbose
-``` 
+    - **@params**:
+      - _string_ **name**
+      - _string?_ **help**
+      - _dict?_ **opts**
 
-may yield such a result as similar to the one below.
+    {.params}
 
-```
-{options: {verbose: true}, command: {name: install, value: 5}}
-```
 
-##### Returns
+  .parse() {#args.Parser.parse}
 
-- dict
+  : Parses the commandline arguments and returns a dictionary of command 
+    and options.
+    
+    For example, parsing the commandline
+    
+    ```
+    blade test.b install 5 --verbose
+    ``` 
+    
+    may yield such a result as similar to the one below.
+    
+    ```
+    {options: {verbose: true}, command: {name: install, value: 5}}
+    ```
 
-#### help()
 
-Show the help message.
+    - **@returns**: _dict_
+
+
+  .help() {#args.Parser.help}
+
+  : Show the help message.
+
+
+
 
 
 

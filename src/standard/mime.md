@@ -8,148 +8,149 @@ _See defined functions for example._
 
 ## Functions
 
-#### detect\_from\_name(name)
+detect\_from\_name(_name_) {#mime.detect_from_name}
 
-Detects the mimetype of a file based on the
-extension defined in it's path.
-
-Example,
-
-```blade
-import mime
-echo mime.detect_from_name('myimage.png')
-```
-
-##### Parameters
-
-- _string_ **name**
-
-##### Returns
-
-- string
-##### Notes
-
-- For popular files such as Jpeg and Pngs, calling this method directly is more efficient and provides a faster lookup.
+: Detects the mimetype of a file based on the
+  extension defined in it's path.
+  
+  Example,
+  
+  ```blade
+  import mime
+  echo mime.detect_from_name('myimage.png')
+  ```
 
 
+  > **@notes**:
+  > 
+  > - For popular files such as Jpeg and Pngs, calling this method directly is more efficient and provides a faster lookup.
 
-#### detect\_from\_header(file)
+  - **@params**:
+    - _string_ **name**
 
-Detects the mimetype of a file based on it's file header.
-When multiple file formats share very similar or shadowing
-file headers (such as the relationship between Zip files and Docx files),
-this method will perform an extension before returning it's result.
-
-Example,
-
-```blade
-import mime
-var f = file('my_file.ext', 'rb')
-echo mime.detect_from_header(f)
-```
-
-##### Parameters
-
-- _file_ **file**
-
-##### Returns
-
-- string
-##### Notes
-
-- For dealing with files without extension, or where the accuracy of the file extension cannot be trusted, this method provides a more efficient lookup.
-- This method may produce slightly more rigorous results
-- This method requires that the file must be opened in binary mode.
+  {.params}
+  - **@returns**: _string_
 
 
 
-#### detect(file)
+detect\_from\_header(_file_) {#mime.detect_from_header}
 
-Performs mimetype detection on a file.
+: Detects the mimetype of a file based on it's file header.
+  When multiple file formats share very similar or shadowing
+  file headers (such as the relationship between Zip files and Docx files),
+  this method will perform an extension before returning it's result.
+  
+  Example,
+  
+  ```blade
+  import mime
+  var f = file('my_file.ext', 'rb')
+  echo mime.detect_from_header(f)
+  ```
 
-this method is capable of detecting file mimetypes even
-in the absence of an extension.
-If the file is opened in binary mode, it first attempt the more
-accurate header check. If the header check returns a generic result 
-(i.e. application/octet-stream), it performs an extension lookup.
 
-Example,
+  > **@notes**:
+  > 
+  > - For dealing with files without extension, or where the accuracy of the file extension cannot be trusted, this method provides a more efficient lookup.
 
-```blade
-import mime
-var f = file('myfile', 'rb')
+  > - This method may produce slightly more rigorous results
 
-# using 'rb' here for two reasons: 
-# 1. Our file has no extension, so extension based detection is impossible
-# 2. We want more accuracy by having Mime check file headers
+  > - This method requires that the file must be opened in binary mode.
 
-echo mime.detect(f)
-```
+  - **@params**:
+    - _file_ **file**
 
-##### Parameters
-
-- _file_ **file**
-
-##### Returns
-
-- string
-##### Notes
-
-- this method gives the best result, but slightly slower than a direct lookup of name or header.
+  {.params}
+  - **@returns**: _string_
 
 
 
-#### extend(extension, format)
+detect(_file_) {#mime.detect}
 
-Extends the mime module with support for files with the given _extension_ as 
-defined in the given _format_.
+: Performs mimetype detection on a file.
+  
+  this method is capable of detecting file mimetypes even
+  in the absence of an extension.
+  If the file is opened in binary mode, it first attempt the more
+  accurate header check. If the header check returns a generic result 
+  (i.e. application/octet-stream), it performs an extension lookup.
+  
+  Example,
+  
+  ```blade
+  import mime
+  var f = file('myfile', 'rb')
+  
+  # using 'rb' here for two reasons: 
+  # 1. Our file has no extension, so extension based detection is impossible
+  # 2. We want more accuracy by having Mime check file headers
+  
+  echo mime.detect(f)
+  ```
 
-Example,
 
-```blade-repl
-%> import mime
-%> mime.detect_from_name('myfile.ppk')
-'application/octet-stream'
-%> mime.extend('.ppk', mime.MimeFormat('file/ppk'))
-true
-%> mime.detect_from_name('myfile.ppk')
-'file/ppk'
-```
+  > **@notes**:
+  > 
+  > - this method gives the best result, but slightly slower than a direct lookup of name or header.
 
-##### Parameters
+  - **@params**:
+    - _file_ **file**
 
-- _string_ **extension**
-- _MimeFormat_ **format**
+  {.params}
+  - **@returns**: _string_
 
-##### Returns
 
-- bool
-##### Notes
 
-- the extension MUST start with `.`
+extend(_extension_, _format_) {#mime.extend}
+
+: Extends the mime module with support for files with the given _extension_ as 
+  defined in the given _format_.
+  
+  Example,
+  
+  ```blade-repl
+  %> import mime
+  %> mime.detect_from_name('myfile.ppk')
+  'application/octet-stream'
+  %> mime.extend('.ppk', mime.MimeFormat('file/ppk'))
+  true
+  %> mime.detect_from_name('myfile.ppk')
+  'file/ppk'
+  ```
+
+
+  > **@notes**:
+  > 
+  > - the extension MUST start with `.`
+
+  - **@params**:
+    - _string_ **extension**
+    - _MimeFormat_ **format**
+
+  {.params}
+  - **@returns**: _bool_
 
 
 
 ## Classes
 
-### _class_ MimeFormat
+_class_ **MimeFormat** {#mime.MimeFormat .class}
 
-Mime format representation class.
-
-#### Methods
-
-#### MimeFormat(mimetype, header) &#8674; Constructor
+: Mime format representation class.
 
 
+  .MimeFormat(_mimetype_, _header_) &#8674; Constructor {#mime.MimeFormat.MimeFormat}
 
-##### Parameters
+  : > **@notes**:
+    > 
+    > - only the first 16 bytes of a file header will be used.
 
-- _string_ **mimetype**
-- _list|bytes|nil_ **header**
+    - **@params**:
+      - _string_ **mimetype**
+      - _list|bytes|nil_ **header**
 
-##### Notes
+    {.params}
 
-- only the first 16 bytes of a file header will be used.
 
 
 

@@ -6,18 +6,18 @@ extendable by plugins.
 
 ## Functions
 
-#### markdown(preset_name, options) &#8674; Exported
+markdown(_preset_name_, _options_) &#8674; Exported {#markdown.markdown}
 
-Returns a new instance of class Markdown.
+: Returns a new instance of class Markdown.
 
-##### Parameters
 
-- _string_ **preset_name**: : optional, `commonmark` / `zero`
-- _dict_ **options**
+  - **@params**:
+    - _string_ **preset_name** : optional, `commonmark` / `zero`
 
-##### Returns
+    - _dict_ **options**
 
-- Markdown
+  {.params}
+  - **@returns**: _Markdown_
 
 
 
@@ -27,654 +27,709 @@ Returns a new instance of class Markdown.
 
 
 
-### _class_ Token
+_class_ **Token** {#markdown.Token .class}
 
-class Token
+: class Token
 
-#### Fields
 
-- **type** &#8674; _string_:
+  ~ Properties
 
-  Type of the token (string, e.g. "paragraph_open")
+    - __@serializable__
 
-- **tag** &#8674; _string_:
+  **.type** &#8674; _string_
+  :  Type of the token (string, e.g. "paragraph_open")
 
-  html tag name, e.g. "p"
+  **.tag** &#8674; _string_
+  :  html tag name, e.g. "p"
 
-- **attrs** &#8674; _list_:
+  **.attrs** &#8674; _list_
+  :  Html attributes. Format: `[ [ name1, value1 ], [ name2, value2 ] ]`.
 
-  Html attributes. Format: `[ [ name1, value1 ], [ name2, value2 ] ]`.
+  **.map** &#8674; _list_
+  :  Source map info. Format: `[ line_begin, line_end ]`.
 
-- **map** &#8674; _list_:
+  **.nesting** &#8674; _number_
+  :  Level change (number in {-1, 0, 1} set), where:
+    -  `1` means the tag is opening
+    -  `0` means the tag is self-closing
+    - `-1` means the tag is closing
 
-  Source map info. Format: `[ line_begin, line_end ]`.
+  **.level** &#8674; _number_
+  :  nesting level, the same as `state.level`.
 
-- **nesting** &#8674; _number_:
+  **.children** &#8674; _list_
+  :  A list of child nodes (inline and img tokens).
 
-  Level change (number in {-1, 0, 1} set), where:
--  `1` means the tag is opening
--  `0` means the tag is self-closing
-- `-1` means the tag is closing
+  **.content** &#8674; _string_
+  :  In a case of self-closing tag (code, html, fence, etc.),
+    it has contents of this tag.
 
-- **level** &#8674; _number_:
+  **.markup** &#8674; _string_
+  :  '' or '_' for emphasis, fence string for fence, etc.
 
-  nesting level, the same as `state.level`.
+  **.info** &#8674; _string_
+  :  Additional information:
+    - Info string for "fence" tokens
+    - The value "auto" for autolink "link_open" and "link_close" tokens
+    - The string value of the item marker for ordered-list "list_item_open" tokens
 
-- **children** &#8674; _list_:
+  **.meta** &#8674; _dict_
+  :  A place for plugins to store an arbitrary data.
 
-  A list of child nodes (inline and img tokens).
+  **.block** &#8674; _bool_
+  :  True for block-level tokens, false for inline tokens.
+    Used in renderer to calculate line breaks.
 
-- **content** &#8674; _string_:
+  **.hidden** &#8674; _bool_
+  :  If it's true, ignore this element when rendering. Used for tight lists
+    to hide paragraphs.
 
-  In a case of self-closing tag (code, html, fence, etc.),
-it has contents of this tag.
 
-- **markup** &#8674; _string_:
+  .Token(_type_, _tag_, _nesting_) &#8674; Constructor {#markdown.Token.Token}
 
-  '' or '_' for emphasis, fence string for fence, etc.
+  : 
 
-- **info** &#8674; _string_:
+  .attr\_index(_name_) {#markdown.Token.attr_index}
 
-  Additional information:
-- Info string for "fence" tokens
-- The value "auto" for autolink "link_open" and "link_close" tokens
-- The string value of the item marker for ordered-list "list_item_open" tokens
+  : Search attribute index by name.
+    
+    @type number
 
-- **meta** &#8674; _dict_:
 
-  A place for plugins to store an arbitrary data.
 
-- **block** &#8674; _bool_:
 
-  True for block-level tokens, false for inline tokens.
-Used in renderer to calculate line breaks.
+  .attr\_push(_attr_data_) {#markdown.Token.attr_push}
 
-- **hidden** &#8674; _bool_:
+  : Add `[ name, value ]` attribute to list. Init attrs if necessary
 
-  If it's true, ignore this element when rendering. Used for tight lists
-to hide paragraphs.
 
-#### Methods
 
-#### Token(type, tag, nesting) &#8674; Constructor
 
+  .attr\_set(_name_, _value_) {#markdown.Token.attr_set}
 
+  : Set `name` attribute to `value`. Override old value if exists.
 
 
-#### attr\_index(name)
 
-Search attribute index by name.
 
-@type number
+  .attr\_get(_name_) {#markdown.Token.attr_get}
 
+  : Get the value of attribute `name`, or nil if it does not exist.
 
-#### attr\_push(attr_data)
 
-Add `[ name, value ]` attribute to list. Init attrs if necessary
 
 
-#### attr\_set(name, value)
+  .attr\_join(_name_, _value_) {#markdown.Token.attr_join}
 
-Set `name` attribute to `value`. Override old value if exists.
+  : Join value to existing attribute via space. Or create new attribute if not
+    exists. Useful to operate with token classes.
 
 
-#### attr\_get(name)
 
-Get the value of attribute `name`, or nil if it does not exist.
 
-
-#### attr\_join(name, value)
-
-Join value to existing attribute via space. Or create new attribute if not
-exists. Useful to operate with token classes.
-
-
-
-### _class_ Markdown
-
-Markdown parsing and rendering class.
-##### Usage
-```blade
-import markdown
-
-var md = markdown()
-echo md.render('# markdown is bae!')
-```
-Single line rendering, without paragraph wrap:
-```blade
-import markdown
-
-var md = markdown()
-echo md.render_inline('__markdown__ rulezz!')
-```
-
-#### Fields
-
-- **inline** &#8674; _InlineParser_:
-
-  Instance of [[InlineParser]]. You may need it to add new rules when
-writing plugins. For simple rules control use [[Markdown.disable]] and
-[[Markdown.enable]].
-
-- **block** &#8674; _BlockParser_:
-
-  Instance of [[BlockParser]]. You may need it to add new rules when
-writing plugins. For simple rules control use [[Markdown.disable]] and
-[[Markdown.enable]].
-
-- **core** &#8674; _BlockCore_:
-
-  Instance of [[Core]] chain executor. You may need it to add new rules when
-writing plugins. For simple rules control use [[Markdown.disable]] and
-[[Markdown.enable]].
-
-- **renderer** &#8674; _Renderer_:
-
-  Instance of [[Renderer]]. Use it to modify output look. Or to add rendering
-rules for new token types, generated by plugins.
-##### Example
-```blade
-import markdown
-var md = markdown()
-def my_token(tokens, idx, options, env, this) {
-  #...
-  return result
-}
-md.renderer.rules['my_token'] = my_token
-```
-See [[Renderer]] docs and [source code](https://github.com/blade-lang/blade/blob/master/libs/markdown/renderer.b).
-
-- **validate\_link**:
-
-  Link validation function. CommonMark allows too much in links. By default
-we disable `javascript:`, `vbscript:`, `file:` schemas, and almost all `data:...` schemas
-except some embedded image types.
-You can change this behaviour:
-```blade
-import markdown
-var md = markdown()
-
-# enable everything
-md.validate_link = @{ return true; }
-```
-
-@param string url
-@returns bool
-
-- **normalize\_link**:
-
-  Function used to encode link url to a machine-readable format,
-which includes url-encoding, punycode, etc.
-
-@param string url
-@returns string
-
-- **normalize\_link\_text**:
-
-  normalize_link_text(url)
-Function used to decode link url to a human-readable format`
-
-@param string url
-@returns string
-
-- **utils** &#8674; _module_:
-
-  Assorted utility functions, useful to write plugins. See details
-[here](https://github.com/blade-lang/blade/blob/master/libs/markdown/common/utils.b).
-
-- **helpers** &#8674; _dict_:
-
-  Link components parser functions, useful to write plugins. See details
-[here](https://github.com/blade-lang/blade/blob/master/libs/markdown/helpers).
-
-#### Methods
-
-#### Markdown(preset_name, options)
-
-Creates parser instance with given config. Can be called without `new`.
-##### preset_name:
-Markdown provides named presets as a convenience to quickly
-enable/disable active syntax rules and options for common use cases.
-- `commonmark`: configures parser to strict [CommonMark](http://commonmark.org/) mode.
-- `standard`: similar to GFM, used when no preset name given. Enables all available rules,
-  but still without html, typographer & autolinker.
-- `zero`: all rules disabled. Useful to quickly setup your config via `.enable()`.
-  For example, when you need only `bold` and `italic` markup and nothing else.
-##### options:
-- __html__ - `false`. Set `true` to enable HTML tags in source. Be careful!
-  That's not safe! You may need external sanitizer to protect output from XSS.
-  It's better to extend features via plugins, instead of enabling HTML.
-- __xhtml_out__ - `false`. Set `true` to add '/' when closing single tags
-  (`<br />`). This is needed only for full CommonMark compatibility. In real
-  world you will need HTML output.
-- __breaks__ - `false`. Set `true` to convert `\n` in paragraphs into `<br>`.
-- __lang_prefix__ - `language-`. CSS language class prefix for fenced blocks.
-  Can be useful for external highlighters.
-- __linkify__ - `false`. Set `true` to auto convert URL-like text to links.
-- __typographer__  - `false`. Set `true` to enable [some language-neutral
-  replacement](https://github.com/blade-lang/blade/blob/master/libs/markdown/rules_core/replacements.b) +
-  quotes beautification (smart quotes).
-- __quotes__ - `“”‘’`, String or Array. Double + single quotes replacement
-  pairs, when typographer enabled and smart quotes on. For example, you can
-  use `'«»„“'` for Russian, `'„“‚‘'` for German, and
-  `['«\xA0', '\xA0»', '‹\xA0', '\xA0›']` for French (including nbsp).
-- __highlight__ - `nil`. Highlighter def for fenced code blocks.
-  Highlighter `def (str, lang)` should return escaped HTML. It can also
-  return empty string if the source was not changed and should be escaped
-  externally. If result starts with <pre... internal wrapper is skipped.
-##### Example
-```blade
-import markdown
-# commonmark mode
-var md = markdown('commonmark')
-# standard mode
-var md = markdown()
-# enable everything
-var md = markdown({
-  html: true,
-  linkify: true,
-  typographer: true
-})
-```
-##### Syntax highlighting
-```blade
-var md = markdown({
-  highlight: @(str, lang) {
-    if lang and get_language(lang) {
-      return do_highlight(str, lang)
+  .to\_dict() {#markdown.Token.to_dict}
+
+  : Returns the Token properties as a dictionary.
+
+
+    - **@returns**: _dict_
+
+
+
+
+_class_ **Markdown** {#markdown.Markdown .class}
+
+: Markdown parsing and rendering class.
+  ##### Usage
+  ```blade
+  import markdown
+  
+  var md = markdown()
+  echo md.render('# markdown is bae!')
+  ```
+  Single line rendering, without paragraph wrap:
+  ```blade
+  import markdown
+  
+  var md = markdown()
+  echo md.render_inline('__markdown__ rulezz!')
+  ```
+
+
+  **.inline** &#8674; _InlineParser_
+  :  Instance of [[InlineParser]]. You may need it to add new rules when
+    writing plugins. For simple rules control use [[Markdown.disable]] and
+    [[Markdown.enable]].
+
+  **.block** &#8674; _BlockParser_
+  :  Instance of [[BlockParser]]. You may need it to add new rules when
+    writing plugins. For simple rules control use [[Markdown.disable]] and
+    [[Markdown.enable]].
+
+  **.core** &#8674; _BlockCore_
+  :  Instance of [[Core]] chain executor. You may need it to add new rules when
+    writing plugins. For simple rules control use [[Markdown.disable]] and
+    [[Markdown.enable]].
+
+  **.renderer** &#8674; _Renderer_
+  :  Instance of [[Renderer]]. Use it to modify output look. Or to add rendering
+    rules for new token types, generated by plugins.
+    ##### Example
+    ```blade
+    import markdown
+    var md = markdown()
+    def my_token(tokens, idx, options, env, this) {
+      #...
+      return result
     }
-    return '' # use external default escaping
-  }
-})
-```
-Or with full wrapper override (if you need assign class to `<pre>`):
-```blade
-# Actual default values
-var md = markdown({
-  highlight: @(str, lang) {
-    if lang and get_language(lang) {
-      return '<pre class="hljs"><code>' +
-         do_highlight(str, lang).value +
-       '</code></pre>'
+    md.renderer.rules['my_token'] = my_token
+    ```
+    See [[Renderer]] docs and [source code](https://github.com/blade-lang/blade/blob/master/libs/markdown/renderer.b).
+
+  **.validate\_link**
+  :  Link validation function. CommonMark allows too much in links. By default
+    we disable `javascript:`, `vbscript:`, `file:` schemas, and almost all `data:...` schemas
+    except some embedded image types.
+    You can change this behaviour:
+    ```blade
+    import markdown
+    var md = markdown()
+    
+    # enable everything
+    md.validate_link = @{ return true; }
+    ```
+    
+    @param string url
+    @returns bool
+
+  **.normalize\_link**
+  :  Function used to encode link url to a machine-readable format,
+    which includes url-encoding, punycode, etc.
+    
+    @param string url
+    @returns string
+
+  **.normalize\_link\_text**
+  :  normalize_link_text(url)
+    Function used to decode link url to a human-readable format`
+    
+    @param string url
+    @returns string
+
+  **.utils** &#8674; _module_
+  :  Assorted utility functions, useful to write plugins. See details
+    [here](https://github.com/blade-lang/blade/blob/master/libs/markdown/common/utils.b).
+
+  **.helpers** &#8674; _dict_
+  :  Link components parser functions, useful to write plugins. See details
+    [here](https://github.com/blade-lang/blade/blob/master/libs/markdown/helpers).
+
+
+  .Markdown(_preset_name_, _options_) {#markdown.Markdown.Markdown}
+
+  : Creates parser instance with given config. Can be called without `new`.
+    ##### preset_name:
+    Markdown provides named presets as a convenience to quickly
+    enable/disable active syntax rules and options for common use cases.
+    - `commonmark`: configures parser to strict [CommonMark](http://commonmark.org/) mode.
+    - `standard`: similar to GFM, used when no preset name given. Enables all available rules,
+      but still without html, typographer & autolinker.
+    - `zero`: all rules disabled. Useful to quickly setup your config via `.enable()`.
+      For example, when you need only `bold` and `italic` markup and nothing else.
+    ##### options:
+    - __html__ - `false`. Set `true` to enable HTML tags in source. Be careful!
+      That's not safe! You may need external sanitizer to protect output from XSS.
+      It's better to extend features via plugins, instead of enabling HTML.
+    - __xhtml_out__ - `false`. Set `true` to add '/' when closing single tags
+      (`<br />`). This is needed only for full CommonMark compatibility. In real
+      world you will need HTML output.
+    - __breaks__ - `false`. Set `true` to convert `\n` in paragraphs into `<br>`.
+    - __lang_prefix__ - `language-`. CSS language class prefix for fenced blocks.
+      Can be useful for external highlighters.
+    - __linkify__ - `false`. Set `true` to auto convert URL-like text to links.
+    - __typographer__  - `false`. Set `true` to enable [some language-neutral
+      replacement](https://github.com/blade-lang/blade/blob/master/libs/markdown/rules_core/replacements.b) +
+      quotes beautification (smart quotes).
+    - __quotes__ - `“”‘’`, String or Array. Double + single quotes replacement
+      pairs, when typographer enabled and smart quotes on. For example, you can
+      use `'«»„“'` for Russian, `'„“‚‘'` for German, and
+      `['«\xA0', '\xA0»', '‹\xA0', '\xA0›']` for French (including nbsp).
+    - __highlight__ - `nil`. Highlighter def for fenced code blocks.
+      Highlighter `def (str, lang)` should return escaped HTML. It can also
+      return empty string if the source was not changed and should be escaped
+      externally. If result starts with <pre... internal wrapper is skipped.
+    ##### Example
+    ```blade
+    import markdown
+    # commonmark mode
+    var md = markdown('commonmark')
+    # standard mode
+    var md = markdown()
+    # enable everything
+    var md = markdown({
+      html: true,
+      linkify: true,
+      typographer: true
+    })
+    ```
+    ##### Syntax highlighting
+    ```blade
+    var md = markdown({
+      highlight: @(str, lang) {
+        if lang and get_language(lang) {
+          return do_highlight(str, lang)
+        }
+        return '' # use external default escaping
+      }
+    })
+    ```
+    Or with full wrapper override (if you need assign class to `<pre>`):
+    ```blade
+    # Actual default values
+    var md = markdown({
+      highlight: @(str, lang) {
+        if lang and get_language(lang) {
+          return '<pre class="hljs"><code>' +
+             do_highlight(str, lang).value +
+           '</code></pre>'
+        }
+        return '<pre class="hljs"><code>' + md.utils.escape_html(str) + '</code></pre>'
+      }
+    })
+    ```
+
+
+    - **@params**:
+      - _string?_ **preset_name** : `commonmark`, `standard` or `zero` (default: `standard`)
+
+      - _dict?_ **options**
+
+    {.params}
+
+
+  .set(_options_) {#markdown.Markdown.set}
+
+  : Set parser options (in the same format as in constructor). Probably, you
+    will never need it, but you can change options after constructor call.
+    ##### Example
+    ```blade
+    import markdown
+    var md = markdown().
+        set({ html: true, breaks: true }).
+        set({ typographer, true })
+    ```
+    __Note:__ To achieve the best possible performance, don't modify a
+    `markdown` instance options on the fly. If you need multiple configurations
+    it's best to create multiple instances and initialize each with separate
+    config.
+    
+    
+    @chainable
+
+
+    - **@params**:
+      - _dict_ **options**
+
+    {.params}
+
+
+
+  .enable(_list_, _ignore_invalid_) {#markdown.Markdown.enable}
+
+  : Enable list or rules. It will automatically find appropriate components,
+    containing rules with given names. If rule not found, and `ignore_invalid`
+    not set - throws exception.
+    ##### Example
+    ```blade
+    import markdown
+    var md = markdown().
+       enable(['sub', 'sup']).
+       disable('smartquotes')
+    ```
+    
+    
+    
+    @chainable
+
+
+    - **@params**:
+      - _string|list_ **list** : rule name or list of rule names to enable
+
+      - _bool_ **ignore_invalid** : set `true` to ignore errors when rule not found.
+
+
+    {.params}
+
+
+  .disable(_list_, _ignore_invalid_) {#markdown.Markdown.disable}
+
+  : The same as [[Markdown.enable]], but turn specified rules off.
+    
+    
+    
+    @chainable
+
+
+    - **@params**:
+      - _string|list_ **list** : rule name or list of rule names to disable.
+
+      - _bool_ **ignore_invalid** : set `true` to ignore errors when rule not found.
+
+
+    {.params}
+
+
+  .use(_plugin_, _..._) {#markdown.Markdown.use}
+
+  : Load specified plugin with given params into current parser instance.
+    It's just a sugar to call `plugin(md, params)` with curring.
+    ##### Example
+    ```blade
+    import markdown
+    import .markdown_custom_inline
+    
+    var md = markdown()
+       .use(markdown_custom_inline, 'foo_replace', 'text', def (tokens, idx) {
+         tokens[idx].content = tokens[idx].content.replace('/foo/', 'bar')
+       })
+    ```
+    
+    
+    
+    @chainable
+
+
+    - **@params**:
+      - _function|module_ **plugin**
+      - _...any_ **params**
+
+    {.params}
+
+
+
+  .render(_src_, _env_) {#markdown.Markdown.render}
+
+  : Render markdown string into html. It does all magic for you :).
+    `env` can be used to inject additional metadata (`{}` by default).
+    But you will not need it with high probability. See also comment
+    in [[Markdown.parse]].
+
+
+    - **@params**:
+      - _string_ **src** : source string
+
+      - _object?_ **env** : environment sandbox
+
+
+    {.params}
+    - **@returns**: _string_
+
+
+
+  .render\_inline(_src_, _env_) {#markdown.Markdown.render_inline}
+
+  : Similar to [[Markdown.render]] but for single paragraph content. Result
+    will NOT be wrapped into `<p>` tags.
+
+
+    - **@params**:
+      - _string_ **src** : source string
+
+      - _object?_ **env** : environment sandbox
+
+
+    {.params}
+    - **@returns**: _string_
+
+
+
+
+_class_ **Ruler** {#markdown.Ruler .class}
+
+: Helper class, used by [[markdown#core]], [[markdown#block]] and
+  [[markdown#inline]] to manage sequences of functions (rules):
+  - keep rules in defined order
+  - assign the name to each rule
+  - enable/disable rules
+  - add/replace rules
+  - allow assign rules to additional named chains (in the same)
+  - caching lists of active rules
+  You will not need use this class directly until write plugins. For simple
+  rules control use [[markdown.disable]], [[markdown.enable]] and
+  [[markdown.use]].
+
+
+
+  .at(_name_, _fn_, _options_) {#markdown.Ruler.at}
+
+  : Replace rule by name with new function & options. Dies error if name not
+    found.
+    ##### Options:
+    - __alt__ - list with names of "alternate" chains.
+    ##### Example
+    Replace existing typographer replacement rule with new one:
+    ```blade
+    import markdown as md
+    md.core.ruler.at('replacements', @(state) {
+      #...
+    })
+    ```
+
+
+    - **@params**:
+      - _string_ **name** : rule name to replace.
+
+      - _function_ **fn** : new rule function.
+
+      - _dict?_ **options** : new rule options (optional).
+
+
+    {.params}
+
+
+  .before(_before_name_, _rule_name_, _fn_, _options_) {#markdown.Ruler.before}
+
+  : Add new rule to chain before one with given name. See also
+    [[Ruler.after]], [[Ruler.push]].
+    ##### Options:
+    - __alt__ - list with names of "alternate" chains.
+    ##### Example
+    ```blade
+    import markdown as md
+    md.block.ruler.before('paragraph', 'my_rule', @(state) {
+      #...
+    })
+    ```
+
+
+    - **@params**:
+      - _string_ **before_name** : new rule will be added before this one.
+
+      - _string_ **rule_name** : name of added rule.
+
+      - _function_ **fn** : rule function.
+
+      - _dict?_ **options** : rule options (optional).
+
+
+    {.params}
+
+
+  .after(_after_name_, _rule_name_, _fn_, _options_) {#markdown.Ruler.after}
+
+  : Add new rule to chain after one with given name. See also
+    [[Ruler.before]], [[Ruler.push]].
+    ##### Options:
+    - __alt__ - list with names of "alternate" chains.
+    ##### Example
+    ```blade
+    import markdown as md
+    md.inline.ruler.after('text', 'my_rule', @(state) {
+      #...
+    })
+    ```
+
+
+    - **@params**:
+      - _string_ **after_name** : new rule will be added after this one.
+
+      - _string_ **rule_name** : name of added rule.
+
+      - _function_ **fn** : rule function.
+
+      - _dict?_ **options** : rule options (optional).
+
+
+    {.params}
+
+
+  .push(_rule_name_, _fn_, _options_) {#markdown.Ruler.push}
+
+  : Push new rule to the end of chain. See also
+    [[Ruler.before]], [[Ruler.after]].
+    ##### Options:
+    - __alt__ - list with names of "alternate" chains.
+    ##### Example
+    ```blade
+    import markdown as md
+    md.core.ruler.push('my_rule', @(state) {
+      #...
+    })
+    ```
+
+
+    - **@params**:
+      - _string_ **rule_name** : name of added rule.
+
+      - _function_ **fn** : rule function.
+
+      - _dict?_ **options** : rule options (optional).
+
+
+    {.params}
+
+
+  .enable(_list_, _ignore_invalid_) {#markdown.Ruler.enable}
+
+  : Enable rules with given names. If any rule name not found - dies Exception.
+    Errors can be disabled by second param.
+    Returns list of found rule names (if no exception happened).
+    See also [[Ruler.disable]], [[Ruler.enable_only]].
+
+
+    - **@params**:
+      - _string|list_ **list** : list of rule names to enable.
+
+      - _bool_ **ignore_invalid** : set `true` to ignore errors when rule not found.
+
+
+    {.params}
+    - **@returns**: _list_
+
+
+  .enable\_only(_list_, _ignore_invalid_) {#markdown.Ruler.enable_only}
+
+  : Enable rules with given names, and disable everything else. If any rule name
+    not found - throw Error. Errors can be disabled by second param.
+    See also [[Ruler.disable]], [[Ruler.enable]].
+
+
+    - **@params**:
+      - _string|list_ **list** : list of rule names to enable (whitelist).
+
+      - _bool_ **ignore_invalid** : set `true` to ignore errors when rule not found.
+
+
+    {.params}
+
+
+  .disable(_list_, _ignore_invalid_) {#markdown.Ruler.disable}
+
+  : Disable rules with given names. If any rule name not found - throw Error.
+    Errors can be disabled by second param.
+    Returns list of found rule names (if no exception happened).
+    See also [[Ruler.enable]], [[Ruler.enable_only]].
+
+
+    - **@params**:
+      - _string|list_ **list** : list of rule names to disable.
+
+      - _bool_ **ignore_invalid** : set `true` to ignore errors when rule not found.
+
+
+    {.params}
+    - **@returns**: _list_
+
+
+  .get\_rules(_chain_name_) {#markdown.Ruler.get_rules}
+
+  : Return list of active functions (rules) for given chain name. It analyzes
+    rules configuration, compiles caches if not exists and returns result.
+    Default chain name is `''` (empty string). It can't be skipped. That's
+    done intentionally, to keep signature monomorphic for high speed.
+
+
+    - **@params**:
+      - _string_ **chain_name**
+
+    {.params}
+    - **@returns**: _string_
+
+
+
+
+
+
+_class_ **Renderer** {#markdown.Renderer .class}
+
+: Generates HTML from parsed token stream. Each instance has independent
+  copy of rules. Those can be rewritten with ease. Also, you can add new
+  rules if you create plugin and adds new token types.
+
+
+  **.rules** &#8674; _dict_
+  :  Contains render rules for tokens. Can be updated and extended.
+    ##### Example
+    ```blade
+    import markdown as md
+    md.renderer.rules.strong_open  = @{ return '<b>' }
+    md.renderer.rules.strong_close = @{ return '</b>' }
+    var result = md.render_inline(...)
+    ```
+    Each rule is called as independent static function with fixed signature:
+    ```blade
+    def my_token_render(tokens, idx, options, env, renderer) {
+      # ...
+      return rendered_hTML
     }
-    return '<pre class="hljs"><code>' + md.utils.escape_html(str) + '</code></pre>'
-  }
-})
-```
+    ```
 
-##### Parameters
 
-- _string?_ **preset_name**: : `commonmark`, `standard` or `zero` (default: `standard`)
-- _dict?_ **options**
+  .render\_attrs(_token_) {#markdown.Renderer.render_attrs}
 
+  : Render token attributes to string.
 
-#### set(options)
 
-Set parser options (in the same format as in constructor). Probably, you
-will never need it, but you can change options after constructor call.
-##### Example
-```blade
-import markdown
-var md = markdown().
-    set({ html: true, breaks: true }).
-    set({ typographer, true })
-```
-__Note:__ To achieve the best possible performance, don't modify a
-`markdown` instance options on the fly. If you need multiple configurations
-it's best to create multiple instances and initialize each with separate
-config.
+    - **@params**:
+      - _Token_ **token**
 
+    {.params}
+    - **@returns**: _string_
 
-@chainable
 
-##### Parameters
+  .render\_token(_tokens_, _idx_, _options_) {#markdown.Renderer.render_token}
 
-- _dict_ **options**
+  : Default token renderer. Can be overriden by custom function
+    in [[Renderer#rules]].
 
 
-#### enable(list, ignore_invalid)
+    - **@params**:
+      - _list_ **tokens** : list of tokens
 
-Enable list or rules. It will automatically find appropriate components,
-containing rules with given names. If rule not found, and `ignore_invalid`
-not set - throws exception.
-##### Example
-```blade
-import markdown
-var md = markdown().
-   enable(['sub', 'sup']).
-   disable('smartquotes')
-```
+      - _number_ **idx** : token index to render
 
+      - _dict_ **options** : params of parser instance
 
 
-@chainable
+    {.params}
+    - **@returns**: _string_
 
-##### Parameters
 
-- _string|list_ **list**: : rule name or list of rule names to enable
-- _bool_ **ignore_invalid**: : set `true` to ignore errors when rule not found.
+  .render\_inline(_tokens_, _options_, _env_) {#markdown.Renderer.render_inline}
 
+  : The same as [[Renderer.render]], but for single token of `inline` type.
 
-#### disable(list, ignore_invalid)
 
-The same as [[Markdown.enable]], but turn specified rules off.
+    - **@params**:
+      - _list_ **tokens** : list on block tokens to render
 
+      - _dict_ **options** : params of parser instance
 
+      - _dict_ **env** : additional data from parsed input (references, for example)
 
-@chainable
 
-##### Parameters
+    {.params}
+    - **@returns**: _string_
 
-- _string|list_ **list**: : rule name or list of rule names to disable.
-- _bool_ **ignore_invalid**: : set `true` to ignore errors when rule not found.
 
 
-#### use(plugin, ...)
+  .render(_tokens_, _options_, _env_) {#markdown.Renderer.render}
 
-Load specified plugin with given params into current parser instance.
-It's just a sugar to call `plugin(md, params)` with curring.
-##### Example
-```blade
-import markdown
-import .markdown_custom_inline
+  : Takes token stream and generates HTML. Probably, you will never need to call
+    this method directly.
 
-var md = markdown()
-   .use(markdown_custom_inline, 'foo_replace', 'text', def (tokens, idx) {
-     tokens[idx].content = tokens[idx].content.replace('/foo/', 'bar')
-   })
-```
 
+    - **@params**:
+      - _list_ **tokens** : list on block tokens to render
 
+      - _dict_ **options** : params of parser instance
 
-@chainable
+      - _dict_ **env** : additional data from parsed input (references, for example)
 
-##### Parameters
 
-- _function|module_ **plugin**
-- _...any_ **params**
+    {.params}
+    - **@returns**: _string_
 
-
-#### render(src, env)
-
-Render markdown string into html. It does all magic for you :).
-`env` can be used to inject additional metadata (`{}` by default).
-But you will not need it with high probability. See also comment
-in [[Markdown.parse]].
-
-##### Parameters
-
-- _string_ **src**: : source string
-- _object?_ **env**: : environment sandbox
-
-##### Returns
-
-- string
-
-#### render\_inline(src, env)
-
-Similar to [[Markdown.render]] but for single paragraph content. Result
-will NOT be wrapped into `<p>` tags.
-
-##### Parameters
-
-- _string_ **src**: : source string
-- _object?_ **env**: : environment sandbox
-
-##### Returns
-
-- string
-
-
-
-### _class_ Ruler
-
-Helper class, used by [[markdown#core]], [[markdown#block]] and
-[[markdown#inline]] to manage sequences of functions (rules):
-- keep rules in defined order
-- assign the name to each rule
-- enable/disable rules
-- add/replace rules
-- allow assign rules to additional named chains (in the same)
-- caching lists of active rules
-You will not need use this class directly until write plugins. For simple
-rules control use [[markdown.disable]], [[markdown.enable]] and
-[[markdown.use]].
-
-#### Methods
-
-#### at(name, fn, options)
-
-Replace rule by name with new function & options. Dies error if name not
-found.
-##### Options:
-- __alt__ - list with names of "alternate" chains.
-##### Example
-Replace existing typographer replacement rule with new one:
-```blade
-import markdown as md
-md.core.ruler.at('replacements', @(state) {
-  #...
-})
-```
-
-##### Parameters
-
-- _string_ **name**: : rule name to replace.
-- _function_ **fn**: : new rule function.
-- _dict?_ **options**: : new rule options (optional).
-
-
-#### before(before_name, rule_name, fn, options)
-
-Add new rule to chain before one with given name. See also
-[[Ruler.after]], [[Ruler.push]].
-##### Options:
-- __alt__ - list with names of "alternate" chains.
-##### Example
-```blade
-import markdown as md
-md.block.ruler.before('paragraph', 'my_rule', @(state) {
-  #...
-})
-```
-
-##### Parameters
-
-- _string_ **before_name**: : new rule will be added before this one.
-- _string_ **rule_name**: : name of added rule.
-- _function_ **fn**: : rule function.
-- _dict?_ **options**: : rule options (optional).
-
-
-#### after(after_name, rule_name, fn, options)
-
-Add new rule to chain after one with given name. See also
-[[Ruler.before]], [[Ruler.push]].
-##### Options:
-- __alt__ - list with names of "alternate" chains.
-##### Example
-```blade
-import markdown as md
-md.inline.ruler.after('text', 'my_rule', @(state) {
-  #...
-})
-```
-
-##### Parameters
-
-- _string_ **after_name**: : new rule will be added after this one.
-- _string_ **rule_name**: : name of added rule.
-- _function_ **fn**: : rule function.
-- _dict?_ **options**: : rule options (optional).
-
-
-#### push(rule_name, fn, options)
-
-Push new rule to the end of chain. See also
-[[Ruler.before]], [[Ruler.after]].
-##### Options:
-- __alt__ - list with names of "alternate" chains.
-##### Example
-```blade
-import markdown as md
-md.core.ruler.push('my_rule', @(state) {
-  #...
-})
-```
-
-##### Parameters
-
-- _string_ **rule_name**: : name of added rule.
-- _function_ **fn**: : rule function.
-- _dict?_ **options**: : rule options (optional).
-
-
-#### enable(list, ignore_invalid)
-
-Enable rules with given names. If any rule name not found - dies Exception.
-Errors can be disabled by second param.
-Returns list of found rule names (if no exception happened).
-See also [[Ruler.disable]], [[Ruler.enable_only]].
-
-##### Parameters
-
-- _string|list_ **list**: : list of rule names to enable.
-- _bool_ **ignore_invalid**: : set `true` to ignore errors when rule not found.
-
-##### Returns
-
-- list
-
-#### enable\_only(list, ignore_invalid)
-
-Enable rules with given names, and disable everything else. If any rule name
-not found - throw Error. Errors can be disabled by second param.
-See also [[Ruler.disable]], [[Ruler.enable]].
-
-##### Parameters
-
-- _string|list_ **list**: : list of rule names to enable (whitelist).
-- _bool_ **ignore_invalid**: : set `true` to ignore errors when rule not found.
-
-
-#### disable(list, ignore_invalid)
-
-Disable rules with given names. If any rule name not found - throw Error.
-Errors can be disabled by second param.
-Returns list of found rule names (if no exception happened).
-See also [[Ruler.enable]], [[Ruler.enable_only]].
-
-##### Parameters
-
-- _string|list_ **list**: : list of rule names to disable.
-- _bool_ **ignore_invalid**: : set `true` to ignore errors when rule not found.
-
-##### Returns
-
-- list
-
-#### get\_rules(chain_name)
-
-Return list of active functions (rules) for given chain name. It analyzes
-rules configuration, compiles caches if not exists and returns result.
-Default chain name is `''` (empty string). It can't be skipped. That's
-done intentionally, to keep signature monomorphic for high speed.
-
-##### Parameters
-
-- _string_ **chain_name**
-
-##### Returns
-
-- string
-
-
-
-
-
-### _class_ Renderer
-
-Generates HTML from parsed token stream. Each instance has independent
-copy of rules. Those can be rewritten with ease. Also, you can add new
-rules if you create plugin and adds new token types.
-
-#### Fields
-
-- **rules** &#8674; _dict_:
-
-  Contains render rules for tokens. Can be updated and extended.
-##### Example
-```blade
-import markdown as md
-md.renderer.rules.strong_open  = @{ return '<b>' }
-md.renderer.rules.strong_close = @{ return '</b>' }
-var result = md.render_inline(...)
-```
-Each rule is called as independent static function with fixed signature:
-```blade
-def my_token_render(tokens, idx, options, env, renderer) {
-  # ...
-  return rendered_hTML
-}
-```
-
-#### Methods
-
-#### render\_attrs(token)
-
-Render token attributes to string.
-
-##### Parameters
-
-- _Token_ **token**
-
-##### Returns
-
-- string
-
-#### render\_token(tokens, idx, options)
-
-Default token renderer. Can be overriden by custom function
-in [[Renderer#rules]].
-
-##### Parameters
-
-- _list_ **tokens**: : list of tokens
-- _number_ **idx**: : token index to render
-- _dict_ **options**: : params of parser instance
-
-##### Returns
-
-- string
-
-#### render\_inline(tokens, options, env)
-
-The same as [[Renderer.render]], but for single token of `inline` type.
-
-##### Parameters
-
-- _list_ **tokens**: : list on block tokens to render
-- _dict_ **options**: : params of parser instance
-- _dict_ **env**: : additional data from parsed input (references, for example)
-
-##### Returns
-
-- string
-
-#### render(tokens, options, env)
-
-Takes token stream and generates HTML. Probably, you will never need to call
-this method directly.
-
-##### Parameters
-
-- _list_ **tokens**: : list on block tokens to render
-- _dict_ **options**: : params of parser instance
-- _dict_ **env**: : additional data from parsed input (references, for example)
-
-##### Returns
-
-- string
 
 
 

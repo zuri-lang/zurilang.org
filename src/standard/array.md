@@ -4,1188 +4,1212 @@ This module provides multiple classes for working with arrays of twos-complement
 integers in the platform byte order. The classes provided in this module complement
 the _bytes()_ object and allow higher other binary data manipulation.
 
-## Properties
+## Fields
 
-- **INT16\_MAX** &#8674; _number_:
+**INT16\_MAX** &#8674; _number_
+:  Maximum value that "should" exist in a list passed to Int16Array.
 
-  Maximum value that "should" exist in a list passed to Int16Array.
+**UINT16\_MAX** &#8674; _number_
+:  Maximum value that "should" exist in a list passed to UInt16Array.
 
-- **UINT16\_MAX** &#8674; _number_:
+**INT32\_MAX** &#8674; _number_
+:  Maximum value that "should" exist in a list passed to Int32Array.
 
-  Maximum value that "should" exist in a list passed to UInt16Array.
+**UINT32\_MAX** &#8674; _number_
+:  Maximum value that "should" exist in a list passed to UInt32Array.
 
-- **INT32\_MAX** &#8674; _number_:
+**INT64\_MAX** &#8674; _number_
+:  Maximum value that "should" exist in a list passed to Int64Array.
 
-  Maximum value that "should" exist in a list passed to Int32Array.
+**UINT64\_MAX** &#8674; _number_
+:  Maximum value that "should" exist in a list passed to UInt64Array.
 
-- **UINT32\_MAX** &#8674; _number_:
+**FLOAT\_MAX** &#8674; _number_
+:  Maximum value that "should" exist in a list passed to FloatArray.
 
-  Maximum value that "should" exist in a list passed to UInt32Array.
+**INT16\_MIN** &#8674; _number_
+:  Minimum value that "should" exist in a list passed to Int16Array.
 
-- **INT64\_MAX** &#8674; _number_:
+**INT32\_MIN** &#8674; _number_
+:  Minimum value that "should" exist in a list passed to Int32Array.
 
-  Maximum value that "should" exist in a list passed to Int64Array.
+**INT64\_MIN** &#8674; _number_
+:  Minimum value that "should" exist in a list passed to Int64Array.
 
-- **UINT64\_MAX** &#8674; _number_:
-
-  Maximum value that "should" exist in a list passed to UInt64Array.
-
-- **FLOAT\_MAX** &#8674; _number_:
-
-  Maximum value that "should" exist in a list passed to FloatArray.
-
-- **INT16\_MIN** &#8674; _number_:
-
-  Minimum value that "should" exist in a list passed to Int16Array.
-
-- **INT32\_MIN** &#8674; _number_:
-
-  Minimum value that "should" exist in a list passed to Int32Array.
-
-- **INT64\_MIN** &#8674; _number_:
-
-  Minimum value that "should" exist in a list passed to Int64Array.
-
-- **FLOAT\_MIN** &#8674; _number_:
-
-  Minimum value that "should" exist in a list passed to FloatArray.
+**FLOAT\_MIN** &#8674; _number_
+:  Minimum value that "should" exist in a list passed to FloatArray.
 
 
 ## Classes
 
-### _class_ Int16Array
+_class_ **Int16Array** {#array.Int16Array .class}
 
-class Int16Array represents an array of twos-complement 16-bit signed 
-integers in the platform byte order.
+: class Int16Array represents an array of twos-complement 16-bit signed 
+  integers in the platform byte order.
 
 
+  ~ Properties
 
-#### Properties
+    - __@printable__
+    - __@serializable__
+    - __@iterable__
 
- - __@printable__
- - __@serializable__
- - __@iterable__
+  .Int16Array(_n_) &#8674; Constructor {#array.Int16Array.Int16Array}
 
-#### Methods
+  : - If n is a number, it creates a new Int16Array that can hold up to n 
+    number of elements, but with all the elements set to 0. 
+    - If n is a list, it creates a new Int16Array with its elements set to 
+    the values in the list.
 
-#### Int16Array(n) &#8674; Constructor
 
-- If n is a number, it creates a new Int16Array that can hold up to n 
-number of elements, but with all the elements set to 0. 
-- If n is a list, it creates a new Int16Array with its elements set to 
-the values in the list.
+    - **@params**:
+      - _number|list_ **n**
 
-##### Parameters
+    {.params}
 
-- _number|list_ **n**
 
+  .length() {#array.Int16Array.length}
 
-#### length()
+  : Returns the number of items in the array.
 
-Returns the number of items in the array.
 
-##### Returns
+    - **@returns**: _number_
 
-- number
 
-#### bytes\_length()
+  .bytes\_length() {#array.Int16Array.bytes_length}
 
-Returns the length of the array if it were to be converted to bytes.
+  : Returns the length of the array if it were to be converted to bytes.
 
-##### Returns
 
-- number
+    - **@returns**: _number_
 
-#### first()
 
-Returns the first item in the array or nil if the array is empty.
+  .first() {#array.Int16Array.first}
 
-##### Returns
+  : Returns the first item in the array or nil if the array is empty.
 
-- number
 
-#### last()
+    - **@returns**: _number_
 
-Returns the last item in the array or nil if the array is empty.
 
-##### Returns
+  .last() {#array.Int16Array.last}
 
-- int
+  : Returns the last item in the array or nil if the array is empty.
 
-#### append(value)
 
-Adds the given _value_ to the end of the array.
+    - **@returns**: _int_
 
-##### Parameters
 
-- _int_ **value**
+  .append(_value_) {#array.Int16Array.append}
 
+  : Adds the given _value_ to the end of the array.
 
-#### get(index)
 
-Returns the number at the specified index in the array. If index is 
-outside the boundary of the array indexes (0..(array.length() - 1)), 
-an exception is thrown.
+    - **@params**:
+      - _int_ **value**
 
-##### Parameters
+    {.params}
 
-- _number_ **index**
 
-##### Returns
+  .get(_index_) {#array.Int16Array.get}
 
-- number
+  : Returns the number at the specified index in the array. If index is 
+    outside the boundary of the array indexes (0..(array.length() - 1)), 
+    an exception is thrown.
 
-#### set(index, value)
 
-Sets the value at the given index.
+    - **@params**:
+      - _number_ **index**
 
-##### Parameters
+    {.params}
+    - **@returns**: _number_
 
-- _number_ **index**
-- _number_ **value**
 
-##### Returns
+  .set(_index_, _value_) {#array.Int16Array.set}
 
-- number
+  : Sets the value at the given index.
 
-#### extend(array)
 
-Updates the content of the current array by appending all the contents 
-of _array_ to the end of the array in exact order.
+    - **@params**:
+      - _number_ **index**
+      - _number_ **value**
 
-##### Parameters
+    {.params}
+    - **@returns**: _number_
 
-- _Int16Array_ **array**
 
+  .extend(_array_) {#array.Int16Array.extend}
 
-#### reverse()
+  : Updates the content of the current array by appending all the contents 
+    of _array_ to the end of the array in exact order.
 
-Returns a new array containing the elements in the original array 
-in reverse order.
 
+    - **@params**:
+      - _Int16Array_ **array**
 
-#### clone()
+    {.params}
 
-Returns a new Int16Array containing all items from the current array. 
-The new array is a shallow copy of the original array.
 
-##### Returns
+  .reverse() {#array.Int16Array.reverse}
 
-- Int16Array
+  : Returns a new array containing the elements in the original array 
+    in reverse order.
 
-#### pop()
 
-Removes the last element in the array and returns the value of that item.
 
-##### Returns
 
-- number
+  .clone() {#array.Int16Array.clone}
 
-#### to\_bytes()
+  : Returns a new Int16Array containing all items from the current array. 
+    The new array is a shallow copy of the original array.
 
-Returns the array as a bytes object.
 
-##### Returns
+    - **@returns**: _Int16Array_
 
-- bytes
 
-#### to\_list()
+  .pop() {#array.Int16Array.pop}
 
-Returns the elements of the array as a list of numbers.
+  : Removes the last element in the array and returns the value of that item.
 
-##### Returns
 
-- list
+    - **@returns**: _number_
 
-#### to\_string()
 
-Returns a string representation of the array.
+  .to\_bytes() {#array.Int16Array.to_bytes}
 
-##### Returns
+  : Returns the array as a bytes object.
 
-- string
 
-#### get\_pointer()
+    - **@returns**: _bytes_
 
-Returns the raw int16 array pointer.
 
-##### Returns
+  .to\_list() {#array.Int16Array.to_list}
 
-- ptr
+  : Returns the elements of the array as a list of numbers.
 
 
+    - **@returns**: _list_
 
-### _class_ Int32Array
 
-class Int32Array represents an array of twos-complement 32-bit signed 
-integers in the platform byte order.
+  .to\_string() {#array.Int16Array.to_string}
 
+  : Returns a string representation of the array.
 
 
-#### Properties
+    - **@returns**: _string_
 
- - __@printable__
- - __@serializable__
- - __@iterable__
 
-#### Methods
+  .get\_pointer() {#array.Int16Array.get_pointer}
 
-#### Int32Array(n) &#8674; Constructor
+  : Returns the raw int16 array pointer.
 
-- If n is a number, it creates a new Int32Array that can hold up to n 
-number of elements, but with all the elements set to 0. 
-- If n is a list, it creates a new Int32Array with its elements set to 
-the values in the list.
 
-##### Parameters
+    - **@returns**: _ptr_
 
-- _number|list_ **n**
 
 
-#### length()
 
-Returns the number of items in the array.
+_class_ **Int32Array** {#array.Int32Array .class}
 
-##### Returns
+: class Int32Array represents an array of twos-complement 32-bit signed 
+  integers in the platform byte order.
 
-- number
 
-#### bytes\_length()
+  ~ Properties
 
-Returns the length of the array if it were to be converted to bytes.
+    - __@printable__
+    - __@serializable__
+    - __@iterable__
 
-##### Returns
+  .Int32Array(_n_) &#8674; Constructor {#array.Int32Array.Int32Array}
 
-- number
+  : - If n is a number, it creates a new Int32Array that can hold up to n 
+    number of elements, but with all the elements set to 0. 
+    - If n is a list, it creates a new Int32Array with its elements set to 
+    the values in the list.
 
-#### first()
 
-Returns the first item in the array or nil if the array is empty.
+    - **@params**:
+      - _number|list_ **n**
 
-##### Returns
+    {.params}
 
-- int
 
-#### last()
+  .length() {#array.Int32Array.length}
 
-Returns the last item in the array or nil if the array is empty.
+  : Returns the number of items in the array.
 
-##### Returns
 
-- int
+    - **@returns**: _number_
 
-#### append(value)
 
-Adds the given _value_ to the end of the array.
+  .bytes\_length() {#array.Int32Array.bytes_length}
 
-##### Parameters
+  : Returns the length of the array if it were to be converted to bytes.
 
-- _int_ **value**
 
+    - **@returns**: _number_
 
-#### get(index)
 
-Returns the number at the specified index in the array. If index is 
-outside the boundary of the array indexes (0..(array.length() - 1)), 
-an exception is thrown.
+  .first() {#array.Int32Array.first}
 
-##### Parameters
+  : Returns the first item in the array or nil if the array is empty.
 
-- _number_ **index**
 
-##### Returns
+    - **@returns**: _int_
 
-- number
 
-#### set(index, value)
+  .last() {#array.Int32Array.last}
 
-Sets the value at the given index.
+  : Returns the last item in the array or nil if the array is empty.
 
-##### Parameters
 
-- _number_ **index**
-- _int_ **value**
+    - **@returns**: _int_
 
-##### Returns
 
-- number
+  .append(_value_) {#array.Int32Array.append}
 
-#### extend(array)
+  : Adds the given _value_ to the end of the array.
 
-Updates the content of the current array by appending all the contents 
-of _array_ to the end of the array in exact order.
 
-##### Parameters
+    - **@params**:
+      - _int_ **value**
 
-- _Int32Array_ **array**
+    {.params}
 
 
-#### reverse()
+  .get(_index_) {#array.Int32Array.get}
 
-Returns a new array containing the elements in the original array 
-in reverse order.
+  : Returns the number at the specified index in the array. If index is 
+    outside the boundary of the array indexes (0..(array.length() - 1)), 
+    an exception is thrown.
 
 
-#### clone()
+    - **@params**:
+      - _number_ **index**
 
-Returns a new Int32Array containing all items from the current array. 
-The new array is a shallow copy of the original array.
+    {.params}
+    - **@returns**: _number_
 
-##### Returns
 
-- Int32Array
+  .set(_index_, _value_) {#array.Int32Array.set}
 
-#### pop()
+  : Sets the value at the given index.
 
-Removes the last element in the array and returns the value of that item.
 
-##### Returns
+    - **@params**:
+      - _number_ **index**
+      - _int_ **value**
 
-- number
+    {.params}
+    - **@returns**: _number_
 
-#### to\_bytes()
 
-Returns the array as a bytes object.
+  .extend(_array_) {#array.Int32Array.extend}
 
-##### Returns
+  : Updates the content of the current array by appending all the contents 
+    of _array_ to the end of the array in exact order.
 
-- bytes
 
-#### to\_list()
+    - **@params**:
+      - _Int32Array_ **array**
 
-Returns the elements of the array as a list of numbers.
+    {.params}
 
-##### Returns
 
-- list
+  .reverse() {#array.Int32Array.reverse}
 
-#### to\_string()
+  : Returns a new array containing the elements in the original array 
+    in reverse order.
 
-Returns a string representation of the array.
 
-##### Returns
 
-- string
 
-#### get\_pointer()
+  .clone() {#array.Int32Array.clone}
 
-Returns the raw int32 array pointer.
+  : Returns a new Int32Array containing all items from the current array. 
+    The new array is a shallow copy of the original array.
 
-##### Returns
 
-- ptr
+    - **@returns**: _Int32Array_
 
 
+  .pop() {#array.Int32Array.pop}
 
-### _class_ Int64Array
+  : Removes the last element in the array and returns the value of that item.
 
-class Int64Array represents an array of twos-complement 64-bit signed 
-integers in the platform byte order.
 
+    - **@returns**: _number_
 
 
-#### Properties
+  .to\_bytes() {#array.Int32Array.to_bytes}
 
- - __@printable__
- - __@serializable__
- - __@iterable__
+  : Returns the array as a bytes object.
 
-#### Methods
 
-#### Int64Array(n) &#8674; Constructor
+    - **@returns**: _bytes_
 
-- If n is a number, it creates a new Int64Array that can hold up to n 
-number of elements, but with all the elements set to 0. 
-- If n is a list, it creates a new Int64Array with its elements set to 
-the values in the list.
 
-##### Parameters
+  .to\_list() {#array.Int32Array.to_list}
 
-- _number|list_ **n**
+  : Returns the elements of the array as a list of numbers.
 
 
-#### length()
+    - **@returns**: _list_
 
-Returns the number of items in the array.
 
-##### Returns
+  .to\_string() {#array.Int32Array.to_string}
 
-- number
+  : Returns a string representation of the array.
 
-#### bytes\_length()
 
-Returns the length of the array if it were to be converted to bytes.
+    - **@returns**: _string_
 
-##### Returns
 
-- number
+  .get\_pointer() {#array.Int32Array.get_pointer}
 
-#### first()
+  : Returns the raw int32 array pointer.
 
-Returns the first item in the array or nil if the array is empty.
 
-##### Returns
+    - **@returns**: _ptr_
 
-- number
 
-#### last()
 
-Returns the last item in the array or nil if the array is empty.
 
-##### Returns
+_class_ **Int64Array** {#array.Int64Array .class}
 
-- number
+: class Int64Array represents an array of twos-complement 64-bit signed 
+  integers in the platform byte order.
 
-#### append(value)
 
-Adds the given _value_ to the end of the array.
+  ~ Properties
 
-##### Parameters
+    - __@printable__
+    - __@serializable__
+    - __@iterable__
 
-- _int_ **value**
+  .Int64Array(_n_) &#8674; Constructor {#array.Int64Array.Int64Array}
 
+  : - If n is a number, it creates a new Int64Array that can hold up to n 
+    number of elements, but with all the elements set to 0. 
+    - If n is a list, it creates a new Int64Array with its elements set to 
+    the values in the list.
 
-#### get(index)
 
-Returns the number at the specified index in the array. If index is 
-outside the boundary of the array indexes (0..(array.length() - 1)), 
-an exception is thrown.
+    - **@params**:
+      - _number|list_ **n**
 
-##### Parameters
+    {.params}
 
-- _number_ **index**
 
-##### Returns
+  .length() {#array.Int64Array.length}
 
-- number
+  : Returns the number of items in the array.
 
-#### set(index, value)
 
-set(index: number, value: number)
+    - **@returns**: _number_
 
-Sets the value at the given index.
 
-##### Parameters
+  .bytes\_length() {#array.Int64Array.bytes_length}
 
-- _number_ **index**
-- _number_ **value**
+  : Returns the length of the array if it were to be converted to bytes.
 
-##### Returns
 
-- number
+    - **@returns**: _number_
 
-#### extend(array)
 
-Updates the content of the current array by appending all the contents 
-of _array_ to the end of the array in exact order.
+  .first() {#array.Int64Array.first}
 
-##### Parameters
+  : Returns the first item in the array or nil if the array is empty.
 
-- _Int64Array_ **array**
 
+    - **@returns**: _number_
 
-#### reverse()
 
-Returns a new array containing the elements in the original array 
-in reverse order.
+  .last() {#array.Int64Array.last}
 
+  : Returns the last item in the array or nil if the array is empty.
 
-#### clone()
 
-Returns a new Int64Array containing all items from the current array. 
-The new array is a shallow copy of the original array.
+    - **@returns**: _number_
 
-##### Returns
 
-- Int64Array
+  .append(_value_) {#array.Int64Array.append}
 
-#### pop()
+  : Adds the given _value_ to the end of the array.
 
-Removes the last element in the array and returns the value of that item.
 
-##### Returns
+    - **@params**:
+      - _int_ **value**
 
-- number
+    {.params}
 
-#### to\_bytes()
 
-Returns the array as a bytes object.
+  .get(_index_) {#array.Int64Array.get}
 
-##### Returns
+  : Returns the number at the specified index in the array. If index is 
+    outside the boundary of the array indexes (0..(array.length() - 1)), 
+    an exception is thrown.
 
-- bytes
 
-#### to\_list()
+    - **@params**:
+      - _number_ **index**
 
-Returns the elements of the array as a list of numbers.
+    {.params}
+    - **@returns**: _number_
 
-##### Returns
 
-- list
+  .set(_index_, _value_) {#array.Int64Array.set}
 
-#### to\_string()
+  : set(index: number, value: number)
+    
+    Sets the value at the given index.
 
-Returns a string representation of the array.
 
-##### Returns
+    - **@params**:
+      - _number_ **index**
+      - _number_ **value**
 
-- string
+    {.params}
+    - **@returns**: _number_
 
-#### get\_pointer()
 
-Returns the raw int64 array pointer.
+  .extend(_array_) {#array.Int64Array.extend}
 
-##### Returns
+  : Updates the content of the current array by appending all the contents 
+    of _array_ to the end of the array in exact order.
 
-- ptr
 
+    - **@params**:
+      - _Int64Array_ **array**
 
+    {.params}
 
-### _class_ UInt16Array
 
-class UInt16Array represents an array of twos-complement 16-bit unsigned 
-integers in the platform byte order.
+  .reverse() {#array.Int64Array.reverse}
 
+  : Returns a new array containing the elements in the original array 
+    in reverse order.
 
 
-#### Properties
 
- - __@printable__
- - __@serializable__
- - __@iterable__
 
-#### Methods
+  .clone() {#array.Int64Array.clone}
 
-#### UInt16Array(n) &#8674; Constructor
+  : Returns a new Int64Array containing all items from the current array. 
+    The new array is a shallow copy of the original array.
 
-- If n is a number, it creates a new UInt16Array that can hold up to n 
-number of elements, but with all the elements set to 0. 
-- If n is a list, it creates a new UInt16Array with its elements set to 
-the values in the list.
 
-##### Parameters
+    - **@returns**: _Int64Array_
 
-- _number|list_ **n**
 
+  .pop() {#array.Int64Array.pop}
 
-#### length()
+  : Removes the last element in the array and returns the value of that item.
 
-Returns the number of items in the array.
 
-##### Returns
+    - **@returns**: _number_
 
-- number
 
-#### bytes\_length()
+  .to\_bytes() {#array.Int64Array.to_bytes}
 
-Returns the length of the array if it were to be converted to bytes.
+  : Returns the array as a bytes object.
 
-##### Returns
 
-- number
+    - **@returns**: _bytes_
 
-#### first()
 
-Returns the first item in the array or nil if the array is empty.
+  .to\_list() {#array.Int64Array.to_list}
 
-##### Returns
+  : Returns the elements of the array as a list of numbers.
 
-- number
 
-#### last()
+    - **@returns**: _list_
 
-Returns the last item in the array or nil if the array is empty.
 
-##### Returns
+  .to\_string() {#array.Int64Array.to_string}
 
-- number
+  : Returns a string representation of the array.
 
-#### append(value)
 
-Adds the given _value_ to the end of the array.
+    - **@returns**: _string_
 
-##### Parameters
 
-- _int_ **value**
+  .get\_pointer() {#array.Int64Array.get_pointer}
 
+  : Returns the raw int64 array pointer.
 
-#### get(index)
 
-Returns the number at the specified index in the array. If index is 
-outside the boundary of the array indexes (0..(array.length() - 1)), 
-an exception is thrown.
+    - **@returns**: _ptr_
 
-##### Parameters
 
-- _number_ **index**
 
-##### Returns
 
-- number
+_class_ **UInt16Array** {#array.UInt16Array .class}
 
-#### set(index, value)
+: class UInt16Array represents an array of twos-complement 16-bit unsigned 
+  integers in the platform byte order.
 
-Sets the value at the given index.
 
-##### Parameters
+  ~ Properties
 
-- _number_ **index**
-- _number_ **value**
+    - __@printable__
+    - __@serializable__
+    - __@iterable__
 
-##### Returns
+  .UInt16Array(_n_) &#8674; Constructor {#array.UInt16Array.UInt16Array}
 
-- number
+  : - If n is a number, it creates a new UInt16Array that can hold up to n 
+    number of elements, but with all the elements set to 0. 
+    - If n is a list, it creates a new UInt16Array with its elements set to 
+    the values in the list.
 
-#### extend(array)
 
-Updates the content of the current array by appending all the contents 
-of _array_ to the end of the array in exact order.
+    - **@params**:
+      - _number|list_ **n**
 
-##### Parameters
+    {.params}
 
-- _UInt16Array_ **array**
 
+  .length() {#array.UInt16Array.length}
 
-#### reverse()
+  : Returns the number of items in the array.
 
-Returns a new array containing the elements in the original array 
-in reverse order.
 
+    - **@returns**: _number_
 
-#### clone()
 
-Returns a new UInt16Array containing all items from the current array. 
-The new array is a shallow copy of the original array.
+  .bytes\_length() {#array.UInt16Array.bytes_length}
 
-##### Returns
+  : Returns the length of the array if it were to be converted to bytes.
 
-- UInt16Array
 
-#### pop()
+    - **@returns**: _number_
 
-Removes the last element in the array and returns the value of that item.
 
-##### Returns
+  .first() {#array.UInt16Array.first}
 
-- number
+  : Returns the first item in the array or nil if the array is empty.
 
-#### to\_bytes()
 
-Returns the array as a bytes object.
+    - **@returns**: _number_
 
-##### Returns
 
-- bytes
+  .last() {#array.UInt16Array.last}
 
-#### to\_list()
+  : Returns the last item in the array or nil if the array is empty.
 
-Returns the elements of the array as a list of numbers.
 
-##### Returns
+    - **@returns**: _number_
 
-- list
 
-#### to\_string()
+  .append(_value_) {#array.UInt16Array.append}
 
-Returns a string representation of the array.
+  : Adds the given _value_ to the end of the array.
 
-##### Returns
 
-- string
+    - **@params**:
+      - _int_ **value**
 
-#### get\_pointer()
+    {.params}
 
-Returns the raw uint16 array pointer.
 
-##### Returns
+  .get(_index_) {#array.UInt16Array.get}
 
-- ptr
+  : Returns the number at the specified index in the array. If index is 
+    outside the boundary of the array indexes (0..(array.length() - 1)), 
+    an exception is thrown.
 
 
+    - **@params**:
+      - _number_ **index**
 
-### _class_ UInt32Array
+    {.params}
+    - **@returns**: _number_
 
-class UInt32Array represents an array of twos-complement 32-bit unsigned 
-integers in the platform byte order.
 
+  .set(_index_, _value_) {#array.UInt16Array.set}
 
+  : Sets the value at the given index.
 
-#### Properties
 
- - __@printable__
- - __@serializable__
- - __@iterable__
+    - **@params**:
+      - _number_ **index**
+      - _number_ **value**
 
-#### Methods
+    {.params}
+    - **@returns**: _number_
 
-#### UInt32Array(n) &#8674; Constructor
 
-- If n is a number, it creates a new UInt32Array that can hold up to n 
-number of elements, but with all the elements set to 0. 
-- If n is a list, it creates a new UInt32Array with its elements set to 
-the values in the list.
+  .extend(_array_) {#array.UInt16Array.extend}
 
-##### Parameters
+  : Updates the content of the current array by appending all the contents 
+    of _array_ to the end of the array in exact order.
 
-- _number|list_ **n**
 
+    - **@params**:
+      - _UInt16Array_ **array**
 
-#### length()
+    {.params}
 
-Returns the number of items in the array.
 
-##### Returns
+  .reverse() {#array.UInt16Array.reverse}
 
-- number
+  : Returns a new array containing the elements in the original array 
+    in reverse order.
 
-#### bytes\_length()
 
-Returns the length of the array if it were to be converted to bytes.
 
-##### Returns
 
-- number
+  .clone() {#array.UInt16Array.clone}
 
-#### first()
+  : Returns a new UInt16Array containing all items from the current array. 
+    The new array is a shallow copy of the original array.
 
-Returns the first item in the array or nil if the array is empty.
 
-##### Returns
+    - **@returns**: _UInt16Array_
 
-- number
 
-#### last()
+  .pop() {#array.UInt16Array.pop}
 
-Returns the last item in the array or nil if the array is empty.
+  : Removes the last element in the array and returns the value of that item.
 
-##### Returns
 
-- number
+    - **@returns**: _number_
 
-#### append(value)
 
-Adds the given _value_ to the end of the array.
+  .to\_bytes() {#array.UInt16Array.to_bytes}
 
-##### Parameters
+  : Returns the array as a bytes object.
 
-- _int_ **value**
 
+    - **@returns**: _bytes_
 
-#### get(index)
 
-Returns the number at the specified index in the array. If index is 
-outside the boundary of the array indexes (0..(array.length() - 1)), 
-an exception is thrown.
+  .to\_list() {#array.UInt16Array.to_list}
 
-##### Parameters
+  : Returns the elements of the array as a list of numbers.
 
-- _number_ **index**
 
-##### Returns
+    - **@returns**: _list_
 
-- number
 
-#### set(index, value)
+  .to\_string() {#array.UInt16Array.to_string}
 
-Sets the value at the given index.
+  : Returns a string representation of the array.
 
-##### Parameters
 
-- _number_ **index**
-- _number_ **value**
+    - **@returns**: _string_
 
-##### Returns
 
-- number
+  .get\_pointer() {#array.UInt16Array.get_pointer}
 
-#### extend(array)
+  : Returns the raw uint16 array pointer.
 
-Updates the content of the current array by appending all the contents 
-of _array_ to the end of the array in exact order.
 
-##### Parameters
+    - **@returns**: _ptr_
 
-- _UInt32Array_ **array**
 
 
-#### reverse()
 
-Returns a new array containing the elements in the original array 
-in reverse order.
+_class_ **UInt32Array** {#array.UInt32Array .class}
 
+: class UInt32Array represents an array of twos-complement 32-bit unsigned 
+  integers in the platform byte order.
 
-#### clone()
 
-Returns a new UInt32Array containing all items from the current array. 
-The new array is a shallow copy of the original array.
+  ~ Properties
 
-##### Returns
+    - __@printable__
+    - __@serializable__
+    - __@iterable__
 
-- UInt32Array
+  .UInt32Array(_n_) &#8674; Constructor {#array.UInt32Array.UInt32Array}
 
-#### pop()
+  : - If n is a number, it creates a new UInt32Array that can hold up to n 
+    number of elements, but with all the elements set to 0. 
+    - If n is a list, it creates a new UInt32Array with its elements set to 
+    the values in the list.
 
-Removes the last element in the array and returns the value of that item.
 
-##### Returns
+    - **@params**:
+      - _number|list_ **n**
 
-- number
+    {.params}
 
-#### to\_bytes()
 
-Returns the array as a bytes object.
+  .length() {#array.UInt32Array.length}
 
-##### Returns
+  : Returns the number of items in the array.
 
-- bytes
 
-#### to\_list()
+    - **@returns**: _number_
 
-Returns the elements of the array as a list of numbers.
 
-##### Returns
+  .bytes\_length() {#array.UInt32Array.bytes_length}
 
-- list
+  : Returns the length of the array if it were to be converted to bytes.
 
-#### to\_string()
 
-Returns a string representation of the array.
+    - **@returns**: _number_
 
-##### Returns
 
-- string
+  .first() {#array.UInt32Array.first}
 
-#### get\_pointer()
+  : Returns the first item in the array or nil if the array is empty.
 
-Returns the raw uint32 array pointer.
 
-##### Returns
+    - **@returns**: _number_
 
-- ptr
 
+  .last() {#array.UInt32Array.last}
 
+  : Returns the last item in the array or nil if the array is empty.
 
-### _class_ UInt64Array
 
-class UInt64Array represents an array of twos-complement 64-bit unsigned 
-integers in the platform byte order.
+    - **@returns**: _number_
 
 
+  .append(_value_) {#array.UInt32Array.append}
 
-#### Properties
+  : Adds the given _value_ to the end of the array.
 
- - __@printable__
- - __@serializable__
- - __@iterable__
 
-#### Methods
+    - **@params**:
+      - _int_ **value**
 
-#### UInt64Array(n) &#8674; Constructor
+    {.params}
 
-- If n is a number, it creates a new UInt64Array that can hold up to n 
-number of elements, but with all the elements set to 0. 
-- If n is a list, it creates a new UInt64Array with its elements set to 
-the values in the list.
 
-##### Parameters
+  .get(_index_) {#array.UInt32Array.get}
 
-- _number|list_ **n**
+  : Returns the number at the specified index in the array. If index is 
+    outside the boundary of the array indexes (0..(array.length() - 1)), 
+    an exception is thrown.
 
 
-#### length()
+    - **@params**:
+      - _number_ **index**
 
-Returns the number of items in the array.
+    {.params}
+    - **@returns**: _number_
 
-##### Returns
 
-- number
+  .set(_index_, _value_) {#array.UInt32Array.set}
 
-#### bytes\_length()
+  : Sets the value at the given index.
 
-Returns the length of the array if it were to be converted to bytes.
 
-##### Returns
+    - **@params**:
+      - _number_ **index**
+      - _number_ **value**
 
-- number
+    {.params}
+    - **@returns**: _number_
 
-#### first()
 
-Returns the first item in the array or nil if the array is empty.
+  .extend(_array_) {#array.UInt32Array.extend}
 
-##### Returns
+  : Updates the content of the current array by appending all the contents 
+    of _array_ to the end of the array in exact order.
 
-- number
 
-#### last()
+    - **@params**:
+      - _UInt32Array_ **array**
 
-Returns the last item in the array or nil if the array is empty.
+    {.params}
 
-##### Returns
 
-- number
+  .reverse() {#array.UInt32Array.reverse}
 
-#### append(value)
+  : Returns a new array containing the elements in the original array 
+    in reverse order.
 
-Adds the given _value_ to the end of the array.
 
-##### Parameters
 
-- _int_ **value**
 
+  .clone() {#array.UInt32Array.clone}
 
-#### get(index)
+  : Returns a new UInt32Array containing all items from the current array. 
+    The new array is a shallow copy of the original array.
 
-Returns the number at the specified index in the array. If index is 
-outside the boundary of the array indexes (0..(array.length() - 1)), 
-an exception is thrown.
 
-##### Parameters
+    - **@returns**: _UInt32Array_
 
-- _number_ **index**
 
-##### Returns
+  .pop() {#array.UInt32Array.pop}
 
-- number
+  : Removes the last element in the array and returns the value of that item.
 
-#### set(index, value)
 
-Sets the value at the given index.
+    - **@returns**: _number_
 
-##### Parameters
 
-- _number_ **index**
-- _number_ **value**
+  .to\_bytes() {#array.UInt32Array.to_bytes}
 
-##### Returns
+  : Returns the array as a bytes object.
 
-- number
 
-#### extend(array)
+    - **@returns**: _bytes_
 
-Updates the content of the current array by appending all the contents 
-of _array_ to the end of the array in exact order.
 
-##### Parameters
+  .to\_list() {#array.UInt32Array.to_list}
 
-- _UInt64Array_ **array**
+  : Returns the elements of the array as a list of numbers.
 
 
-#### reverse()
+    - **@returns**: _list_
 
-Returns a new array containing the elements in the original array 
-in reverse order.
 
+  .to\_string() {#array.UInt32Array.to_string}
 
-#### clone()
+  : Returns a string representation of the array.
 
-Returns a new UInt64Array containing all items from the current array. 
-The new array is a shallow copy of the original array.
 
-##### Returns
+    - **@returns**: _string_
 
-- UInt64Array
 
-#### pop()
+  .get\_pointer() {#array.UInt32Array.get_pointer}
 
-Removes the last element in the array and returns the value of that item.
+  : Returns the raw uint32 array pointer.
 
-##### Returns
 
-- number
+    - **@returns**: _ptr_
 
-#### to\_bytes()
 
-Returns the array as a bytes object.
 
-##### Returns
 
-- bytes
+_class_ **UInt64Array** {#array.UInt64Array .class}
 
-#### to\_list()
+: class UInt64Array represents an array of twos-complement 64-bit unsigned 
+  integers in the platform byte order.
 
-Returns the elements of the array as a list of numbers.
 
-##### Returns
+  ~ Properties
 
-- list
+    - __@printable__
+    - __@serializable__
+    - __@iterable__
 
-#### to\_string()
+  .UInt64Array(_n_) &#8674; Constructor {#array.UInt64Array.UInt64Array}
 
-Returns a string representation of the array.
+  : - If n is a number, it creates a new UInt64Array that can hold up to n 
+    number of elements, but with all the elements set to 0. 
+    - If n is a list, it creates a new UInt64Array with its elements set to 
+    the values in the list.
 
-##### Returns
 
-- string
+    - **@params**:
+      - _number|list_ **n**
 
-#### get\_pointer()
+    {.params}
 
-Returns the raw uint64 array pointer.
 
-##### Returns
+  .length() {#array.UInt64Array.length}
 
-- ptr
+  : Returns the number of items in the array.
 
 
+    - **@returns**: _number_
 
-### _class_ FloatArray
 
-class FloatArray represents an array of 32-bit floating point numbers 
-corresponding to the C float data type in the platform byte order.
+  .bytes\_length() {#array.UInt64Array.bytes_length}
 
+  : Returns the length of the array if it were to be converted to bytes.
 
 
-#### Properties
+    - **@returns**: _number_
 
- - __@printable__
- - __@serializable__
- - __@iterable__
 
-#### Methods
+  .first() {#array.UInt64Array.first}
 
-#### FloatArray(n) &#8674; Constructor
+  : Returns the first item in the array or nil if the array is empty.
 
-- If n is a number, it creates a new FloatArray that can hold up to n 
-number of elements, but with all the elements set to 0. 
-- If n is a list, it creates a new FloatArray with its elements set to 
-the values in the list.
 
-##### Parameters
+    - **@returns**: _number_
 
-- _number|list_ **n**
 
+  .last() {#array.UInt64Array.last}
 
-#### length()
+  : Returns the last item in the array or nil if the array is empty.
 
-Returns the number of items in the array.
 
-##### Returns
+    - **@returns**: _number_
 
-- number
 
-#### bytes\_length()
+  .append(_value_) {#array.UInt64Array.append}
 
-Returns the length of the array if it were to be converted to bytes.
+  : Adds the given _value_ to the end of the array.
 
-##### Returns
 
-- number
+    - **@params**:
+      - _int_ **value**
 
-#### first()
+    {.params}
 
-Returns the first item in the array or nil if the array is empty.
 
-##### Returns
+  .get(_index_) {#array.UInt64Array.get}
 
-- number
+  : Returns the number at the specified index in the array. If index is 
+    outside the boundary of the array indexes (0..(array.length() - 1)), 
+    an exception is thrown.
 
-#### last()
 
-Returns the last item in the array or nil if the array is empty.
+    - **@params**:
+      - _number_ **index**
 
-##### Returns
+    {.params}
+    - **@returns**: _number_
 
-- number
 
-#### append(value)
+  .set(_index_, _value_) {#array.UInt64Array.set}
 
-Adds the given _value_ to the end of the array.
+  : Sets the value at the given index.
 
-##### Parameters
 
-- _int_ **value**
+    - **@params**:
+      - _number_ **index**
+      - _number_ **value**
 
+    {.params}
+    - **@returns**: _number_
 
-#### get(index)
 
-Returns the number at the specified index in the array. If index is 
-outside the boundary of the array indexes (0..(array.length() - 1)), 
-an exception is thrown.
+  .extend(_array_) {#array.UInt64Array.extend}
 
-##### Parameters
+  : Updates the content of the current array by appending all the contents 
+    of _array_ to the end of the array in exact order.
 
-- _number_ **index**
 
-##### Returns
+    - **@params**:
+      - _UInt64Array_ **array**
 
-- number
+    {.params}
 
-#### set(index, value)
 
-Sets the value at the given index.
+  .reverse() {#array.UInt64Array.reverse}
 
-##### Parameters
+  : Returns a new array containing the elements in the original array 
+    in reverse order.
 
-- _number_ **index**
-- _int_ **value**
 
-##### Returns
 
-- number
 
-#### extend(array)
+  .clone() {#array.UInt64Array.clone}
 
-Updates the content of the current array by appending all the contents 
-of _array_ to the end of the array in exact order.
+  : Returns a new UInt64Array containing all items from the current array. 
+    The new array is a shallow copy of the original array.
 
-##### Parameters
 
-- _FloatArray_ **array**
+    - **@returns**: _UInt64Array_
 
 
-#### reverse()
+  .pop() {#array.UInt64Array.pop}
 
-Returns a new array containing the elements in the original array 
-in reverse order.
+  : Removes the last element in the array and returns the value of that item.
 
 
-#### clone()
+    - **@returns**: _number_
 
-Returns a new FloatArray containing all items from the current array. 
-The new array is a shallow copy of the original array.
 
-##### Returns
+  .to\_bytes() {#array.UInt64Array.to_bytes}
 
-- FloatArray
+  : Returns the array as a bytes object.
 
-#### pop()
 
-Removes the last element in the array and returns the value of that item.
+    - **@returns**: _bytes_
 
-##### Returns
 
-- number
+  .to\_list() {#array.UInt64Array.to_list}
 
-#### to\_bytes()
+  : Returns the elements of the array as a list of numbers.
 
-Returns the array as a bytes object
 
-##### Returns
+    - **@returns**: _list_
 
-- bytes
 
-#### to\_list()
+  .to\_string() {#array.UInt64Array.to_string}
 
-Returns the elements of the array as a list of numbers
+  : Returns a string representation of the array.
 
-##### Returns
 
-- list
+    - **@returns**: _string_
 
-#### to\_string()
 
-Returns a string representation of the array
+  .get\_pointer() {#array.UInt64Array.get_pointer}
 
-##### Returns
+  : Returns the raw uint64 array pointer.
 
-- string
 
-#### get\_pointer()
+    - **@returns**: _ptr_
 
-Returns the raw uint64 array pointer.
 
-##### Returns
 
-- ptr
+
+_class_ **FloatArray** {#array.FloatArray .class}
+
+: class FloatArray represents an array of 32-bit floating point numbers 
+  corresponding to the C float data type in the platform byte order.
+
+
+  ~ Properties
+
+    - __@printable__
+    - __@serializable__
+    - __@iterable__
+
+  .FloatArray(_n_) &#8674; Constructor {#array.FloatArray.FloatArray}
+
+  : - If n is a number, it creates a new FloatArray that can hold up to n 
+    number of elements, but with all the elements set to 0. 
+    - If n is a list, it creates a new FloatArray with its elements set to 
+    the values in the list.
+
+
+    - **@params**:
+      - _number|list_ **n**
+
+    {.params}
+
+
+  .length() {#array.FloatArray.length}
+
+  : Returns the number of items in the array.
+
+
+    - **@returns**: _number_
+
+
+  .bytes\_length() {#array.FloatArray.bytes_length}
+
+  : Returns the length of the array if it were to be converted to bytes.
+
+
+    - **@returns**: _number_
+
+
+  .first() {#array.FloatArray.first}
+
+  : Returns the first item in the array or nil if the array is empty.
+
+
+    - **@returns**: _number_
+
+
+  .last() {#array.FloatArray.last}
+
+  : Returns the last item in the array or nil if the array is empty.
+
+
+    - **@returns**: _number_
+
+
+  .append(_value_) {#array.FloatArray.append}
+
+  : Adds the given _value_ to the end of the array.
+
+
+    - **@params**:
+      - _int_ **value**
+
+    {.params}
+
+
+  .get(_index_) {#array.FloatArray.get}
+
+  : Returns the number at the specified index in the array. If index is 
+    outside the boundary of the array indexes (0..(array.length() - 1)), 
+    an exception is thrown.
+
+
+    - **@params**:
+      - _number_ **index**
+
+    {.params}
+    - **@returns**: _number_
+
+
+  .set(_index_, _value_) {#array.FloatArray.set}
+
+  : Sets the value at the given index.
+
+
+    - **@params**:
+      - _number_ **index**
+      - _int_ **value**
+
+    {.params}
+    - **@returns**: _number_
+
+
+  .extend(_array_) {#array.FloatArray.extend}
+
+  : Updates the content of the current array by appending all the contents 
+    of _array_ to the end of the array in exact order.
+
+
+    - **@params**:
+      - _FloatArray_ **array**
+
+    {.params}
+
+
+  .reverse() {#array.FloatArray.reverse}
+
+  : Returns a new array containing the elements in the original array 
+    in reverse order.
+
+
+
+
+  .clone() {#array.FloatArray.clone}
+
+  : Returns a new FloatArray containing all items from the current array. 
+    The new array is a shallow copy of the original array.
+
+
+    - **@returns**: _FloatArray_
+
+
+  .pop() {#array.FloatArray.pop}
+
+  : Removes the last element in the array and returns the value of that item.
+
+
+    - **@returns**: _number_
+
+
+  .to\_bytes() {#array.FloatArray.to_bytes}
+
+  : Returns the array as a bytes object
+
+
+    - **@returns**: _bytes_
+
+
+  .to\_list() {#array.FloatArray.to_list}
+
+  : Returns the elements of the array as a list of numbers
+
+
+    - **@returns**: _list_
+
+
+  .to\_string() {#array.FloatArray.to_string}
+
+  : Returns a string representation of the array
+
+
+    - **@returns**: _string_
+
+
+  .get\_pointer() {#array.FloatArray.get_pointer}
+
+  : Returns the raw uint64 array pointer.
+
+
+    - **@returns**: _ptr_
+
 
 
 

@@ -3,891 +3,913 @@
 The module provides interfaces for sending and reading electronic mails and provides 
 implementation for the SMTP, IMAP and POP3 mail exchange protocols.
 
-## Properties
+## Fields
 
-- **TLS\_NONE**:
+**TLS\_NONE**
+:  Do not attempt to use SSL.
 
-  Do not attempt to use SSL.
+**TLS\_TRY**
+:  Try using SSL, proceed as normal otherwise. Note that server 
+  may close the connection if the negotiation does not succeed.
 
-- **TLS\_TRY**:
+**TLS\_CONTROL**
+:  Require SSL for the control connection or fail.
 
-  Try using SSL, proceed as normal otherwise. Note that server 
-may close the connection if the negotiation does not succeed.
-
-- **TLS\_CONTROL**:
-
-  Require SSL for the control connection or fail.
-
-- **TLS\_ALL**:
-
-  Require SSL for all communication or fail.
+**TLS\_ALL**
+:  Require SSL for all communication or fail.
 
 
 ## Functions
 
-#### parse(message)
+parse(_message_) {#mail.parse}
 
-Parses email messages and return an instance of Mail representing it.
-
-##### Parameters
-
-- _string_ **message**
-
-##### Returns
-
-- Mail
+: Parses email messages and return an instance of Mail representing it.
 
 
+  - **@params**:
+    - _string_ **message**
 
-#### smtp(options)
-
-Returns a new instance of SMTP {Transport} with the given __options__.
-
-##### Parameters
-
-- _{dict?}_ **options**: See {Transport}
-
-##### Returns
-
-- Transport
+  {.params}
+  - **@returns**: _Mail_
 
 
 
-#### pop3(options) &#8674; Exported
+smtp(_options_) {#mail.smtp}
 
-Returns a new instance of the POP3 class with the given options (if any) passed 
-to the constructor.
-
-##### Returns
-
-- POP3
+: Returns a new instance of SMTP {Transport} with the given __options__.
 
 
+  - **@params**:
+    - _{dict?}_ **options** See {Transport}
 
-#### imap(options) &#8674; Exported
 
-Returns a new instance of the Imap class with the given options (if any) passed 
-to the constructor.
-
-##### Returns
-
-- Imap
+  {.params}
+  - **@returns**: _Transport_
 
 
 
-#### message() &#8674; Exported
+pop3(_options_) &#8674; Exported {#mail.pop3}
 
-Returns a new instance of {Message}.
+: Returns a new instance of the POP3 class with the given options (if any) passed 
+  to the constructor.
 
-##### Returns
 
-- Message
+  - **@returns**: _POP3_
+
+
+
+imap(_options_) &#8674; Exported {#mail.imap}
+
+: Returns a new instance of the Imap class with the given options (if any) passed 
+  to the constructor.
+
+
+  - **@returns**: _Imap_
+
+
+
+message() &#8674; Exported {#mail.message}
+
+: Returns a new instance of {Message}.
+
+
+  - **@returns**: _Message_
 
 
 
 ## Classes
 
-### _class_ Attachment
+_class_ **Attachment** {#mail.Attachment .class}
 
-Attachment class is used to hold the information of attachments in the 
-message.
+: Attachment class is used to hold the information of attachments in the 
+  message.
 
 
+  ~ Properties
 
-#### Properties
+    - __@printable__
+    - __@serializable__
 
- - __@printable__
- - __@serializable__
 
-#### Methods
+  .Attachment(_headers_, _content_) &#8674; Constructor {#mail.Attachment.Attachment}
 
-#### Attachment(headers, content) &#8674; Constructor
+  : - **@params**:
+      - _dict_ **headers**
+      - _string_ **content**
 
+    {.params}
 
 
-##### Parameters
 
-- _dict_ **headers**
-- _string_ **content**
 
+_class_ **Mail** {#mail.Mail .class}
 
+: The Mail class represents a mail message as a blade object with the following 
+  properties.
+  
+  - __headers__: A dictionary containing the key/value pair contained in the 
+     mail message header.
+  - __body__: A dictionary containing the different segments of a mail body such
+     as its plain text and html counterpart.
+  - __attachments__: A list of attachments contained in the Mail message.
 
-### _class_ Mail
 
-The Mail class represents a mail message as a blade object with the following 
-properties.
+  ~ Properties
 
-- __headers__: A dictionary containing the key/value pair contained in the 
-   mail message header.
-- __body__: A dictionary containing the different segments of a mail body such
-   as its plain text and html counterpart.
-- __attachments__: A list of attachments contained in the Mail message.
+    - __@printable__
+    - __@serializable__
 
+  .Mail(_headers_, _body_, _attachments_) &#8674; Constructor {#mail.Mail.Mail}
 
+  : - **@params**:
+      - _dict_ **headers**
+      - _dict_ **body**
+      - _list[Attachment]_ **attachments**
 
-#### Properties
+    {.params}
 
- - __@printable__
- - __@serializable__
 
-#### Methods
 
-#### Mail(headers, body, attachments) &#8674; Constructor
 
+_class_ **Transport** {#mail.Transport .class}
 
+: Transport class can be used to send email messages through an SMTP server.
+  
+  The class constructor takes a single argument options, which should be a 
+  dictionary containing various options for the connection. If the options 
+  are not provided or are not a dictionary, the constructor will raise an 
+  exception. 
+  
+  The class uses the options to set various properties such as the host and 
+  port of the SMTP server, the username and password for authentication, and 
+  various options for connecting to the server such as the use of TLS, and 
+  timeout.
 
-##### Parameters
 
-- _dict_ **headers**
-- _dict_ **body**
-- _list[Attachment]_ **attachments**
 
+  .Transport(_options_) &#8674; Constructor {#mail.Transport.Transport}
 
+  : The Transport class accepts a dictionary that can be used to configure how 
+    it behaves. The dictionary can contain one or more of the following.
+    
+    - __host__: The host address of the SMTP server. (Default: localhost)
+    - __port__: The port number of the SMTP server. (Default: 465)
+    - __username__: The access username for the SMTP user.
+    - __password__: The password for the connection user.
+    - __tls__: The TLS mode of the connection. One of {TLS_TRY} (default), {TLS_CONTROL}, 
+       {TLS_ALL} or {TLS_NONE}.
+    - __debug__: Whether to print debug information or not. (Default: false)
+    - __verify_peer__: If the peer certificate should be verified or not. (Default: false)
+    - __verify_host__: If the host certificate should be verified or not. (Default: false)
+    - __proxy__: The address of the proxy server if any.
+    - __proxy_username__: The username for the proxy connection.
+    - __proxy_password__: The password for the user of the proxy connection.
+    - __verify_proxy_peer__: If the peer certificate of the proxy should be verified or 
+       not. (Default: The value of __verify_peer__)
+    - __verify_proxy_host__: If the host certificate of the proxy should be verified or 
+       not. (Default: The value of __verify_host__)
+    - __timeout__: The request timeout in milliseconds. (Default: 30,000)
 
-### _class_ Transport
 
-Transport class can be used to send email messages through an SMTP server.
+    - **@params**:
+      - _dict?_ **options**
 
-The class constructor takes a single argument options, which should be a 
-dictionary containing various options for the connection. If the options 
-are not provided or are not a dictionary, the constructor will raise an 
-exception. 
+    {.params}
 
-The class uses the options to set various properties such as the host and 
-port of the SMTP server, the username and password for authentication, and 
-various options for connecting to the server such as the use of TLS, and 
-timeout.
 
-#### Methods
+  .add\_message(_message_) {#mail.Transport.add_message}
 
-#### Transport(options) &#8674; Constructor
+  : Adds an email message to the list of messages to be sent.
 
-The Transport class accepts a dictionary that can be used to configure how 
-it behaves. The dictionary can contain one or more of the following.
 
-- __host__: The host address of the SMTP server. (Default: localhost)
-- __port__: The port number of the SMTP server. (Default: 465)
-- __username__: The access username for the SMTP user.
-- __password__: The password for the connection user.
-- __tls__: The TLS mode of the connection. One of {TLS_TRY} (default), {TLS_CONTROL}, 
-   {TLS_ALL} or {TLS_NONE}.
-- __debug__: Whether to print debug information or not. (Default: false)
-- __verify_peer__: If the peer certificate should be verified or not. (Default: false)
-- __verify_host__: If the host certificate should be verified or not. (Default: false)
-- __proxy__: The address of the proxy server if any.
-- __proxy_username__: The username for the proxy connection.
-- __proxy_password__: The password for the user of the proxy connection.
-- __verify_proxy_peer__: If the peer certificate of the proxy should be verified or 
-   not. (Default: The value of __verify_peer__)
-- __verify_proxy_host__: If the host certificate of the proxy should be verified or 
-   not. (Default: The value of __verify_host__)
-- __timeout__: The request timeout in milliseconds. (Default: 30,000)
+    - **@params**:
+      - _Message_ **message**
 
-##### Parameters
+    {.params}
+    - **@returns**: _Transport_
 
-- _dict?_ **options**
 
+  .test\_connection() {#mail.Transport.test_connection}
 
-#### add\_message(message)
+  : Tests the connection to the SMTP server
 
-Adds an email message to the list of messages to be sent.
 
-##### Parameters
+    - **@returns**: _bool_
 
-- _Message_ **message**
 
-##### Returns
+  .verify(_address_) {#mail.Transport.verify}
 
-- Transport
+  : Verifies an email address
 
-#### test\_connection()
 
-Tests the connection to the SMTP server
+    - **@params**:
+      - _string_ **address**
 
-##### Returns
+    {.params}
+    - **@returns**: _bool_
 
-- bool
 
-#### verify(address)
+  .send() {#mail.Transport.send}
 
-Verifies an email address
+  : Send the email messages and returns `true` if the message was successfully 
+    sent or `false` otherwise.
 
-##### Parameters
 
-- _string_ **address**
+    - **@returns**: _bool_
 
-##### Returns
 
-- bool
 
-#### send()
 
-Send the email messages and returns `true` if the message was successfully 
-sent or `false` otherwise.
+_class_ **POP3** {#mail.POP3 .class}
 
-##### Returns
+: The POP3 class provides an interface for connecting to an POP3 (Post Office Protocol) server 
+  and interacting with the server via the POP3 protocol.
+  
+  This class includes operations for creating, deleting, and renaming mailboxes, checking for new 
+  messages, permanently removing messages, setting and clearing flags searching, and selective 
+  fetching of message attributes, texts, and portions.
 
-- bool
 
 
+  .POP3(_options_) &#8674; Constructor {#mail.POP3.POP3}
 
-### _class_ POP3
+  : The POP3 class accepts a dictionary that can be used to configure how 
+    it behaves. The dictionary can contain one or more of the following.
+    
+    - __host__: The host address of the POP3 server. (Default: localhost)
+    - __port__: The port number of the POP3 server. (Default: 110)
+    - __username__: The access username for the POP3 user.
+    - __password__: The password for the connection user.
+    - __tls__: The TLS mode of the connection. One of {TLS_TRY} (default), {TLS_CONTROL}, 
+       {TLS_ALL} or {TLS_NONE}.
+    - __debug__: Whether to print debug information or not. (Default: false)
+    - __verify_peer__: If the peer certificate should be verified or not. (Default: false)
+    - __verify_host__: If the host certificate should be verified or not. (Default: false)
+    - __proxy__: The address of the proxy server if any.
+    - __proxy_username__: The username for the proxy connection.
+    - __proxy_password__: The password for the user of the proxy connection.
+    - __verify_proxy_peer__: If the peer certificate of the proxy should be verified or 
+       not. (Default: The value of __verify_peer__)
+    - __verify_proxy_host__: If the host certificate of the proxy should be verified or 
+       not. (Default: The value of __verify_host__)
+    - __timeout__: The request timeout in milliseconds. (Default: 30,000)
 
-The POP3 class provides an interface for connecting to an POP3 (Post Office Protocol) server 
-and interacting with the server via the POP3 protocol.
 
-This class includes operations for creating, deleting, and renaming mailboxes, checking for new 
-messages, permanently removing messages, setting and clearing flags searching, and selective 
-fetching of message attributes, texts, and portions.
+    - **@params**:
+      - _dict?_ **options**
 
-#### Methods
+    {.params}
 
-#### POP3(options) &#8674; Constructor
 
-The POP3 class accepts a dictionary that can be used to configure how 
-it behaves. The dictionary can contain one or more of the following.
+  .exec(_command_, _path_, _no_transfer_) {#mail.POP3.exec}
 
-- __host__: The host address of the POP3 server. (Default: localhost)
-- __port__: The port number of the POP3 server. (Default: 110)
-- __username__: The access username for the POP3 user.
-- __password__: The password for the connection user.
-- __tls__: The TLS mode of the connection. One of {TLS_TRY} (default), {TLS_CONTROL}, 
-   {TLS_ALL} or {TLS_NONE}.
-- __debug__: Whether to print debug information or not. (Default: false)
-- __verify_peer__: If the peer certificate should be verified or not. (Default: false)
-- __verify_host__: If the host certificate should be verified or not. (Default: false)
-- __proxy__: The address of the proxy server if any.
-- __proxy_username__: The username for the proxy connection.
-- __proxy_password__: The password for the user of the proxy connection.
-- __verify_proxy_peer__: If the peer certificate of the proxy should be verified or 
-   not. (Default: The value of __verify_peer__)
-- __verify_proxy_host__: If the host certificate of the proxy should be verified or 
-   not. (Default: The value of __verify_host__)
-- __timeout__: The request timeout in milliseconds. (Default: 30,000)
+  : Executes an POP3 command.
+    
+    
+    
+    
+       as response response. Default `false`.
 
-##### Parameters
 
-- _dict?_ **options**
+    - **@params**:
+      - _string_ **command** The command to execute.
 
+      - _string?_ **path** The path segment of the request url.
 
-#### exec(command, path, no_transfer)
+      - _bool?_ **no_transfer** Set to `true` if the command will return the requested data 
 
-Executes an POP3 command.
 
+    {.params}
+    - **@returns**: _string The response from the server._
 
 
+  .list(_uid_) {#mail.POP3.list}
 
-   as response response. Default `false`.
+  : Returns a list of dictionaries containing the `uid` and `size` of each message in the 
+    mail if the _uid_ argument is not given or the content of the message identified by the 
+    given _uid_.
 
-##### Parameters
 
-- _string_ **command**: The command to execute.
-- _string?_ **path**: The path segment of the request url.
-- _bool?_ **no_transfer**: Set to `true` if the command will return the requested data 
+    - **@params**:
+      - _number?_ **uid**
 
-##### Returns
+    {.params}
+    - **@returns**: _list[dictionary]|string_
 
-- string The response from the server.
 
-#### list(uid)
+  .uid\_list() {#mail.POP3.uid_list}
 
-Returns a list of dictionaries containing the `uid` and `size` of each message in the 
-mail if the _uid_ argument is not given or the content of the message identified by the 
-given _uid_.
+  : Returns a list of dictionaries containing the `uid` and `id` for every message in the mailbox 
+    based on their unique ids.
 
-##### Parameters
 
-- _number?_ **uid**
+    - **@returns**: _list[dictionary]_
 
-##### Returns
 
-- list[dictionary]|string
+  .retr(_uid_) {#mail.POP3.retr}
 
-#### uid\_list()
+  : Retrieves the whole message with the specified _uid_.
 
-Returns a list of dictionaries containing the `uid` and `id` for every message in the mailbox 
-based on their unique ids.
 
-##### Returns
+    - **@params**:
+      - _number_ **uid**
 
-- list[dictionary]
+    {.params}
+    - **@returns**: _string_
 
-#### retr(uid)
 
-Retrieves the whole message with the specified _uid_.
+  .stat() {#mail.POP3.stat}
 
-##### Parameters
+  : Returns a dictionary containing the message `count` and `size` of the mailbox.
 
-- _number_ **uid**
 
-##### Returns
+    - **@returns**: _dictionary_
 
-- string
 
-#### stat()
+  .delete(_uid_) {#mail.POP3.delete}
 
-Returns a dictionary containing the message `count` and `size` of the mailbox.
+  : Instructs the POP3 server to mark the message _uid_ as deleted. Any future reference 
+    to the message-number associated with the message in a POP3 command generates an error.  
+    The POP3 server does not actually delete the message until the POP3 session enters the 
+    UPDATE state.
 
-##### Returns
 
-- dictionary
+    - **@params**:
+      - _number_ **uid**
 
-#### delete(uid)
+    {.params}
 
-Instructs the POP3 server to mark the message _uid_ as deleted. Any future reference 
-to the message-number associated with the message in a POP3 command generates an error.  
-The POP3 server does not actually delete the message until the POP3 session enters the 
-UPDATE state.
 
-##### Parameters
+  .noop() {#mail.POP3.noop}
 
-- _number_ **uid**
+  : Does nothing. It merely ask the server to reply with a positive response.
 
 
-#### noop()
+    > **@notes**:
+    > 
+    > - It's useful for a keep-alive.
 
-Does nothing. It merely ask the server to reply with a positive response.
 
-##### Notes
 
-- It's useful for a keep-alive.
+  .rset() {#mail.POP3.rset}
 
-#### rset()
+  : Instructs the server to unmark any messages have been marked as deleted.
 
-Instructs the server to unmark any messages have been marked as deleted.
 
 
-#### top(uid, count)
 
-Retrieves the header for the message identified by `uid` plus `count` lines 
-of the message after the header of message.
+  .top(_uid_, _count_) {#mail.POP3.top}
 
-##### Parameters
+  : Retrieves the header for the message identified by `uid` plus `count` lines 
+    of the message after the header of message.
 
-- _number_ **uid**
-- _number?_ **count**: (Default: 0)
 
-##### Returns
+    - **@params**:
+      - _number_ **uid**
+      - _number?_ **count** (Default: 0)
 
-- string
 
-#### quit()
+    {.params}
+    - **@returns**: _string_
 
-Closes the current POP3 session and disposes all associated network handles.
 
+  .quit() {#mail.POP3.quit}
 
-#### get\_handle()
+  : Closes the current POP3 session and disposes all associated network handles.
 
-Returns the raw handle to the underlying networking (curl) client.
 
 
 
-### _class_ Imap
+  .get\_handle() {#mail.POP3.get_handle}
 
-The Imap class provides an interface for connecting to an IMAP (Internet Mail Access Protocol) 
-server and interacting with the server via the IMAP protocol.
+  : Returns the raw handle to the underlying networking (curl) client.
 
-This class includes operations for creating, deleting, and renaming mailboxes, checking for new 
-messages, permanently removing messages, setting and clearing flags searching, and selective 
-fetching of message attributes, texts, and portions.
 
-#### Methods
 
-#### Imap(options) &#8674; Constructor
 
-The Imap class accepts a dictionary that can be used to configure how 
-it behaves. The dictionary can contain one or more of the following.
 
-- __host__: The host address of the Imap server. (Default: localhost)
-- __port__: The port number of the Imap server. (Default: 143)
-- __username__: The access username for the Imap user.
-- __password__: The password for the connection user.
-- __tls__: The TLS mode of the connection. One of {TLS_TRY} (default), {TLS_CONTROL}, 
-   {TLS_ALL} or {TLS_NONE}.
-- __debug__: Whether to print debug information or not. (Default: false)
-- __verify_peer__: If the peer certificate should be verified or not. (Default: false)
-- __verify_host__: If the host certificate should be verified or not. (Default: false)
-- __proxy__: The address of the proxy server if any.
-- __proxy_username__: The username for the proxy connection.
-- __proxy_password__: The password for the user of the proxy connection.
-- __verify_proxy_peer__: If the peer certificate of the proxy should be verified or 
-   not. (Default: The value of __verify_peer__)
-- __verify_proxy_host__: If the host certificate of the proxy should be verified or 
-   not. (Default: The value of __verify_host__)
-- __timeout__: The request timeout in milliseconds. (Default: 30,000)
 
-##### Parameters
+_class_ **Imap** {#mail.Imap .class}
 
-- _dict?_ **options**
+: The Imap class provides an interface for connecting to an IMAP (Internet Mail Access Protocol) 
+  server and interacting with the server via the IMAP protocol.
+  
+  This class includes operations for creating, deleting, and renaming mailboxes, checking for new 
+  messages, permanently removing messages, setting and clearing flags searching, and selective 
+  fetching of message attributes, texts, and portions.
 
 
-#### exec(command, path)
 
-Executes an IMAP command.
+  .Imap(_options_) &#8674; Constructor {#mail.Imap.Imap}
 
-##### Parameters
+  : The Imap class accepts a dictionary that can be used to configure how 
+    it behaves. The dictionary can contain one or more of the following.
+    
+    - __host__: The host address of the Imap server. (Default: localhost)
+    - __port__: The port number of the Imap server. (Default: 143)
+    - __username__: The access username for the Imap user.
+    - __password__: The password for the connection user.
+    - __tls__: The TLS mode of the connection. One of {TLS_TRY} (default), {TLS_CONTROL}, 
+       {TLS_ALL} or {TLS_NONE}.
+    - __debug__: Whether to print debug information or not. (Default: false)
+    - __verify_peer__: If the peer certificate should be verified or not. (Default: false)
+    - __verify_host__: If the host certificate should be verified or not. (Default: false)
+    - __proxy__: The address of the proxy server if any.
+    - __proxy_username__: The username for the proxy connection.
+    - __proxy_password__: The password for the user of the proxy connection.
+    - __verify_proxy_peer__: If the peer certificate of the proxy should be verified or 
+       not. (Default: The value of __verify_peer__)
+    - __verify_proxy_host__: If the host certificate of the proxy should be verified or 
+       not. (Default: The value of __verify_host__)
+    - __timeout__: The request timeout in milliseconds. (Default: 30,000)
 
-- _string_ **command**: The command to execute.
-- _string?_ **path**: The path segment of the request url.
 
-##### Returns
+    - **@params**:
+      - _dict?_ **options**
 
-- string The response from the server.
+    {.params}
 
-#### get\_dirs(path)
 
-Gets a list of the mailbox directories on the server.
+  .exec(_command_, _path_) {#mail.Imap.exec}
 
-##### Parameters
+  : Executes an IMAP command.
 
-- _string?_ **path**
 
-##### Returns
+    - **@params**:
+      - _string_ **command** The command to execute.
 
-- list
+      - _string?_ **path** The path segment of the request url.
 
-#### get\_subscribed\_dirs()
 
-Gets a list of mailbox directories subscribed to by the current 
-user on the server.
+    {.params}
+    - **@returns**: _string The response from the server._
 
-##### Returns
 
-- list
+  .get\_dirs(_path_) {#mail.Imap.get_dirs}
 
-#### select(name)
+  : Gets a list of the mailbox directories on the server.
 
-Instructs the server that the client now wishes to select a particular mailbox or folder 
-with the name _name_, and any commands that relate to a folder should assume this folder 
-as the target of that command. For example, an INBOX or a subfolder such as, 
-"To Do.This Weekend". Once a mailbox is selected, the state of the connection becomes 
-"Selected".
 
-@see https://www.marshallsoft.com/ImapSearch.htm for more help.
+    - **@params**:
+      - _string?_ **path**
 
-##### Parameters
+    {.params}
+    - **@returns**: _list_
 
-- _string_ **name**
 
-##### Returns
+  .get\_subscribed\_dirs() {#mail.Imap.get_subscribed_dirs}
 
-- dictionary
+  : Gets a list of mailbox directories subscribed to by the current 
+    user on the server.
 
-#### examine(name)
 
-This function does the exact same thing as `select()`, except that it selects the folder 
-in read-only mode, meaning that no changes can be effected on the folder.
+    - **@returns**: _list_
 
-##### Parameters
 
-- _string_ **name**
+  .select(_name_) {#mail.Imap.select}
 
-##### Returns
+  : Instructs the server that the client now wishes to select a particular mailbox or folder 
+    with the name _name_, and any commands that relate to a folder should assume this folder 
+    as the target of that command. For example, an INBOX or a subfolder such as, 
+    "To Do.This Weekend". Once a mailbox is selected, the state of the connection becomes 
+    "Selected".
+    
+    @see https://www.marshallsoft.com/ImapSearch.htm for more help.
 
-- dictionary
 
-#### create(name)
+    - **@params**:
+      - _string_ **name**
 
-Creates a new mailbox or folder with the given name.
+    {.params}
+    - **@returns**: _dictionary_
 
-##### Parameters
 
-- _string_ **name**
+  .examine(_name_) {#mail.Imap.examine}
 
-##### Returns
+  : This function does the exact same thing as `select()`, except that it selects the folder 
+    in read-only mode, meaning that no changes can be effected on the folder.
 
-- list
 
-#### delete(name)
+    - **@params**:
+      - _string_ **name**
 
-Deletes the mailbox or folder with the given name.
+    {.params}
+    - **@returns**: _dictionary_
 
-##### Parameters
 
-- _string_ **name**
+  .create(_name_) {#mail.Imap.create}
 
-##### Returns
+  : Creates a new mailbox or folder with the given name.
 
-- list
 
-#### rename(old_name, new_name)
+    - **@params**:
+      - _string_ **name**
 
-Renames a mailbox or folder with the name `old_name` to a the name `new_name`.
+    {.params}
+    - **@returns**: _list_
 
-##### Parameters
 
-- _string_ **old_name**
-- _string_ **new_name**
+  .delete(_name_) {#mail.Imap.delete}
 
-##### Returns
+  : Deletes the mailbox or folder with the given name.
 
-- list
 
-#### subscribe(name)
+    - **@params**:
+      - _string_ **name**
 
-Adds the specified mailbox name to the server's set of "active" or "subscribed" 
-mailboxes for the current user as returned by `lsub()` and returns `true` if 
-successful or `false` otherwise.
+    {.params}
+    - **@returns**: _list_
 
-##### Parameters
 
-- _string_ **name**
+  .rename(_old_name_, _new_name_) {#mail.Imap.rename}
 
-##### Returns
+  : Renames a mailbox or folder with the name `old_name` to a the name `new_name`.
 
-- bool
 
-#### unsubscribe(name)
+    - **@params**:
+      - _string_ **old_name**
+      - _string_ **new_name**
 
-Removes the specified mailbox name from the server's set of "active" or "subscribed" 
-mailboxes for the current user as returned by `lsub()` and returns `true` if successful 
-or `false` otherwise.
+    {.params}
+    - **@returns**: _list_
 
-##### Parameters
 
-- _string_ **name**
+  .subscribe(_name_) {#mail.Imap.subscribe}
 
-##### Returns
+  : Adds the specified mailbox name to the server's set of "active" or "subscribed" 
+    mailboxes for the current user as returned by `lsub()` and returns `true` if 
+    successful or `false` otherwise.
 
-- bool
 
-#### list(name, pattern)
+    - **@params**:
+      - _string_ **name**
 
-Returns a subset of names from the complete set of all names available to the client. 
-Zero or more dictionaries are returned, containing the name attributes, hierarchy delimiter, 
-and name. 
+    {.params}
+    - **@returns**: _bool_
 
-An empty ("" string) _name_ argument indicates that the mailbox name is interpreted 
-as by SELECT. A non-empty _name_ argument is the name of a mailbox or a level of mailbox 
-hierarchy, and indicates the context in which the mailbox name is interpreted. 
 
-An empty ("" string) pattern argument is a special request to return the hierarchy delimiter 
-and the root name of the name given in the reference.
+  .unsubscribe(_name_) {#mail.Imap.unsubscribe}
 
-The pattern character `` is a wildcard, and matches zero or more characters at this position.  
- The character `%` is similar to ``, but it does not match a hierarchy delimiter.  If the `%` 
- wildcard is the last character of a pattern argument, matching levels of hierarchy are also 
-returned.  If these levels of hierarchy are not also selectable mailboxes, they are returned 
-with the `\Noselect` pattern attribute.
+  : Removes the specified mailbox name from the server's set of "active" or "subscribed" 
+    mailboxes for the current user as returned by `lsub()` and returns `true` if successful 
+    or `false` otherwise.
 
-The special name `INBOX` is included in the output from `list()`, if `INBOX` is supported by 
-the server for the current user and if the uppercase string "INBOX" matches the interpreted 
-reference and pattern arguments with wildcards as described above.  The criteria for omitting 
-INBOX is whether `select('INBOX')` will return failure; it is not relevant whether the user's 
-real INBOX resides on the server or another.
 
-##### Parameters
+    - **@params**:
+      - _string_ **name**
 
-- _string_ **name**
-- _string?_ **pattern**
+    {.params}
+    - **@returns**: _bool_
 
-##### Returns
 
-- list
+  .list(_name_, _pattern_) {#mail.Imap.list}
 
-#### lsub(name, pattern)
+  : Returns a subset of names from the complete set of all names available to the client. 
+    Zero or more dictionaries are returned, containing the name attributes, hierarchy delimiter, 
+    and name. 
+    
+    An empty ("" string) _name_ argument indicates that the mailbox name is interpreted 
+    as by SELECT. A non-empty _name_ argument is the name of a mailbox or a level of mailbox 
+    hierarchy, and indicates the context in which the mailbox name is interpreted. 
+    
+    An empty ("" string) pattern argument is a special request to return the hierarchy delimiter 
+    and the root name of the name given in the reference.
+    
+    The pattern character `` is a wildcard, and matches zero or more characters at this position.  
+     The character `%` is similar to ``, but it does not match a hierarchy delimiter.  If the `%` 
+     wildcard is the last character of a pattern argument, matching levels of hierarchy are also 
+    returned.  If these levels of hierarchy are not also selectable mailboxes, they are returned 
+    with the `\Noselect` pattern attribute.
+    
+    The special name `INBOX` is included in the output from `list()`, if `INBOX` is supported by 
+    the server for the current user and if the uppercase string "INBOX" matches the interpreted 
+    reference and pattern arguments with wildcards as described above.  The criteria for omitting 
+    INBOX is whether `select('INBOX')` will return failure; it is not relevant whether the user's 
+    real INBOX resides on the server or another.
 
-Same as the `list()` function except that it returns a subset of names.
 
-##### Parameters
+    - **@params**:
+      - _string_ **name**
+      - _string?_ **pattern**
 
-- _string_ **name**
-- _string?_ **pattern**
+    {.params}
+    - **@returns**: _list_
 
-##### Returns
 
-- list
+  .lsub(_name_, _pattern_) {#mail.Imap.lsub}
 
-#### status(name, attrs)
+  : Same as the `list()` function except that it returns a subset of names.
 
-Requests the status of the indicated mailbox. 
 
-It is important to know that unlike the LIST command, the STATUS command is not 
-guaranteed to be fast in its response.  Under certain circumstances, it can be 
-quite slow.
+    - **@params**:
+      - _string_ **name**
+      - _string?_ **pattern**
 
-`attrs` values being one of:
+    {.params}
+    - **@returns**: _list_
 
-- `MESSAGES`: The number of messages in the mailbox.
-- `RECENT`: The number of messages with the \Recent flag set.
-- `UIDNEXT`: The next unique identifier value of the mailbox.
-- `UIDVALIDITY`: The unique identifier validity value of the mailbox.
-- `UNSEEN`: The number of messages which do not have the \Seen flag set.
 
-`attrs` values may be separated by space. e.g. `status('INBOX', 'UIDNEXT MESSAGES')`.
+  .status(_name_, _attrs_) {#mail.Imap.status}
 
-##### Parameters
+  : Requests the status of the indicated mailbox. 
+    
+    It is important to know that unlike the LIST command, the STATUS command is not 
+    guaranteed to be fast in its response.  Under certain circumstances, it can be 
+    quite slow.
+    
+    `attrs` values being one of:
+    
+    - `MESSAGES`: The number of messages in the mailbox.
+    - `RECENT`: The number of messages with the \Recent flag set.
+    - `UIDNEXT`: The next unique identifier value of the mailbox.
+    - `UIDVALIDITY`: The unique identifier validity value of the mailbox.
+    - `UNSEEN`: The number of messages which do not have the \Seen flag set.
+    
+    `attrs` values may be separated by space. e.g. `status('INBOX', 'UIDNEXT MESSAGES')`.
 
-- _string_ **name**
-- _string_ **attrs**
 
-##### Returns
+    - **@params**:
+      - _string_ **name**
+      - _string_ **attrs**
 
-- bool|string
+    {.params}
+    - **@returns**: _bool|string_
 
-#### append(folder, message)
 
-Appends messages to a mailbox directories such as INBOX or top-level folders 
-and returns `true` if it succeeds or `false` otherwise.
+  .append(_folder_, _message_) {#mail.Imap.append}
 
-> NOTE:
-   This isn’t a copy/move command, you must supply a full message body to 
-   append.
+  : Appends messages to a mailbox directories such as INBOX or top-level folders 
+    and returns `true` if it succeeds or `false` otherwise.
+    
+    > NOTE:
+       This isn’t a copy/move command, you must supply a full message body to 
+       append.
 
-##### Parameters
 
-- _string_ **folder**
-- _Message_ **message**
+    - **@params**:
+      - _string_ **folder**
+      - _Message_ **message**
 
-##### Returns
+    {.params}
+    - **@returns**: _bool_
 
-- bool
 
-#### check()
+  .check() {#mail.Imap.check}
 
-Requests a checkpoint of the currently selected mailbox.  A checkpoint refers to 
-any implementation-dependent housekeeping associated with the mailbox (e.g., 
-resolving the server's in-memory state of the mailbox with the state on its disk) 
-that is not normally executed as part of each command.  A checkpoint MAY take a 
-non-instantaneous amount of real time to complete.  
+  : Requests a checkpoint of the currently selected mailbox.  A checkpoint refers to 
+    any implementation-dependent housekeeping associated with the mailbox (e.g., 
+    resolving the server's in-memory state of the mailbox with the state on its disk) 
+    that is not normally executed as part of each command.  A checkpoint MAY take a 
+    non-instantaneous amount of real time to complete.  
+    
+    If a server implementation has no such housekeeping considerations, `check()` is 
+    equivalent to NOOP.
 
-If a server implementation has no such housekeeping considerations, `check()` is 
-equivalent to NOOP.
 
-##### Returns
+    - **@returns**: _bool_
 
-- bool
 
-#### close()
+  .close() {#mail.Imap.close}
 
-Permanently removes all messages that have the `\Deleted` flag set from the currently 
-selected mailbox, and returns to the authenticated state from the selected state.
+  : Permanently removes all messages that have the `\Deleted` flag set from the currently 
+    selected mailbox, and returns to the authenticated state from the selected state.
+    
+    No messages are removed, and no error is given, if the mailbox is selected by an 
+    `examine()` or is otherwise selected read-only.
 
-No messages are removed, and no error is given, if the mailbox is selected by an 
-`examine()` or is otherwise selected read-only.
 
-##### Returns
+    - **@returns**: _bool_
 
-- bool
 
-#### expunge(path)
+  .expunge(_path_) {#mail.Imap.expunge}
 
-Clears the deleted messages in a mailbox folder and returns `true` on 
-success or `false` otherwise.
+  : Clears the deleted messages in a mailbox folder and returns `true` on 
+    success or `false` otherwise.
 
-##### Parameters
 
-- _string_ **path**
+    - **@params**:
+      - _string_ **path**
 
-##### Returns
+    {.params}
+    - **@returns**: _bool_
 
-- bool
 
-#### search(query, folder)
+  .search(_query_, _folder_) {#mail.Imap.search}
 
-Finds all occurrences of the __query__ in the specified __folder__ and 
-return a list of message UIDs that matches the search query.
+  : Finds all occurrences of the __query__ in the specified __folder__ and 
+    return a list of message UIDs that matches the search query.
+    
+    The __query__ can contain a message sequence set and a number of search 
+    criteria keywords including flags such as ANSWERED, DELETED, DRAFT, FLAGGED, 
+    NEW, RECENT and SEEN. For more information about the search criteria please
+    see RFC-3501 section 6.4.4 for more details.
+    
+    When __query__ is empty, it defaults to `NEW`. __folder__ defaults to `INBOX`
+     when empty.
+    
+    @see: https://datatracker.ietf.org/doc/html/rfc9051#section-6.4.4 for more.
 
-The __query__ can contain a message sequence set and a number of search 
-criteria keywords including flags such as ANSWERED, DELETED, DRAFT, FLAGGED, 
-NEW, RECENT and SEEN. For more information about the search criteria please
-see RFC-3501 section 6.4.4 for more details.
 
-When __query__ is empty, it defaults to `NEW`. __folder__ defaults to `INBOX`
- when empty.
+    - **@params**:
+      - _string?_ **query**
+      - _string?_ **folder**
 
-@see: https://datatracker.ietf.org/doc/html/rfc9051#section-6.4.4 for more.
+    {.params}
 
-##### Parameters
 
-- _string?_ **query**
-- _string?_ **folder**
+  .fetch(_uid_, _path_) {#mail.Imap.fetch}
 
+  : Retrieves a message with the give __uid__ in the specified mailbox __path__. If 
+    the __uid__ is not given, it attempts to retrieve the message with a UID of 1. If 
+    __path__ is not given, it will attempt to retrieve the message from the `INBOX` 
+    folder.
 
-#### fetch(uid, path)
 
-Retrieves a message with the give __uid__ in the specified mailbox __path__. If 
-the __uid__ is not given, it attempts to retrieve the message with a UID of 1. If 
-__path__ is not given, it will attempt to retrieve the message from the `INBOX` 
-folder.
+    - **@params**:
+      - _number?_ **uid**
+      - _string?_ **path**
 
-##### Parameters
+    {.params}
 
-- _number?_ **uid**
-- _string?_ **path**
 
+  .copy(_id_, _destination_, _path_) {#mail.Imap.copy}
 
-#### copy(id, destination, path)
+  : Copies the specified message(s) to the end of the specified destination mailbox.
 
-Copies the specified message(s) to the end of the specified destination mailbox.
 
-##### Returns
+    > **@notes**:
+    > 
+    > - COPYUID responses are not yet supported
 
-- bool
-##### Notes
+    - **@returns**: _bool_
 
-- COPYUID responses are not yet supported
 
-#### store(id, command, flags)
+  .store(_id_, _command_, _flags_) {#mail.Imap.store}
 
-Alters data associated with a message in the mailbox.
+  : Alters data associated with a message in the mailbox.
+    
+    
+       suffix of `.SILENT`.
+    @see https://datatracker.ietf.org/doc/html/rfc9051#section-6.4.6 for more.
 
 
-   suffix of `.SILENT`.
-@see https://datatracker.ietf.org/doc/html/rfc9051#section-6.4.6 for more.
+    > **@notes**:
+    > 
+    > - command must be one of `FLAGS`, `+FLAGS`, or `-FLAGS`, optionally with a 
 
-##### Returns
+    - **@returns**: _bool_
 
-- bool
-##### Notes
 
-- command must be one of `FLAGS`, `+FLAGS`, or `-FLAGS`, optionally with a 
+  .quit() {#mail.Imap.quit}
 
-#### quit()
+  : Closes the current IMAP session and disposes all associated network handles.
 
-Closes the current IMAP session and disposes all associated network handles.
 
 
-#### get\_handle()
 
-Returns the raw handle to the underlying networking (curl) client.
+  .get\_handle() {#mail.Imap.get_handle}
 
+  : Returns the raw handle to the underlying networking (curl) client.
 
 
-### _class_ Message
 
-Message class can be used to construct an email message. 
 
-The class has several methods that can be used to set various properties 
-of the email message.
 
-#### Methods
 
-#### Message() &#8674; Constructor
+_class_ **Message** {#mail.Message .class}
 
+: Message class can be used to construct an email message. 
+  
+  The class has several methods that can be used to set various properties 
+  of the email message.
 
 
 
-#### from(from)
+  .Message() &#8674; Constructor {#mail.Message.Message}
 
-Set the sender of the email message.
+  : 
 
-##### Parameters
+  .from(_from_) {#mail.Message.from}
 
-- _string_ **from**
+  : Set the sender of the email message.
 
-##### Returns
 
-- self
+    - **@params**:
+      - _string_ **from**
 
-#### to(to)
+    {.params}
+    - **@returns**: _self_
 
-Add one or more recipients to the email message.
 
-##### Parameters
+  .to(_to_) {#mail.Message.to}
 
-- _string|list[string]_ **to**
+  : Add one or more recipients to the email message.
 
-##### Returns
 
-- self
+    - **@params**:
+      - _string|list[string]_ **to**
 
-#### cc(cc)
+    {.params}
+    - **@returns**: _self_
 
-Add one or more Cc recipients to the email message.
 
-##### Parameters
+  .cc(_cc_) {#mail.Message.cc}
 
-- _string|list[string]_ **cc**
+  : Add one or more Cc recipients to the email message.
 
-##### Returns
 
-- self
+    - **@params**:
+      - _string|list[string]_ **cc**
 
-#### bcc(bcc)
+    {.params}
+    - **@returns**: _self_
 
-Add one or more Bcc recipients to the email message.
 
-##### Parameters
+  .bcc(_bcc_) {#mail.Message.bcc}
 
-- _string|list[string]_ **bcc**
+  : Add one or more Bcc recipients to the email message.
 
-##### Returns
 
-- self
+    - **@params**:
+      - _string|list[string]_ **bcc**
 
-#### reply\_to(to)
+    {.params}
+    - **@returns**: _self_
 
-Add a reply-to address to the email message.
 
-##### Parameters
+  .reply\_to(_to_) {#mail.Message.reply_to}
 
-- _string_ **to**
+  : Add a reply-to address to the email message.
 
-##### Returns
 
-- self
+    - **@params**:
+      - _string_ **to**
 
-#### subject(subject)
+    {.params}
+    - **@returns**: _self_
 
-Set the subject of the email message.
 
-##### Parameters
+  .subject(_subject_) {#mail.Message.subject}
 
-- _string_ **subject**
+  : Set the subject of the email message.
 
-##### Returns
 
-- self
+    - **@params**:
+      - _string_ **subject**
 
-#### header(header)
+    {.params}
+    - **@returns**: _self_
 
-Add one or more headers to the email message.
 
-##### Parameters
+  .header(_header_) {#mail.Message.header}
 
-- _string|list|dict_ **header**
+  : Add one or more headers to the email message.
 
-##### Returns
 
-- self
+    - **@params**:
+      - _string|list|dict_ **header**
 
-#### attachment(path, name)
+    {.params}
+    - **@returns**: _self_
 
-Add one or more attachments to the email message.
 
-##### Parameters
+  .attachment(_path_, _name_) {#mail.Message.attachment}
 
-- _string_ **path**
-- _string_ **name**: (Optional)
+  : Add one or more attachments to the email message.
 
-##### Returns
 
-- self
+    - **@params**:
+      - _string_ **path**
+      - _string_ **name** (Optional)
 
-#### text(text)
 
-Set the plain text body of the email message.
+    {.params}
+    - **@returns**: _self_
 
-##### Parameters
 
-- _string_ **text**
+  .text(_text_) {#mail.Message.text}
 
-##### Returns
+  : Set the plain text body of the email message.
 
-- self
 
-#### html(html)
+    - **@params**:
+      - _string_ **text**
 
-Set the html body of the email.
+    {.params}
+    - **@returns**: _self_
 
-##### Parameters
 
-- _string_ **html**
+  .html(_html_) {#mail.Message.html}
 
-##### Returns
+  : Set the html body of the email.
 
-- self
+
+    - **@params**:
+      - _string_ **html**
+
+    {.params}
+    - **@returns**: _self_
+
 
 
 

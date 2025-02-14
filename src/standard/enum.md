@@ -99,252 +99,260 @@ object itself like in the example below.
 
 ## Functions
 
-#### enum(data, unique)
+enum(_data_, _unique_) {#enum.enum}
 
-The default export of the enum module used to create enums.
-
-@see class Enum
-
-
-
-
-#### has(enum, key)
-
-Exported Enum.has static function for module access.
-
-@see class Enum.has
+: The default export of the enum module used to create enums.
+  
+  @see class Enum
 
 
 
 
-#### keys(enum)
 
-Exported Enum.keys static function for module access.
+has(_enum_, _key_) {#enum.has}
 
-@see class Enum.keys
-
-
-
-
-#### values(enum)
-
-Exported Enum.values static function for module access.
-
-@see class Enum.values
+: Exported Enum.has static function for module access.
+  
+  @see class Enum.has
 
 
 
 
-#### ensure(enum, value)
 
-Exported Enum.ensure static function for module access.
+keys(_enum_) {#enum.keys}
 
-@see class Enum.ensure
-
-
-
-
-#### to\_dict(enum)
-
-Exported Enum.to_dict static function for module access.
-
-@see class Enum.to_dict
+: Exported Enum.keys static function for module access.
+  
+  @see class Enum.keys
 
 
 
 
-#### to\_value\_dict(enum)
 
-Exported Enum.to_value_dict static function for module access.
+values(_enum_) {#enum.values}
 
-@see class Enum.to_value_dict
+: Exported Enum.values static function for module access.
+  
+  @see class Enum.values
+
+
+
+
+
+ensure(_enum_, _value_) {#enum.ensure}
+
+: Exported Enum.ensure static function for module access.
+  
+  @see class Enum.ensure
+
+
+
+
+
+to\_dict(_enum_) {#enum.to_dict}
+
+: Exported Enum.to_dict static function for module access.
+  
+  @see class Enum.to_dict
+
+
+
+
+
+to\_value\_dict(_enum_) {#enum.to_value_dict}
+
+: Exported Enum.to_value_dict static function for module access.
+  
+  @see class Enum.to_value_dict
+
 
 
 
 
 ## Classes
 
-### _class_ Enum
+_class_ **Enum** {#enum.Enum .class}
 
-The enum class provides the interface for creating enumerations.
-
-
-#### Properties
-
- - __@printable__
-
-#### Methods
-
-#### Enum(data, unique) &#8674; Constructor
-
-The constructor of the Enum class accepts a list of symbolic names or a
-dictionary of name to unique value mapping and returns a copy of the Enum
-class that represents the enumeration.
-
-##### Parameters
-
-- _{list|dict}_ **data**
-- _bool?_ **unique**: = true
+: The enum class provides the interface for creating enumerations.
 
 
-#### keys(enum)
+  ~ Properties
 
-Returns the symbolic keys of an enumeration.
+    - __@printable__
 
-For example:
+  .Enum(_data_, _unique_) &#8674; Constructor {#enum.Enum.Enum}
 
-```blade-repl
-%> var Color = enum({
-..   Red: 'r',
-..   Green: 'g',
-..   Blue: 'b',
-.. })
-%> 
-%> enum.keys(Color)
-[Red, Green, Blue]
-```
+  : The constructor of the Enum class accepts a list of symbolic names or a
+    dictionary of name to unique value mapping and returns a copy of the Enum
+    class that represents the enumeration.
 
-##### Parameters
 
-- _Enum_ **enum**
+    - **@params**:
+      - _{list|dict}_ **data**
+      - _bool?_ **unique** = true
 
-##### Returns
 
-- list[string]
+    {.params}
 
-#### values(enum)
 
-Returns possible numeric values of an enumeration.
+  .keys(_enum_) {#enum.Enum.keys}
 
-For example:
+  : Returns the symbolic keys of an enumeration.
+    
+    For example:
+    
+    ```blade-repl
+    %> var Color = enum({
+    ..   Red: 'r',
+    ..   Green: 'g',
+    ..   Blue: 'b',
+    .. })
+    %> 
+    %> enum.keys(Color)
+    [Red, Green, Blue]
+    ```
 
-```blade-repl
-%> var Gender = enum(['Male', 'Female'])
-%> 
-%> enum.values(Gender)
-[0, 1]
-```
 
-##### Parameters
+    - **@params**:
+      - _Enum_ **enum**
 
-- _Enum_ **enum**
+    {.params}
+    - **@returns**: _list[string]_
 
-##### Returns
 
-- list[number|string]
+  .values(_enum_) {#enum.Enum.values}
 
-#### to\_dict(enum)
+  : Returns possible numeric values of an enumeration.
+    
+    For example:
+    
+    ```blade-repl
+    %> var Gender = enum(['Male', 'Female'])
+    %> 
+    %> enum.values(Gender)
+    [0, 1]
+    ```
 
-Returns the enumeration as a key/value dictionary.
 
-For example:
+    - **@params**:
+      - _Enum_ **enum**
 
-```blade-repl
-%> var Gender = enum(['Male', 'Female'])
-%> 
-%> enum.to_dict(Gender)
-{Male: 0, Female: 1}
-```
+    {.params}
+    - **@returns**: _list[number|string]_
 
-##### Parameters
 
-- _Enum_ **enum**
+  .to\_dict(_enum_) {#enum.Enum.to_dict}
 
-##### Returns
+  : Returns the enumeration as a key/value dictionary.
+    
+    For example:
+    
+    ```blade-repl
+    %> var Gender = enum(['Male', 'Female'])
+    %> 
+    %> enum.to_dict(Gender)
+    {Male: 0, Female: 1}
+    ```
 
-- dict
 
-#### to\_value\_dict(enum)
+    - **@params**:
+      - _Enum_ **enum**
 
-Returns the enumeration as a value/key dictionary.
+    {.params}
+    - **@returns**: _dict_
 
-For example:
 
-```blade-repl
-%> var Speed = enum({
-..   Slow: 1,
-..   Sluggish: 1,
-..   Fast: 2,
-.. }, false)
-%> 
-%> enum.to_value_dict(Speed)
-{1: Sluggish, 2: Fast}
-```
+  .to\_value\_dict(_enum_) {#enum.Enum.to_value_dict}
 
->*NOTE:**
- > 
-> It is important to remember that dictionaries cannot contain
-> duplicates themselves so all enumeration keys that share the
-> same value will be represented as one. This is in fact not an 
-> error since the values are originally the same like in the 
-> example above where `Speed.Slow` and `Speed.Sluggish` are 
-> actually the same.
+  : Returns the enumeration as a value/key dictionary.
+    
+    For example:
+    
+    ```blade-repl
+    %> var Speed = enum({
+    ..   Slow: 1,
+    ..   Sluggish: 1,
+    ..   Fast: 2,
+    .. }, false)
+    %> 
+    %> enum.to_value_dict(Speed)
+    {1: Sluggish, 2: Fast}
+    ```
+    
+    >*NOTE:**
+     > 
+    > It is important to remember that dictionaries cannot contain
+    > duplicates themselves so all enumeration keys that share the
+    > same value will be represented as one. This is in fact not an 
+    > error since the values are originally the same like in the 
+    > example above where `Speed.Slow` and `Speed.Sluggish` are 
+    > actually the same.
 
-##### Parameters
 
-- _Enum_ **enum**
+    - **@params**:
+      - _Enum_ **enum**
 
-##### Returns
+    {.params}
+    - **@returns**: _dict_
 
-- dict
 
-#### has(enum, key)
+  .has(_enum_, _key_) {#enum.Enum.has}
 
-Returns `true` if the enumeration contains the given symbolic key or
-`false` if otherwise.
+  : Returns `true` if the enumeration contains the given symbolic key or
+    `false` if otherwise.
+    
+    For example:
+    
+    ```blade-repl
+    %> var Holiday = enum([
+    ..   'Christmas',
+    ..   'Easter',
+    ..   'NewYear'
+    .. ])
+    %> 
+    %> enum.has(Holiday, 'NineEleven')
+    false
+    %> enum.has(Holiday, 'Easter')
+    true
+    ```
 
-For example:
 
-```blade-repl
-%> var Holiday = enum([
-..   'Christmas',
-..   'Easter',
-..   'NewYear'
-.. ])
-%> 
-%> enum.has(Holiday, 'NineEleven')
-false
-%> enum.has(Holiday, 'Easter')
-true
-```
+    - **@params**:
+      - _Enum_ **enum**
+      - _string_ **key**
 
-##### Parameters
+    {.params}
+    - **@returns**: _bool_
 
-- _Enum_ **enum**
-- _string_ **key**
 
-##### Returns
+  .ensure(_enum_, _value_) {#enum.Enum.ensure}
 
-- bool
+  : Returns the value of an enumeration if it is a valid value for the enumeration
+    
+    ```blade-repl
+    %> var Gender = enum(['Male', 'Female'])
+    %> %> enum.ensure(Gender, 0)
+    0
+    ```
+    
+    or raises Exception if the value is invalid.
+    
+    ```blade-repl
+    %> var Gender = enum(['Male', 'Female'])
+    %> enum.ensure(Gender, 2)
+    Unhandled Exception: unknown key/value in specified enumeration
+      StackTrace:
+        <repl>:1 -> @.script()
+    ```
 
-#### ensure(enum, value)
 
-Returns the value of an enumeration if it is a valid value for the enumeration
+    - **@params**:
+      - _Enum_ **enum**
+      - _any_ **value**
 
-```blade-repl
-%> var Gender = enum(['Male', 'Female'])
-%> %> enum.ensure(Gender, 0)
-0
-```
+    {.params}
+    - **@returns**: _any_
 
-or raises Exception if the value is invalid.
-
-```blade-repl
-%> var Gender = enum(['Male', 'Female'])
-%> enum.ensure(Gender, 2)
-Unhandled Exception: unknown key/value in specified enumeration
-  StackTrace:
-    <repl>:1 -> @.script()
-```
-
-##### Parameters
-
-- _Enum_ **enum**
-- _any_ **value**
-
-##### Returns
-
-- any
 
 
 

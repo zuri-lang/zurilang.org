@@ -3,1061 +3,943 @@ Provides interface for parsing Blade code into Abstract Syntax Trees.
 
 ## Functions
 
-#### parse(source, path)
+parse(_source_, _path_) {#ast.parse}
 
-Parses a given source code and outputs Blade AST objects.
-
-##### Parameters
-
-- _string_ **source**
-- _string?_ **path**
-
-##### Returns
-
-- ParseResult
+: Parses a given source code and outputs Blade AST objects.
 
 
+  - **@params**:
+    - _string_ **source**
+    - _string?_ **path**
 
-#### json(source, path)
+  {.params}
+  - **@returns**: _ParseResult_
 
-Parses the give source code and outputs a JSON representation of 
-it's AST structure.
 
-##### Parameters
 
-- _string_ **source**
-- _string?_ **path**
+json(_source_, _path_) {#ast.json}
 
-##### Returns
+: Parses the give source code and outputs a JSON representation of 
+  it's AST structure.
 
-- string
+
+  - **@params**:
+    - _string_ **source**
+    - _string?_ **path**
+
+  {.params}
+  - **@returns**: _string_
 
 
 
 ## Classes
 
-### _class_ ParseResult
+_class_ **ParseResult** {#ast.ParseResult .class}
 
-Represents the result of an ast parse operation.
+: Represents the result of an ast parse operation.
 
 
+  ~ Properties
 
-#### Properties
+    - __@printable__
+    - __@serializable__
+    - __@iterable__
 
- - __@printable__
- - __@serializable__
- - __@iterable__
 
-#### Methods
+  .append(_item_) {#ast.ParseResult.append}
 
-#### append(item)
+  : Adds a new item to the parse result
 
-Adds a new item to the parse result
 
-##### Parameters
+    - **@params**:
+      - _Expr|Decl|Defn|Stmt_ **item**
 
-- _Expr|Decl|Defn|Stmt_ **item**
+    {.params}
 
 
-#### length()
+  .length() {#ast.ParseResult.length}
 
-Returns the length of items in the parsed result.
+  : Returns the length of items in the parsed result.
 
-##### Returns
 
-- number
+    - **@returns**: _number_
 
-#### get(index)
 
-Returns the item at the given ParseResult index or throws exception if out of range.
+  .get(_index_) {#ast.ParseResult.get}
 
-##### Parameters
+  : Returns the item at the given ParseResult index or throws exception if out of range.
 
-- _int_ **index**
 
-##### Returns
+    - **@params**:
+      - _int_ **index**
 
-- Expr|Decl|Defn|Stmt
+    {.params}
+    - **@returns**: _Expr|Decl|Defn|Stmt_
 
-#### to\_list()
 
-Returns the items in the ParseResult as a list object.
+  .to\_list() {#ast.ParseResult.to_list}
 
-##### Returns
+  : Returns the items in the ParseResult as a list object.
 
-- list[Expr|Decl|Defn|Stmt]
 
+    - **@returns**: _list[Expr|Decl|Defn|Stmt]_
 
 
-### _class_ Scanner
 
-Blade source code scanner.
 
+_class_ **Scanner** {#ast.Scanner .class}
 
+: Blade source code scanner.
 
-#### Properties
 
- - __@printable__
+  ~ Properties
 
-#### Fields
+    - __@printable__
 
-- **has\_error** &#8674; _readonly_ _bool_:
+  **.has\_error** &#8674; _readonly_ _bool_
+  :  Reports if an error was encountered in the scaner.
 
-  Reports if an error was encountered in the scaner.
+  **.source** &#8674; _readonly_ _string_
+  :  The string to being scanned.
 
-- **source** &#8674; _readonly_ _string_:
 
-  The string to being scanned.
+  .Scanner(_source_, _file_) &#8674; Constructor {#ast.Scanner.Scanner}
 
-#### Methods
+  : - **@params**:
+      - _string_ **source**
 
-#### Scanner(source, file) &#8674; Constructor
+    {.params}
 
 
+  .scan() {#ast.Scanner.scan}
 
-##### Parameters
+  : Scans the source and returns a list of tokens.
 
-- _string_ **source**
 
+    - **@returns**: _list[Token]_
 
-#### scan()
 
-Scans the source and returns a list of tokens.
 
-##### Returns
 
-- list[Token]
+_class_ **Token** {#ast.Token .class}
 
+: Blade source code token.
 
 
-### _class_ Token
+  ~ Properties
 
-Blade source code token.
+    - __@printable__
+    - __@serializable__
 
+  .Token(_type_, _literal_, _line_, _file_) &#8674; Constructor {#ast.Token.Token}
 
+  : - **@params**:
+      - _number_ **type**
+      - _string_ **literal**
+      - _number_ **line**
 
-#### Properties
+    {.params}
 
- - __@printable__
- - __@serializable__
 
-#### Methods
 
-#### Token(type, literal, line, file) &#8674; Constructor
 
+_class_ **ParseException** < _Exception_ {#ast.ParseException .class}
 
+: Exception raised for errors during parsing.
 
-##### Parameters
 
-- _number_ **type**
-- _string_ **literal**
-- _number_ **line**
+  .ParseException(_message_, _token_) &#8674; Constructor {#ast.ParseException.ParseException}
 
+  : - **@params**:
+      - _string_ **message**
+      - _Token_ **token**
 
+    {.params}
 
-### _class_ ParseException < _Exception_
 
-Exception raised for errors during parsing.
 
-#### Methods
 
-#### ParseException(message, token) &#8674; Constructor
+_class_ **Stmt** {#ast.Stmt .class}
 
+: base Stmt class
 
 
-##### Parameters
 
-- _string_ **message**
-- _Token_ **token**
 
+_class_ **EchoStmt** < _Stmt_ {#ast.EchoStmt .class}
 
+: Echo Stmt representation.
 
-### _class_ Stmt
 
-base Stmt class
+  ~ Properties
 
+    - __@serializable__
 
+  .EchoStmt(_value_) &#8674; Constructor {#ast.EchoStmt.EchoStmt}
 
-### _class_ EchoStmt < _Stmt_
+  : - **@params**:
+      - _Stmt|any|nil_ **value**
 
-Echo Stmt representation.
+    {.params}
 
 
 
-#### Properties
 
- - __@serializable__
+_class_ **ExprStmt** < _Stmt_ {#ast.ExprStmt .class}
 
-#### Methods
+: Expr Stmt representation.
 
-#### EchoStmt(value) &#8674; Constructor
 
+  ~ Properties
 
+    - __@serializable__
 
-##### Parameters
+  .ExprStmt(_expr_) &#8674; Constructor {#ast.ExprStmt.ExprStmt}
 
-- _Stmt|any|nil_ **value**
+  : - **@params**:
+      - _Stmt|any|nil_ **expr**
 
+    {.params}
 
 
-### _class_ ExprStmt < _Stmt_
 
-Expr Stmt representation.
 
+_class_ **IfStmt** < _Stmt_ {#ast.IfStmt .class}
 
+: If Stmt representation.
 
-#### Properties
 
- - __@serializable__
+  ~ Properties
 
-#### Methods
+    - __@serializable__
 
-#### ExprStmt(expr) &#8674; Constructor
+  .IfStmt(_condition_, _truth_, _falsy_) &#8674; Constructor {#ast.IfStmt.IfStmt}
 
+  : - **@params**:
+      - _Stmt|any|nil_ **condition**
+      - _Stmt|any|nil_ **truth**
+      - _Stmt|any|nil_ **falsy**
 
+    {.params}
 
-##### Parameters
 
-- _Stmt|any|nil_ **expr**
 
 
+_class_ **IterStmt** < _Stmt_ {#ast.IterStmt .class}
 
-### _class_ IfStmt < _Stmt_
+: Iter Stmt representation.
 
-If Stmt representation.
 
+  ~ Properties
 
+    - __@serializable__
 
-#### Properties
+  .IterStmt(_declaration_, _condition_, _iterator_, _body_) &#8674; Constructor {#ast.IterStmt.IterStmt}
 
- - __@serializable__
+  : - **@params**:
+      - _Stmt|any|nil_ **declaration**
+      - _Stmt|any|nil_ **condition**
+      - _Stmt|any|nil_ **iterator**
+      - _Stmt|any|nil_ **body**
 
-#### Methods
+    {.params}
 
-#### IfStmt(condition, truth, falsy) &#8674; Constructor
 
 
 
-##### Parameters
+_class_ **WhileStmt** < _Stmt_ {#ast.WhileStmt .class}
 
-- _Stmt|any|nil_ **condition**
-- _Stmt|any|nil_ **truth**
-- _Stmt|any|nil_ **falsy**
+: While Stmt representation.
 
 
+  ~ Properties
 
-### _class_ IterStmt < _Stmt_
+    - __@serializable__
 
-Iter Stmt representation.
+  .WhileStmt(_condition_, _body_) &#8674; Constructor {#ast.WhileStmt.WhileStmt}
 
+  : - **@params**:
+      - _Stmt|any|nil_ **condition**
+      - _Stmt|any|nil_ **body**
 
+    {.params}
 
-#### Properties
 
- - __@serializable__
 
-#### Methods
 
-#### IterStmt(declaration, condition, iterator, body) &#8674; Constructor
+_class_ **DoWhileStmt** < _Stmt_ {#ast.DoWhileStmt .class}
 
+: DoWhile Stmt representation.
 
 
-##### Parameters
+  ~ Properties
 
-- _Stmt|any|nil_ **declaration**
-- _Stmt|any|nil_ **condition**
-- _Stmt|any|nil_ **iterator**
-- _Stmt|any|nil_ **body**
+    - __@serializable__
 
+  .DoWhileStmt(_body_, _condition_) &#8674; Constructor {#ast.DoWhileStmt.DoWhileStmt}
 
+  : - **@params**:
+      - _Stmt|any|nil_ **body**
+      - _Stmt|any|nil_ **condition**
 
-### _class_ WhileStmt < _Stmt_
+    {.params}
 
-While Stmt representation.
 
 
 
-#### Properties
+_class_ **ForStmt** < _Stmt_ {#ast.ForStmt .class}
 
- - __@serializable__
+: For Stmt representation.
 
-#### Methods
 
-#### WhileStmt(condition, body) &#8674; Constructor
+  ~ Properties
 
+    - __@serializable__
 
+  .ForStmt(_vars_, _iterable_, _body_) &#8674; Constructor {#ast.ForStmt.ForStmt}
 
-##### Parameters
+  : - **@params**:
+      - _Stmt|any|nil_ **vars**
+      - _Stmt|any|nil_ **iterable**
+      - _Stmt|any|nil_ **body**
 
-- _Stmt|any|nil_ **condition**
-- _Stmt|any|nil_ **body**
+    {.params}
 
 
 
-### _class_ DoWhileStmt < _Stmt_
 
-DoWhile Stmt representation.
+_class_ **ContinueStmt** < _Stmt_ {#ast.ContinueStmt .class}
 
+: Continue Stmt representation.
 
 
-#### Properties
+  ~ Properties
 
- - __@serializable__
+    - __@serializable__
 
-#### Methods
 
-#### DoWhileStmt(body, condition) &#8674; Constructor
 
+_class_ **BreakStmt** < _Stmt_ {#ast.BreakStmt .class}
 
+: Break Stmt representation.
 
-##### Parameters
 
-- _Stmt|any|nil_ **body**
-- _Stmt|any|nil_ **condition**
+  ~ Properties
 
+    - __@serializable__
 
 
-### _class_ ForStmt < _Stmt_
 
-For Stmt representation.
+_class_ **RaiseStmt** < _Stmt_ {#ast.RaiseStmt .class}
 
+: Raise Stmt representation.
 
 
-#### Properties
+  ~ Properties
 
- - __@serializable__
+    - __@serializable__
 
-#### Methods
+  .RaiseStmt(_exception_) &#8674; Constructor {#ast.RaiseStmt.RaiseStmt}
 
-#### ForStmt(vars, iterable, body) &#8674; Constructor
+  : - **@params**:
+      - _Stmt|any|nil_ **exception**
 
+    {.params}
 
 
-##### Parameters
 
-- _Stmt|any|nil_ **vars**
-- _Stmt|any|nil_ **iterable**
-- _Stmt|any|nil_ **body**
 
+_class_ **ReturnStmt** < _Stmt_ {#ast.ReturnStmt .class}
 
+: Return Stmt representation.
 
-### _class_ ContinueStmt < _Stmt_
 
-Continue Stmt representation.
+  ~ Properties
 
+    - __@serializable__
 
+  .ReturnStmt(_value_) &#8674; Constructor {#ast.ReturnStmt.ReturnStmt}
 
-#### Properties
+  : - **@params**:
+      - _Stmt|any|nil_ **value**
 
- - __@serializable__
+    {.params}
 
 
 
-### _class_ BreakStmt < _Stmt_
 
-Break Stmt representation.
+_class_ **AssertStmt** < _Stmt_ {#ast.AssertStmt .class}
 
+: Assert Stmt representation.
 
 
-#### Properties
+  ~ Properties
 
- - __@serializable__
+    - __@serializable__
 
+  .AssertStmt(_expr_, _message_) &#8674; Constructor {#ast.AssertStmt.AssertStmt}
 
+  : - **@params**:
+      - _Stmt|any|nil_ **expr**
+      - _Stmt|any|nil_ **message**
 
-### _class_ RaiseStmt < _Stmt_
+    {.params}
 
-Raise Stmt representation.
 
 
 
-#### Properties
+_class_ **UsingStmt** < _Stmt_ {#ast.UsingStmt .class}
 
- - __@serializable__
+: Using Stmt representation.
 
-#### Methods
 
-#### RaiseStmt(exception) &#8674; Constructor
+  ~ Properties
 
+    - __@serializable__
 
+  .UsingStmt(_expr_, _cases_, _default_case_) &#8674; Constructor {#ast.UsingStmt.UsingStmt}
 
-##### Parameters
+  : - **@params**:
+      - _Stmt|any|nil_ **expr**
+      - _Stmt|any|nil_ **cases**
+      - _Stmt|any|nil_ **default_case**
 
-- _Stmt|any|nil_ **exception**
+    {.params}
 
 
 
-### _class_ ReturnStmt < _Stmt_
 
-Return Stmt representation.
+_class_ **ImportStmt** < _Stmt_ {#ast.ImportStmt .class}
 
+: Import Stmt representation.
 
 
-#### Properties
+  ~ Properties
 
- - __@serializable__
+    - __@serializable__
 
-#### Methods
+  .ImportStmt(_path_, _elements_) &#8674; Constructor {#ast.ImportStmt.ImportStmt}
 
-#### ReturnStmt(value) &#8674; Constructor
+  : - **@params**:
+      - _Stmt|any|nil_ **path**
+      - _Stmt|any|nil_ **elements**
 
+    {.params}
 
 
-##### Parameters
 
-- _Stmt|any|nil_ **value**
 
+_class_ **CatchStmt** < _Stmt_ {#ast.CatchStmt .class}
 
+: Catch Stmt representation.
 
-### _class_ AssertStmt < _Stmt_
 
-Assert Stmt representation.
+  ~ Properties
 
+    - __@serializable__
 
+  .CatchStmt(_body_, _var_name_) &#8674; Constructor {#ast.CatchStmt.CatchStmt}
 
-#### Properties
+  : - **@params**:
+      - _Stmt|any|nil_ **body**
+      - _Stmt|any|nil_ **var_name**
 
- - __@serializable__
+    {.params}
 
-#### Methods
 
-#### AssertStmt(expr, message) &#8674; Constructor
 
 
+_class_ **CommentStmt** < _Stmt_ {#ast.CommentStmt .class}
 
-##### Parameters
+: Comment Stmt representation.
 
-- _Stmt|any|nil_ **expr**
-- _Stmt|any|nil_ **message**
 
+  ~ Properties
 
+    - __@serializable__
 
-### _class_ UsingStmt < _Stmt_
+  .CommentStmt(_data_) &#8674; Constructor {#ast.CommentStmt.CommentStmt}
 
-Using Stmt representation.
+  : - **@params**:
+      - _Stmt|any|nil_ **data**
 
+    {.params}
 
 
-#### Properties
 
- - __@serializable__
 
-#### Methods
+_class_ **BlockStmt** < _Stmt_ {#ast.BlockStmt .class}
 
-#### UsingStmt(expr, cases, default_case) &#8674; Constructor
+: Block Stmt representation.
 
 
+  ~ Properties
 
-##### Parameters
+    - __@serializable__
 
-- _Stmt|any|nil_ **expr**
-- _Stmt|any|nil_ **cases**
-- _Stmt|any|nil_ **default_case**
+  .BlockStmt(_body_) &#8674; Constructor {#ast.BlockStmt.BlockStmt}
 
+  : - **@params**:
+      - _Stmt|any|nil_ **body**
 
+    {.params}
 
-### _class_ ImportStmt < _Stmt_
 
-Import Stmt representation.
 
 
+_class_ **AssignStmt** < _Stmt_ {#ast.AssignStmt .class}
 
-#### Properties
+: Assign Stmt representation.
 
- - __@serializable__
 
-#### Methods
+  ~ Properties
 
-#### ImportStmt(path, elements) &#8674; Constructor
+    - __@serializable__
 
+  .AssignStmt(_expr_, _type_, _value_) &#8674; Constructor {#ast.AssignStmt.AssignStmt}
 
+  : - **@params**:
+      - _Stmt|any|nil_ **expr**
+      - _Stmt|any|nil_ **type**
+      - _Stmt|any|nil_ **value**
 
-##### Parameters
+    {.params}
 
-- _Stmt|any|nil_ **path**
-- _Stmt|any|nil_ **elements**
 
 
 
-### _class_ CatchStmt < _Stmt_
+_class_ **Defn** {#ast.Defn .class}
 
-Catch Stmt representation.
+: base Defn class
 
 
 
-#### Properties
 
- - __@serializable__
 
-#### Methods
+_class_ **DocDefn** < _Defn_ {#ast.DocDefn .class}
 
-#### CatchStmt(body, var_name) &#8674; Constructor
+: Doc Defn representation.
 
 
+  ~ Properties
 
-##### Parameters
+    - __@serializable__
 
-- _Stmt|any|nil_ **body**
-- _Stmt|any|nil_ **var_name**
+  .DocDefn(_data_) &#8674; Constructor {#ast.DocDefn.DocDefn}
 
+  : - **@params**:
+      - _Defn|any|nil_ **data**
 
+    {.params}
 
-### _class_ CommentStmt < _Stmt_
 
-Comment Stmt representation.
 
 
+_class_ **Parser** {#ast.Parser .class}
 
-#### Properties
+: Parses raw Blade tokens and produces an Abstract Syntax Tree.
 
- - __@serializable__
 
-#### Methods
+  ~ Properties
 
-#### CommentStmt(data) &#8674; Constructor
+    - __@printable__
 
+  .Parser(_tokens_, _path_) &#8674; Constructor {#ast.Parser.Parser}
 
+  : - **@params**:
+      - _list[Token]_ **tokens**
+      - _string?_ **path**
 
-##### Parameters
+    {.params}
 
-- _Stmt|any|nil_ **data**
 
+  .parse() {#ast.Parser.parse}
 
+  : Parses the raw source tokens passed into relevant class and
+    outputs a stream of AST objects that can be one of
+    Expr (expressions), Stmt (statements) or Decl (declarations).
 
-### _class_ BlockStmt < _Stmt_
 
-Block Stmt representation.
+    - **@returns**: _ParseResult_
 
 
 
-#### Properties
 
- - __@serializable__
+_class_ **Decl** {#ast.Decl .class}
 
-#### Methods
+: base Decl class
 
-#### BlockStmt(body) &#8674; Constructor
 
 
 
-##### Parameters
 
-- _Stmt|any|nil_ **body**
+_class_ **VarDecl** < _Decl_ {#ast.VarDecl .class}
 
+: Var Decl representation.
 
 
-### _class_ AssignStmt < _Stmt_
+  ~ Properties
 
-Assign Stmt representation.
+    - __@serializable__
 
+  .VarDecl(_name_, _value_) &#8674; Constructor {#ast.VarDecl.VarDecl}
 
+  : - **@params**:
+      - _Decl|any|nil_ **name**
+      - _Decl|any|nil_ **value**
 
-#### Properties
+    {.params}
 
- - __@serializable__
 
-#### Methods
 
-#### AssignStmt(expr, type, value) &#8674; Constructor
 
+_class_ **FunctionDecl** < _Decl_ {#ast.FunctionDecl .class}
 
+: Function Decl representation.
 
-##### Parameters
 
-- _Stmt|any|nil_ **expr**
-- _Stmt|any|nil_ **type**
-- _Stmt|any|nil_ **value**
+  ~ Properties
 
+    - __@serializable__
 
+  .FunctionDecl(_name_, _params_, _body_) &#8674; Constructor {#ast.FunctionDecl.FunctionDecl}
 
-### _class_ Defn
+  : - **@params**:
+      - _Decl|any|nil_ **name**
+      - _Decl|any|nil_ **params**
+      - _Decl|any|nil_ **body**
 
-base Defn class
+    {.params}
 
 
 
-### _class_ DocDefn < _Defn_
 
-Doc Defn representation.
+_class_ **MethodDecl** < _Decl_ {#ast.MethodDecl .class}
 
+: Method Decl representation.
 
 
-#### Properties
+  ~ Properties
 
- - __@serializable__
+    - __@serializable__
 
-#### Methods
+  .MethodDecl(_name_, _params_, _body_, _is_static_) &#8674; Constructor {#ast.MethodDecl.MethodDecl}
 
-#### DocDefn(data) &#8674; Constructor
+  : - **@params**:
+      - _Decl|any|nil_ **name**
+      - _Decl|any|nil_ **params**
+      - _Decl|any|nil_ **body**
+      - _Decl|any|nil_ **is_static**
 
+    {.params}
 
 
-##### Parameters
 
-- _Defn|any|nil_ **data**
 
+_class_ **PropertyDecl** < _Decl_ {#ast.PropertyDecl .class}
 
+: Property Decl representation.
 
-### _class_ Parser
 
-Parses raw Blade tokens and produces an Abstract Syntax Tree.
+  ~ Properties
 
+    - __@serializable__
 
+  .PropertyDecl(_name_, _value_, _is_static_) &#8674; Constructor {#ast.PropertyDecl.PropertyDecl}
 
-#### Properties
+  : - **@params**:
+      - _Decl|any|nil_ **name**
+      - _Decl|any|nil_ **value**
+      - _Decl|any|nil_ **is_static**
 
- - __@printable__
+    {.params}
 
-#### Methods
 
-#### Parser(tokens, path) &#8674; Constructor
 
 
+_class_ **ClassDecl** < _Decl_ {#ast.ClassDecl .class}
 
-##### Parameters
+: Class Decl representation.
 
-- _list[Token]_ **tokens**
-- _string?_ **path**
 
+  ~ Properties
 
-#### parse()
+    - __@serializable__
 
-Parses the raw source tokens passed into relevant class and
-outputs a stream of AST objects that can be one of
-Expr (expressions), Stmt (statements) or Decl (declarations).
+  .ClassDecl(_name_, _superclass_, _properties_, _methods_) &#8674; Constructor {#ast.ClassDecl.ClassDecl}
 
-##### Returns
+  : - **@params**:
+      - _Decl|any|nil_ **name**
+      - _Decl|any|nil_ **superclass**
+      - _Decl|any|nil_ **properties**
+      - _Decl|any|nil_ **methods**
 
-- ParseResult
+    {.params}
 
 
 
-### _class_ Decl
 
-base Decl class
+_class_ **Expr** {#ast.Expr .class}
 
+: base Expr class
 
 
-### _class_ VarDecl < _Decl_
 
-Var Decl representation.
 
+_class_ **BinaryExpr** < _Expr_ {#ast.BinaryExpr .class}
 
+: Binary Expr representation.
 
-#### Properties
 
- - __@serializable__
+  ~ Properties
 
-#### Methods
+    - __@serializable__
 
-#### VarDecl(name, value) &#8674; Constructor
+  .BinaryExpr(_left_, _op_, _right_) &#8674; Constructor {#ast.BinaryExpr.BinaryExpr}
 
+  : - **@params**:
+      - _Expr|any|nil_ **left**
+      - _Expr|any|nil_ **op**
+      - _Expr|any|nil_ **right**
 
+    {.params}
 
-##### Parameters
 
-- _Decl|any|nil_ **name**
-- _Decl|any|nil_ **value**
 
 
+_class_ **GroupExpr** < _Expr_ {#ast.GroupExpr .class}
 
-### _class_ FunctionDecl < _Decl_
+: Group Expr representation.
 
-Function Decl representation.
 
+  ~ Properties
 
+    - __@serializable__
 
-#### Properties
+  .GroupExpr(_expression_) &#8674; Constructor {#ast.GroupExpr.GroupExpr}
 
- - __@serializable__
+  : - **@params**:
+      - _Expr|any|nil_ **expression**
 
-#### Methods
+    {.params}
 
-#### FunctionDecl(name, params, body) &#8674; Constructor
 
 
 
-##### Parameters
+_class_ **LiteralExpr** < _Expr_ {#ast.LiteralExpr .class}
 
-- _Decl|any|nil_ **name**
-- _Decl|any|nil_ **params**
-- _Decl|any|nil_ **body**
+: Literal Expr representation.
 
 
+  ~ Properties
 
-### _class_ MethodDecl < _Decl_
+    - __@serializable__
 
-Method Decl representation.
+  .LiteralExpr(_value_) &#8674; Constructor {#ast.LiteralExpr.LiteralExpr}
 
+  : - **@params**:
+      - _Expr|any|nil_ **value**
 
+    {.params}
 
-#### Properties
 
- - __@serializable__
 
-#### Methods
 
-#### MethodDecl(name, params, body, is_static) &#8674; Constructor
+_class_ **IdentifierExpr** < _Expr_ {#ast.IdentifierExpr .class}
 
+: Identifier Expr representation.
 
 
-##### Parameters
+  ~ Properties
 
-- _Decl|any|nil_ **name**
-- _Decl|any|nil_ **params**
-- _Decl|any|nil_ **body**
-- _Decl|any|nil_ **is_static**
+    - __@serializable__
 
+  .IdentifierExpr(_value_) &#8674; Constructor {#ast.IdentifierExpr.IdentifierExpr}
 
+  : - **@params**:
+      - _Expr|any|nil_ **value**
 
-### _class_ PropertyDecl < _Decl_
+    {.params}
 
-Property Decl representation.
 
 
 
-#### Properties
+_class_ **UnaryExpr** < _Expr_ {#ast.UnaryExpr .class}
 
- - __@serializable__
+: Unary Expr representation.
 
-#### Methods
 
-#### PropertyDecl(name, value, is_static) &#8674; Constructor
+  ~ Properties
 
+    - __@serializable__
 
+  .UnaryExpr(_op_, _right_) &#8674; Constructor {#ast.UnaryExpr.UnaryExpr}
 
-##### Parameters
+  : - **@params**:
+      - _Expr|any|nil_ **op**
+      - _Expr|any|nil_ **right**
 
-- _Decl|any|nil_ **name**
-- _Decl|any|nil_ **value**
-- _Decl|any|nil_ **is_static**
+    {.params}
 
 
 
-### _class_ ClassDecl < _Decl_
 
-Class Decl representation.
+_class_ **ConditionExpr** < _Expr_ {#ast.ConditionExpr .class}
 
+: Condition Expr representation.
 
 
-#### Properties
+  ~ Properties
 
- - __@serializable__
+    - __@serializable__
 
-#### Methods
+  .ConditionExpr(_expr_, _truth_, _falsy_) &#8674; Constructor {#ast.ConditionExpr.ConditionExpr}
 
-#### ClassDecl(name, superclass, properties, methods) &#8674; Constructor
+  : - **@params**:
+      - _Expr|any|nil_ **expr**
+      - _Expr|any|nil_ **truth**
+      - _Expr|any|nil_ **falsy**
 
+    {.params}
 
 
-##### Parameters
 
-- _Decl|any|nil_ **name**
-- _Decl|any|nil_ **superclass**
-- _Decl|any|nil_ **properties**
-- _Decl|any|nil_ **methods**
 
+_class_ **CallExpr** < _Expr_ {#ast.CallExpr .class}
 
+: Call Expr representation.
 
-### _class_ Expr
 
-base Expr class
+  ~ Properties
 
+    - __@serializable__
 
+  .CallExpr(_callee_, _args_) &#8674; Constructor {#ast.CallExpr.CallExpr}
 
-### _class_ BinaryExpr < _Expr_
+  : - **@params**:
+      - _Expr|any|nil_ **callee**
+      - _Expr|any|nil_ **args**
 
-Binary Expr representation.
+    {.params}
 
 
 
-#### Properties
 
- - __@serializable__
+_class_ **GetExpr** < _Expr_ {#ast.GetExpr .class}
 
-#### Methods
+: Get Expr representation.
 
-#### BinaryExpr(left, op, right) &#8674; Constructor
 
+  ~ Properties
 
+    - __@serializable__
 
-##### Parameters
+  .GetExpr(_expr_, _name_) &#8674; Constructor {#ast.GetExpr.GetExpr}
 
-- _Expr|any|nil_ **left**
-- _Expr|any|nil_ **op**
-- _Expr|any|nil_ **right**
+  : - **@params**:
+      - _Expr|any|nil_ **expr**
+      - _Expr|any|nil_ **name**
 
+    {.params}
 
 
-### _class_ GroupExpr < _Expr_
 
-Group Expr representation.
 
+_class_ **SetExpr** < _Expr_ {#ast.SetExpr .class}
 
+: Set Expr representation.
 
-#### Properties
 
- - __@serializable__
+  ~ Properties
 
-#### Methods
+    - __@serializable__
 
-#### GroupExpr(expression) &#8674; Constructor
+  .SetExpr(_expr_, _name_, _value_) &#8674; Constructor {#ast.SetExpr.SetExpr}
 
+  : - **@params**:
+      - _Expr|any|nil_ **expr**
+      - _Expr|any|nil_ **name**
+      - _Expr|any|nil_ **value**
 
+    {.params}
 
-##### Parameters
 
-- _Expr|any|nil_ **expression**
 
 
+_class_ **IndexExpr** < _Expr_ {#ast.IndexExpr .class}
 
-### _class_ LiteralExpr < _Expr_
+: Index Expr representation.
 
-Literal Expr representation.
 
+  ~ Properties
 
+    - __@serializable__
 
-#### Properties
+  .IndexExpr(_args_) &#8674; Constructor {#ast.IndexExpr.IndexExpr}
 
- - __@serializable__
+  : - **@params**:
+      - _Expr|any|nil_ **args**
 
-#### Methods
+    {.params}
 
-#### LiteralExpr(value) &#8674; Constructor
 
 
 
-##### Parameters
+_class_ **ListExpr** < _Expr_ {#ast.ListExpr .class}
 
-- _Expr|any|nil_ **value**
+: List Expr representation.
 
 
+  ~ Properties
 
-### _class_ IdentifierExpr < _Expr_
+    - __@serializable__
 
-Identifier Expr representation.
+  .ListExpr(_items_) &#8674; Constructor {#ast.ListExpr.ListExpr}
 
+  : - **@params**:
+      - _Expr|any|nil_ **items**
 
+    {.params}
 
-#### Properties
 
- - __@serializable__
 
-#### Methods
 
-#### IdentifierExpr(value) &#8674; Constructor
+_class_ **DictExpr** < _Expr_ {#ast.DictExpr .class}
 
+: Dict Expr representation.
 
 
-##### Parameters
+  ~ Properties
 
-- _Expr|any|nil_ **value**
+    - __@serializable__
 
+  .DictExpr(_keys_, _values_) &#8674; Constructor {#ast.DictExpr.DictExpr}
 
+  : - **@params**:
+      - _Expr|any|nil_ **keys**
+      - _Expr|any|nil_ **values**
 
-### _class_ UnaryExpr < _Expr_
+    {.params}
 
-Unary Expr representation.
 
 
 
-#### Properties
+_class_ **InterpolationExpr** < _Expr_ {#ast.InterpolationExpr .class}
 
- - __@serializable__
+: Interpolation Expr representation.
 
-#### Methods
 
-#### UnaryExpr(op, right) &#8674; Constructor
+  ~ Properties
 
+    - __@serializable__
 
+  .InterpolationExpr(_data_) &#8674; Constructor {#ast.InterpolationExpr.InterpolationExpr}
 
-##### Parameters
+  : - **@params**:
+      - _Expr|any|nil_ **data**
 
-- _Expr|any|nil_ **op**
-- _Expr|any|nil_ **right**
+    {.params}
 
-
-
-### _class_ ConditionExpr < _Expr_
-
-Condition Expr representation.
-
-
-
-#### Properties
-
- - __@serializable__
-
-#### Methods
-
-#### ConditionExpr(expr, truth, falsy) &#8674; Constructor
-
-
-
-##### Parameters
-
-- _Expr|any|nil_ **expr**
-- _Expr|any|nil_ **truth**
-- _Expr|any|nil_ **falsy**
-
-
-
-### _class_ CallExpr < _Expr_
-
-Call Expr representation.
-
-
-
-#### Properties
-
- - __@serializable__
-
-#### Methods
-
-#### CallExpr(callee, args) &#8674; Constructor
-
-
-
-##### Parameters
-
-- _Expr|any|nil_ **callee**
-- _Expr|any|nil_ **args**
-
-
-
-### _class_ GetExpr < _Expr_
-
-Get Expr representation.
-
-
-
-#### Properties
-
- - __@serializable__
-
-#### Methods
-
-#### GetExpr(expr, name) &#8674; Constructor
-
-
-
-##### Parameters
-
-- _Expr|any|nil_ **expr**
-- _Expr|any|nil_ **name**
-
-
-
-### _class_ SetExpr < _Expr_
-
-Set Expr representation.
-
-
-
-#### Properties
-
- - __@serializable__
-
-#### Methods
-
-#### SetExpr(expr, name, value) &#8674; Constructor
-
-
-
-##### Parameters
-
-- _Expr|any|nil_ **expr**
-- _Expr|any|nil_ **name**
-- _Expr|any|nil_ **value**
-
-
-
-### _class_ IndexExpr < _Expr_
-
-Index Expr representation.
-
-
-
-#### Properties
-
- - __@serializable__
-
-#### Methods
-
-#### IndexExpr(args) &#8674; Constructor
-
-
-
-##### Parameters
-
-- _Expr|any|nil_ **args**
-
-
-
-### _class_ ListExpr < _Expr_
-
-List Expr representation.
-
-
-
-#### Properties
-
- - __@serializable__
-
-#### Methods
-
-#### ListExpr(items) &#8674; Constructor
-
-
-
-##### Parameters
-
-- _Expr|any|nil_ **items**
-
-
-
-### _class_ DictExpr < _Expr_
-
-Dict Expr representation.
-
-
-
-#### Properties
-
- - __@serializable__
-
-#### Methods
-
-#### DictExpr(keys, values) &#8674; Constructor
-
-
-
-##### Parameters
-
-- _Expr|any|nil_ **keys**
-- _Expr|any|nil_ **values**
-
-
-
-### _class_ InterpolationExpr < _Expr_
-
-Interpolation Expr representation.
-
-
-
-#### Properties
-
- - __@serializable__
-
-#### Methods
-
-#### InterpolationExpr(data) &#8674; Constructor
-
-
-
-##### Parameters
-
-- _Expr|any|nil_ **data**
 
 
 

@@ -2,91 +2,86 @@
 
 ## Functions
 
-#### hex\_to\_bytes(str)
+hex\_to\_bytes(_str_) {#convert.hex_to_bytes}
 
-Converts hexadecimal string of any length to bytes.
-
-##### Parameters
-
-- _string_ **str**
-
-##### Returns
-
-- bytes
+: Converts hexadecimal string of any length to bytes.
 
 
+  - **@params**:
+    - _string_ **str**
 
-#### bytes\_to\_hex(data)
-
-Converts binary data (byes) of any length to hexadecimal string 
-representation.
-
-##### Parameters
-
-- _bytes_ **data**
-
-##### Returns
-
-- string
+  {.params}
+  - **@returns**: _bytes_
 
 
 
-#### decimal\_to\_hex(n)
+bytes\_to\_hex(_data_) {#convert.bytes_to_hex}
 
-Converts the given decimal based number to an hexadecimal string.
-
-##### Parameters
-
-- _number_ **n**
-
-##### Returns
-
-- string
+: Converts binary data (byes) of any length to hexadecimal string 
+  representation.
 
 
+  - **@params**:
+    - _bytes_ **data**
 
-#### hex\_to\_decimal(str)
-
-Converts the given hexadecimal string to a decimal base 10 number.
-
-##### Parameters
-
-- _string_ **str**
-
-##### Returns
-
-- number
-##### Notes
-
-- string must either contain the plain hexadecimal string or be in the format 0x[hex string].
+  {.params}
+  - **@returns**: _string_
 
 
 
-#### unicode\_to\_hex(chr)
+decimal\_to\_hex(_n_) {#convert.decimal_to_hex}
 
-Converts a unicode character to it's equivalent hexadecimal string.
-
-##### Parameters
-
-- _char_ **chr**
-
-##### Returns
-
-- string
+: Converts the given decimal based number to an hexadecimal string.
 
 
+  - **@params**:
+    - _number_ **n**
 
-#### bytes\_to\_decimal(bytes)
+  {.params}
+  - **@returns**: _string_
 
-Converts a bytes (binary data) to a decimal number.
 
-##### Parameters
 
-- _bytes_ **bytes**
+hex\_to\_decimal(_str_) {#convert.hex_to_decimal}
 
-##### Returns
+: Converts the given hexadecimal string to a decimal base 10 number.
 
-- number
+
+  > **@notes**:
+  > 
+  > - string must either contain the plain hexadecimal string or be in the format 0x[hex string].
+
+  - **@params**:
+    - _string_ **str**
+
+  {.params}
+  - **@returns**: _number_
+
+
+
+unicode\_to\_hex(_chr_) {#convert.unicode_to_hex}
+
+: Converts a unicode character to it's equivalent hexadecimal string.
+
+
+  - **@params**:
+    - _char_ **chr**
+
+  {.params}
+  - **@returns**: _string_
+
+
+
+bytes\_to\_decimal(_bytes_) {#convert.bytes_to_decimal}
+
+: Converts a bytes (binary data) to a decimal number.
+
+
+  - **@params**:
+    - _bytes_ **bytes**
+
+  {.params}
+  - **@returns**: _number_
 
 
 

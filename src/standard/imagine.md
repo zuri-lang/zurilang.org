@@ -1,1619 +1,1686 @@
 # imagine
 
-## Properties
+## Fields
 
-- **QUANT\_DEFAULT** &#8674; _number_:
+**QUANT\_DEFAULT** &#8674; _number_
+:  Default (`QUANT_LIQ` if libimagequant is available, `QUANT_JQUANT` otherwise).
 
-  Default (`QUANT_LIQ` if libimagequant is available, `QUANT_JQUANT` otherwise).
+**QUANT\_JQUANT** &#8674; _number_
+:  libjpeg's old median cut. Fast, but only uses 16-bit color.
 
-- **QUANT\_JQUANT** &#8674; _number_:
+**QUANT\_NEUQUANT** &#8674; _number_
+:  NeuQuant - approximation using Kohonen neural network.
 
-  libjpeg's old median cut. Fast, but only uses 16-bit color.
+**QUANT\_LIQ** &#8674; _number_
+:  A combination of algorithms used in libimagequant aiming for the highest quality at cost of speed.
 
-- **QUANT\_NEUQUANT** &#8674; _number_:
+**ARC\_ARC** &#8674; _number_
+:  Produces a rounded edge.
 
-  NeuQuant - approximation using Kohonen neural network.
+**ARC\_PIE** &#8674; _number_
+:  Same as ARC_ARC.
 
-- **QUANT\_LIQ** &#8674; _number_:
+**ARC\_CHORD** &#8674; _number_
+:  Connects the starting and ending angles with a straight line.
 
-  A combination of algorithms used in libimagequant aiming for the highest quality at cost of speed.
+**ARC\_NO\_FILL** &#8674; _number_
+:  Indicates that the arc or chord should be outlined, not filled.
 
-- **ARC\_ARC** &#8674; _number_:
+**ARC\_NO\_EDGE** &#8674; _number_
+:  Used together with ARC_NO_FILL, indicates that the beginning and 
+  ending angles should be connected to the center; this is a good 
+  way to outline (rather than fill) a 'pie slice'.
 
-  Produces a rounded edge.
+**CROP\_DEFAULT** &#8674; _number_
+:  Same as CROP_TRANSPARENT
 
-- **ARC\_PIE** &#8674; _number_:
+**CROP\_TRANSPARENT** &#8674; _number_
+:  Crop using the transparent color
 
-  Same as ARC_ARC.
+**CROP\_BLACK** &#8674; _number_
+:  Crop black borders
 
-- **ARC\_CHORD** &#8674; _number_:
+**CROP\_WHITE** &#8674; _number_
+:  Crop white borders
 
-  Connects the starting and ending angles with a straight line.
+**CROP\_SIDES** &#8674; _number_
+:  Crop using colors of the 4 corners
 
-- **ARC\_NO\_FILL** &#8674; _number_:
+**CMP\_IMAGE** &#8674; _number_
+:  Actual image IS different
 
-  Indicates that the arc or chord should be outlined, not filled.
+**CMP\_NUM\_COLORS** &#8674; _number_
+:  Number of colors in pallette differ
 
-- **ARC\_NO\_EDGE** &#8674; _number_:
+**CMP\_COLOR** &#8674; _number_
+:  Image colors differ
 
-  Used together with ARC_NO_FILL, indicates that the beginning and 
-ending angles should be connected to the center; this is a good 
-way to outline (rather than fill) a 'pie slice'.
+**CMP\_SIZE\_X** &#8674; _number_
+:  Image width differs
 
-- **CROP\_DEFAULT** &#8674; _number_:
+**CMP\_SIZE\_Y** &#8674; _number_
+:  Image heights differ
 
-  Same as CROP_TRANSPARENT
+**CMP\_TRANSPARENT** &#8674; _number_
+:  Transparent color differs
 
-- **CROP\_TRANSPARENT** &#8674; _number_:
+**CMP\_BACKGROUND** &#8674; _number_
+:  Background color differs
 
-  Crop using the transparent color
+**CMP\_INTERLACE** &#8674; _number_
+:  Interlaced setting differs
 
-- **CROP\_BLACK** &#8674; _number_:
+**CMP\_TRUECOLOR** &#8674; _number_
+:  Truecolor vs palette differs
 
-  Crop black borders
+**BLUR\_SELECTIVE** &#8674; _number_
+:  Blurs the image using the Gaussian method.
 
-- **CROP\_WHITE** &#8674; _number_:
+**BLUR\_GAUSSIAN** &#8674; _number_
+:  Blurs the image.
 
-  Crop white borders
+**FLIP\_BOTH** &#8674; _number_
+:  Flip an image vertically and horizontally
 
-- **CROP\_SIDES** &#8674; _number_:
+**FLIP\_HORIZONTAL** &#8674; _number_
+:  Flip an image horizontally
 
-  Crop using colors of the 4 corners
+**FLIP\_VERTICAL** &#8674; _number_
+:  Flip an image vertically
 
-- **CMP\_IMAGE** &#8674; _number_:
+**FONT\_SMALL** &#8674; _ptr_
+:  A small ISO-8859-2 raster font (5x8 pixels).
 
-  Actual image IS different
+**FONT\_REGULAR** &#8674; _ptr_
+:  The regular ISO-8859-2 raster font (6x13 pixels)
 
-- **CMP\_NUM\_COLORS** &#8674; _number_:
+**FONT\_MEDIUM** &#8674; _ptr_
+:  A medium bold ISO-8859-2 raster font (7x13 pixels).
 
-  Number of colors in pallette differ
+**FONT\_LARGE** &#8674; _ptr_
+:  A large ISO-8859-2 raster font (8x16 pixels).
 
-- **CMP\_COLOR** &#8674; _number_:
+**FONT\_EXTRALARGE** &#8674; _ptr_
+:  An extra-large ISO-8859-2 raster font (9x15 pixels).
 
-  Image colors differ
+**COLOR\_STYLED** &#8674; _number_
+:  Use the current style, see `set_style()`
 
-- **CMP\_SIZE\_X** &#8674; _number_:
+**COLOR\_BRUSHED** &#8674; _number_
+:  Use the current brush, see `set_brush()`
 
-  Image width differs
+**COLOR\_STYLED\_BRUSHED** &#8674; _number_
+:  Use the current style and brush
 
-- **CMP\_SIZE\_Y** &#8674; _number_:
+**COLOR\_TILED** &#8674; _number_
+:  Use the current tile, see `set_tile()`
 
-  Image heights differ
+**COLOR\_TRANSPARENT** &#8674; _number_
+:  Indicate transparency, what is not the same as the transparent 
+  color index; used for lines only
 
-- **CMP\_TRANSPARENT** &#8674; _number_:
+**COLOR\_ANTI\_ALISED** &#8674; _number_
+:  Draw anti aliased
 
-  Transparent color differs
+**INTERP\_DEFAULT** &#8674; _number_
+:  Default (Same as INTERP_BELL)
 
-- **CMP\_BACKGROUND** &#8674; _number_:
+**INTERP\_BELL** &#8674; _number_
+:  Bell
 
-  Background color differs
+**INTERP\_BESSEL** &#8674; _number_
+:  Bessel
 
-- **CMP\_INTERLACE** &#8674; _number_:
+**INTERP\_BILINEAR\_FIXED** &#8674; _number_
+:  Fixed point bilinear
 
-  Interlaced setting differs
+**INTERP\_BICUBIC** &#8674; _number_
+:  Bicubic
 
-- **CMP\_TRUECOLOR** &#8674; _number_:
+**INTERP\_BICUBIC\_FIXED** &#8674; _number_
+:  Fixed point bicubic integer
 
-  Truecolor vs palette differs
+**INTERP\_BLACKMAN** &#8674; _number_
+:  Blackman
 
-- **BLUR\_SELECTIVE** &#8674; _number_:
+**INTERP\_BOX** &#8674; _number_
+:  Box
 
-  Blurs the image using the Gaussian method.
+**INTERP\_BSPLINE** &#8674; _number_
+:  BSpline
 
-- **BLUR\_GAUSSIAN** &#8674; _number_:
+**INTERP\_CATMULLROM** &#8674; _number_
+:  Catmullrom
 
-  Blurs the image.
+**INTERP\_GAUSSIAN** &#8674; _number_
+:  Gaussian
 
-- **FLIP\_BOTH** &#8674; _number_:
+**INTERP\_GENERALIZED\_CUBIC** &#8674; _number_
+:  Generalized cubic
 
-  Flip an image vertically and horizontally
+**INTERP\_HERMITE** &#8674; _number_
+:  Hermite
 
-- **FLIP\_HORIZONTAL** &#8674; _number_:
+**INTERP\_HAMMING** &#8674; _number_
+:  Hamming
 
-  Flip an image horizontally
+**INTERP\_HANNING** &#8674; _number_
+:  Hannig
 
-- **FLIP\_VERTICAL** &#8674; _number_:
+**INTERP\_MITCHELL** &#8674; _number_
+:  Mitchell
 
-  Flip an image vertically
+**INTERP\_NEAREST\_NEIGHBOUR** &#8674; _number_
+:  Nearest neighbour interpolation
 
-- **FONT\_SMALL** &#8674; _ptr_:
+**INTERP\_POWER** &#8674; _number_
+:  Power
 
-  A small ISO-8859-2 raster font (5x8 pixels).
+**INTERP\_QUADRATIC** &#8674; _number_
+:  Quadratic
 
-- **FONT\_REGULAR** &#8674; _ptr_:
+**INTERP\_SINC** &#8674; _number_
+:  Sinc
 
-  The regular ISO-8859-2 raster font (6x13 pixels)
+**INTERP\_TRIANGLE** &#8674; _number_
+:  Triangle
 
-- **FONT\_MEDIUM** &#8674; _ptr_:
+**INTERP\_WEIGHTED4** &#8674; _number_
+:  4 pixels weighted bilinear interpolation
 
-  A medium bold ISO-8859-2 raster font (7x13 pixels).
+**INTERP\_LINEAR** &#8674; _number_
+:  bilinear interpolation
 
-- **FONT\_LARGE** &#8674; _ptr_:
+**LANCZOS3** &#8674; _number_
+:  Lanczos 3
 
-  A large ISO-8859-2 raster font (8x16 pixels).
+**LANCZOS8** &#8674; _number_
+:  Lanczos 8
 
-- **FONT\_EXTRALARGE** &#8674; _ptr_:
+**BLACKMAN\_BESSEL** &#8674; _number_
+:  Blackman Bessel
 
-  An extra-large ISO-8859-2 raster font (9x15 pixels).
+**BLACKMAN\_SINC** &#8674; _number_
+:  Blackman Sinc
 
-- **COLOR\_STYLED** &#8674; _number_:
+**QUADRATIC\_BSPLINE** &#8674; _number_
+:  Quadratic BSpline
 
-  Use the current style, see `set_style()`
+**CUBIC\_SPLINE** &#8674; _number_
+:  Cubic Spline
 
-- **COLOR\_BRUSHED** &#8674; _number_:
+**COSINE** &#8674; _number_
+:  Cosine
 
-  Use the current brush, see `set_brush()`
-
-- **COLOR\_STYLED\_BRUSHED** &#8674; _number_:
-
-  Use the current style and brush
-
-- **COLOR\_TILED** &#8674; _number_:
-
-  Use the current tile, see `set_tile()`
-
-- **COLOR\_TRANSPARENT** &#8674; _number_:
-
-  Indicate transparency, what is not the same as the transparent 
-color index; used for lines only
-
-- **COLOR\_ANTI\_ALISED** &#8674; _number_:
-
-  Draw anti aliased
-
-- **INTERP\_DEFAULT** &#8674; _number_:
-
-  Default (Same as INTERP_BELL)
-
-- **INTERP\_BELL** &#8674; _number_:
-
-  Bell
-
-- **INTERP\_BESSEL** &#8674; _number_:
-
-  Bessel
-
-- **INTERP\_BILINEAR\_FIXED** &#8674; _number_:
-
-  Fixed point bilinear
-
-- **INTERP\_BICUBIC** &#8674; _number_:
-
-  Bicubic
-
-- **INTERP\_BICUBIC\_FIXED** &#8674; _number_:
-
-  Fixed point bicubic integer
-
-- **INTERP\_BLACKMAN** &#8674; _number_:
-
-  Blackman
-
-- **INTERP\_BOX** &#8674; _number_:
-
-  Box
-
-- **INTERP\_BSPLINE** &#8674; _number_:
-
-  BSpline
-
-- **INTERP\_CATMULLROM** &#8674; _number_:
-
-  Catmullrom
-
-- **INTERP\_GAUSSIAN** &#8674; _number_:
-
-  Gaussian
-
-- **INTERP\_GENERALIZED\_CUBIC** &#8674; _number_:
-
-  Generalized cubic
-
-- **INTERP\_HERMITE** &#8674; _number_:
-
-  Hermite
-
-- **INTERP\_HAMMING** &#8674; _number_:
-
-  Hamming
-
-- **INTERP\_HANNING** &#8674; _number_:
-
-  Hannig
-
-- **INTERP\_MITCHELL** &#8674; _number_:
-
-  Mitchell
-
-- **INTERP\_NEAREST\_NEIGHBOUR** &#8674; _number_:
-
-  Nearest neighbour interpolation
-
-- **INTERP\_POWER** &#8674; _number_:
-
-  Power
-
-- **INTERP\_QUADRATIC** &#8674; _number_:
-
-  Quadratic
-
-- **INTERP\_SINC** &#8674; _number_:
-
-  Sinc
-
-- **INTERP\_TRIANGLE** &#8674; _number_:
-
-  Triangle
-
-- **INTERP\_WEIGHTED4** &#8674; _number_:
-
-  4 pixels weighted bilinear interpolation
-
-- **INTERP\_LINEAR** &#8674; _number_:
-
-  bilinear interpolation
-
-- **LANCZOS3** &#8674; _number_:
-
-  Lanczos 3
-
-- **LANCZOS8** &#8674; _number_:
-
-  Lanczos 8
-
-- **BLACKMAN\_BESSEL** &#8674; _number_:
-
-  Blackman Bessel
-
-- **BLACKMAN\_SINC** &#8674; _number_:
-
-  Blackman Sinc
-
-- **QUADRATIC\_BSPLINE** &#8674; _number_:
-
-  Quadratic BSpline
-
-- **CUBIC\_SPLINE** &#8674; _number_:
-
-  Cubic Spline
-
-- **COSINE** &#8674; _number_:
-
-  Cosine
-
-- **WELSH** &#8674; _number_:
-
-  Welsh
+**WELSH** &#8674; _number_
+:  Welsh
 
 
 ## Functions
 
-#### true\_color(r, g, b, a)
+true\_color(_r_, _g_, _b_, _a_) {#imagine.true_color}
 
-Compose a truecolor value from its components.
-
- @param number? r - The red channel (0-255) - Default: 0
- @param number? g - The green channel (0-255) - Default: 0
- @param number? b - The blue channel (0-255) - Default: 0
- @param number? a - The alpha channel (0-127, where 127 is 
-     fully transparent, and 0 is completely opaque) 
-     - Default: 0.
-
-##### Returns
-
-- number
+: Compose a truecolor value from its components.
+  
+   @param number? r - The red channel (0-255) - Default: 0
+   @param number? g - The green channel (0-255) - Default: 0
+   @param number? b - The blue channel (0-255) - Default: 0
+   @param number? a - The alpha channel (0-127, where 127 is 
+       fully transparent, and 0 is completely opaque) 
+       - Default: 0.
 
 
+  - **@returns**: _number_
 
-#### decompose(color)
 
-Decomposes an Image true color number into it's respective 
-RGBA components.
 
-The function returns a dictionary that contains the following 
-decomposed items:
+decompose(_color_) {#imagine.decompose}
 
-- `r` - The red channel value
-- `g` - The green channel value
-- `b` - The blue channel value
-- `a` - The alpha channel value
+: Decomposes an Image true color number into it's respective 
+  RGBA components.
+  
+  The function returns a dictionary that contains the following 
+  decomposed items:
+  
+  - `r` - The red channel value
+  - `g` - The green channel value
+  - `b` - The blue channel value
+  - `a` - The alpha channel value
 
-##### Parameters
 
-- _number_ **color**
+  - **@params**:
+    - _number_ **color**
 
-##### Returns
-
-- dict
+  {.params}
+  - **@returns**: _dict_
 
 
 
 ## Classes
 
-### _class_ ImageResource
+_class_ **ImageResource** {#imagine.ImageResource .class}
 
-The ImageResource class represents a loaded image and exposes all 
-the image processing, metadata and manipulation functions.
+: The ImageResource class represents a loaded image and exposes all 
+  the image processing, metadata and manipulation functions.
 
-#### Methods
 
-#### use(callback)
 
-Invokes the given callback with the image as a parameter and 
-automatically closes the image once the callback returns. 
-Leaving images in open can quickly lead to resource exhaustion 
-especially when working with multiple images. The `use()` 
-method is recommended over manually closing images as it 
-ensures that an image is always closed and not forgotten in 
-memory.
+  .use(_callback_) {#imagine.ImageResource.use}
 
-##### Parameters
+  : Invokes the given callback with the image as a parameter and 
+    automatically closes the image once the callback returns. 
+    Leaving images in open can quickly lead to resource exhaustion 
+    especially when working with multiple images. The `use()` 
+    method is recommended over manually closing images as it 
+    ensures that an image is always closed and not forgotten in 
+    memory.
 
-- _function(1)_ **callback**
 
+    - **@params**:
+      - _function(1)_ **callback**
 
-#### close()
+    {.params}
 
-Closes an image and frees all associated resources.
 
-##### Notes
+  .close() {#imagine.ImageResource.close}
 
-- an image can no longer be used once it is closed.
+  : Closes an image and frees all associated resources.
 
-#### meta()
 
-Returns metadata information about the image.
+    > **@notes**:
+    > 
+    > - an image can no longer be used once it is closed.
 
-Metadata contains:
-- `width`: The width of the image (in pixels).
-- `height`: The height of the image (in pixels).
-- `colors`: The number of colors in the image.
-- `res_x`: The horizontal resolution in DPI.
-- `res_y`: The vertical resolution in DPI.
-- `interpolation`: The method of interpolation used on the image.
-- `true_color`: True if the image uses true colors, false otherwise.
-- `interlaced`: True if the image is interlaced, false otherwise.
 
-##### Returns
 
-- dict
+  .meta() {#imagine.ImageResource.meta}
 
-#### set\_pixel(x, y, color)
+  : Returns metadata information about the image.
+    
+    Metadata contains:
+    - `width`: The width of the image (in pixels).
+    - `height`: The height of the image (in pixels).
+    - `colors`: The number of colors in the image.
+    - `res_x`: The horizontal resolution in DPI.
+    - `res_y`: The vertical resolution in DPI.
+    - `interpolation`: The method of interpolation used on the image.
+    - `true_color`: True if the image uses true colors, false otherwise.
+    - `interlaced`: True if the image is interlaced, false otherwise.
 
-Sets the pixel indicated by _x_ and _y_ coordinate in the image to 
-the given _color_.
 
-##### Parameters
+    - **@returns**: _dict_
 
-- _number_ **x**
-- _number_ **y**
-- _number_ **color**
 
+  .set\_pixel(_x_, _y_, _color_) {#imagine.ImageResource.set_pixel}
 
-#### get\_pixel(x, y)
+  : Sets the pixel indicated by _x_ and _y_ coordinate in the image to 
+    the given _color_.
 
-Returns the color at the give pixel indicated by _x_ and _y_ 
-coordinate in the image.
 
-##### Parameters
+    - **@params**:
+      - _number_ **x**
+      - _number_ **y**
+      - _number_ **color**
 
-- _number_ **x**
-- _number_ **y**
+    {.params}
 
-##### Returns
 
-- number
+  .get\_pixel(_x_, _y_) {#imagine.ImageResource.get_pixel}
 
-#### line(x1, y1, x2, y2, color)
+  : Returns the color at the give pixel indicated by _x_ and _y_ 
+    coordinate in the image.
 
-Draws a line between x1,y1 and x2, y2.The line is drawn using 
-the color index specified. Note that color index can be a color 
-returned by `allocate_color()` or one of `set_style()`, or
-`set_brush()`.
 
-##### Parameters
+    - **@params**:
+      - _number_ **x**
+      - _number_ **y**
 
-- _number_ **x1**
-- _number_ **y1**
-- _number_ **x2**
-- _number_ **y2**
-- _number_ **color**
+    {.params}
+    - **@returns**: _number_
 
 
-#### dashed\_line(x1, y1, x2, y2, color)
+  .line(_x1_, _y1_, _x2_, _y2_, _color_) {#imagine.ImageResource.line}
 
-Draws a dashed line between x1,y1 and x2, y2.The line is drawn using 
-the color specified. Note that color index can be a color returned 
-by `allocate_color()` or one of `set_style()`, or `set_brush()`.
+  : Draws a line between x1,y1 and x2, y2.The line is drawn using 
+    the color index specified. Note that color index can be a color 
+    returned by `allocate_color()` or one of `set_style()`, or
+    `set_brush()`.
 
-##### Parameters
 
-- _number_ **x1**
-- _number_ **y1**
-- _number_ **x2**
-- _number_ **y2**
-- _number_ **color**
+    - **@params**:
+      - _number_ **x1**
+      - _number_ **y1**
+      - _number_ **x2**
+      - _number_ **y2**
+      - _number_ **color**
 
+    {.params}
 
-#### rectangle(x1, y1, x2, y2, color)
 
-Draws a rectangle with the upper left (x1, y1) then lower right (y1,y2) 
-corners specified, using the color specified.
+  .dashed\_line(_x1_, _y1_, _x2_, _y2_, _color_) {#imagine.ImageResource.dashed_line}
 
-##### Parameters
+  : Draws a dashed line between x1,y1 and x2, y2.The line is drawn using 
+    the color specified. Note that color index can be a color returned 
+    by `allocate_color()` or one of `set_style()`, or `set_brush()`.
 
-- _number_ **x1**
-- _number_ **y1**
-- _number_ **x2**
-- _number_ **y2**
-- _number_ **color**
 
+    - **@params**:
+      - _number_ **x1**
+      - _number_ **y1**
+      - _number_ **x2**
+      - _number_ **y2**
+      - _number_ **color**
 
-#### filled\_rectangle(x1, y1, x2, y2, color)
+    {.params}
 
-Draws a solid rectangle with the upper left (x1, y1) then lower 
-right (y1,y2) corners specified, using the color specified.
 
-##### Parameters
+  .rectangle(_x1_, _y1_, _x2_, _y2_, _color_) {#imagine.ImageResource.rectangle}
 
-- _number_ **x1**
-- _number_ **y1**
-- _number_ **x2**
-- _number_ **y2**
-- _number_ **color**
+  : Draws a rectangle with the upper left (x1, y1) then lower right (y1,y2) 
+    corners specified, using the color specified.
 
 
-#### safe\_bound(x, y)
+    - **@params**:
+      - _number_ **x1**
+      - _number_ **y1**
+      - _number_ **x2**
+      - _number_ **y2**
+      - _number_ **color**
 
-Returns true if the coordinate represented by _x_ and _y_ 
-is within the bounds of the image.
+    {.params}
 
-##### Parameters
 
-- _number_ **x**
-- _number_ **y**
+  .filled\_rectangle(_x1_, _y1_, _x2_, _y2_, _color_) {#imagine.ImageResource.filled_rectangle}
 
+  : Draws a solid rectangle with the upper left (x1, y1) then lower 
+    right (y1,y2) corners specified, using the color specified.
 
-#### char(x, y, char, font, color)
 
-Draws a single character.
+    - **@params**:
+      - _number_ **x1**
+      - _number_ **y1**
+      - _number_ **x2**
+      - _number_ **y2**
+      - _number_ **color**
 
-##### Parameters
+    {.params}
 
-- _number_ **x**: - The x coordinate of the upper left pixel.
-- _number_ **y**: - The y coordinate of the upper left pixel.
-- _char_ **text**: - The character.
-- _font_ **font**: - The raster font.
-- _number_ **color**: - The color.
 
+  .safe\_bound(_x_, _y_) {#imagine.ImageResource.safe_bound}
 
-#### char\_vert(x, y, char, font, color)
+  : Returns true if the coordinate represented by _x_ and _y_ 
+    is within the bounds of the image.
 
-Draws a single character vertically.
 
-##### Parameters
+    - **@params**:
+      - _number_ **x**
+      - _number_ **y**
 
-- _number_ **x**: - The x coordinate of the upper left pixel.
-- _number_ **y**: - The y coordinate of the upper left pixel.
-- _char_ **text**: - The character.
-- _font_ **font**: - The raster font.
-- _number_ **color**: - The color.
+    {.params}
 
 
-#### string(x, y, text, font, color)
+  .char(_x_, _y_, _char_, _font_, _color_) {#imagine.ImageResource.char}
 
-Draws a character string.
+  : Draws a single character.
 
-##### Parameters
 
-- _number_ **x**: - The x coordinate of the upper left pixel.
-- _number_ **y**: - The y coordinate of the upper left pixel.
-- _string_ **text**: - The character string.
-- _font_ **font**: - The raster font.
-- _number_ **color**: - The color.
+    - **@params**:
+      - _number_ **x** - The x coordinate of the upper left pixel.
 
+      - _number_ **y** - The y coordinate of the upper left pixel.
 
-#### string\_vert(x, y, text, font, color)
+      - _char_ **text** - The character.
 
-Draws a character string vertically.
+      - _font_ **font** - The raster font.
 
-##### Parameters
+      - _number_ **color** - The color.
 
-- _number_ **x**: - The x coordinate of the upper left pixel.
-- _number_ **y**: - The y coordinate of the upper left pixel.
-- _string_ **text**: - The character string.
-- _font_ **font**: - The raster font.
-- _number_ **color**: - The color.
 
+    {.params}
 
-#### polygon(points, color)
 
-Draws a polygon with the vertices specified by _points_, in the 
-specified by _color_. There must be at least three points.
+  .char\_vert(_x_, _y_, _char_, _font_, _color_) {#imagine.ImageResource.char_vert}
 
-Point must be a list of lists where each list contains two numbers 
-for the x and y coordinates. It is required that there must be at 
-least three points.
+  : Draws a single character vertically.
 
-##### Parameters
 
-- _list[list]_ **points**
-- _number_ **color**
+    - **@params**:
+      - _number_ **x** - The x coordinate of the upper left pixel.
 
+      - _number_ **y** - The y coordinate of the upper left pixel.
 
-#### open\_polygon(points, color)
+      - _char_ **text** - The character.
 
-Draws an open polygon with the vertices specified by _points_, in 
-the specified by _color_. There must be at least three points.
+      - _font_ **font** - The raster font.
 
-Point must be a list of lists where each list contains two numbers 
-for the x and y coordinates. It is required that there must be at 
-least three points.
+      - _number_ **color** - The color.
 
-##### Parameters
 
-- _list[list]_ **points**
-- _number_ **color**
+    {.params}
 
 
-#### filled\_polygon(points, color)
+  .string(_x_, _y_, _text_, _font_, _color_) {#imagine.ImageResource.string}
 
-Fills a polygon with the vertices specified by _points_, in the 
-specified by _color_. There must be at least three points.
+  : Draws a character string.
 
-Point must be a list of lists where each list contains two numbers 
-for the x and y coordinates. It is required that there must be at 
-least three points.
 
-##### Parameters
+    - **@params**:
+      - _number_ **x** - The x coordinate of the upper left pixel.
 
-- _list[list]_ **points**
-- _number_ **color**
+      - _number_ **y** - The y coordinate of the upper left pixel.
 
+      - _string_ **text** - The character string.
 
-#### arc(x, y, width, height, start, end, color)
+      - _font_ **font** - The raster font.
 
-Draws a partial ellipse centered at the given point, with the 
-specified width and height in pixels. The arc begins at the 
-position in degrees specified by _start_ and ends at the 
-position specified by _end_. The arc is drawn in the color 
-specified by the last argument. A circle can be drawn by 
-beginning from 0 degrees and ending at 360 degrees, with width 
-and height being equal. `end` must be greater than `start`. 
-Values greater than 360 are interpreted modulo 360.
+      - _number_ **color** - The color.
 
-##### Parameters
 
-- _number_ **x**
-- _number_ **y**
-- _number_ **width**
-- _number_ **height**
-- _number_ **start**
-- _number_ **end**
-- _number_ **color**
+    {.params}
 
 
-#### filled\_arc(x, y, width, height, start, end, color, style)
+  .string\_vert(_x_, _y_, _text_, _font_, _color_) {#imagine.ImageResource.string_vert}
 
-Fills a partial ellipse centered at the given point, with the 
-specified width and height in pixels using the specified style. 
-The arc begins at the position in degrees specified by _start_ 
-and ends at the position specified by _end_. The arc is drawn 
-in the color specified by the last argument. A circle can be 
-drawn by beginning from 0 degrees and ending at 360 degrees, 
-with width and height being equal. `end` must be greater than 
-`start`. Values greater than 360 are interpreted modulo 360. 
+  : Draws a character string vertically.
 
-Style must be one or more of ARC_ constants or'ed together.
- E.g. `ARC_NO_FILL | ARC_NO_EDGE`.
 
-When style is not given, it defaults to `ARC_PIE`.
+    - **@params**:
+      - _number_ **x** - The x coordinate of the upper left pixel.
 
-##### Parameters
+      - _number_ **y** - The y coordinate of the upper left pixel.
 
-- _number_ **x**
-- _number_ **y**
-- _number_ **width**
-- _number_ **height**
-- _number_ **start**
-- _number_ **end**
-- _number_ **color**
-- _number_ **style**
+      - _string_ **text** - The character string.
 
+      - _font_ **font** - The raster font.
 
-#### ellipse(x, y, width, height, color)
+      - _number_ **color** - The color.
 
-Draws a full ellipse centered at the given point, with the 
-specified width, height, and color.
 
-##### Parameters
+    {.params}
 
-- _number_ **x**
-- _number_ **y**
-- _number_ **width**
-- _number_ **height**
-- _number_ **color**
 
+  .polygon(_points_, _color_) {#imagine.ImageResource.polygon}
 
-#### filled\_ellipse(x, y, width, height, color)
+  : Draws a polygon with the vertices specified by _points_, in the 
+    specified by _color_. There must be at least three points.
+    
+    Point must be a list of lists where each list contains two numbers 
+    for the x and y coordinates. It is required that there must be at 
+    least three points.
 
-Fills a full ellipse centered at the given point, with the 
-specified width, height, and color.
 
-##### Parameters
+    - **@params**:
+      - _list[list]_ **points**
+      - _number_ **color**
 
-- _number_ **x**
-- _number_ **y**
-- _number_ **width**
-- _number_ **height**
-- _number_ **color**
+    {.params}
 
 
-#### allocate\_color(r, g, b, a)
+  .open\_polygon(_points_, _color_) {#imagine.ImageResource.open_polygon}
 
-Returns the given color allocated from the image palette. 
-Any of R, G, B, or A can be omitted or set to nil in which case 
-they'll default to zero.
+  : Draws an open polygon with the vertices specified by _points_, in 
+    the specified by _color_. There must be at least three points.
+    
+    Point must be a list of lists where each list contains two numbers 
+    for the x and y coordinates. It is required that there must be at 
+    least three points.
 
-##### Parameters
 
-- _number?_ **r**
-- _number?_ **g**
-- _number?_ **b**
-- _number?_ **a**
+    - **@params**:
+      - _list[list]_ **points**
+      - _number_ **color**
 
-##### Returns
+    {.params}
 
-- number
 
-#### closest\_color(r, g, b, a)
+  .filled\_polygon(_points_, _color_) {#imagine.ImageResource.filled_polygon}
 
-Returns the closes color based on the image to the color specified by 
-`r`, `g`, `b`, and `a`. A slightly different color with the same 
-transparency beats the exact same color with radically different 
-transparency.
+  : Fills a polygon with the vertices specified by _points_, in the 
+    specified by _color_. There must be at least three points.
+    
+    Point must be a list of lists where each list contains two numbers 
+    for the x and y coordinates. It is required that there must be at 
+    least three points.
 
-##### Parameters
 
-- _number_ **r**
-- _number_ **g**
-- _number_ **b**
-- _number_ **a**
+    - **@params**:
+      - _list[list]_ **points**
+      - _number_ **color**
 
-##### Returns
+    {.params}
 
-- number
 
-#### closest\_color\_hwb(r, g, b)
+  .arc(_x_, _y_, _width_, _height_, _start_, _end_, _color_) {#imagine.ImageResource.arc}
 
-Same as `closes_color()` but uses an alternative algorithm and does 
-not account for transparency.
+  : Draws a partial ellipse centered at the given point, with the 
+    specified width and height in pixels. The arc begins at the 
+    position in degrees specified by _start_ and ends at the 
+    position specified by _end_. The arc is drawn in the color 
+    specified by the last argument. A circle can be drawn by 
+    beginning from 0 degrees and ending at 360 degrees, with width 
+    and height being equal. `end` must be greater than `start`. 
+    Values greater than 360 are interpreted modulo 360.
 
-##### Parameters
 
-- _number_ **r**
-- _number_ **g**
-- _number_ **b**
+    - **@params**:
+      - _number_ **x**
+      - _number_ **y**
+      - _number_ **width**
+      - _number_ **height**
+      - _number_ **start**
+      - _number_ **end**
+      - _number_ **color**
 
-##### Returns
+    {.params}
 
-- number
 
-#### exact\_color(r, g, b, a)
+  .filled\_arc(_x_, _y_, _width_, _height_, _start_, _end_, _color_, _style_) {#imagine.ImageResource.filled_arc}
 
-Returns an exact match only, including alpha when specified.
+  : Fills a partial ellipse centered at the given point, with the 
+    specified width and height in pixels using the specified style. 
+    The arc begins at the position in degrees specified by _start_ 
+    and ends at the position specified by _end_. The arc is drawn 
+    in the color specified by the last argument. A circle can be 
+    drawn by beginning from 0 degrees and ending at 360 degrees, 
+    with width and height being equal. `end` must be greater than 
+    `start`. Values greater than 360 are interpreted modulo 360. 
+    
+    Style must be one or more of ARC_ constants or'ed together.
+     E.g. `ARC_NO_FILL | ARC_NO_EDGE`.
+    
+    When style is not given, it defaults to `ARC_PIE`.
 
-##### Parameters
 
-- _number_ **r**
-- _number_ **g**
-- _number_ **b**
-- _number_ **a**
+    - **@params**:
+      - _number_ **x**
+      - _number_ **y**
+      - _number_ **width**
+      - _number_ **height**
+      - _number_ **start**
+      - _number_ **end**
+      - _number_ **color**
+      - _number_ **style**
 
-##### Returns
+    {.params}
 
-- number
 
-#### resolve\_color(r, g, b, a)
+  .ellipse(_x_, _y_, _width_, _height_, _color_) {#imagine.ImageResource.ellipse}
 
-Resolves color in the image based on `exact_color()` and `closest_color()` 
-and return the one that matches the image best.
+  : Draws a full ellipse centered at the given point, with the 
+    specified width, height, and color.
 
-##### Parameters
 
-- _number_ **r**
-- _number_ **g**
-- _number_ **b**
-- _number_ **a**
+    - **@params**:
+      - _number_ **x**
+      - _number_ **y**
+      - _number_ **width**
+      - _number_ **height**
+      - _number_ **color**
 
-##### Returns
+    {.params}
 
-- number
 
-#### deallocate\_color(color)
+  .filled\_ellipse(_x_, _y_, _width_, _height_, _color_) {#imagine.ImageResource.filled_ellipse}
 
-Deallocates a color previously allocated from the image.
+  : Fills a full ellipse centered at the given point, with the 
+    specified width, height, and color.
 
-##### Parameters
 
-- _number_ **color**
+    - **@params**:
+      - _number_ **x**
+      - _number_ **y**
+      - _number_ **width**
+      - _number_ **height**
+      - _number_ **color**
 
+    {.params}
 
-#### color\_transparent(color)
 
-Specifies a color index (if a palette image) or an RGB color (if a 
-truecolor image) which should be considered 100% transparent. FOR 
-TRUECOLOR IMAGES, THIS IS IGNORED IF AN ALPHA CHANNEL IS BEING SAVED. 
-Use `save_apha(false)` to turn off the saving of a full alpha 
-channel in a truecolor image. Note that this function is usually 
-compatible with older browsers that do not understand full alpha 
-channels well.
+  .allocate\_color(_r_, _g_, _b_, _a_) {#imagine.ImageResource.allocate_color}
 
-##### Parameters
+  : Returns the given color allocated from the image palette. 
+    Any of R, G, B, or A can be omitted or set to nil in which case 
+    they'll default to zero.
 
-- _number_ **color**
 
+    - **@params**:
+      - _number?_ **r**
+      - _number?_ **g**
+      - _number?_ **b**
+      - _number?_ **a**
 
-#### palette\_copy(image)
+    {.params}
+    - **@returns**: _number_
 
-Copies the palatte from a paletted image to this image.
 
-##### Parameters
+  .closest\_color(_r_, _g_, _b_, _a_) {#imagine.ImageResource.closest_color}
 
-- _ImageResource_ **image**
+  : Returns the closes color based on the image to the color specified by 
+    `r`, `g`, `b`, and `a`. A slightly different color with the same 
+    transparency beats the exact same color with radically different 
+    transparency.
 
 
-#### color\_replace(src, dest)
+    - **@params**:
+      - _number_ **r**
+      - _number_ **g**
+      - _number_ **b**
+      - _number_ **a**
 
-Replaces every occurrence of color _src_ in the image with the 
-color _dest_.
+    {.params}
+    - **@returns**: _number_
 
-##### Parameters
 
-- _number_ **src**
-- _number_ **dest**
+  .closest\_color\_hwb(_r_, _g_, _b_) {#imagine.ImageResource.closest_color_hwb}
 
-##### Returns
+  : Same as `closes_color()` but uses an alternative algorithm and does 
+    not account for transparency.
 
-- bool
 
-#### fill(x, y, color)
+    - **@params**:
+      - _number_ **r**
+      - _number_ **g**
+      - _number_ **b**
 
-Flood fills the image with the given _color_ starting are 
-the coordinates given by _x_ and _y_.
+    {.params}
+    - **@returns**: _number_
 
-##### Parameters
 
-- _number_ **x**
-- _number_ **y**
-- _number_ **color**
+  .exact\_color(_r_, _g_, _b_, _a_) {#imagine.ImageResource.exact_color}
 
+  : Returns an exact match only, including alpha when specified.
 
-#### fill\_to\_border(x, y, border, color)
 
-Flood fills the image with the given _color_ starting are 
-the coordinates given by _x_ and _y_ and using the color 
-specified by border to fill its borders.
+    - **@params**:
+      - _number_ **r**
+      - _number_ **g**
+      - _number_ **b**
+      - _number_ **a**
 
-##### Parameters
+    {.params}
+    - **@returns**: _number_
 
-- _number_ **x**
-- _number_ **y**
-- _number_ **color**
 
+  .resolve\_color(_r_, _g_, _b_, _a_) {#imagine.ImageResource.resolve_color}
 
-#### copy(src, dst_x, dst_y, src_x, src_y, width, height)
+  : Resolves color in the image based on `exact_color()` and `closest_color()` 
+    and return the one that matches the image best.
 
-Copy a part of image _src_ onto this image starting at the x,y c
-oordinates src_x, src_y with the source width and height. The 
-portion defined will be copied onto the x,y coordinates, dst_x 
-and dst_y.
 
-##### Parameters
+    - **@params**:
+      - _number_ **r**
+      - _number_ **g**
+      - _number_ **b**
+      - _number_ **a**
 
-- _ImageResource_ **src**
-- _number_ **dst_x**
-- _number_ **dst_y**
-- _number_ **src_x**
-- _number_ **src_y**
-- _number_ **width**
-- _number_ **height**
+    {.params}
+    - **@returns**: _number_
 
 
-#### copy\_merge(src, dst_x, dst_y, src_x, src_y, width, height, pct)
+  .deallocate\_color(_color_) {#imagine.ImageResource.deallocate_color}
 
-Copy and merge a part of image _src_ onto this image starting 
-at the x,y coordinates src_x, src_y with the source width and 
-height. The portion defined will be copied onto the x,y 
-coordinates, dst_x and dst_y.
+  : Deallocates a color previously allocated from the image.
 
-The two images will be merged according to pct which can range 
-from 0 to 100. When pct = 0, no action is taken, when 100 this 
-function behaves identically to `copy()` for pallete images, 
-except for ignoring alpha components, while it implements 
-alpha transparency for true colour images.
 
-##### Parameters
+    - **@params**:
+      - _number_ **color**
 
-- _ImageResource_ **src**
-- _number_ **dst_x**
-- _number_ **dst_y**
-- _number_ **src_x**
-- _number_ **src_y**
-- _number_ **width**
-- _number_ **height**
-- _number_ **pct**
+    {.params}
 
 
-#### copy\_merge\_gray(src, dst_x, dst_y, src_x, src_y, width, height, pct)
+  .color\_transparent(_color_) {#imagine.ImageResource.color_transparent}
 
-Same as `copy_merge()` except that when merging it preserves the 
-hue of the source by converting the destination pixels to gray scale 
-before the copy operation.
+  : Specifies a color index (if a palette image) or an RGB color (if a 
+    truecolor image) which should be considered 100% transparent. FOR 
+    TRUECOLOR IMAGES, THIS IS IGNORED IF AN ALPHA CHANNEL IS BEING SAVED. 
+    Use `save_apha(false)` to turn off the saving of a full alpha 
+    channel in a truecolor image. Note that this function is usually 
+    compatible with older browsers that do not understand full alpha 
+    channels well.
 
-##### Parameters
 
-- _ImageResource_ **src**
-- _number_ **dst_x**
-- _number_ **dst_y**
-- _number_ **src_x**
-- _number_ **src_y**
-- _number_ **width**
-- _number_ **height**
-- _number_ **pct**
+    - **@params**:
+      - _number_ **color**
 
+    {.params}
 
-#### copy\_resized(src, x, y, src_x, src_y, width, height, src_width, src_height)
 
-Copy a resized area defined by src_x, src_y, src_width, and 
-src_height from the image _src_ to the area defined by x, y, 
-width, height on this image.
+  .palette\_copy(_image_) {#imagine.ImageResource.palette_copy}
 
-If the source and destination coordinates and width and heights 
-differ, appropriate stretching or shrinking of the image fragment
-will be performed. 
+  : Copies the palatte from a paletted image to this image.
 
-The coordinates refer to the upper left corner. 
 
-This function can be used to copy regions within the same image 
-(if this image is the same as _src_) but if the regions overlap 
-the results will be unpredictable.
+    - **@params**:
+      - _ImageResource_ **image**
 
-##### Parameters
+    {.params}
 
-- _ImageResource_ **src**
-- _number_ **x**
-- _number_ **y**
-- _number_ **src_x**
-- _number_ **src_y**
-- _number_ **width**
-- _number_ **height**
-- _number_ **src_width**
-- _number_ **src_height**
 
+  .color\_replace(_src_, _dest_) {#imagine.ImageResource.color_replace}
 
-#### copy\_resampled(src, x, y, src_x, src_y, width, height, src_width, src_height)
+  : Replaces every occurrence of color _src_ in the image with the 
+    color _dest_.
 
-Copy a resized area defined by src_x, src_y, src_width, and 
-src_height from the image _src_ to the area defined by x, y, 
-width, height on this image. Unlike `copy_resized()`, it 
-smoothly interpolates pixel values so that, in particular, 
-reducing the size of an image still retains a great deal of 
-clarity.
 
-If the source and destination coordinates and width and heights 
-differ, appropriate stretching or shrinking of the image fragment
-will be performed. 
+    - **@params**:
+      - _number_ **src**
+      - _number_ **dest**
 
-The coordinates refer to the upper left corner. 
+    {.params}
+    - **@returns**: _bool_
 
-This function can be used to copy regions within the same image 
-(if this image is the same as _src_) but if the regions overlap 
-the results will be unpredictable.
 
-##### Parameters
+  .fill(_x_, _y_, _color_) {#imagine.ImageResource.fill}
 
-- _ImageResource_ **src**
-- _number_ **x**
-- _number_ **y**
-- _number_ **src_x**
-- _number_ **src_y**
-- _number_ **width**
-- _number_ **height**
-- _number_ **src_width**
-- _number_ **src_height**
+  : Flood fills the image with the given _color_ starting are 
+    the coordinates given by _x_ and _y_.
 
 
-#### copy\_rotated(src, x, y, src_x, src_y, src_width, src_height, angle)
+    - **@params**:
+      - _number_ **x**
+      - _number_ **y**
+      - _number_ **color**
 
-Similar to `copy_resized()` with an added rotation to the copied image. 
-Destination is the _center_ of the rotated copy. Angle is in degrees, 
-same as `arc()`. 
+    {.params}
 
-Floating point destination center coordinates allow accurate rotation of 
-objects of odd-numbered width or height.
 
-The rotation angle is interpreted as the number of degrees to rotate the 
-image anticlockwise.
+  .fill\_to\_border(_x_, _y_, _border_, _color_) {#imagine.ImageResource.fill_to_border}
 
-##### Parameters
+  : Flood fills the image with the given _color_ starting are 
+    the coordinates given by _x_ and _y_ and using the color 
+    specified by border to fill its borders.
 
-- _ImageResource_ **src**
-- _number_ **x**
-- _number_ **y**
-- _number_ **src_x**
-- _number_ **src_y**
-- _number_ **src_width**
-- _number_ **src_height**
-- _number_ **angle**
 
+    - **@params**:
+      - _number_ **x**
+      - _number_ **y**
+      - _number_ **color**
 
-#### clone()
+    {.params}
 
-Clones this image resource.
 
-##### Returns
+  .copy(_src_, _dst_x_, _dst_y_, _src_x_, _src_y_, _width_, _height_) {#imagine.ImageResource.copy}
 
-- ImageResource
+  : Copy a part of image _src_ onto this image starting at the x,y c
+    oordinates src_x, src_y with the source width and height. The 
+    portion defined will be copied onto the x,y coordinates, dst_x 
+    and dst_y.
 
-#### set\_brush(brush)
 
-Sets the brush image to be used by all line drawing functions for 
-this image.
+    - **@params**:
+      - _ImageResource_ **src**
+      - _number_ **dst_x**
+      - _number_ **dst_y**
+      - _number_ **src_x**
+      - _number_ **src_y**
+      - _number_ **width**
+      - _number_ **height**
 
-A "brush" is an image used to draw wide, shaped strokes in another image. 
-Just as a paintbrush is not a single point, a brush image need not be a 
-single pixel. Any image resource can be used as a brush, and by setting 
-the transparent color index of the brush image with `color_transparent()`, 
-a brush of any shape can be created. 
+    {.params}
 
-All line-drawing functions, such as gdImageLine and `polygon()`, will use 
-the current brush if the special "color" `COLOR_BRUSHED` or 
-`COLOR_STYLED_BRUSHED` is used when calling them.
 
->*NOTE:** 
- > 
-> You need not take special action when you are finished with a 
-> brush, but if you close the brush image (or let the GC close it), 
-> you must not use the `COLOR_BRUSHED` or `COLOR_STYLED_BRUSHED` colors 
-> until you have set a new brush image.
+  .copy\_merge(_src_, _dst_x_, _dst_y_, _src_x_, _src_y_, _width_, _height_, _pct_) {#imagine.ImageResource.copy_merge}
 
-##### Parameters
+  : Copy and merge a part of image _src_ onto this image starting 
+    at the x,y coordinates src_x, src_y with the source width and 
+    height. The portion defined will be copied onto the x,y 
+    coordinates, dst_x and dst_y.
+    
+    The two images will be merged according to pct which can range 
+    from 0 to 100. When pct = 0, no action is taken, when 100 this 
+    function behaves identically to `copy()` for pallete images, 
+    except for ignoring alpha components, while it implements 
+    alpha transparency for true colour images.
 
-- _ImageResource_ **brush**
 
+    - **@params**:
+      - _ImageResource_ **src**
+      - _number_ **dst_x**
+      - _number_ **dst_y**
+      - _number_ **src_x**
+      - _number_ **src_y**
+      - _number_ **width**
+      - _number_ **height**
+      - _number_ **pct**
 
-#### set\_tile(tile)
+    {.params}
 
-Sets the tile image to be used by all region filling functions.
 
-A tile is an image used to fill an area with a repeated pattern. Any image 
-resource can be used as a tile, and by setting the transparent color index 
-of the tile image with `color_transparent()`, a tile that allows certain 
-parts of the underlying area to shine through can be created. All 
-region-filling functions, such as `fill()` and `filled_polygon()`, will use 
-the current tile if the special "color" `COLOR_TILED` is used when calling 
-them.
+  .copy\_merge\_gray(_src_, _dst_x_, _dst_y_, _src_x_, _src_y_, _width_, _height_, _pct_) {#imagine.ImageResource.copy_merge_gray}
 
-You can set any image resource to be the tile. If the tile image does not have 
-the same color map as the first image, any colors missing from the first image 
-will be allocated. If not enough colors can be allocated, the closest colors 
-already available will be used. This allows arbitrary GIFs to be used as tile 
-images. It also means, however, that you should not set a tile unless you will 
-actually use it; if you set a rapid succession of different tile images, you can 
-quickly fill your color map, and the results will not be optimal.
+  : Same as `copy_merge()` except that when merging it preserves the 
+    hue of the source by converting the destination pixels to gray scale 
+    before the copy operation.
 
-You need not take any special action when you are finished with a tile. As for 
-any other image, if you will not be using the tile image for any further purpose, 
-you should call `close()`. You must not use the color `COLOR_TILED` if the current 
-tile has been closed; you can of course set a new tile to replace it.
 
-##### Parameters
+    - **@params**:
+      - _ImageResource_ **src**
+      - _number_ **dst_x**
+      - _number_ **dst_y**
+      - _number_ **src_x**
+      - _number_ **src_y**
+      - _number_ **width**
+      - _number_ **height**
+      - _number_ **pct**
 
-- _ImageResource_ **tile**
+    {.params}
 
 
-#### set\_antialiased(color, dont_blend)
+  .copy\_resized(_src_, _x_, _y_, _src_x_, _src_y_, _width_, _height_, _src_width_, _src_height_) {#imagine.ImageResource.copy_resized}
 
-Set the color for subsequent anti-aliased drawing and whether to blend the 
-color or not.
+  : Copy a resized area defined by src_x, src_y, src_width, and 
+    src_height from the image _src_ to the area defined by x, y, 
+    width, height on this image.
+    
+    If the source and destination coordinates and width and heights 
+    differ, appropriate stretching or shrinking of the image fragment
+    will be performed. 
+    
+    The coordinates refer to the upper left corner. 
+    
+    This function can be used to copy regions within the same image 
+    (if this image is the same as _src_) but if the regions overlap 
+    the results will be unpredictable.
 
-##### Parameters
 
-- _number_ **color**
-- _bool_ **dont_blend**
+    - **@params**:
+      - _ImageResource_ **src**
+      - _number_ **x**
+      - _number_ **y**
+      - _number_ **src_x**
+      - _number_ **src_y**
+      - _number_ **width**
+      - _number_ **height**
+      - _number_ **src_width**
+      - _number_ **src_height**
 
+    {.params}
 
-#### set\_thickness(thickness)
 
-Sets the thickness in pixels for following lines drawn when drawing lines, 
-ellipses, rectangles, polygons and so forth.
+  .copy\_resampled(_src_, _x_, _y_, _src_x_, _src_y_, _width_, _height_, _src_width_, _src_height_) {#imagine.ImageResource.copy_resampled}
 
-##### Parameters
+  : Copy a resized area defined by src_x, src_y, src_width, and 
+    src_height from the image _src_ to the area defined by x, y, 
+    width, height on this image. Unlike `copy_resized()`, it 
+    smoothly interpolates pixel values so that, in particular, 
+    reducing the size of an image still retains a great deal of 
+    clarity.
+    
+    If the source and destination coordinates and width and heights 
+    differ, appropriate stretching or shrinking of the image fragment
+    will be performed. 
+    
+    The coordinates refer to the upper left corner. 
+    
+    This function can be used to copy regions within the same image 
+    (if this image is the same as _src_) but if the regions overlap 
+    the results will be unpredictable.
 
-- _number_ **thickness**
 
+    - **@params**:
+      - _ImageResource_ **src**
+      - _number_ **x**
+      - _number_ **y**
+      - _number_ **src_x**
+      - _number_ **src_y**
+      - _number_ **width**
+      - _number_ **height**
+      - _number_ **src_width**
+      - _number_ **src_height**
 
-#### interlace(enable)
+    {.params}
 
-Sets whether an image is interlaced. If the `enabled` parameter is not 
-given, it defaults to true.
 
-##### Parameters
+  .copy\_rotated(_src_, _x_, _y_, _src_x_, _src_y_, _src_width_, _src_height_, _angle_) {#imagine.ImageResource.copy_rotated}
 
-- _bool?_ **enable**
+  : Similar to `copy_resized()` with an added rotation to the copied image. 
+    Destination is the _center_ of the rotated copy. Angle is in degrees, 
+    same as `arc()`. 
+    
+    Floating point destination center coordinates allow accurate rotation of 
+    objects of odd-numbered width or height.
+    
+    The rotation angle is interpreted as the number of degrees to rotate the 
+    image anticlockwise.
 
 
-#### alpha\_blending(enable)
+    - **@params**:
+      - _ImageResource_ **src**
+      - _number_ **x**
+      - _number_ **y**
+      - _number_ **src_x**
+      - _number_ **src_y**
+      - _number_ **src_width**
+      - _number_ **src_height**
+      - _number_ **angle**
 
-Toggles between two different blending modes of drawing on truecolor images. 
+    {.params}
 
-In blending mode, the alpha channel component of the color supplied to all 
-drawing function, such as `set_pixel()` determines how much of the underlying 
-color should be allowed to shine through. As a result, the module 
-automatically blends the existing color at that point with the drawing color, 
-and stores the result in the image. The resulting pixel is opaque. 
 
-In non-blending mode, the drawing color is copied literally with its alpha 
-channel information, replacing the destination pixel. Blending mode is not 
-available when drawing on palette images.
+  .clone() {#imagine.ImageResource.clone}
 
-If the `enabled` parameter is not given, it defaults to true.
+  : Clones this image resource.
 
-##### Parameters
 
-- _bool_ **enable**
+    - **@returns**: _ImageResource_
 
 
-#### flip(mode)
+  .set\_brush(_brush_) {#imagine.ImageResource.set_brush}
 
-Flips the image horizontally, vertically, or in both direction as specified 
-in mode. `mode` must be one of the `FLIP_` constants. When no mode is set, 
- mode defaults to `FLIP_BOTH`.
+  : Sets the brush image to be used by all line drawing functions for 
+    this image.
+    
+    A "brush" is an image used to draw wide, shaped strokes in another image. 
+    Just as a paintbrush is not a single point, a brush image need not be a 
+    single pixel. Any image resource can be used as a brush, and by setting 
+    the transparent color index of the brush image with `color_transparent()`, 
+    a brush of any shape can be created. 
+    
+    All line-drawing functions, such as gdImageLine and `polygon()`, will use 
+    the current brush if the special "color" `COLOR_BRUSHED` or 
+    `COLOR_STYLED_BRUSHED` is used when calling them.
+    
+    >*NOTE:** 
+     > 
+    > You need not take special action when you are finished with a 
+    > brush, but if you close the brush image (or let the GC close it), 
+    > you must not use the `COLOR_BRUSHED` or `COLOR_STYLED_BRUSHED` colors 
+    > until you have set a new brush image.
 
-##### Parameters
 
-- _number?_ **mode**
+    - **@params**:
+      - _ImageResource_ **brush**
 
+    {.params}
 
-#### crop(x, y, width, height)
 
-Returns a new imaged cropped from the rectangular area specified by x, y, 
-width, and height in this image.
+  .set\_tile(_tile_) {#imagine.ImageResource.set_tile}
 
-##### Parameters
+  : Sets the tile image to be used by all region filling functions.
+    
+    A tile is an image used to fill an area with a repeated pattern. Any image 
+    resource can be used as a tile, and by setting the transparent color index 
+    of the tile image with `color_transparent()`, a tile that allows certain 
+    parts of the underlying area to shine through can be created. All 
+    region-filling functions, such as `fill()` and `filled_polygon()`, will use 
+    the current tile if the special "color" `COLOR_TILED` is used when calling 
+    them.
+    
+    You can set any image resource to be the tile. If the tile image does not have 
+    the same color map as the first image, any colors missing from the first image 
+    will be allocated. If not enough colors can be allocated, the closest colors 
+    already available will be used. This allows arbitrary GIFs to be used as tile 
+    images. It also means, however, that you should not set a tile unless you will 
+    actually use it; if you set a rapid succession of different tile images, you can 
+    quickly fill your color map, and the results will not be optimal.
+    
+    You need not take any special action when you are finished with a tile. As for 
+    any other image, if you will not be using the tile image for any further purpose, 
+    you should call `close()`. You must not use the color `COLOR_TILED` if the current 
+    tile has been closed; you can of course set a new tile to replace it.
 
-- _number_ **x**
-- _number_ **y**
-- _number_ **width**
-- _number_ **height**
 
-##### Returns
+    - **@params**:
+      - _ImageResource_ **tile**
 
-- ImageResource
+    {.params}
 
-#### auto\_crop(mode)
 
-Crop an image automatically using one of the `CROP_` modes. If `mode` 
- is not give, it defaults to `CROP_DEFAULT`.
+  .set\_antialiased(_color_, _dont_blend_) {#imagine.ImageResource.set_antialiased}
 
-##### Parameters
+  : Set the color for subsequent anti-aliased drawing and whether to blend the 
+    color or not.
 
-- _number?_ **mode**
 
-##### Returns
+    - **@params**:
+      - _number_ **color**
+      - _bool_ **dont_blend**
 
-- ImageResource
+    {.params}
 
-#### scale(width, height, method)
 
-Scale an image using the given new width and height with the 
-interpolation algorithm. If height is not given, the height 
-will be automatcially calculated from the new width to maitain 
-aspect ratio. 
+  .set\_thickness(_thickness_) {#imagine.ImageResource.set_thickness}
 
-If the interpolation method is not given, it defaults to 
-`INTERP_BILINEAR_FIXED`.
+  : Sets the thickness in pixels for following lines drawn when drawing lines, 
+    ellipses, rectangles, polygons and so forth.
 
-This method returns a new image rather than modify this image.
 
-##### Parameters
+    - **@params**:
+      - _number_ **thickness**
 
-- _number_ **width**
-- _number?_ **height**
-- _number?_ **method**
+    {.params}
 
-##### Returns
 
-- ImageResource
+  .interlace(_enable_) {#imagine.ImageResource.interlace}
 
-#### rotate(angle, bg_color, method)
+  : Sets whether an image is interlaced. If the `enabled` parameter is not 
+    given, it defaults to true.
 
-Creates a new image rotated counter-clockwise by the requested angle using 
-the given interpolation method.  Non-square angles will add a border with 
-bgcolor.
 
-##### Parameters
+    - **@params**:
+      - _bool?_ **enable**
 
-- _number_ **angle**
-- _number_ **bg_color**
-- _number?_ **method**
+    {.params}
 
-##### Returns
 
-- ImageResource
+  .alpha\_blending(_enable_) {#imagine.ImageResource.alpha_blending}
 
-#### save\_alpha(save)
+  : Toggles between two different blending modes of drawing on truecolor images. 
+    
+    In blending mode, the alpha channel component of the color supplied to all 
+    drawing function, such as `set_pixel()` determines how much of the underlying 
+    color should be allowed to shine through. As a result, the module 
+    automatically blends the existing color at that point with the drawing color, 
+    and stores the result in the image. The resulting pixel is opaque. 
+    
+    In non-blending mode, the drawing color is copied literally with its alpha 
+    channel information, replacing the destination pixel. Blending mode is not 
+    available when drawing on palette images.
+    
+    If the `enabled` parameter is not given, it defaults to true.
 
-Sets the save alpha flag
 
-The save alpha flag specifies whether the alpha channel of the pixels should
-be saved. This is supported only for image formats that support full alpha
-transparency, e.g. PNG.
+    - **@params**:
+      - _bool_ **enable**
 
-##### Parameters
+    {.params}
 
-- _bool_ **save**
 
+  .flip(_mode_) {#imagine.ImageResource.flip}
 
-#### pixelate(block_size, mode)
+  : Flips the image horizontally, vertically, or in both direction as specified 
+    in mode. `mode` must be one of the `FLIP_` constants. When no mode is set, 
+     mode defaults to `FLIP_BOTH`.
 
-Applies pixelation effect to the image based on the block 
-size and given effect mode.
 
-##### Parameters
+    - **@params**:
+      - _number?_ **mode**
 
-- _number_ **block_size**
-- _number_ **mode**
+    {.params}
 
 
-#### scatter(sub, plus, colors)
+  .crop(_x_, _y_, _width_, _height_) {#imagine.ImageResource.crop}
 
-Applies scatter effect to an image using the _sub_ and _plus_ to 
-control the strength of the scatter and colors to indicate the 
-colors it should be restricted to.
+  : Returns a new imaged cropped from the rectangular area specified by x, y, 
+    width, and height in this image.
 
-##### Parameters
 
-- _number_ **sub**
-- _number_ **plus**
-- _list<number>_ **colors**
+    - **@params**:
+      - _number_ **x**
+      - _number_ **y**
+      - _number_ **width**
+      - _number_ **height**
 
+    {.params}
+    - **@returns**: _ImageResource_
 
-#### smooth(weight)
 
-Makes an image smooter based on the specified weight. If 
-weight is not given, it defaults to `1`.
+  .auto\_crop(_mode_) {#imagine.ImageResource.auto_crop}
 
-##### Parameters
+  : Crop an image automatically using one of the `CROP_` modes. If `mode` 
+     is not give, it defaults to `CROP_DEFAULT`.
 
-- _number_ **weight**
 
+    - **@params**:
+      - _number?_ **mode**
 
-#### mean\_removal()
+    {.params}
+    - **@returns**: _ImageResource_
 
-Uses mean removal to achieve a "sketchy" effect.
 
+  .scale(_width_, _height_, _method_) {#imagine.ImageResource.scale}
 
-#### emboss()
+  : Scale an image using the given new width and height with the 
+    interpolation algorithm. If height is not given, the height 
+    will be automatcially calculated from the new width to maitain 
+    aspect ratio. 
+    
+    If the interpolation method is not given, it defaults to 
+    `INTERP_BILINEAR_FIXED`.
+    
+    This method returns a new image rather than modify this image.
 
-Embosses the image.
 
+    - **@params**:
+      - _number_ **width**
+      - _number?_ **height**
+      - _number?_ **method**
 
-#### blur(type)
+    {.params}
+    - **@returns**: _ImageResource_
 
-Applies a blur to the image. If the type is not given, a 
-Guassian blur will be applied.
 
-##### Parameters
+  .rotate(_angle_, _bg_color_, _method_) {#imagine.ImageResource.rotate}
 
-- _number_ **type**
+  : Creates a new image rotated counter-clockwise by the requested angle using 
+    the given interpolation method.  Non-square angles will add a border with 
+    bgcolor.
 
 
-#### detect\_edge()
+    - **@params**:
+      - _number_ **angle**
+      - _number_ **bg_color**
+      - _number?_ **method**
 
-Uses edge detection to highlight the edges in the image.
+    {.params}
+    - **@returns**: _ImageResource_
 
 
-#### grayscale()
+  .save\_alpha(_save_) {#imagine.ImageResource.save_alpha}
 
-Converts the image into grayscale by changing the red, green 
-and blue components to their weighted sum using the same 
-coefficients as the REC.601 luma (Y') calculation. The alpha 
-components are retained. For palette images the result may 
-differ due to palette limitations.
+  : Sets the save alpha flag
+    
+    The save alpha flag specifies whether the alpha channel of the pixels should
+    be saved. This is supported only for image formats that support full alpha
+    transparency, e.g. PNG.
 
 
-#### negate()
+    - **@params**:
+      - _bool_ **save**
 
-Reverses all colors of the image to create a negative image.
+    {.params}
 
 
-#### color(r, g, b, a)
+  .pixelate(_block_size_, _mode_) {#imagine.ImageResource.pixelate}
 
-Same as `grayscale()` except this allows you to specify the 
-output color.
+  : Applies pixelation effect to the image based on the block 
+    size and given effect mode.
 
-##### Parameters
 
-- _number_ **r**
-- _number_ **g**
-- _number_ **b**
-- _number_ **a**
+    - **@params**:
+      - _number_ **block_size**
+      - _number_ **mode**
 
+    {.params}
 
-#### contrast(contrast)
 
-Changes the contrast of the image based on the level set 
-in _contrast_.
+  .scatter(_sub_, _plus_, _colors_) {#imagine.ImageResource.scatter}
 
-##### Parameters
+  : Applies scatter effect to an image using the _sub_ and _plus_ to 
+    control the strength of the scatter and colors to indicate the 
+    colors it should be restricted to.
 
-- _number_ **contrast**
 
+    - **@params**:
+      - _number_ **sub**
+      - _number_ **plus**
+      - _list<number>_ **colors**
 
-#### brightness(brightness)
+    {.params}
 
-Changes the brightness of the image based on the level set 
-in _brightness_.
 
-##### Parameters
+  .smooth(_weight_) {#imagine.ImageResource.smooth}
 
-- _number_ **brightness**
+  : Makes an image smooter based on the specified weight. If 
+    weight is not given, it defaults to `1`.
 
 
-#### set\_clip(x1, y1, x2, y2)
+    - **@params**:
+      - _number_ **weight**
 
-Sets the rectangular clipping region beyond which no pixels 
-will be drawn in the image.
+    {.params}
 
-##### Parameters
 
-- _number_ **x1**
-- _number_ **y1**
-- _number_ **x2**
-- _number_ **y2**
+  .mean\_removal() {#imagine.ImageResource.mean_removal}
 
+  : Uses mean removal to achieve a "sketchy" effect.
 
-#### get\_clip()
 
-Returns the clipping region in the image. See `set_clip()`.
 
-The function returns a list containing four numbers that 
-indicates the x1, y1, x2, and y2 of the clipping region in 
-the image.
 
-##### Returns
+  .emboss() {#imagine.ImageResource.emboss}
 
-- list<number>
+  : Embosses the image.
 
-#### set\_resolution(res_x, res_y)
 
-Sets the resolution of the the image across both axis.
 
-##### Parameters
 
-- _number_ **res_x**
-- _number_ **res_y**
+  .blur(_type_) {#imagine.ImageResource.blur}
 
+  : Applies a blur to the image. If the type is not given, a 
+    Guassian blur will be applied.
 
-#### true\_color\_to\_palette(dither, colors_wanted)
 
-Convert a true color image to a palette image. 
+    - **@params**:
+      - _number_ **type**
 
-The first parameter `dither` controls whether the image 
-should be dithered which results in a more speckled image but 
-with better color approximation. 
+    {.params}
 
-The second argument `colors_wanted` controls the number of 
-colors that should be kept in the palette.
 
-##### Parameters
+  .detect\_edge() {#imagine.ImageResource.detect_edge}
 
-- _bool_ **dither**
-- _number_ **colors_wanted**
+  : Uses edge detection to highlight the edges in the image.
 
-##### Returns
 
-- bool - `true` if successful, otherwise `false`.
 
-#### palette\_to\_true\_color()
 
-Converts a palette based image to true color.
+  .grayscale() {#imagine.ImageResource.grayscale}
 
-##### Returns
+  : Converts the image into grayscale by changing the red, green 
+    and blue components to their weighted sum using the same 
+    coefficients as the REC.601 luma (Y') calculation. The alpha 
+    components are retained. For palette images the result may 
+    differ due to palette limitations.
 
-- bool - `true` if successful, otherwise `false`.
 
-#### match\_color(image)
 
-Makes the colors of the palette version of an image more closely 
-match the true color version. This function should be given a 
-true color image as the function will attempt to make the color 
-of the image given if the current image is a paletted image.
 
-##### Parameters
+  .negate() {#imagine.ImageResource.negate}
 
-- _ImageResource_ **image**
+  : Reverses all colors of the image to create a negative image.
 
-##### Returns
 
-- bool - `true` if successful, otherwise `false`.
 
-#### compare(image)
 
-Check whether two images are idential.
+  .color(_r_, _g_, _b_, _a_) {#imagine.ImageResource.color}
 
-This check includes a size, transparency, interlace, color profile, 
-and a pixel by pixel check.
+  : Same as `grayscale()` except this allows you to specify the 
+    output color.
 
-If the images are completely identical, the method returns a zero 
-(`0`). Otherwise, it returns a number greater than 0. The number 
-returned can be tested againt the various `CMP_` constants to test 
- for any of the conditions.
 
-For example,
+    - **@params**:
+      - _number_ **r**
+      - _number_ **g**
+      - _number_ **b**
+      - _number_ **a**
 
-```blade
-var result = image1.compare(image2)
+    {.params}
 
-var both_transparent = !(result & CMP_TRANSPARENT)
-var same_width = !(result & CMP_SIZE_X)
-```
 
-##### Parameters
+  .contrast(_contrast_) {#imagine.ImageResource.contrast}
 
-- _ImageResource_ **image**
+  : Changes the contrast of the image based on the level set 
+    in _contrast_.
 
-##### Returns
 
-- number
+    - **@params**:
+      - _number_ **contrast**
 
-#### export\_png(dest, quality)
+    {.params}
 
-Saves the image to file with the PNG format.
 
-Quality level: 0-10, where 9 is NO COMPRESSION at all,
-9 is FASTEST but produces larger files, 0 provides the best
-compression (smallest files) but takes a long time to compress, and
-10 selects the default compiled into the zlib library.
+  .brightness(_brightness_) {#imagine.ImageResource.brightness}
 
-##### Parameters
+  : Changes the brightness of the image based on the level set 
+    in _brightness_.
 
-- _string|file_ **dest**
-- _number_ **quality**
 
+    - **@params**:
+      - _number_ **brightness**
 
-#### export\_jpeg(dest, quality)
+    {.params}
 
-Saves the image to file with the JPEG format.
 
-Quality level: 100 is highest quality (there is always 
-a little loss with JPEG). 0 is lowest. 10 is about the 
-lowest useful setting.
+  .set\_clip(_x1_, _y1_, _x2_, _y2_) {#imagine.ImageResource.set_clip}
 
-##### Parameters
+  : Sets the rectangular clipping region beyond which no pixels 
+    will be drawn in the image.
 
-- _string|file_ **dest**
-- _number_ **quality**
 
+    - **@params**:
+      - _number_ **x1**
+      - _number_ **y1**
+      - _number_ **x2**
+      - _number_ **y2**
 
-#### export\_bmp(dest, quality)
+    {.params}
 
-Saves the image to file with the BMP format.
 
-Quality level: 100 is highest quality (there is always 
-a little loss with BMP). 0 is lowest. 10 is about the 
-lowest useful setting.
+  .get\_clip() {#imagine.ImageResource.get_clip}
 
-##### Parameters
+  : Returns the clipping region in the image. See `set_clip()`.
+    
+    The function returns a list containing four numbers that 
+    indicates the x1, y1, x2, and y2 of the clipping region in 
+    the image.
 
-- _string|file_ **dest**
-- _number_ **quality**
 
+    - **@returns**: _list<number>_
 
-#### export\_wbmp(dest, foreground)
 
-Saves the image to file with the WBMP format using the 
-given foreground color.
+  .set\_resolution(_res_x_, _res_y_) {#imagine.ImageResource.set_resolution}
 
-##### Parameters
+  : Sets the resolution of the the image across both axis.
 
-- _string|file_ **dest**
-- _number_ **foreground**
 
+    - **@params**:
+      - _number_ **res_x**
+      - _number_ **res_y**
 
-#### export\_webp(dest, quantization)
+    {.params}
 
-Saves the image to file with the WEBP format using the 
-given quantization.
 
-##### Parameters
+  .true\_color\_to\_palette(_dither_, _colors_wanted_) {#imagine.ImageResource.true_color_to_palette}
 
-- _string|file_ **dest**
-- _number_ **quantization**
+  : Convert a true color image to a palette image. 
+    
+    The first parameter `dither` controls whether the image 
+    should be dithered which results in a more speckled image but 
+    with better color approximation. 
+    
+    The second argument `colors_wanted` controls the number of 
+    colors that should be kept in the palette.
 
 
-#### export\_tiff(dest)
+    - **@params**:
+      - _bool_ **dither**
+      - _number_ **colors_wanted**
 
-Saves the image to file with the TIFF format.
+    {.params}
+    - **@returns**: _bool - `true` if successful, otherwise `false`._
 
-##### Parameters
 
-- _string|file_ **dest**
+  .palette\_to\_true\_color() {#imagine.ImageResource.palette_to_true_color}
 
+  : Converts a palette based image to true color.
 
-#### export\_avif(dest, quality, speed)
 
-Saves the image to file with the JPEG format.
+    - **@returns**: _bool - `true` if successful, otherwise `false`._
 
-Quality level: 100 is highest quality (there is always 
-a little loss with JPEG). 0 is lowest. 10 is about the 
-lowest useful setting.
 
-##### Parameters
+  .match\_color(_image_) {#imagine.ImageResource.match_color}
 
-- _string|file_ **dest**
-- _number_ **quality**
-- _number_ **speed**: - Default = 1
+  : Makes the colors of the palette version of an image more closely 
+    match the true color version. This function should be given a 
+    true color image as the function will attempt to make the color 
+    of the image given if the current image is a paletted image.
 
 
-#### get\_pointer()
+    - **@params**:
+      - _ImageResource_ **image**
 
-Returns the raw image resource pointer.
+    {.params}
+    - **@returns**: _bool - `true` if successful, otherwise `false`._
 
-##### Returns
 
-- ptr
+  .compare(_image_) {#imagine.ImageResource.compare}
 
+  : Check whether two images are idential.
+    
+    This check includes a size, transparency, interlace, color profile, 
+    and a pixel by pixel check.
+    
+    If the images are completely identical, the method returns a zero 
+    (`0`). Otherwise, it returns a number greater than 0. The number 
+    returned can be tested againt the various `CMP_` constants to test 
+     for any of the conditions.
+    
+    For example,
+    
+    ```blade
+    var result = image1.compare(image2)
+    
+    var both_transparent = !(result & CMP_TRANSPARENT)
+    var same_width = !(result & CMP_SIZE_X)
+    ```
 
 
-### _class_ Image
+    - **@params**:
+      - _ImageResource_ **image**
 
-The Image class is allows creating and opening of imnages in 
-any of the supported formats which includes `JPEG`, `PNG`, 
-`GIF`, `TIFF`, `BMP`, `WBMP`, `TGA`, `WEBP`, `AVIF`.
+    {.params}
+    - **@returns**: _number_
 
-#### Methods
 
-#### new(width, height, use_true_colors)
+  .export\_png(_dest_, _quality_) {#imagine.ImageResource.export_png}
 
-Creates a palette-based image (up to 256 colors) or a truecolor 
-image (millions of colors) when `use_true_colors` is set to true.
+  : Saves the image to file with the PNG format.
+    
+    Quality level: 0-10, where 9 is NO COMPRESSION at all,
+    9 is FASTEST but produces larger files, 0 provides the best
+    compression (smallest files) but takes a long time to compress, and
+    10 selects the default compiled into the zlib library.
 
-##### Parameters
 
-- _number_ **width**
-- _number_ **height**
-- _bool?_ **use_true_colors**
+    - **@params**:
+      - _string|file_ **dest**
+      - _number_ **quality**
 
-##### Returns
+    {.params}
 
-- ImageResource
 
-#### from\_png(src)
+  .export\_jpeg(_dest_, _quality_) {#imagine.ImageResource.export_jpeg}
 
-Creates an image from a PNG file. Truecolor PNG stays truecolor; 
-palette PNG stays palette-based.
+  : Saves the image to file with the JPEG format.
+    
+    Quality level: 100 is highest quality (there is always 
+    a little loss with JPEG). 0 is lowest. 10 is about the 
+    lowest useful setting.
 
-##### Parameters
 
-- _string|file_ **src**
+    - **@params**:
+      - _string|file_ **dest**
+      - _number_ **quality**
 
-##### Returns
+    {.params}
 
-- ImageResource
 
-#### from\_jpeg(src)
+  .export\_bmp(_dest_, _quality_) {#imagine.ImageResource.export_bmp}
 
-Creates an image from a JPEG file.
-JPEG is always truecolor.
+  : Saves the image to file with the BMP format.
+    
+    Quality level: 100 is highest quality (there is always 
+    a little loss with BMP). 0 is lowest. 10 is about the 
+    lowest useful setting.
 
-##### Parameters
 
-- _string|file_ **src**
+    - **@params**:
+      - _string|file_ **dest**
+      - _number_ **quality**
 
-##### Returns
+    {.params}
 
-- ImageResource
 
-#### from\_gif(src)
+  .export\_wbmp(_dest_, _foreground_) {#imagine.ImageResource.export_wbmp}
 
-Creates an image from a GIF file.
+  : Saves the image to file with the WBMP format using the 
+    given foreground color.
 
-##### Parameters
 
-- _string|file_ **src**
+    - **@params**:
+      - _string|file_ **dest**
+      - _number_ **foreground**
 
-##### Returns
+    {.params}
 
-- ImageResource
 
-#### from\_bmp(src)
+  .export\_webp(_dest_, _quantization_) {#imagine.ImageResource.export_webp}
 
-Creates an image from a BMP file.
+  : Saves the image to file with the WEBP format using the 
+    given quantization.
 
-##### Parameters
 
-- _string|file_ **src**
+    - **@params**:
+      - _string|file_ **dest**
+      - _number_ **quantization**
 
-##### Returns
+    {.params}
 
-- ImageResource
 
-#### from\_wbmp(src)
+  .export\_tiff(_dest_) {#imagine.ImageResource.export_tiff}
 
-Creates an image from a WBMP file.
+  : Saves the image to file with the TIFF format.
 
-##### Parameters
 
-- _string|file_ **src**
+    - **@params**:
+      - _string|file_ **dest**
 
-##### Returns
+    {.params}
 
-- ImageResource
 
-#### from\_tga(src)
+  .export\_avif(_dest_, _quality_, _speed_) {#imagine.ImageResource.export_avif}
 
-Creates an image from a TGA file.
+  : Saves the image to file with the JPEG format.
+    
+    Quality level: 100 is highest quality (there is always 
+    a little loss with JPEG). 0 is lowest. 10 is about the 
+    lowest useful setting.
 
-##### Parameters
 
-- _string|file_ **src**
+    - **@params**:
+      - _string|file_ **dest**
+      - _number_ **quality**
+      - _number_ **speed** - Default = 1
 
-##### Returns
 
-- ImageResource
+    {.params}
 
-#### from\_tiff(src)
 
-Creates an image from a TIFF file.
+  .get\_pointer() {#imagine.ImageResource.get_pointer}
 
-##### Parameters
+  : Returns the raw image resource pointer.
 
-- _string|file_ **src**
 
-##### Returns
+    - **@returns**: _ptr_
 
-- ImageResource
 
-#### from\_webp(src)
 
-Creates an image from a WEBP file.
 
-##### Parameters
+_class_ **Image** {#imagine.Image .class}
 
-- _string|file_ **src**
+: The Image class is allows creating and opening of imnages in 
+  any of the supported formats which includes `JPEG`, `PNG`, 
+  `GIF`, `TIFF`, `BMP`, `WBMP`, `TGA`, `WEBP`, `AVIF`.
 
-##### Returns
 
-- ImageResource
+  .new(_width_, _height_, _use_true_colors_) {#imagine.Image.new}
 
-#### from\_avif(src)
+  : Creates a palette-based image (up to 256 colors) or a truecolor 
+    image (millions of colors) when `use_true_colors` is set to true.
 
-Creates an image from a AVIF file.
 
-##### Parameters
+    - **@params**:
+      - _number_ **width**
+      - _number_ **height**
+      - _bool?_ **use_true_colors**
 
-- _string|file_ **src**
+    {.params}
+    - **@returns**: _ImageResource_
 
-##### Returns
 
-- ImageResource
+  .from\_png(_src_) {#imagine.Image.from_png}
 
-#### from\_file(src)
+  : Creates an image from a PNG file. Truecolor PNG stays truecolor; 
+    palette PNG stays palette-based.
 
-Creates an image from any supported image file.
-As long as the file type is supported by Imagine,
-the file type will automatically be detected.
 
-##### Parameters
+    - **@params**:
+      - _string|file_ **src**
 
-- _string|file_ **src**
+    {.params}
+    - **@returns**: _ImageResource_
 
-##### Returns
 
-- ImageResource
+  .from\_jpeg(_src_) {#imagine.Image.from_jpeg}
+
+  : Creates an image from a JPEG file.
+    JPEG is always truecolor.
+
+
+    - **@params**:
+      - _string|file_ **src**
+
+    {.params}
+    - **@returns**: _ImageResource_
+
+
+  .from\_gif(_src_) {#imagine.Image.from_gif}
+
+  : Creates an image from a GIF file.
+
+
+    - **@params**:
+      - _string|file_ **src**
+
+    {.params}
+    - **@returns**: _ImageResource_
+
+
+  .from\_bmp(_src_) {#imagine.Image.from_bmp}
+
+  : Creates an image from a BMP file.
+
+
+    - **@params**:
+      - _string|file_ **src**
+
+    {.params}
+    - **@returns**: _ImageResource_
+
+
+  .from\_wbmp(_src_) {#imagine.Image.from_wbmp}
+
+  : Creates an image from a WBMP file.
+
+
+    - **@params**:
+      - _string|file_ **src**
+
+    {.params}
+    - **@returns**: _ImageResource_
+
+
+  .from\_tga(_src_) {#imagine.Image.from_tga}
+
+  : Creates an image from a TGA file.
+
+
+    - **@params**:
+      - _string|file_ **src**
+
+    {.params}
+    - **@returns**: _ImageResource_
+
+
+  .from\_tiff(_src_) {#imagine.Image.from_tiff}
+
+  : Creates an image from a TIFF file.
+
+
+    - **@params**:
+      - _string|file_ **src**
+
+    {.params}
+    - **@returns**: _ImageResource_
+
+
+  .from\_webp(_src_) {#imagine.Image.from_webp}
+
+  : Creates an image from a WEBP file.
+
+
+    - **@params**:
+      - _string|file_ **src**
+
+    {.params}
+    - **@returns**: _ImageResource_
+
+
+  .from\_avif(_src_) {#imagine.Image.from_avif}
+
+  : Creates an image from a AVIF file.
+
+
+    - **@params**:
+      - _string|file_ **src**
+
+    {.params}
+    - **@returns**: _ImageResource_
+
+
+  .from\_file(_src_) {#imagine.Image.from_file}
+
+  : Creates an image from any supported image file.
+    As long as the file type is supported by Imagine,
+    the file type will automatically be detected.
+
+
+    - **@params**:
+      - _string|file_ **src**
+
+    {.params}
+    - **@returns**: _ImageResource_
+
 
 
 

@@ -66,12 +66,14 @@ def cite(str) {
   }))
 }
 
-def get_class_docs(module, klass) {
-  var result = "### _class_ ${klass.name.replace("_", "\_")}"
+var ident_level = 0
+
+def get_class_docs(module, klass, depth) {
+  var class_name = klass.name.replace("_", "\_")
+  var result = "_class_ **${class_name}**"
   if klass.superclass and !klass.superclass.starts_with('_') {
     result += ' < _${klass.superclass.replace("_", "\_")}_'
   }
-  result += '\n\n'
 
   var is_printable = klass.doc.match('/^@printable\s*$/m')
   var is_serializable = klass.doc.match('/^@serializable\s*$/m')
@@ -83,53 +85,63 @@ def get_class_docs(module, klass) {
 
   var doc = klass.doc.replace('/^@(printable|serializable|internal|iterable|number).*\\n?/m', '')
 
-  result += '${doc}\n\n'
+  
+  result += ' {#${module}.${klass.name} .class}\n\n'
+  if doc.trim() {
+    result += prefix(depth) + ': '
+    result += ident(cite(doc), depth) + '\n\n'
+  }
 
   if is_printable or is_serializable or is_iterable {
-    result += '#### Properties\n\n'
-    if is_printable result += ' - __@printable__\n'
-    if is_serializable result += ' - __@serializable__\n'
-    if is_iterable result += ' - __@iterable__\n'
+    result += prefix(depth + 1) + '~ Properties\n\n'
+    if is_printable result += prefix(depth + 2) + '- __@printable__\n'
+    if is_serializable result += prefix(depth + 2) + '- __@serializable__\n'
+    if is_iterable result += prefix(depth + 2) + '- __@iterable__\n'
     result += '\n'
   }
 
   if klass.properties {
-    var props = []
+    if klass.properties {
+      for index, prop in klass.properties {
+        if prop.doc {
+          var doc_line = get_var_docs(depth + 1, prop, prop.is_static, true)
 
-    for prop in klass.properties {
-      if prop.doc {
-        props.append(get_var_docs(0, prop, prop.is_static))
+          if doc {
+            result += doc_line + '\n'
+          } else if index == 0 {
+            result += doc_line.trim() + '\n'
+          } else {
+            result += doc_line + '\n'
+          }
+        }
       }
-    }
-
-
-    if props {
-      result += '#### Fields\n\n'
-      result += '\n'.join(props).trim() + '\n\n'
+      result += '\n'
     }
   }
 
   if klass.methods {
-    var methods = []
-
-    for method in klass.methods {
+    for index, method in klass.methods {
       if method.doc {
-        methods.append(get_function_docs(0, method, method.is_static))
-      }
-    }
+        var doc_line = get_function_docs('${module}.${class_name}', depth + 1, method, method.is_static, true)
 
-    if methods {
-      result += '#### Methods\n\n'
-      result += ''.join(methods).trim() + '\n\n'
+        if doc {
+          result += doc_line + '\n'
+        } else if index == 0 and !klass.properties {
+          result += doc_line.trim() + '\n'
+        } else {
+          result += doc_line + '\n'
+        }
+      }
     }
   }
 
   return result
 }
 
-def get_function_docs(depth, function, is_static) {
+def get_function_docs(root_name, depth, function, is_static, from_class) {
 
-  var decl_line = function.name.replace("_", "\_") + '(' + ', '.join(function.params) + ')'
+  var function_name = function.name.replace("_", "\_")
+  var decl_line = (is_static and !from_class ? '_static_ ' : (from_class ? '.' : '')) + '${function_name}' + '(' + ', '.join(function.params.map(@(x){ return '_${x}_' })) + ')'
   
   var param_lines = function.doc.matches('/^@params?[ ]+(?P<type>[^ :\\n]+)([ ]+(?P<name>[^ :\\n]+)([ ]*(?P<description>[^\\n]*))?)?$/m')
   var return_line = function.doc.match('/^@returns?[ ]+(?P<type>.*?)$/m')
@@ -147,66 +159,71 @@ def get_function_docs(depth, function, is_static) {
 
   var doc = function.doc.replace('/^@(params?|returns?|example|note|constructor|default|internal|raises?).*$/m', '').trim()
   
-  var result = '#### ${decl_line}'
+  var result = prefix(depth) + decl_line
   if is_constructor {
     result += ' &#8674; Constructor'
   } else if is_default {
     result += ' &#8674; Exported'
   }
 
-  result += '\n\n'
+  result += ' {#${root_name}.${function.name}}\n\n'
+  result += prefix(depth) + ': '
+  if doc {
+    result += ident(cite(doc), depth) + '\n\n'
+  }
+
+  if note_lines {
+    result += (doc ? prefix(depth + 1) : '') + '> **@notes**:\n'
+    result += prefix(depth + 1) + '> \n'
+    iter var i = 0; i < note_lines[0].length(); i++ {
+      result += prefix(depth + 1) + '> - ${ident(note_lines.note[i], depth + 2)}\n'
+    }
+  }
 
   if deprecated {
-    result += '> @deprecated: '
+    result += (doc or note_lines ? prefix(depth + 1) : '') + '- **@depreciated**: '
     if deprecated.info {
       result += deprecated.info
     } else {
       result += 'This function has been depreciated'
     }
-    result += '\n\n'
+    result += '\n'
   }
 
-  result += '${doc}\n\n'
-
   if param_lines {
-    result += '##### Parameters\n\n'
+    result += (doc or note_lines or deprecated ? prefix(depth + 1) : '') + '- **@params**:\n'
 
     iter var i = 0; i < param_lines[0].length(); i++ {
-      result += '-'
+      result += prefix(depth + 2) + '-'
       if param_lines.type[i] result += ' _${param_lines.type[i]}_'
       if param_lines.name[i] result += ' **${param_lines.name[i]}**'
-      if param_lines.description[i] result += ': ${param_lines.description[i]}'
+      if param_lines.description[i] result += ' ${ident(param_lines.description[i], depth + 2)}'
       result += '\n'
     }
 
     result += '\n'
+    result += prefix(depth + 1) + '{.params}'
+    result += '\n'
   }
 
   if return_line {
-    result += '##### Returns\n\n'
-    result +=  '- ${return_line.type}\n'
-  }
-
-  if note_lines {
-    result += '##### Notes\n\n'
-
-    iter var i = 0; i < note_lines[0].length(); i++ {
-      result += '- ${note_lines.note[i]}\n'
-    }
+    result += (doc or note_lines or deprecated or param_lines ?
+        prefix(depth + 1) : '') + '- **@returns**: _${return_line.type}_\n'
   }
 
   if throw_lines {
-    result += '##### Raises Exception\n\n'
+    result += (doc or note_lines or deprecated or param_lines or return_line ?
+      prefix(depth + 1) : '') + '- **@raises**:\n'
 
     iter var i = 0; i < throw_lines[0].length(); i++ {
-      result += '- ${throw_lines.type[i]}\n'
+      result += prefix(depth + 2) + '- ${throw_lines.type[i]}\n'
     }
   }
 
   return result + '\n'
 }
 
-def get_var_docs(depth, var_data, is_static) {
+def get_var_docs(depth, var_data, is_static, from_class) {
   var doc = var_data.doc, type = '', readonly = false
 
   var type_declared = doc.match('/^@type (\{?)(?P<type>[^ }\\n]+)\1/m')
@@ -223,16 +240,26 @@ def get_var_docs(depth, var_data, is_static) {
 
   doc = doc.replace('/^@(readonly|type|static|note).*$/', '')
 
-  var line = (' ' * depth) + '- **${var_data.name.replace("_", "\_")}**'
+  var line = prefix(depth) + (is_static and !from_class ? '_static_ ' : '') + '**${from_class ? "." : ""}${var_data.name.replace("_", "\_")}**'
   if is_static or readonly or type 
     line += ' &#8674;'
   if is_static line += ' _static_'
   if readonly line += ' _readonly_'
   if type line += ' _${type}_'
-  line += ':\n\n  ${cite(doc)}\n'
+
+  line += '\n' + prefix(depth) + ':  ' 
+  line += ident(cite(doc), depth)
 
   return line
 }
+
+def prefix(depth) {
+  return ('  ' * depth)
+}
+
+def ident(data, level) {
+  return ('\n' + prefix(level + 1)).join(data.split('\n')) + '\n'
+} 
 
 def create_module_doc(sitemap, base_endpoint, module_name, docs) {
 
@@ -251,7 +278,7 @@ def create_module_doc(sitemap, base_endpoint, module_name, docs) {
   var content = '${module_description}\n\n'
 
   if docs.variables {
-    content += '## Properties\n\n'
+    content += '## Fields\n\n'
     content += '\n'.join(docs.variables.compact()) + '\n\n'
   }
 
@@ -291,10 +318,10 @@ def get_docs(module, parse_list) {
             result.variables.append(get_var_docs(0, parse_item))
         } else if instance_of(parse_item, ast.FunctionDecl) {
           if !parse_item.name.starts_with('_') and !parse_item.name.starts_with('@') and parse_item.doc
-            result.functions.append(get_function_docs(0, parse_item))
+            result.functions.append(get_function_docs(module, 0, parse_item))
         } else if instance_of(parse_item, ast.ClassDecl) { 
           if !parse_item.name.starts_with('_') and parse_item.doc
-            result.classes.append(get_class_docs(module, parse_item))
+            result.classes.append(get_class_docs(module, parse_item, 0))
         }
       }
     }
