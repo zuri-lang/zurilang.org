@@ -12,28 +12,6 @@ they are the primary medium of reading and writing binary data into and from the
   - [Creating a Byte stream](#creating-a-byte-stream)
   - [Byte stream indexing](#byte-stream-indexing)
   - [`bytes()` methods](#bytes-methods)
-      - [bytes(value: _number_ | _list_)](#bytesvalue-number--list)
-      - [length()](#length)
-      - [append(item: _any_)](#appenditem-any)
-      - [clone()](#clone)
-      - [extend(item: _bytes2_)](#extenditem-bytes2)
-      - [index\_of(byte: _number_ \[, start\_index: _number_\])](#index_ofbyte-number--start_index-number)
-      - [pop()](#pop)
-      - [remove(index: _number_)](#removeindex-number)
-      - [reverse()](#reverse)
-      - [first()](#first)
-      - [last()](#last)
-      - [get(index: _number_)](#getindex-number)
-      - [split(delimiter: _bytes_)](#splitdelimiter-bytes)
-      - [is\_alpha()](#is_alpha)
-      - [is\_alnum()](#is_alnum)
-      - [is\_number()](#is_number)
-      - [is\_lower()](#is_lower)
-      - [is\_upper()](#is_upper)
-      - [is\_space()](#is_space)
-      - [dispose()](#dispose)
-      - [to\_list()](#to_list)
-      - [to\_string()](#to_string)
 
 
 
@@ -117,9 +95,9 @@ The byte stram object contains the following methods:
 
 > **NOTE:** Byte streams are printed as hexadecimal lists.
 
-#### bytes(value: _number_ | _list_)
+.bytes(_value: number | list_) {#bytes}
 
-Creates a new byte stream
+: Creates a new byte stream
   - if a number is given, creates an array of size number
   - if a list is given, converts the bytes list into an array of bytes.<br>
 
@@ -132,9 +110,9 @@ Creates a new byte stream
   (41 42 43 44 45)
   ```
  
-#### length()
+.length() {#length}
 
-Returns the length of a byte stream.<br>
+: Returns the length of a byte stream.<br>
 
   For example,
 
@@ -143,9 +121,9 @@ Returns the length of a byte stream.<br>
   2
   ```
  
-#### append(item: _any_)
+.append(_item: any_) {#append}
 
-Adds an item to the top of a byte stream.<br>
+: Adds an item to the top of a byte stream.<br>
 
   For example,
 
@@ -156,9 +134,9 @@ Adds an item to the top of a byte stream.<br>
   (40 75 16)
   ```
  
-#### clone()
+.clone() {#clone}
 
-Returns a deep clone of the byte stream.<br>
+: Returns a deep clone of the byte stream.<br>
 
   For example,
 
@@ -167,9 +145,9 @@ Returns a deep clone of the byte stream.<br>
   (13 b)
   ```
  
-#### extend(item: _bytes2_)
+.extend(_item: bytes2_) {#extend}
 
-Adds the content of byte stream 2 into byte stream.<br>
+: Adds the content of byte stream 2 into byte stream.<br>
 
   For example,
 
@@ -189,11 +167,12 @@ Adds the content of byte stream 2 into byte stream.<br>
   > **@note:** `extend()` is an in-place action so the original 
   > byte stream will be modified.
 
-#### index_of(byte: _number_ [, start_index: _number_])
+.index_of(_byte: number [, start\_index: number]_) {#index_of}
 
-Returns the index position of the first occurrence of the byte _`byte`_ in the binary data (bytes). 
+: Returns the index position of the first occurrence of the byte _`byte`_ in the binary data (bytes). 
 
-If the _byte_ cannot be found anywhere in _byte array_, it returns -1. If the `start_index` parameter is argument is given, it will start scanning from the given index.
+  If the _byte_ cannot be found anywhere in _byte array_, it returns -1. If the `start_index` 
+  parameter is argument is given, it will start scanning from the given index.
 
   For example:
 
@@ -206,9 +185,9 @@ If the _byte_ cannot be found anywhere in _byte array_, it returns -1. If the `s
   -1
   ```
 
-#### pop()
+.pop() {#pop}
 
-Removes the last item in a byte stream and returns it.<br>
+: Removes the last item in a byte stream and returns it.<br>
 
   For example,
 
@@ -220,9 +199,9 @@ Removes the last item in a byte stream and returns it.<br>
   (4f 2b)
   ```
  
-#### remove(index: _number_)
+.remove(_index: number_) {#remove}
 
-Removes the item at the specified index in the byte stream.<br>
+: Removes the item at the specified index in the byte stream.<br>
 
   For example,
 
@@ -234,9 +213,9 @@ Removes the item at the specified index in the byte stream.<br>
   (4f 9 8b)
   ```
  
-#### reverse()
+.reverse() {#reverse}
 
-Reverses the items in a byte stream.<br>
+: Reverses the items in a byte stream.<br>
 
   For example,
 
@@ -245,9 +224,9 @@ Reverses the items in a byte stream.<br>
   (5 4 3 2 1)
   ```
  
-#### first()
+.first() {#first}
 
-Returns the first item in a byte stream or nil if the byte stream is empty.<br>
+: Returns the first item in a byte stream or nil if the byte stream is empty.<br>
 
   For example,
 
@@ -256,9 +235,9 @@ Returns the first item in a byte stream or nil if the byte stream is empty.<br>
   14
   ```
  
-#### last()
+.last() {#last}
 
-Returns the last item in a byte stream or nil if the byte stream is empty.<br>
+: Returns the last item in a byte stream or nil if the byte stream is empty.<br>
 
   For example,
 
@@ -267,9 +246,9 @@ Returns the last item in a byte stream or nil if the byte stream is empty.<br>
   37
   ```
  
-#### get(index: _number_)
+.get(_index: number_) {#get}
 
-Returns the value at index in the byte stream.<br>
+: Returns the value at index in the byte stream.<br>
 
   For example,
 
@@ -278,9 +257,9 @@ Returns the value at index in the byte stream.<br>
   4
   ```
  
-#### split(delimiter: _bytes_)
+.split(_delimiter: bytes_) {#split}
 
-Splits the content of a byte stream based on the specified delimiter.<br>
+: Splits the content of a byte stream based on the specified delimiter.<br>
 
   For example,
 
@@ -291,9 +270,9 @@ Splits the content of a byte stream based on the specified delimiter.<br>
   [(74), (65), (73), (74)]
   ```
  
-#### is_alpha()
+.is_alpha() {#is_alpha}
 
-Returns true if the byte stream contains only alphabets.<br>
+: Returns true if the byte stream contains only alphabets.<br>
 
   For example,
 
@@ -304,9 +283,9 @@ Returns true if the byte stream contains only alphabets.<br>
   true
   ```
  
-#### is_alnum()
+.is_alnum() {#is_alnum}
 
-Returns true if the byte stream contains only number and alphabets.<br>
+: Returns true if the byte stream contains only number and alphabets.<br>
 
   For example,
 
@@ -319,9 +298,9 @@ Returns true if the byte stream contains only number and alphabets.<br>
   true
   ```
  
-#### is_number()
+.is_number() {#is_number}
 
-Returns true if the byte stream contains only number.<br>
+: Returns true if the byte stream contains only number.<br>
 
   For example,
 
@@ -332,9 +311,9 @@ Returns true if the byte stream contains only number.<br>
   true
   ```
  
-#### is_lower()
+.is_lower() {#is_lower}
 
-Returns true if all the text in the byte stream are lower case.<br>
+: Returns true if all the text in the byte stream are lower case.<br>
 
   For example,
 
@@ -345,9 +324,9 @@ Returns true if all the text in the byte stream are lower case.<br>
   false
   ```
  
-#### is_upper()
+.is_upper() {#is_upper}
 
-Returns true if all the text in the byte stream are capital case.<br>
+: Returns true if all the text in the byte stream are capital case.<br>
 
   For example,
 
@@ -358,9 +337,9 @@ Returns true if all the text in the byte stream are capital case.<br>
   true
   ```
  
-#### is_space()
+.is_space() {#is_space}
 
-Returns true is the byte stream contains only white space.<br>
+: Returns true is the byte stream contains only white space.<br>
 
   For example,
 
@@ -371,9 +350,9 @@ Returns true is the byte stream contains only white space.<br>
   false
   ```
  
-#### dispose()
+.dispose() {#dispose}
 
-Due to the nature of byte stream and their use-case (especially streaming data),
+: Due to the nature of byte stream and their use-case (especially streaming data),
   it is easy for the system memory to get filled up with data in the byte stream.
   The method allows users to reset a byte stream and empty it.
 
@@ -388,9 +367,9 @@ Due to the nature of byte stream and their use-case (especially streaming data),
   ()
   ```
  
-#### to_list()
+.to_list() {#to_list}
 
-Returns a list of every byte in the byte stream.<br>
+: Returns a list of every byte in the byte stream.<br>
 
   For example,
 
@@ -399,9 +378,9 @@ Returns a list of every byte in the byte stream.<br>
   [49, 85, 73, 21]
   ```
  
-#### to_string()
+.to_string() {#to_string}
 
-Returns a string representation of the byte stream.<br>
+: Returns a string representation of the byte stream.<br>
 
   For example,
 
@@ -410,6 +389,57 @@ Returns a string representation of the byte stream.<br>
   'ABCDE'
   ```
  
+
+.each(_callback: function_) {#each}
+
+: Executes the provided callback once for each byte of the bytes array.
+
+  For example:
+
+  ```blade-repl
+  %> var binary = bytes([101, 230, 47])
+  %> 
+  %> binary.each(@{
+  ..   echo 'Iterating binary data'
+  .. })
+  'Iterating binary data'
+  'Iterating binary data'
+  'Iterating binary data'
+  ```
+
+  The callback function can accept zero or more arguments. When the callback function 
+  accepts arguments, the current character will be passed to the first parameter 
+  whenever the callback is called.
+
+  For example:
+
+  ```blade-repl
+  %> var binary = bytes([211, 146, 92])
+  %> 
+  %> binary.each(@(byte) {
+  ..   echo byte
+  .. })
+  211
+  146
+  92
+  ```
+
+  If the callback function has more than one parameter, the second parameter is assigned the 
+  value of the index of the current character in the string.
+
+  For example:
+
+  ```blade-repl
+  %> var binary = bytes([41, 233, 128])
+  %> 
+  %> binary.each(@(byte, index) {
+  ..   echo 'byte data at index ${index} = ${byte}'
+  .. })
+  'byte data at index 0 = 41'
+  'byte data at index 1 = 233'
+  'byte data at index 2 = 128'
+  ```
+
 
 <br><br><br>
 <hr>

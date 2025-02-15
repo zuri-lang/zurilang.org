@@ -1,17 +1,16 @@
-# Loops & Ranges
+# Loops
 
 Loops are programmatic constructs for repeated evaluation and execution. Blade has three statements 
 that are used to support looping over data. 
 
 ## Reference
 
-- [Loops \& Ranges](#loops--ranges)
+- [Loops](#loops)
   - [Reference](#reference)
   - [Iterating through data](#iterating-through-data)
   - [While Loops](#while-loops)
   - [Do...While Loops](#dowhile-loops)
   - [Iter Loops](#iter-loops)
-  - [Ranges](#ranges)
   - [For Loops](#for-loops)
 
 
@@ -79,12 +78,14 @@ Iteration 2
 Iteration 1
 ```
 
-In a _do...while_ loop the condition is written after the body of the loop. Like the _while_ loop, the responsiblility to evaluate the condition to false is on the user.
+In a _do...while_ loop the condition is written after the body of the loop. Like the _while_ loop, 
+the responsiblility to evaluate the condition to false is on the user.
 
 
 ## Iter Loops
 
-Ah! We are here... Iter loops (sighs!). Iter loops in Blade are akin to `for loops` in C or JavaScript. And soon enough, you'll understand why Blade introduced an new keyword (`iter`) instead of just calling it a for loop.
+Ah! We are here... Iter loops (sighs!). Iter loops in Blade are akin to `for loops` in C or JavaScript. 
+And soon enough, you'll understand why Blade introduced an new keyword (`iter`) instead of just calling it a for loop.
 
 Iter loops are simple to construct. An iter loop requires an initializer (variable declaration), a 
 condition and a loop control statement (usually an increment/decrement statement); all three being 
@@ -192,64 +193,6 @@ For example:
 '9 > 5'
 ```
 
-## Ranges
-
-Ranges are simple numeric iterables. i.e. They are structures that can be iterated/looped through. 
-Ranges are in the format `start..end`. They include a starting number (inclusive) and an ending 
-number (non-inclusive) separated by a range operator (`..`).
-
-For example:
-
-```blade-repl
-%> 0..10
-<range 0-10>
-%> 10..5
-<range 10-5>
-```
-
-Ranges are valid in any direction. That is, they can either ascend (end greater than start) or 
-descend (start greater than end). They are also evaluated in order. They can also be constructed 
-from variables or a mixture of constant number and variables as desired.
-
-```blade-repl
-%> var a = 20
-%> 5..a
-<range 5-20>
-%> a..10
-<range 20-10>
-%> var b = 16
-%> a..b
-<range 20-16>
-```
-
-Ranges also have a few methods.
-
-_range_.**lower()**
-
-Returns the lower limit of the range. 
-  For example:
-
-  ```blade-repl
-  %> (10..100).lower()
-  10
-  ```
-^
-_range_.**upper()**
-
-Returns the upper limit of the range. 
-  For example:
-
-  ```blade-repl
-  %> (20..30).upper()
-  30
-  ```
-
-> **_@note:_** The parenthesis (`()`) around the range in our example is important to make sure that 
-> the upper limit of the range is not interpreted as a number since the range was not assigned to 
-> a variable.
-
-Other examples of iterables are [Strings](./strings), [Lists](./lists), [Dictionaries](./dictionaries), [Bytes](/standard/bytes) etc.
-
 
 ## For Loops
 
@@ -258,7 +201,8 @@ The construct of the iter loop is familiar with programmers coming from C-like l
 so much for those coming from non-C background. The construct of the `iter` loop make it monstrous 
 and for this reason, Blade's `for` loop is much simplier and easier to write and use.
 
-Rather than iterating arithemetic progressions, _`for`_ loops iterate over items in an iterable in the order in which they appear in the iterable.
+Rather than iterating arithemetic progressions, _`for`_ loops iterate over items in an iterable 
+in the order in which they appear in the iterable.
 
 For example (Rhymes...):
 
@@ -276,6 +220,10 @@ For example (Rhymes...):
 8
 9
 ```
+
+The above example have makes use of another basic datatype in Blade &mdash; [a range](./ranges). 
+We'll talk about ranges more in the next chapter. For now, its sufficient to know that its a 
+simple data type that can be iterated.
 
 The `for` keyword _MUST_ be paired with the `in` keyword. The _for_ loop works for all iterable 
 items. For example, we can iterate the elements of the string `Hello` as follows:
@@ -302,4 +250,4 @@ you can convert any [class](./class) into an iterable simply by implementing two
 
 <br><br>
 
-[Previous Topic](./decision-making) | [Next Topic](./lists)
+[Previous Topic](./decision-making) | [Next Topic](./ranges)

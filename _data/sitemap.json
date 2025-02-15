@@ -41,7 +41,11 @@
       }, 
       "/tutorial/loops": {
         "source": "tutorial/loops", 
-        "title": "Loops & Ranges"
+        "title": "Loops"
+      }, 
+      "/tutorial/ranges": {
+        "source": "tutorial/ranges", 
+        "title": "Ranges"
       }, 
       "/tutorial/lists": {
         "source": "tutorial/lists", 

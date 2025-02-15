@@ -14,32 +14,6 @@ double quotes (`"..."`) and they are essentially the same.
   - [Characters](#characters)
   - [String Operations](#string-operations)
   - [String Methods](#string-methods)
-      - [length()](#length)
-      - [upper()](#upper)
-      - [lower()](#lower)
-      - [is\_alpha()](#is_alpha)
-      - [is\_alnum()](#is_alnum)
-      - [is\_number()](#is_number)
-      - [is\_lower()](#is_lower)
-      - [is\_upper()](#is_upper)
-      - [is\_space()](#is_space)
-      - [trim(\[_chr_: char\])](#trimchr-char)
-      - [ltrim(\[_chr_: char\])](#ltrimchr-char)
-      - [rtrim(\[_chr_: char\])](#rtrimchr-char)
-      - [join(_iterable_: string | list | dict)](#joiniterable-string--list--dict)
-      - [split(_delimiter_: string | regex)](#splitdelimiter-string--regex)
-      - [index\_of(_str_: string \[, start\_index: number\])](#index_ofstr-string--start_index-number)
-      - [starts\_with(_str_: string)](#starts_withstr-string)
-      - [ends\_with(_str_: string)](#ends_withstr-string)
-      - [count(_str_: string)](#countstr-string)
-      - [to\_number()](#to_number)
-      - [to\_list()](#to_list)
-      - [to\_bytes()](#to_bytes)
-      - [lpad(_width_: number \[, _fill_: char\])](#lpadwidth-number--fill-char)
-      - [rpad(_width_: number \[, _fill_: char\]))](#rpadwidth-number--fill-char)
-      - [match(_str_: string | regex \[, offset: number = 0\])](#matchstr-string--regex--offset-number--0)
-      - [matches(_reg_: regex \[, offset: number = 0\])](#matchesreg-regex--offset-number--0)
-      - [replace(_str_: regex | string, _replacement_: string \[, use\_regex: bool = true\])](#replacestr-regex--string-replacement-string--use_regex-bool--true)
   - [Regular Expressions](#regular-expressions)
 
 
@@ -385,9 +359,9 @@ the [Class](./class) tutorial._**
 
 Blade string comes with a lot of powerful text processing capabilities wrapped in methods described below.
 
-#### length()
+.length() {#length}
 
-Returns the length of a string. Note that this method is UTF-8 compartible and will return the UTF-8 
+: Returns the length of a string. Note that this method is UTF-8 compartible and will return the UTF-8 
   length for the string if the string contains UTF-8 characters whether written directly or via the
   `\u` or `\U` escapes.
 
@@ -402,9 +376,9 @@ Returns the length of a string. Note that this method is UTF-8 compartible and w
   30
   ```
 
-#### upper()
+.upper() {#upper}
 
-Returns a copy of the string with all the cased characters converted to uppercase. Note that the result
+: Returns a copy of the string with all the cased characters converted to uppercase. Note that the result
   of this method may return `false` when tested with `is_upper()` of the _string_ contains Unicode
   characters that are not case folded.
 
@@ -415,9 +389,9 @@ Returns a copy of the string with all the cased characters converted to uppercas
   'BLADE'
   ```
 
-#### lower()
+.lower() {#lower}
 
-Return a copy of the string with all the cased characters converted to lowercase.<br>
+: Return a copy of the string with all the cased characters converted to lowercase.<br>
   
   For example:
 
@@ -426,9 +400,9 @@ Return a copy of the string with all the cased characters converted to lowercase
   'blade is bae'
   ```
 
-#### is_alpha()
+.is_alpha() {#is_alpha}
 
-Returns `true` if all the characters in the string are all alphabeths and the string is not empty.,
+: Returns `true` if all the characters in the string are all alphabeths and the string is not empty.,
   otherwise returns `false`.
 
   For example:
@@ -442,9 +416,9 @@ Returns `true` if all the characters in the string are all alphabeths and the st
   false
   ```
 
-#### is_alnum()
+.is_alnum() {#is_alnum}
 
-Returns `true` if all the characters in the string are either alphabeths or numbers and the string is 
+: Returns `true` if all the characters in the string are either alphabeths or numbers and the string is 
   not empty, otherwise returns `false`. This method is the same as `string.is_alpha() or string.is_number()`.
 
   For example:
@@ -464,9 +438,9 @@ Returns `true` if all the characters in the string are either alphabeths or numb
   false
   ```
 
-#### is_number()
+.is_number() {#is_number}
 
-Returns `true` if all the characters in the string are all digits and the string is not empty,
+: Returns `true` if all the characters in the string are all digits and the string is not empty,
   otherwise returns `false`.
 
   For example:
@@ -480,9 +454,9 @@ Returns `true` if all the characters in the string are all digits and the string
   false
   ```
 
-#### is_lower()
+.is_lower() {#is_lower}
 
-Returns `true` if at least one character in the string is cased, all cased characters are lower cased
+: Returns `true` if at least one character in the string is cased, all cased characters are lower cased
   and the string is not empty. Otherwise, it returns `false`.
 
   For example:
@@ -498,9 +472,9 @@ Returns `true` if at least one character in the string is cased, all cased chara
   false
   ```
 
-#### is_upper()
+.is_upper() {#is_upper}
 
-Returns `true` if at least one character in the string is cased, all cased characters are upper cased
+: Returns `true` if at least one character in the string is cased, all cased characters are upper cased
   and the string is not empty. Otherwise, it returns `false`.
 
   For example:
@@ -516,9 +490,9 @@ Returns `true` if at least one character in the string is cased, all cased chara
   false
   ```
 
-#### is_space()
+.is_space() {#is_space}
 
-Returns `true` if there are only whitespace characters in the string and the string is not empty.
+: Returns `true` if there are only whitespace characters in the string and the string is not empty.
   Otherwise, it returns empty.
 
   For example:
@@ -532,9 +506,9 @@ Returns `true` if there are only whitespace characters in the string and the str
   true
   ```
 
-#### trim([_chr_: char])
+.trim(_[chr: char]_) {#trim}
 
-Returns a copy of the string with the given character (_`chr`_) removed if it appears at the start or 
+: Returns a copy of the string with the given character (_`chr`_) removed if it appears at the start or 
   end of the string. If _`chr`_ is not given, it defaults to a space (`' '`). All matching leading and 
   trailing characters are removed until a character that doesn't match is encountered. If no match is 
   found, a copy of the original string is returned.
@@ -553,9 +527,9 @@ Returns a copy of the string with the given character (_`chr`_) removed if it ap
   'xampl'
   ```
 
-#### ltrim([_chr_: char])
+.ltrim(_[chr: char]_) {#ltrim}
 
-Similar to the `trim()` method, except that this method only removes characters at the begining of 
+: Similar to the `trim()` method, except that this method only removes characters at the begining of 
   the string.
   
   For example:
@@ -567,9 +541,9 @@ Similar to the `trim()` method, except that this method only removes characters 
   'xample'
   ```
 
-#### rtrim([_chr_: char])
+.rtrim(_[chr: char]_) {#rtrim}
 
-Similar to the `trim()` method, except that this method only removes characters at the end of 
+: Similar to the `trim()` method, except that this method only removes characters at the end of 
   the string.
   
   For example:
@@ -581,9 +555,9 @@ Similar to the `trim()` method, except that this method only removes characters 
   'exampl'
   ```
 
-#### join(_iterable_: string | list | dict)
+.join(_iterable: string | list | dict_) {#join}
 
-Returns a stringwhich is a concatenation of the items in the iterable using the _string_ as the 
+: Returns a stringwhich is a concatenation of the items in the iterable using the _string_ as the 
   separator. If the iterable contains just one item or the _string_ is empty, the original element 
   is returned. If the _iterable_ contains non-string items, the items are converted to their string 
   representation before joining.
@@ -601,9 +575,9 @@ Returns a stringwhich is a concatenation of the items in the iterable using the 
   'a'
   ```
 
-#### split(_delimiter_: string | regex)
+.split(_delimiter: string | regex_) {#split}
 
-Returns a list of words or characters in a string after separating the content of the string at every
+: Returns a list of words or characters in a string after separating the content of the string at every
   point where the _delimiter_ is found. 
   
   If the _delimiter_ is an empty string, the resultant list will contain the individual characters of 
@@ -630,9 +604,9 @@ Returns a list of words or characters in a string after separating the content o
   [who, is, in, the, garden]
   ```
 
-#### index_of(_str_: string [, start_index: number])
+.index_of(_str: string [, start\_index: number = 0_]) {#index_of}
 
-Returns the index position of the first occurrence of the string _`str`_ in the string _`string`_. If
+: Returns the index position of the first occurrence of the string _`str`_ in the string _`string`_. If
   the _str_ cannot be found anywhere in _string_, it returns -1. If the `start_index` parameter is argument is given, it will start scanning from the given index.
 
   For example:
@@ -650,9 +624,9 @@ Returns the index position of the first occurrence of the string _`str`_ in the 
   8
   ```
 
-#### starts_with(_str_: string)
+.starts_with(_str: string_) {#starts_with}
 
-Returns `true` if the string begins with the string or character specified in _str_, otherwise 
+: Returns `true` if the string begins with the string or character specified in _str_, otherwise 
   it returns `false`.
 
   For example:
@@ -664,9 +638,9 @@ Returns `true` if the string begins with the string or character specified in _s
   false
   ```
 
-#### ends_with(_str_: string)
+.ends_with(_str: string_) {#ends_with}
 
-Returns `true` if the string ends with the string or character specified in _str_, otherwise 
+: Returns `true` if the string ends with the string or character specified in _str_, otherwise 
   it returns `false`.
 
   For example:
@@ -678,9 +652,9 @@ Returns `true` if the string ends with the string or character specified in _str
   false
   ```
 
-#### count(_str_: string)
+.count(_str: string_) {#count}
 
-Returns the number of non-overlapping occurrences of the substring _str_ in the string. 
+: Returns the number of non-overlapping occurrences of the substring _str_ in the string. 
   
   _For those coming from Python who may consider this method similar to Python's own, this 
   method differs in that it does not allow specifying a start and end region for the operation. 
@@ -697,9 +671,9 @@ Returns the number of non-overlapping occurrences of the substring _str_ in the 
   1
   ```
 
-#### to_number()
+.to_number() {#to_number}
 
-Returns the first numeric value contained in the string if any exists or `0` if the string
+: Returns the first numeric value contained in the string if any exists or `0` if the string
   contains no numeric value. Floating numbers that have the same value as their integer counterparts
   will return the integer value.
 
@@ -716,9 +690,9 @@ Returns the first numeric value contained in the string if any exists or `0` if 
   0
   ```
 
-#### to_list()
+.to_list() {#to_list}
 
-Returns a list whose elements consists of every character contained in the string in order of
+: Returns a list whose elements consists of every character contained in the string in order of
   appearance. Characters that repeat in the string will have different entries in the same index
   as they appear in the string.<br>
 
@@ -731,9 +705,9 @@ Returns a list whose elements consists of every character contained in the strin
   [P, l, a, n, t, a, t, i, o, n]
   ```
 
-#### to_bytes()
+.to_bytes() {#to_bytes}
 
-Returns the content of the string as a stream of `bytes`. 
+: Returns the content of the string as a stream of `bytes`. 
   
   > The Blade REPL _may_ trunctuate long bytes data when printing to console/terminal.
 
@@ -746,9 +720,9 @@ Returns the content of the string as a stream of `bytes`.
   (50 6c 61 6e 74 61 74 69 6f 6e)
   ```
 
-#### lpad(_width_: number [, _fill_: char])
+.lpad(_width: number [, fill: char = ' '_]) {#lpad}
 
-Returns the string left justified in a string of length _width_. Padding is done using the specified 
+: Returns the string left justified in a string of length _width_. Padding is done using the specified 
   character _fill_ if given of a space (`' '`) if a _fill_ is not specified. The original string is 
   returned if width is less than _`string.length()`_.
 
@@ -763,9 +737,9 @@ Returns the string left justified in a string of length _width_. Padding is done
   'cat'
   ```
 
-#### rpad(_width_: number [, _fill_: char]))
+.rpad(_width: number [, fill: char = ' '_])) {#rpad}
 
-Returns the string right justified in a string of length _width_. Padding is done using the specified 
+: Returns the string right justified in a string of length _width_. Padding is done using the specified 
   character _fill_ if given of a space (`' '`) if a _fill_ is not specified. The original string is 
   returned if width is less than _`string.length()`_.
 
@@ -780,9 +754,9 @@ Returns the string right justified in a string of length _width_. Padding is don
   'Hmm'
   ```
 
-#### match(_str_: string | regex [, offset: number = 0])
+.match(_str: string | regex [, offset: number = 0_]) {#match}
 
-If the string _str_ is a regular string, this method returns `true` if the _string_ contains a
+: If the string _str_ is a regular string, this method returns `true` if the _string_ contains a
   substring _str_. Otherwise, it returns `false`.
 
   If the string _str_ contains a valid [regular expression](#regular-expressions) (we'll get to that shortly below), it returns `false` if a match for the regex _str_ cannot be found in the string. Otherwise, it 
@@ -803,9 +777,9 @@ If the string _str_ is a regular string, this method returns `true` if the _stri
   false
   ```
 
-#### matches(_reg_: regex [, offset: number = 0])
+.matches(_reg: regex [, offset: number = 0_]) {#matches}
 
-Returns a dictionary containing every match of the given regular expression _reg_ in the source string.
+: Returns a dictionary containing every match of the given regular expression _reg_ in the source string.
   If no match is found, an empty [dictionary](./dictionaries) is returned.
 
   If the _offset_ argument is specified, it becomes the offset in the _string_ at which to start matching.
@@ -819,9 +793,9 @@ Returns a dictionary containing every match of the given regular expression _reg
   {0: [who, is, in, the, garden]}
   ```
 
-#### replace(_str_: regex | string, _replacement_: string [, use_regex: bool = true])
+.replace(_str: regex | string, replacement: string [, use\_regex: bool = true_]) {#replace}
 
-Returns a copy of the string with all occurrences or matches of _str_ replaced by the _replacement_
+: Returns a copy of the string with all occurrences or matches of _str_ replaced by the _replacement_
   string.
 
   In the _replacement_ string, if _str_ is a regular expression, then capture groups can be referenced
@@ -843,6 +817,105 @@ Returns a copy of the string with all occurrences or matches of _str_ replaced b
 
   > When the third parameter _`use_regex`_ is set to false, _str_ will never be treated as a regular
   > expression even if it contains a valid regular expression.
+
+.replace_with(_regex: regex, callback: function_) {#replace_with}
+
+: Returns a copy of the string with all occurences or matches of *regex* replaced with the result 
+  of the function *callback* which is invoked only if and after a match has occurred.
+
+  The callback function is defined as follows:
+
+  ```blade
+  def replacer(match, p1, p2, /* …, */ pN, offset, string) {
+    return replacement
+  }
+  ```
+
+  The arguments to the function are as follows:
+
+  - `match`: The matched substring. (Corresponds to `$0`.)
+
+  - `p1, p2, …, pN`: The nth string found by a capture group (including named capturing groups) 
+    corresponds to `$1`, `$2`, etc. For example, if the pattern is `/(\a+)(\b+)/`, then `p1` is 
+    the match for `\a+`, and `p2` is the match for `\b+`. If the group is part of a disjunction 
+    (e.g. `"abc".replace_with('/(a)|(b)/', replacer)`), the unmatched alternative will be `nil`.
+
+  - `offset`: The offset of the matched substring within the whole string being examined. 
+    For example, if the whole string was `'abcd'`, and the matched substring was `'bc'`, then 
+    this argument will be `1`.
+
+  - `string`: The whole string being examined.
+
+  The exact number of arguments depends on how many capture groups are contained in the regex.
+
+  For example:
+
+  ```blade-repl
+  %> echo 'name'.replace_with('/m/', @(match, offset) {
+  ..   return match + '-'
+  .. })
+  'nam-e'
+  ```
+
+  Below is another example that uses a capture group:
+
+  ```blade-repl
+  %> var text = 'all is well'
+  %> 
+  %> echo text.replace_with('/([a-z]+)/', @(match, val) {
+  ..   if val == 'is' return 'is not'
+  ..   return 'will be'
+  .. })
+  'will be is not will be'
+  ```
+
+.each(_callback: function_) {#each}
+
+: Executes the provided callback once for each character of the string.
+
+  For example:
+
+  ```blade-repl
+  %> echo 'string'.each(@{
+  ..   echo 'a string iteration'
+  .. })
+  'a string iteration'
+  'a string iteration'
+  'a string iteration'
+  'a string iteration'
+  'a string iteration'
+  'a string iteration'
+  ```
+
+  The callback function can accept zero or more arguments. When the callback function 
+  accepts arguments, the current character will be passed to the first parameter 
+  whenever the callback is called.
+
+  For example:
+
+  ```blade-repl
+  %> echo 'man'.each(@(x){
+  ..   echo x
+  .. })
+  'm'
+  'a'
+  'n'
+  ```
+
+  If the callback function has more than one parameter, the second parameter is assigned the 
+  value of the index of the current character in the string.
+
+  For example:
+
+  ```blade-repl
+  %> echo 'man'.each(@(x, i){
+  ..   echo 'The character at index ${i} is ${x}'
+  .. })
+  'The character at index 0 is m'
+  'The character at index 1 is a'
+  'The character at index 2 is n'
+  ```
+
 
 Apart from the above listed methods, String also implements the _[Iterable Decorators](./class)_ which
 we'll talk about in details under the _[Class](./class)_ lesson.

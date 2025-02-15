@@ -11,32 +11,6 @@ Let's look at files in Blade and the mechanism available for working with them.
   - [Writing to files](#writing-to-files)
   - [Working with binary files](#working-with-binary-files)
   - [`file()` methods](#file-methods)
-      - [exists()](#exists)
-      - [close()](#close)
-      - [open()](#open)
-      - [read(\[_length_: number\])](#readlength-number)
-      - [gets(\[_length_: number\])](#getslength-number)
-      - [write(_data_: string | bytes)](#writedata-string--bytes)
-      - [puts(_data_: string | bytes)](#putsdata-string--bytes)
-      - [number()](#number)
-      - [is\_tty()](#is_tty)
-      - [is\_open()](#is_open)
-      - [is\_closed()](#is_closed)
-      - [flush()](#flush)
-      - [stats()](#stats)
-      - [symlink(_path_: string)](#symlinkpath-string)
-      - [delete()](#delete)
-      - [rename(_new\_name_: string)](#renamenew_name-string)
-      - [path()](#path)
-      - [abs\_path()](#abs_path)
-      - [copy(_path_: string)](#copypath-string)
-      - [truncate(\[_length_: number\])](#truncatelength-number)
-      - [chmod(_mode_: number)](#chmodmode-number)
-      - [set\_times(_atime_: number, _mtime_: number)](#set_timesatime-number-mtime-number)
-      - [seek(_position_: number, _seek\_type_: number)](#seekposition-number-seek_type-number)
-      - [tell()](#tell)
-      - [mode()](#mode)
-      - [name()](#name)
 
 
 ## The `file` object.
@@ -122,9 +96,9 @@ Now check your current directory and you should see the empty but valid gif imag
 
 The file object contains the following methods:
 
-#### exists()
+.exists() {#exists}
 
-Returns `true` if a file exists or `false` otherwise.
+: Returns `true` if a file exists or `false` otherwise.
 
   For example:
 
@@ -133,9 +107,9 @@ Returns `true` if a file exists or `false` otherwise.
   true
   ```
 
-#### close()
+.close() {#close}
 
-Closes the stream to an opened file. You'll rarely ever need to call this method yourself in most use cases.
+: Closes the stream to an opened file. You'll rarely ever need to call this method yourself in most use cases.
 
   For example:
 
@@ -144,9 +118,9 @@ Closes the stream to an opened file. You'll rarely ever need to call this method
   %> f.close()
   ```
 
-#### open()
+.open() {#open}
 
-Opens the stream to a file for the operation originally specified on the file object during creation. You may need to 
+: Opens the stream to a file for the operation originally specified on the file object during creation. You may need to 
   call this method after a call to read() if the length isn't specified or write() if you wish to read or write again as 
   the file will already be closed.
 
@@ -156,9 +130,9 @@ Opens the stream to a file for the operation originally specified on the file ob
   %> f.open()
   ```
 
-#### read([_length_: number])
+.read(_[length: number]_) {#read}
 
-Reads the content of an opened file up to the specified length and returns it as string or bytes if the file was opened 
+: Reads the content of an opened file up to the specified length and returns it as string or bytes if the file was opened 
   in the binary mode. If the length is not specified, the file will be read to the end.<br>
   
   This method requires that the file be opened in the read mode (default mode) or a mode that supports reading. If you 
@@ -167,25 +141,25 @@ Reads the content of an opened file up to the specified length and returns it as
 
   _An example has been given above._
 
-#### gets([_length_: number])
+.gets(_[length: number]_) {#gets}
 
-Same as `read()`, but doesn't open or close the file automatically.
+: Same as `read()`, but doesn't open or close the file automatically.
 
-#### write(_data_: string | bytes)
+.write(_data: string | bytes_) {#write}
 
-Writes a string or bytes to an opened file at the current insertion point. When the file is opened with the `a` mode 
+: Writes a string or bytes to an opened file at the current insertion point. When the file is opened with the `a` mode 
   enabled, write will always start from the end of the file. If the `seek()` method has been previously called, write 
   will begin from the seeked position, otherwise it will start at the beginning of the file.
 
   _An example has been given above._
 
-#### puts(_data_: string | bytes)
+.puts(_data: string | bytes_) {#puts}
 
-Same as `write()`, but doesn't open or close the file automatically.
+: Same as `write()`, but doesn't open or close the file automatically.
 
-#### number()
+.number() {#number}
 
-Returns the integer file descriptor number that is used by the underlying implementation to request I/O operations from 
+: Returns the integer file descriptor number that is used by the underlying implementation to request I/O operations from 
   the operating system. This can be very useful for low-level interfaces that uses or act as file descriptors.<br>
 
   For example:
@@ -195,9 +169,9 @@ Returns the integer file descriptor number that is used by the underlying implem
   6
   ```
 
-#### is_tty()
+.is_tty() {#is_tty}
 
-Returns `true` if the file is connected to a TTY like device or `false` otherwise.
+: Returns `true` if the file is connected to a TTY like device or `false` otherwise.
 
   For example:
 
@@ -209,9 +183,9 @@ Returns `true` if the file is connected to a TTY like device or `false` otherwis
   true
   ```
 
-#### is_open()
+.is_open() {#is_open}
 
-Returns `true` if the file is open for reading or writing and `false` otherwise.
+: Returns `true` if the file is open for reading or writing and `false` otherwise.
 
   > **_@note:_** `std` files are always open.
 
@@ -222,9 +196,9 @@ Returns `true` if the file is open for reading or writing and `false` otherwise.
   true
   ```
 
-#### is_closed()
+.is_closed() {#is_closed}
 
-Returns `true` if the file is closed for reading or writing and `false` otherwise.
+: Returns `true` if the file is closed for reading or writing and `false` otherwise.
 
   For example:
 
@@ -233,9 +207,9 @@ Returns `true` if the file is closed for reading or writing and `false` otherwis
   false
   ```
 
-#### flush()
+.flush() {#flush}
 
-Flushes the buffer held by a file. This could be useful for writable files as file 
+: Flushes the buffer held by a file. This could be useful for writable files as file 
   writes are buffered.<br>
 
   For example:
@@ -244,9 +218,9 @@ Flushes the buffer held by a file. This could be useful for writable files as fi
   %> w.flush()
   ```
 
-#### stats()
+.stats() {#stats}
 
-Returns the statistics or details or a file.<br>
+: Returns the statistics or details or a file.<br>
 
   For example:
 
@@ -255,9 +229,9 @@ Returns the statistics or details or a file.<br>
   {is_readable: true, is_writable: true, is_executable: false, is_symbolic: false, size: 72, mode: 33188, dev: 16777230, ino: 4865113, nlink: 1, uid: 501, gid: 20, mtime: 1631395239, atime: 1631395271, ctime: 1631395239, blocks: 8, blksize: 4096}
   ```
 
-#### symlink(_path_: string)
+.symlink(_path: string_) {#symlink}
 
-Creates a symbolic link for the original file at the specified path.<br>
+: Creates a symbolic link for the original file at the specified path.<br>
 
   For example:
 
@@ -266,9 +240,9 @@ Creates a symbolic link for the original file at the specified path.<br>
   true
   ```
 
-#### delete()
+.delete() {#delete}
 
-Deletes a file. 
+: Deletes a file. 
   
   > **_@note:_** If the file is opened by one or more processes or threads outside of the current process or thread, 
   > the file will not be deleted until the last process frees it.<br>
@@ -281,9 +255,9 @@ Deletes a file.
   true
   ```
 
-#### rename(_new_name_: string)
+.rename(_new\_name: string_) {#rename}
 
-Renames a file to to `new_name`. The new name can be a full path in another location in which case the file will 
+: Renames a file to to `new_name`. The new name can be a full path in another location in which case the file will 
   be moved.<br>
 
   > **_@note:_** The new name cannot be empty<br>
@@ -296,9 +270,9 @@ Renames a file to to `new_name`. The new name can be a full path in another loca
   true
   ```
 
-#### path()
+.path() {#path}
 
-Returns the path to the file.<br>
+: Returns the path to the file.<br>
 
   For example:
 
@@ -307,9 +281,9 @@ Returns the path to the file.<br>
   'sample.txt'
   ```
 
-#### abs_path()
+.abs_path() {#abs_path}
 
-Returns the absolute path to the file.<br>
+: Returns the absolute path to the file.<br>
 
   For example:
 
@@ -318,9 +292,9 @@ Returns the absolute path to the file.<br>
   'C:\Users\username\blade-docs\sample.txt'
   ```
 
-#### copy(_path_: string)
+.copy(_path: string_) {#copy}
 
-Copies a file from the path sepcified in the original file to the given path.<br>
+: Copies a file from the path sepcified in the original file to the given path.<br>
 
   For example:
 
@@ -329,9 +303,9 @@ Copies a file from the path sepcified in the original file to the given path.<br
   true
   ```
 
-#### truncate([_length_: number])
+.truncate(_[length: number]_) {#truncate}
 
-Truncates the entire file if length is not given or truncates the file such that only length number of bytes is left 
+: Truncates the entire file if length is not given or truncates the file such that only length number of bytes is left 
   in it.<br>
 
   For example:
@@ -342,9 +316,9 @@ Truncates the entire file if length is not given or truncates the file such that
   ```
 
 
-#### chmod(_mode_: number)
+.chmod(_mode: number_) {#chmod}
 
-Changes the permission on the file to the one specified in the number given.<br>
+: Changes the permission on the file to the one specified in the number given.<br>
 
   > **_@note:_** The number is required to be an octal number. e.g. 0c755
 
@@ -356,9 +330,9 @@ Changes the permission on the file to the one specified in the number given.<br>
   ```
 
 
-#### set_times(_atime_: number, _mtime_: number)
+.set_times(_atime: number, mtime: number_) {#set_times}
 
-Sets the last access time and last modified time of the file.<br>
+: Sets the last access time and last modified time of the file.<br>
 
   > **_@note:_** Time is expected in UTC seconds<br>
   > **_@note:_** set argument -1 to leave the current value.
@@ -372,9 +346,9 @@ Sets the last access time and last modified time of the file.<br>
   {is_readable: true, is_writable: true, is_executable: true, is_symbolic: false, size: 72, mode: 33261, dev: 16777230, ino: 4865113, nlink: 1, uid: 501, gid: 20, mtime: 1631477099, atime: 1631477100, ctime: 1631477099, blocks: 8, blksize: 4096}
   ```
 
-#### seek(_position_: number, _seek_type_: number)
+.seek(_position: number, seek\_type: number_) {#seek}
 
-Sets the position of a file reader or writer in a file. The position must be within the range of the file size. 
+: Sets the position of a file reader or writer in a file. The position must be within the range of the file size. 
   _seek_type_ must be on of `SEEK_SET`, `SEEK_CUR` or `SEEK_END` from the `io` package.<br>
 
   For example:
@@ -384,9 +358,9 @@ Sets the position of a file reader or writer in a file. The position must be wit
   true
   ```
 
-#### tell()
+.tell() {#tell}
 
-Returns the current position of the reader/writer in a file.<br>
+: Returns the current position of the reader/writer in a file.<br>
 
   For example:
 
@@ -399,9 +373,9 @@ Returns the current position of the reader/writer in a file.<br>
   5
   ```
 
-#### mode()
+.mode() {#mode}
 
-Returns the mode in which the current file was opened.<br>
+: Returns the mode in which the current file was opened.<br>
 
   For example:
 
@@ -410,9 +384,9 @@ Returns the mode in which the current file was opened.<br>
   'r'
   ```
 
-#### name()
+.name() {#name}
 
-Returns the name of the current file.<br>
+: Returns the name of the current file.<br>
 
   For example:
 

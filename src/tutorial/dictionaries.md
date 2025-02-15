@@ -13,21 +13,6 @@ language will find Blade dictionaries very familiar.
   - [Accessing members of a Dictionary](#accessing-members-of-a-dictionary)
   - [Looping through dictionaries](#looping-through-dictionaries)
   - [Dictionary methods](#dictionary-methods)
-      - [length()](#length)
-      - [add(_key_: any, _value_: any)](#addkey-any-value-any)
-      - [set(_key_: any, _value_: any)](#setkey-any-value-any)
-      - [clear()](#clear)
-      - [clone()](#clone)
-      - [compact()](#compact)
-      - [contains(_x_: any)](#containsx-any)
-      - [extend(_x_: dict)](#extendx-dict)
-      - [get(_key_: any \[, _default_: any\])](#getkey-any--default-any)
-      - [keys()](#keys)
-      - [values()](#values)
-      - [remove(_key_: any)](#removekey-any)
-      - [is\_empty()](#is_empty)
-      - [find\_key(_x_: any)](#find_keyx-any)
-      - [to\_list()](#to_list)
 
 
 ## Constructing a dictionary
@@ -167,9 +152,9 @@ _while_ loop.
 Blade dictionaries comes with a lot of power packed methods like other objects. The methods are 
 detailed below.
 
-#### length()
+.length() {#length}
 
-Returns the length of the dictionary. The length of a Blade dictionary is equal to the number of
+: Returns the length of the dictionary. The length of a Blade dictionary is equal to the number of
   keys it contains. i.e. `dict.length() == dict.keys().length()`.
 
   For example:
@@ -180,9 +165,9 @@ Returns the length of the dictionary. The length of a Blade dictionary is equal 
   ```
 
 
-#### add(_key_: any, _value_: any)
+.add(_key: any, value: any_) {#add}
 
-Adds a new key-value pair to the dictionary with the given key and value.<br>
+: Adds a new key-value pair to the dictionary with the given key and value.<br>
 
   For example:
 
@@ -194,9 +179,9 @@ Adds a new key-value pair to the dictionary with the given key and value.<br>
   ```
 
 
-#### set(_key_: any, _value_: any)
+.set(_key: any, value: any_) {#set}
 
-Sets the value of the given key to the given value in the dictionary. If there is no exisiting entry
+: Sets the value of the given key to the given value in the dictionary. If there is no exisiting entry
   for the key in the dictionary, a new entry will be added.<br>
 
   For example:
@@ -220,9 +205,9 @@ Sets the value of the given key to the given value in the dictionary. If there i
   > ```
 
 
-#### clear()
+.clear() {#clear}
 
-Clears the content of the dictionary.<br>
+: Clears the content of the dictionary.<br>
 
   For example:
   
@@ -236,9 +221,9 @@ Clears the content of the dictionary.<br>
   ```
 
 
-#### clone()
+.clone() {#clone}
 
-Returns a new dictionary which is a deep copy of the original dictionary.<br>
+: Returns a new dictionary which is a deep copy of the original dictionary.<br>
 
   For example:
   
@@ -249,9 +234,9 @@ Returns a new dictionary which is a deep copy of the original dictionary.<br>
   ```
 
 
-#### compact()
+.compact() {#compact}
 
-Returns a new dictionary that contains every key-value pair in the original dictionary except
+: Returns a new dictionary that contains every key-value pair in the original dictionary except
   for keys whose associated value is `nil`.
 
   For example:
@@ -263,9 +248,9 @@ Returns a new dictionary that contains every key-value pair in the original dict
   ```
 
 
-#### contains(_x_: any)
+.contains(_x: any_) {#contains}
 
-Returns `true` if any of the keys in the dictionary is equal to _x_, `false` otherwise.<br>
+: Returns `true` if any of the keys in the dictionary is equal to _x_, `false` otherwise.<br>
 
   For example:
 
@@ -277,9 +262,9 @@ Returns `true` if any of the keys in the dictionary is equal to _x_, `false` oth
   ```
 
 
-#### extend(_x_: dict)
+.extend(_x: dict_) {#extend}
 
-Adds all key-value pairs in dictionary _x_ to the original dictionary.<br>
+: Adds all key-value pairs in dictionary _x_ to the original dictionary.<br>
 
   For example:
 
@@ -291,9 +276,9 @@ Adds all key-value pairs in dictionary _x_ to the original dictionary.<br>
   ```
 
 
-#### get(_key_: any [, _default_: any])
+.get(_key: any [, default: any]_) {#get}
 
-Returns the value of the given _key_ in the dictionary. If the given key is not defined in the
+: Returns the value of the given _key_ in the dictionary. If the given key is not defined in the
   dictionary and the _default_ value is given, the default value will be returned. Otherwise, `nil`
   is returned.
 
@@ -310,9 +295,9 @@ Returns the value of the given _key_ in the dictionary. If the given key is not 
   ```
 
 
-#### keys()
+.keys() {#keys}
 
-Returns a list containing the keys in the dictionary.<br>
+: Returns a list containing the keys in the dictionary.<br>
 
   For example:
 
@@ -322,9 +307,9 @@ Returns a list containing the keys in the dictionary.<br>
   ```
 
 
-#### values()
+.values() {#values}
 
- Returns a list containing the value of all keys in the dictionary.<br>
+:  Returns a list containing the value of all keys in the dictionary.<br>
 
   For example:
 
@@ -334,9 +319,9 @@ Returns a list containing the keys in the dictionary.<br>
   ```
 
 
-#### remove(_key_: any)
+.remove(_key: any_) {#remove}
 
-Removes a given key and it's corresponding value from the dictionary and returns the value of
+: Removes a given key and it's corresponding value from the dictionary and returns the value of
   the key.
 
   For example:
@@ -350,9 +335,9 @@ Removes a given key and it's corresponding value from the dictionary and returns
   ```
 
 
-#### is_empty()
+.is_empty() {#is_empty}
 
-Returns `true` if the dictionary is empty, otherwise returns `false`.<br>
+: Returns `true` if the dictionary is empty, otherwise returns `false`.<br>
 
   For example:
 
@@ -364,9 +349,9 @@ Returns `true` if the dictionary is empty, otherwise returns `false`.<br>
   ```
 
 
-#### find_key(_x_: any)
+.find_key(_x: any_) {#find_key}
 
-Returns the key whose value is equal to _x_ in the dictionary or `nil` if no key has the value _x_.<br>
+: Returns the key whose value is equal to _x_ in the dictionary or `nil` if no key has the value _x_.<br>
 
   For example:
 
@@ -377,9 +362,9 @@ Returns the key whose value is equal to _x_ in the dictionary or `nil` if no key
   ```
 
 
-#### to_list()
+.to_list() {#to_list}
 
-Returns a list that contains a list of key and a list of values from the dictionary. <br>
+: Returns a list that contains a list of key and a list of values from the dictionary. <br>
 
   For example:
 
@@ -389,6 +374,142 @@ Returns a list that contains a list of key and a list of values from the diction
   [[username, email], [james, a@b.c]]
   ```
 
+
+.each(_callback: function_) {#each}
+
+: Executes the provided callback once for each key/value pair in the dictionary.
+
+  For example:
+
+  ```blade-repl
+  %> var info = {name: 'Pius', age: 46}
+  %> 
+  %> # calling each without using data
+  %> echo info.each(@{
+  ..   echo 'Iterating dictionary'
+  .. })
+  'Iterating dictionary'
+  'Iterating dictionary'
+  ```
+
+  The callback function can accept zero or more arguments. When the callback function 
+  accepts arguments, the current value will be passed to the first parameter 
+  whenever the callback is called.
+
+  For example:
+
+  ```blade-repl
+  %> # calling each for values only
+  %> echo info.each(@(value) {
+  ..   echo value
+  .. })
+  'Pius'
+  46
+  ```
+
+  If the callback function has more than one parameter, the second parameter is assigned 
+  the value of the key of the current value in the dictionary.
+
+  For example:
+
+  ```blade-repl
+  %> # calling each for both key and value
+  %> echo info.each(@(value, key) {
+  ..   echo '${key} = ${value}'
+  .. })
+  'name = Pius'
+  'age = 46'
+  ```
+
+
+.filter(_callback: function_) {#filter}
+
+: Returns a portion (shallow copy) of the dictionary filtered down to the key/value pairs
+  in the dictionary that pass the test done by the callback function.
+
+  The `filter` callback function accepts and is passed the same values as [.each()](#each).
+
+  The callback function is required to return a value that can resolves as true for 
+  elements that should be kept or resolves as false for elements that should not be kept.
+
+  If no element passes the test in the callback, an empty dictionary is returned.
+
+  For example:
+
+  ```blade-repl
+  %> var info = {name: 'Pius', age: 46}
+  %> 
+  %> echo info.filter(@(value) {
+  ..   return is_number(value)
+  .. })
+  {age: 46}
+  ```
+
+
+.some(_callback: function_) {#some}
+
+: Returns `true` if at least one key/value pair in the dictionary pases the test conducted 
+  by the callback function. The callback function is required to return a value that can 
+  resolves as true for elements that should be kept or resolves as false for elements 
+  that should not be kept.
+
+  The `some` callback function accepts and is passed the same values as [.each()](#each).
+
+  For example:
+
+  ```blade-repl
+  %> var info = {name: 'Pius', age: 46}
+  %> 
+  %> echo info.some(@(value) {
+  ..   return is_bool(value)
+  .. })
+  false
+  %> 
+  %> echo info.some(@(value, key) {
+  ..   return key == 'age'
+  .. })
+  true
+  ```
+
+
+.every(_callback: function_) {#every}
+
+: Returns `true` if all the key/value pair in the dictionary pases the test conducted by 
+  the callback function. The callback function is required to return a value that can 
+  resolves as true for elements that should be kept or resolves as false for elements 
+  that should not be kept.
+
+  The `every` callback function accepts and is passed the same values as [.each()](#each).
+
+  For example:
+
+  ```blade-repl
+  %> var scores = {kally: 56, anna: 79, bolf: 19}
+  %> 
+  %> echo scores.every(@(value) {
+  ..   return value > 70
+  .. })
+  false
+  %> 
+  %> echo scores.every(@(value, key) {
+  ..   return key.length() >= 3 and value > 0
+  .. })
+  true
+  ```
+
+
+.reduce(_callback: function [, initial\_value: any = nil]_) {#reduce}
+
+: Executes the reducer callback function on every key/value pair in the dictionary in order, 
+  passing in the return value from the previous calculation on the preceeding element and 
+  returning a single value equal to the result of running the reducer callback across 
+  all elements.
+
+  This method is the same as the [list.reduce()](./lists#reduce) method except that this 
+  method works on dictionaries and key/value pairs. For dictionaries, keys are used instead 
+  of indices.
+
+  See [list.reduce()](./lists#reduce) for more information about `reduce()`
 
 
 <br><br>

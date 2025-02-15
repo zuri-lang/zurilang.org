@@ -72,8 +72,15 @@ def cite(str, module) {
       if ref_name.starts_with('${module}.') {
         var ref_value = ref_name[module.length() + 1,]
         cite_root = cite_root.replace(local_ref, '[${ref_value}](#${ref_name})', false)
+      } else if(ref_name.starts_with('#')) {
+        var ref_value = ref_name.split('.').last()
+        if ref_value.ends_with('()') {
+          ref_name = ref_name[,-2]
+        }
+
+        cite_root = cite_root.replace(local_ref, '[${ref_value}](#${ref_name})', false)
       } else {
-        var ref_root = ref_name.split('.')[0]
+        var ref_root = ref_name.split('.').first()
         cite_root = cite_root.replace(local_ref, '[${ref_name}](/standard/${ref_root}#${ref_name})', false)
       }
     }

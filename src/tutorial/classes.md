@@ -278,6 +278,25 @@ Unhandled Exception: undefined property 'my_static_field'
 %> HasStatic.my_static_method()
 ```
 
+In a static class method, the _self_ keyword refers to the class itself. This is better explained with the following example:
+
+```blade-repl
+%> class C {
+..   test() {
+..     echo self
+..   }
+.. 
+..   static test2() {
+..     echo self
+..   }
+.. }
+%> 
+%> C().test()
+<class C instance at 0x12fa042f0>
+%> C.test2()
+<class C at 0x12fc04560>
+```
+
 
 ## Class Decorators
 
