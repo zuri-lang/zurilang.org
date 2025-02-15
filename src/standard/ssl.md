@@ -119,9 +119,9 @@ _ssl_.socket(_socket_, _context_, _ssl_) &#x279D; _Exported_ {#ssl.socket}
 
 
   - **@params**:
-    - _Socket_ **socket**
-    - _SSLContext?_ **context**
-    - _SSL?_ **ssl**
+    - _[socket.Socket](/standard/socket#socket.Socket)_ **socket**
+    - _[SSLContext](#ssl.SSLContext)?_ **context**
+    - _[SSL](#ssl.SSL)?_ **ssl**
 
   {.params}
 
@@ -140,7 +140,7 @@ _class_ **SSL** {#ssl.SSL .class}
 
 
     - **@params**:
-      - _SSLContext_ **context**
+      - _[SSLContext](#ssl.SSLContext)_ **context**
 
     {.params}
 
@@ -381,9 +381,9 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
 
     - **@params**:
-      - _Socket_ **socket**
-      - _SSLContext?_ **context**
-      - _SSL?_ **ssl**
+      - _[socket.Socket](/standard/socket#socket.Socket)_ **socket**
+      - _[SSLContext](#ssl.SSLContext)?_ **context**
+      - _[SSL](#ssl.SSL)?_ **ssl**
 
     {.params}
 
@@ -524,7 +524,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
     The accepted socket may not be used to accept more connections.  The original socket remains open.
 
 
-    - **@returns**: _TLSSocket_
+    - **@returns**: _[TLSSocket](#ssl.TLSSocket)_
     {.returns}
 
 
@@ -607,7 +607,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
   : Returns the underlying Socket instance.
 
 
-    - **@returns**: _Socket_
+    - **@returns**: _[socket.Socket](/standard/socket#socket.Socket)_
     {.returns}
 
 
@@ -616,7 +616,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
   : Returns the underlying SSLContext instance.
 
 
-    - **@returns**: _SSLContext_
+    - **@returns**: _[SSLContext](#ssl.SSLContext)_
     {.returns}
 
 
@@ -625,7 +625,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
   : Returns the underlying SSL instance
 
 
-    - **@returns**: _SSL_
+    - **@returns**: _[SSL](#ssl.SSL)_
     {.returns}
 
 
@@ -635,7 +635,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
 
     - **@params**:
-      - _SSLContext_ **context**
+      - _[SSLContext](#ssl.SSLContext)_ **context**
 
     {.params}
 
@@ -669,7 +669,7 @@ _class_ **BIO** {#ssl.BIO .class}
     > - Option must be one of the BIO constants if given.
 
     - **@params**:
-      - _SSL_ **ssl**
+      - _[SSL](#ssl.SSL)_ **ssl**
       - _int?_ **option** : Default value is `BIO_NOCLOSE`
 
 
@@ -860,7 +860,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@params**:
-      - _BIO_ **bio**
+      - _[BIO](#ssl.BIO)_ **bio**
 
     {.params}
     - **@returns**: _self_

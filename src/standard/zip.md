@@ -112,7 +112,7 @@ _class_ **ZipItem** {#zip.ZipItem .class}
   : The decompressed value of the zip item
 
 
-  .from\_dict(_dict_) {#zip.ZipItem.from_dict}
+  _static_ .from\_dict(_dict_) {#zip.ZipItem.from_dict}
 
   : Creates a new ZipItem from a dictionary.
     The dictionary should contain the following keys:
@@ -182,9 +182,7 @@ _class_ **ZipFile** {#zip.ZipFile .class}
 
   .export(_base_dir_) {#zip.ZipFile.export}
 
-  : export([base_dir: string])
-    
-    Exports the all files in the ZipFile to files on the machine. If base_dir is given, 
+  : Exports the all files in the ZipFile to files on the machine. If base_dir is given, 
     the files will be exported into the base_dir and all directories will be 
     created inside of base_dir as is to reflect the ZipFile's original structure.
     

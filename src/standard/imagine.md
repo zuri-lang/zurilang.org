@@ -27,7 +27,7 @@ _imagine_.**ARC\_NO\_FILL** &#x279D; _number_
 : Indicates that the arc or chord should be outlined, not filled.
 
 _imagine_.**ARC\_NO\_EDGE** &#x279D; _number_
-: Used together with ARC_NO_FILL, indicates that the beginning and 
+: Used together with [ARC_NO_FILL](#imagine.ARC_NO_FILL), indicates that the beginning and 
   ending angles should be connected to the center; this is a good 
   way to outline (rather than fill) a 'pie slice'.
 
@@ -760,7 +760,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _ImageResource_ **image**
+      - _[ImageResource](#imagine.ImageResource)_ **image**
 
     {.params}
 
@@ -818,7 +818,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _ImageResource_ **src**
+      - _[ImageResource](#imagine.ImageResource)_ **src**
       - _number_ **dst_x**
       - _number_ **dst_y**
       - _number_ **src_x**
@@ -844,7 +844,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _ImageResource_ **src**
+      - _[ImageResource](#imagine.ImageResource)_ **src**
       - _number_ **dst_x**
       - _number_ **dst_y**
       - _number_ **src_x**
@@ -864,7 +864,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _ImageResource_ **src**
+      - _[ImageResource](#imagine.ImageResource)_ **src**
       - _number_ **dst_x**
       - _number_ **dst_y**
       - _number_ **src_x**
@@ -894,7 +894,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _ImageResource_ **src**
+      - _[ImageResource](#imagine.ImageResource)_ **src**
       - _number_ **x**
       - _number_ **y**
       - _number_ **src_x**
@@ -928,7 +928,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _ImageResource_ **src**
+      - _[ImageResource](#imagine.ImageResource)_ **src**
       - _number_ **x**
       - _number_ **y**
       - _number_ **src_x**
@@ -955,7 +955,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _ImageResource_ **src**
+      - _[ImageResource](#imagine.ImageResource)_ **src**
       - _number_ **x**
       - _number_ **y**
       - _number_ **src_x**
@@ -972,7 +972,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
   : Clones this image resource.
 
 
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
@@ -1000,7 +1000,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _ImageResource_ **brush**
+      - _[ImageResource](#imagine.ImageResource)_ **brush**
 
     {.params}
 
@@ -1032,7 +1032,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _ImageResource_ **tile**
+      - _[ImageResource](#imagine.ImageResource)_ **tile**
 
     {.params}
 
@@ -1123,7 +1123,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
       - _number_ **height**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
@@ -1137,7 +1137,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
       - _number?_ **mode**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
@@ -1160,7 +1160,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
       - _number?_ **method**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
@@ -1177,7 +1177,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
       - _number?_ **method**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
@@ -1405,7 +1405,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _ImageResource_ **image**
+      - _[ImageResource](#imagine.ImageResource)_ **image**
 
     {.params}
     - **@returns**: _bool - `true` if successful, otherwise `false`._
@@ -1435,7 +1435,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _ImageResource_ **image**
+      - _[ImageResource](#imagine.ImageResource)_ **image**
 
     {.params}
     - **@returns**: _number_
@@ -1564,7 +1564,7 @@ _class_ **Image** {#imagine.Image .class}
   `GIF`, `TIFF`, `BMP`, `WBMP`, `TGA`, `WEBP`, `AVIF`.
 
 
-  .new(_width_, _height_, _use_true_colors_) {#imagine.Image.new}
+  _static_ .new(_width_, _height_, _use_true_colors_) {#imagine.Image.new}
 
   : Creates a palette-based image (up to 256 colors) or a truecolor 
     image (millions of colors) when `use_true_colors` is set to true.
@@ -1576,11 +1576,11 @@ _class_ **Image** {#imagine.Image .class}
       - _bool?_ **use_true_colors**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
-  .from\_png(_src_) {#imagine.Image.from_png}
+  _static_ .from\_png(_src_) {#imagine.Image.from_png}
 
   : Creates an image from a PNG file. Truecolor PNG stays truecolor; 
     palette PNG stays palette-based.
@@ -1590,11 +1590,11 @@ _class_ **Image** {#imagine.Image .class}
       - _string|file_ **src**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
-  .from\_jpeg(_src_) {#imagine.Image.from_jpeg}
+  _static_ .from\_jpeg(_src_) {#imagine.Image.from_jpeg}
 
   : Creates an image from a JPEG file.
     JPEG is always truecolor.
@@ -1604,11 +1604,11 @@ _class_ **Image** {#imagine.Image .class}
       - _string|file_ **src**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
-  .from\_gif(_src_) {#imagine.Image.from_gif}
+  _static_ .from\_gif(_src_) {#imagine.Image.from_gif}
 
   : Creates an image from a GIF file.
 
@@ -1617,11 +1617,11 @@ _class_ **Image** {#imagine.Image .class}
       - _string|file_ **src**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
-  .from\_bmp(_src_) {#imagine.Image.from_bmp}
+  _static_ .from\_bmp(_src_) {#imagine.Image.from_bmp}
 
   : Creates an image from a BMP file.
 
@@ -1630,11 +1630,11 @@ _class_ **Image** {#imagine.Image .class}
       - _string|file_ **src**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
-  .from\_wbmp(_src_) {#imagine.Image.from_wbmp}
+  _static_ .from\_wbmp(_src_) {#imagine.Image.from_wbmp}
 
   : Creates an image from a WBMP file.
 
@@ -1643,11 +1643,11 @@ _class_ **Image** {#imagine.Image .class}
       - _string|file_ **src**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
-  .from\_tga(_src_) {#imagine.Image.from_tga}
+  _static_ .from\_tga(_src_) {#imagine.Image.from_tga}
 
   : Creates an image from a TGA file.
 
@@ -1656,11 +1656,11 @@ _class_ **Image** {#imagine.Image .class}
       - _string|file_ **src**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
-  .from\_tiff(_src_) {#imagine.Image.from_tiff}
+  _static_ .from\_tiff(_src_) {#imagine.Image.from_tiff}
 
   : Creates an image from a TIFF file.
 
@@ -1669,11 +1669,11 @@ _class_ **Image** {#imagine.Image .class}
       - _string|file_ **src**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
-  .from\_webp(_src_) {#imagine.Image.from_webp}
+  _static_ .from\_webp(_src_) {#imagine.Image.from_webp}
 
   : Creates an image from a WEBP file.
 
@@ -1682,11 +1682,11 @@ _class_ **Image** {#imagine.Image .class}
       - _string|file_ **src**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
-  .from\_avif(_src_) {#imagine.Image.from_avif}
+  _static_ .from\_avif(_src_) {#imagine.Image.from_avif}
 
   : Creates an image from a AVIF file.
 
@@ -1695,11 +1695,11 @@ _class_ **Image** {#imagine.Image .class}
       - _string|file_ **src**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 
-  .from\_file(_src_) {#imagine.Image.from_file}
+  _static_ .from\_file(_src_) {#imagine.Image.from_file}
 
   : Creates an image from any supported image file.
     As long as the file type is supported by Imagine,
@@ -1710,7 +1710,7 @@ _class_ **Image** {#imagine.Image .class}
       - _string|file_ **src**
 
     {.params}
-    - **@returns**: _ImageResource_
+    - **@returns**: _[ImageResource](#imagine.ImageResource)_
     {.returns}
 
 

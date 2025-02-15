@@ -633,7 +633,7 @@ _class_ **HttpServer** {#http.HttpServer .class}
   **.port** &#x279D; _number_
   : The port to which this server will be bound to on the host.
 
-  **.socket** &#x279D; _{Socket_
+  **.socket** &#x279D; _[socket.Socket](/standard/socket#socket.Socket)_
   : The working Socket instance for the HttpServer.
 
   **.reuse\_address** &#x279D; _bool_
@@ -947,7 +947,7 @@ _class_ **HttpClient** {#http.HttpClient .class}
       - _string?_ **method** : Default value is `GET`.
 
       - _string|dict|nil_ **data**
-      - _dict?_ **headers** : To override the instance options. 
+      - _dict?_ **headers** : To override the instance options.
 
       - _dict?_ **client** request options
 

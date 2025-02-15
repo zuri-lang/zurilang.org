@@ -194,7 +194,7 @@ _class_ **Enum** {#enum.Enum .class}
     {.params}
 
 
-  .keys(_enum_) {#enum.Enum.keys}
+  _static_ .keys(_enum_) {#enum.Enum.keys}
 
   : Returns the symbolic keys of an enumeration.
     
@@ -220,7 +220,7 @@ _class_ **Enum** {#enum.Enum .class}
     {.returns}
 
 
-  .values(_enum_) {#enum.Enum.values}
+  _static_ .values(_enum_) {#enum.Enum.values}
 
   : Returns possible numeric values of an enumeration.
     
@@ -242,7 +242,7 @@ _class_ **Enum** {#enum.Enum .class}
     {.returns}
 
 
-  .to\_dict(_enum_) {#enum.Enum.to_dict}
+  _static_ .to\_dict(_enum_) {#enum.Enum.to_dict}
 
   : Returns the enumeration as a key/value dictionary.
     
@@ -264,7 +264,7 @@ _class_ **Enum** {#enum.Enum .class}
     {.returns}
 
 
-  .to\_value\_dict(_enum_) {#enum.Enum.to_value_dict}
+  _static_ .to\_value\_dict(_enum_) {#enum.Enum.to_value_dict}
 
   : Returns the enumeration as a value/key dictionary.
     
@@ -299,7 +299,7 @@ _class_ **Enum** {#enum.Enum .class}
     {.returns}
 
 
-  .has(_enum_, _key_) {#enum.Enum.has}
+  _static_ .has(_enum_, _key_) {#enum.Enum.has}
 
   : Returns `true` if the enumeration contains the given symbolic key or
     `false` if otherwise.
@@ -329,7 +329,7 @@ _class_ **Enum** {#enum.Enum .class}
     {.returns}
 
 
-  .ensure(_enum_, _value_) {#enum.Enum.ensure}
+  _static_ .ensure(_enum_, _value_) {#enum.Enum.ensure}
 
   : Returns the value of an enumeration if it is a valid value for the enumeration
     

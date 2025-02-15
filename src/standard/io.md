@@ -122,169 +122,169 @@ _class_ **TTY** {#io.TTY .class}
   to control TTY terminals
 
 
-  **.TTY\_IFLAG** &#x279D; _static_ _int_
+  _static_ .**.TTY\_IFLAG** &#x279D; _int_
   : TTY attribute for input flags.
 
-  **.TTY\_OFLAG** &#x279D; _static_ _int_
+  _static_ .**.TTY\_OFLAG** &#x279D; _int_
   : TTY attribute for output flags.
 
-  **.TTY\_CFLAG** &#x279D; _static_ _int_
+  _static_ .**.TTY\_CFLAG** &#x279D; _int_
   : TTY attribute for control flags.
 
-  **.TTY\_LFLAG** &#x279D; _static_ _int_
+  _static_ .**.TTY\_LFLAG** &#x279D; _int_
   : TTY attribute for local flags.
 
-  **.TTY\_ISPEED** &#x279D; _static_ _int_
+  _static_ .**.TTY\_ISPEED** &#x279D; _int_
   : TTY attribute for input speed.
 
-  **.TTY\_OSPEED** &#x279D; _static_ _int_
+  _static_ .**.TTY\_OSPEED** &#x279D; _int_
   : TTY attribute for output speed.
 
-  **.IGNBRK** &#x279D; _static_ _int_
+  _static_ .**.IGNBRK** &#x279D; _int_
   : Ignore BREAK condition.
 
-  **.BRKINT** &#x279D; _static_ _int_
+  _static_ .**.BRKINT** &#x279D; _int_
   : Map BREAK to SIGINTR.
 
-  **.IGNPAR** &#x279D; _static_ _int_
+  _static_ .**.IGNPAR** &#x279D; _int_
   : Ignore (discard) parity errors.
 
-  **.PARMRK** &#x279D; _static_ _int_
+  _static_ .**.PARMRK** &#x279D; _int_
   : Mark parity and framing errors.
 
-  **.INPCK** &#x279D; _static_ _int_
+  _static_ .**.INPCK** &#x279D; _int_
   : Enable checking of parity errors.
 
-  **.ISTRIP** &#x279D; _static_ _int_
+  _static_ .**.ISTRIP** &#x279D; _int_
   : Strip 8th bit off chars.
 
-  **.INLCR** &#x279D; _static_ _int_
+  _static_ .**.INLCR** &#x279D; _int_
   : Map NL into CR.
 
-  **.IGNCR** &#x279D; _static_ _int_
+  _static_ .**.IGNCR** &#x279D; _int_
   : Ignore CR.
 
-  **.ICRNL** &#x279D; _static_ _int_
+  _static_ .**.ICRNL** &#x279D; _int_
   : Map CR to NL (ala CRMOD).
 
-  **.IXON** &#x279D; _static_ _int_
+  _static_ .**.IXON** &#x279D; _int_
   : Enable output flow control.
 
-  **.IXOFF** &#x279D; _static_ _int_
+  _static_ .**.IXOFF** &#x279D; _int_
   : Enable input flow control.
 
-  **.IXANY** &#x279D; _static_ _int_
+  _static_ .**.IXANY** &#x279D; _int_
   : Any char will restart after stop.
 
-  **.IUTF8** &#x279D; _static_ _int_
+  _static_ .**.IUTF8** &#x279D; _int_
   : Maintain state for UTF-8 VERASE.
 
-  **.OPOST** &#x279D; _static_ _int_
+  _static_ .**.OPOST** &#x279D; _int_
   : Enable following output processing.
 
-  **.ONLCR** &#x279D; _static_ _int_
+  _static_ .**.ONLCR** &#x279D; _int_
   : Map NL to CR-NL (ala CRMOD).
 
-  **.CSIZE** &#x279D; _static_ _int_
+  _static_ .**.CSIZE** &#x279D; _int_
   : Character size mask .
 
-  **.CS5** &#x279D; _static_ _int_
+  _static_ .**.CS5** &#x279D; _int_
   : 5 bits (pseudo).
 
-  **.CS6** &#x279D; _static_ _int_
+  _static_ .**.CS6** &#x279D; _int_
   : 6 bits.
 
-  **.CS7** &#x279D; _static_ _int_
+  _static_ .**.CS7** &#x279D; _int_
   : 7 bits.
 
-  **.CS8** &#x279D; _static_ _int_
+  _static_ .**.CS8** &#x279D; _int_
   : 8 bits.
 
-  **.CSTOPB** &#x279D; _static_ _int_
+  _static_ .**.CSTOPB** &#x279D; _int_
   : Send 2 stop bits.
 
-  **.CREAD** &#x279D; _static_ _int_
+  _static_ .**.CREAD** &#x279D; _int_
   : Enable receiver.
 
-  **.PARENB** &#x279D; _static_ _int_
+  _static_ .**.PARENB** &#x279D; _int_
   : Parity enable.
 
-  **.PARODD** &#x279D; _static_ _int_
+  _static_ .**.PARODD** &#x279D; _int_
   : Odd parity, else even.
 
-  **.HUPCL** &#x279D; _static_ _int_
+  _static_ .**.HUPCL** &#x279D; _int_
   : Hang up on last close.
 
-  **.CLOCAL** &#x279D; _static_ _int_
+  _static_ .**.CLOCAL** &#x279D; _int_
   : Ignore modem status lines.
 
-  **.ECHOE** &#x279D; _static_ _int_
+  _static_ .**.ECHOE** &#x279D; _int_
   : Visually erase chars.
 
-  **.ECHOK** &#x279D; _static_
+  _static_ .**.ECHOK** &#x279D;
   : Echo NL after line kill
 
-  **.ECHO** &#x279D; _static_ _int_
+  _static_ .**.ECHO** &#x279D; _int_
   : Enable echoing.
 
-  **.ECHONL** &#x279D; _static_ _int_
+  _static_ .**.ECHONL** &#x279D; _int_
   : Echo NL even if ECHO is off.
 
-  **.ISIG** &#x279D; _static_ _int_
+  _static_ .**.ISIG** &#x279D; _int_
   : Enable signals INTR, QUIT, [D]SUSP.
 
-  **.ICANON** &#x279D; _static_ _int_
+  _static_ .**.ICANON** &#x279D; _int_
   : Canonicalize input lines.
 
-  **.IEXTEN** &#x279D; _static_ _int_
+  _static_ .**.IEXTEN** &#x279D; _int_
   : Enable DISCARD and LNEXT.
 
-  **.TOSTOP** &#x279D; _static_ _int_
+  _static_ .**.TOSTOP** &#x279D; _int_
   : Stop background jobs from output.
 
-  **.NOFLSH** &#x279D; _static_ _int_
+  _static_ .**.NOFLSH** &#x279D; _int_
   : Don't flush after interrupt.
 
-  **.TCSANOW** &#x279D; _static_ _int_
+  _static_ .**.TCSANOW** &#x279D; _int_
   : Make change immediate.
 
-  **.TCSADRAIN** &#x279D; _static_ _int_
+  _static_ .**.TCSADRAIN** &#x279D; _int_
   : Drain output, then change.
 
-  **.TCSAFLUSH** &#x279D; _static_ _int_
+  _static_ .**.TCSAFLUSH** &#x279D; _int_
   : Drain output, flush input.
 
-  **.VEOF** &#x279D; _static_ _int_
+  _static_ .**.VEOF** &#x279D; _int_
   : ICANON.
 
-  **.VEOL** &#x279D; _static_ _int_
+  _static_ .**.VEOL** &#x279D; _int_
   : ICANON.
 
-  **.VERASE** &#x279D; _static_ _int_
+  _static_ .**.VERASE** &#x279D; _int_
   : ICANON.
 
-  **.VKILL** &#x279D; _static_ _int_
+  _static_ .**.VKILL** &#x279D; _int_
   : ICANON.
 
-  **.VINTR** &#x279D; _static_ _int_
+  _static_ .**.VINTR** &#x279D; _int_
   : ISIG.
 
-  **.VQUIT** &#x279D; _static_ _int_
+  _static_ .**.VQUIT** &#x279D; _int_
   : ISIG.
 
-  **.VSUSP** &#x279D; _static_ _int_
+  _static_ .**.VSUSP** &#x279D; _int_
   : ISIG.
 
-  **.VSTART** &#x279D; _static_ _int_
+  _static_ .**.VSTART** &#x279D; _int_
   : IXON, IXOFF.
 
-  **.VSTOP** &#x279D; _static_ _int_
+  _static_ .**.VSTOP** &#x279D; _int_
   : IXON, IXOFF.
 
-  **.VMIN** &#x279D; _static_ _int_
+  _static_ .**.VMIN** &#x279D; _int_
   : !ICANON.
 
-  **.VTIME** &#x279D; _static_ _int_
+  _static_ .**.VTIME** &#x279D; _int_
   : !ICANON.
 
 

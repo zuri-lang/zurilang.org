@@ -39,10 +39,10 @@ _url_.encode(_url_, _strict_) {#url.encode}
 
 : URL-encodes a string
   
-  this function is convenient when encoding a string to be used in 
+  This function is convenient when encoding a string to be used in 
   a query part of a URL, as a convenient way to pass variables to 
   the next page.
-  if strict mode is enabled, space character is encoded with the 
+  If strict mode is enabled, space character is encoded with the 
   percent (%) sign in order to conform with RFC 3986. Otherwise,
   is is encoded with the plus (+) sign in order to align with
   the default encoding used by modern browsers.
@@ -101,9 +101,13 @@ _class_ **UrlMalformedException** < _Exception_ {#url.UrlMalformedException .cla
 
   .UrlMalformedException(_message_) &#x279D; _Constructor_ {#url.UrlMalformedException.UrlMalformedException}
 
-  : UrlMalformedException(message: string)
+  : url.UrlMalformedException constructor
 
 
+    - **@params**:
+      - _string_ **message**
+
+    {.params}
 
 
 

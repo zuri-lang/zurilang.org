@@ -37,11 +37,11 @@ _mail_.parse(_message_) {#mail.parse}
 
 _mail_.smtp(_options_) {#mail.smtp}
 
-: Returns a new instance of SMTP {Transport} with the given __options__.
+: Returns a new instance of SMTP [Transport](#mail.Transport) with the given __options__.
 
 
   - **@params**:
-    - _{dict?}_ **options** See {Transport}
+    - _{dict?}_ **options** See [Transport](#mail.Transport)
 
 
   {.params}
@@ -74,7 +74,7 @@ _mail_.imap(_options_) &#x279D; _Exported_ {#mail.imap}
 
 _mail_.message() &#x279D; _Exported_ {#mail.message}
 
-: Returns a new instance of {Message}.
+: Returns a new instance of [Message](#mail.Message).
 
 
   - **@returns**: _Message_
@@ -160,8 +160,8 @@ _class_ **Transport** {#mail.Transport .class}
     - __port__: The port number of the SMTP server. (Default: 465)
     - __username__: The access username for the SMTP user.
     - __password__: The password for the connection user.
-    - __tls__: The TLS mode of the connection. One of {TLS_TRY} (default), {TLS_CONTROL}, 
-       {TLS_ALL} or {TLS_NONE}.
+    - __tls__: The TLS mode of the connection. One of [ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL](/standard/ssl#ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL), 
+       [ssl.TLS_ALL]] or [[ssl.TLS_NONE](/standard/ssl#ssl.TLS_ALL]] or [[ssl.TLS_NONE).
     - __debug__: Whether to print debug information or not. (Default: false)
     - __verify_peer__: If the peer certificate should be verified or not. (Default: false)
     - __verify_host__: If the host certificate should be verified or not. (Default: false)
@@ -248,8 +248,8 @@ _class_ **POP3** {#mail.POP3 .class}
     - __port__: The port number of the POP3 server. (Default: 110)
     - __username__: The access username for the POP3 user.
     - __password__: The password for the connection user.
-    - __tls__: The TLS mode of the connection. One of {TLS_TRY} (default), {TLS_CONTROL}, 
-       {TLS_ALL} or {TLS_NONE}.
+    - __tls__: The TLS mode of the connection. One of [ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL](/standard/ssl#ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL), 
+       [ssl.TLS_ALL]] or [[ssl.TLS_NONE](/standard/ssl#ssl.TLS_ALL]] or [[ssl.TLS_NONE).
     - __debug__: Whether to print debug information or not. (Default: false)
     - __verify_peer__: If the peer certificate should be verified or not. (Default: false)
     - __verify_host__: If the host certificate should be verified or not. (Default: false)
@@ -284,7 +284,7 @@ _class_ **POP3** {#mail.POP3 .class}
 
       - _string?_ **path** The path segment of the request url.
 
-      - _bool?_ **no_transfer** Set to `true` if the command will return the requested data 
+      - _bool?_ **no_transfer** Set to `true` if the command will return the requested data
 
 
     {.params}
@@ -423,8 +423,8 @@ _class_ **Imap** {#mail.Imap .class}
     - __port__: The port number of the Imap server. (Default: 143)
     - __username__: The access username for the Imap user.
     - __password__: The password for the connection user.
-    - __tls__: The TLS mode of the connection. One of {TLS_TRY} (default), {TLS_CONTROL}, 
-       {TLS_ALL} or {TLS_NONE}.
+    - __tls__: The TLS mode of the connection. One of [ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL](/standard/ssl#ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL), 
+       [ssl.TLS_ALL]] or [[ssl.TLS_NONE](/standard/ssl#ssl.TLS_ALL]] or [[ssl.TLS_NONE).
     - __debug__: Whether to print debug information or not. (Default: false)
     - __verify_peer__: If the peer certificate should be verified or not. (Default: false)
     - __verify_host__: If the host certificate should be verified or not. (Default: false)
@@ -787,7 +787,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     > **@notes**:
     > 
-    > - command must be one of `FLAGS`, `+FLAGS`, or `-FLAGS`, optionally with a 
+    > - command must be one of `FLAGS`, `+FLAGS`, or `-FLAGS`, optionally with a
 
     - **@returns**: _bool_
     {.returns}

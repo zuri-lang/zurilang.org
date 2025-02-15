@@ -311,7 +311,7 @@ As with custom modifiers the template library allows you to create and process c
 An example of a custom tag is the `<include />` tag previously discussed. To declare a custom 
 element and its behavior, you need to create a function that accepts two arguments and 
 register it with the `register_element()` method. When your custom element is matched in a 
-template, the registered function will be called with an instance of [[Template]] in the first 
+template, the registered function will be called with an instance of [[template.Template]] in the first 
 argument and the {{html}} decoded template as the second argument. Your function must then 
 return a string representing the processed tag or a valid HTML element Blade representation as 
 defined by the {{html}} module. 
@@ -728,8 +728,8 @@ _template_.json(_value_) {#template.json}
 
 _template_.template(_auto_init_) &#x279D; _Exported_ {#template.template}
 
-: Default function exporting the [[Template]] class that allows function 
-  initialization. See [[Template]].
+: Default function exporting the [Template](/standard/Template#Template) class that allows function 
+  initialization. See [Template](/standard/Template#Template).
 
 
   - **@params**:
@@ -756,14 +756,14 @@ _class_ **Template** {#template.Template .class}
   tpl.render_string('{{ name }}', {name: 'John Doe'})
   ```
   
-  Or from files located in your defined root directory. See [[Template.set_root]]
+  Or from files located in your defined root directory. See [Template.set_root](/standard/Template#Template.set_root)
   
   ```blade
   tpl.render('my_template', {name: 'John Doe'})
   ```
   
   You can enable initialize your templates with the auto_init option to allow 
-  [[Template]] create the root directory if it does not exist. The default root 
+  [Template](/standard/Template#Template) create the root directory if it does not exist. The default root 
   directory is a directory "`templates`" in the current working directory.
   
   For example,
@@ -781,7 +781,7 @@ _class_ **Template** {#template.Template .class}
   allows furnishes the interoperability between Blade's Wire templates and HTML5 since the
   former is based on the later anyway and allows us to leverage the already near 
   omnipresent support that HTML files have had over the years. This behavior can be 
-  changed using the [[Template.set_extension]] function to change the extension to any 
+  changed using the [Template.set_extension](/standard/Template#Template.set_extension) function to change the extension to any 
   desired string.
   
   For example,
@@ -793,7 +793,7 @@ _class_ **Template** {#template.Template .class}
   tpl.render('welcome')
   ```
   
-  This will cause [[Template.render]] to look for the file "`welcome.wire`" in the root 
+  This will cause [Template.render](/standard/Template#Template.render) to look for the file "`welcome.wire`" in the root 
   directory and will return an error if the file could not be found and no file matches 
   exactly "`welcome`" in the directory.
 
@@ -804,12 +804,12 @@ _class_ **Template** {#template.Template .class}
   : The constructor of the Template class.
     
     
-       directory will be automatically created on [[Template.set_root]] or 
-       [[Template.render]].
+       directory will be automatically created on [Template.set_root](/standard/Template#Template.set_root) or 
+       [Template.render](/standard/Template#Template.render).
 
 
     - **@params**:
-      - _bool_ **auto_init** : A boolean flag to control whether template root 
+      - _bool_ **auto_init** : A boolean flag to control whether template root
 
 
     {.params}
@@ -817,8 +817,8 @@ _class_ **Template** {#template.Template .class}
 
   .set\_root(_path_) {#template.Template.set_root}
 
-  : Set the template files root directory for [[Template.render]]. Returns `true` if 
-    the directory was automatically created (See [[Template._auto_init]]) or `false` 
+  : Set the template files root directory for [Template.render](/standard/Template#Template.render). Returns `true` if 
+    the directory was automatically created (See [Template._auto_init](/standard/Template#Template._auto_init)) or `false` 
     if it wasn't.
     
     If your template contains or will contain an `<include />` tag, the path given 
@@ -835,7 +835,7 @@ _class_ **Template** {#template.Template .class}
 
   .set\_extension(_ext_) {#template.Template.set_extension}
 
-  : Sets the default file extension to be used when [[Template.render]] and/or the 
+  : Sets the default file extension to be used when [Template.render](/standard/Template#Template.render) and/or the 
     `<include />` tag searches for template files in the root directory when the path 
     given does not match an existing file and does not end with another extension.
 
@@ -949,14 +949,14 @@ _class_ **Template** {#template.Template .class}
   .render(_path_, _variables_) {#template.Template.render}
 
   : Process and render template contained in the given template file. The template 
-    path should be a path relative to the root directory (See [[Template]]) and may 
+    path should be a path relative to the root directory (See [Template](/standard/Template#Template)) and may 
     or not carry any extension. If the template file uses the template _extension_ 
     (default: `.html`), the path argument may exclude the extension from the path
     altogether provided there is a file with a matching name that may or not have the 
-    default extension (See [[Template.set_extension]]). 
+    default extension (See [Template.set_extension](/standard/Template#Template.set_extension)). 
     
     The variables dictionary is used to pass variable data to the template being 
-    processed and behaves exactly the same way as with [[Template.render_string]].
+    processed and behaves exactly the same way as with [Template.render_string](/standard/Template#Template.render_string).
     
     ##### Example
     
@@ -965,7 +965,7 @@ _class_ **Template** {#template.Template .class}
     ```
     
     The above example renders the template as is and will raise if any variable is found in it.
-    You can pass a variable the same way you do with [[Template.render_string]].
+    You can pass a variable the same way you do with [Template.render_string](/standard/Template#Template.render_string).
 
 
     - **@params**:

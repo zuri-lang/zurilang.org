@@ -161,7 +161,7 @@ _sqlite_.open(_path_) {#sqlite.open}
     - _string?_ **path**
 
   {.params}
-  - **@returns**: _SQLite3_
+  - **@returns**: _[SQLite3](#sqlite.SQLite3)_
   {.returns}
 
 
@@ -220,7 +220,7 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
     
     
     
-    @throws SQLiteException if an error occured
+    @throws [SQLiteException](#sqlite.SQLiteException) if an error occured
 
 
     > **@notes**:
@@ -247,7 +247,7 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
       A number greater than 0 if it succeeded
      
     
-    @throws SQLiteException if database is not opened
+    @throws [SQLiteException](#sqlite.SQLiteException) if database is not opened
 
 
     - **@returns**: _number_
@@ -281,7 +281,7 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
     
     
     
-    @throws SQLiteException if an error occured.
+    @throws [SQLiteException](#sqlite.SQLiteException) if an error occured.
 
 
     - **@params**:
@@ -289,7 +289,7 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
       - _list|dict|nil_ **params**
 
     {.params}
-    - **@returns**: _SQLite3Cursor_
+    - **@returns**: _[SQLite3Cursor](#sqlite.SQLite3Cursor)_
     {.returns}
 
 
@@ -367,7 +367,7 @@ _class_ **SQLite3Cursor** {#sqlite.SQLite3Cursor .class}
     > - SQLite3Cursor should NEVER be maually instantiated.
 
     - **@params**:
-      - _SQLite3_ **db**
+      - _[SQLite3](#sqlite.SQLite3)_ **db**
       - _ptr_ **cursor**
 
     {.params}
@@ -401,12 +401,12 @@ _class_ **SQLite3Cursor** {#sqlite.SQLite3Cursor .class}
     
     
     
-    @throws SQLiteException if no matching column can be found.
+    @throws [SQLiteException](#sqlite.SQLiteException) if no matching column can be found.
 
 
     > **@notes**:
     > 
-    > - If index is a number, it returns the value in the column at the given index. 
+    > - If index is a number, it returns the value in the column at the given index.
 
     > - Index must be lower than columns.length() in this case.
 
