@@ -1,7 +1,7 @@
 # The Blade Language Documentation
 
 
-Welcome! This is the official documentation for Blade 0.0.86.
+Welcome! This is the official documentation for Blade 0.0.87.
 
 > For the official package manager, test runner and repository server &mdash; [Nyssa](https://nyssa.bladelang.org), visit [https://nyssa.bladelang.org](https://nyssa.bladelang.org).
 
@@ -11,7 +11,7 @@ Welcome! This is the official documentation for Blade 0.0.86.
 [![Gitter](https://badges.gitter.im/blade-lang/community.svg)](https://gitter.im/blade-lang/community)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/blade-lang/blade/blob/master/LICENSE)
 [![Coverage Status](https://coveralls.io/repos/github/blade-lang/blade/badge.svg?branch=main)](https://coveralls.io/github/blade-lang/blade?branch=main)
-[![Version](https://img.shields.io/badge/version-0.0.86-green)](https://github.com/blade-lang/blade)
+[![Version](https://img.shields.io/badge/version-0.0.87-green)](https://github.com/blade-lang/blade)
 
 
 
@@ -78,12 +78,12 @@ While Blade focuses on Web and IoT, it is also great for general software develo
 ## Download
 
 <span>
-<a href="https://github.com/blade-lang/blade/releases/download/v0.0.86/blade-windows-v0.0.86.zip" class="btn btn-primary fs-6 mb-4 mb-md-0 mr-2">Windows &nbsp;<span class="fa-brands fa-windows"></span></a>
-<a href="https://github.com/blade-lang/blade/releases/download/v0.0.86/blade-linux-v0.0.86.zip" class="btn btn-linux fs-6 mb-4 mb-md-0 mr-2">Linux  &nbsp;<span class="fa-brands fa-linux"></span></a>
-<a href="https://github.com/blade-lang/blade/releases/download/v0.0.86/blade-macos-v0.0.86.zip" class="btn btn-gray fs-6 mb-4 mb-md-0 mr-2">MacOS  &nbsp;<span class="fa-brands fa-apple"></span></a>
+<a href="https://github.com/blade-lang/blade/releases/download/v0.0.87/blade-windows-v0.0.87.zip" class="btn btn-primary fs-6 mb-4 mb-md-0 mr-2">Windows &nbsp;<span class="fa-brands fa-windows"></span></a>
+<a href="https://github.com/blade-lang/blade/releases/download/v0.0.87/blade-linux-v0.0.87.zip" class="btn btn-linux fs-6 mb-4 mb-md-0 mr-2">Linux  &nbsp;<span class="fa-brands fa-linux"></span></a>
+<a href="https://github.com/blade-lang/blade/releases/download/v0.0.87/blade-macos-v0.0.87.zip" class="btn btn-gray fs-6 mb-4 mb-md-0 mr-2">MacOS  &nbsp;<span class="fa-brands fa-apple"></span></a>
 </span>
 
-> Since version 0.0.86, Every Blade download/installation comes with `nyssa` &mdash; the official package manager, test runner and repository server for Blade.
+> Since version 0.0.87, Every Blade download/installation comes with `nyssa` &mdash; the official package manager, test runner and repository server for Blade.
 
 > - This downloads only support `x86-64` plaforms. 
 > - Apple M1 devices should install `Rosetta 2` to run the downloaded application or install from source.
@@ -182,7 +182,7 @@ Something like this:
 
 ```terminal
 $ blade
-Blade 0.0.86 (running on BladeVM 0.1.1), REPL/Interactive mode = ON
+Blade 0.0.87 (running on BladeVM 0.1.1), REPL/Interactive mode = ON
 Clang 13.0.0, (Build time = Feb  8 2022, 02:47:36)
 Type ".exit" to quit or ".credits" for more information
 %> echo 'Hello, World'
@@ -250,7 +250,7 @@ For example, to get the version of Blade installed:
 
 ```terminal
 $ blade -v
-Blade 0.0.86 (running on BladeVM 0.1.0)
+Blade 0.0.87 (running on BladeVM 0.1.0)
 ```
 
 

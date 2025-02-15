@@ -63,7 +63,7 @@ Simple type `blade` in your terminal to launch REPL mode
 
 ```terminal
 $ blade
-Blade 0.0.86 (running on BladeVM 0.1.1), REPL/Interactive mode = ON
+Blade 0.0.87 (running on BladeVM 0.1.1), REPL/Interactive mode = ON
 Clang 13.0.0, (Build time = Feb  8 2022, 02:47:36)
 Type ".exit" to quit or ".credits" for more information
 %> 
@@ -323,7 +323,7 @@ Blade comes with built-in support for strings, ranges, bytes, lists, and diction
 
 ```blade-repl
 %> var list = [1, 'game', false]  # any data type can fit in...
-%> var dictionary = {name: 'Blade', version: '0.0.86'}
+%> var dictionary = {name: 'Blade', version: '0.0.87'}
 %> var byte_array = bytes([104, 101, 108, 108, 111])  # hello
 %> var sized_bytes = bytes(10)   # a byte array of size 10 with all entries as 0x0
 %> 
@@ -335,11 +335,11 @@ Blade comes with built-in support for strings, ranges, bytes, lists, and diction
 [game]
 %> 
 %> # update value (string values cannot be updated as they are immutable)
-%> dictionary['version'] = 'version 0.0.86'
+%> dictionary['version'] = 'version 0.0.87'
 %> list[0]++
 %> 
 %> echo dictionary
-{name: Blade, version: version 0.0.86}
+{name: Blade, version: version 0.0.87}
 %> echo list
 [2, game, false]
 %> 
