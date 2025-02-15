@@ -48,41 +48,41 @@ By default, all these options are set to their exported values, adhering to the 
 
 ## Fields
 
-**name2codepoint** &#8674; _dict_
-:  Dictionary of HTML entity name to the Unicode code point
+_html_.**name2codepoint** &#x279D; _dict_
+: Dictionary of HTML entity name to the Unicode code point
 
-**html5** &#8674; _dict_
-:  Dictionary of HTML5 named character references to the equivalent Unicode character(s).
+_html_.**html5** &#x279D; _dict_
+: Dictionary of HTML5 named character references to the equivalent Unicode character(s).
 
-**codepoint2name** &#8674; _dict_
-:  Dictionary of Unicode code point to the HTML entity name
+_html_.**codepoint2name** &#x279D; _dict_
+: Dictionary of Unicode code point to the HTML entity name
 
-**entitydefs**
-:  Dictionary of HTML entity name to the character
+_html_.**entitydefs**
+: Dictionary of HTML entity name to the character
   (or a character reference if the character is outside the Latin-1 range)
 
-**childless\_tags** &#8674; _readonly_ _list_
-:  Tags which contain arbitrary non-parsed content
+_html_.**childless\_tags** &#x279D; _readonly_ _list_
+: Tags which contain arbitrary non-parsed content
   For example: `<script>` JavaScript should not be parsed
 
-**closing\_tags** &#8674; _readonly_ _list_
-:  Tags which auto-close because they cannot be nested
+_html_.**closing\_tags** &#x279D; _readonly_ _list_
+: Tags which auto-close because they cannot be nested
   For example: `<p>Outer<p>Inner is <p>Outer</p><p>Inner</p>`
 
-**tag\_ancestors** &#8674; _readonly_ _list_
-:  Closing tags which have ancestor tags which may exist within 
+_html_.**tag\_ancestors** &#x279D; _readonly_ _list_
+: Closing tags which have ancestor tags which may exist within 
   them which prevent the closing tag from auto-closing.
   For example: in `<li><ul><li></ul></li>`, the top-level `<li>` 
   should not auto-close.
 
-**void\_tags** &#8674; _readonly_ _list_
-:  Tags which do not need the closing tag
+_html_.**void\_tags** &#x279D; _readonly_ _list_
+: Tags which do not need the closing tag
   For example: `<img>` does not need `</img>`
 
 
 ## Functions
 
-decode(_str_, _options_) {#html.decode}
+_html_.decode(_str_, _options_) {#html.decode}
 
 : Decodes an HTML string into a list of nodes (described above) 
   representing the structure of the HTML document.
@@ -129,10 +129,11 @@ decode(_str_, _options_) {#html.decode}
 
   {.params}
   - **@returns**: _list_
+  {.returns}
 
 
 
-encode(_nodes_, _options_) {#html.encode}
+_html_.encode(_nodes_, _options_) {#html.encode}
 
 : Encodes the list of `elements` into an HTML string.
   
@@ -148,6 +149,7 @@ encode(_nodes_, _options_) {#html.encode}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 

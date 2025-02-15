@@ -75,242 +75,242 @@ socket.close()
 
 ## Fields
 
-**SOCK\_STREAM**
-:  stream socket
+_socket_.**SOCK\_STREAM**
+: stream socket
 
-**SOCK\_DGRAM**
-:  datagram socket
+_socket_.**SOCK\_DGRAM**
+: datagram socket
 
-**SOCK\_RAW**
-:  raw-protocol interface
+_socket_.**SOCK\_RAW**
+: raw-protocol interface
 
-**SOCK\_RDM**
-:  reliably-delivered message
+_socket_.**SOCK\_RDM**
+: reliably-delivered message
 
-**SOCK\_SEQPACKET**
-:  sequenced packet stream
+_socket_.**SOCK\_SEQPACKET**
+: sequenced packet stream
 
-**SO\_DEBUG**
-:  Turn on debugging info recording
+_socket_.**SO\_DEBUG**
+: Turn on debugging info recording
 
-**SO\_ACCEPTCONN**
-:  Socket has had listen()
+_socket_.**SO\_ACCEPTCONN**
+: Socket has had listen()
 
-**SO\_REUSEADDR**
-:  Allow local address reuse
+_socket_.**SO\_REUSEADDR**
+: Allow local address reuse
 
-**SO\_KEEPALIVE**
-:  Keep connections alive
+_socket_.**SO\_KEEPALIVE**
+: Keep connections alive
 
-**SO\_DONTROUTE**
-:  Just use interface addresses
+_socket_.**SO\_DONTROUTE**
+: Just use interface addresses
 
-**SO\_BROADCAST**
-:  Permit sending of broadcast msgs
+_socket_.**SO\_BROADCAST**
+: Permit sending of broadcast msgs
 
-**SO\_USELOOPBACK**
-:  Bypass hardware when possible
+_socket_.**SO\_USELOOPBACK**
+: Bypass hardware when possible
 
-**SO\_LINGER**
-:  Linger on close if data present (in ticks)
+_socket_.**SO\_LINGER**
+: Linger on close if data present (in ticks)
 
-**SO\_OOBINLINE**
-:  Leave received OOB data in line
+_socket_.**SO\_OOBINLINE**
+: Leave received OOB data in line
 
-**SO\_REUSEPORT**
-:  Allow local address & port reuse
+_socket_.**SO\_REUSEPORT**
+: Allow local address & port reuse
 
-**SO\_TIMESTAMP**
-:  Timestamp received dgram traffic
+_socket_.**SO\_TIMESTAMP**
+: Timestamp received dgram traffic
 
-**SO\_SNDBUF**
-:  Send buffer size
+_socket_.**SO\_SNDBUF**
+: Send buffer size
 
-**SO\_RCVBUF**
-:  Receive buffer size
+_socket_.**SO\_RCVBUF**
+: Receive buffer size
 
-**SO\_SNDLOWAT**
-:  Send low-water mark
+_socket_.**SO\_SNDLOWAT**
+: Send low-water mark
 
-**SO\_RCVLOWAT**
-:  Receive low-water mark
+_socket_.**SO\_RCVLOWAT**
+: Receive low-water mark
 
-**SO\_SNDTIMEO**
-:  Send timeout
+_socket_.**SO\_SNDTIMEO**
+: Send timeout
 
-**SO\_RCVTIMEO**
-:  Receive timeout
+_socket_.**SO\_RCVTIMEO**
+: Receive timeout
 
-**SO\_ERROR**
-:  Get error status and clear
+_socket_.**SO\_ERROR**
+: Get error status and clear
 
-**SO\_TYPE**
-:  Get socket type
+_socket_.**SO\_TYPE**
+: Get socket type
 
-**SOL\_SOCKET**
-:  Options for socket level
+_socket_.**SOL\_SOCKET**
+: Options for socket level
 
-**AF\_UNSPEC**
-:  Unspecified
+_socket_.**AF\_UNSPEC**
+: Unspecified
 
-**AF\_UNIX**
-:  Local to host (pipes)
+_socket_.**AF\_UNIX**
+: Local to host (pipes)
 
-**AF\_LOCAL**
-:  Backward compatibility with AF_UNIX
+_socket_.**AF\_LOCAL**
+: Backward compatibility with AF_UNIX
 
-**AF\_INET**
-:  Internetwork: UDP, TCP, etc.
+_socket_.**AF\_INET**
+: Internetwork: UDP, TCP, etc.
 
-**AF\_IMPLINK**
-:  Arpanet imp addresses
+_socket_.**AF\_IMPLINK**
+: Arpanet imp addresses
 
-**AF\_PUP**
-:  PUP protocols: e.g. BSP
+_socket_.**AF\_PUP**
+: PUP protocols: e.g. BSP
 
-**AF\_CHAOS**
-:  MIT CHAOS protocols
+_socket_.**AF\_CHAOS**
+: MIT CHAOS protocols
 
-**AF\_NS**
-:  XEROX NS protocols
+_socket_.**AF\_NS**
+: XEROX NS protocols
 
-**AF\_ISO**
-:  ISO protocols
+_socket_.**AF\_ISO**
+: ISO protocols
 
-**AF\_OSI**
-:  ISO protocols (same as AF_ISO)
+_socket_.**AF\_OSI**
+: ISO protocols (same as AF_ISO)
 
-**AF\_ECMA**
-:  European computer manufacturers
+_socket_.**AF\_ECMA**
+: European computer manufacturers
 
-**AF\_DATAKIT**
-:  Datakit protocols
+_socket_.**AF\_DATAKIT**
+: Datakit protocols
 
-**AF\_CCITT**
-:  CCITT protocols, X.25 etc
+_socket_.**AF\_CCITT**
+: CCITT protocols, X.25 etc
 
-**AF\_SNA**
-:  IBM SNA
+_socket_.**AF\_SNA**
+: IBM SNA
 
-**AF\_DECnet**
-:  DECnet
+_socket_.**AF\_DECnet**
+: DECnet
 
-**AF\_DLI**
-:  DEC Direct data link interface
+_socket_.**AF\_DLI**
+: DEC Direct data link interface
 
-**AF\_LAT**
-:  LAT
+_socket_.**AF\_LAT**
+: LAT
 
-**AF\_HYLINK**
-:  NSC Hyperchannel
+_socket_.**AF\_HYLINK**
+: NSC Hyperchannel
 
-**AF\_APPLETALK**
-:  Apple Talk
+_socket_.**AF\_APPLETALK**
+: Apple Talk
 
-**AF\_INET6**
-:  IPv6
+_socket_.**AF\_INET6**
+: IPv6
 
-**IPPROTO\_IP**
-:  IPPROTO_IP
+_socket_.**IPPROTO\_IP**
+: IPPROTO_IP
 
-**IPPROTO\_ICMP**
-:  IPPROTO_ICMP
+_socket_.**IPPROTO\_ICMP**
+: IPPROTO_ICMP
 
-**IPPROTO\_IGMP**
-:  IPPROTO_IGMP
+_socket_.**IPPROTO\_IGMP**
+: IPPROTO_IGMP
 
-**IPPROTO\_IPIP**
-:  IPPROTO_IPIP
+_socket_.**IPPROTO\_IPIP**
+: IPPROTO_IPIP
 
-**IPPROTO\_TCP**
-:  IPPROTO_TCP
+_socket_.**IPPROTO\_TCP**
+: IPPROTO_TCP
 
-**IPPROTO\_EGP**
-:  IPPROTO_EGP
+_socket_.**IPPROTO\_EGP**
+: IPPROTO_EGP
 
-**IPPROTO\_PUP**
-:  IPPROTO_PUP
+_socket_.**IPPROTO\_PUP**
+: IPPROTO_PUP
 
-**IPPROTO\_UDP**
-:  IPPROTO_UDP
+_socket_.**IPPROTO\_UDP**
+: IPPROTO_UDP
 
-**IPPROTO\_IDP**
-:  IPPROTO_IDP
+_socket_.**IPPROTO\_IDP**
+: IPPROTO_IDP
 
-**IPPROTO\_TP**
-:  IPPROTO_TP
+_socket_.**IPPROTO\_TP**
+: IPPROTO_TP
 
-**IPPROTO\_DCCP**
-:  IPPROTO_DCCP
+_socket_.**IPPROTO\_DCCP**
+: IPPROTO_DCCP
 
-**IPPROTO\_IPV6**
-:  IPPROTO_IPV6
+_socket_.**IPPROTO\_IPV6**
+: IPPROTO_IPV6
 
-**IPPROTO\_RSVP**
-:  IPPROTO_RSVP
+_socket_.**IPPROTO\_RSVP**
+: IPPROTO_RSVP
 
-**IPPROTO\_GRE**
-:  IPPROTO_GRE
+_socket_.**IPPROTO\_GRE**
+: IPPROTO_GRE
 
-**IPPROTO\_ESP**
-:  IPPROTO_ESP
+_socket_.**IPPROTO\_ESP**
+: IPPROTO_ESP
 
-**IPPROTO\_AH**
-:  IPPROTO_AH
+_socket_.**IPPROTO\_AH**
+: IPPROTO_AH
 
-**IPPROTO\_MTP**
-:  IPPROTO_MTP
+_socket_.**IPPROTO\_MTP**
+: IPPROTO_MTP
 
-**IPPROTO\_BEETPH**
-:  IPPROTO_BEETPH
+_socket_.**IPPROTO\_BEETPH**
+: IPPROTO_BEETPH
 
-**IPPROTO\_ENCAP**
-:  IPPROTO_ENCAP
+_socket_.**IPPROTO\_ENCAP**
+: IPPROTO_ENCAP
 
-**IPPROTO\_PIM**
-:  IPPROTO_PIM
+_socket_.**IPPROTO\_PIM**
+: IPPROTO_PIM
 
-**IPPROTO\_COMP**
-:  IPPROTO_COMP
+_socket_.**IPPROTO\_COMP**
+: IPPROTO_COMP
 
-**IPPROTO\_SCTP**
-:  IPPROTO_SCTP
+_socket_.**IPPROTO\_SCTP**
+: IPPROTO_SCTP
 
-**IPPROTO\_UDPLITE**
-:  IPPROTO_UDPLITE
+_socket_.**IPPROTO\_UDPLITE**
+: IPPROTO_UDPLITE
 
-**IPPROTO\_MPLS**
-:  IPPROTO_MPLS
+_socket_.**IPPROTO\_MPLS**
+: IPPROTO_MPLS
 
-**IPPROTO\_RAW**
-:  IPPROTO_RAW
+_socket_.**IPPROTO\_RAW**
+: IPPROTO_RAW
 
-**IPPROTO\_MAX**
-:  IPPROTO_MAX
+_socket_.**IPPROTO\_MAX**
+: IPPROTO_MAX
 
-**SHUT\_RD**
-:  Shut down the reading side
+_socket_.**SHUT\_RD**
+: Shut down the reading side
 
-**SHUT\_WR**
-:  Shut down the writing side
+_socket_.**SHUT\_WR**
+: Shut down the writing side
 
-**SHUT\_RDWR**
-:  Shut down both sides
+_socket_.**SHUT\_RDWR**
+: Shut down both sides
 
-**SOMAXCONN**
-:  Maximum queue length specifiable by listen.
+_socket_.**SOMAXCONN**
+: Maximum queue length specifiable by listen.
 
-**IP\_ANY** &#8674; _string_
-:  The non-designated address used to represent "no particular address"
+_socket_.**IP\_ANY** &#x279D; _string_
+: The non-designated address used to represent "no particular address"
   (also referred to as "any address")
 
-**IP\_LOCAL** &#8674; _string_
-:  The loopback address (also known as localhost).
+_socket_.**IP\_LOCAL** &#x279D; _string_
+: The loopback address (also known as localhost).
 
 
 ## Functions
 
-get\_address\_info(_address_, _type_, _family_) {#socket.get_address_info}
+_socket_.get\_address\_info(_address_, _type_, _family_) {#socket.get_address_info}
 
 : Returns ip and name information of a given address.
 
@@ -324,10 +324,11 @@ get\_address\_info(_address_, _type_, _family_) {#socket.get_address_info}
 
   {.params}
   - **@returns**: _dictionary_
+  {.returns}
 
 
 
-socket(_family_, _type_, _protocol_) &#8674; Exported {#socket.socket}
+_socket_.socket(_family_, _type_, _protocol_) &#x279D; _Exported_ {#socket.socket}
 
 : Returns a new instance of a Socket.
 
@@ -339,6 +340,7 @@ socket(_family_, _type_, _protocol_) &#8674; Exported {#socket.socket}
 
   {.params}
   - **@returns**: _Socket_
+  {.returns}
 
 
 
@@ -357,71 +359,73 @@ _class_ **Socket** {#socket.Socket .class}
   and servers.
 
 
-  ~ Properties
+    __@printable__
+    {.class-props}
 
-    - __@printable__
-
-  **.host** &#8674; _string_
-  :  This property holds the host bound, to be bound to or connected to by the current socket.
+  **.host** &#x279D; _string_
+  : This property holds the host bound, to be bound to or connected to by the current socket.
     Whenever a host is not given, the host will default to localhost.
 
-  **.port** &#8674; _int_
-  :  The port currently bound or connected to by the socket.
+  **.port** &#x279D; _int_
+  : The port currently bound or connected to by the socket.
 
-  **.family** &#8674; _int_
-  :  The socket family (which must be one of the `AF_` variables).
+  **.family** &#x279D; _int_
+  : The socket family (which must be one of the `AF_` variables).
     The default family for the socket is AF_INET.
 
-  **.type** &#8674; _int_
-  :  The type of socket stream used by the socket.
+  **.type** &#x279D; _int_
+  : The type of socket stream used by the socket.
     The default socket type is `SOCK_STREAM`.
 
-  **.protocol** &#8674; _int_
-  :  The current operating protocol of the socket that controls the 
+  **.protocol** &#x279D; _int_
+  : The current operating protocol of the socket that controls the 
     underlying behavior of the socket. The default is `IPPROTO_TCP`.
 
-  **.id** &#8674; _int_
-  :  The file descriptor id of the current socket on the host machine.
+  **.id** &#x279D; _int_
+  : The file descriptor id of the current socket on the host machine.
 
-  **.is\_client** &#8674; _bool_
-  :  `true` when the socket is a client to a server socket, `false` otherwise.
+  **.is\_client** &#x279D; _bool_
+  : `true` when the socket is a client to a server socket, `false` otherwise.
 
-  **.is\_bound** &#8674; _bool_
-  :  `true` when the socket is bound to a given port on the device, `false` 
+  **.is\_bound** &#x279D; _bool_
+  : `true` when the socket is bound to a given port on the device, `false` 
     otherwise.
 
-  **.is\_connected** &#8674; _bool_
-  :  `true` when the socket is connected to a server socket, `false` otherwise.
+  **.is\_connected** &#x279D; _bool_
+  : `true` when the socket is connected to a server socket, `false` otherwise.
 
-  **.is\_listening** &#8674; _bool_
-  :  `true` when the socket is currently listening on a host device port as a 
+  **.is\_listening** &#x279D; _bool_
+  : `true` when the socket is currently listening on a host device port as a 
     server, `false` otherwise.
 
-  **.is\_closed** &#8674; _bool_
-  :  `true` when the socket is closed, `false` otherwise.
+  **.is\_closed** &#x279D; _bool_
+  : `true` when the socket is closed, `false` otherwise.
 
-  **.is\_shutdown** &#8674; _bool_
-  :  `true` when the socket is shutdown, `false` otherwise.
+  **.is\_shutdown** &#x279D; _bool_
+  : `true` when the socket is shutdown, `false` otherwise.
 
-  **.is\_blocking** &#8674; _bool_
-  :  `true` when the socket is running in a blocking mode, `false` otherwise.
+  **.is\_blocking** &#x279D; _bool_
+  : `true` when the socket is running in a blocking mode, `false` otherwise.
 
-  **.shutdown\_reason** &#8674; _int_
-  :  The property holds the reason for which the last `shutdown` operation 
+  **.shutdown\_reason** &#x279D; _int_
+  : The property holds the reason for which the last `shutdown` operation 
     was called or `-1` if `shutdown` was never requested.
 
-  **.send\_timeout** &#8674; _int_
-  :  The amount of time in milliseconds that the socket waits before it 
+  **.send\_timeout** &#x279D; _int_
+  : The amount of time in milliseconds that the socket waits before it 
     terminates a `send` operation. This is equal to the `SO_SNDTIMEO`.
 
-  **.receive\_timeout** &#8674; _int_
-  :  The amount of time in milliseconds that the socket waits before it 
+  **.receive\_timeout** &#x279D; _int_
+  : The amount of time in milliseconds that the socket waits before it 
     terminates a `receive` operation. This is equal to the `SO_RCVTIMEO`.
 
 
-  .Socket(_family_, _type_, _protocol_, _id_) &#8674; Constructor {#socket.Socket.Socket}
+  .Socket(_family_, _type_, _protocol_, _id_) &#x279D; _Constructor_ {#socket.Socket.Socket}
 
-  : - **@params**:
+  : socket.Socket constructor
+
+
+    - **@params**:
       - _number_ **family**
       - _number?_ **type**
       - _number?_ **protocol**
@@ -443,6 +447,7 @@ _class_ **Socket** {#socket.Socket .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .bind(_port_, _host_) {#socket.Socket.bind}
@@ -457,6 +462,7 @@ _class_ **Socket** {#socket.Socket .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .send(_message_, _flags_) {#socket.Socket.send}
@@ -472,6 +478,7 @@ _class_ **Socket** {#socket.Socket .class}
 
     {.params}
     - **@returns**: _number greater than -1 if successful indicating the total number of bytes sent or -1 if it fails._
+    {.returns}
 
 
   .receive(_length_, _flags_) {#socket.Socket.receive}
@@ -490,6 +497,7 @@ _class_ **Socket** {#socket.Socket .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
   .read(_length_) {#socket.Socket.read}
@@ -512,6 +520,7 @@ _class_ **Socket** {#socket.Socket .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
   .listen(_queue_length_) {#socket.Socket.listen}
@@ -537,6 +546,7 @@ _class_ **Socket** {#socket.Socket .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .accept() {#socket.Socket.accept}
@@ -554,6 +564,7 @@ _class_ **Socket** {#socket.Socket .class}
 
 
     - **@returns**: _Socket_
+    {.returns}
 
 
   .close() {#socket.Socket.close}
@@ -562,6 +573,7 @@ _class_ **Socket** {#socket.Socket .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .shutdown(_how_) {#socket.Socket.shutdown}
@@ -578,6 +590,7 @@ _class_ **Socket** {#socket.Socket .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .set\_option(_option_, _value_) {#socket.Socket.set_option}
@@ -595,6 +608,7 @@ _class_ **Socket** {#socket.Socket .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .get\_option(_option_) {#socket.Socket.get_option}
@@ -607,6 +621,7 @@ _class_ **Socket** {#socket.Socket .class}
 
     {.params}
     - **@returns**: _any_
+    {.returns}
 
 
   .set\_blocking(_mode_) {#socket.Socket.set_blocking}
@@ -628,6 +643,7 @@ _class_ **Socket** {#socket.Socket .class}
 
 
     - **@returns**: _dictionary_
+    {.returns}
 
 
 

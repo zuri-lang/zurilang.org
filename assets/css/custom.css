@@ -2,6 +2,19 @@
   --scheme-color: #ff5722;  
 }
 
+body {
+  font-size: 16px;
+}
+
+.header .links a, .header .links span, .header .logo a, .header .logo a:hover, .header .logo a:active {
+  color: var(--scheme-color);
+}
+
+header {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
 div {
   display: block;
   width: 100%;
@@ -74,11 +87,12 @@ ul li {
   list-style: disc;
 }
 
-h2[id], h3[id], h4[id] {
+h2[id], h3[id], h4[id], dt[id] {
   position: relative;
+  cursor: pointer;
 }
 
-h2[id]::after, h3[id]::after, h4[id]::after {
+h2[id]::after, h3[id]::after, h4[id]::after , dt[id]::after {
   content: "#";
   position: absolute;
   top: 0.5rem;
@@ -90,7 +104,7 @@ h2[id]::after, h3[id]::after, h4[id]::after {
   cursor: pointer;
 }
 
-h2[id]:hover::after, h3[id]:hover::after, h4[id]:hover::after {
+h2[id]:hover::after, h3[id]:hover::after, h4[id]:hover::after, dt[id]:hover::after {
   display: inline;
 }
 
@@ -183,6 +197,7 @@ dt em {
 
 dt[id]:not(.class) {
   font-size: 1.1em;
+  padding-top: 1rem;
 }
 
 .content dt.class {
@@ -204,24 +219,51 @@ dt[id]:not(.class) {
   margin-top: 0;
 }
 
-.params li {
+.params li, .returns li, .raises li {
   list-style-type: none;
 }
 
-.params ul li {
+.params ul li, .returns ul li, .raises ul li {
   list-style-type: disc;
+  line-height: 1.5;
 }
 
-.params ul {
+.params ul, .returns ul, .raises ul {
   padding-left: 1rem;
+}
+
+.params, .returns, .raises {
+  margin-bottom: 0;
 }
 
 .content h2 + dl {
   padding-top: 0;
 }
 
+.content .class-props {
+  font-weight: 400;
+  font-size: .88rem;
+  padding: .25rem;
+  margin: .25rem;
+  font-style: italic;
+  color: #40a2e0;
+}
+
+.content p {
+  margin-top: .35rem;
+  margin-bottom: .35rem;
+}
+
+.content dd p:first-child, .content dd p:first-of-type {
+  margin-top: 0;
+}
+
+.content dd p:last-child, .content dd p:last-of-type {
+  margin-bottom: 0;
+}
+
 @media (prefers-color-scheme: dark) {
-  h2[id]::after, h3[id]::after, h4[id]::after {
+  h2[id]::after, h3[id]::after, h4[id]::after, dt[id]::after {
     color: color-mix(in srgb, var(--static-color), black 60%);
   }
 

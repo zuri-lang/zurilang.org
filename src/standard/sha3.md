@@ -35,7 +35,7 @@ get a hexadecimal string from the digest.
 
 ## Functions
 
-keccak\_224(_message_) {#sha3.keccak_224}
+_sha3_.keccak\_224(_message_) {#sha3.keccak_224}
 
 : Returns the Keccak-224 cryptographic hash of the given string or bytes.
 
@@ -45,10 +45,11 @@ keccak\_224(_message_) {#sha3.keccak_224}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-keccak\_256(_message_) {#sha3.keccak_256}
+_sha3_.keccak\_256(_message_) {#sha3.keccak_256}
 
 : Returns the Keccak-256 cryptographic hash of the given string or bytes.
 
@@ -58,10 +59,11 @@ keccak\_256(_message_) {#sha3.keccak_256}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-keccak\_384(_message_) {#sha3.keccak_384}
+_sha3_.keccak\_384(_message_) {#sha3.keccak_384}
 
 : Returns the Keccak-384 cryptographic hash of the given string or bytes.
 
@@ -71,10 +73,11 @@ keccak\_384(_message_) {#sha3.keccak_384}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-keccak\_512(_message_) {#sha3.keccak_512}
+_sha3_.keccak\_512(_message_) {#sha3.keccak_512}
 
 : Returns the Keccak-512 cryptographic hash of the given string or bytes.
 
@@ -84,10 +87,11 @@ keccak\_512(_message_) {#sha3.keccak_512}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-sha3\_224(_message_) {#sha3.sha3_224}
+_sha3_.sha3\_224(_message_) {#sha3.sha3_224}
 
 : Returns the SHA3-224 cryptographic hash of the given string or bytes.
 
@@ -97,10 +101,11 @@ sha3\_224(_message_) {#sha3.sha3_224}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-sha3\_256(_message_) {#sha3.sha3_256}
+_sha3_.sha3\_256(_message_) {#sha3.sha3_256}
 
 : Returns the SHA3-256 cryptographic hash of the given string or bytes.
 
@@ -110,10 +115,11 @@ sha3\_256(_message_) {#sha3.sha3_256}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-sha3\_384(_message_) {#sha3.sha3_384}
+_sha3_.sha3\_384(_message_) {#sha3.sha3_384}
 
 : Returns the SHA3-384 cryptographic hash of the given string or bytes.
 
@@ -123,10 +129,11 @@ sha3\_384(_message_) {#sha3.sha3_384}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-sha3\_512(_message_) {#sha3.sha3_512}
+_sha3_.sha3\_512(_message_) {#sha3.sha3_512}
 
 : Returns the SHA3-512 cryptographic hash of the given string or bytes.
 
@@ -136,10 +143,11 @@ sha3\_512(_message_) {#sha3.sha3_512}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-shake128(_length_, _message_) {#sha3.shake128}
+_sha3_.shake128(_length_, _message_) {#sha3.shake128}
 
 : Returns the SHAKE-128 cryptographic hash of the given string or bytes computed to the given length.
 
@@ -150,10 +158,11 @@ shake128(_length_, _message_) {#sha3.shake128}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-shake256(_length_, _message_) {#sha3.shake256}
+_sha3_.shake256(_length_, _message_) {#sha3.shake256}
 
 : Returns the SHAKE-256 cryptographic hash of the given string or bytes computed to the given length.
 
@@ -164,6 +173,7 @@ shake256(_length_, _message_) {#sha3.shake256}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
@@ -175,9 +185,12 @@ _class_ **Keccak** {#sha3.Keccak .class}
 
 
 
-  .Keccak(_bits_, _padding_, _length_) &#8674; Constructor {#sha3.Keccak.Keccak}
+  .Keccak(_bits_, _padding_, _length_) &#x279D; _Constructor_ {#sha3.Keccak.Keccak}
 
-  : - **@params**:
+  : sha3.Keccak constructor
+
+
+    - **@params**:
       - _number_ **bits** : Capacity
 
       - _number_ **padding** : Padding value - 1 for Keccak, 6 for SHA3 and 31 for SHAKE
@@ -194,6 +207,7 @@ _class_ **Keccak** {#sha3.Keccak .class}
 
 
     - **@returns**: _self_
+    {.returns}
 
 
   .update(_message_) {#sha3.Keccak.update}
@@ -206,6 +220,7 @@ _class_ **Keccak** {#sha3.Keccak .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
   .digest(_message_) {#sha3.Keccak.digest}
@@ -219,6 +234,7 @@ _class_ **Keccak** {#sha3.Keccak .class}
 
     {.params}
     - **@returns**: _bytes_
+    {.returns}
 
 
   .hash(_message_) {#sha3.Keccak.hash}
@@ -232,6 +248,7 @@ _class_ **Keccak** {#sha3.Keccak .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
 

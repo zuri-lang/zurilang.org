@@ -8,7 +8,7 @@ alternative.
 
 ## Functions
 
-of(_value_) {#types.of}
+_types_.of(_value_) {#types.of}
 
 : Returns the name of the type of value
 
@@ -22,10 +22,11 @@ of(_value_) {#types.of}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-digit(_value_) {#types.digit}
+_types_.digit(_value_) {#types.digit}
 
 : Returns true if the value is a character and digit,
   otherwise returns false.
@@ -36,10 +37,11 @@ digit(_value_) {#types.digit}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-alpha(_value_) {#types.alpha}
+_types_.alpha(_value_) {#types.alpha}
 
 : Returns true if the value is a character and alphabetic,
   otherwise returns false.
@@ -50,10 +52,11 @@ alpha(_value_) {#types.alpha}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-int(_value_) {#types.int}
+_types_.int(_value_) {#types.int}
 
 : Returns true if the value is an integer or false otherwise.
 
@@ -63,10 +66,11 @@ int(_value_) {#types.int}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-bool(_value_) {#types.bool}
+_types_.bool(_value_) {#types.bool}
 
 : Returns true if the value is a boolean or false otherwise.
 
@@ -76,10 +80,11 @@ bool(_value_) {#types.bool}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-number(_value_) {#types.number}
+_types_.number(_value_) {#types.number}
 
 : Returns true if the value is a number or false otherwise.
 
@@ -93,10 +98,11 @@ number(_value_) {#types.number}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-char(_value_) {#types.char}
+_types_.char(_value_) {#types.char}
 
 : Returns true if the value is a single character or false otherwise.
 
@@ -106,10 +112,11 @@ char(_value_) {#types.char}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-string(_value_) {#types.string}
+_types_.string(_value_) {#types.string}
 
 : Returns true if the value is a string or false otherwise.
 
@@ -119,10 +126,11 @@ string(_value_) {#types.string}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-bytes(_value_) {#types.bytes}
+_types_.bytes(_value_) {#types.bytes}
 
 : Returns true if the value is a bytes or false otherwise.
 
@@ -132,10 +140,11 @@ bytes(_value_) {#types.bytes}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-list(_value_) {#types.list}
+_types_.list(_value_) {#types.list}
 
 : Returns true if the value is a list or false otherwise.
 
@@ -145,10 +154,11 @@ list(_value_) {#types.list}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-dict(_value_) {#types.dict}
+_types_.dict(_value_) {#types.dict}
 
 : Returns true if the value is a dictionary or false otherwise.
 
@@ -158,10 +168,11 @@ dict(_value_) {#types.dict}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-object(_value_) {#types.object}
+_types_.object(_value_) {#types.object}
 
 : Returns true if the value is an object or false otherwise.
 
@@ -171,10 +182,11 @@ object(_value_) {#types.object}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-function(_value_) {#types.function}
+_types_.function(_value_) {#types.function}
 
 : Returns true if the value is a function or false otherwise.
 
@@ -184,10 +196,11 @@ function(_value_) {#types.function}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-is\_a\_class(_value_) {#types.is_a_class}
+_types_.is\_a\_class(_value_) {#types.is_a_class}
 
 : Returns true if the value is a class or false otherwise.
 
@@ -197,10 +210,11 @@ is\_a\_class(_value_) {#types.is_a_class}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-file(_value_) {#types.file}
+_types_.file(_value_) {#types.file}
 
 : Returns true if the value is a file or false otherwise.
 
@@ -210,10 +224,11 @@ file(_value_) {#types.file}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-iterable(_value_) {#types.iterable}
+_types_.iterable(_value_) {#types.iterable}
 
 : Returns true if the value is an iterable or false otherwise.
 
@@ -223,10 +238,11 @@ iterable(_value_) {#types.iterable}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-callable(_value_) {#types.callable}
+_types_.callable(_value_) {#types.callable}
 
 : Returns true if the value is a callable function or class and false 
   otherwise.
@@ -237,10 +253,11 @@ callable(_value_) {#types.callable}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-instance(_value_, _type_) {#types.instance}
+_types_.instance(_value_, _type_) {#types.instance}
 
 : Returns true if the value is an instance the given class, false
   otherwise.
@@ -252,6 +269,7 @@ instance(_value_, _type_) {#types.instance}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
@@ -262,9 +280,12 @@ _class_ **Convert** {#types.Convert .class}
 : The Convert class handles conversion from one type to another
 
 
-  .Convert(_value_) &#8674; Constructor {#types.Convert.Convert}
+  .Convert(_value_) &#x279D; _Constructor_ {#types.Convert.Convert}
 
-  : - **@params**:
+  : types.Convert constructor
+
+
+    - **@params**:
       - _any_ **value**
 
     {.params}
@@ -280,6 +301,7 @@ _class_ **Convert** {#types.Convert .class}
     > - classes may override the return value by declaring a `to_int()` function.
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .to\_number() {#types.Convert.to_number}
@@ -292,6 +314,7 @@ _class_ **Convert** {#types.Convert .class}
     > - classes may override the return value by declaring a `to_number()` function.
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .to\_string() {#types.Convert.to_string}
@@ -304,6 +327,7 @@ _class_ **Convert** {#types.Convert .class}
     > - classes may override the return value by declaring a `to_string()` function.
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .to\_bool() {#types.Convert.to_bool}
@@ -316,6 +340,7 @@ _class_ **Convert** {#types.Convert .class}
     > - classes may override the return value by declaring a `to_bool()` function.
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .to\_list() {#types.Convert.to_list}
@@ -328,6 +353,7 @@ _class_ **Convert** {#types.Convert .class}
     > - classes may override the return value by declaring a `to_list()` function.
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .to\_dict() {#types.Convert.to_dict}
@@ -340,6 +366,7 @@ _class_ **Convert** {#types.Convert .class}
     > - classes may override the return value by declaring a `to_dict()` function.
 
     - **@returns**: _bool_
+    {.returns}
 
 
 

@@ -37,13 +37,13 @@ It works!
 
 ## Fields
 
-**cpu\_count** &#8674; _number_
-:  The number of CPU cores available on the current device.
+_process_.**cpu\_count** &#x279D; _number_
+: The number of CPU cores available on the current device.
 
 
 ## Functions
 
-process(_fn_, _paged_) &#8674; Exported {#process.process}
+_process_.process(_fn_, _paged_) &#x279D; _Exported_ {#process.process}
 
 : Creates a new instance of Process for the function _`fn`_. This 
   constructor accepts an optional PagedValue.
@@ -79,9 +79,12 @@ _class_ **PagedValue** {#process.PagedValue .class}
   @note Lists and Dictionaries cannot be nested in a PagedValue.
 
 
-  .PagedValue(_executable_, _private_) &#8674; Constructor {#process.PagedValue.PagedValue}
+  .PagedValue(_executable_, _private_) &#x279D; _Constructor_ {#process.PagedValue.PagedValue}
 
-  : - **@params**:
+  : process.PagedValue constructor
+
+
+    - **@params**:
       - _bool?_ **executable**
       - _bool?_ **private**
 
@@ -112,6 +115,7 @@ _class_ **PagedValue** {#process.PagedValue .class}
     > - a PagedValue is locked if in an invalid state.
 
     - **@returns**: _boolean_
+    {.returns}
 
 
   .set(_value_) {#process.PagedValue.set}
@@ -125,6 +129,7 @@ _class_ **PagedValue** {#process.PagedValue .class}
 
     {.params}
     - **@returns**: _number | boolean_
+    {.returns}
 
 
   .locked\_set(_value_) {#process.PagedValue.locked_set}
@@ -138,6 +143,7 @@ _class_ **PagedValue** {#process.PagedValue .class}
 
     {.params}
     - **@returns**: _number | boolean_
+    {.returns}
 
 
   .get() {#process.PagedValue.get}
@@ -146,6 +152,7 @@ _class_ **PagedValue** {#process.PagedValue .class}
 
 
     - **@returns**: _any_
+    {.returns}
 
 
   .raw\_pointer() {#process.PagedValue.raw_pointer}
@@ -154,6 +161,7 @@ _class_ **PagedValue** {#process.PagedValue .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 
@@ -165,11 +173,9 @@ _class_ **Process** {#process.Process .class}
 
 
 
-  .Process(_fn_, _paged_) &#8674; Constructor {#process.Process.Process}
+  .Process(_fn_, _paged_) &#x279D; _Constructor_ {#process.Process.Process}
 
-  : Process(fn: function [, paged: PagedValue])
-    
-    Creates a new instance of Process for the function _`fn`_. This 
+  : Creates a new instance of Process for the function _`fn`_. This 
     constructor accepts an optional PagedValue.
     
     The function passed to a process must accept at least one parameter which 
@@ -191,6 +197,7 @@ _class_ **Process** {#process.Process .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .on\_complete(_fn_) {#process.Process.on_complete}
@@ -211,6 +218,7 @@ _class_ **Process** {#process.Process .class}
 
 
     - **@returns**: _boolean_
+    {.returns}
 
 
   .await() {#process.Process.await}
@@ -222,6 +230,7 @@ _class_ **Process** {#process.Process .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .is\_alive() {#process.Process.is_alive}
@@ -230,6 +239,7 @@ _class_ **Process** {#process.Process .class}
 
 
     - **@returns**: _boolean_
+    {.returns}
 
 
   .kill() {#process.Process.kill}
@@ -239,6 +249,7 @@ _class_ **Process** {#process.Process .class}
 
 
     - **@returns**: _boolean_
+    {.returns}
 
 
 

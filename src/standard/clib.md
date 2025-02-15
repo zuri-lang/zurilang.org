@@ -30,97 +30,97 @@ available types.)
 
 ## Fields
 
-**void** &#8674; _ptr_
-:  C void type
+_clib_.**void** &#x279D; _ptr_
+: C void type
 
-**bool** &#8674; _ptr_
-:  C bool type
+_clib_.**bool** &#x279D; _ptr_
+: C bool type
 
-**uint8\_t** &#8674; _ptr_
-:  C uint8_t type
+_clib_.**uint8\_t** &#x279D; _ptr_
+: C uint8_t type
 
-**int8\_t** &#8674; _ptr_
-:  C int8_t type
+_clib_.**int8\_t** &#x279D; _ptr_
+: C int8_t type
 
-**byte** &#8674; _ptr_
-:  C byte type
+_clib_.**byte** &#x279D; _ptr_
+: C byte type
 
-**ubyte** &#8674; _ptr_
-:  C ubyte type
+_clib_.**ubyte** &#x279D; _ptr_
+: C ubyte type
 
-**uint16\_t** &#8674; _ptr_
-:  C uint16_t type
+_clib_.**uint16\_t** &#x279D; _ptr_
+: C uint16_t type
 
-**int16\_t** &#8674; _ptr_
-:  C int16_t type
+_clib_.**int16\_t** &#x279D; _ptr_
+: C int16_t type
 
-**uint32\_t** &#8674; _ptr_
-:  C uint32_t type
+_clib_.**uint32\_t** &#x279D; _ptr_
+: C uint32_t type
 
-**int32\_t** &#8674; _ptr_
-:  C int32_t type
+_clib_.**int32\_t** &#x279D; _ptr_
+: C int32_t type
 
-**uint64\_t** &#8674; _ptr_
-:  C uint64_t type
+_clib_.**uint64\_t** &#x279D; _ptr_
+: C uint64_t type
 
-**int64\_t** &#8674; _ptr_
-:  C int64_t type
+_clib_.**int64\_t** &#x279D; _ptr_
+: C int64_t type
 
-**ssize\_t** &#8674; _ptr_
-:  C ssize_t type
+_clib_.**ssize\_t** &#x279D; _ptr_
+: C ssize_t type
 
-**float** &#8674; _ptr_
-:  C float type
+_clib_.**float** &#x279D; _ptr_
+: C float type
 
-**double** &#8674; _ptr_
-:  C double type
+_clib_.**double** &#x279D; _ptr_
+: C double type
 
-**uchar** &#8674; _ptr_
-:  C uchar type
+_clib_.**uchar** &#x279D; _ptr_
+: C uchar type
 
-**char** &#8674; _ptr_
-:  C char type
+_clib_.**char** &#x279D; _ptr_
+: C char type
 
-**ushort** &#8674; _ptr_
-:  C ushort type
+_clib_.**ushort** &#x279D; _ptr_
+: C ushort type
 
-**short** &#8674; _ptr_
-:  C short type
+_clib_.**short** &#x279D; _ptr_
+: C short type
 
-**uint** &#8674; _ptr_
-:  C uint type
+_clib_.**uint** &#x279D; _ptr_
+: C uint type
 
-**int** &#8674; _ptr_
-:  C int type
+_clib_.**int** &#x279D; _ptr_
+: C int type
 
-**ulong** &#8674; _ptr_
-:  C ulong type
+_clib_.**ulong** &#x279D; _ptr_
+: C ulong type
 
-**long** &#8674; _ptr_
-:  C long type
+_clib_.**long** &#x279D; _ptr_
+: C long type
 
-**size\_t** &#8674; _ptr_
-:  C size_t type
+_clib_.**size\_t** &#x279D; _ptr_
+: C size_t type
 
-**long\_double** &#8674; _ptr_
-:  C long_double type
+_clib_.**long\_double** &#x279D; _ptr_
+: C long_double type
 
-**char\_ptr** &#8674; _ptr_
-:  C char_ptr type
+_clib_.**char\_ptr** &#x279D; _ptr_
+: C char_ptr type
 
-**uchar\_ptr** &#8674; _ptr_
-:  C uchar_ptr type
+_clib_.**uchar\_ptr** &#x279D; _ptr_
+: C uchar_ptr type
 
-**ptr** &#8674; _ptr_
-:  C ptr type
+_clib_.**ptr** &#x279D; _ptr_
+: C ptr type
 
-**function** &#8674; _ptr_
-:  C closure/callback type
+_clib_.**function** &#x279D; _ptr_
+: C closure/callback type
 
 
 ## Functions
 
-load(_name_) {#clib.load}
+_clib_.load(_name_) {#clib.load}
 
 : Loads a new C shared library pointed to by name. Name must be a 
   relative path, absolute path or the name of a system library. 
@@ -133,10 +133,11 @@ load(_name_) {#clib.load}
 
   {.params}
   - **@returns**: _CLib_
+  {.returns}
 
 
 
-new(_type_, _..._) {#clib.new}
+_clib_.new(_type_, _..._) {#clib.new}
 
 : Creates a new C value for the specified clib type with the given values.
 
@@ -147,10 +148,11 @@ new(_type_, _..._) {#clib.new}
 
   {.params}
   - **@returns**: _bytes_
+  {.returns}
 
 
 
-get(_type_, _data_) {#clib.get}
+_clib_.get(_type_, _data_) {#clib.get}
 
 : Returns the data contained in a C type _type_ encoded in the data.
   The data should either be an output of `clib.new()` or a call to a 
@@ -167,10 +169,11 @@ get(_type_, _data_) {#clib.get}
 
   {.params}
   - **@returns**: _list|dictionary_
+  {.returns}
 
 
 
-get\_ptr\_index(_pointer_, _type_, _index_) {#clib.get_ptr_index}
+_clib_.get\_ptr\_index(_pointer_, _type_, _index_) {#clib.get_ptr_index}
 
 : get_ptr_index(pointer: ptr, type: clib_type, index: number)
   
@@ -185,10 +188,11 @@ get\_ptr\_index(_pointer_, _type_, _index_) {#clib.get_ptr_index}
 
   {.params}
   - **@returns**: _any_
+  {.returns}
 
 
 
-set\_ptr\_index(_pointer_, _type_, _index_, _value_) {#clib.set_ptr_index}
+_clib_.set\_ptr\_index(_pointer_, _type_, _index_, _value_) {#clib.set_ptr_index}
 
 : Sets the value at the given index of a pointer based 
   on the given CLib type to the given value.
@@ -202,10 +206,11 @@ set\_ptr\_index(_pointer_, _type_, _index_, _value_) {#clib.set_ptr_index}
 
   {.params}
   - **@returns**: _any_
+  {.returns}
 
 
 
-function\_handle(_handle_, _return_type_, _..._) {#clib.function_handle}
+_clib_.function\_handle(_handle_, _return_type_, _..._) {#clib.function_handle}
 
 : Defines a new C function from an existing handle and return type.
   -  When there are no more argument, it is declared that the function
@@ -233,10 +238,11 @@ function\_handle(_handle_, _return_type_, _..._) {#clib.function_handle}
 
   {.params}
   - **@returns**: _function_
+  {.returns}
 
 
 
-create\_callback(_closure_, _return_type_, _..._) {#clib.create_callback}
+_clib_.create\_callback(_closure_, _return_type_, _..._) {#clib.create_callback}
 
 : Creates a callback to be passed to C functions expecting a callback.
   
@@ -286,10 +292,11 @@ create\_callback(_closure_, _return_type_, _..._) {#clib.create_callback}
 
   {.params}
   - **@returns**: _clib_callback_
+  {.returns}
 
 
 
-struct(_..._) {#clib.struct}
+_clib_.struct(_..._) {#clib.struct}
 
 : Returns a type that can be used to declare structs. 
   To create or read value for the struct you need to use the `new()` 
@@ -307,10 +314,11 @@ struct(_..._) {#clib.struct}
 
   {.params}
   - **@returns**: _type_
+  {.returns}
 
 
 
-named\_struct(_types_) {#clib.named_struct}
+_clib_.named\_struct(_types_) {#clib.named_struct}
 
 : Returns a type that can be used to declare structs based on the named 
   types. The function works well with the `get()` function because it 
@@ -332,6 +340,7 @@ named\_struct(_types_) {#clib.named_struct}
 
   {.params}
   - **@returns**: _type_
+  {.returns}
 
 
 
@@ -343,9 +352,12 @@ _class_ **Clib** {#clib.Clib .class}
 
 
 
-  .Clib(_name_) &#8674; Constructor {#clib.Clib.Clib}
+  .Clib(_name_) &#x279D; _Constructor_ {#clib.Clib.Clib}
 
-  : > **@notes**:
+  : clib.Clib constructor
+
+
+    > **@notes**:
     > 
     > - The _name_ should follow the same practice outlined in `load()`.
 
@@ -386,6 +398,7 @@ _class_ **Clib** {#clib.Clib .class}
 
     {.params}
     - **@returns**: _ptr_
+    {.returns}
 
 
   .define(_name_, _return_type_, _..._) {#clib.Clib.define}
@@ -416,6 +429,7 @@ _class_ **Clib** {#clib.Clib .class}
 
     {.params}
     - **@returns**: _function_
+    {.returns}
 
 
   .get\_pointer() {#clib.Clib.get_pointer}
@@ -424,6 +438,7 @@ _class_ **Clib** {#clib.Clib .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 

@@ -5,7 +5,7 @@ structs and vice-versa in the binary format.
 
 ## Functions
 
-pack(_format_, _..._) {#struct.pack}
+_struct_.pack(_format_, _..._) {#struct.pack}
 
 : Packs the given arguments into a bytes object according to the specified format. 
   This function behaves the same as the pack function from Perl and PHP (more similar 
@@ -60,10 +60,11 @@ pack(_format_, _..._) {#struct.pack}
 
   {.params}
   - **@returns**: _bytes_
+  {.returns}
 
 
 
-unpack(_format_, _data_, _offset_) {#struct.unpack}
+_struct_.unpack(_format_, _data_, _offset_) {#struct.unpack}
 
 : Unpacks from bytes or a string into a dictionary based on the given format.
   
@@ -89,10 +90,11 @@ unpack(_format_, _data_, _offset_) {#struct.unpack}
 
   {.params}
   - **@returns**: _any_
+  {.returns}
 
 
 
-pack\_from(_format_, _args_) {#struct.pack_from}
+_struct_.pack\_from(_format_, _args_) {#struct.pack_from}
 
 : Same as `pack()` except that instead of accepting arbitrary values after 
   format, it expects the values to be in a list.
@@ -104,6 +106,7 @@ pack\_from(_format_, _args_) {#struct.pack_from}
 
   {.params}
   - **@returns**: _bytes_
+  {.returns}
 
 
 

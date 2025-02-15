@@ -33,19 +33,19 @@ colors.text('Colored text!', colors.hex('#fc0'))
 
 ## Fields
 
-**style** &#8674; _dictionary_
-:  ANSI font styles available for console applications.
+_colors_.**style** &#x279D; _dictionary_
+: ANSI font styles available for console applications.
 
-**text\_color** &#8674; _dictionary_
-:  Standard ANSI text colors available for console applications.
+_colors_.**text\_color** &#x279D; _dictionary_
+: Standard ANSI text colors available for console applications.
 
-**background** &#8674; _dictionary_
-:  Standard ANSI background colors available for console applications.
+_colors_.**background** &#x279D; _dictionary_
+: Standard ANSI background colors available for console applications.
 
 
 ## Functions
 
-text(_value_, _color_, _bg_) {#colors.text}
+_colors_.text(_value_, _color_, _bg_) {#colors.text}
 
 : Returns a terminal printable text with the given color (or style) and background if given.
 
@@ -61,10 +61,11 @@ text(_value_, _color_, _bg_) {#colors.text}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-rgb\_to\_ansi256(_r_, _g_, _b_) {#colors.rgb_to_ansi256}
+_colors_.rgb\_to\_ansi256(_r_, _g_, _b_) {#colors.rgb_to_ansi256}
 
 : Converts RGB color to ASI-256 color number.
 
@@ -76,10 +77,11 @@ rgb\_to\_ansi256(_r_, _g_, _b_) {#colors.rgb_to_ansi256}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-ansi256\_to\_ansi(_code_) {#colors.ansi256_to_ansi}
+_colors_.ansi256\_to\_ansi(_code_) {#colors.ansi256_to_ansi}
 
 : Converts ANSI-256 color number to ANSI-16 color number.
 
@@ -89,10 +91,11 @@ ansi256\_to\_ansi(_code_) {#colors.ansi256_to_ansi}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-hex\_to\_rgb(_h_) {#colors.hex_to_rgb}
+_colors_.hex\_to\_rgb(_h_) {#colors.hex_to_rgb}
 
 : Converts the hexadecimal string _h_ to its RGBA component
 
@@ -102,10 +105,11 @@ hex\_to\_rgb(_h_) {#colors.hex_to_rgb}
 
   {.params}
   - **@returns**: _list_
+  {.returns}
 
 
 
-hex\_to\_ansi256(_color_) {#colors.hex_to_ansi256}
+_colors_.hex\_to\_ansi256(_color_) {#colors.hex_to_ansi256}
 
 : Converts the given hexadecimal color to its ANSI-256 number.
 
@@ -115,10 +119,11 @@ hex\_to\_ansi256(_color_) {#colors.hex_to_ansi256}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-hex\_to\_ansi(_color_) {#colors.hex_to_ansi}
+_colors_.hex\_to\_ansi(_color_) {#colors.hex_to_ansi}
 
 : Converts the given hexadecimal color to its ANSI-16 number.
 
@@ -132,10 +137,11 @@ hex\_to\_ansi(_color_) {#colors.hex_to_ansi}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-hex(_color_) {#colors.hex}
+_colors_.hex(_color_) {#colors.hex}
 
 : Converts the given hexadecimal color to its terminal compatible color.
 
@@ -151,10 +157,11 @@ hex(_color_) {#colors.hex}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-rgb(_r_, _g_, _b_) {#colors.rgb}
+_colors_.rgb(_r_, _g_, _b_) {#colors.rgb}
 
 : Converts the given RGB color to its terminal compatible color.
 
@@ -166,10 +173,11 @@ rgb(_r_, _g_, _b_) {#colors.rgb}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-hsl(_h_, _s_, _l_) {#colors.hsl}
+_colors_.hsl(_h_, _s_, _l_) {#colors.hsl}
 
 : Converts the given HSL color to its terminal compatible color.
 
@@ -181,10 +189,11 @@ hsl(_h_, _s_, _l_) {#colors.hsl}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-hsv(_h_, _s_, _v_) {#colors.hsv}
+_colors_.hsv(_h_, _s_, _v_) {#colors.hsv}
 
 : Converts the given HSV color to its terminal compatible color.
 
@@ -196,10 +205,11 @@ hsv(_h_, _s_, _v_) {#colors.hsv}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-hwb(_h_, _w_, _b_) {#colors.hwb}
+_colors_.hwb(_h_, _w_, _b_) {#colors.hwb}
 
 : Converts the given HWB color to its terminal compatible color.
 
@@ -211,10 +221,11 @@ hwb(_h_, _w_, _b_) {#colors.hwb}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-cmyk(_c_, _m_, _y_, _k_) {#colors.cmyk}
+_colors_.cmyk(_c_, _m_, _y_, _k_) {#colors.cmyk}
 
 : Converts the given CMYK color to its terminal compatible color.
 
@@ -227,10 +238,11 @@ cmyk(_c_, _m_, _y_, _k_) {#colors.cmyk}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-xyz(_x_, _y_, _z_) {#colors.xyz}
+_colors_.xyz(_x_, _y_, _z_) {#colors.xyz}
 
 : Converts the given XYZ color to its terminal compatible color.
 
@@ -242,10 +254,11 @@ xyz(_x_, _y_, _z_) {#colors.xyz}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-rgb\_to\_hex(_r_, _g_, _b_, _a_) {#colors.rgb_to_hex}
+_colors_.rgb\_to\_hex(_r_, _g_, _b_, _a_) {#colors.rgb_to_hex}
 
 : Converts a RGB components into its corresponding hexadecimal color.
 
@@ -258,10 +271,11 @@ rgb\_to\_hex(_r_, _g_, _b_, _a_) {#colors.rgb_to_hex}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-rgb\_to\_hsl(_r_, _g_, _b_) {#colors.rgb_to_hsl}
+_colors_.rgb\_to\_hsl(_r_, _g_, _b_) {#colors.rgb_to_hsl}
 
 : Converts a RGB color into its corresponding HSL components.
 
@@ -273,10 +287,11 @@ rgb\_to\_hsl(_r_, _g_, _b_) {#colors.rgb_to_hsl}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-rgb\_to\_hsv(_r_, _g_, _b_) {#colors.rgb_to_hsv}
+_colors_.rgb\_to\_hsv(_r_, _g_, _b_) {#colors.rgb_to_hsv}
 
 : Converts a RGB color into its corresponding HSV components.
 
@@ -288,10 +303,11 @@ rgb\_to\_hsv(_r_, _g_, _b_) {#colors.rgb_to_hsv}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-rgb\_to\_hwb(_r_, _g_, _b_) {#colors.rgb_to_hwb}
+_colors_.rgb\_to\_hwb(_r_, _g_, _b_) {#colors.rgb_to_hwb}
 
 : Converts a RGB color into its corresponding HWB components.
 
@@ -303,10 +319,11 @@ rgb\_to\_hwb(_r_, _g_, _b_) {#colors.rgb_to_hwb}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-rgb\_to\_cmyk(_r_, _g_, _b_) {#colors.rgb_to_cmyk}
+_colors_.rgb\_to\_cmyk(_r_, _g_, _b_) {#colors.rgb_to_cmyk}
 
 : Converts a RGB color into its corresponding CMYK components.
 
@@ -318,10 +335,11 @@ rgb\_to\_cmyk(_r_, _g_, _b_) {#colors.rgb_to_cmyk}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-rgb\_to\_xyz(_r_, _g_, _b_) {#colors.rgb_to_xyz}
+_colors_.rgb\_to\_xyz(_r_, _g_, _b_) {#colors.rgb_to_xyz}
 
 : Converts a RGB color into its corresponding XYZ color space components.
 
@@ -333,10 +351,11 @@ rgb\_to\_xyz(_r_, _g_, _b_) {#colors.rgb_to_xyz}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-rgb\_to\_lab(_r_, _g_, _b_) {#colors.rgb_to_lab}
+_colors_.rgb\_to\_lab(_r_, _g_, _b_) {#colors.rgb_to_lab}
 
 : Converts a RGB color into its corresponding LAB color components.
 
@@ -348,10 +367,11 @@ rgb\_to\_lab(_r_, _g_, _b_) {#colors.rgb_to_lab}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-hsl\_to\_rgb(_h_, _s_, _l_) {#colors.hsl_to_rgb}
+_colors_.hsl\_to\_rgb(_h_, _s_, _l_) {#colors.hsl_to_rgb}
 
 : Converts a HSL color into its corresponding RGB color components.
 
@@ -363,10 +383,11 @@ hsl\_to\_rgb(_h_, _s_, _l_) {#colors.hsl_to_rgb}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-hsl\_to\_hsv(_h_, _s_, _l_) {#colors.hsl_to_hsv}
+_colors_.hsl\_to\_hsv(_h_, _s_, _l_) {#colors.hsl_to_hsv}
 
 : Converts a HSL color into its corresponding HSV color components.
 
@@ -378,10 +399,11 @@ hsl\_to\_hsv(_h_, _s_, _l_) {#colors.hsl_to_hsv}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-hsv\_to\_rgb(_h_, _s_, _v_) {#colors.hsv_to_rgb}
+_colors_.hsv\_to\_rgb(_h_, _s_, _v_) {#colors.hsv_to_rgb}
 
 : Converts a HSV color into its corresponding RGB color components.
 
@@ -393,10 +415,11 @@ hsv\_to\_rgb(_h_, _s_, _v_) {#colors.hsv_to_rgb}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-hsv\_to\_hsl(_h_, _s_, _v_) {#colors.hsv_to_hsl}
+_colors_.hsv\_to\_hsl(_h_, _s_, _v_) {#colors.hsv_to_hsl}
 
 : Converts a HSV color into its corresponding HSL color components.
 
@@ -408,10 +431,11 @@ hsv\_to\_hsl(_h_, _s_, _v_) {#colors.hsv_to_hsl}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-hwb\_to\_rgb(_h_, _w_, _b_) {#colors.hwb_to_rgb}
+_colors_.hwb\_to\_rgb(_h_, _w_, _b_) {#colors.hwb_to_rgb}
 
 : Converts a HWB color into its corresponding RGB color components.
 
@@ -423,10 +447,11 @@ hwb\_to\_rgb(_h_, _w_, _b_) {#colors.hwb_to_rgb}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-cmyk\_to\_rgb(_c_, _m_, _y_, _k_) {#colors.cmyk_to_rgb}
+_colors_.cmyk\_to\_rgb(_c_, _m_, _y_, _k_) {#colors.cmyk_to_rgb}
 
 : Converts a CMYK color into its corresponding RGB color components.
 
@@ -439,10 +464,11 @@ cmyk\_to\_rgb(_c_, _m_, _y_, _k_) {#colors.cmyk_to_rgb}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 
-xyz\_to\_rgb(_x_, _y_, _z_) {#colors.xyz_to_rgb}
+_colors_.xyz\_to\_rgb(_x_, _y_, _z_) {#colors.xyz_to_rgb}
 
 : Converts a XYZ color into its corresponding RGB color components.
 
@@ -454,6 +480,7 @@ xyz\_to\_rgb(_x_, _y_, _z_) {#colors.xyz_to_rgb}
 
   {.params}
   - **@returns**: _list[float]_
+  {.returns}
 
 
 

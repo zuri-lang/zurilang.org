@@ -1,4 +1,5 @@
 {
   "app_name": "Blade",
-  "search_page": "/search"
+  "search_page": "/search",
+  "copyright": "2023 Blade Programming Language"
 }

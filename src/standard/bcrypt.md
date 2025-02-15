@@ -4,17 +4,17 @@ hashes as well as functions for getting information from a bcrypt hash.
 
 ## Fields
 
-**DEFAULT\_LOG2\_ROUNDS** &#8674; _number_
-:  Default log2 rounds (default: 10).
+_bcrypt_.**DEFAULT\_LOG2\_ROUNDS** &#x279D; _number_
+: Default log2 rounds (default: 10).
 
-**MAX\_EXECUTION\_TIME** &#8674; _number_
-:  Maximum execution time for each cipher iteration in 
+_bcrypt_.**MAX\_EXECUTION\_TIME** &#x279D; _number_
+: Maximum execution time for each cipher iteration in 
   milliseconds (default: 100).
 
 
 ## Functions
 
-hash(_str_, _salt_length_) {#bcrypt.hash}
+_bcrypt_.hash(_str_, _salt_length_) {#bcrypt.hash}
 
 : Generates a hash for the given string. If _salt_length_ is not given, 
   the length of the salt will be equal to `DEFAULT_LOG2_ROUNDS`.
@@ -26,13 +26,15 @@ hash(_str_, _salt_length_) {#bcrypt.hash}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
   - **@raises**:
     - Exception
 @returns
+  {.raises}
 
 
 
-compare(_str_, _known_hash_) {#bcrypt.compare}
+_bcrypt_.compare(_str_, _known_hash_) {#bcrypt.compare}
 
 : Tests a string against a known hash.
 
@@ -43,13 +45,15 @@ compare(_str_, _known_hash_) {#bcrypt.compare}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
   - **@raises**:
     - Exception
 @returns
+  {.raises}
 
 
 
-get\_rounds(_hash_) {#bcrypt.get_rounds}
+_bcrypt_.get\_rounds(_hash_) {#bcrypt.get_rounds}
 
 : Gets the number of rounds used to encrypt the specified hash.
 
@@ -59,13 +63,15 @@ get\_rounds(_hash_) {#bcrypt.get_rounds}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
   - **@raises**:
     - Exception
 @returns
+  {.raises}
 
 
 
-get\_salt(_hash_) {#bcrypt.get_salt}
+_bcrypt_.get\_salt(_hash_) {#bcrypt.get_salt}
 
 : Gets the salt portion from a hash.
 
@@ -79,9 +85,11 @@ get\_salt(_hash_) {#bcrypt.get_salt}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
   - **@raises**:
     - Exception
 @returns
+  {.raises}
 
 
 

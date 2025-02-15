@@ -3,15 +3,14 @@ Provides OpenSSL bindings for Blade.
 
 ## Fields
 
-**SSL\_FILETYPE\_PEM**
-:  SSL_FILETYPE_PEM
+_ssl_.**SSL\_FILETYPE\_PEM**
+: SSL_FILETYPE_PEM
 
-**SSL\_FILETYPE\_ASN1**
-:  SSL_FILETYPE_ASN1
+_ssl_.**SSL\_FILETYPE\_ASN1**
+: SSL_FILETYPE_ASN1
 
-**SSL\_VERIFY\_NONE**
-:  
-  Server mode:
+_ssl_.**SSL\_VERIFY\_NONE**
+: Server mode:
   :  The server will not send a client certificate request to the client, 
      so the client will not send a certificate.
   
@@ -19,11 +18,9 @@ Provides OpenSSL bindings for Blade.
   :  If not using an anonymous cipher (by default disabled), 
      the server will send a certificate which will be checked. The handshake 
      will be continued regardless of the verification result.
-  <<<
 
-**SSL\_VERIFY\_PEER**
-:  
-  Server mode: 
+_ssl_.**SSL\_VERIFY\_PEER**
+: Server mode: 
   :  The server sends a client certificate request to the client. 
      The certificate returned (if any) is checked. If the verification process fails, 
      the TLS/SSL handshake is immediately terminated with an alert message containing 
@@ -36,22 +33,18 @@ Provides OpenSSL bindings for Blade.
      fails, the TLS/SSL handshake is immediately terminated with an alert message 
      containing the reason for the verification failure. If no server certificate is sent, 
      because an anonymous cipher is used, SSL_VERIFY_PEER is ignored.
-  <<<
 
-**SSL\_VERIFY\_FAIL\_IF\_NO\_PEER\_CERT**
-:  
-  Server mode:
+_ssl_.**SSL\_VERIFY\_FAIL\_IF\_NO\_PEER\_CERT**
+: Server mode:
   :  If the client did not return a certificate, the TLS/SSL handshake is immediately 
      terminated with a "handshake failure" alert. This flag must be used together 
      with SSL_VERIFY_PEER.
   
   Client mode: 
   :  Ignored
-  <<<
 
-**SSL\_VERIFY\_CLIENT\_ONCE**
-:  
-  Server mode:
+_ssl_.**SSL\_VERIFY\_CLIENT\_ONCE**
+: Server mode:
   :  Only request a client certificate once during the connection. Do not 
      ask for a client certificate again during renegotiation or post-authentication if a 
      certificate was requested during the initial handshake. This flag must be used together 
@@ -59,11 +52,9 @@ Provides OpenSSL bindings for Blade.
   
   Client mode: 
   :  Ignored
-  <<<
 
-**SSL\_VERIFY\_POST\_HANDSHAKE**
-:  
-  Server mode: 
+_ssl_.**SSL\_VERIFY\_POST\_HANDSHAKE**
+: Server mode: 
   :  The server will not send a client certificate request during the initial 
      handshake, but will send the request via SSL_verify_client_post_handshake(). This allows 
      the SSL_CTX or SSL to be configured for post-handshake peer verification before the 
@@ -72,49 +63,48 @@ Provides OpenSSL bindings for Blade.
   
   Client mode: 
   :  Ignored
-  <<<
 
-**TLS\_method**
-:  TLS method
+_ssl_.**TLS\_method**
+: TLS method
 
-**TLS\_client\_method**
-:  TLS client method
+_ssl_.**TLS\_client\_method**
+: TLS client method
 
-**TLS\_server\_method**
-:  TLS server method
+_ssl_.**TLS\_server\_method**
+: TLS server method
 
-**SSLv23\_method**
-:  SSLv23 method
+_ssl_.**SSLv23\_method**
+: SSLv23 method
 
-**SSLv23\_client\_method**
-:  SSLv23 client method
+_ssl_.**SSLv23\_client\_method**
+: SSLv23 client method
 
-**SSLv23\_server\_method**
-:  SSLv23 server method
+_ssl_.**SSLv23\_server\_method**
+: SSLv23 server method
 
-**BIO\_CLOSE**
-:  BIO_CLOSE
+_ssl_.**BIO\_CLOSE**
+: BIO_CLOSE
 
-**BIO\_NOCLOSE**
-:  BIO_NOCLOSE
+_ssl_.**BIO\_NOCLOSE**
+: BIO_NOCLOSE
 
-**BIO\_f\_ssl**
-:  SSL BIO method f_ssl
+_ssl_.**BIO\_f\_ssl**
+: SSL BIO method f_ssl
   
   > I/O performed on an SSL BIO communicates using the SSL protocol 
   > with the SSLs read and write BIOs. If an SSL connection is not 
   > established then an attempt is made to establish one on the first 
   > I/O call.
 
-**BIO\_s\_connect**
-:  SSL BIO method connect
+_ssl_.**BIO\_s\_connect**
+: SSL BIO method connect
   
   > Using connect BIOs, TCP/IP connections can be made and data 
   > transferred using only BIO routines. In this way any platform 
   > specific operations are hidden by the BIO abstraction.
 
-**BIO\_s\_accept**
-:  SSL BIO method accept
+_ssl_.**BIO\_s\_accept**
+: SSL BIO method accept
   
   > Using accept BIOs, TCP/IP connections can be accepted and data 
   > transferred using only BIO routines. In this way any platform specific 
@@ -123,7 +113,7 @@ Provides OpenSSL bindings for Blade.
 
 ## Functions
 
-socket(_socket_, _context_, _ssl_) &#8674; Exported {#ssl.socket}
+_ssl_.socket(_socket_, _context_, _ssl_) &#x279D; _Exported_ {#ssl.socket}
 
 : Returns a new instance of a TLSSocket.
 
@@ -144,9 +134,12 @@ _class_ **SSL** {#ssl.SSL .class}
 : SSL interface class
 
 
-  .SSL(_context_) &#8674; Constructor {#ssl.SSL.SSL}
+  .SSL(_context_) &#x279D; _Constructor_ {#ssl.SSL.SSL}
 
-  : - **@params**:
+  : ssl.SSL constructor
+
+
+    - **@params**:
       - _SSLContext_ **context**
 
     {.params}
@@ -173,6 +166,7 @@ _class_ **SSL** {#ssl.SSL .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .set\_fd(_fd_) {#ssl.SSL.set_fd}
@@ -185,6 +179,7 @@ _class_ **SSL** {#ssl.SSL .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .accept() {#ssl.SSL.accept}
@@ -194,6 +189,7 @@ _class_ **SSL** {#ssl.SSL .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .connect() {#ssl.SSL.connect}
@@ -205,6 +201,7 @@ _class_ **SSL** {#ssl.SSL .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .write(_data_) {#ssl.SSL.write}
@@ -218,6 +215,7 @@ _class_ **SSL** {#ssl.SSL .class}
 
     {.params}
     - **@returns**: _int_
+    {.returns}
 
 
   .read(_length_, _is_blocking_) {#ssl.SSL.read}
@@ -234,6 +232,7 @@ _class_ **SSL** {#ssl.SSL .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
   .error(_code_) {#ssl.SSL.error}
@@ -246,6 +245,7 @@ _class_ **SSL** {#ssl.SSL .class}
 
     {.params}
     - **@returns**: _int_
+    {.returns}
 
 
   .shutdown() {#ssl.SSL.shutdown}
@@ -268,6 +268,7 @@ _class_ **SSL** {#ssl.SSL .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .get\_peer\_certificate() {#ssl.SSL.get_peer_certificate}
@@ -287,6 +288,7 @@ _class_ **SSL** {#ssl.SSL .class}
 
 
     - **@returns**: _dict_
+    {.returns}
 
 
   .free() {#ssl.SSL.free}
@@ -302,6 +304,7 @@ _class_ **SSL** {#ssl.SSL .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 
@@ -311,71 +314,73 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 : TLS enabled Socket version powered by OpenSSL.
 
 
-  ~ Properties
+    __@printable__
+    {.class-props}
 
-    - __@printable__
-
-  **.host** &#8674; _string_
-  :  This property holds the host bound, to be bound to or connected to by the current socket.
+  **.host** &#x279D; _string_
+  : This property holds the host bound, to be bound to or connected to by the current socket.
     Whenever a host is not given, the host will default to localhost.
 
-  **.port** &#8674; _number_
-  :  The port currently bound or connected to by the socket.
+  **.port** &#x279D; _number_
+  : The port currently bound or connected to by the socket.
 
-  **.family** &#8674; _number_
-  :  The socket family (which must be one of the `AF_` variables).
+  **.family** &#x279D; _number_
+  : The socket family (which must be one of the `AF_` variables).
     The default family for the socket is AF_INET.
 
-  **.type** &#8674; _number_
-  :  The type of socket stream used by the socket.
+  **.type** &#x279D; _number_
+  : The type of socket stream used by the socket.
     The default socket type is `SOCK_STREAM`.
 
-  **.protocol** &#8674; _number_
-  :  The current operating protocol of the socket that controls the 
+  **.protocol** &#x279D; _number_
+  : The current operating protocol of the socket that controls the 
     underlying behavior of the socket. The default is `IPPROTO_TCP`.
 
-  **.id** &#8674; _number_
-  :  The file descriptor id of the current socket on the host machine.
+  **.id** &#x279D; _number_
+  : The file descriptor id of the current socket on the host machine.
 
-  **.is\_client** &#8674; _bool_
-  :  `true` when the socket is a client to a server socket, `false` otherwise.
+  **.is\_client** &#x279D; _bool_
+  : `true` when the socket is a client to a server socket, `false` otherwise.
 
-  **.is\_bound** &#8674; _bool_
-  :  `true` when the socket is bound to a given port on the device, `false` 
+  **.is\_bound** &#x279D; _bool_
+  : `true` when the socket is bound to a given port on the device, `false` 
     otherwise.
 
-  **.is\_connected** &#8674; _bool_
-  :  `true` when the socket is connected to a server socket, `false` otherwise.
+  **.is\_connected** &#x279D; _bool_
+  : `true` when the socket is connected to a server socket, `false` otherwise.
 
-  **.is\_listening** &#8674; _bool_
-  :  `true` when the socket is currently listening on a host device port as a 
+  **.is\_listening** &#x279D; _bool_
+  : `true` when the socket is currently listening on a host device port as a 
     server, `false` otherwise.
 
-  **.is\_closed** &#8674; _bool_
-  :  `true` when the socket is closed, `false` otherwise.
+  **.is\_closed** &#x279D; _bool_
+  : `true` when the socket is closed, `false` otherwise.
 
-  **.is\_shutdown** &#8674; _bool_
-  :  `true` when the socket is shutdown, `false` otherwise.
+  **.is\_shutdown** &#x279D; _bool_
+  : `true` when the socket is shutdown, `false` otherwise.
 
-  **.is\_blocking** &#8674; _bool_
-  :  `true` when the socket is running in a blocking mode, `false` otherwise.
+  **.is\_blocking** &#x279D; _bool_
+  : `true` when the socket is running in a blocking mode, `false` otherwise.
 
-  **.shutdown\_reason** &#8674; _number_
-  :  The property holds the reason for which the last `shutdown` operation 
+  **.shutdown\_reason** &#x279D; _number_
+  : The property holds the reason for which the last `shutdown` operation 
     was called or `-1` if `shutdown` was never requested.
 
-  **.send\_timeout** &#8674; _number_
-  :  The amount of time in milliseconds that the socket waits before it 
+  **.send\_timeout** &#x279D; _number_
+  : The amount of time in milliseconds that the socket waits before it 
     terminates a `send` operation. This is equal to the `SO_SNDTIMEO`.
 
-  **.receive\_timeout** &#8674; _number_
-  :  The amount of time in milliseconds that the socket waits before it 
+  **.receive\_timeout** &#x279D; _number_
+  : The amount of time in milliseconds that the socket waits before it 
     terminates a `receive` operation. This is equal to the `SO_RCVTIMEO`.
 
 
-  .TLSSocket(_socket_, _context_, _ssl_) &#8674; Constructor {#ssl.TLSSocket.TLSSocket}
+  .TLSSocket(_socket_, _context_, _ssl_) &#x279D; _Constructor_ {#ssl.TLSSocket.TLSSocket}
 
-  : - **@params**:
+  : ssl.TLSSocket constructor
+
+
+    - **@params**:
       - _Socket_ **socket**
       - _SSLContext?_ **context**
       - _SSL?_ **ssl**
@@ -397,6 +402,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .bind(_port_, _host_) {#ssl.TLSSocket.bind}
@@ -411,6 +417,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .send(_message_, _flags_) {#ssl.TLSSocket.send}
@@ -429,6 +436,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
     {.params}
     - **@returns**: _number greater than -1 if successful indicating the total number of bytes sent or -1 if it fails._
+    {.returns}
 
 
   .receive(_length_, _flags_) {#ssl.TLSSocket.receive}
@@ -450,6 +458,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
   .read(_length_) {#ssl.TLSSocket.read}
@@ -472,6 +481,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
   .listen(_queue_length_) {#ssl.TLSSocket.listen}
@@ -498,6 +508,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .accept() {#ssl.TLSSocket.accept}
@@ -514,6 +525,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
 
     - **@returns**: _TLSSocket_
+    {.returns}
 
 
   .close() {#ssl.TLSSocket.close}
@@ -522,6 +534,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .shutdown() {#ssl.TLSSocket.shutdown}
@@ -531,6 +544,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .set\_option(_option_, _value_) {#ssl.TLSSocket.set_option}
@@ -548,6 +562,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .get\_option(_option_) {#ssl.TLSSocket.get_option}
@@ -560,6 +575,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
     {.params}
     - **@returns**: _any_
+    {.returns}
 
 
   .set\_blocking(_mode_) {#ssl.TLSSocket.set_blocking}
@@ -573,6 +589,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .info() {#ssl.TLSSocket.info}
@@ -582,6 +599,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
 
     - **@returns**: _dictionary_
+    {.returns}
 
 
   .get\_socket() {#ssl.TLSSocket.get_socket}
@@ -590,6 +608,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
 
     - **@returns**: _Socket_
+    {.returns}
 
 
   .get\_context() {#ssl.TLSSocket.get_context}
@@ -598,6 +617,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
 
     - **@returns**: _SSLContext_
+    {.returns}
 
 
   .get\_ssl() {#ssl.TLSSocket.get_ssl}
@@ -606,6 +626,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
 
 
     - **@returns**: _SSL_
+    {.returns}
 
 
   .set\_context(_context_) {#ssl.TLSSocket.set_context}
@@ -627,7 +648,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
 
-  .BIO(_method_) &#8674; Constructor {#ssl.BIO.BIO}
+  .BIO(_method_) &#x279D; _Constructor_ {#ssl.BIO.BIO}
 
   : @param ptr method
 
@@ -738,6 +759,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_accept\_name() {#ssl.BIO.get_accept_name}
@@ -746,6 +768,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_conn\_address() {#ssl.BIO.get_conn_address}
@@ -754,6 +777,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_conn\_port() {#ssl.BIO.get_conn_port}
@@ -762,6 +786,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_accept\_port() {#ssl.BIO.get_accept_port}
@@ -770,6 +795,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_conn\_family() {#ssl.BIO.get_conn_family}
@@ -778,6 +804,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _int_
+    {.returns}
 
 
   .get\_accept\_family() {#ssl.BIO.get_accept_family}
@@ -786,6 +813,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _int_
+    {.returns}
 
 
   .get\_fd() {#ssl.BIO.get_fd}
@@ -795,6 +823,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .set\_fd(_fd_, _opt_) {#ssl.BIO.set_fd}
@@ -835,6 +864,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
   .pop() {#ssl.BIO.pop}
@@ -854,6 +884,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
     {.params}
     - **@returns**: _int_
+    {.returns}
 
 
   .read(_length_) {#ssl.BIO.read}
@@ -867,6 +898,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
   .should\_retry() {#ssl.BIO.should_retry}
@@ -876,6 +908,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .do\_connect() {#ssl.BIO.do_connect}
@@ -884,6 +917,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _int_
+    {.returns}
 
 
   .do\_accept() {#ssl.BIO.do_accept}
@@ -892,6 +926,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _int_
+    {.returns}
 
 
   .error(_code_) {#ssl.BIO.error}
@@ -904,6 +939,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
     {.params}
     - **@returns**: _int_
+    {.returns}
 
 
   .error\_string() {#ssl.BIO.error_string}
@@ -912,6 +948,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .free() {#ssl.BIO.free}
@@ -927,6 +964,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 
@@ -936,9 +974,12 @@ _class_ **SSLBIO** < _BIO_ {#ssl.SSLBIO .class}
 : SSLBIO is a generic BIO for SSL I/O
 
 
-  .SSLBIO() &#8674; Constructor {#ssl.SSLBIO.SSLBIO}
+  .SSLBIO() &#x279D; _Constructor_ {#ssl.SSLBIO.SSLBIO}
 
-  : 
+  : ssl.SSLBIO constructor
+
+
+
 
 
 
@@ -947,9 +988,12 @@ _class_ **ConnectBIO** < _BIO_ {#ssl.ConnectBIO .class}
 : ConnectBIO is a generic BIO for new secured connections
 
 
-  .ConnectBIO() &#8674; Constructor {#ssl.ConnectBIO.ConnectBIO}
+  .ConnectBIO() &#x279D; _Constructor_ {#ssl.ConnectBIO.ConnectBIO}
 
-  : 
+  : ssl.ConnectBIO constructor
+
+
+
 
 
 
@@ -959,9 +1003,12 @@ _class_ **AcceptedBIO** < _BIO_ {#ssl.AcceptedBIO .class}
   connections from a TLS server
 
 
-  .AcceptedBIO() &#8674; Constructor {#ssl.AcceptedBIO.AcceptedBIO}
+  .AcceptedBIO() &#x279D; _Constructor_ {#ssl.AcceptedBIO.AcceptedBIO}
 
-  : 
+  : ssl.AcceptedBIO constructor
+
+
+
 
 
 
@@ -970,9 +1017,12 @@ _class_ **SSLContext** {#ssl.SSLContext .class}
 : SSL context representation class
 
 
-  .SSLContext(_method_) &#8674; Constructor {#ssl.SSLContext.SSLContext}
+  .SSLContext(_method_) &#x279D; _Constructor_ {#ssl.SSLContext.SSLContext}
 
-  : > **@notes**:
+  : ssl.SSLContext constructor
+
+
+    > **@notes**:
     > 
     > - Method must be a valid SSL method pointer.
 
@@ -1023,6 +1073,7 @@ _class_ **SSLContext** {#ssl.SSLContext .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .set\_ciphers(_ciphers_) {#ssl.SSLContext.set_ciphers}
@@ -1035,6 +1086,7 @@ _class_ **SSLContext** {#ssl.SSLContext .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .free() {#ssl.SSLContext.free}
@@ -1050,6 +1102,7 @@ _class_ **SSLContext** {#ssl.SSLContext .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 
@@ -1060,9 +1113,12 @@ _class_ **TLSContext** < _SSLContext_ {#ssl.TLSContext .class}
   for both client and server mode.
 
 
-  .TLSContext() &#8674; Constructor {#ssl.TLSContext.TLSContext}
+  .TLSContext() &#x279D; _Constructor_ {#ssl.TLSContext.TLSContext}
 
-  : 
+  : ssl.TLSContext constructor
+
+
+
 
 
 
@@ -1071,9 +1127,12 @@ _class_ **TLSClientContext** < _SSLContext_ {#ssl.TLSClientContext .class}
 : TLSClientContext is a specialized Context for supporting TLS clients.
 
 
-  .TLSClientContext() &#8674; Constructor {#ssl.TLSClientContext.TLSClientContext}
+  .TLSClientContext() &#x279D; _Constructor_ {#ssl.TLSClientContext.TLSClientContext}
 
-  : 
+  : ssl.TLSClientContext constructor
+
+
+
 
 
 
@@ -1082,9 +1141,12 @@ _class_ **TLSServerContext** < _SSLContext_ {#ssl.TLSServerContext .class}
 : TLSServerContext is a specialized Context for supporting TLS servers.
 
 
-  .TLSServerContext() &#8674; Constructor {#ssl.TLSServerContext.TLSServerContext}
+  .TLSServerContext() &#x279D; _Constructor_ {#ssl.TLSServerContext.TLSServerContext}
 
-  : 
+  : ssl.TLSServerContext constructor
+
+
+
 
 
 
@@ -1094,9 +1156,12 @@ _class_ **SSLv23Context** < _SSLContext_ {#ssl.SSLv23Context .class}
   for both client and server mode.
 
 
-  .SSLv23Context() &#8674; Constructor {#ssl.SSLv23Context.SSLv23Context}
+  .SSLv23Context() &#x279D; _Constructor_ {#ssl.SSLv23Context.SSLv23Context}
 
-  : 
+  : ssl.SSLv23Context constructor
+
+
+
 
 
 
@@ -1105,9 +1170,12 @@ _class_ **SSLv23ClientContext** < _SSLContext_ {#ssl.SSLv23ClientContext .class}
 : SSLv23ClientContext is a specialized Context for supporting SSLv23 clients.
 
 
-  .SSLv23ClientContext() &#8674; Constructor {#ssl.SSLv23ClientContext.SSLv23ClientContext}
+  .SSLv23ClientContext() &#x279D; _Constructor_ {#ssl.SSLv23ClientContext.SSLv23ClientContext}
 
-  : 
+  : ssl.SSLv23ClientContext constructor
+
+
+
 
 
 
@@ -1116,9 +1184,12 @@ _class_ **SSLv23ServerContext** < _SSLContext_ {#ssl.SSLv23ServerContext .class}
 : SSLv23ServerContext is a specialized Context for supporting SSLv23 servers.
 
 
-  .SSLv23ServerContext() &#8674; Constructor {#ssl.SSLv23ServerContext.SSLv23ServerContext}
+  .SSLv23ServerContext() &#x279D; _Constructor_ {#ssl.SSLv23ServerContext.SSLv23ServerContext}
 
-  : 
+  : ssl.SSLv23ServerContext constructor
+
+
+
 
 
 

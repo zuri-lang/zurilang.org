@@ -32,7 +32,7 @@ Try it out!
 
 ## Functions
 
-has\_prop(_object_, _name_) {#reflect.has_prop}
+_reflect_.has\_prop(_object_, _name_) {#reflect.has_prop}
 
 : Returns `true` if instance has the property or module has a value with 
   the given name or `false` if not.
@@ -44,10 +44,11 @@ has\_prop(_object_, _name_) {#reflect.has_prop}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-get\_prop(_object_, _name_) {#reflect.get_prop}
+_reflect_.get\_prop(_object_, _name_) {#reflect.get_prop}
 
 : Returns the property of the instance or value in the module matching the 
   given name or nil if the object contains no property with a matching name.
@@ -59,10 +60,11 @@ get\_prop(_object_, _name_) {#reflect.get_prop}
 
   {.params}
   - **@returns**: _any_
+  {.returns}
 
 
 
-get\_props(_object_) {#reflect.get_props}
+_reflect_.get\_props(_object_) {#reflect.get_props}
 
 : Returns all properties of an instance or value in a module or an empty
   list if the instance or module has no property.
@@ -74,10 +76,11 @@ get\_props(_object_) {#reflect.get_props}
 
   {.params}
   - **@returns**: _list[string]_
+  {.returns}
 
 
 
-set\_prop(_object_, _name_, _value_) {#reflect.set_prop}
+_reflect_.set\_prop(_object_, _name_, _value_) {#reflect.set_prop}
 
 : Sets the named property of the object to value.
 
@@ -93,10 +96,11 @@ set\_prop(_object_, _name_, _value_) {#reflect.set_prop}
 
   {.params}
   - **@returns**: _bool: `true` if a new property was set, `false` if a property was updated_
+  {.returns}
 
 
 
-del\_prop(_object_, _name_) {#reflect.del_prop}
+_reflect_.del\_prop(_object_, _name_) {#reflect.del_prop}
 
 : Deletes the named property from the instance
 
@@ -107,10 +111,11 @@ del\_prop(_object_, _name_) {#reflect.del_prop}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-has\_method(_object_, _name_) {#reflect.has_method}
+_reflect_.has\_method(_object_, _name_) {#reflect.has_method}
 
 : Returns true if class of the instance has the method name or
   false if not.
@@ -122,10 +127,11 @@ has\_method(_object_, _name_) {#reflect.has_method}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-has\_decorator(_object_, _name_) {#reflect.has_decorator}
+_reflect_.has\_decorator(_object_, _name_) {#reflect.has_decorator}
 
 : Returns true if class of the instance implements the decorator name or
   false if not.
@@ -137,10 +143,11 @@ has\_decorator(_object_, _name_) {#reflect.has_decorator}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-get\_method(_object_, _name_) {#reflect.get_method}
+_reflect_.get\_method(_object_, _name_) {#reflect.get_method}
 
 : Returns the method in a class instance matching the given name
   or nil if the class of the instance contains no method with
@@ -153,10 +160,11 @@ get\_method(_object_, _name_) {#reflect.get_method}
 
   {.params}
   - **@returns**: _function_
+  {.returns}
 
 
 
-get\_decorator(_object_, _name_) {#reflect.get_decorator}
+_reflect_.get\_decorator(_object_, _name_) {#reflect.get_decorator}
 
 : Returns the decorator function matching the given name in the class 
   of the given instance.
@@ -172,10 +180,11 @@ get\_decorator(_object_, _name_) {#reflect.get_decorator}
 
   {.params}
   - **@returns**: _function_
+  {.returns}
 
 
 
-bind\_method(_object_, _method_) {#reflect.bind_method}
+_reflect_.bind\_method(_object_, _method_) {#reflect.bind_method}
 
 : Binds the given function to the instance, allowing you to access 
   the instance itself in the function via the `self` keyword in 
@@ -188,10 +197,11 @@ bind\_method(_object_, _method_) {#reflect.bind_method}
 
   {.params}
   - **@returns**: _function_
+  {.returns}
 
 
 
-get\_type(_object_) {#reflect.get_type}
+_reflect_.get\_type(_object_) {#reflect.get_type}
 
 : Returns the type of an instance as string
 
@@ -201,10 +211,11 @@ get\_type(_object_) {#reflect.get_type}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-get\_function\_metadata(_function_) {#reflect.get_function_metadata}
+_reflect_.get\_function\_metadata(_function_) {#reflect.get_function_metadata}
 
 : Returns the metadata of a function as a dictionary. 
   This dictionary contains the following keys:
@@ -226,10 +237,11 @@ get\_function\_metadata(_function_) {#reflect.get_function_metadata}
 
   {.params}
   - **@returns**: _dictionary_
+  {.returns}
 
 
 
-get\_class\_metadata(_klass_) {#reflect.get_class_metadata}
+_reflect_.get\_class\_metadata(_klass_) {#reflect.get_class_metadata}
 
 : Returns the metadata of a class as a dictionary. 
   This dictionary contains the following keys:
@@ -246,10 +258,11 @@ get\_class\_metadata(_klass_) {#reflect.get_class_metadata}
 
   {.params}
   - **@returns**: _dictionary_
+  {.returns}
 
 
 
-get\_module\_metadata(_module_) {#reflect.get_module_metadata}
+_reflect_.get\_module\_metadata(_module_) {#reflect.get_module_metadata}
 
 : Returns the metadata of an imported module as a dictionary. 
   This dictionary contains the following keys:
@@ -266,10 +279,11 @@ get\_module\_metadata(_module_) {#reflect.get_module_metadata}
 
   {.params}
   - **@returns**: _dictionary_
+  {.returns}
 
 
 
-get\_class(_object_) {#reflect.get_class}
+_reflect_.get\_class(_object_) {#reflect.get_class}
 
 : Returns the class value of an instance as an object that can be 
   used to create a new instance of that same class.
@@ -280,10 +294,11 @@ get\_class(_object_) {#reflect.get_class}
 
   {.params}
   - **@returns**: _class_
+  {.returns}
 
 
 
-is\_ptr(_value_) {#reflect.is_ptr}
+_reflect_.is\_ptr(_value_) {#reflect.is_ptr}
 
 : Returns `true` if _value_ is a pointer, `false` otherwise.
 
@@ -293,10 +308,11 @@ is\_ptr(_value_) {#reflect.is_ptr}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-get\_ptr(_value_) {#reflect.get_ptr}
+_reflect_.get\_ptr(_value_) {#reflect.get_ptr}
 
 : Returns a pointer to the given value.
 
@@ -306,10 +322,11 @@ get\_ptr(_value_) {#reflect.get_ptr}
 
   {.params}
   - **@returns**: _ptr_
+  {.returns}
 
 
 
-set\_ptr(_pointer_, _value_) {#reflect.set_ptr}
+_reflect_.set\_ptr(_pointer_, _value_) {#reflect.set_ptr}
 
 : Sets the value at the given pointer's address to the given value.
 
@@ -322,7 +339,7 @@ set\_ptr(_pointer_, _value_) {#reflect.set_ptr}
 
 
 
-get\_address(_value_) {#reflect.get_address}
+_reflect_.get\_address(_value_) {#reflect.get_address}
 
 : Returns a the address of the pointer to the value in memory.
 
@@ -332,10 +349,11 @@ get\_address(_value_) {#reflect.get_address}
 
   {.params}
   - **@returns**: _ptr_
+  {.returns}
 
 
 
-ptr\_from\_address(_address_) {#reflect.ptr_from_address}
+_reflect_.ptr\_from\_address(_address_) {#reflect.ptr_from_address}
 
 : Returns a pointer to the given memory address.
 
@@ -345,10 +363,11 @@ ptr\_from\_address(_address_) {#reflect.ptr_from_address}
 
   {.params}
   - **@returns**: _ptr_
+  {.returns}
 
 
 
-set\_global(_value_, _name_) {#reflect.set_global}
+_reflect_.set\_global(_value_, _name_) {#reflect.set_global}
 
 : Sets any given value as globally accessible in all modules, function
   and scopes with the given name.
@@ -365,7 +384,7 @@ set\_global(_value_, _name_) {#reflect.set_global}
 
 
 
-run\_script(_path_) {#reflect.run_script}
+_reflect_.run\_script(_path_) {#reflect.run_script}
 
 : Runs the content of a given script in-place as if it were part of the 
   current module.
@@ -378,7 +397,7 @@ run\_script(_path_) {#reflect.run_script}
 
 
 
-call\_function(_function_, _args_) {#reflect.call_function}
+_reflect_.call\_function(_function_, _args_) {#reflect.call_function}
 
 : Calls a function with the given arguments.
 
@@ -389,6 +408,7 @@ call\_function(_function_, _args_) {#reflect.call_function}
 
   {.params}
   - **@returns**: _any_
+  {.returns}
 
 
 

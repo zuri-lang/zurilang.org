@@ -4,8 +4,8 @@ This module provides functions for interfacing with the underlying operating sys
 
 ## Fields
 
-**platform** &#8674; _string_
-:  The name of the current platform in string or `unknown` if 
+_os_.**platform** &#x279D; _string_
+: The name of the current platform in string or `unknown` if 
   the platform name could not be determined.
   
   
@@ -17,46 +17,46 @@ This module provides functions for interfacing with the underlying operating sys
   'osx'
   ```
 
-**args** &#8674; _list_
-:  A list containing the command line arguments passed to the startup script.
+_os_.**args** &#x279D; _list_
+: A list containing the command line arguments passed to the startup script.
 
-**path\_separator** &#8674; _string_
-:  The standard path separator for the current operating system.
+_os_.**path\_separator** &#x279D; _string_
+: The standard path separator for the current operating system.
 
-**exe\_path** &#8674; _string_
-:  The full path to the running Blade executable.
+_os_.**exe\_path** &#x279D; _string_
+: The full path to the running Blade executable.
 
-**DT\_UNKNOWN** &#8674; _number_
-:  Unknown file type
+_os_.**DT\_UNKNOWN** &#x279D; _number_
+: Unknown file type
 
-**DT\_BLK** &#8674; _number_
-:  Block device file type
+_os_.**DT\_BLK** &#x279D; _number_
+: Block device file type
 
-**DT\_CHR** &#8674; _number_
-:  Character device file type
+_os_.**DT\_CHR** &#x279D; _number_
+: Character device file type
 
-**DT\_DIR** &#8674; _number_
-:  Directory file type
+_os_.**DT\_DIR** &#x279D; _number_
+: Directory file type
 
-**DT\_FIFO** &#8674; _number_
-:  Named pipe file type
+_os_.**DT\_FIFO** &#x279D; _number_
+: Named pipe file type
 
-**DT\_LNK** &#8674; _number_
-:  Symbolic link file type
+_os_.**DT\_LNK** &#x279D; _number_
+: Symbolic link file type
 
-**DT\_REG** &#8674; _number_
-:  Regular file type
+_os_.**DT\_REG** &#x279D; _number_
+: Regular file type
 
-**DT\_SOCK** &#8674; _number_
-:  Local-domain socket file type
+_os_.**DT\_SOCK** &#x279D; _number_
+: Local-domain socket file type
 
-**DT\_WHT** &#8674; _number_
-:  Whiteout file type (only meaningful on UNIX and some unofficial Linux versions).
+_os_.**DT\_WHT** &#x279D; _number_
+: Whiteout file type (only meaningful on UNIX and some unofficial Linux versions).
 
 
 ## Functions
 
-exec(_cmd_) {#os.exec}
+_os_.exec(_cmd_) {#os.exec}
 
 : Executes the given shell (or command prompt for Windows) commands and 
   returns the output as string.
@@ -76,10 +76,11 @@ exec(_cmd_) {#os.exec}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-info() {#os.info}
+_os_.info() {#os.info}
 
 : Returns information about the current operation system and machine as a dictionary.
   The returned dictionary will contain:
@@ -101,10 +102,11 @@ info() {#os.info}
 
 
   - **@returns**: _dict_
+  {.returns}
 
 
 
-sleep(_duration_) {#os.sleep}
+_os_.sleep(_duration_) {#os.sleep}
 
 : Causes the current thread to sleep for the specified number of seconds.
 
@@ -116,7 +118,7 @@ sleep(_duration_) {#os.sleep}
 
 
 
-get\_env(_name_) {#os.get_env}
+_os_.get\_env(_name_) {#os.get_env}
 
 : Returns the given environment variable if exists or nil otherwise
   
@@ -135,10 +137,11 @@ get\_env(_name_) {#os.get_env}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-set\_env(_name_, _value_, _overwrite_) {#os.set_env}
+_os_.set\_env(_name_, _value_, _overwrite_) {#os.set_env}
 
 : Sets the named environment variable to the given value.
   
@@ -178,10 +181,11 @@ set\_env(_name_, _value_, _overwrite_) {#os.set_env}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-create\_dir(_path_, _permission_, _recursive_) {#os.create_dir}
+_os_.create\_dir(_path_, _permission_, _recursive_) {#os.create_dir}
 
 : Creates the given directory with the specified permission and optionally
   add new files into it if any is given.
@@ -202,10 +206,11 @@ create\_dir(_path_, _permission_, _recursive_) {#os.create_dir}
 
   {.params}
   - **@returns**: _boolean_
+  {.returns}
 
 
 
-read\_dir(_path_) {#os.read_dir}
+_os_.read\_dir(_path_) {#os.read_dir}
 
 : Scans the given directory and returns a list of all matched files
   
@@ -229,10 +234,11 @@ read\_dir(_path_) {#os.read_dir}
 
   {.params}
   - **@returns**: _list[string]_
+  {.returns}
 
 
 
-chmod(_path_, _mode_) {#os.chmod}
+_os_.chmod(_path_, _mode_) {#os.chmod}
 
 : Changes the permission set on a directory to the given mode. It is advisable 
   to set the mode with an octal number (e.g. 0c777) as this is consistent with 
@@ -245,10 +251,11 @@ chmod(_path_, _mode_) {#os.chmod}
 
   {.params}
   - **@returns**: _boolean_
+  {.returns}
 
 
 
-is\_dir(_path_) {#os.is_dir}
+_os_.is\_dir(_path_) {#os.is_dir}
 
 : Returns `true` if the path is a directory or `false` otherwise.
 
@@ -258,10 +265,11 @@ is\_dir(_path_) {#os.is_dir}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-remove\_dir(_path_, _recursive_) {#os.remove_dir}
+_os_.remove\_dir(_path_, _recursive_) {#os.remove_dir}
 
 : Deletes a non-empty directory. If recursive is `true`, non-empty directories 
   will have their contents deleted first.
@@ -274,19 +282,21 @@ remove\_dir(_path_, _recursive_) {#os.remove_dir}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-cwd() {#os.cwd}
+_os_.cwd() {#os.cwd}
 
 : Returns the current working directory.
 
 
   - **@returns**: _string_
+  {.returns}
 
 
 
-change\_dir(_path_) {#os.change_dir}
+_os_.change\_dir(_path_) {#os.change_dir}
 
 : Navigates the working directory into the specified path.
 
@@ -296,10 +306,11 @@ change\_dir(_path_) {#os.change_dir}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-dir\_exists(_path_) {#os.dir_exists}
+_os_.dir\_exists(_path_) {#os.dir_exists}
 
 : Returns `true` if the directory exists or `false` otherwise.
 
@@ -309,10 +320,11 @@ dir\_exists(_path_) {#os.dir_exists}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-exit(_code_) {#os.exit}
+_os_.exit(_code_) {#os.exit}
 
 : Exit the current process and quits the Blade runtime.
 
@@ -324,7 +336,7 @@ exit(_code_) {#os.exit}
 
 
 
-join\_paths(_..._) {#os.join_paths}
+_os_.join\_paths(_..._) {#os.join_paths}
 
 : Concatenates the given paths together into a format that is valid on the
   current operating system.
@@ -342,10 +354,11 @@ join\_paths(_..._) {#os.join_paths}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-real\_path(_path_) {#os.real_path}
+_os_.real\_path(_path_) {#os.real_path}
 
 : Returns the original path to a relative path.
 
@@ -359,10 +372,11 @@ real\_path(_path_) {#os.real_path}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-abs\_path(_path_) {#os.abs_path}
+_os_.abs\_path(_path_) {#os.abs_path}
 
 : Returns the original path to a relative path.
 
@@ -376,10 +390,11 @@ abs\_path(_path_) {#os.abs_path}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-dir\_name(_path_) {#os.dir_name}
+_os_.dir\_name(_path_) {#os.dir_name}
 
 : Returns the parent directory of the pathname pointed to by `path`.  Any trailing
   `/` characters are not counted as part of the directory name.  If `path` is an
@@ -392,10 +407,11 @@ dir\_name(_path_) {#os.dir_name}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-base\_name(_path_) {#os.base_name}
+_os_.base\_name(_path_) {#os.base_name}
 
 : The base_name() function returns the last component from the pathname pointed to by 
   `path`, deleting any trailing `/` characters.  If path consists entirely of `/` 
@@ -408,6 +424,7 @@ base\_name(_path_) {#os.base_name}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 

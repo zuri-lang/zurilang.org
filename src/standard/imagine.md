@@ -2,223 +2,223 @@
 
 ## Fields
 
-**QUANT\_DEFAULT** &#8674; _number_
-:  Default (`QUANT_LIQ` if libimagequant is available, `QUANT_JQUANT` otherwise).
+_imagine_.**QUANT\_DEFAULT** &#x279D; _number_
+: Default (`QUANT_LIQ` if libimagequant is available, `QUANT_JQUANT` otherwise).
 
-**QUANT\_JQUANT** &#8674; _number_
-:  libjpeg's old median cut. Fast, but only uses 16-bit color.
+_imagine_.**QUANT\_JQUANT** &#x279D; _number_
+: libjpeg's old median cut. Fast, but only uses 16-bit color.
 
-**QUANT\_NEUQUANT** &#8674; _number_
-:  NeuQuant - approximation using Kohonen neural network.
+_imagine_.**QUANT\_NEUQUANT** &#x279D; _number_
+: NeuQuant - approximation using Kohonen neural network.
 
-**QUANT\_LIQ** &#8674; _number_
-:  A combination of algorithms used in libimagequant aiming for the highest quality at cost of speed.
+_imagine_.**QUANT\_LIQ** &#x279D; _number_
+: A combination of algorithms used in libimagequant aiming for the highest quality at cost of speed.
 
-**ARC\_ARC** &#8674; _number_
-:  Produces a rounded edge.
+_imagine_.**ARC\_ARC** &#x279D; _number_
+: Produces a rounded edge.
 
-**ARC\_PIE** &#8674; _number_
-:  Same as ARC_ARC.
+_imagine_.**ARC\_PIE** &#x279D; _number_
+: Same as ARC_ARC.
 
-**ARC\_CHORD** &#8674; _number_
-:  Connects the starting and ending angles with a straight line.
+_imagine_.**ARC\_CHORD** &#x279D; _number_
+: Connects the starting and ending angles with a straight line.
 
-**ARC\_NO\_FILL** &#8674; _number_
-:  Indicates that the arc or chord should be outlined, not filled.
+_imagine_.**ARC\_NO\_FILL** &#x279D; _number_
+: Indicates that the arc or chord should be outlined, not filled.
 
-**ARC\_NO\_EDGE** &#8674; _number_
-:  Used together with ARC_NO_FILL, indicates that the beginning and 
+_imagine_.**ARC\_NO\_EDGE** &#x279D; _number_
+: Used together with ARC_NO_FILL, indicates that the beginning and 
   ending angles should be connected to the center; this is a good 
   way to outline (rather than fill) a 'pie slice'.
 
-**CROP\_DEFAULT** &#8674; _number_
-:  Same as CROP_TRANSPARENT
+_imagine_.**CROP\_DEFAULT** &#x279D; _number_
+: Same as CROP_TRANSPARENT
 
-**CROP\_TRANSPARENT** &#8674; _number_
-:  Crop using the transparent color
+_imagine_.**CROP\_TRANSPARENT** &#x279D; _number_
+: Crop using the transparent color
 
-**CROP\_BLACK** &#8674; _number_
-:  Crop black borders
+_imagine_.**CROP\_BLACK** &#x279D; _number_
+: Crop black borders
 
-**CROP\_WHITE** &#8674; _number_
-:  Crop white borders
+_imagine_.**CROP\_WHITE** &#x279D; _number_
+: Crop white borders
 
-**CROP\_SIDES** &#8674; _number_
-:  Crop using colors of the 4 corners
+_imagine_.**CROP\_SIDES** &#x279D; _number_
+: Crop using colors of the 4 corners
 
-**CMP\_IMAGE** &#8674; _number_
-:  Actual image IS different
+_imagine_.**CMP\_IMAGE** &#x279D; _number_
+: Actual image IS different
 
-**CMP\_NUM\_COLORS** &#8674; _number_
-:  Number of colors in pallette differ
+_imagine_.**CMP\_NUM\_COLORS** &#x279D; _number_
+: Number of colors in pallette differ
 
-**CMP\_COLOR** &#8674; _number_
-:  Image colors differ
+_imagine_.**CMP\_COLOR** &#x279D; _number_
+: Image colors differ
 
-**CMP\_SIZE\_X** &#8674; _number_
-:  Image width differs
+_imagine_.**CMP\_SIZE\_X** &#x279D; _number_
+: Image width differs
 
-**CMP\_SIZE\_Y** &#8674; _number_
-:  Image heights differ
+_imagine_.**CMP\_SIZE\_Y** &#x279D; _number_
+: Image heights differ
 
-**CMP\_TRANSPARENT** &#8674; _number_
-:  Transparent color differs
+_imagine_.**CMP\_TRANSPARENT** &#x279D; _number_
+: Transparent color differs
 
-**CMP\_BACKGROUND** &#8674; _number_
-:  Background color differs
+_imagine_.**CMP\_BACKGROUND** &#x279D; _number_
+: Background color differs
 
-**CMP\_INTERLACE** &#8674; _number_
-:  Interlaced setting differs
+_imagine_.**CMP\_INTERLACE** &#x279D; _number_
+: Interlaced setting differs
 
-**CMP\_TRUECOLOR** &#8674; _number_
-:  Truecolor vs palette differs
+_imagine_.**CMP\_TRUECOLOR** &#x279D; _number_
+: Truecolor vs palette differs
 
-**BLUR\_SELECTIVE** &#8674; _number_
-:  Blurs the image using the Gaussian method.
+_imagine_.**BLUR\_SELECTIVE** &#x279D; _number_
+: Blurs the image using the Gaussian method.
 
-**BLUR\_GAUSSIAN** &#8674; _number_
-:  Blurs the image.
+_imagine_.**BLUR\_GAUSSIAN** &#x279D; _number_
+: Blurs the image.
 
-**FLIP\_BOTH** &#8674; _number_
-:  Flip an image vertically and horizontally
+_imagine_.**FLIP\_BOTH** &#x279D; _number_
+: Flip an image vertically and horizontally
 
-**FLIP\_HORIZONTAL** &#8674; _number_
-:  Flip an image horizontally
+_imagine_.**FLIP\_HORIZONTAL** &#x279D; _number_
+: Flip an image horizontally
 
-**FLIP\_VERTICAL** &#8674; _number_
-:  Flip an image vertically
+_imagine_.**FLIP\_VERTICAL** &#x279D; _number_
+: Flip an image vertically
 
-**FONT\_SMALL** &#8674; _ptr_
-:  A small ISO-8859-2 raster font (5x8 pixels).
+_imagine_.**FONT\_SMALL** &#x279D; _ptr_
+: A small ISO-8859-2 raster font (5x8 pixels).
 
-**FONT\_REGULAR** &#8674; _ptr_
-:  The regular ISO-8859-2 raster font (6x13 pixels)
+_imagine_.**FONT\_REGULAR** &#x279D; _ptr_
+: The regular ISO-8859-2 raster font (6x13 pixels)
 
-**FONT\_MEDIUM** &#8674; _ptr_
-:  A medium bold ISO-8859-2 raster font (7x13 pixels).
+_imagine_.**FONT\_MEDIUM** &#x279D; _ptr_
+: A medium bold ISO-8859-2 raster font (7x13 pixels).
 
-**FONT\_LARGE** &#8674; _ptr_
-:  A large ISO-8859-2 raster font (8x16 pixels).
+_imagine_.**FONT\_LARGE** &#x279D; _ptr_
+: A large ISO-8859-2 raster font (8x16 pixels).
 
-**FONT\_EXTRALARGE** &#8674; _ptr_
-:  An extra-large ISO-8859-2 raster font (9x15 pixels).
+_imagine_.**FONT\_EXTRALARGE** &#x279D; _ptr_
+: An extra-large ISO-8859-2 raster font (9x15 pixels).
 
-**COLOR\_STYLED** &#8674; _number_
-:  Use the current style, see `set_style()`
+_imagine_.**COLOR\_STYLED** &#x279D; _number_
+: Use the current style, see `set_style()`
 
-**COLOR\_BRUSHED** &#8674; _number_
-:  Use the current brush, see `set_brush()`
+_imagine_.**COLOR\_BRUSHED** &#x279D; _number_
+: Use the current brush, see `set_brush()`
 
-**COLOR\_STYLED\_BRUSHED** &#8674; _number_
-:  Use the current style and brush
+_imagine_.**COLOR\_STYLED\_BRUSHED** &#x279D; _number_
+: Use the current style and brush
 
-**COLOR\_TILED** &#8674; _number_
-:  Use the current tile, see `set_tile()`
+_imagine_.**COLOR\_TILED** &#x279D; _number_
+: Use the current tile, see `set_tile()`
 
-**COLOR\_TRANSPARENT** &#8674; _number_
-:  Indicate transparency, what is not the same as the transparent 
+_imagine_.**COLOR\_TRANSPARENT** &#x279D; _number_
+: Indicate transparency, what is not the same as the transparent 
   color index; used for lines only
 
-**COLOR\_ANTI\_ALISED** &#8674; _number_
-:  Draw anti aliased
+_imagine_.**COLOR\_ANTI\_ALISED** &#x279D; _number_
+: Draw anti aliased
 
-**INTERP\_DEFAULT** &#8674; _number_
-:  Default (Same as INTERP_BELL)
+_imagine_.**INTERP\_DEFAULT** &#x279D; _number_
+: Default (Same as INTERP_BELL)
 
-**INTERP\_BELL** &#8674; _number_
-:  Bell
+_imagine_.**INTERP\_BELL** &#x279D; _number_
+: Bell
 
-**INTERP\_BESSEL** &#8674; _number_
-:  Bessel
+_imagine_.**INTERP\_BESSEL** &#x279D; _number_
+: Bessel
 
-**INTERP\_BILINEAR\_FIXED** &#8674; _number_
-:  Fixed point bilinear
+_imagine_.**INTERP\_BILINEAR\_FIXED** &#x279D; _number_
+: Fixed point bilinear
 
-**INTERP\_BICUBIC** &#8674; _number_
-:  Bicubic
+_imagine_.**INTERP\_BICUBIC** &#x279D; _number_
+: Bicubic
 
-**INTERP\_BICUBIC\_FIXED** &#8674; _number_
-:  Fixed point bicubic integer
+_imagine_.**INTERP\_BICUBIC\_FIXED** &#x279D; _number_
+: Fixed point bicubic integer
 
-**INTERP\_BLACKMAN** &#8674; _number_
-:  Blackman
+_imagine_.**INTERP\_BLACKMAN** &#x279D; _number_
+: Blackman
 
-**INTERP\_BOX** &#8674; _number_
-:  Box
+_imagine_.**INTERP\_BOX** &#x279D; _number_
+: Box
 
-**INTERP\_BSPLINE** &#8674; _number_
-:  BSpline
+_imagine_.**INTERP\_BSPLINE** &#x279D; _number_
+: BSpline
 
-**INTERP\_CATMULLROM** &#8674; _number_
-:  Catmullrom
+_imagine_.**INTERP\_CATMULLROM** &#x279D; _number_
+: Catmullrom
 
-**INTERP\_GAUSSIAN** &#8674; _number_
-:  Gaussian
+_imagine_.**INTERP\_GAUSSIAN** &#x279D; _number_
+: Gaussian
 
-**INTERP\_GENERALIZED\_CUBIC** &#8674; _number_
-:  Generalized cubic
+_imagine_.**INTERP\_GENERALIZED\_CUBIC** &#x279D; _number_
+: Generalized cubic
 
-**INTERP\_HERMITE** &#8674; _number_
-:  Hermite
+_imagine_.**INTERP\_HERMITE** &#x279D; _number_
+: Hermite
 
-**INTERP\_HAMMING** &#8674; _number_
-:  Hamming
+_imagine_.**INTERP\_HAMMING** &#x279D; _number_
+: Hamming
 
-**INTERP\_HANNING** &#8674; _number_
-:  Hannig
+_imagine_.**INTERP\_HANNING** &#x279D; _number_
+: Hannig
 
-**INTERP\_MITCHELL** &#8674; _number_
-:  Mitchell
+_imagine_.**INTERP\_MITCHELL** &#x279D; _number_
+: Mitchell
 
-**INTERP\_NEAREST\_NEIGHBOUR** &#8674; _number_
-:  Nearest neighbour interpolation
+_imagine_.**INTERP\_NEAREST\_NEIGHBOUR** &#x279D; _number_
+: Nearest neighbour interpolation
 
-**INTERP\_POWER** &#8674; _number_
-:  Power
+_imagine_.**INTERP\_POWER** &#x279D; _number_
+: Power
 
-**INTERP\_QUADRATIC** &#8674; _number_
-:  Quadratic
+_imagine_.**INTERP\_QUADRATIC** &#x279D; _number_
+: Quadratic
 
-**INTERP\_SINC** &#8674; _number_
-:  Sinc
+_imagine_.**INTERP\_SINC** &#x279D; _number_
+: Sinc
 
-**INTERP\_TRIANGLE** &#8674; _number_
-:  Triangle
+_imagine_.**INTERP\_TRIANGLE** &#x279D; _number_
+: Triangle
 
-**INTERP\_WEIGHTED4** &#8674; _number_
-:  4 pixels weighted bilinear interpolation
+_imagine_.**INTERP\_WEIGHTED4** &#x279D; _number_
+: 4 pixels weighted bilinear interpolation
 
-**INTERP\_LINEAR** &#8674; _number_
-:  bilinear interpolation
+_imagine_.**INTERP\_LINEAR** &#x279D; _number_
+: bilinear interpolation
 
-**LANCZOS3** &#8674; _number_
-:  Lanczos 3
+_imagine_.**LANCZOS3** &#x279D; _number_
+: Lanczos 3
 
-**LANCZOS8** &#8674; _number_
-:  Lanczos 8
+_imagine_.**LANCZOS8** &#x279D; _number_
+: Lanczos 8
 
-**BLACKMAN\_BESSEL** &#8674; _number_
-:  Blackman Bessel
+_imagine_.**BLACKMAN\_BESSEL** &#x279D; _number_
+: Blackman Bessel
 
-**BLACKMAN\_SINC** &#8674; _number_
-:  Blackman Sinc
+_imagine_.**BLACKMAN\_SINC** &#x279D; _number_
+: Blackman Sinc
 
-**QUADRATIC\_BSPLINE** &#8674; _number_
-:  Quadratic BSpline
+_imagine_.**QUADRATIC\_BSPLINE** &#x279D; _number_
+: Quadratic BSpline
 
-**CUBIC\_SPLINE** &#8674; _number_
-:  Cubic Spline
+_imagine_.**CUBIC\_SPLINE** &#x279D; _number_
+: Cubic Spline
 
-**COSINE** &#8674; _number_
-:  Cosine
+_imagine_.**COSINE** &#x279D; _number_
+: Cosine
 
-**WELSH** &#8674; _number_
-:  Welsh
+_imagine_.**WELSH** &#x279D; _number_
+: Welsh
 
 
 ## Functions
 
-true\_color(_r_, _g_, _b_, _a_) {#imagine.true_color}
+_imagine_.true\_color(_r_, _g_, _b_, _a_) {#imagine.true_color}
 
 : Compose a truecolor value from its components.
   
@@ -231,10 +231,11 @@ true\_color(_r_, _g_, _b_, _a_) {#imagine.true_color}
 
 
   - **@returns**: _number_
+  {.returns}
 
 
 
-decompose(_color_) {#imagine.decompose}
+_imagine_.decompose(_color_) {#imagine.decompose}
 
 : Decomposes an Image true color number into it's respective 
   RGBA components.
@@ -253,6 +254,7 @@ decompose(_color_) {#imagine.decompose}
 
   {.params}
   - **@returns**: _dict_
+  {.returns}
 
 
 
@@ -309,6 +311,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@returns**: _dict_
+    {.returns}
 
 
   .set\_pixel(_x_, _y_, _color_) {#imagine.ImageResource.set_pixel}
@@ -337,6 +340,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .line(_x1_, _y1_, _x2_, _y2_, _color_) {#imagine.ImageResource.line}
@@ -651,6 +655,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .closest\_color(_r_, _g_, _b_, _a_) {#imagine.ImageResource.closest_color}
@@ -669,6 +674,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .closest\_color\_hwb(_r_, _g_, _b_) {#imagine.ImageResource.closest_color_hwb}
@@ -684,6 +690,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .exact\_color(_r_, _g_, _b_, _a_) {#imagine.ImageResource.exact_color}
@@ -699,6 +706,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .resolve\_color(_r_, _g_, _b_, _a_) {#imagine.ImageResource.resolve_color}
@@ -715,6 +723,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .deallocate\_color(_color_) {#imagine.ImageResource.deallocate_color}
@@ -768,6 +777,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .fill(_x_, _y_, _color_) {#imagine.ImageResource.fill}
@@ -963,6 +973,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .set\_brush(_brush_) {#imagine.ImageResource.set_brush}
@@ -1113,6 +1124,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .auto\_crop(_mode_) {#imagine.ImageResource.auto_crop}
@@ -1126,6 +1138,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .scale(_width_, _height_, _method_) {#imagine.ImageResource.scale}
@@ -1148,6 +1161,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .rotate(_angle_, _bg_color_, _method_) {#imagine.ImageResource.rotate}
@@ -1164,6 +1178,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .save\_alpha(_save_) {#imagine.ImageResource.save_alpha}
@@ -1336,6 +1351,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@returns**: _list<number>_
+    {.returns}
 
 
   .set\_resolution(_res_x_, _res_y_) {#imagine.ImageResource.set_resolution}
@@ -1368,6 +1384,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _bool - `true` if successful, otherwise `false`._
+    {.returns}
 
 
   .palette\_to\_true\_color() {#imagine.ImageResource.palette_to_true_color}
@@ -1376,6 +1393,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@returns**: _bool - `true` if successful, otherwise `false`._
+    {.returns}
 
 
   .match\_color(_image_) {#imagine.ImageResource.match_color}
@@ -1391,6 +1409,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _bool - `true` if successful, otherwise `false`._
+    {.returns}
 
 
   .compare(_image_) {#imagine.ImageResource.compare}
@@ -1420,6 +1439,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .export\_png(_dest_, _quality_) {#imagine.ImageResource.export_png}
@@ -1532,6 +1552,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 
@@ -1556,6 +1577,7 @@ _class_ **Image** {#imagine.Image .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .from\_png(_src_) {#imagine.Image.from_png}
@@ -1569,6 +1591,7 @@ _class_ **Image** {#imagine.Image .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .from\_jpeg(_src_) {#imagine.Image.from_jpeg}
@@ -1582,6 +1605,7 @@ _class_ **Image** {#imagine.Image .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .from\_gif(_src_) {#imagine.Image.from_gif}
@@ -1594,6 +1618,7 @@ _class_ **Image** {#imagine.Image .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .from\_bmp(_src_) {#imagine.Image.from_bmp}
@@ -1606,6 +1631,7 @@ _class_ **Image** {#imagine.Image .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .from\_wbmp(_src_) {#imagine.Image.from_wbmp}
@@ -1618,6 +1644,7 @@ _class_ **Image** {#imagine.Image .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .from\_tga(_src_) {#imagine.Image.from_tga}
@@ -1630,6 +1657,7 @@ _class_ **Image** {#imagine.Image .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .from\_tiff(_src_) {#imagine.Image.from_tiff}
@@ -1642,6 +1670,7 @@ _class_ **Image** {#imagine.Image .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .from\_webp(_src_) {#imagine.Image.from_webp}
@@ -1654,6 +1683,7 @@ _class_ **Image** {#imagine.Image .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .from\_avif(_src_) {#imagine.Image.from_avif}
@@ -1666,6 +1696,7 @@ _class_ **Image** {#imagine.Image .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
   .from\_file(_src_) {#imagine.Image.from_file}
@@ -1680,6 +1711,7 @@ _class_ **Image** {#imagine.Image .class}
 
     {.params}
     - **@returns**: _ImageResource_
+    {.returns}
 
 
 

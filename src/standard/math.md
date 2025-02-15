@@ -5,44 +5,44 @@ of commonly used scientific and mathematical constants such as `PI`.
 
 ## Fields
 
-**PI**
-:  represents the ratio of the circumference of a circle 
+_math_.**PI**
+: represents the ratio of the circumference of a circle 
   to its diameter
 
-**E**
-:  represents Euler's number, the base of natural logarithms
+_math_.**E**
+: represents Euler's number, the base of natural logarithms
 
-**LOG\_10**
-:  represents the natural logarithm of 10
+_math_.**LOG\_10**
+: represents the natural logarithm of 10
 
-**LOG\_10\_E**
-:  represents the base 10 logarithm of e
+_math_.**LOG\_10\_E**
+: represents the base 10 logarithm of e
 
-**LOG\_2**
-:  represents the natural logarithm of 2
+_math_.**LOG\_2**
+: represents the natural logarithm of 2
 
-**LOG\_2\_E**
-:  represents the base 2 logarithm of e
+_math_.**LOG\_2\_E**
+: represents the base 2 logarithm of e
 
-**ROOT\_2**
-:  represents the square root of 2
+_math_.**ROOT\_2**
+: represents the square root of 2
 
-**ROOT\_3**
-:  represents the square root of 3
+_math_.**ROOT\_3**
+: represents the square root of 3
 
-**ROOT\_HALF**
-:  represents the square root of 1/2
+_math_.**ROOT\_HALF**
+: represents the square root of 1/2
 
-**Infinity**
-:  Mathematical infinity
+_math_.**Infinity**
+: Mathematical infinity
 
-**NaN**
-:  Mathematical NaN
+_math_.**NaN**
+: Mathematical NaN
 
 
 ## Functions
 
-factorial(_n_) {#math.factorial}
+_math_.factorial(_n_) {#math.factorial}
 
 : factorial(n: number)
   calculates the product of all positive 
@@ -59,10 +59,11 @@ factorial(_n_) {#math.factorial}
 
 
   - **@returns**: _number_
+  {.returns}
 
 
 
-sin(_n_) {#math.sin}
+_math_.sin(_n_) {#math.sin}
 
 : Returns a numeric value between -1 and 1, which 
   represents the sine of the angle given in radians.
@@ -80,10 +81,11 @@ sin(_n_) {#math.sin}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-cos(_n_) {#math.cos}
+_math_.cos(_n_) {#math.cos}
 
 : Returns a numeric value between -1 and 1, which 
   represents the cosine of the angle.
@@ -101,10 +103,11 @@ cos(_n_) {#math.cos}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-tan(_n_) {#math.tan}
+_math_.tan(_n_) {#math.tan}
 
 : Returns a numeric value that represents the tangent 
   of the angle given.
@@ -122,10 +125,11 @@ tan(_n_) {#math.tan}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-sinh(_n_) {#math.sinh}
+_math_.sinh(_n_) {#math.sinh}
 
 : Returns the hyperbolic sine (in radians) of number n.
   
@@ -142,10 +146,11 @@ sinh(_n_) {#math.sinh}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-cosh(_n_) {#math.cosh}
+_math_.cosh(_n_) {#math.cosh}
 
 : Returns the hyperbolic cosine (in radians) of number n.
   
@@ -162,10 +167,11 @@ cosh(_n_) {#math.cosh}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-tanh(_n_) {#math.tanh}
+_math_.tanh(_n_) {#math.tanh}
 
 : Returns the hyperbolic tangent (in radians) of number n.
   
@@ -185,10 +191,11 @@ tanh(_n_) {#math.tanh}
 
   {.params}
   - **@returns**: _number2591705196751_
+  {.returns}
 
 
 
-asin(_n_) {#math.asin}
+_math_.asin(_n_) {#math.asin}
 
 : Returns a numeric value between -(π/2) and π/2 radians 
   for x between -1 and 1. 
@@ -207,10 +214,11 @@ asin(_n_) {#math.asin}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-acos(_n_) {#math.acos}
+_math_.acos(_n_) {#math.acos}
 
 : Returns a numeric value between 0 and π radians for x 
   between -1 and 1. If the value of x is outside this range, it 
@@ -229,10 +237,11 @@ acos(_n_) {#math.acos}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-atan(_n_) {#math.atan}
+_math_.atan(_n_) {#math.atan}
 
 : Returns a numeric value between -(π/2) and π/2 radians.
   
@@ -249,10 +258,11 @@ atan(_n_) {#math.atan}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-atan2(_x_, _y_) {#math.atan2}
+_math_.atan2(_x_, _y_) {#math.atan2}
 
 : Returns a numeric value between -π and π representing the 
   angle theta of an (x, y) point. This is the counterclockwise angle, 
@@ -279,10 +289,11 @@ atan2(_x_, _y_) {#math.atan2}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-asinh(_n_) {#math.asinh}
+_math_.asinh(_n_) {#math.asinh}
 
 : Returns the hyperbolic arc-sine (in radians) of number n.
   
@@ -299,10 +310,11 @@ asinh(_n_) {#math.asinh}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-acosh(_n_) {#math.acosh}
+_math_.acosh(_n_) {#math.acosh}
 
 : Returns the hyperbolic arc-cosine (in radians) of number n.
   
@@ -319,10 +331,11 @@ acosh(_n_) {#math.acosh}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-atanh(_n_) {#math.atanh}
+_math_.atanh(_n_) {#math.atanh}
 
 : Returns the hyperbolic arc-tangent (in radians) of number n.
   
@@ -339,10 +352,11 @@ atanh(_n_) {#math.atanh}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-exp(_n_) {#math.exp}
+_math_.exp(_n_) {#math.exp}
 
 : Returns e ** x, where x is the argument, and e is Euler's 
   number (also known as Napier's constant), the base of the 
@@ -361,10 +375,11 @@ exp(_n_) {#math.exp}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-expm1(_n_) {#math.expm1}
+_math_.expm1(_n_) {#math.expm1}
 
 : Returns (e ** x) - 1, where x is the argument, and e the base of 
   the natural logarithms.
@@ -382,10 +397,11 @@ expm1(_n_) {#math.expm1}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-ceil(_n_) {#math.ceil}
+_math_.ceil(_n_) {#math.ceil}
 
 : Returns number n rounded up to the next largest integer.
   
@@ -404,10 +420,11 @@ ceil(_n_) {#math.ceil}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-round(_n_) {#math.round}
+_math_.round(_n_) {#math.round}
 
 : Returns the value of a number rounded to the nearest integer.
   
@@ -426,10 +443,11 @@ round(_n_) {#math.round}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-log(_n_) {#math.log}
+_math_.log(_n_) {#math.log}
 
 : Returns the natural logarithm (base e) of a number (mathematical ln(x)).
   
@@ -452,10 +470,11 @@ log(_n_) {#math.log}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-log2(_n_) {#math.log2}
+_math_.log2(_n_) {#math.log2}
 
 : Returns the base 2 logarithm of the given number. 
   If the number is negative, NaN is returned
@@ -473,10 +492,11 @@ log2(_n_) {#math.log2}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-log10(_n_) {#math.log10}
+_math_.log10(_n_) {#math.log10}
 
 : Returns the base 10 logarithm of the given number. 
   If the number is negative, NaN is returned.
@@ -494,10 +514,11 @@ log10(_n_) {#math.log10}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-log1p(_n_) {#math.log1p}
+_math_.log1p(_n_) {#math.log1p}
 
 : For very small values of x, adding 1 can reduce or eliminate precision.  
   The double floats used in JS give you about 15 digits of precision.  
@@ -531,10 +552,11 @@ log1p(_n_) {#math.log1p}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-cbrt(_n_) {#math.cbrt}
+_math_.cbrt(_n_) {#math.cbrt}
 
 : Returns the cube root of a number n.
   
@@ -551,10 +573,11 @@ cbrt(_n_) {#math.cbrt}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-sign(_n_) {#math.sign}
+_math_.sign(_n_) {#math.sign}
 
 : Returns either a positive or negative +/- 1, indicating the sign of 
   a number passed into the argument. 
@@ -579,10 +602,11 @@ sign(_n_) {#math.sign}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-floor(_n_) {#math.floor}
+_math_.floor(_n_) {#math.floor}
 
 : A number representing the largest integer less than or 
   equal to the specified number
@@ -600,10 +624,11 @@ floor(_n_) {#math.floor}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-is\_nan(_n_) {#math.is_nan}
+_math_.is\_nan(_n_) {#math.is_nan}
 
 : is_nan(n: number)
   
@@ -615,10 +640,11 @@ is\_nan(_n_) {#math.is_nan}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-is\_inf(_n_) {#math.is_inf}
+_math_.is\_inf(_n_) {#math.is_inf}
 
 : Returns `true` if the given number is equal to Infinity or -Infinity 
   or `false` otherwise.
@@ -640,10 +666,11 @@ is\_inf(_n_) {#math.is_inf}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-is\_finite(_n_) {#math.is_finite}
+_math_.is\_finite(_n_) {#math.is_finite}
 
 : Return `true` if x is neither an Infinity nor a NaN, and `false` otherwise.
   
@@ -664,10 +691,11 @@ is\_finite(_n_) {#math.is_finite}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-trunc(_n_) {#math.trunc}
+_math_.trunc(_n_) {#math.trunc}
 
 : Returns the integer part of a number by removing any fractional.
   
@@ -690,10 +718,11 @@ trunc(_n_) {#math.trunc}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-sqrt(_n_) {#math.sqrt}
+_math_.sqrt(_n_) {#math.sqrt}
 
 : Returns the square root of a number.
   
@@ -710,10 +739,11 @@ sqrt(_n_) {#math.sqrt}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-sum(_arg_) {#math.sum}
+_math_.sum(_arg_) {#math.sum}
 
 : Calculates the sum of all the elements in the input iterable
   the default start value for the product is 1.
@@ -732,10 +762,11 @@ sum(_arg_) {#math.sum}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-product(_arg_) {#math.product}
+_math_.product(_arg_) {#math.product}
 
 : Calculates the product of all the elements in the input iterable
   the default start value for the product is 1.
@@ -754,10 +785,11 @@ product(_arg_) {#math.product}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-fraction(_n_) {#math.fraction}
+_math_.fraction(_n_) {#math.fraction}
 
 : Returns the fractional part of a number as a whole number 
   by removing any integer
@@ -775,6 +807,7 @@ fraction(_n_) {#math.fraction}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 

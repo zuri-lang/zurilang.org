@@ -87,13 +87,13 @@ function is the idiomatic way to create threads.
 
 ## Fields
 
-**cpu\_count** &#8674; _number_
-:  The number of CPU cores available on the current device.
+_thread_.**cpu\_count** &#x279D; _number_
+: The number of CPU cores available on the current device.
 
 
 ## Functions
 
-thread(_delegate_, _stack_size_) {#thread.thread}
+_thread_.thread(_delegate_, _stack_size_) {#thread.thread}
 
 : Returns a new instance of Thread.
   
@@ -108,10 +108,11 @@ thread(_delegate_, _stack_size_) {#thread.thread}
 
   {.params}
   - **@returns**: _Thread_
+  {.returns}
 
 
 
-start(_delegate_, _args_) {#thread.start}
+_thread_.start(_delegate_, _args_) {#thread.start}
 
 : Creates a new thread and automatically starts the thread 
   using the default options and arguments.
@@ -136,7 +137,7 @@ _class_ **Thread** {#thread.Thread .class}
 
 
 
-  .Thread(_delegate_, _stack_size_) &#8674; Constructor {#thread.Thread.Thread}
+  .Thread(_delegate_, _stack_size_) &#x279D; _Constructor_ {#thread.Thread.Thread}
 
   : The delegate function passed to the constructor may accept zero 
     or more parameters. When it accepts no parameter, the function 
@@ -224,6 +225,7 @@ _class_ **Thread** {#thread.Thread .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .detach() {#thread.Thread.detach}
@@ -252,6 +254,7 @@ _class_ **Thread** {#thread.Thread .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .await() {#thread.Thread.await}
@@ -303,6 +306,7 @@ _class_ **Thread** {#thread.Thread .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .set\_name(_name_) {#thread.Thread.set_name}
@@ -325,6 +329,7 @@ _class_ **Thread** {#thread.Thread .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .get\_name() {#thread.Thread.get_name}
@@ -333,6 +338,7 @@ _class_ **Thread** {#thread.Thread .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .set\_stack\_size(_size_) {#thread.Thread.set_stack_size}
@@ -366,6 +372,7 @@ _class_ **Thread** {#thread.Thread .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .get\_id() {#thread.Thread.get_id}
@@ -374,6 +381,7 @@ _class_ **Thread** {#thread.Thread .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .is\_alive() {#thread.Thread.is_alive}
@@ -383,6 +391,7 @@ _class_ **Thread** {#thread.Thread .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
 

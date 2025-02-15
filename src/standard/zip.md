@@ -4,22 +4,22 @@ The `zip` module contains classes and functions to make working with zip archive
 
 ## Fields
 
-**ZIP\_FILE\_MAX** &#8674; _number_
-:  The maximum size of a single file in a zip archive when zip64 is not used
+_zip_.**ZIP\_FILE\_MAX** &#x279D; _number_
+: The maximum size of a single file in a zip archive when zip64 is not used
 
-**ZIP\_FILE\_COUNT\_LIMIT** &#8674; _number_
-:  The maximum number of files in a zip archive when zip64 is not used
+_zip_.**ZIP\_FILE\_COUNT\_LIMIT** &#x279D; _number_
+: The maximum number of files in a zip archive when zip64 is not used
 
-**ZIP\_MAX** &#8674; _number_
-:  The maximum size of a zip archive when zip64 is not used
+_zip_.**ZIP\_MAX** &#x279D; _number_
+: The maximum size of a zip archive when zip64 is not used
 
-**ZIP\_EXT** &#8674; _string_
-:  The default zip file extension
+_zip_.**ZIP\_EXT** &#x279D; _string_
+: The default zip file extension
 
 
 ## Functions
 
-extract(_file_, _destination_, _is_zip64_) {#zip.extract}
+_zip_.extract(_file_, _destination_, _is_zip64_) {#zip.extract}
 
 : Extracts the zip archive at the _file_ path to the given _destination_ directory. 
   If _destination_ is not given, the file will be extracted into the current working 
@@ -39,10 +39,11 @@ extract(_file_, _destination_, _is_zip64_) {#zip.extract}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
-compress(_path_, _destination_, _use_zip64_) {#zip.compress}
+_zip_.compress(_path_, _destination_, _use_zip64_) {#zip.compress}
 
 : Compresses the given path (file or directory) into the destination zip archive.
   
@@ -65,8 +66,10 @@ compress(_path_, _destination_, _use_zip64_) {#zip.compress}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
   - **@raises**:
     - Exception
+  {.raises}
 
 
 
@@ -77,36 +80,36 @@ _class_ **ZipItem** {#zip.ZipItem .class}
 : ZipItem represents a single file or directory in a zip archive.
 
 
-  **.name** &#8674; _string_
-  :  Name of the file or directory
+  **.name** &#x279D; _string_
+  : Name of the file or directory
 
-  **.directory** &#8674; _string_
-  :  The directory in which the file or subdirectory belongs
+  **.directory** &#x279D; _string_
+  : The directory in which the file or subdirectory belongs
 
-  **.compression\_method** &#8674; _string_
-  :  The compression method for this file
+  **.compression\_method** &#x279D; _string_
+  : The compression method for this file
 
-  **.crc** &#8674; _string_
-  :  The crc32 checksum for the file
+  **.crc** &#x279D; _string_
+  : The crc32 checksum for the file
 
-  **.last\_modified** &#8674; _Date_
-  :  The last modified date for the file
+  **.last\_modified** &#x279D; _Date_
+  : The last modified date for the file
 
-  **.compressed\_size** &#8674; _number_
-  :  The size of the file as compressed in the archive. You should note 
+  **.compressed\_size** &#x279D; _number_
+  : The size of the file as compressed in the archive. You should note 
     that this value is not often dependable
 
-  **.uncompressed\_size** &#8674; _number_
-  :  The size of the file when extracted from the archive
+  **.uncompressed\_size** &#x279D; _number_
+  : The size of the file when extracted from the archive
 
-  **.is\_encrypted** &#8674; _bool_
-  :  If this file is encrypted or not.
+  **.is\_encrypted** &#x279D; _bool_
+  : If this file is encrypted or not.
 
-  **.error** &#8674; _string_
-  :  Error encountered when attempting to read/extract the file
+  **.error** &#x279D; _string_
+  : Error encountered when attempting to read/extract the file
 
-  **.data** &#8674; _bytes_
-  :  The decompressed value of the zip item
+  **.data** &#x279D; _bytes_
+  : The decompressed value of the zip item
 
 
   .from\_dict(_dict_) {#zip.ZipItem.from_dict}
@@ -130,6 +133,7 @@ _class_ **ZipItem** {#zip.ZipItem .class}
 
     {.params}
     - **@returns**: _ZipItem_
+    {.returns}
 
 
   .export(_base_dir_) {#zip.ZipItem.export}
@@ -147,6 +151,7 @@ _class_ **ZipItem** {#zip.ZipItem .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
 
@@ -156,23 +161,23 @@ _class_ **ZipFile** {#zip.ZipFile .class}
 : ZipFile represents an instance of zip file.
 
 
-  **.name** &#8674; _string_
-  :  The name of the zip file
+  **.name** &#x279D; _string_
+  : The name of the zip file
 
-  **.last\_modified** &#8674; _Date_
-  :  The last modified date for the zip file
+  **.last\_modified** &#x279D; _Date_
+  : The last modified date for the zip file
 
-  **.time\_created** &#8674; _Date_
-  :  The time when the zip file was created
+  **.time\_created** &#x279D; _Date_
+  : The time when the zip file was created
 
-  **.size** &#8674; _number_
-  :  The size of the zip file
+  **.size** &#x279D; _number_
+  : The size of the zip file
 
-  **.handle** &#8674; _file_
-  :  The file handle for this zip file
+  **.handle** &#x279D; _file_
+  : The file handle for this zip file
 
-  **.files** &#8674; _List<ZipItem>_
-  :  A list of the ZipItems in the zip file
+  **.files** &#x279D; _List<ZipItem>_
+  : A list of the ZipItems in the zip file
 
 
   .export(_base_dir_) {#zip.ZipFile.export}
@@ -192,6 +197,7 @@ _class_ **ZipFile** {#zip.ZipFile .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
 
@@ -203,9 +209,12 @@ _class_ **ZipArchive** {#zip.ZipArchive .class}
 
 
 
-  .ZipArchive(_path_, _use_zip_64_) &#8674; Constructor {#zip.ZipArchive.ZipArchive}
+  .ZipArchive(_path_, _use_zip_64_) &#x279D; _Constructor_ {#zip.ZipArchive.ZipArchive}
 
-  : - **@params**:
+  : zip.ZipArchive constructor
+
+
+    - **@params**:
       - _string_ **path**
       - _bool?_ **use_zip_64** : Default value is `false`.
 
@@ -223,6 +232,7 @@ _class_ **ZipArchive** {#zip.ZipArchive .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .create\_file(_path_, _data_, _stat_) {#zip.ZipArchive.create_file}
@@ -236,6 +246,7 @@ _class_ **ZipArchive** {#zip.ZipArchive .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .add\_file(_path_, _destination_) {#zip.ZipArchive.add_file}
@@ -250,6 +261,7 @@ _class_ **ZipArchive** {#zip.ZipArchive .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .add\_directory(_directory_, _file_blacklist_, _ext_blacklist_) {#zip.ZipArchive.add_directory}
@@ -269,6 +281,7 @@ _class_ **ZipArchive** {#zip.ZipArchive .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .read() {#zip.ZipArchive.read}
@@ -282,6 +295,7 @@ _class_ **ZipArchive** {#zip.ZipArchive .class}
 
     {.params}
     - **@returns**: _ZipFile_
+    {.returns}
 
 
   .save() {#zip.ZipArchive.save}
@@ -294,6 +308,7 @@ _class_ **ZipArchive** {#zip.ZipArchive .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
 

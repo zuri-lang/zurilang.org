@@ -99,7 +99,7 @@ object itself like in the example below.
 
 ## Functions
 
-enum(_data_, _unique_) {#enum.enum}
+_enum_.enum(_data_, _unique_) {#enum.enum}
 
 : The default export of the enum module used to create enums.
   
@@ -109,7 +109,7 @@ enum(_data_, _unique_) {#enum.enum}
 
 
 
-has(_enum_, _key_) {#enum.has}
+_enum_.has(_enum_, _key_) {#enum.has}
 
 : Exported Enum.has static function for module access.
   
@@ -119,7 +119,7 @@ has(_enum_, _key_) {#enum.has}
 
 
 
-keys(_enum_) {#enum.keys}
+_enum_.keys(_enum_) {#enum.keys}
 
 : Exported Enum.keys static function for module access.
   
@@ -129,7 +129,7 @@ keys(_enum_) {#enum.keys}
 
 
 
-values(_enum_) {#enum.values}
+_enum_.values(_enum_) {#enum.values}
 
 : Exported Enum.values static function for module access.
   
@@ -139,7 +139,7 @@ values(_enum_) {#enum.values}
 
 
 
-ensure(_enum_, _value_) {#enum.ensure}
+_enum_.ensure(_enum_, _value_) {#enum.ensure}
 
 : Exported Enum.ensure static function for module access.
   
@@ -149,7 +149,7 @@ ensure(_enum_, _value_) {#enum.ensure}
 
 
 
-to\_dict(_enum_) {#enum.to_dict}
+_enum_.to\_dict(_enum_) {#enum.to_dict}
 
 : Exported Enum.to_dict static function for module access.
   
@@ -159,7 +159,7 @@ to\_dict(_enum_) {#enum.to_dict}
 
 
 
-to\_value\_dict(_enum_) {#enum.to_value_dict}
+_enum_.to\_value\_dict(_enum_) {#enum.to_value_dict}
 
 : Exported Enum.to_value_dict static function for module access.
   
@@ -176,11 +176,10 @@ _class_ **Enum** {#enum.Enum .class}
 : The enum class provides the interface for creating enumerations.
 
 
-  ~ Properties
+    __@printable__
+    {.class-props}
 
-    - __@printable__
-
-  .Enum(_data_, _unique_) &#8674; Constructor {#enum.Enum.Enum}
+  .Enum(_data_, _unique_) &#x279D; _Constructor_ {#enum.Enum.Enum}
 
   : The constructor of the Enum class accepts a list of symbolic names or a
     dictionary of name to unique value mapping and returns a copy of the Enum
@@ -218,6 +217,7 @@ _class_ **Enum** {#enum.Enum .class}
 
     {.params}
     - **@returns**: _list[string]_
+    {.returns}
 
 
   .values(_enum_) {#enum.Enum.values}
@@ -239,6 +239,7 @@ _class_ **Enum** {#enum.Enum .class}
 
     {.params}
     - **@returns**: _list[number|string]_
+    {.returns}
 
 
   .to\_dict(_enum_) {#enum.Enum.to_dict}
@@ -260,6 +261,7 @@ _class_ **Enum** {#enum.Enum .class}
 
     {.params}
     - **@returns**: _dict_
+    {.returns}
 
 
   .to\_value\_dict(_enum_) {#enum.Enum.to_value_dict}
@@ -294,6 +296,7 @@ _class_ **Enum** {#enum.Enum .class}
 
     {.params}
     - **@returns**: _dict_
+    {.returns}
 
 
   .has(_enum_, _key_) {#enum.Enum.has}
@@ -323,6 +326,7 @@ _class_ **Enum** {#enum.Enum .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .ensure(_enum_, _value_) {#enum.Enum.ensure}
@@ -352,6 +356,7 @@ _class_ **Enum** {#enum.Enum .class}
 
     {.params}
     - **@returns**: _any_
+    {.returns}
 
 
 

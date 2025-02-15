@@ -389,7 +389,7 @@ you'll need to escape the first `{` with a `%` sign. For example, `%{! name !}` 
 
 ## Functions
 
-length(_value_) {#template.length}
+_template_.length(_value_) {#template.length}
 
 : Template function to return the length of an iterable.
   
@@ -405,7 +405,7 @@ length(_value_) {#template.length}
 
 
 
-upper(_value_) {#template.upper}
+_template_.upper(_value_) {#template.upper}
 
 : Template function to convert a string or an object's string representation 
   to upper case variant.
@@ -422,7 +422,7 @@ upper(_value_) {#template.upper}
 
 
 
-lower(_value_) {#template.lower}
+_template_.lower(_value_) {#template.lower}
 
 : Template function to convert a string or an object's string representation 
   to lower case variant.
@@ -439,7 +439,7 @@ lower(_value_) {#template.lower}
 
 
 
-is(_value_, _expected_) {#template.is}
+_template_.is(_value_, _expected_) {#template.is}
 
 : Template function to check if object _value_ is same as the _expected_.
   
@@ -462,7 +462,7 @@ is(_value_, _expected_) {#template.is}
 
 
 
-not(_value_, _expected_) {#template.not}
+_template_.not(_value_, _expected_) {#template.not}
 
 : Template function to check if object _value_ is NOT the same as _expected_.
   
@@ -484,7 +484,7 @@ not(_value_, _expected_) {#template.not}
 
 
 
-empty(_value_) {#template.empty}
+_template_.empty(_value_) {#template.empty}
 
 : Template function to check if an iterable is empty.
   
@@ -500,7 +500,7 @@ empty(_value_) {#template.empty}
 
 
 
-reverse(_value_) {#template.reverse}
+_template_.reverse(_value_) {#template.reverse}
 
 : Template function to reverse a string or the string representation of an object.
   
@@ -516,7 +516,7 @@ reverse(_value_) {#template.reverse}
 
 
 
-string(_value_) {#template.string}
+_template_.string(_value_) {#template.string}
 
 : Template function to convert an object of any type to a string.
   
@@ -532,7 +532,7 @@ string(_value_) {#template.string}
 
 
 
-trim(_value_) {#template.trim}
+_template_.trim(_value_) {#template.trim}
 
 : Template function to trim a string.
   
@@ -548,7 +548,7 @@ trim(_value_) {#template.trim}
 
 
 
-title(_value_) {#template.title}
+_template_.title(_value_) {#template.title}
 
 : Template function to convert a string to a title case.
   
@@ -564,7 +564,7 @@ title(_value_) {#template.title}
 
 
 
-alt(_value_, _alternative_) {#template.alt}
+_template_.alt(_value_, _alternative_) {#template.alt}
 
 : Template function to return a default string value if the value 
   passed resolves to a Blade false expression. For example, when a 
@@ -586,7 +586,7 @@ alt(_value_, _alternative_) {#template.alt}
 
 
 
-first(_value_) {#template.first}
+_template_.first(_value_) {#template.first}
 
 : Template function to return the first item in an iterable.
   
@@ -602,7 +602,7 @@ first(_value_) {#template.first}
 
 
 
-last(_value_) {#template.last}
+_template_.last(_value_) {#template.last}
 
 : Template function to return the last item in an iterable.
   
@@ -618,7 +618,7 @@ last(_value_) {#template.last}
 
 
 
-line\_breaks(_value_) {#template.line_breaks}
+_template_.line\_breaks(_value_) {#template.line_breaks}
 
 : Template function to replace newlines with HTML line breaks.
   
@@ -634,7 +634,7 @@ line\_breaks(_value_) {#template.line_breaks}
 
 
 
-lpad(_value_, _count_) {#template.lpad}
+_template_.lpad(_value_, _count_) {#template.lpad}
 
 : Template function to left pad a string.
   
@@ -654,7 +654,7 @@ lpad(_value_, _count_) {#template.lpad}
 
 
 
-rpad(_value_, _count_) {#template.rpad}
+_template_.rpad(_value_, _count_) {#template.rpad}
 
 : Template function to right pad a string.
   
@@ -674,7 +674,7 @@ rpad(_value_, _count_) {#template.rpad}
 
 
 
-join(_value_, _glue_) {#template.join}
+_template_.join(_value_, _glue_) {#template.join}
 
 : Template function to join an iterable using a string glue.
   
@@ -694,7 +694,7 @@ join(_value_, _glue_) {#template.join}
 
 
 
-url\_encode(_value_) {#template.url_encode}
+_template_.url\_encode(_value_) {#template.url_encode}
 
 : Template function to return the url encoded value of a string.
   
@@ -710,7 +710,7 @@ url\_encode(_value_) {#template.url_encode}
 
 
 
-json(_value_) {#template.json}
+_template_.json(_value_) {#template.json}
 
 : Template string to return the JSON encoded string for a value.
   
@@ -726,7 +726,7 @@ json(_value_) {#template.json}
 
 
 
-template(_auto_init_) &#8674; Exported {#template.template}
+_template_.template(_auto_init_) &#x279D; _Exported_ {#template.template}
 
 : Default function exporting the [[Template]] class that allows function 
   initialization. See [[Template]].
@@ -799,7 +799,7 @@ _class_ **Template** {#template.Template .class}
 
 
 
-  .Template(_auto_init_) &#8674; Constructor {#template.Template.Template}
+  .Template(_auto_init_) &#x279D; _Constructor_ {#template.Template.Template}
 
   : The constructor of the Template class.
     
@@ -830,6 +830,7 @@ _class_ **Template** {#template.Template .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .set\_extension(_ext_) {#template.Template.set_extension}
@@ -942,6 +943,7 @@ _class_ **Template** {#template.Template .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
   .render(_path_, _variables_) {#template.Template.render}
@@ -972,6 +974,7 @@ _class_ **Template** {#template.Template .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
 

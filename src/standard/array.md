@@ -6,38 +6,38 @@ the _bytes()_ object and allow higher other binary data manipulation.
 
 ## Fields
 
-**INT16\_MAX** &#8674; _number_
-:  Maximum value that "should" exist in a list passed to Int16Array.
+_array_.**INT16\_MAX** &#x279D; _number_
+: Maximum value that "should" exist in a list passed to Int16Array.
 
-**UINT16\_MAX** &#8674; _number_
-:  Maximum value that "should" exist in a list passed to UInt16Array.
+_array_.**UINT16\_MAX** &#x279D; _number_
+: Maximum value that "should" exist in a list passed to UInt16Array.
 
-**INT32\_MAX** &#8674; _number_
-:  Maximum value that "should" exist in a list passed to Int32Array.
+_array_.**INT32\_MAX** &#x279D; _number_
+: Maximum value that "should" exist in a list passed to Int32Array.
 
-**UINT32\_MAX** &#8674; _number_
-:  Maximum value that "should" exist in a list passed to UInt32Array.
+_array_.**UINT32\_MAX** &#x279D; _number_
+: Maximum value that "should" exist in a list passed to UInt32Array.
 
-**INT64\_MAX** &#8674; _number_
-:  Maximum value that "should" exist in a list passed to Int64Array.
+_array_.**INT64\_MAX** &#x279D; _number_
+: Maximum value that "should" exist in a list passed to Int64Array.
 
-**UINT64\_MAX** &#8674; _number_
-:  Maximum value that "should" exist in a list passed to UInt64Array.
+_array_.**UINT64\_MAX** &#x279D; _number_
+: Maximum value that "should" exist in a list passed to UInt64Array.
 
-**FLOAT\_MAX** &#8674; _number_
-:  Maximum value that "should" exist in a list passed to FloatArray.
+_array_.**FLOAT\_MAX** &#x279D; _number_
+: Maximum value that "should" exist in a list passed to FloatArray.
 
-**INT16\_MIN** &#8674; _number_
-:  Minimum value that "should" exist in a list passed to Int16Array.
+_array_.**INT16\_MIN** &#x279D; _number_
+: Minimum value that "should" exist in a list passed to Int16Array.
 
-**INT32\_MIN** &#8674; _number_
-:  Minimum value that "should" exist in a list passed to Int32Array.
+_array_.**INT32\_MIN** &#x279D; _number_
+: Minimum value that "should" exist in a list passed to Int32Array.
 
-**INT64\_MIN** &#8674; _number_
-:  Minimum value that "should" exist in a list passed to Int64Array.
+_array_.**INT64\_MIN** &#x279D; _number_
+: Minimum value that "should" exist in a list passed to Int64Array.
 
-**FLOAT\_MIN** &#8674; _number_
-:  Minimum value that "should" exist in a list passed to FloatArray.
+_array_.**FLOAT\_MIN** &#x279D; _number_
+: Minimum value that "should" exist in a list passed to FloatArray.
 
 
 ## Classes
@@ -48,13 +48,10 @@ _class_ **Int16Array** {#array.Int16Array .class}
   integers in the platform byte order.
 
 
-  ~ Properties
+    __@printable__, __@serializable__, __@iterable__
+    {.class-props}
 
-    - __@printable__
-    - __@serializable__
-    - __@iterable__
-
-  .Int16Array(_n_) &#8674; Constructor {#array.Int16Array.Int16Array}
+  .Int16Array(_n_) &#x279D; _Constructor_ {#array.Int16Array.Int16Array}
 
   : - If n is a number, it creates a new Int16Array that can hold up to n 
     number of elements, but with all the elements set to 0. 
@@ -74,6 +71,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .bytes\_length() {#array.Int16Array.bytes_length}
@@ -82,6 +80,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .first() {#array.Int16Array.first}
@@ -90,6 +89,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .last() {#array.Int16Array.last}
@@ -98,6 +98,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
 
     - **@returns**: _int_
+    {.returns}
 
 
   .append(_value_) {#array.Int16Array.append}
@@ -123,6 +124,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .set(_index_, _value_) {#array.Int16Array.set}
@@ -136,6 +138,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .extend(_array_) {#array.Int16Array.extend}
@@ -165,6 +168,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
 
     - **@returns**: _Int16Array_
+    {.returns}
 
 
   .pop() {#array.Int16Array.pop}
@@ -173,6 +177,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .to\_bytes() {#array.Int16Array.to_bytes}
@@ -181,6 +186,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
 
     - **@returns**: _bytes_
+    {.returns}
 
 
   .to\_list() {#array.Int16Array.to_list}
@@ -189,6 +195,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
 
     - **@returns**: _list_
+    {.returns}
 
 
   .to\_string() {#array.Int16Array.to_string}
@@ -197,6 +204,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_pointer() {#array.Int16Array.get_pointer}
@@ -205,6 +213,7 @@ _class_ **Int16Array** {#array.Int16Array .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 
@@ -215,13 +224,10 @@ _class_ **Int32Array** {#array.Int32Array .class}
   integers in the platform byte order.
 
 
-  ~ Properties
+    __@printable__, __@serializable__, __@iterable__
+    {.class-props}
 
-    - __@printable__
-    - __@serializable__
-    - __@iterable__
-
-  .Int32Array(_n_) &#8674; Constructor {#array.Int32Array.Int32Array}
+  .Int32Array(_n_) &#x279D; _Constructor_ {#array.Int32Array.Int32Array}
 
   : - If n is a number, it creates a new Int32Array that can hold up to n 
     number of elements, but with all the elements set to 0. 
@@ -241,6 +247,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .bytes\_length() {#array.Int32Array.bytes_length}
@@ -249,6 +256,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .first() {#array.Int32Array.first}
@@ -257,6 +265,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
 
     - **@returns**: _int_
+    {.returns}
 
 
   .last() {#array.Int32Array.last}
@@ -265,6 +274,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
 
     - **@returns**: _int_
+    {.returns}
 
 
   .append(_value_) {#array.Int32Array.append}
@@ -290,6 +300,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .set(_index_, _value_) {#array.Int32Array.set}
@@ -303,6 +314,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .extend(_array_) {#array.Int32Array.extend}
@@ -332,6 +344,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
 
     - **@returns**: _Int32Array_
+    {.returns}
 
 
   .pop() {#array.Int32Array.pop}
@@ -340,6 +353,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .to\_bytes() {#array.Int32Array.to_bytes}
@@ -348,6 +362,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
 
     - **@returns**: _bytes_
+    {.returns}
 
 
   .to\_list() {#array.Int32Array.to_list}
@@ -356,6 +371,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
 
     - **@returns**: _list_
+    {.returns}
 
 
   .to\_string() {#array.Int32Array.to_string}
@@ -364,6 +380,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_pointer() {#array.Int32Array.get_pointer}
@@ -372,6 +389,7 @@ _class_ **Int32Array** {#array.Int32Array .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 
@@ -382,13 +400,10 @@ _class_ **Int64Array** {#array.Int64Array .class}
   integers in the platform byte order.
 
 
-  ~ Properties
+    __@printable__, __@serializable__, __@iterable__
+    {.class-props}
 
-    - __@printable__
-    - __@serializable__
-    - __@iterable__
-
-  .Int64Array(_n_) &#8674; Constructor {#array.Int64Array.Int64Array}
+  .Int64Array(_n_) &#x279D; _Constructor_ {#array.Int64Array.Int64Array}
 
   : - If n is a number, it creates a new Int64Array that can hold up to n 
     number of elements, but with all the elements set to 0. 
@@ -408,6 +423,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .bytes\_length() {#array.Int64Array.bytes_length}
@@ -416,6 +432,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .first() {#array.Int64Array.first}
@@ -424,6 +441,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .last() {#array.Int64Array.last}
@@ -432,6 +450,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .append(_value_) {#array.Int64Array.append}
@@ -457,6 +476,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .set(_index_, _value_) {#array.Int64Array.set}
@@ -472,6 +492,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .extend(_array_) {#array.Int64Array.extend}
@@ -501,6 +522,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
 
     - **@returns**: _Int64Array_
+    {.returns}
 
 
   .pop() {#array.Int64Array.pop}
@@ -509,6 +531,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .to\_bytes() {#array.Int64Array.to_bytes}
@@ -517,6 +540,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
 
     - **@returns**: _bytes_
+    {.returns}
 
 
   .to\_list() {#array.Int64Array.to_list}
@@ -525,6 +549,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
 
     - **@returns**: _list_
+    {.returns}
 
 
   .to\_string() {#array.Int64Array.to_string}
@@ -533,6 +558,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_pointer() {#array.Int64Array.get_pointer}
@@ -541,6 +567,7 @@ _class_ **Int64Array** {#array.Int64Array .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 
@@ -551,13 +578,10 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
   integers in the platform byte order.
 
 
-  ~ Properties
+    __@printable__, __@serializable__, __@iterable__
+    {.class-props}
 
-    - __@printable__
-    - __@serializable__
-    - __@iterable__
-
-  .UInt16Array(_n_) &#8674; Constructor {#array.UInt16Array.UInt16Array}
+  .UInt16Array(_n_) &#x279D; _Constructor_ {#array.UInt16Array.UInt16Array}
 
   : - If n is a number, it creates a new UInt16Array that can hold up to n 
     number of elements, but with all the elements set to 0. 
@@ -577,6 +601,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .bytes\_length() {#array.UInt16Array.bytes_length}
@@ -585,6 +610,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .first() {#array.UInt16Array.first}
@@ -593,6 +619,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .last() {#array.UInt16Array.last}
@@ -601,6 +628,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .append(_value_) {#array.UInt16Array.append}
@@ -626,6 +654,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .set(_index_, _value_) {#array.UInt16Array.set}
@@ -639,6 +668,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .extend(_array_) {#array.UInt16Array.extend}
@@ -668,6 +698,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
 
     - **@returns**: _UInt16Array_
+    {.returns}
 
 
   .pop() {#array.UInt16Array.pop}
@@ -676,6 +707,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .to\_bytes() {#array.UInt16Array.to_bytes}
@@ -684,6 +716,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
 
     - **@returns**: _bytes_
+    {.returns}
 
 
   .to\_list() {#array.UInt16Array.to_list}
@@ -692,6 +725,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
 
     - **@returns**: _list_
+    {.returns}
 
 
   .to\_string() {#array.UInt16Array.to_string}
@@ -700,6 +734,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_pointer() {#array.UInt16Array.get_pointer}
@@ -708,6 +743,7 @@ _class_ **UInt16Array** {#array.UInt16Array .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 
@@ -718,13 +754,10 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
   integers in the platform byte order.
 
 
-  ~ Properties
+    __@printable__, __@serializable__, __@iterable__
+    {.class-props}
 
-    - __@printable__
-    - __@serializable__
-    - __@iterable__
-
-  .UInt32Array(_n_) &#8674; Constructor {#array.UInt32Array.UInt32Array}
+  .UInt32Array(_n_) &#x279D; _Constructor_ {#array.UInt32Array.UInt32Array}
 
   : - If n is a number, it creates a new UInt32Array that can hold up to n 
     number of elements, but with all the elements set to 0. 
@@ -744,6 +777,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .bytes\_length() {#array.UInt32Array.bytes_length}
@@ -752,6 +786,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .first() {#array.UInt32Array.first}
@@ -760,6 +795,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .last() {#array.UInt32Array.last}
@@ -768,6 +804,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .append(_value_) {#array.UInt32Array.append}
@@ -793,6 +830,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .set(_index_, _value_) {#array.UInt32Array.set}
@@ -806,6 +844,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .extend(_array_) {#array.UInt32Array.extend}
@@ -835,6 +874,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
 
     - **@returns**: _UInt32Array_
+    {.returns}
 
 
   .pop() {#array.UInt32Array.pop}
@@ -843,6 +883,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .to\_bytes() {#array.UInt32Array.to_bytes}
@@ -851,6 +892,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
 
     - **@returns**: _bytes_
+    {.returns}
 
 
   .to\_list() {#array.UInt32Array.to_list}
@@ -859,6 +901,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
 
     - **@returns**: _list_
+    {.returns}
 
 
   .to\_string() {#array.UInt32Array.to_string}
@@ -867,6 +910,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_pointer() {#array.UInt32Array.get_pointer}
@@ -875,6 +919,7 @@ _class_ **UInt32Array** {#array.UInt32Array .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 
@@ -885,13 +930,10 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
   integers in the platform byte order.
 
 
-  ~ Properties
+    __@printable__, __@serializable__, __@iterable__
+    {.class-props}
 
-    - __@printable__
-    - __@serializable__
-    - __@iterable__
-
-  .UInt64Array(_n_) &#8674; Constructor {#array.UInt64Array.UInt64Array}
+  .UInt64Array(_n_) &#x279D; _Constructor_ {#array.UInt64Array.UInt64Array}
 
   : - If n is a number, it creates a new UInt64Array that can hold up to n 
     number of elements, but with all the elements set to 0. 
@@ -911,6 +953,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .bytes\_length() {#array.UInt64Array.bytes_length}
@@ -919,6 +962,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .first() {#array.UInt64Array.first}
@@ -927,6 +971,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .last() {#array.UInt64Array.last}
@@ -935,6 +980,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .append(_value_) {#array.UInt64Array.append}
@@ -960,6 +1006,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .set(_index_, _value_) {#array.UInt64Array.set}
@@ -973,6 +1020,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .extend(_array_) {#array.UInt64Array.extend}
@@ -1002,6 +1050,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
 
     - **@returns**: _UInt64Array_
+    {.returns}
 
 
   .pop() {#array.UInt64Array.pop}
@@ -1010,6 +1059,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .to\_bytes() {#array.UInt64Array.to_bytes}
@@ -1018,6 +1068,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
 
     - **@returns**: _bytes_
+    {.returns}
 
 
   .to\_list() {#array.UInt64Array.to_list}
@@ -1026,6 +1077,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
 
     - **@returns**: _list_
+    {.returns}
 
 
   .to\_string() {#array.UInt64Array.to_string}
@@ -1034,6 +1086,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_pointer() {#array.UInt64Array.get_pointer}
@@ -1042,6 +1095,7 @@ _class_ **UInt64Array** {#array.UInt64Array .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 
@@ -1052,13 +1106,10 @@ _class_ **FloatArray** {#array.FloatArray .class}
   corresponding to the C float data type in the platform byte order.
 
 
-  ~ Properties
+    __@printable__, __@serializable__, __@iterable__
+    {.class-props}
 
-    - __@printable__
-    - __@serializable__
-    - __@iterable__
-
-  .FloatArray(_n_) &#8674; Constructor {#array.FloatArray.FloatArray}
+  .FloatArray(_n_) &#x279D; _Constructor_ {#array.FloatArray.FloatArray}
 
   : - If n is a number, it creates a new FloatArray that can hold up to n 
     number of elements, but with all the elements set to 0. 
@@ -1078,6 +1129,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .bytes\_length() {#array.FloatArray.bytes_length}
@@ -1086,6 +1138,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .first() {#array.FloatArray.first}
@@ -1094,6 +1147,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .last() {#array.FloatArray.last}
@@ -1102,6 +1156,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .append(_value_) {#array.FloatArray.append}
@@ -1127,6 +1182,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .set(_index_, _value_) {#array.FloatArray.set}
@@ -1140,6 +1196,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .extend(_array_) {#array.FloatArray.extend}
@@ -1169,6 +1226,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
 
     - **@returns**: _FloatArray_
+    {.returns}
 
 
   .pop() {#array.FloatArray.pop}
@@ -1177,6 +1235,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .to\_bytes() {#array.FloatArray.to_bytes}
@@ -1185,6 +1244,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
 
     - **@returns**: _bytes_
+    {.returns}
 
 
   .to\_list() {#array.FloatArray.to_list}
@@ -1193,6 +1253,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
 
     - **@returns**: _list_
+    {.returns}
 
 
   .to\_string() {#array.FloatArray.to_string}
@@ -1201,6 +1262,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .get\_pointer() {#array.FloatArray.get_pointer}
@@ -1209,6 +1271,7 @@ _class_ **FloatArray** {#array.FloatArray .class}
 
 
     - **@returns**: _ptr_
+    {.returns}
 
 
 

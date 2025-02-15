@@ -13,37 +13,37 @@ identified by its ordinal number within a calendar month within that year.
 
 ## Fields
 
-**MIN\_YEAR** &#8674; _number_
-:  Minimum year supported.
+_date_.**MIN\_YEAR** &#x279D; _number_
+: Minimum year supported.
 
-**MAX\_YEAR** &#8674; _number_
-:  Maximum year supported.
+_date_.**MAX\_YEAR** &#x279D; _number_
+: Maximum year supported.
 
-**MIN\_DAY** &#8674; _number_
-:  Minimum day supported.
+_date_.**MIN\_DAY** &#x279D; _number_
+: Minimum day supported.
 
-**MAX\_DAY** &#8674; _number_
-:  Maximum day supported.
+_date_.**MAX\_DAY** &#x279D; _number_
+: Maximum day supported.
 
-**MIN\_MONTH** &#8674; _number_
-:  Minimum month supported.
+_date_.**MIN\_MONTH** &#x279D; _number_
+: Minimum month supported.
 
-**MAX\_MONTH** &#8674; _number_
-:  Maximum year supported.
+_date_.**MAX\_MONTH** &#x279D; _number_
+: Maximum year supported.
 
-**MAX\_HOUR** &#8674; _number_
-:  Maximum hour supported.
+_date_.**MAX\_HOUR** &#x279D; _number_
+: Maximum hour supported.
 
-**MAX\_MINUTE** &#8674; _number_
-:  Maximum minute supported.
+_date_.**MAX\_MINUTE** &#x279D; _number_
+: Maximum minute supported.
 
-**MAX\_SECONDS** &#8674; _number_
-:  Maximum seconds supported.
+_date_.**MAX\_SECONDS** &#x279D; _number_
+: Maximum seconds supported.
 
 
 ## Functions
 
-gmtime() {#date.gmtime}
+_date_.gmtime() {#date.gmtime}
 
 : Returns a dictionary representing the current time without
   timezone adjustment.
@@ -58,10 +58,11 @@ gmtime() {#date.gmtime}
 
 
   - **@returns**: _dictionary_
+  {.returns}
 
 
 
-localtime() {#date.localtime}
+_date_.localtime() {#date.localtime}
 
 : Returns a dictionary representing the current time after
   adjusting for the current timezone
@@ -76,10 +77,11 @@ localtime() {#date.localtime}
 
 
   - **@returns**: _dictionary_
+  {.returns}
 
 
 
-mktime(_year_, _month_, _day_, _hour_, _minute_, _seconds_, _is_dst_) {#date.mktime}
+_date_.mktime(_year_, _month_, _day_, _hour_, _minute_, _seconds_, _is_dst_) {#date.mktime}
 
 : Convert the broken-out time into a time value with the same encoding as 
   that of the values returned by the time() function (that is, seconds
@@ -106,10 +108,11 @@ mktime(_year_, _month_, _day_, _hour_, _minute_, _seconds_, _is_dst_) {#date.mkt
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-from\_time(_time_) {#date.from_time}
+_date_.from\_time(_time_) {#date.from_time}
 
 : Returns a date object from a unix timestamp.
   
@@ -130,10 +133,11 @@ from\_time(_time_) {#date.from_time}
 
   {.params}
   - **@returns**: _Date_
+  {.returns}
 
 
 
-from\_jd(_jdate_) {#date.from_jd}
+_date_.from\_jd(_jdate_) {#date.from_jd}
 
 : Returns a date instance representing the julian date.
   
@@ -150,10 +154,11 @@ from\_jd(_jdate_) {#date.from_jd}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-date(_year_, _month_, _day_, _hour_, _minute_, _seconds_) &#8674; Exported {#date.date}
+_date_.date(_year_, _month_, _day_, _hour_, _minute_, _seconds_) &#x279D; _Exported_ {#date.date}
 
 : Returns a new `Date` instance representing the given system date or the current date if no argument is specified.
 
@@ -169,6 +174,7 @@ date(_year_, _month_, _day_, _hour_, _minute_, _seconds_) &#8674; Exported {#dat
 
   {.params}
   - **@returns**: _Date_
+  {.returns}
 
 
 
@@ -198,14 +204,15 @@ _class_ **Date** {#date.Date .class}
   ```
 
 
-  ~ Properties
+    __@printable__, __@serializable__
+    {.class-props}
 
-    - __@printable__
-    - __@serializable__
+  .Date(_year_, _month_, _day_, _hour_, _minute_, _seconds_, _microseconds_) &#x279D; _Constructor_ {#date.Date.Date}
 
-  .Date(_year_, _month_, _day_, _hour_, _minute_, _seconds_, _microseconds_) &#8674; Constructor {#date.Date.Date}
+  : date.Date constructor
 
-  : > **@notes**:
+
+    > **@notes**:
     > 
     > - All arguments are optional
 
@@ -239,6 +246,7 @@ _class_ **Date** {#date.Date .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .days\_before\_month(_month_) {#date.Date.days_before_month}
@@ -255,6 +263,7 @@ _class_ **Date** {#date.Date .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .days\_before\_year(_year_) {#date.Date.days_before_year}
@@ -274,6 +283,7 @@ _class_ **Date** {#date.Date .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .days\_in\_month() {#date.Date.days_in_month}
@@ -289,6 +299,7 @@ _class_ **Date** {#date.Date .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .weekday() {#date.Date.weekday}
@@ -304,6 +315,7 @@ _class_ **Date** {#date.Date .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .week\_number() {#date.Date.week_number}
@@ -319,6 +331,7 @@ _class_ **Date** {#date.Date .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .format(_format_) {#date.Date.format}
@@ -389,6 +402,7 @@ _class_ **Date** {#date.Date .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
   .http() {#date.Date.http}
@@ -404,6 +418,7 @@ _class_ **Date** {#date.Date .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .jd() {#date.Date.jd}
@@ -419,18 +434,17 @@ _class_ **Date** {#date.Date .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .unix\_time() {#date.Date.unix_time}
 
   : Returns unix `mktime` equivalent of the current date.
-    
-    
-    @deprecated - Use `to_time()` instead as it offers more precision.
 
 
     - **@depreciated**: - Use `to_time()` instead as it offers more precision.
     - **@returns**: _number_
+    {.returns}
 
 
   .to\_time() {#date.Date.to_time}
@@ -439,6 +453,7 @@ _class_ **Date** {#date.Date .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .to\_string() {#date.Date.to_string}
@@ -447,6 +462,7 @@ _class_ **Date** {#date.Date .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .to\_dict() {#date.Date.to_dict}
@@ -455,6 +471,7 @@ _class_ **Date** {#date.Date .class}
 
 
     - **@returns**: _dict_
+    {.returns}
 
 
 

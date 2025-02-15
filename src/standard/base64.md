@@ -5,7 +5,7 @@ encoding specified in [RFC4648](https://datatracker.ietf.org/doc/html/rfc4648)
 
 ## Functions
 
-encode(_data_) {#base64.encode}
+_base64_.encode(_data_) {#base64.encode}
 
 : Encodes a byte array into a base64 string
 
@@ -15,10 +15,11 @@ encode(_data_) {#base64.encode}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-decode(_data_) {#base64.decode}
+_base64_.decode(_data_) {#base64.decode}
 
 : Decodes a base64 string into it's corresponding bytes.
 
@@ -28,6 +29,7 @@ decode(_data_) {#base64.decode}
 
   {.params}
   - **@returns**: _bytes_
+  {.returns}
 
 
 

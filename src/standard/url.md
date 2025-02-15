@@ -35,7 +35,7 @@ instance like below.
 
 ## Functions
 
-encode(_url_, _strict_) {#url.encode}
+_url_.encode(_url_, _strict_) {#url.encode}
 
 : URL-encodes a string
   
@@ -55,10 +55,11 @@ encode(_url_, _strict_) {#url.encode}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-decode(_url_) {#url.decode}
+_url_.decode(_url_) {#url.decode}
 
 : Decodes URL-encoded string. This function decodes any %## encoding in the given
   string and plus symbols ('+') to a space character.
@@ -69,10 +70,11 @@ decode(_url_) {#url.decode}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-parse(_url_, _strict_) {#url.parse}
+_url_.parse(_url_, _strict_) {#url.parse}
 
 : Parses given url string into a Url object. If the strict argument is 
   set to `true`, the parser will raise an Exception when it encounters 
@@ -86,6 +88,7 @@ parse(_url_, _strict_) {#url.parse}
 
   {.params}
   - **@returns**: _Url_
+  {.returns}
 
 
 
@@ -96,7 +99,7 @@ _class_ **UrlMalformedException** < _Exception_ {#url.UrlMalformedException .cla
 : Exception thrown when a url is malformed
 
 
-  .UrlMalformedException(_message_) &#8674; Constructor {#url.UrlMalformedException.UrlMalformedException}
+  .UrlMalformedException(_message_) &#x279D; _Constructor_ {#url.UrlMalformedException.UrlMalformedException}
 
   : UrlMalformedException(message: string)
 
@@ -110,55 +113,56 @@ _class_ **Url** {#url.Url .class}
 : The Url class provides functionalities for parsing and processing URLs.
 
 
-  ~ Properties
-
-    - __@printable__
-    - __@serializable__
+    __@printable__, __@serializable__
+    {.class-props}
 
   **.scheme**
-  :  The url scheme e.g. http, https, ftp, tcp etc.
+  : The url scheme e.g. http, https, ftp, tcp etc.
 
   **.host**
-  :  The host information contained in the url
+  : The host information contained in the url
 
   **.port**
-  :  The port information contained in the url whenever the url doesn't 
+  : The port information contained in the url whenever the url doesn't 
     indicate, we try to make a best guess based on the scheme.
 
   **.path**
-  :  The path of the URL.
+  : The path of the URL.
     @default /
 
   **.hash**
-  :  Hash information contained in the url and it's beginning is indicated by the 
+  : Hash information contained in the url and it's beginning is indicated by the 
     hash (#) sign. This value is especially relevant to some http/https urls 
     and are usually references to the content of the document 
     at the given url
 
   **.query**
-  :  Query/Search information contained in the url and it's beginning is indicated by the 
+  : Query/Search information contained in the url and it's beginning is indicated by the 
     question (?) sign. This value is especially relevant to some http/https urls and are 
     usually used to convey data to endpoint based on the GET method.
 
   **.username**
-  :  Username information for authentication are sometimes embedded in urls. When such information
+  : Username information for authentication are sometimes embedded in urls. When such information
     exist, this property holds the information
 
   **.password**
-  :  Password information for authentication are sometimes embedded in urls. When such information
+  : Password information for authentication are sometimes embedded in urls. When such information
     exist, this property holds the information
 
   **.has\_slash**
-  :  `true` if the url contains the :// section. `false` otherwise.
+  : `true` if the url contains the :// section. `false` otherwise.
 
-  **.empty\_path** &#8674; _bool_
-  :  `true` if the original url contains a path segment even if its just an `/` and false if the
+  **.empty\_path** &#x279D; _bool_
+  : `true` if the original url contains a path segment even if its just an `/` and false if the
     path value of `/` was implied.
 
 
-  .Url(_scheme_, _host_, _port_, _path_, _query_, _hash_, _username_, _password_, _has_slash_, _empty_path_) &#8674; Constructor {#url.Url.Url}
+  .Url(_scheme_, _host_, _port_, _path_, _query_, _hash_, _username_, _password_, _has_slash_, _empty_path_) &#x279D; _Constructor_ {#url.Url.Url}
 
-  : - **@params**:
+  : url.Url constructor
+
+
+    - **@params**:
       - _string_ **scheme**
       - _string_ **host**
       - _string?_ **port**
@@ -187,6 +191,7 @@ _class_ **Url** {#url.Url .class}
     > - mailto scheme does not have an authority. For this reason, mailto schemes return an empty string as authority.
 
     - **@returns**: _string_
+    {.returns}
 
 
   .host\_is\_ipv4() {#url.Url.host_is_ipv4}
@@ -196,6 +201,7 @@ _class_ **Url** {#url.Url .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .host\_is\_ipv6() {#url.Url.host_is_ipv6}
@@ -205,6 +211,7 @@ _class_ **Url** {#url.Url .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .absolute\_url() {#url.Url.absolute_url}
@@ -213,6 +220,7 @@ _class_ **Url** {#url.Url .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
   .to\_string() {#url.Url.to_string}
@@ -223,6 +231,7 @@ _class_ **Url** {#url.Url .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
 

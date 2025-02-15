@@ -151,7 +151,7 @@ _See below for more info_
 
 ## Functions
 
-open(_path_) {#sqlite.open}
+_sqlite_.open(_path_) {#sqlite.open}
 
 : Returns an handle to a sqlite3 database. If _path_ is not given, 
   it will create an in-memory sqlite database.
@@ -162,6 +162,7 @@ open(_path_) {#sqlite.open}
 
   {.params}
   - **@returns**: _SQLite3_
+  {.returns}
 
 
 
@@ -173,13 +174,16 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
 
 
   **.path**
-  :  The path to the SQLite3 file
+  : The path to the SQLite3 file
     @default = :memory:
 
 
-  .SQLite3(_path_) &#8674; Constructor {#sqlite.SQLite3.SQLite3}
+  .SQLite3(_path_) &#x279D; _Constructor_ {#sqlite.SQLite3.SQLite3}
 
-  : > **@notes**:
+  : sqlite.SQLite3 constructor
+
+
+    > **@notes**:
     > 
     > - The database doesn't need to exist.
 
@@ -203,6 +207,7 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
 
 
     - **@returns**: _boolean_
+    {.returns}
 
 
   .exec(_query_, _params_) {#sqlite.SQLite3.exec}
@@ -230,6 +235,7 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
 
     {.params}
     - **@returns**: _boolean_
+    {.returns}
 
 
   .last\_insert\_id() {#sqlite.SQLite3.last_insert_id}
@@ -245,6 +251,7 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .query(_sql_, _params_) {#sqlite.SQLite3.query}
@@ -283,6 +290,7 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
 
     {.params}
     - **@returns**: _SQLite3Cursor_
+    {.returns}
 
 
   .fetch(_sql_, _params_) {#sqlite.SQLite3.fetch}
@@ -300,6 +308,7 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
 
     {.params}
     - **@returns**: _list[dictionary]_
+    {.returns}
 
 
 
@@ -316,18 +325,17 @@ _class_ **SQLite3Cursor** {#sqlite.SQLite3Cursor .class}
 : A cursor for navigation through sql results
 
 
-  ~ Properties
+    __@iterable__
+    {.class-props}
 
-    - __@iterable__
+  **.connection** &#x279D; _readonly_
+  : The SQLite3 connection that owns this cursor
 
-  **.connection** &#8674; _readonly_
-  :  The SQLite3 connection that owns this cursor
+  **.row\_count** &#x279D; _readonly_
+  : The number of rows in the cursor
 
-  **.row\_count** &#8674; _readonly_
-  :  The number of rows in the cursor
-
-  **.modified\_count** &#8674; _readonly_
-  :  This value hold the number of rows modified, inserted or deleted by the the query that 
+  **.modified\_count** &#x279D; _readonly_
+  : This value hold the number of rows modified, inserted or deleted by the the query that 
     owns this cursor provided the query is one of INSERT, UPDATE or DELETE statement.
     Executing any other type of SQL statement does not change this value from 0.
     
@@ -345,13 +353,16 @@ _class_ **SQLite3Cursor** {#sqlite.SQLite3Cursor .class}
     > the original query was also making a change, the result of this value will become 
     > undependable.
 
-  **.columns** &#8674; _readonly_
-  :  A list of the columns available in the result set.
+  **.columns** &#x279D; _readonly_
+  : A list of the columns available in the result set.
 
 
-  .SQLite3Cursor(_db_, _cursor_) &#8674; Constructor {#sqlite.SQLite3Cursor.SQLite3Cursor}
+  .SQLite3Cursor(_db_, _cursor_) &#x279D; _Constructor_ {#sqlite.SQLite3Cursor.SQLite3Cursor}
 
-  : > **@notes**:
+  : sqlite.SQLite3Cursor constructor
+
+
+    > **@notes**:
     > 
     > - SQLite3Cursor should NEVER be maually instantiated.
 
@@ -368,6 +379,7 @@ _class_ **SQLite3Cursor** {#sqlite.SQLite3Cursor .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .has\_next() {#sqlite.SQLite3Cursor.has_next}
@@ -377,6 +389,7 @@ _class_ **SQLite3Cursor** {#sqlite.SQLite3Cursor .class}
 
 
     - **@returns**: _boolean_
+    {.returns}
 
 
   .get(_index_) {#sqlite.SQLite3Cursor.get}
@@ -404,6 +417,7 @@ _class_ **SQLite3Cursor** {#sqlite.SQLite3Cursor .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
 

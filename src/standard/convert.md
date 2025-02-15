@@ -2,7 +2,7 @@
 
 ## Functions
 
-hex\_to\_bytes(_str_) {#convert.hex_to_bytes}
+_convert_.hex\_to\_bytes(_str_) {#convert.hex_to_bytes}
 
 : Converts hexadecimal string of any length to bytes.
 
@@ -12,10 +12,11 @@ hex\_to\_bytes(_str_) {#convert.hex_to_bytes}
 
   {.params}
   - **@returns**: _bytes_
+  {.returns}
 
 
 
-bytes\_to\_hex(_data_) {#convert.bytes_to_hex}
+_convert_.bytes\_to\_hex(_data_) {#convert.bytes_to_hex}
 
 : Converts binary data (byes) of any length to hexadecimal string 
   representation.
@@ -26,10 +27,11 @@ bytes\_to\_hex(_data_) {#convert.bytes_to_hex}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-decimal\_to\_hex(_n_) {#convert.decimal_to_hex}
+_convert_.decimal\_to\_hex(_n_) {#convert.decimal_to_hex}
 
 : Converts the given decimal based number to an hexadecimal string.
 
@@ -39,10 +41,11 @@ decimal\_to\_hex(_n_) {#convert.decimal_to_hex}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hex\_to\_decimal(_str_) {#convert.hex_to_decimal}
+_convert_.hex\_to\_decimal(_str_) {#convert.hex_to_decimal}
 
 : Converts the given hexadecimal string to a decimal base 10 number.
 
@@ -56,10 +59,11 @@ hex\_to\_decimal(_str_) {#convert.hex_to_decimal}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-unicode\_to\_hex(_chr_) {#convert.unicode_to_hex}
+_convert_.unicode\_to\_hex(_chr_) {#convert.unicode_to_hex}
 
 : Converts a unicode character to it's equivalent hexadecimal string.
 
@@ -69,10 +73,11 @@ unicode\_to\_hex(_chr_) {#convert.unicode_to_hex}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-bytes\_to\_decimal(_bytes_) {#convert.bytes_to_decimal}
+_convert_.bytes\_to\_decimal(_bytes_) {#convert.bytes_to_decimal}
 
 : Converts a bytes (binary data) to a decimal number.
 
@@ -82,6 +87,7 @@ bytes\_to\_decimal(_bytes_) {#convert.bytes_to_decimal}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 

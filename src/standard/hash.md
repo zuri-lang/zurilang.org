@@ -24,7 +24,7 @@ Examples,
 
 ## Functions
 
-hash(_value_) {#hash.hash}
+_hash_.hash(_value_) {#hash.hash}
 
 : Returns the hash of a value as used in a dictionary underlying
   implementation.
@@ -37,10 +37,11 @@ hash(_value_) {#hash.hash}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-adler32(_str_, _value_) {#hash.adler32}
+_hash_.adler32(_str_, _value_) {#hash.adler32}
 
 : Returns the adler32 value of the given string or bytes
   If value is given, it is used as the base value of the adler32
@@ -53,10 +54,11 @@ adler32(_str_, _value_) {#hash.adler32}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-crc32(_str_, _value_) {#hash.crc32}
+_hash_.crc32(_str_, _value_) {#hash.crc32}
 
 : Returns the crc32 value of the given string or bytes
   If value is given, it is used as the base value of the crc32
@@ -69,10 +71,11 @@ crc32(_str_, _value_) {#hash.crc32}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-md2(_str_) {#hash.md2}
+_hash_.md2(_str_) {#hash.md2}
 
 : Returns the md2 hash of the given string or bytes.
 
@@ -82,10 +85,11 @@ md2(_str_) {#hash.md2}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-md4(_str_) {#hash.md4}
+_hash_.md4(_str_) {#hash.md4}
 
 : Returns the md4 hash of the given string or bytes.
 
@@ -95,10 +99,11 @@ md4(_str_) {#hash.md4}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-md5(_str_) {#hash.md5}
+_hash_.md5(_str_) {#hash.md5}
 
 : Returns the md5 hash of the given string or bytes.
 
@@ -108,10 +113,11 @@ md5(_str_) {#hash.md5}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-md5\_file(_file_) {#hash.md5_file}
+_hash_.md5\_file(_file_) {#hash.md5_file}
 
 : Returns the md5 hash of the given file.
 
@@ -121,10 +127,11 @@ md5\_file(_file_) {#hash.md5_file}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-sha1(_str_) {#hash.sha1}
+_hash_.sha1(_str_) {#hash.sha1}
 
 : Returns the sha1 hash of the given string or bytes.
 
@@ -134,10 +141,11 @@ sha1(_str_) {#hash.sha1}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-sha224(_str_) {#hash.sha224}
+_hash_.sha224(_str_) {#hash.sha224}
 
 : Returns the sha224 hash of the given string or bytes.
 
@@ -147,10 +155,11 @@ sha224(_str_) {#hash.sha224}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-sha256(_str_) {#hash.sha256}
+_hash_.sha256(_str_) {#hash.sha256}
 
 : Returns the sha256 hash of the given string or bytes.
 
@@ -160,10 +169,11 @@ sha256(_str_) {#hash.sha256}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-sha384(_str_) {#hash.sha384}
+_hash_.sha384(_str_) {#hash.sha384}
 
 : Returns the sha384 hash of the given string or bytes.
 
@@ -173,10 +183,11 @@ sha384(_str_) {#hash.sha384}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-sha512(_str_) {#hash.sha512}
+_hash_.sha512(_str_) {#hash.sha512}
 
 : Returns the sha512 hash of the given string or bytes.
 
@@ -186,10 +197,11 @@ sha512(_str_) {#hash.sha512}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-fnv1(_str_) {#hash.fnv1}
+_hash_.fnv1(_str_) {#hash.fnv1}
 
 : Returns the 32 bit fnv1 hash of the given string or bytes.
 
@@ -199,10 +211,11 @@ fnv1(_str_) {#hash.fnv1}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-fnv1\_64(_str_) {#hash.fnv1_64}
+_hash_.fnv1\_64(_str_) {#hash.fnv1_64}
 
 : Returns the 64 bit fnv1 hash of the given string or bytes.
 
@@ -212,10 +225,11 @@ fnv1\_64(_str_) {#hash.fnv1_64}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-fnv1a(_str_) {#hash.fnv1a}
+_hash_.fnv1a(_str_) {#hash.fnv1a}
 
 : Returns the 32 bit fnv1a hash of the given string or bytes.
 
@@ -225,10 +239,11 @@ fnv1a(_str_) {#hash.fnv1a}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-fnv1a\_64(_str_) {#hash.fnv1a_64}
+_hash_.fnv1a\_64(_str_) {#hash.fnv1a_64}
 
 : Returns the 64 bit fnv1a hash of the given string or bytes.
 
@@ -238,10 +253,11 @@ fnv1a\_64(_str_) {#hash.fnv1a_64}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-whirlpool(_str_) {#hash.whirlpool}
+_hash_.whirlpool(_str_) {#hash.whirlpool}
 
 : Returns the whirlpool hash of the given string or bytes.
 
@@ -251,10 +267,11 @@ whirlpool(_str_) {#hash.whirlpool}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-snefru(_str_) {#hash.snefru}
+_hash_.snefru(_str_) {#hash.snefru}
 
 : Returns the Snefru cryptographic hash of the given string or bytes.
 
@@ -264,10 +281,11 @@ snefru(_str_) {#hash.snefru}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-siphash(_key_, _str_) {#hash.siphash}
+_hash_.siphash(_key_, _str_) {#hash.siphash}
 
 : Returns the SipHash cryptographic hash of the given string or bytes.
 
@@ -278,10 +296,11 @@ siphash(_key_, _str_) {#hash.siphash}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-gost(_str_) {#hash.gost}
+_hash_.gost(_str_) {#hash.gost}
 
 : Returns the Gost cryptographic hash of the given string or bytes.
 
@@ -291,10 +310,11 @@ gost(_str_) {#hash.gost}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac(_method_, _key_, _str_) {#hash.hmac}
+_hash_.hmac(_method_, _key_, _str_) {#hash.hmac}
 
 : Computes an HMAC with the key and str using the given method.
 
@@ -306,10 +326,11 @@ hmac(_method_, _key_, _str_) {#hash.hmac}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac\_md2(_key_, _str_) {#hash.hmac_md2}
+_hash_.hmac\_md2(_key_, _str_) {#hash.hmac_md2}
 
 : Returns the HMAC-MD2 cryptographic hash of the given string or bytes.
 
@@ -320,10 +341,11 @@ hmac\_md2(_key_, _str_) {#hash.hmac_md2}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac\_md4(_key_, _str_) {#hash.hmac_md4}
+_hash_.hmac\_md4(_key_, _str_) {#hash.hmac_md4}
 
 : Returns the HMAC-MD4 cryptographic hash of the given string or bytes.
 
@@ -334,10 +356,11 @@ hmac\_md4(_key_, _str_) {#hash.hmac_md4}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac\_md5(_key_, _str_) {#hash.hmac_md5}
+_hash_.hmac\_md5(_key_, _str_) {#hash.hmac_md5}
 
 : Returns the HMAC-MD5 cryptographic hash of the given string or bytes.
 
@@ -348,10 +371,11 @@ hmac\_md5(_key_, _str_) {#hash.hmac_md5}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac\_sha1(_key_, _str_) {#hash.hmac_sha1}
+_hash_.hmac\_sha1(_key_, _str_) {#hash.hmac_sha1}
 
 : Returns the HMAC-SHA1 cryptographic hash of the given string or bytes.
 
@@ -362,10 +386,11 @@ hmac\_sha1(_key_, _str_) {#hash.hmac_sha1}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac\_sha224(_key_, _str_) {#hash.hmac_sha224}
+_hash_.hmac\_sha224(_key_, _str_) {#hash.hmac_sha224}
 
 : Returns the HMAC-SHA224 cryptographic hash of the given string or bytes.
 
@@ -376,10 +401,11 @@ hmac\_sha224(_key_, _str_) {#hash.hmac_sha224}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac\_sha256(_key_, _str_) {#hash.hmac_sha256}
+_hash_.hmac\_sha256(_key_, _str_) {#hash.hmac_sha256}
 
 : Returns the HMAC-SHA256 cryptographic hash of the given string or bytes.
 
@@ -390,10 +416,11 @@ hmac\_sha256(_key_, _str_) {#hash.hmac_sha256}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac\_sha384(_key_, _str_) {#hash.hmac_sha384}
+_hash_.hmac\_sha384(_key_, _str_) {#hash.hmac_sha384}
 
 : Returns the HMAC-SHA384 cryptographic hash of the given string or bytes.
 
@@ -404,10 +431,11 @@ hmac\_sha384(_key_, _str_) {#hash.hmac_sha384}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac\_sha512(_key_, _str_) {#hash.hmac_sha512}
+_hash_.hmac\_sha512(_key_, _str_) {#hash.hmac_sha512}
 
 : Returns the HMAC-SHA512 cryptographic hash of the given string or bytes.
 
@@ -418,10 +446,11 @@ hmac\_sha512(_key_, _str_) {#hash.hmac_sha512}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac\_whirlpool(_key_, _str_) {#hash.hmac_whirlpool}
+_hash_.hmac\_whirlpool(_key_, _str_) {#hash.hmac_whirlpool}
 
 : Returns the HMAC-WHIRLPOOL cryptographic hash of the given string or bytes.
 
@@ -432,10 +461,11 @@ hmac\_whirlpool(_key_, _str_) {#hash.hmac_whirlpool}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac\_snefru(_key_, _str_) {#hash.hmac_snefru}
+_hash_.hmac\_snefru(_key_, _str_) {#hash.hmac_snefru}
 
 : Returns the HMAC-SNEFRU cryptographic hash of the given string or bytes.
 
@@ -446,10 +476,11 @@ hmac\_snefru(_key_, _str_) {#hash.hmac_snefru}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-hmac\_gost(_key_, _str_) {#hash.hmac_gost}
+_hash_.hmac\_gost(_key_, _str_) {#hash.hmac_gost}
 
 : Returns the HMAC-GOST cryptographic hash of the given string or bytes.
 
@@ -460,6 +491,7 @@ hmac\_gost(_key_, _str_) {#hash.hmac_gost}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 

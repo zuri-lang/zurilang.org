@@ -83,7 +83,7 @@ def get_class_docs(module, klass, depth) {
   # skip classes marked as internal in the documentation.
   if is_internal return ''
 
-  var doc = klass.doc.replace('/^@(printable|serializable|internal|iterable|number).*\\n?/m', '')
+  var doc = klass.doc.replace('/^@(printable|serializable|internal|iterable|number).*\\n?/m', '').trim()
 
   
   result += ' {#${module}.${klass.name} .class}\n\n'
@@ -93,18 +93,19 @@ def get_class_docs(module, klass, depth) {
   }
 
   if is_printable or is_serializable or is_iterable {
-    result += prefix(depth + 1) + '~ Properties\n\n'
-    if is_printable result += prefix(depth + 2) + '- __@printable__\n'
-    if is_serializable result += prefix(depth + 2) + '- __@serializable__\n'
-    if is_iterable result += prefix(depth + 2) + '- __@iterable__\n'
-    result += '\n'
+    var tmp_result = []
+    if is_printable tmp_result.append('__@printable__')
+    if is_serializable tmp_result.append('__@serializable__')
+    if is_iterable tmp_result.append('__@iterable__')
+    result += prefix(depth + 2) + ', '.join(tmp_result) + '\n'
+    result += prefix(depth + 2) + '{.class-props}\n\n'
   }
 
   if klass.properties {
     if klass.properties {
       for index, prop in klass.properties {
         if prop.doc {
-          var doc_line = get_var_docs(depth + 1, prop, prop.is_static, true)
+          var doc_line = get_var_docs('${module}.${class_name}', depth + 1, prop, prop.is_static, true)
 
           if doc {
             result += doc_line + '\n'
@@ -141,7 +142,7 @@ def get_class_docs(module, klass, depth) {
 def get_function_docs(root_name, depth, function, is_static, from_class) {
 
   var function_name = function.name.replace("_", "\_")
-  var decl_line = (is_static and !from_class ? '_static_ ' : (from_class ? '.' : '')) + '${function_name}' + '(' + ', '.join(function.params.map(@(x){ return '_${x}_' })) + ')'
+  var decl_line = (is_static and !from_class ? '_static_ ' : (from_class ? '.' : '_${root_name}_.')) + '${function_name}' + '(' + ', '.join(function.params.map(@(x){ return '_${x}_' })) + ')'
   
   var param_lines = function.doc.matches('/^@params?[ ]+(?P<type>[^ :\\n]+)([ ]+(?P<name>[^ :\\n]+)([ ]*(?P<description>[^\\n]*))?)?$/m')
   var return_line = function.doc.match('/^@returns?[ ]+(?P<type>.*?)$/m')
@@ -157,13 +158,21 @@ def get_function_docs(root_name, depth, function, is_static, from_class) {
   # skip functions marked as internal in the documentation.
   if is_internal return ''
 
-  var doc = function.doc.replace('/^@(params?|returns?|example|note|constructor|default|internal|raises?).*$/m', '').trim()
+  var doc = function.doc.replace('/^@(params?|returns?|example|note|constructor|default|internal|raises?|deprecated).*$/m', '').trim()
   
   var result = prefix(depth) + decl_line
   if is_constructor {
-    result += ' &#8674; Constructor'
+    result += ' &#x279D; _Constructor_'
   } else if is_default {
-    result += ' &#8674; Exported'
+    result += ' &#x279D; _Exported_'
+  }
+
+  if !doc {
+    if is_constructor {
+      doc = '${root_name} constructor\n\n'
+    } else if is_default {
+      doc = '${root_name} default export function\n\n'
+    }
   }
 
   result += ' {#${root_name}.${function.name}}\n\n'
@@ -209,6 +218,8 @@ def get_function_docs(root_name, depth, function, is_static, from_class) {
   if return_line {
     result += (doc or note_lines or deprecated or param_lines ?
         prefix(depth + 1) : '') + '- **@returns**: _${return_line.type}_\n'
+    result += prefix(depth + 1) + '{.returns}'
+    result += '\n'
   }
 
   if throw_lines {
@@ -218,12 +229,14 @@ def get_function_docs(root_name, depth, function, is_static, from_class) {
     iter var i = 0; i < throw_lines[0].length(); i++ {
       result += prefix(depth + 2) + '- ${throw_lines.type[i]}\n'
     }
+    result += prefix(depth + 1) + '{.raises}'
+    result += '\n'
   }
 
   return result + '\n'
 }
 
-def get_var_docs(depth, var_data, is_static, from_class) {
+def get_var_docs(root_name, depth, var_data, is_static, from_class) {
   var doc = var_data.doc, type = '', readonly = false
 
   var type_declared = doc.match('/^@type (\{?)(?P<type>[^ }\\n]+)\1/m')
@@ -238,16 +251,16 @@ def get_var_docs(depth, var_data, is_static, from_class) {
     doc = (doc + '\n').replace('/^@readonly[^\\n]*\\n?/m', '\n').trim()
   }
 
-  doc = doc.replace('/^@(readonly|type|static|note).*$/', '')
+  doc = doc.replace('/^@(readonly|type|static|note).*$/', '').trim()
 
-  var line = prefix(depth) + (is_static and !from_class ? '_static_ ' : '') + '**${from_class ? "." : ""}${var_data.name.replace("_", "\_")}**'
+  var line = prefix(depth) + (is_static and !from_class ? '_static_ ' : (!from_class ? '_${root_name}_.' : '')) + '**${from_class ? "." : ""}${var_data.name.replace("_", "\_")}**'
   if is_static or readonly or type 
-    line += ' &#8674;'
+    line += ' &#x279D;'
   if is_static line += ' _static_'
   if readonly line += ' _readonly_'
   if type line += ' _${type}_'
 
-  line += '\n' + prefix(depth) + ':  ' 
+  line += '\n' + prefix(depth) + ': ' 
   line += ident(cite(doc), depth)
 
   return line
@@ -315,7 +328,7 @@ def get_docs(module, parse_list) {
       if parse_item.doc {
         if instance_of(parse_item, ast.VarDecl) {
           if !parse_item.name.starts_with('_') and parse_item.doc
-            result.variables.append(get_var_docs(0, parse_item))
+            result.variables.append(get_var_docs(module, 0, parse_item))
         } else if instance_of(parse_item, ast.FunctionDecl) {
           if !parse_item.name.starts_with('_') and !parse_item.name.starts_with('@') and parse_item.doc
             result.functions.append(get_function_docs(module, 0, parse_item))

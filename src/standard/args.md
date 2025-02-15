@@ -66,27 +66,27 @@ Usage: myprogram call
 
 ## Fields
 
-**NONE**
-:  value type none
+_args_.**NONE**
+: value type none
 
-**INT**
-:  value type integer (allows numbers, but floors them to integers)
+_args_.**INT**
+: value type integer (allows numbers, but floors them to integers)
 
-**NUMBER**
-:  value type number
+_args_.**NUMBER**
+: value type number
 
-**BOOL**
-:  value type boolean (accepts `1` and `0` as well as `true` 
+_args_.**BOOL**
+: value type boolean (accepts `1` and `0` as well as `true` 
   and `false` as valid values).
 
-**STRING**
-:  value type string
+_args_.**STRING**
+: value type string
 
-**LIST**
-:  value type for list
+_args_.**LIST**
+: value type for list
 
-**CHOICE**
-:  value type enumeration choices.
+_args_.**CHOICE**
+: value type enumeration choices.
 
 
 ## Classes
@@ -104,15 +104,18 @@ _class_ **Parser** {#args.Parser .class}
 
 
   **.commands**
-  :  A list of commands supported by the parser.
+  : A list of commands supported by the parser.
 
   **.indexes**
-  :  A list of positional values supported by the parser.
+  : A list of positional values supported by the parser.
 
 
-  .Parser(_name_, _default_help_) &#8674; Constructor {#args.Parser.Parser}
+  .Parser(_name_, _default_help_) &#x279D; _Constructor_ {#args.Parser.Parser}
 
-  : - **@params**:
+  : args.Parser constructor
+
+
+    - **@params**:
       - _string_ **name** : Refers to the name of the cli program.
 
       - _bool?_ **default_help** : Whether to show help when no command or option is matched or not &mdash; Default value is `true`.
@@ -218,6 +221,7 @@ _class_ **Parser** {#args.Parser .class}
 
 
     - **@returns**: _dict_
+    {.returns}
 
 
   .help() {#args.Parser.help}

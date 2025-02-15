@@ -8,7 +8,7 @@ _See defined functions for example._
 
 ## Functions
 
-detect\_from\_name(_name_) {#mime.detect_from_name}
+_mime_.detect\_from\_name(_name_) {#mime.detect_from_name}
 
 : Detects the mimetype of a file based on the
   extension defined in it's path.
@@ -30,10 +30,11 @@ detect\_from\_name(_name_) {#mime.detect_from_name}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-detect\_from\_header(_file_) {#mime.detect_from_header}
+_mime_.detect\_from\_header(_file_) {#mime.detect_from_header}
 
 : Detects the mimetype of a file based on it's file header.
   When multiple file formats share very similar or shadowing
@@ -62,10 +63,11 @@ detect\_from\_header(_file_) {#mime.detect_from_header}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-detect(_file_) {#mime.detect}
+_mime_.detect(_file_) {#mime.detect}
 
 : Performs mimetype detection on a file.
   
@@ -98,10 +100,11 @@ detect(_file_) {#mime.detect}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-extend(_extension_, _format_) {#mime.extend}
+_mime_.extend(_extension_, _format_) {#mime.extend}
 
 : Extends the mime module with support for files with the given _extension_ as 
   defined in the given _format_.
@@ -129,6 +132,7 @@ extend(_extension_, _format_) {#mime.extend}
 
   {.params}
   - **@returns**: _bool_
+  {.returns}
 
 
 
@@ -139,9 +143,12 @@ _class_ **MimeFormat** {#mime.MimeFormat .class}
 : Mime format representation class.
 
 
-  .MimeFormat(_mimetype_, _header_) &#8674; Constructor {#mime.MimeFormat.MimeFormat}
+  .MimeFormat(_mimetype_, _header_) &#x279D; _Constructor_ {#mime.MimeFormat.MimeFormat}
 
-  : > **@notes**:
+  : mime.MimeFormat constructor
+
+
+    > **@notes**:
     > 
     > - only the first 16 bytes of a file header will be used.
 

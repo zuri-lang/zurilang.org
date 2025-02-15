@@ -44,11 +44,11 @@ Example,
 
 ## Functions
 
-encode(_value_, _compact_, _max_depth_) {#json.encode}
+_json_.encode(_value_, _compact_, _max_depth_) {#json.encode}
 
 : JSON encodes the given value with a recursive depth up to `max_depth`.
   
-  If _compact_ is `false`, the resulting json string will be 
+  If _compact_ is `true`, the resulting json string will be 
   tightly packed. i.e. spaces will be trimmed from objects and arrays. Otherwise, 
   the JSON output will be pretty formatted.
 
@@ -66,10 +66,11 @@ encode(_value_, _compact_, _max_depth_) {#json.encode}
 
   {.params}
   - **@returns**: _string_
+  {.returns}
 
 
 
-decode(_value_, _allow_comments_) {#json.decode}
+_json_.decode(_value_, _allow_comments_) {#json.decode}
 
 : Decodes the input JSON string into Blade objects
 
@@ -82,10 +83,11 @@ decode(_value_, _allow_comments_) {#json.decode}
 
   {.params}
   - **@returns**: _object_
+  {.returns}
 
 
 
-parse(_path_) {#json.parse}
+_json_.parse(_path_) {#json.parse}
 
 : Parses a file containing json data.
 
@@ -95,6 +97,7 @@ parse(_path_) {#json.parse}
 
   {.params}
   - **@returns**: _object_
+  {.returns}
 
 
 
@@ -106,9 +109,12 @@ _class_ **Encoder** {#json.Encoder .class}
 
 
 
-  .Encoder(_compact_, _max_depth_) &#8674; Constructor {#json.Encoder.Encoder}
+  .Encoder(_compact_, _max_depth_) &#x279D; _Constructor_ {#json.Encoder.Encoder}
 
-  : > **@notes**:
+  : json.Encoder constructor
+
+
+    > **@notes**:
     > 
     > - Depth starts from zero
 
@@ -133,6 +139,7 @@ _class_ **Encoder** {#json.Encoder .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
 

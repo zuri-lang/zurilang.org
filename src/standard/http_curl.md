@@ -1,9 +1,13 @@
-# http
+# http_curl
 
 > **IMPORTANT NOTICE:**
 >
+> THIS MODULE WAS FORMERLY THE `http` module.
+>
 > THIS MODULE IS DEPRECIATED AND WILL BE REMOVED FROM THE CORE
-> LIBRARY AS SOON AS THE PURE BLADE IMPLEMENTATION IS STABLE.
+> LIBRARY AS SOON AS THE CLIENT OF THE PURE BLADE IMPLEMENTATION 
+> IS STABLE.
+>
 > IT IS ONLY HERE FOR HISTORICAL REASONS AND TO SERVE AS A BASE
 > BENCHMARK FOR THE DEVELOPMENT OF THE `http` MODULE.
 >
@@ -12,14 +16,14 @@
 >
 > BUG REPORTS AND ISSUES FOR THIS MODULE WILL NOT BE TREATED AS
 > PRIORITY.
-The `chttp` module provides a rich library to help in building HTTP
+The `http_curl` module provides a rich library to help in building HTTP
 clients and servers. The module also provides a few generic abstractions
 for simple HTTP operations such as a GET request.
 ### Examples
 The example below shows making a GET request to fetch a webpage.
 ```blade
-import chttp
-echo chttp.get('http://example.com')
+import http_curl
+echo http_curl.get('http://example.com')
 # <class HttpResponse instance at 0x600002adacd0>
 ```
 There is a `post()` and `put()` alternative to the `get()` method called
@@ -28,227 +32,227 @@ For a more controlled HTTP request, you should use the HttpClient class.
 Below is an example of such implementation that sets the timeout for
 receiving response back from the server to 30 seconds.
 ```blade
-import chttp
-var client = chttp.HttpClient()
+import http_curl
+var client = http_curl.HttpClient()
 client.receive_timeout = 30000 # Optional
 var res = client.send_request('http://example.com/endpoint?query=1', 'GET')
 echo res.body.to_string()
 ```
-Creating a server with the `chttp` module is also a breeze.
+Creating a server with the `http_curl` module is also a breeze.
 The example below shows an implementation of an HTTP API server listening on port
 3000 and simple returns the JSON of the request object itself.
 ```blade
-import chttp
+import http_curl
 import json
-var server = chttp.server(3000)
+var server = http_curl.server(3000)
 server.handle('GET', '/', @(request, response) {
   response.json(request)
 })
 server.listen()
 ```
-The `chttp` module does not make any assumption as to the type of data to be sent
+The `http_curl` module does not make any assumption as to the type of data to be sent
 in request bodies and for this reason, it should not be expected to automatically
 convert dictionaries into JSON objects or create multipart/form-data request for you.
 Rather, it gives the tools required to craft any request body of your choice.
 
 ## Fields
 
-**CONTINUE** &#8674; _readonly_ _int_
-:  100 continue.
+_http_curl_.**CONTINUE** &#x279D; _readonly_ _int_
+: 100 continue.
 
-**SWITCHING\_PROTOCOLS** &#8674; _readonly_ _int_
-:  101 switching protocols.
+_http_curl_.**SWITCHING\_PROTOCOLS** &#x279D; _readonly_ _int_
+: 101 switching protocols.
 
-**PROCESSING** &#8674; _readonly_ _int_
-:  102 processing.
+_http_curl_.**PROCESSING** &#x279D; _readonly_ _int_
+: 102 processing.
 
-**OK** &#8674; _readonly_ _int_
-:  200 ok.
+_http_curl_.**OK** &#x279D; _readonly_ _int_
+: 200 ok.
 
-**CREATED** &#8674; _readonly_ _int_
-:  201 created.
+_http_curl_.**CREATED** &#x279D; _readonly_ _int_
+: 201 created.
 
-**ACCEPTED** &#8674; _readonly_ _int_
-:  202 accepted.
+_http_curl_.**ACCEPTED** &#x279D; _readonly_ _int_
+: 202 accepted.
 
-**NON\_AUTHORITATIVE\_INFORMATION** &#8674; _readonly_ _int_
-:  203 non authoritative information.
+_http_curl_.**NON\_AUTHORITATIVE\_INFORMATION** &#x279D; _readonly_ _int_
+: 203 non authoritative information.
 
-**NO\_CONTENT** &#8674; _readonly_ _int_
-:  204 no content.
+_http_curl_.**NO\_CONTENT** &#x279D; _readonly_ _int_
+: 204 no content.
 
-**RESET\_CONTENT** &#8674; _readonly_ _int_
-:  205 reset content.
+_http_curl_.**RESET\_CONTENT** &#x279D; _readonly_ _int_
+: 205 reset content.
 
-**PARTIAL\_CONTENT** &#8674; _readonly_ _int_
-:  206 partial content.
+_http_curl_.**PARTIAL\_CONTENT** &#x279D; _readonly_ _int_
+: 206 partial content.
 
-**MULTI\_STATUS** &#8674; _readonly_ _int_
-:  207 multi status.
+_http_curl_.**MULTI\_STATUS** &#x279D; _readonly_ _int_
+: 207 multi status.
 
-**ALREADY\_REPORTED** &#8674; _readonly_ _int_
-:  208 already reported.
+_http_curl_.**ALREADY\_REPORTED** &#x279D; _readonly_ _int_
+: 208 already reported.
 
-**IM\_USED** &#8674; _readonly_ _int_
-:  226 im used.
+_http_curl_.**IM\_USED** &#x279D; _readonly_ _int_
+: 226 im used.
 
-**MULTIPLE\_CHOICES** &#8674; _readonly_ _int_
-:  300 multiple choices.
+_http_curl_.**MULTIPLE\_CHOICES** &#x279D; _readonly_ _int_
+: 300 multiple choices.
 
-**MOVED\_PERMANENTLY** &#8674; _readonly_ _int_
-:  301 moved permanently.
+_http_curl_.**MOVED\_PERMANENTLY** &#x279D; _readonly_ _int_
+: 301 moved permanently.
 
-**FOUND** &#8674; _readonly_ _int_
-:  302 found.
+_http_curl_.**FOUND** &#x279D; _readonly_ _int_
+: 302 found.
 
-**SEE\_OTHER** &#8674; _readonly_ _int_
-:  303 see other.
+_http_curl_.**SEE\_OTHER** &#x279D; _readonly_ _int_
+: 303 see other.
 
-**NOT\_MODIFIED** &#8674; _readonly_ _int_
-:  304 not modified.
+_http_curl_.**NOT\_MODIFIED** &#x279D; _readonly_ _int_
+: 304 not modified.
 
-**USE\_PROXY** &#8674; _readonly_ _int_
-:  305 use proxy.
+_http_curl_.**USE\_PROXY** &#x279D; _readonly_ _int_
+: 305 use proxy.
 
-**TEMPORARY\_REDIRECT** &#8674; _readonly_ _int_
-:  307 temporary redirect.
+_http_curl_.**TEMPORARY\_REDIRECT** &#x279D; _readonly_ _int_
+: 307 temporary redirect.
 
-**PERMANENT\_REDIRECT** &#8674; _readonly_ _int_
-:  308 permanent redirect.
+_http_curl_.**PERMANENT\_REDIRECT** &#x279D; _readonly_ _int_
+: 308 permanent redirect.
 
-**BAD\_REQUEST** &#8674; _readonly_ _int_
-:  400 bad request.
+_http_curl_.**BAD\_REQUEST** &#x279D; _readonly_ _int_
+: 400 bad request.
 
-**UNAUTHORIZED** &#8674; _readonly_ _int_
-:  401 unauthorized.
+_http_curl_.**UNAUTHORIZED** &#x279D; _readonly_ _int_
+: 401 unauthorized.
 
-**PAYMENT\_REQUIRED** &#8674; _readonly_ _int_
-:  402 payment required.
+_http_curl_.**PAYMENT\_REQUIRED** &#x279D; _readonly_ _int_
+: 402 payment required.
 
-**FORBIDDEN** &#8674; _readonly_ _int_
-:  403 forbidden.
+_http_curl_.**FORBIDDEN** &#x279D; _readonly_ _int_
+: 403 forbidden.
 
-**NOT\_FOUND** &#8674; _readonly_ _int_
-:  404 not found.
+_http_curl_.**NOT\_FOUND** &#x279D; _readonly_ _int_
+: 404 not found.
 
-**METHOD\_NOT\_ALLOWED** &#8674; _readonly_ _int_
-:  405 method not allowed.
+_http_curl_.**METHOD\_NOT\_ALLOWED** &#x279D; _readonly_ _int_
+: 405 method not allowed.
 
-**NOT\_ACCEPTABLE** &#8674; _readonly_ _int_
-:  406 not acceptable.
+_http_curl_.**NOT\_ACCEPTABLE** &#x279D; _readonly_ _int_
+: 406 not acceptable.
 
-**PROXY\_AUTHENTICATION\_REQUIRED** &#8674; _readonly_ _int_
-:  407 proxy authentication required.
+_http_curl_.**PROXY\_AUTHENTICATION\_REQUIRED** &#x279D; _readonly_ _int_
+: 407 proxy authentication required.
 
-**REQUEST\_TIMEOUT** &#8674; _readonly_ _int_
-:  408 request timeout.
+_http_curl_.**REQUEST\_TIMEOUT** &#x279D; _readonly_ _int_
+: 408 request timeout.
 
-**CONFLICT** &#8674; _readonly_ _int_
-:  409 conflict.
+_http_curl_.**CONFLICT** &#x279D; _readonly_ _int_
+: 409 conflict.
 
-**GONE** &#8674; _readonly_ _int_
-:  410 gone.
+_http_curl_.**GONE** &#x279D; _readonly_ _int_
+: 410 gone.
 
-**LENGTH\_REQUIRED** &#8674; _readonly_ _int_
-:  411 length required.
+_http_curl_.**LENGTH\_REQUIRED** &#x279D; _readonly_ _int_
+: 411 length required.
 
-**PRECONDITION\_FAILED** &#8674; _readonly_ _int_
-:  412 precondition failed.
+_http_curl_.**PRECONDITION\_FAILED** &#x279D; _readonly_ _int_
+: 412 precondition failed.
 
-**PAYLOAD\_TOO\_LARGE** &#8674; _readonly_ _int_
-:  413 payload too large.
+_http_curl_.**PAYLOAD\_TOO\_LARGE** &#x279D; _readonly_ _int_
+: 413 payload too large.
 
-**REQUEST\_URI\_TOO\_LONG** &#8674; _readonly_ _int_
-:  414 request uri too long.
+_http_curl_.**REQUEST\_URI\_TOO\_LONG** &#x279D; _readonly_ _int_
+: 414 request uri too long.
 
-**UNSUPPORTED\_MEDIA\_TYPE** &#8674; _readonly_ _int_
-:  415 unsupported media type.
+_http_curl_.**UNSUPPORTED\_MEDIA\_TYPE** &#x279D; _readonly_ _int_
+: 415 unsupported media type.
 
-**REQUESTED\_RANGE\_NOT\_SATISFIABLE** &#8674; _readonly_ _int_
-:  416 requested range not satisfiable.
+_http_curl_.**REQUESTED\_RANGE\_NOT\_SATISFIABLE** &#x279D; _readonly_ _int_
+: 416 requested range not satisfiable.
 
-**EXPECTATION\_FAILED** &#8674; _readonly_ _int_
-:  417 expectation failed.
+_http_curl_.**EXPECTATION\_FAILED** &#x279D; _readonly_ _int_
+: 417 expectation failed.
 
-**TEAPOT** &#8674; _readonly_ _int_
-:  418 teapot.
+_http_curl_.**TEAPOT** &#x279D; _readonly_ _int_
+: 418 teapot.
 
-**MISDIRECTED\_REQUEST** &#8674; _readonly_ _int_
-:  421 misdirected request.
+_http_curl_.**MISDIRECTED\_REQUEST** &#x279D; _readonly_ _int_
+: 421 misdirected request.
 
-**UNPROCESSABLE\_ENTITY** &#8674; _readonly_ _int_
-:  422 unprocessable entity.
+_http_curl_.**UNPROCESSABLE\_ENTITY** &#x279D; _readonly_ _int_
+: 422 unprocessable entity.
 
-**LOCKED** &#8674; _readonly_ _int_
-:  423 locked.
+_http_curl_.**LOCKED** &#x279D; _readonly_ _int_
+: 423 locked.
 
-**FAILED\_DEPENDENCY** &#8674; _readonly_ _int_
-:  424 failed dependency.
+_http_curl_.**FAILED\_DEPENDENCY** &#x279D; _readonly_ _int_
+: 424 failed dependency.
 
-**UPGRADE\_REQUIRED** &#8674; _readonly_ _int_
-:  426 upgrade required.
+_http_curl_.**UPGRADE\_REQUIRED** &#x279D; _readonly_ _int_
+: 426 upgrade required.
 
-**PRECONDITION\_REQUIRED** &#8674; _readonly_ _int_
-:  428 precondition required.
+_http_curl_.**PRECONDITION\_REQUIRED** &#x279D; _readonly_ _int_
+: 428 precondition required.
 
-**TOO\_MANY\_REQUESTS** &#8674; _readonly_ _int_
-:  429 too many requests.
+_http_curl_.**TOO\_MANY\_REQUESTS** &#x279D; _readonly_ _int_
+: 429 too many requests.
 
-**REQUEST\_HEADER\_FIELDS\_TOO\_LARGE** &#8674; _readonly_ _int_
-:  431 request header fields too large.
+_http_curl_.**REQUEST\_HEADER\_FIELDS\_TOO\_LARGE** &#x279D; _readonly_ _int_
+: 431 request header fields too large.
 
-**CONNECTION\_CLOSED\_WITHOUT\_RESPONSE** &#8674; _readonly_ _int_
-:  444 connection closed without response.
+_http_curl_.**CONNECTION\_CLOSED\_WITHOUT\_RESPONSE** &#x279D; _readonly_ _int_
+: 444 connection closed without response.
 
-**UNAVAILABLE\_FOR\_LEGAL\_REASONS** &#8674; _readonly_ _int_
-:  451 unavailable for legal reasons.
+_http_curl_.**UNAVAILABLE\_FOR\_LEGAL\_REASONS** &#x279D; _readonly_ _int_
+: 451 unavailable for legal reasons.
 
-**CLIENT\_CLOSED\_REQUEST** &#8674; _readonly_ _int_
-:  499 client closed request.
+_http_curl_.**CLIENT\_CLOSED\_REQUEST** &#x279D; _readonly_ _int_
+: 499 client closed request.
 
-**INTERNAL\_SERVER\_ERROR** &#8674; _readonly_ _int_
-:  500 internal server error.
+_http_curl_.**INTERNAL\_SERVER\_ERROR** &#x279D; _readonly_ _int_
+: 500 internal server error.
 
-**NOT\_IMPLEMENTED** &#8674; _readonly_ _int_
-:  501 not implemented.
+_http_curl_.**NOT\_IMPLEMENTED** &#x279D; _readonly_ _int_
+: 501 not implemented.
 
-**BAD\_GATEWAY** &#8674; _readonly_ _int_
-:  502 bad gateway.
+_http_curl_.**BAD\_GATEWAY** &#x279D; _readonly_ _int_
+: 502 bad gateway.
 
-**SERVICE\_UNAVAILABLE** &#8674; _readonly_ _int_
-:  503 service unavailable.
+_http_curl_.**SERVICE\_UNAVAILABLE** &#x279D; _readonly_ _int_
+: 503 service unavailable.
 
-**GATEWAY\_TIMEOUT** &#8674; _readonly_ _int_
-:  504 gateway timeout.
+_http_curl_.**GATEWAY\_TIMEOUT** &#x279D; _readonly_ _int_
+: 504 gateway timeout.
 
-**HTTP\_VERSION\_NOT\_SUPPORTED** &#8674; _readonly_ _int_
-:  505 http version not supported.
+_http_curl_.**HTTP\_VERSION\_NOT\_SUPPORTED** &#x279D; _readonly_ _int_
+: 505 http version not supported.
 
-**VARIANT\_ALSO\_NEGOTIATES** &#8674; _readonly_ _int_
-:  506 variant also negotiates.
+_http_curl_.**VARIANT\_ALSO\_NEGOTIATES** &#x279D; _readonly_ _int_
+: 506 variant also negotiates.
 
-**INSUFFICIENT\_STORAGE** &#8674; _readonly_ _int_
-:  507 insufficient storage.
+_http_curl_.**INSUFFICIENT\_STORAGE** &#x279D; _readonly_ _int_
+: 507 insufficient storage.
 
-**LOOP\_DETECTED** &#8674; _readonly_ _int_
-:  508 loop detected.
+_http_curl_.**LOOP\_DETECTED** &#x279D; _readonly_ _int_
+: 508 loop detected.
 
-**NOT\_EXTENDED** &#8674; _readonly_ _int_
-:  510 not extended.
+_http_curl_.**NOT\_EXTENDED** &#x279D; _readonly_ _int_
+: 510 not extended.
 
-**NETWORK\_AUTHENTICATION\_REQUIRED** &#8674; _readonly_ _int_
-:  511 network authentication required.
+_http_curl_.**NETWORK\_AUTHENTICATION\_REQUIRED** &#x279D; _readonly_ _int_
+: 511 network authentication required.
 
-**NETWORK\_CONNECT\_TIMEOUT\_ERROR** &#8674; _readonly_ _int_
-:  599 network connect timeout error.
+_http_curl_.**NETWORK\_CONNECT\_TIMEOUT\_ERROR** &#x279D; _readonly_ _int_
+: 599 network connect timeout error.
 
-**map** &#8674; _readonly_ _dictionary_
-:  A map of status code to their string representation..
+_http_curl_.**map** &#x279D; _readonly_ _dictionary_
+: A map of status code to their string representation..
 
 
 ## Functions
 
-set\_headers(_headers_) {#http_curl.set_headers}
+_http_curl_.set\_headers(_headers_) {#http_curl.set_headers}
 
 : Sets the request headers for the current module instance.
    
@@ -256,8 +260,8 @@ set\_headers(_headers_) {#http_curl.set_headers}
   chaining such as:
   
   ```blade
-  import chttp
-  echo chttp.set_headers({
+  import http_curl
+  echo http_curl.set_headers({
     'Authorization': 'Bearer SomeAPIBearerToken',
     'Host': 'example.com',
   }).get('http://example.com/current-user').body.to_string()
@@ -269,10 +273,11 @@ set\_headers(_headers_) {#http_curl.set_headers}
 
   {.params}
   - **@returns**: _HttpClient_
+  {.returns}
 
 
 
-get(_url_) {#http_curl.get}
+_http_curl_.get(_url_) {#http_curl.get}
 
 : Sends an Http GET request and returns an HttpResponse
   or throws one of SocketException or Exception if it fails.
@@ -283,13 +288,15 @@ get(_url_) {#http_curl.get}
 
   {.params}
   - **@returns**: _HttpResponse_
+  {.returns}
   - **@raises**:
     - Exception
 @raises
+  {.raises}
 
 
 
-post(_url_, _data_) {#http_curl.post}
+_http_curl_.post(_url_, _data_) {#http_curl.post}
 
 : Sends an Http POST request and returns an HttpResponse.
 
@@ -300,13 +307,15 @@ post(_url_, _data_) {#http_curl.post}
 
   {.params}
   - **@returns**: _HttpResponse_
+  {.returns}
   - **@raises**:
     - Exception
 @raises
+  {.raises}
 
 
 
-put(_url_, _data_) {#http_curl.put}
+_http_curl_.put(_url_, _data_) {#http_curl.put}
 
 : Sends an Http PUT request and returns an HttpResponse.
 
@@ -317,13 +326,15 @@ put(_url_, _data_) {#http_curl.put}
 
   {.params}
   - **@returns**: _HttpResponse_
+  {.returns}
   - **@raises**:
     - Exception
 @raises
+  {.raises}
 
 
 
-delete(_url_) {#http_curl.delete}
+_http_curl_.delete(_url_) {#http_curl.delete}
 
 : Sends an Http DELETE request and returns an HttpResponse.
 
@@ -333,13 +344,15 @@ delete(_url_) {#http_curl.delete}
 
   {.params}
   - **@returns**: _HttpResponse_
+  {.returns}
   - **@raises**:
     - Exception
 @raises
+  {.raises}
 
 
 
-server(_port_, _address_) {#http_curl.server}
+_http_curl_.server(_port_, _address_) {#http_curl.server}
 
 : Creates an new HttpServer instance.
 
@@ -350,18 +363,21 @@ server(_port_, _address_) {#http_curl.server}
 
   {.params}
   - **@returns**: _HttpServer_
+  {.returns}
   - **@raises**:
     - Exception
 @raises
+  {.raises}
 
 
 
-client() {#http_curl.client}
+_http_curl_.client() {#http_curl.client}
 
 : Returns the default client.
 
 
   - **@returns**: _HttpClient_
+  {.returns}
 
 
 
@@ -372,51 +388,49 @@ _class_ **HttpRequest** {#http_curl.HttpRequest .class}
 : Http request handler and object.
 
 
-  ~ Properties
+    __@printable__, __@serializable__
+    {.class-props}
 
-    - __@printable__
-    - __@serializable__
+  **.request\_uri** &#x279D; _string_
+  : The original request URL as sent in the raw request.
 
-  **.request\_uri** &#8674; _string_
-  :  The original request URL as sent in the raw request.
-
-  **.path** &#8674; _string_
-  :  The requested path or file. E.g. if the Request URI is `/users?sort=desc`, 
+  **.path** &#x279D; _string_
+  : The requested path or file. E.g. if the Request URI is `/users?sort=desc`, 
     then the path is `/users`.
 
-  **.method** &#8674; _string_
-  :  The HTTP method of the request: GET (the default), POST, PUT, etc.
+  **.method** &#x279D; _string_
+  : The HTTP method of the request: GET (the default), POST, PUT, etc.
 
-  **.host** &#8674; _string_
-  :  The hostname derived from the `Host` header or the first instance of 
+  **.host** &#x279D; _string_
+  : The hostname derived from the `Host` header or the first instance of 
     `X-Forwarded-Host` if set.
 
-  **.ip** &#8674; _string_
-  :  The IP address of the remote client that initiated the request.
+  **.ip** &#x279D; _string_
+  : The IP address of the remote client that initiated the request.
 
-  **.ipv6** &#8674; _string_
-  :  The IPv6 address of the remote client that initiated the request.
+  **.ipv6** &#x279D; _string_
+  : The IPv6 address of the remote client that initiated the request.
 
-  **.headers** &#8674; _dictionary_
-  :  A dictionary containing the headers sent with the request.
+  **.headers** &#x279D; _dictionary_
+  : A dictionary containing the headers sent with the request.
 
-  **.queries** &#8674; _dictionary_
-  :  A dictionary containing the entries of the URI query string.
+  **.queries** &#x279D; _dictionary_
+  : A dictionary containing the entries of the URI query string.
 
-  **.cookies** &#8674; _dictionary_
-  :  A dictionary containing the cookies sent with the request.
+  **.cookies** &#x279D; _dictionary_
+  : A dictionary containing the cookies sent with the request.
 
-  **.body** &#8674; _dictionary_
-  :  A dictionary containing all data submitted in the request body.
+  **.body** &#x279D; _dictionary_
+  : A dictionary containing all data submitted in the request body.
 
-  **.files** &#8674; _dictionary_
-  :  A dictionary containing the data of all files uploaded in the request.
+  **.files** &#x279D; _dictionary_
+  : A dictionary containing the data of all files uploaded in the request.
 
-  **.http\_version** &#8674; _string_
-  :  The HTTP version used for the request.
+  **.http\_version** &#x279D; _string_
+  : The HTTP version used for the request.
 
-  **.auth\_method** &#8674; _Auth_
-  :  The HTTP authentication method to use when the uri contains a credential. 
+  **.auth\_method** &#x279D; _Auth_
+  : The HTTP authentication method to use when the uri contains a credential. 
     Default value is `Auth.ANY`.
 
 
@@ -431,6 +445,7 @@ _class_ **HttpRequest** {#http_curl.HttpRequest .class}
 
     {.params}
     - **@returns**: _boolean_
+    {.returns}
 
 
   .send(_uri_, _method_, _data_, _options_) {#http_curl.HttpRequest.send}
@@ -447,6 +462,7 @@ _class_ **HttpRequest** {#http_curl.HttpRequest .class}
 
     {.params}
     - **@returns**: _HttpResponse_
+    {.returns}
 
 
   .to\_dict() {#http_curl.HttpRequest.to_dict}
@@ -455,6 +471,7 @@ _class_ **HttpRequest** {#http_curl.HttpRequest .class}
 
 
     - **@returns**: _dict_
+    {.returns}
 
 
   .to\_string() {#http_curl.HttpRequest.to_string}
@@ -463,6 +480,7 @@ _class_ **HttpRequest** {#http_curl.HttpRequest .class}
 
 
     - **@returns**: _string_
+    {.returns}
 
 
 
@@ -472,9 +490,8 @@ _class_ **HttpException** < _Exception_ {#http_curl.HttpException .class}
 : HTTP related Exceptions.
 
 
-  ~ Properties
-
-    - __@printable__
+    __@printable__
+    {.class-props}
 
 
 
@@ -483,30 +500,29 @@ _class_ **HttpServer** {#http_curl.HttpServer .class}
 : HTTP server.
 
 
-  ~ Properties
+    __@printable__
+    {.class-props}
 
-    - __@printable__
-
-  **.host** &#8674; _string_
-  :  The host address to which this server will be bound. Default value is 
+  **.host** &#x279D; _string_
+  : The host address to which this server will be bound. Default value is 
     socket.IP_LOCAL (127.0.0.1)
 
-  **.port** &#8674; _number_
-  :  The port to which this server will be bound to on the host.
+  **.port** &#x279D; _number_
+  : The port to which this server will be bound to on the host.
 
-  **.socket** &#8674; _{Socket_
-  :  The working Socket instance for the HttpServer.
+  **.socket** &#x279D; _{Socket_
+  : The working Socket instance for the HttpServer.
 
-  **.reuse\_address** &#8674; _bool_
-  :  A boolean value indicating whether to reuse socket addresses or not.
+  **.reuse\_address** &#x279D; _bool_
+  : A boolean value indicating whether to reuse socket addresses or not.
     Default value is `true`.
 
-  **.read\_timeout** &#8674; _number_
-  :  The timeout in milliseconds after which an attempt to read clients 
+  **.read\_timeout** &#x279D; _number_
+  : The timeout in milliseconds after which an attempt to read clients 
     request data will be terminated. Default value is 2,000 (2 seconds).
 
-  **.write\_timeout** &#8674; _number_
-  :  The timeout in milliseconds after which an attempt to write response data to 
+  **.write\_timeout** &#x279D; _number_
+  : The timeout in milliseconds after which an attempt to write response data to 
     clients will be terminated. 
     
     If we cannot send response to a client after the stipulated time, it will be 
@@ -515,9 +531,12 @@ _class_ **HttpServer** {#http_curl.HttpServer .class}
     value is 2,000 (2 seconds).
 
 
-  .HttpServer(_port_, _host_) &#8674; Constructor {#http_curl.HttpServer.HttpServer}
+  .HttpServer(_port_, _host_) &#x279D; _Constructor_ {#http_curl.HttpServer.HttpServer}
 
-  : - **@params**:
+  : http_curl.HttpServer constructor
+
+
+    - **@params**:
       - _int_ **port**
       - _string?_ **host**
 
@@ -661,42 +680,42 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
   @note This client do not currently support the compress, deflate and gzip transfer encoding.
 
 
-  **.user\_agent** &#8674; _string_
-  :  The user agent of the client used to make the request. 
+  **.user\_agent** &#x279D; _string_
+  : The user agent of the client used to make the request. 
     Default value &mdash; `Blade HTTP Client/1.0`.
 
-  **.follow\_redirect** &#8674; _bool_
-  :  Indicates if we receive a redirect from a server, this flag tells us whether 
+  **.follow\_redirect** &#x279D; _bool_
+  : Indicates if we receive a redirect from a server, this flag tells us whether 
     we should follow it or not. Default value is `true`.
 
-  **.skip\_hostname\_verification** &#8674; _bool_
-  :  Indicates if the site you're connecting to uses a different host name that what
+  **.skip\_hostname\_verification** &#x279D; _bool_
+  : Indicates if the site you're connecting to uses a different host name that what
     they have mentioned in their server certificate's commonName (or subjectAltName) 
     fields, connection will fail. You can skip this check by setting to true, but this 
     will make the connection less secure.
 
-  **.skip\_peer\_verification** &#8674; _bool_
-  :  Indicates if you want to connect to a site who isn't using a certificate that is
+  **.skip\_peer\_verification** &#x279D; _bool_
+  : Indicates if you want to connect to a site who isn't using a certificate that is
     signed by one of the certs in the CA bundle you have, you can skip the verification 
     of the server's certificate. This makes the connection A LOT LESS SECURE.
 
-  **.referer** &#8674; _string_
-  :  The site that refers us to the current site
+  **.referer** &#x279D; _string_
+  : The site that refers us to the current site
 
-  **.ca\_cert** &#8674; _string_
-  :  If you have a CA cert for the server stored someplace else than in the default bundle.
+  **.ca\_cert** &#x279D; _string_
+  : If you have a CA cert for the server stored someplace else than in the default bundle.
 
-  **.connect\_timeout** &#8674; _number_
-  :  The connect timeout duration in milliseconds. Default value is 60,000 (1 minute).
+  **.connect\_timeout** &#x279D; _number_
+  : The connect timeout duration in milliseconds. Default value is 60,000 (1 minute).
 
-  **.receive\_timeout** &#8674; _number_
-  :  The receive timeout duration in milliseconds. Default value is 300,000 (5 minutes).
+  **.receive\_timeout** &#x279D; _number_
+  : The receive timeout duration in milliseconds. Default value is 300,000 (5 minutes).
 
-  **.headers** &#8674; _dict_
-  :  A dictionary of headers sent along with the request.
+  **.headers** &#x279D; _dict_
+  : A dictionary of headers sent along with the request.
 
-  **.no\_expect** &#8674; _bool_
-  :  Indicates whether to remove the expect header or not only applies to requests with 
+  **.no\_expect** &#x279D; _bool_
+  : Indicates whether to remove the expect header or not only applies to requests with 
     files in the body
 
 
@@ -713,9 +732,11 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
 
     {.params}
     - **@returns**: _HttpResponse_
+    {.returns}
     - **@raises**:
       - SocketException
 @raises
+    {.raises}
 
 
   .get(_url_) {#http_curl.HttpClient.get}
@@ -728,9 +749,11 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
 
     {.params}
     - **@returns**: _HttpResponse_
+    {.returns}
     - **@raises**:
       - Exception
 @raises
+    {.raises}
 
 
   .post(_url_, _data_) {#http_curl.HttpClient.post}
@@ -744,9 +767,11 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
 
     {.params}
     - **@returns**: _HttpResponse_
+    {.returns}
     - **@raises**:
       - Exception
 @raises
+    {.raises}
 
 
   .put(_url_, _data_) {#http_curl.HttpClient.put}
@@ -760,9 +785,11 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
 
     {.params}
     - **@returns**: _HttpResponse_
+    {.returns}
     - **@raises**:
       - Exception
 @raises
+    {.raises}
 
 
   .delete(_url_) {#http_curl.HttpClient.delete}
@@ -775,9 +802,11 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
 
     {.params}
     - **@returns**: _HttpResponse_
+    {.returns}
     - **@raises**:
       - Exception
 @raises
+    {.raises}
 
 
 
@@ -787,40 +816,41 @@ _class_ **HttpResponse** {#http_curl.HttpResponse .class}
 : Represents the response to an Http request.
 
 
-  ~ Properties
+    __@printable__, __@serializable__
+    {.class-props}
 
-    - __@printable__
-    - __@serializable__
+  **.version** &#x279D; _string_
+  : The HTTP version of the response
 
-  **.version** &#8674; _string_
-  :  The HTTP version of the response
+  **.status** &#x279D; _number_
+  : The HTTP response status code
 
-  **.status** &#8674; _number_
-  :  The HTTP response status code
+  **.headers** &#x279D; _dictionary_
+  : The HTTP response headers
 
-  **.headers** &#8674; _dictionary_
-  :  The HTTP response headers
+  **.time\_taken** &#x279D; _number_
+  : Total time taken for the HTTP request that generated this HttpResponse to complete
 
-  **.time\_taken** &#8674; _number_
-  :  Total time taken for the HTTP request that generated this HttpResponse to complete
+  **.redirects** &#x279D; _number_
+  : The number of times the HTTP request that generated this HttpResponse was redirected.
 
-  **.redirects** &#8674; _number_
-  :  The number of times the HTTP request that generated this HttpResponse was redirected.
-
-  **.responder** &#8674; _string_
-  :  The final URL that provided the HttpResponse. This will sometimes differ from the 
+  **.responder** &#x279D; _string_
+  : The final URL that provided the HttpResponse. This will sometimes differ from the 
     original request URI.
 
-  **.body** &#8674; _bytes_
-  :  The content of the HTTP response as bytes
+  **.body** &#x279D; _bytes_
+  : The content of the HTTP response as bytes
 
-  **.cookies** &#8674; _list_
-  :  The cookies to be sent back to the client
+  **.cookies** &#x279D; _list_
+  : The cookies to be sent back to the client
 
 
-  .HttpResponse(_body_, _status_, _headers_, _cookies_, _version_, _time_taken_, _redirects_, _responder_) &#8674; Constructor {#http_curl.HttpResponse.HttpResponse}
+  .HttpResponse(_body_, _status_, _headers_, _cookies_, _version_, _time_taken_, _redirects_, _responder_) &#x279D; _Constructor_ {#http_curl.HttpResponse.HttpResponse}
 
-  : - **@params**:
+  : http_curl.HttpResponse constructor
+
+
+    - **@params**:
       - _string_ **body**
       - _int_ **status**
       - _dict_ **headers**

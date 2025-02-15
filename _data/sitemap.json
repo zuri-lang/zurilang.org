@@ -258,10 +258,6 @@
       "/standard/zlib": {
         "source": "/standard/zlib", 
         "title": "zlib"
-      }, 
-      "/standard/convert": {
-        "source": "/standard/convert", 
-        "title": "convert"
       }
     }
   }, 

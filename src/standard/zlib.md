@@ -33,46 +33,46 @@ even in the case of corrupted input.
 
 ## Fields
 
-**version** &#8674; _number_
-:  ZLib version string.
+_zlib_.**version** &#x279D; _number_
+: ZLib version string.
 
-**NO\_COMPRESSION** &#8674; _number_
-:  No compression level.
+_zlib_.**NO\_COMPRESSION** &#x279D; _number_
+: No compression level.
 
-**BEST\_SPEED** &#8674; _number_
-:  Best speed compression.
+_zlib_.**BEST\_SPEED** &#x279D; _number_
+: Best speed compression.
 
-**BEST\_COMPRESSION** &#8674; _number_
-:  Best compression level.
+_zlib_.**BEST\_COMPRESSION** &#x279D; _number_
+: Best compression level.
 
-**DEFAULT\_COMPRESSION** &#8674; _number_
-:  Default compression level.
+_zlib_.**DEFAULT\_COMPRESSION** &#x279D; _number_
+: Default compression level.
 
-**FILTERED** &#8674; _number_
-:  Filtered compression strategy.
+_zlib_.**FILTERED** &#x279D; _number_
+: Filtered compression strategy.
 
-**HUFFMAN\_ONLY**
-:  huffman only compression strategy
+_zlib_.**HUFFMAN\_ONLY**
+: huffman only compression strategy
 
-**RLE** &#8674; _number_
-:  Rle compression strategy.
+_zlib_.**RLE** &#x279D; _number_
+: Rle compression strategy.
 
-**FIXED** &#8674; _number_
-:  Fixed compression strategy.
+_zlib_.**FIXED** &#x279D; _number_
+: Fixed compression strategy.
 
-**DEFAULT\_STRATEGY** &#8674; _number_
-:  Default compression strategy.
+_zlib_.**DEFAULT\_STRATEGY** &#x279D; _number_
+: Default compression strategy.
 
-**DEFAULT\_MEMORY\_LEVEL** &#8674; _number_
-:  Default memory level
+_zlib_.**DEFAULT\_MEMORY\_LEVEL** &#x279D; _number_
+: Default memory level
 
-**MAX\_WBITS** &#8674; _number_
-:  Maximum windows bit.
+_zlib_.**MAX\_WBITS** &#x279D; _number_
+: Maximum windows bit.
 
 
 ## Functions
 
-adler32(_data_, _initial_) {#zlib.adler32}
+_zlib_.adler32(_data_, _initial_) {#zlib.adler32}
 
 : Updates a running Adler-32 checksum with the bytes buf[0..len-1] and
   return the updated checksum.
@@ -88,10 +88,11 @@ adler32(_data_, _initial_) {#zlib.adler32}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-crc32(_data_, _initial_) {#zlib.crc32}
+_zlib_.crc32(_data_, _initial_) {#zlib.crc32}
 
 : Update a running CRC-32 cheksum with the bytes buf[0..len-1] and return the
   updated CRC-32 checksum.
@@ -103,10 +104,11 @@ crc32(_data_, _initial_) {#zlib.crc32}
 
   {.params}
   - **@returns**: _number_
+  {.returns}
 
 
 
-compress(_data_, _level_, _strategy_, _wbits_, _memory_level_) {#zlib.compress}
+_zlib_.compress(_data_, _level_, _strategy_, _wbits_, _memory_level_) {#zlib.compress}
 
 : Compress compresses as much data as possible, and stops when the input
   buffer becomes empty or the output buffer becomes full.
@@ -160,6 +162,8 @@ compress(_data_, _level_, _strategy_, _wbits_, _memory_level_) {#zlib.compress}
      for the internal compression state.  memory_level 1 uses minimum memory but is
      slow and reduces compression ratio; memory_level 9 uses maximum memory for
      optimal speed.  The default value is 8.
+  
+  {.list}
 
 
   - **@params**:
@@ -175,10 +179,11 @@ compress(_data_, _level_, _strategy_, _wbits_, _memory_level_) {#zlib.compress}
 
   {.params}
   - **@returns**: _bytes_
+  {.returns}
 
 
 
-uncompress(_data_, _wbits_) {#zlib.uncompress}
+_zlib_.uncompress(_data_, _wbits_) {#zlib.uncompress}
 
 : Uncompress decompresses as much data as possible, and stops when the input
   buffer becomes empty or the output buffer becomes full.
@@ -218,6 +223,8 @@ uncompress(_data_, _wbits_) {#zlib.uncompress}
   
   -  uncompress() can uncompress either zlib-wrapped or gzip-wrapped compress data.
      If the compression uses gzip-wrapper, the correct `wbits` may need to be set.
+  
+  {.list}
 
 
   - **@params**:
@@ -227,10 +234,11 @@ uncompress(_data_, _wbits_) {#zlib.uncompress}
 
   {.params}
   - **@returns**: _bytes_
+  {.returns}
 
 
 
-deflate(_data_) {#zlib.deflate}
+_zlib_.deflate(_data_) {#zlib.deflate}
 
 : Compress data using the default options for Deflate.
 
@@ -240,10 +248,11 @@ deflate(_data_) {#zlib.deflate}
 
   {.params}
   - **@returns**: _bytes_
+  {.returns}
 
 
 
-undeflate(_data_) {#zlib.undeflate}
+_zlib_.undeflate(_data_) {#zlib.undeflate}
 
 : Uncompress a deflated data using default options.
 
@@ -253,10 +262,11 @@ undeflate(_data_) {#zlib.undeflate}
 
   {.params}
   - **@returns**: _bytes_
+  {.returns}
 
 
 
-gzip(_data_) {#zlib.gzip}
+_zlib_.gzip(_data_) {#zlib.gzip}
 
 : Compress data using the default options for GZip.
 
@@ -266,10 +276,11 @@ gzip(_data_) {#zlib.gzip}
 
   {.params}
   - **@returns**: _bytes_
+  {.returns}
 
 
 
-ungzip(_data_) {#zlib.ungzip}
+_zlib_.ungzip(_data_) {#zlib.ungzip}
 
 : Uncompress a GZipped data using default options.
 
@@ -279,10 +290,11 @@ ungzip(_data_) {#zlib.ungzip}
 
   {.params}
   - **@returns**: _bytes_
+  {.returns}
 
 
 
-gzopen(_path_, _mode_) {#zlib.gzopen}
+_zlib_.gzopen(_path_, _mode_) {#zlib.gzopen}
 
 : Opens a gzip (.gz) file for reading or writing.  The mode parameter is as
   in `file` ("rb" or "wb") but can also include a compression level ("wb9") or
@@ -323,6 +335,7 @@ gzopen(_path_, _mode_) {#zlib.gzopen}
 
   {.params}
   - **@returns**: _ptr_
+  {.returns}
 
 
 
@@ -333,7 +346,7 @@ _class_ **GZ** {#zlib.GZ .class}
 : class GZ
 
 
-  .GZ(_path_, _mode_) &#8674; Constructor {#zlib.GZ.GZ}
+  .GZ(_path_, _mode_) &#x279D; _Constructor_ {#zlib.GZ.GZ}
 
   : GZ(path: string [, mode: string = 'rb'])
     
@@ -379,6 +392,7 @@ _class_ **GZ** {#zlib.GZ .class}
 
     {.params}
     - **@returns**: _bytes_
+    {.returns}
 
 
   .write(_data_) {#zlib.GZ.write}
@@ -393,6 +407,7 @@ _class_ **GZ** {#zlib.GZ .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .eof() {#zlib.GZ.eof}
@@ -410,6 +425,7 @@ _class_ **GZ** {#zlib.GZ .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .direct() {#zlib.GZ.direct}
@@ -431,6 +447,7 @@ _class_ **GZ** {#zlib.GZ .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .close() {#zlib.GZ.close}
@@ -445,6 +462,7 @@ _class_ **GZ** {#zlib.GZ .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .set\_params(_level_, _strategy_) {#zlib.GZ.set_params}
@@ -460,6 +478,7 @@ _class_ **GZ** {#zlib.GZ .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .seek(_offset_, _whence_) {#zlib.GZ.seek}
@@ -487,6 +506,7 @@ _class_ **GZ** {#zlib.GZ .class}
 
     {.params}
     - **@returns**: _number_
+    {.returns}
 
 
   .rewind() {#zlib.GZ.rewind}
@@ -499,6 +519,7 @@ _class_ **GZ** {#zlib.GZ .class}
     > - `rewind()` is equivalent to `seek(0, SEEK_SET)`.
 
     - **@returns**: _number_
+    {.returns}
 
 
   .tell() {#zlib.GZ.tell}
@@ -513,6 +534,7 @@ _class_ **GZ** {#zlib.GZ .class}
     > - `tell()` is equivalent to `seek(0, SEEK_CUR)`.
 
     - **@returns**: _number_
+    {.returns}
 
 
   .offset() {#zlib.GZ.offset}
@@ -525,6 +547,7 @@ _class_ **GZ** {#zlib.GZ .class}
 
 
     - **@returns**: _number_
+    {.returns}
 
 
   .clear\_error() {#zlib.GZ.clear_error}

@@ -5,23 +5,23 @@ implementation for the SMTP, IMAP and POP3 mail exchange protocols.
 
 ## Fields
 
-**TLS\_NONE**
-:  Do not attempt to use SSL.
+_mail_.**TLS\_NONE**
+: Do not attempt to use SSL.
 
-**TLS\_TRY**
-:  Try using SSL, proceed as normal otherwise. Note that server 
+_mail_.**TLS\_TRY**
+: Try using SSL, proceed as normal otherwise. Note that server 
   may close the connection if the negotiation does not succeed.
 
-**TLS\_CONTROL**
-:  Require SSL for the control connection or fail.
+_mail_.**TLS\_CONTROL**
+: Require SSL for the control connection or fail.
 
-**TLS\_ALL**
-:  Require SSL for all communication or fail.
+_mail_.**TLS\_ALL**
+: Require SSL for all communication or fail.
 
 
 ## Functions
 
-parse(_message_) {#mail.parse}
+_mail_.parse(_message_) {#mail.parse}
 
 : Parses email messages and return an instance of Mail representing it.
 
@@ -31,10 +31,11 @@ parse(_message_) {#mail.parse}
 
   {.params}
   - **@returns**: _Mail_
+  {.returns}
 
 
 
-smtp(_options_) {#mail.smtp}
+_mail_.smtp(_options_) {#mail.smtp}
 
 : Returns a new instance of SMTP {Transport} with the given __options__.
 
@@ -45,35 +46,39 @@ smtp(_options_) {#mail.smtp}
 
   {.params}
   - **@returns**: _Transport_
+  {.returns}
 
 
 
-pop3(_options_) &#8674; Exported {#mail.pop3}
+_mail_.pop3(_options_) &#x279D; _Exported_ {#mail.pop3}
 
 : Returns a new instance of the POP3 class with the given options (if any) passed 
   to the constructor.
 
 
   - **@returns**: _POP3_
+  {.returns}
 
 
 
-imap(_options_) &#8674; Exported {#mail.imap}
+_mail_.imap(_options_) &#x279D; _Exported_ {#mail.imap}
 
 : Returns a new instance of the Imap class with the given options (if any) passed 
   to the constructor.
 
 
   - **@returns**: _Imap_
+  {.returns}
 
 
 
-message() &#8674; Exported {#mail.message}
+_mail_.message() &#x279D; _Exported_ {#mail.message}
 
 : Returns a new instance of {Message}.
 
 
   - **@returns**: _Message_
+  {.returns}
 
 
 
@@ -85,15 +90,16 @@ _class_ **Attachment** {#mail.Attachment .class}
   message.
 
 
-  ~ Properties
-
-    - __@printable__
-    - __@serializable__
+    __@printable__, __@serializable__
+    {.class-props}
 
 
-  .Attachment(_headers_, _content_) &#8674; Constructor {#mail.Attachment.Attachment}
+  .Attachment(_headers_, _content_) &#x279D; _Constructor_ {#mail.Attachment.Attachment}
 
-  : - **@params**:
+  : mail.Attachment constructor
+
+
+    - **@params**:
       - _dict_ **headers**
       - _string_ **content**
 
@@ -106,25 +112,23 @@ _class_ **Mail** {#mail.Mail .class}
 
 : The Mail class represents a mail message as a blade object with the following 
   properties.
-  
-  - __headers__: A dictionary containing the key/value pair contained in the 
-     mail message header.
-  - __body__: A dictionary containing the different segments of a mail body such
-     as its plain text and html counterpart.
-  - __attachments__: A list of attachments contained in the Mail message.
 
 
-  ~ Properties
+    __@printable__, __@serializable__
+    {.class-props}
 
-    - __@printable__
-    - __@serializable__
+  .Mail(_headers_, _body_, _attachments_) &#x279D; _Constructor_ {#mail.Mail.Mail}
 
-  .Mail(_headers_, _body_, _attachments_) &#8674; Constructor {#mail.Mail.Mail}
+  : mail.Mail constructor
 
-  : - **@params**:
-      - _dict_ **headers**
-      - _dict_ **body**
-      - _list[Attachment]_ **attachments**
+
+    - **@params**:
+      - _dict_ **headers** : A dictionary containing the key/value pair contained in the mail message header.
+
+      - _dict_ **body** : A dictionary containing the different segments of a mail body such as its plain text and html counterpart.
+
+      - _list[Attachment]_ **attachments** : A list of attachments contained in the Mail message.
+
 
     {.params}
 
@@ -147,7 +151,7 @@ _class_ **Transport** {#mail.Transport .class}
 
 
 
-  .Transport(_options_) &#8674; Constructor {#mail.Transport.Transport}
+  .Transport(_options_) &#x279D; _Constructor_ {#mail.Transport.Transport}
 
   : The Transport class accepts a dictionary that can be used to configure how 
     it behaves. The dictionary can contain one or more of the following.
@@ -187,6 +191,7 @@ _class_ **Transport** {#mail.Transport .class}
 
     {.params}
     - **@returns**: _Transport_
+    {.returns}
 
 
   .test\_connection() {#mail.Transport.test_connection}
@@ -195,6 +200,7 @@ _class_ **Transport** {#mail.Transport .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .verify(_address_) {#mail.Transport.verify}
@@ -207,6 +213,7 @@ _class_ **Transport** {#mail.Transport .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .send() {#mail.Transport.send}
@@ -216,6 +223,7 @@ _class_ **Transport** {#mail.Transport .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
 
@@ -231,7 +239,7 @@ _class_ **POP3** {#mail.POP3 .class}
 
 
 
-  .POP3(_options_) &#8674; Constructor {#mail.POP3.POP3}
+  .POP3(_options_) &#x279D; _Constructor_ {#mail.POP3.POP3}
 
   : The POP3 class accepts a dictionary that can be used to configure how 
     it behaves. The dictionary can contain one or more of the following.
@@ -281,6 +289,7 @@ _class_ **POP3** {#mail.POP3 .class}
 
     {.params}
     - **@returns**: _string The response from the server._
+    {.returns}
 
 
   .list(_uid_) {#mail.POP3.list}
@@ -295,6 +304,7 @@ _class_ **POP3** {#mail.POP3 .class}
 
     {.params}
     - **@returns**: _list[dictionary]|string_
+    {.returns}
 
 
   .uid\_list() {#mail.POP3.uid_list}
@@ -304,6 +314,7 @@ _class_ **POP3** {#mail.POP3 .class}
 
 
     - **@returns**: _list[dictionary]_
+    {.returns}
 
 
   .retr(_uid_) {#mail.POP3.retr}
@@ -316,6 +327,7 @@ _class_ **POP3** {#mail.POP3 .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
   .stat() {#mail.POP3.stat}
@@ -324,6 +336,7 @@ _class_ **POP3** {#mail.POP3 .class}
 
 
     - **@returns**: _dictionary_
+    {.returns}
 
 
   .delete(_uid_) {#mail.POP3.delete}
@@ -371,6 +384,7 @@ _class_ **POP3** {#mail.POP3 .class}
 
     {.params}
     - **@returns**: _string_
+    {.returns}
 
 
   .quit() {#mail.POP3.quit}
@@ -400,7 +414,7 @@ _class_ **Imap** {#mail.Imap .class}
 
 
 
-  .Imap(_options_) &#8674; Constructor {#mail.Imap.Imap}
+  .Imap(_options_) &#x279D; _Constructor_ {#mail.Imap.Imap}
 
   : The Imap class accepts a dictionary that can be used to configure how 
     it behaves. The dictionary can contain one or more of the following.
@@ -443,6 +457,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _string The response from the server._
+    {.returns}
 
 
   .get\_dirs(_path_) {#mail.Imap.get_dirs}
@@ -455,6 +470,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _list_
+    {.returns}
 
 
   .get\_subscribed\_dirs() {#mail.Imap.get_subscribed_dirs}
@@ -464,6 +480,7 @@ _class_ **Imap** {#mail.Imap .class}
 
 
     - **@returns**: _list_
+    {.returns}
 
 
   .select(_name_) {#mail.Imap.select}
@@ -482,6 +499,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _dictionary_
+    {.returns}
 
 
   .examine(_name_) {#mail.Imap.examine}
@@ -495,6 +513,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _dictionary_
+    {.returns}
 
 
   .create(_name_) {#mail.Imap.create}
@@ -507,6 +526,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _list_
+    {.returns}
 
 
   .delete(_name_) {#mail.Imap.delete}
@@ -519,6 +539,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _list_
+    {.returns}
 
 
   .rename(_old_name_, _new_name_) {#mail.Imap.rename}
@@ -532,6 +553,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _list_
+    {.returns}
 
 
   .subscribe(_name_) {#mail.Imap.subscribe}
@@ -546,6 +568,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .unsubscribe(_name_) {#mail.Imap.unsubscribe}
@@ -560,6 +583,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .list(_name_, _pattern_) {#mail.Imap.list}
@@ -594,6 +618,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _list_
+    {.returns}
 
 
   .lsub(_name_, _pattern_) {#mail.Imap.lsub}
@@ -607,6 +632,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _list_
+    {.returns}
 
 
   .status(_name_, _attrs_) {#mail.Imap.status}
@@ -634,6 +660,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _bool|string_
+    {.returns}
 
 
   .append(_folder_, _message_) {#mail.Imap.append}
@@ -652,6 +679,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .check() {#mail.Imap.check}
@@ -667,6 +695,7 @@ _class_ **Imap** {#mail.Imap .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .close() {#mail.Imap.close}
@@ -679,6 +708,7 @@ _class_ **Imap** {#mail.Imap .class}
 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .expunge(_path_) {#mail.Imap.expunge}
@@ -692,6 +722,7 @@ _class_ **Imap** {#mail.Imap .class}
 
     {.params}
     - **@returns**: _bool_
+    {.returns}
 
 
   .search(_query_, _folder_) {#mail.Imap.search}
@@ -742,6 +773,7 @@ _class_ **Imap** {#mail.Imap .class}
     > - COPYUID responses are not yet supported
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .store(_id_, _command_, _flags_) {#mail.Imap.store}
@@ -758,6 +790,7 @@ _class_ **Imap** {#mail.Imap .class}
     > - command must be one of `FLAGS`, `+FLAGS`, or `-FLAGS`, optionally with a 
 
     - **@returns**: _bool_
+    {.returns}
 
 
   .quit() {#mail.Imap.quit}
@@ -785,9 +818,12 @@ _class_ **Message** {#mail.Message .class}
 
 
 
-  .Message() &#8674; Constructor {#mail.Message.Message}
+  .Message() &#x279D; _Constructor_ {#mail.Message.Message}
 
-  : 
+  : mail.Message constructor
+
+
+
 
   .from(_from_) {#mail.Message.from}
 
@@ -799,6 +835,7 @@ _class_ **Message** {#mail.Message .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
   .to(_to_) {#mail.Message.to}
@@ -811,6 +848,7 @@ _class_ **Message** {#mail.Message .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
   .cc(_cc_) {#mail.Message.cc}
@@ -823,6 +861,7 @@ _class_ **Message** {#mail.Message .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
   .bcc(_bcc_) {#mail.Message.bcc}
@@ -835,6 +874,7 @@ _class_ **Message** {#mail.Message .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
   .reply\_to(_to_) {#mail.Message.reply_to}
@@ -847,6 +887,7 @@ _class_ **Message** {#mail.Message .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
   .subject(_subject_) {#mail.Message.subject}
@@ -859,6 +900,7 @@ _class_ **Message** {#mail.Message .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
   .header(_header_) {#mail.Message.header}
@@ -871,6 +913,7 @@ _class_ **Message** {#mail.Message .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
   .attachment(_path_, _name_) {#mail.Message.attachment}
@@ -885,6 +928,7 @@ _class_ **Message** {#mail.Message .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
   .text(_text_) {#mail.Message.text}
@@ -897,6 +941,7 @@ _class_ **Message** {#mail.Message .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
   .html(_html_) {#mail.Message.html}
@@ -909,6 +954,7 @@ _class_ **Message** {#mail.Message .class}
 
     {.params}
     - **@returns**: _self_
+    {.returns}
 
 
 
