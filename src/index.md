@@ -59,7 +59,7 @@ Blade comes equipped with an integrated package management system, simplifying t
   - Built-in mail library with SMTP, IMAP, and POP3 support.
   - Built-in device integrations (such as support for COM/Ports, USB, etc.) &mdash; Planned!
   - Built-in cryptography library.
-  - Built-in support for media processing (Image, audio, video, etc.) &mdash; Planned!
+  - Built-in support for media processing (Image - done, audio, video, etc.) &mdash; Planned!
   - And more.
 - **Function promotion**: A feature of the Blade language that makes it easy to reuse any code from an imported module.
 - **Access modifiers**: Unlike JavaScript and Python, Blade supports access modifiers for variables, properties, functions, classes, modules, etc.
