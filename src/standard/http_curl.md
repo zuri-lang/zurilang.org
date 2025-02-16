@@ -274,6 +274,9 @@ _http_curl_.set\_headers(_headers_) {#http_curl.set_headers}
   {.params}
   - **@returns**: _HttpClient_
   {.returns}
+  - **@raises**:
+    - Exception
+  {.raises}
 
 
 
@@ -291,7 +294,8 @@ _http_curl_.get(_url_) {#http_curl.get}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -310,7 +314,8 @@ _http_curl_.post(_url_, _data_) {#http_curl.post}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -329,7 +334,8 @@ _http_curl_.put(_url_, _data_) {#http_curl.put}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -347,7 +353,8 @@ _http_curl_.delete(_url_) {#http_curl.delete}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -366,7 +373,8 @@ _http_curl_.server(_port_, _address_) {#http_curl.server}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -463,6 +471,9 @@ _class_ **HttpRequest** {#http_curl.HttpRequest .class}
     {.params}
     - **@returns**: _HttpResponse_
     {.returns}
+    - **@raises**:
+      - HttpException
+    {.raises}
 
 
   .to\_dict() {#http_curl.HttpRequest.to_dict}
@@ -735,7 +746,7 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
     {.returns}
     - **@raises**:
       - SocketException
-@raises
+      - Exception
     {.raises}
 
 
@@ -752,7 +763,8 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 
@@ -770,7 +782,8 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 
@@ -788,7 +801,8 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 
@@ -805,7 +819,8 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 

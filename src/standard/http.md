@@ -306,6 +306,9 @@ _http_.set\_headers(_headers_) {#http.set_headers}
   {.params}
   - **@returns**: _HttpClient_
   {.returns}
+  - **@raises**:
+    - Exception
+  {.raises}
 
 
 
@@ -324,7 +327,8 @@ _http_.get(_url_, _headers_) {#http.get}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -344,7 +348,8 @@ _http_.post(_url_, _data_, _headers_) {#http.post}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -364,7 +369,8 @@ _http_.put(_url_, _data_, _headers_) {#http.put}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -384,7 +390,8 @@ _http_.patch(_url_, _data_, _headers_) {#http.patch}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -403,7 +410,8 @@ _http_.delete(_url_, _headers_) {#http.delete}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -422,7 +430,8 @@ _http_.options(_url_, _headers_) {#http.options}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -441,7 +450,8 @@ _http_.trace(_url_, _headers_) {#http.trace}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -460,7 +470,8 @@ _http_.head(_url_, _headers_) {#http.head}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -489,7 +500,8 @@ _http_.server(_port_, _address_) {#http.server}
   {.returns}
   - **@raises**:
     - Exception
-@raises
+    - SocketException
+    - HttpException
   {.raises}
 
 
@@ -957,7 +969,7 @@ _class_ **HttpClient** {#http.HttpClient .class}
     {.returns}
     - **@raises**:
       - SocketException
-@raises
+      - Exception
     {.raises}
 
 
@@ -975,7 +987,8 @@ _class_ **HttpClient** {#http.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 
@@ -994,7 +1007,8 @@ _class_ **HttpClient** {#http.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 
@@ -1013,7 +1027,8 @@ _class_ **HttpClient** {#http.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 
@@ -1032,7 +1047,8 @@ _class_ **HttpClient** {#http.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 
@@ -1050,7 +1066,8 @@ _class_ **HttpClient** {#http.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 
@@ -1068,7 +1085,8 @@ _class_ **HttpClient** {#http.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 
@@ -1086,7 +1104,8 @@ _class_ **HttpClient** {#http.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 
@@ -1104,7 +1123,8 @@ _class_ **HttpClient** {#http.HttpClient .class}
     {.returns}
     - **@raises**:
       - Exception
-@raises
+      - SocketException
+      - HttpException
     {.raises}
 
 
@@ -1317,6 +1337,9 @@ _class_ **HttpResponse** {#http.HttpResponse .class}
 
     - **@returns**: _string_
     {.returns}
+    - **@raises**:
+      - Exception
+    {.raises}
 
 
   .to\_json() {#http.HttpResponse.to_json}

@@ -29,7 +29,6 @@ _bcrypt_.hash(_str_, _salt_length_) {#bcrypt.hash}
   {.returns}
   - **@raises**:
     - Exception
-@returns
   {.raises}
 
 
@@ -48,7 +47,6 @@ _bcrypt_.compare(_str_, _known_hash_) {#bcrypt.compare}
   {.returns}
   - **@raises**:
     - Exception
-@returns
   {.raises}
 
 
@@ -66,7 +64,6 @@ _bcrypt_.get\_rounds(_hash_) {#bcrypt.get_rounds}
   {.returns}
   - **@raises**:
     - Exception
-@returns
   {.raises}
 
 
@@ -88,7 +85,6 @@ _bcrypt_.get\_salt(_hash_) {#bcrypt.get_salt}
   {.returns}
   - **@raises**:
     - Exception
-@returns
   {.raises}
 
 
