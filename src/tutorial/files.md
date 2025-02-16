@@ -220,7 +220,7 @@ The file object contains the following methods:
 
 .stats() {#stats}
 
-: Returns the statistics or details or a file.<br>
+: Returns the statistics or details of a file.<br>
 
   For example:
 

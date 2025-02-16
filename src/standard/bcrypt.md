@@ -4,10 +4,10 @@ hashes as well as functions for getting information from a bcrypt hash.
 
 ## Fields
 
-_bcrypt_.**DEFAULT\_LOG2\_ROUNDS** &#x279D; _number_
+_bcrypt_.**DEFAULT\_LOG2\_ROUNDS** &#x279D; _number_ {#bcrypt.DEFAULT_LOG2_ROUNDS}
 : Default log2 rounds (default: 10).
 
-_bcrypt_.**MAX\_EXECUTION\_TIME** &#x279D; _number_
+_bcrypt_.**MAX\_EXECUTION\_TIME** &#x279D; _number_ {#bcrypt.MAX_EXECUTION_TIME}
 : Maximum execution time for each cipher iteration in 
   milliseconds (default: 100).
 

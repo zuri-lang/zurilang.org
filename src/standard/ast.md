@@ -97,10 +97,10 @@ _class_ **Scanner** {#ast.Scanner .class}
     __@printable__
     {.class-props}
 
-  **.has\_error** &#x279D; _readonly_ _bool_
+  **.has\_error** &#x279D; _readonly_ _bool_ {#ast.Scanner.has_error}
   : Reports if an error was encountered in the scaner.
 
-  **.source** &#x279D; _readonly_ _string_
+  **.source** &#x279D; _readonly_ _string_ {#ast.Scanner.source}
   : The string to being scanned.
 
 

@@ -33,13 +33,13 @@ colors.text('Colored text!', colors.hex('#fc0'))
 
 ## Fields
 
-_colors_.**style** &#x279D; _dictionary_
+_colors_.**style** &#x279D; _dictionary_ {#colors.style}
 : ANSI font styles available for console applications.
 
-_colors_.**text\_color** &#x279D; _dictionary_
+_colors_.**text\_color** &#x279D; _dictionary_ {#colors.text_color}
 : Standard ANSI text colors available for console applications.
 
-_colors_.**background** &#x279D; _dictionary_
+_colors_.**background** &#x279D; _dictionary_ {#colors.background}
 : Standard ANSI background colors available for console applications.
 
 

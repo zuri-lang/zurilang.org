@@ -22,6 +22,7 @@ a module.
   - [First-Class Package Management](#first-class-package-management)
   - [Default Exports and Imports](#default-exports-and-imports)
   - [Function promotion](#function-promotion)
+  - [Module level variables](#module-level-variables)
 
 
 ## Creating a Package
@@ -281,7 +282,8 @@ def slow(x) {
 }
 ```
 
-When you import the `jump` module without renaming it, the `jump()` function will become available to you via the module name directly. To change this behavior to use the `slow()`, we can import it like this:
+When you import the `jump` module without renaming it, the `jump()` function will become available to 
+you via the module name directly. To change this behavior to use the `slow()`, we can import it like this:
 
 ```blade
 # jump_test.b
@@ -291,6 +293,43 @@ echo slow(15)
 ```
 
 > This is the only standard way of accessing a private function in a module without need for the `reflect` module.
+
+
+## Module level variables
+
+Module level variables are special variables in Blade that are defined in every module but can only be 
+accessed in the same module (i.e. they cannot be referenced from an imported module).
+
+As of now, Blade defined two module level variables:
+
+- `__file__`: This is the full path to the module file.
+- `__root__`: This is the full path to the file serving as the entry point for the entire application.
+  
+  > The `__root__` module variable is not defined in the REPL mode and is only avaiable when running an 
+  > application from a file.
+
+A common use for these variables is comparing both to know if the module itself is the main entry 
+point of the application. This can be a very useful tool allowing modules to be importable without 
+any side-effects and allowing them to be run as applications on their own.
+
+The example below shows this strategy and its benefits.
+
+```blade
+# my_module.b
+
+def test_function() {
+  return 2 * 2
+}
+
+if __file__ == __root__ {
+  echo test_function()
+}
+```
+
+If you were to `import my_module`, you'll notice that nothing will ever be printed to the console. 
+However, it you were to run `my_module.b` itself (e.g. `blade my_module.b`), then you'll see `4` printed 
+to the console.
+
 
 <br><br>
 

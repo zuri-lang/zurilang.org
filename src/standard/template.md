@@ -48,7 +48,7 @@ tpl.render_string('<!-- HTML or Wire comment? -->')
 ### Variables
 
 Variables in Wire templates are names surrounded by `{{` and `}}` pair. For example, to print 
-the value of a variable _myvar_ passed into [[Template.render]] or [[Template.render_string]] 
+the value of a variable _myvar_ passed into [Template.render](/standard/Template#Template.render) or [Template.render_string](/standard/Template#Template.render_string) 
 in the template, you can do it like this.
 
 ```wire
@@ -218,7 +218,7 @@ In a website for a client all pages UTF-8 enabled and are mobile first. This lea
 of `<meta>` tags that will need to be on every page of the website and in practice it will soon 
 become burdensome to have to keep repeating the `meta` tags across all page templates. To reduce
 this code duplication, we can have a file located at the template root directory (See 
-[[Template.set_root]]) that contains all shared `meta` tags as shown in the sample below and include 
+[Template.set_root](/standard/Template#Template.set_root)) that contains all shared `meta` tags as shown in the sample below and include 
 this file in every other template.
 
 ```wire
@@ -243,7 +243,7 @@ include path, the library first searches for files in the template root director
 file is found, that file will be rendered. If none is found, it will interpret the path as a relative 
 path first then as an absolute path if no match is found. 
 
-See [[Template.render]] for more information.
+See [Template.render](/standard/Template#Template.render) for more information.
 
 ### Custom Modifiers
 
@@ -311,7 +311,7 @@ As with custom modifiers the template library allows you to create and process c
 An example of a custom tag is the `<include />` tag previously discussed. To declare a custom 
 element and its behavior, you need to create a function that accepts two arguments and 
 register it with the `register_element()` method. When your custom element is matched in a 
-template, the registered function will be called with an instance of [[template.Template]] in the first 
+template, the registered function will be called with an instance of [Template](#template.Template) in the first 
 argument and the {{html}} decoded template as the second argument. Your function must then 
 return a string representing the processed tag or a valid HTML element Blade representation as 
 defined by the {{html}} module. 
@@ -809,7 +809,7 @@ _class_ **Template** {#template.Template .class}
 
 
     - **@params**:
-      - _bool_ **auto_init** : A boolean flag to control whether template root
+      - _bool_ **auto_init** A boolean flag to control whether template root
 
 
     {.params}

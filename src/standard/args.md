@@ -66,26 +66,26 @@ Usage: myprogram call
 
 ## Fields
 
-_args_.**NONE**
+_args_.**NONE** {#args.NONE}
 : value type none
 
-_args_.**INT**
+_args_.**INT** {#args.INT}
 : value type integer (allows numbers, but floors them to integers)
 
-_args_.**NUMBER**
+_args_.**NUMBER** {#args.NUMBER}
 : value type number
 
-_args_.**BOOL**
+_args_.**BOOL** {#args.BOOL}
 : value type boolean (accepts `1` and `0` as well as `true` 
   and `false` as valid values).
 
-_args_.**STRING**
+_args_.**STRING** {#args.STRING}
 : value type string
 
-_args_.**LIST**
+_args_.**LIST** {#args.LIST}
 : value type for list
 
-_args_.**CHOICE**
+_args_.**CHOICE** {#args.CHOICE}
 : value type enumeration choices.
 
 
@@ -103,10 +103,10 @@ _class_ **Parser** {#args.Parser .class}
 : A configurable commandline parser.
 
 
-  **.commands**
+  **.commands** {#args.Parser.commands}
   : A list of commands supported by the parser.
 
-  **.indexes**
+  **.indexes** {#args.Parser.indexes}
   : A list of positional values supported by the parser.
 
 
@@ -116,9 +116,9 @@ _class_ **Parser** {#args.Parser .class}
 
 
     - **@params**:
-      - _string_ **name** : Refers to the name of the cli program.
+      - _string_ **name** Refers to the name of the cli program.
 
-      - _bool?_ **default_help** : Whether to show help when no command or option is matched or not &mdash; Default value is `true`.
+      - _bool?_ **default_help** Whether to show help when no command or option is matched or not &mdash; Default value is `true`.
 
 
     {.params}

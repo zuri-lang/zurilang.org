@@ -59,9 +59,9 @@ _json_.encode(_value_, _compact_, _max_depth_) {#json.encode}
 
   - **@params**:
     - _any_ **value**
-    - _bool?_ **compact** : Default value is `true`.
+    - _bool?_ **compact** Default value is `true`.
 
-    - _number?_ **max_depth** : is the maximum recursive depth for encoding, default = 1024.
+    - _number?_ **max_depth** is the maximum recursive depth for encoding, default = 1024.
 
 
   {.params}
@@ -76,9 +76,9 @@ _json_.decode(_value_, _allow_comments_) {#json.decode}
 
 
   - **@params**:
-    - _string_ **value** : The string to decode
+    - _string_ **value** The string to decode
 
-    - _bool?_ **allow_comments** : Can be set to enable/disable C-style comments in json [default = true]
+    - _bool?_ **allow_comments** Can be set to enable/disable C-style comments in json [default = true]
 
 
   {.params}
@@ -121,9 +121,9 @@ _class_ **Encoder** {#json.Encoder .class}
     > - Set max_depth to `0` to disable max depth
 
     - **@params**:
-      - _bool?_ **compact** : Default value is `false`.
+      - _bool?_ **compact** Default value is `false`.
 
-      - _number?_ **max_depth** : Default value is `1024`.
+      - _number?_ **max_depth** Default value is `1024`.
 
 
     {.params}

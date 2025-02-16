@@ -4,16 +4,16 @@ The `zip` module contains classes and functions to make working with zip archive
 
 ## Fields
 
-_zip_.**ZIP\_FILE\_MAX** &#x279D; _number_
+_zip_.**ZIP\_FILE\_MAX** &#x279D; _number_ {#zip.ZIP_FILE_MAX}
 : The maximum size of a single file in a zip archive when zip64 is not used
 
-_zip_.**ZIP\_FILE\_COUNT\_LIMIT** &#x279D; _number_
+_zip_.**ZIP\_FILE\_COUNT\_LIMIT** &#x279D; _number_ {#zip.ZIP_FILE_COUNT_LIMIT}
 : The maximum number of files in a zip archive when zip64 is not used
 
-_zip_.**ZIP\_MAX** &#x279D; _number_
+_zip_.**ZIP\_MAX** &#x279D; _number_ {#zip.ZIP_MAX}
 : The maximum size of a zip archive when zip64 is not used
 
-_zip_.**ZIP\_EXT** &#x279D; _string_
+_zip_.**ZIP\_EXT** &#x279D; _string_ {#zip.ZIP_EXT}
 : The default zip file extension
 
 
@@ -32,9 +32,9 @@ _zip_.extract(_file_, _destination_, _is_zip64_) {#zip.extract}
 
   - **@params**:
     - _string_ **file**
-    - _string?_ **destination** : Default value is `os.cwd()`.
+    - _string?_ **destination** Default value is `os.cwd()`.
 
-    - _bool?_ **is_zip64** : Default value is `false`.
+    - _bool?_ **is_zip64** Default value is `false`.
 
 
   {.params}
@@ -59,9 +59,9 @@ _zip_.compress(_path_, _destination_, _use_zip64_) {#zip.compress}
 
   - **@params**:
     - _string_ **file**
-    - _string?_ **destination** : Default value is `os.cwd()`.
+    - _string?_ **destination** Default value is `os.cwd()`.
 
-    - _bool?_ **is_zip64** : Default value is `false`.
+    - _bool?_ **is_zip64** Default value is `false`.
 
 
   {.params}
@@ -80,35 +80,35 @@ _class_ **ZipItem** {#zip.ZipItem .class}
 : ZipItem represents a single file or directory in a zip archive.
 
 
-  **.name** &#x279D; _string_
+  **.name** &#x279D; _string_ {#zip.ZipItem.name}
   : Name of the file or directory
 
-  **.directory** &#x279D; _string_
+  **.directory** &#x279D; _string_ {#zip.ZipItem.directory}
   : The directory in which the file or subdirectory belongs
 
-  **.compression\_method** &#x279D; _string_
+  **.compression\_method** &#x279D; _string_ {#zip.ZipItem.compression_method}
   : The compression method for this file
 
-  **.crc** &#x279D; _string_
+  **.crc** &#x279D; _string_ {#zip.ZipItem.crc}
   : The crc32 checksum for the file
 
-  **.last\_modified** &#x279D; _Date_
+  **.last\_modified** &#x279D; _Date_ {#zip.ZipItem.last_modified}
   : The last modified date for the file
 
-  **.compressed\_size** &#x279D; _number_
+  **.compressed\_size** &#x279D; _number_ {#zip.ZipItem.compressed_size}
   : The size of the file as compressed in the archive. You should note 
     that this value is not often dependable
 
-  **.uncompressed\_size** &#x279D; _number_
+  **.uncompressed\_size** &#x279D; _number_ {#zip.ZipItem.uncompressed_size}
   : The size of the file when extracted from the archive
 
-  **.is\_encrypted** &#x279D; _bool_
+  **.is\_encrypted** &#x279D; _bool_ {#zip.ZipItem.is_encrypted}
   : If this file is encrypted or not.
 
-  **.error** &#x279D; _string_
+  **.error** &#x279D; _string_ {#zip.ZipItem.error}
   : Error encountered when attempting to read/extract the file
 
-  **.data** &#x279D; _bytes_
+  **.data** &#x279D; _bytes_ {#zip.ZipItem.data}
   : The decompressed value of the zip item
 
 
@@ -146,7 +146,7 @@ _class_ **ZipItem** {#zip.ZipItem .class}
 
 
     - **@params**:
-      - _string?_ **base_dir** : Default value is `os.cwd()`.
+      - _string?_ **base_dir** Default value is `os.cwd()`.
 
 
     {.params}
@@ -161,22 +161,22 @@ _class_ **ZipFile** {#zip.ZipFile .class}
 : ZipFile represents an instance of zip file.
 
 
-  **.name** &#x279D; _string_
+  **.name** &#x279D; _string_ {#zip.ZipFile.name}
   : The name of the zip file
 
-  **.last\_modified** &#x279D; _Date_
+  **.last\_modified** &#x279D; _Date_ {#zip.ZipFile.last_modified}
   : The last modified date for the zip file
 
-  **.time\_created** &#x279D; _Date_
+  **.time\_created** &#x279D; _Date_ {#zip.ZipFile.time_created}
   : The time when the zip file was created
 
-  **.size** &#x279D; _number_
+  **.size** &#x279D; _number_ {#zip.ZipFile.size}
   : The size of the zip file
 
-  **.handle** &#x279D; _file_
+  **.handle** &#x279D; _file_ {#zip.ZipFile.handle}
   : The file handle for this zip file
 
-  **.files** &#x279D; _List<ZipItem>_
+  **.files** &#x279D; _List<ZipItem>_ {#zip.ZipFile.files}
   : A list of the ZipItems in the zip file
 
 
@@ -190,7 +190,7 @@ _class_ **ZipFile** {#zip.ZipFile .class}
 
 
     - **@params**:
-      - _string?_ **base_dir** : Default value is `os.cwd()`.
+      - _string?_ **base_dir** Default value is `os.cwd()`.
 
 
     {.params}
@@ -214,7 +214,7 @@ _class_ **ZipArchive** {#zip.ZipArchive .class}
 
     - **@params**:
       - _string_ **path**
-      - _bool?_ **use_zip_64** : Default value is `false`.
+      - _bool?_ **use_zip_64** Default value is `false`.
 
 
     {.params}
@@ -272,9 +272,9 @@ _class_ **ZipArchive** {#zip.ZipArchive .class}
 
     - **@params**:
       - _string_ **directory**
-      - _list_ **file_blacklist** : Default value is `[]`
+      - _list_ **file_blacklist** Default value is `[]`
 
-      - _list_ **ext_blacklist** : Default value is `[]`
+      - _list_ **ext_blacklist** Default value is `[]`
 
 
     {.params}

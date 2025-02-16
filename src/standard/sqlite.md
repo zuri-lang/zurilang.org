@@ -173,7 +173,7 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
 : SQLite3 management class
 
 
-  **.path**
+  **.path** {#sqlite.SQLite3.path}
   : The path to the SQLite3 file
     @default = :memory:
 
@@ -328,13 +328,13 @@ _class_ **SQLite3Cursor** {#sqlite.SQLite3Cursor .class}
     __@iterable__
     {.class-props}
 
-  **.connection** &#x279D; _readonly_
+  **.connection** &#x279D; _readonly_ {#sqlite.SQLite3Cursor.connection}
   : The SQLite3 connection that owns this cursor
 
-  **.row\_count** &#x279D; _readonly_
+  **.row\_count** &#x279D; _readonly_ {#sqlite.SQLite3Cursor.row_count}
   : The number of rows in the cursor
 
-  **.modified\_count** &#x279D; _readonly_
+  **.modified\_count** &#x279D; _readonly_ {#sqlite.SQLite3Cursor.modified_count}
   : This value hold the number of rows modified, inserted or deleted by the the query that 
     owns this cursor provided the query is one of INSERT, UPDATE or DELETE statement.
     Executing any other type of SQL statement does not change this value from 0.
@@ -353,7 +353,7 @@ _class_ **SQLite3Cursor** {#sqlite.SQLite3Cursor .class}
     > the original query was also making a change, the result of this value will become 
     > undependable.
 
-  **.columns** &#x279D; _readonly_
+  **.columns** &#x279D; _readonly_ {#sqlite.SQLite3Cursor.columns}
   : A list of the columns available in the result set.
 
 

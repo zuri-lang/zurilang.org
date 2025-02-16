@@ -191,11 +191,11 @@ _class_ **Keccak** {#sha3.Keccak .class}
 
 
     - **@params**:
-      - _number_ **bits** : Capacity
+      - _number_ **bits** Capacity
 
-      - _number_ **padding** : Padding value - 1 for Keccak, 6 for SHA3 and 31 for SHAKE
+      - _number_ **padding** Padding value - 1 for Keccak, 6 for SHA3 and 31 for SHAKE
 
-      - _number?_ **length** : Optional length of the output hash in bits. If not given bits is taken as default.
+      - _number?_ **length** Optional length of the output hash in bits. If not given bits is taken as default.
 
 
     {.params}

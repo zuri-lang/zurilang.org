@@ -5,38 +5,38 @@ of commonly used scientific and mathematical constants such as `PI`.
 
 ## Fields
 
-_math_.**PI**
+_math_.**PI** {#math.PI}
 : represents the ratio of the circumference of a circle 
   to its diameter
 
-_math_.**E**
+_math_.**E** {#math.E}
 : represents Euler's number, the base of natural logarithms
 
-_math_.**LOG\_10**
+_math_.**LOG\_10** {#math.LOG_10}
 : represents the natural logarithm of 10
 
-_math_.**LOG\_10\_E**
+_math_.**LOG\_10\_E** {#math.LOG_10_E}
 : represents the base 10 logarithm of e
 
-_math_.**LOG\_2**
+_math_.**LOG\_2** {#math.LOG_2}
 : represents the natural logarithm of 2
 
-_math_.**LOG\_2\_E**
+_math_.**LOG\_2\_E** {#math.LOG_2_E}
 : represents the base 2 logarithm of e
 
-_math_.**ROOT\_2**
+_math_.**ROOT\_2** {#math.ROOT_2}
 : represents the square root of 2
 
-_math_.**ROOT\_3**
+_math_.**ROOT\_3** {#math.ROOT_3}
 : represents the square root of 3
 
-_math_.**ROOT\_HALF**
+_math_.**ROOT\_HALF** {#math.ROOT_HALF}
 : represents the square root of 1/2
 
-_math_.**Infinity**
+_math_.**Infinity** {#math.Infinity}
 : Mathematical infinity
 
-_math_.**NaN**
+_math_.**NaN** {#math.NaN}
 : Mathematical NaN
 
 

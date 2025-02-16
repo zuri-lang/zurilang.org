@@ -6,37 +6,37 @@ the _bytes()_ object and allow higher other binary data manipulation.
 
 ## Fields
 
-_array_.**INT16\_MAX** &#x279D; _number_
+_array_.**INT16\_MAX** &#x279D; _number_ {#array.INT16_MAX}
 : Maximum value that "should" exist in a list passed to Int16Array.
 
-_array_.**UINT16\_MAX** &#x279D; _number_
+_array_.**UINT16\_MAX** &#x279D; _number_ {#array.UINT16_MAX}
 : Maximum value that "should" exist in a list passed to UInt16Array.
 
-_array_.**INT32\_MAX** &#x279D; _number_
+_array_.**INT32\_MAX** &#x279D; _number_ {#array.INT32_MAX}
 : Maximum value that "should" exist in a list passed to Int32Array.
 
-_array_.**UINT32\_MAX** &#x279D; _number_
+_array_.**UINT32\_MAX** &#x279D; _number_ {#array.UINT32_MAX}
 : Maximum value that "should" exist in a list passed to UInt32Array.
 
-_array_.**INT64\_MAX** &#x279D; _number_
+_array_.**INT64\_MAX** &#x279D; _number_ {#array.INT64_MAX}
 : Maximum value that "should" exist in a list passed to Int64Array.
 
-_array_.**UINT64\_MAX** &#x279D; _number_
+_array_.**UINT64\_MAX** &#x279D; _number_ {#array.UINT64_MAX}
 : Maximum value that "should" exist in a list passed to UInt64Array.
 
-_array_.**FLOAT\_MAX** &#x279D; _number_
+_array_.**FLOAT\_MAX** &#x279D; _number_ {#array.FLOAT_MAX}
 : Maximum value that "should" exist in a list passed to FloatArray.
 
-_array_.**INT16\_MIN** &#x279D; _number_
+_array_.**INT16\_MIN** &#x279D; _number_ {#array.INT16_MIN}
 : Minimum value that "should" exist in a list passed to Int16Array.
 
-_array_.**INT32\_MIN** &#x279D; _number_
+_array_.**INT32\_MIN** &#x279D; _number_ {#array.INT32_MIN}
 : Minimum value that "should" exist in a list passed to Int32Array.
 
-_array_.**INT64\_MIN** &#x279D; _number_
+_array_.**INT64\_MIN** &#x279D; _number_ {#array.INT64_MIN}
 : Minimum value that "should" exist in a list passed to Int64Array.
 
-_array_.**FLOAT\_MIN** &#x279D; _number_
+_array_.**FLOAT\_MIN** &#x279D; _number_ {#array.FLOAT_MIN}
 : Minimum value that "should" exist in a list passed to FloatArray.
 
 

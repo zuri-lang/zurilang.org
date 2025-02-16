@@ -24,7 +24,7 @@ start function.
 For example, the following code creates and start a new thread by 
 creating an instance of the Thread class directly,
 
-```blade-repl
+```blade
 import thread
 
 var th = thread.Thread(@(t, name) {
@@ -39,7 +39,7 @@ as a module function and like other blade module functions is the
 conventional way to create an instance of a thread. The example 
 below is a rewrite of the previous example with the module function.
 
-```blade-repl
+```blade
 import thread
 
 var th = thread(@(t, name) {
@@ -61,7 +61,7 @@ to the delegate function.
 The example below rewrites the previous functionality by using the 
 start function.
 
-```blade-repl
+```blade
 import thread
 
 var th = thread.start(@(t, name) {
@@ -81,13 +81,76 @@ function is the idiomatic way to create threads.
 > parameters.
 ### Awaiting a thread
 
+You can use the [Thread.await()](#thread.Thread.await) thread method to wait to a thread to 
+finish executing its task before continuing execution on the calling 
+thread. This will block the current thread until the awaited thread has 
+exited.
+
+```blade
+import thread
+import os
+
+var th = thread.start(@{
+  os.sleep(5)
+})
+
+th.await()
+```
+
+The example above will wait for the thread which will block for 5 seconds to exit.
+
 ### Stopping a thread
 
-### Renaming a thread
+A thread can be stopped from the calling threa (the thread that created it) as well 
+as from within the thread execution function itself using the [Thread.cancel()](#thread.Thread.cancel) 
+thread method.
+
+The example below shows how to cancel a thread from the calling thread.
+
+```blade
+import thread
+import os
+
+var th = thread.start(@{
+  os.sleep(5)
+})
+
+echo "I'm cancelling on you!"
+th.cancel()
+```
+
+You'll notice that the thread was immediately cancelled immediately after 
+printing the text `I'm cancelling on you!` which in itself was printed 
+immediately after the thread started. For this reason, we never got to see 
+the thread wait for the specified 5 seconds.
+
+We can also cancel a thread from within its execution function. The example 
+below shows how to achieve this with the `thread.cancel()` method.
+
+```blade
+import thread
+import os
+
+var th = thread.start(@(t) {
+  os.sleep(3)
+
+  echo "I'm cancelling on you!"
+  t.cancel()
+
+  # we're never reaching here...
+  os.sleep(15)
+})
+
+th.await()
+```
+
+If you run the above example, you'll notice that the program stopped immediately 
+after printing the text `I'm cancelling on you!` as well. It never slept for the 
+specified 15 seconds; this is because the thread has been stopped.
 
 ## Fields
 
-_thread_.**cpu\_count** &#x279D; _number_
+_thread_.**cpu\_count** &#x279D; _number_ {#thread.cpu_count}
 : The number of CPU cores available on the current device.
 
 
@@ -285,6 +348,10 @@ _class_ **Thread** {#thread.Thread .class}
   : Causes the current thread to sleep for the specified number of seconds.
 
 
+    > **@notes**:
+    > 
+    > - This method can only be called from the thread function.
+
     - **@params**:
       - _number_ **duration**
 
@@ -305,6 +372,10 @@ _class_ **Thread** {#thread.Thread .class}
     On success, returns `true` and otherwise `false`.
 
 
+    > **@notes**:
+    > 
+    > - This method can only be called from the thread function.
+
     - **@returns**: _bool_
     {.returns}
 
@@ -324,6 +395,10 @@ _class_ **Thread** {#thread.Thread .class}
     Returns `true` if successful and `false` otherwise.
 
 
+    > **@notes**:
+    > 
+    > - This method can only be called from the thread function.
+
     - **@params**:
       - _string_ **name**
 
@@ -336,6 +411,10 @@ _class_ **Thread** {#thread.Thread .class}
 
   : Returns the name of the current thread.
 
+
+    > **@notes**:
+    > 
+    > - This method can only be called from the thread function.
 
     - **@returns**: _string_
     {.returns}

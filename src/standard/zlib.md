@@ -33,40 +33,40 @@ even in the case of corrupted input.
 
 ## Fields
 
-_zlib_.**version** &#x279D; _number_
+_zlib_.**version** &#x279D; _number_ {#zlib.version}
 : ZLib version string.
 
-_zlib_.**NO\_COMPRESSION** &#x279D; _number_
+_zlib_.**NO\_COMPRESSION** &#x279D; _number_ {#zlib.NO_COMPRESSION}
 : No compression level.
 
-_zlib_.**BEST\_SPEED** &#x279D; _number_
+_zlib_.**BEST\_SPEED** &#x279D; _number_ {#zlib.BEST_SPEED}
 : Best speed compression.
 
-_zlib_.**BEST\_COMPRESSION** &#x279D; _number_
+_zlib_.**BEST\_COMPRESSION** &#x279D; _number_ {#zlib.BEST_COMPRESSION}
 : Best compression level.
 
-_zlib_.**DEFAULT\_COMPRESSION** &#x279D; _number_
+_zlib_.**DEFAULT\_COMPRESSION** &#x279D; _number_ {#zlib.DEFAULT_COMPRESSION}
 : Default compression level.
 
-_zlib_.**FILTERED** &#x279D; _number_
+_zlib_.**FILTERED** &#x279D; _number_ {#zlib.FILTERED}
 : Filtered compression strategy.
 
-_zlib_.**HUFFMAN\_ONLY**
+_zlib_.**HUFFMAN\_ONLY** {#zlib.HUFFMAN_ONLY}
 : huffman only compression strategy
 
-_zlib_.**RLE** &#x279D; _number_
+_zlib_.**RLE** &#x279D; _number_ {#zlib.RLE}
 : Rle compression strategy.
 
-_zlib_.**FIXED** &#x279D; _number_
+_zlib_.**FIXED** &#x279D; _number_ {#zlib.FIXED}
 : Fixed compression strategy.
 
-_zlib_.**DEFAULT\_STRATEGY** &#x279D; _number_
+_zlib_.**DEFAULT\_STRATEGY** &#x279D; _number_ {#zlib.DEFAULT_STRATEGY}
 : Default compression strategy.
 
-_zlib_.**DEFAULT\_MEMORY\_LEVEL** &#x279D; _number_
+_zlib_.**DEFAULT\_MEMORY\_LEVEL** &#x279D; _number_ {#zlib.DEFAULT_MEMORY_LEVEL}
 : Default memory level
 
-_zlib_.**MAX\_WBITS** &#x279D; _number_
+_zlib_.**MAX\_WBITS** &#x279D; _number_ {#zlib.MAX_WBITS}
 : Maximum windows bit.
 
 
@@ -168,13 +168,13 @@ _zlib_.compress(_data_, _level_, _strategy_, _wbits_, _memory_level_) {#zlib.com
 
   - **@params**:
     - _bytes|string_ **data**
-    - _int?_ **level** : Default value is `DEFAULT_COMPRESSION`.
+    - _int?_ **level** Default value is `DEFAULT_COMPRESSION`.
 
-    - _int?_ **strategy** : Default value is `DEFAULT_STRATEGY`.
+    - _int?_ **strategy** Default value is `DEFAULT_STRATEGY`.
 
-    - _int?_ **wbits** : Default value is `MAX_WBITS`.
+    - _int?_ **wbits** Default value is `MAX_WBITS`.
 
-    - _int?_ **memory_level** : Default value is `DEFAULT_MEMORY_LEVEL`.
+    - _int?_ **memory_level** Default value is `DEFAULT_MEMORY_LEVEL`.
 
 
   {.params}
@@ -229,7 +229,7 @@ _zlib_.uncompress(_data_, _wbits_) {#zlib.uncompress}
 
   - **@params**:
     - _bytes|string_ **data**
-    - _int?_ **wbits** : Default value is `MAX_WBITS`.
+    - _int?_ **wbits** Default value is `MAX_WBITS`.
 
 
   {.params}
@@ -330,7 +330,7 @@ _zlib_.gzopen(_path_, _mode_) {#zlib.gzopen}
 
   - **@params**:
     - _string_ **path**
-    - _string?_ **mode** : Default value is `rb`.
+    - _string?_ **mode** Default value is `rb`.
 
 
   {.params}
@@ -357,7 +357,7 @@ _class_ **GZ** {#zlib.GZ .class}
 
     - **@params**:
       - _string_ **path**
-      - _string?_ **mode** : Default value is `rb`.
+      - _string?_ **mode** Default value is `rb`.
 
 
     {.params}
@@ -501,7 +501,7 @@ _class_ **GZ** {#zlib.GZ .class}
 
     - **@params**:
       - _int_ **offset**
-      - _int?_ **whence** : Default value is `SEEK_SET`.
+      - _int?_ **whence** Default value is `SEEK_SET`.
 
 
     {.params}

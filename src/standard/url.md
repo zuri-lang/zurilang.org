@@ -50,7 +50,7 @@ _url_.encode(_url_, _strict_) {#url.encode}
 
   - **@params**:
     - _string_ **url**
-    - _bool?_ **strict** : Default value is `false`
+    - _bool?_ **strict** Default value is `false`
 
 
   {.params}
@@ -83,7 +83,7 @@ _url_.parse(_url_, _strict_) {#url.parse}
 
   - **@params**:
     - _string_ **url**
-    - _bool?_ **strict** : Default value is `false`
+    - _bool?_ **strict** Default value is `false`
 
 
   {.params}
@@ -120,43 +120,43 @@ _class_ **Url** {#url.Url .class}
     __@printable__, __@serializable__
     {.class-props}
 
-  **.scheme**
+  **.scheme** {#url.Url.scheme}
   : The url scheme e.g. http, https, ftp, tcp etc.
 
-  **.host**
+  **.host** {#url.Url.host}
   : The host information contained in the url
 
-  **.port**
+  **.port** {#url.Url.port}
   : The port information contained in the url whenever the url doesn't 
     indicate, we try to make a best guess based on the scheme.
 
-  **.path**
+  **.path** {#url.Url.path}
   : The path of the URL.
     @default /
 
-  **.hash**
+  **.hash** {#url.Url.hash}
   : Hash information contained in the url and it's beginning is indicated by the 
     hash (#) sign. This value is especially relevant to some http/https urls 
     and are usually references to the content of the document 
     at the given url
 
-  **.query**
+  **.query** {#url.Url.query}
   : Query/Search information contained in the url and it's beginning is indicated by the 
     question (?) sign. This value is especially relevant to some http/https urls and are 
     usually used to convey data to endpoint based on the GET method.
 
-  **.username**
+  **.username** {#url.Url.username}
   : Username information for authentication are sometimes embedded in urls. When such information
     exist, this property holds the information
 
-  **.password**
+  **.password** {#url.Url.password}
   : Password information for authentication are sometimes embedded in urls. When such information
     exist, this property holds the information
 
-  **.has\_slash**
+  **.has\_slash** {#url.Url.has_slash}
   : `true` if the url contains the :// section. `false` otherwise.
 
-  **.empty\_path** &#x279D; _bool_
+  **.empty\_path** &#x279D; _bool_ {#url.Url.empty_path}
   : `true` if the original url contains a path segment even if its just an `/` and false if the
     path value of `/` was implied.
 

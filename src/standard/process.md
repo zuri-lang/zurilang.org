@@ -37,7 +37,7 @@ It works!
 
 ## Fields
 
-_process_.**cpu\_count** &#x279D; _number_
+_process_.**cpu\_count** &#x279D; _number_ {#process.cpu_count}
 : The number of CPU cores available on the current device.
 
 

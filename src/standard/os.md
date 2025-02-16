@@ -4,7 +4,7 @@ This module provides functions for interfacing with the underlying operating sys
 
 ## Fields
 
-_os_.**platform** &#x279D; _string_
+_os_.**platform** &#x279D; _string_ {#os.platform}
 : The name of the current platform in string or `unknown` if 
   the platform name could not be determined.
   
@@ -17,40 +17,40 @@ _os_.**platform** &#x279D; _string_
   'osx'
   ```
 
-_os_.**args** &#x279D; _list_
+_os_.**args** &#x279D; _list_ {#os.args}
 : A list containing the command line arguments passed to the startup script.
 
-_os_.**path\_separator** &#x279D; _string_
+_os_.**path\_separator** &#x279D; _string_ {#os.path_separator}
 : The standard path separator for the current operating system.
 
-_os_.**exe\_path** &#x279D; _string_
+_os_.**exe\_path** &#x279D; _string_ {#os.exe_path}
 : The full path to the running Blade executable.
 
-_os_.**DT\_UNKNOWN** &#x279D; _number_
+_os_.**DT\_UNKNOWN** &#x279D; _number_ {#os.DT_UNKNOWN}
 : Unknown file type
 
-_os_.**DT\_BLK** &#x279D; _number_
+_os_.**DT\_BLK** &#x279D; _number_ {#os.DT_BLK}
 : Block device file type
 
-_os_.**DT\_CHR** &#x279D; _number_
+_os_.**DT\_CHR** &#x279D; _number_ {#os.DT_CHR}
 : Character device file type
 
-_os_.**DT\_DIR** &#x279D; _number_
+_os_.**DT\_DIR** &#x279D; _number_ {#os.DT_DIR}
 : Directory file type
 
-_os_.**DT\_FIFO** &#x279D; _number_
+_os_.**DT\_FIFO** &#x279D; _number_ {#os.DT_FIFO}
 : Named pipe file type
 
-_os_.**DT\_LNK** &#x279D; _number_
+_os_.**DT\_LNK** &#x279D; _number_ {#os.DT_LNK}
 : Symbolic link file type
 
-_os_.**DT\_REG** &#x279D; _number_
+_os_.**DT\_REG** &#x279D; _number_ {#os.DT_REG}
 : Regular file type
 
-_os_.**DT\_SOCK** &#x279D; _number_
+_os_.**DT\_SOCK** &#x279D; _number_ {#os.DT_SOCK}
 : Local-domain socket file type
 
-_os_.**DT\_WHT** &#x279D; _number_
+_os_.**DT\_WHT** &#x279D; _number_ {#os.DT_WHT}
 : Whiteout file type (only meaningful on UNIX and some unofficial Linux versions).
 
 
@@ -176,7 +176,7 @@ _os_.set\_env(_name_, _value_, _overwrite_) {#os.set_env}
   - **@params**:
     - _string_ **name**
     - _string_ **value**
-    - _bool?_ **overwrite** : Default value is `false`.
+    - _bool?_ **overwrite** Default value is `false`.
 
 
   {.params}
@@ -199,9 +199,9 @@ _os_.create\_dir(_path_, _permission_, _recursive_) {#os.create_dir}
 
   - **@params**:
     - _string_ **path**
-    - _number?_ **permission** : Default value is `0c777`
+    - _number?_ **permission** Default value is `0c777`
 
-    - _bool?_ **recursive** : Default value is `true`.
+    - _bool?_ **recursive** Default value is `true`.
 
 
   {.params}
@@ -277,7 +277,7 @@ _os_.remove\_dir(_path_, _recursive_) {#os.remove_dir}
 
   - **@params**:
     - _string_ **path**
-    - _bool_ **recursive** : Default value is `false`.
+    - _bool_ **recursive** Default value is `false`.
 
 
   {.params}

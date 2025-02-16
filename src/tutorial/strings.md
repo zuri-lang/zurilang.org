@@ -604,7 +604,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
   [who, is, in, the, garden]
   ```
 
-.index_of(_str: string [, start\_index: number = 0_]) {#index_of}
+.index_of(_str: string [, start\_index: number = 0]_) {#index_of}
 
 : Returns the index position of the first occurrence of the string _`str`_ in the string _`string`_. If
   the _str_ cannot be found anywhere in _string_, it returns -1. If the `start_index` parameter is argument is given, it will start scanning from the given index.
@@ -720,7 +720,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
   (50 6c 61 6e 74 61 74 69 6f 6e)
   ```
 
-.lpad(_width: number [, fill: char = ' '_]) {#lpad}
+.lpad(_width: number [, fill: char = ' ']_) {#lpad}
 
 : Returns the string left justified in a string of length _width_. Padding is done using the specified 
   character _fill_ if given of a space (`' '`) if a _fill_ is not specified. The original string is 
@@ -737,7 +737,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
   'cat'
   ```
 
-.rpad(_width: number [, fill: char = ' '_])) {#rpad}
+.rpad(_width: number [, fill: char = ' ']_) {#rpad}
 
 : Returns the string right justified in a string of length _width_. Padding is done using the specified 
   character _fill_ if given of a space (`' '`) if a _fill_ is not specified. The original string is 
@@ -754,7 +754,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
   'Hmm'
   ```
 
-.match(_str: string | regex [, offset: number = 0_]) {#match}
+.match(_str: string | regex [, offset: number = 0]_) {#match}
 
 : If the string _str_ is a regular string, this method returns `true` if the _string_ contains a
   substring _str_. Otherwise, it returns `false`.
@@ -777,7 +777,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
   false
   ```
 
-.matches(_reg: regex [, offset: number = 0_]) {#matches}
+.matches(_reg: regex [, offset: number = 0]_) {#matches}
 
 : Returns a dictionary containing every match of the given regular expression _reg_ in the source string.
   If no match is found, an empty [dictionary](./dictionaries) is returned.
@@ -793,7 +793,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
   {0: [who, is, in, the, garden]}
   ```
 
-.replace(_str: regex | string, replacement: string [, use\_regex: bool = true_]) {#replace}
+.replace(_str: regex | string, replacement: string [, use\_regex: bool = true]_) {#replace}
 
 : Returns a copy of the string with all occurrences or matches of _str_ replaced by the _replacement_
   string.

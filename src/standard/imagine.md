@@ -1,218 +1,323 @@
 # imagine
 
+This module provide classes and functions for dynamic image creation 
+and manipulation. `Imagine` supports different image formats and can 
+be used to generate thumbnails, charts, graphics, and many other 
+kinds of images on the fly.
+
+The following image formats are currently supported by `imagine`:
+
+- JPEG
+- PNG
+- GIF
+- BMP
+- AVIF
+- WebP
+- HEIF
+- TIFF
+- WBMP
+- TGA
+
+## Features
+
+The module supports transparency, blending, images and image text 
+transformations and various filters.
+
+- ⁠Image loading and saving in various formats (JPEG, PNG, GIF, etc.)
+- ⁠Image resizing, cropping, and rotation
+- Color manipulation (brightness, contrast, saturation, etc.)
+- Image filtering (blur, sharpen, edge detection, etc.)
+- Text rendering and drawing
+- Support for layers, masks, and alpha channels
+
+## Examples
+
+The following create a PNG image filled with color red.
+
+```blade
+import imagine { * }
+
+# create empty image handle
+var img = Image.new(100, 100, true)
+
+# allocate color red and use it to fill the image
+var bg_color = img.allocate_color(255, 0, 0)
+img.fill(0, 0, bg_color)
+
+# export image to png
+img.export_png('image.png')
+
+# close the image handle
+img.close()
+```
+
+While the above example works very fine, it is a very common thing 
+from experience for people to forget to close file and image handles 
+and this have real implications on the system. For this reason, the 
+coventionally advice way to use `Image` instances is via 
+.[ImageResource.use()](#imagine.ImageResource.use). 
+
+The example below demonstartes the former example with `.use` pattern.
+
+```blade
+import imagine { * }
+
+Image.new(100, 100, true).use(@(img) {
+  # allocate color red and use it to fill the image
+  var bg_color = img.allocate_color(255, 0, 0)
+  img.fill(0, 0, bg_color)
+
+  # export image to png
+  img.export_png('image.png')
+})
+```
+
+Imagine is great at converting images as well as generating images. 
+The example below loads a PNG image and saves a copy as a JPEG file 
+(for sake of continuity, we're using the image we just created but feel 
+free to play around with your own images).
+
+```blade
+import imagine { * }
+
+Image.from_png('image.png').use(@(img) {
+  img.export_jpeg('image.jpg')
+})
+```
+
+Image can create transparent images as well as images containig texts. 
+The example below shows creates a simple transparent PNG image with the 
+text `A simple text string` written in it. 
+
+```blade
+import imagine { * }
+
+Image.new(130, 20, true).use(@(im) {
+  im.save_alpha()
+
+  var bg_color = im.allocate_color(0, 0, 0, 127)
+  var fore_color = im.allocate_color(233, 14, 91)
+
+  im.fill(0, 0, bg_color)
+  im.string(5, 2, 'A simple text string', FONT_REGULAR, fore_color)
+
+  im.export_png('simple.png')
+})
+```
+
 ## Fields
 
-_imagine_.**QUANT\_DEFAULT** &#x279D; _number_
+_imagine_.**QUANT\_DEFAULT** &#x279D; _number_ {#imagine.QUANT_DEFAULT}
 : Default (`QUANT_LIQ` if libimagequant is available, `QUANT_JQUANT` otherwise).
 
-_imagine_.**QUANT\_JQUANT** &#x279D; _number_
+_imagine_.**QUANT\_JQUANT** &#x279D; _number_ {#imagine.QUANT_JQUANT}
 : libjpeg's old median cut. Fast, but only uses 16-bit color.
 
-_imagine_.**QUANT\_NEUQUANT** &#x279D; _number_
+_imagine_.**QUANT\_NEUQUANT** &#x279D; _number_ {#imagine.QUANT_NEUQUANT}
 : NeuQuant - approximation using Kohonen neural network.
 
-_imagine_.**QUANT\_LIQ** &#x279D; _number_
+_imagine_.**QUANT\_LIQ** &#x279D; _number_ {#imagine.QUANT_LIQ}
 : A combination of algorithms used in libimagequant aiming for the highest quality at cost of speed.
 
-_imagine_.**ARC\_ARC** &#x279D; _number_
+_imagine_.**ARC\_ARC** &#x279D; _number_ {#imagine.ARC_ARC}
 : Produces a rounded edge.
 
-_imagine_.**ARC\_PIE** &#x279D; _number_
+_imagine_.**ARC\_PIE** &#x279D; _number_ {#imagine.ARC_PIE}
 : Same as ARC_ARC.
 
-_imagine_.**ARC\_CHORD** &#x279D; _number_
+_imagine_.**ARC\_CHORD** &#x279D; _number_ {#imagine.ARC_CHORD}
 : Connects the starting and ending angles with a straight line.
 
-_imagine_.**ARC\_NO\_FILL** &#x279D; _number_
+_imagine_.**ARC\_NO\_FILL** &#x279D; _number_ {#imagine.ARC_NO_FILL}
 : Indicates that the arc or chord should be outlined, not filled.
 
-_imagine_.**ARC\_NO\_EDGE** &#x279D; _number_
+_imagine_.**ARC\_NO\_EDGE** &#x279D; _number_ {#imagine.ARC_NO_EDGE}
 : Used together with [ARC_NO_FILL](#imagine.ARC_NO_FILL), indicates that the beginning and 
   ending angles should be connected to the center; this is a good 
   way to outline (rather than fill) a 'pie slice'.
 
-_imagine_.**CROP\_DEFAULT** &#x279D; _number_
+_imagine_.**CROP\_DEFAULT** &#x279D; _number_ {#imagine.CROP_DEFAULT}
 : Same as CROP_TRANSPARENT
 
-_imagine_.**CROP\_TRANSPARENT** &#x279D; _number_
+_imagine_.**CROP\_TRANSPARENT** &#x279D; _number_ {#imagine.CROP_TRANSPARENT}
 : Crop using the transparent color
 
-_imagine_.**CROP\_BLACK** &#x279D; _number_
+_imagine_.**CROP\_BLACK** &#x279D; _number_ {#imagine.CROP_BLACK}
 : Crop black borders
 
-_imagine_.**CROP\_WHITE** &#x279D; _number_
+_imagine_.**CROP\_WHITE** &#x279D; _number_ {#imagine.CROP_WHITE}
 : Crop white borders
 
-_imagine_.**CROP\_SIDES** &#x279D; _number_
+_imagine_.**CROP\_SIDES** &#x279D; _number_ {#imagine.CROP_SIDES}
 : Crop using colors of the 4 corners
 
-_imagine_.**CMP\_IMAGE** &#x279D; _number_
+_imagine_.**CMP\_IMAGE** &#x279D; _number_ {#imagine.CMP_IMAGE}
 : Actual image IS different
 
-_imagine_.**CMP\_NUM\_COLORS** &#x279D; _number_
+_imagine_.**CMP\_NUM\_COLORS** &#x279D; _number_ {#imagine.CMP_NUM_COLORS}
 : Number of colors in pallette differ
 
-_imagine_.**CMP\_COLOR** &#x279D; _number_
+_imagine_.**CMP\_COLOR** &#x279D; _number_ {#imagine.CMP_COLOR}
 : Image colors differ
 
-_imagine_.**CMP\_SIZE\_X** &#x279D; _number_
+_imagine_.**CMP\_SIZE\_X** &#x279D; _number_ {#imagine.CMP_SIZE_X}
 : Image width differs
 
-_imagine_.**CMP\_SIZE\_Y** &#x279D; _number_
+_imagine_.**CMP\_SIZE\_Y** &#x279D; _number_ {#imagine.CMP_SIZE_Y}
 : Image heights differ
 
-_imagine_.**CMP\_TRANSPARENT** &#x279D; _number_
+_imagine_.**CMP\_TRANSPARENT** &#x279D; _number_ {#imagine.CMP_TRANSPARENT}
 : Transparent color differs
 
-_imagine_.**CMP\_BACKGROUND** &#x279D; _number_
+_imagine_.**CMP\_BACKGROUND** &#x279D; _number_ {#imagine.CMP_BACKGROUND}
 : Background color differs
 
-_imagine_.**CMP\_INTERLACE** &#x279D; _number_
+_imagine_.**CMP\_INTERLACE** &#x279D; _number_ {#imagine.CMP_INTERLACE}
 : Interlaced setting differs
 
-_imagine_.**CMP\_TRUECOLOR** &#x279D; _number_
+_imagine_.**CMP\_TRUECOLOR** &#x279D; _number_ {#imagine.CMP_TRUECOLOR}
 : Truecolor vs palette differs
 
-_imagine_.**BLUR\_SELECTIVE** &#x279D; _number_
+_imagine_.**BLUR\_SELECTIVE** &#x279D; _number_ {#imagine.BLUR_SELECTIVE}
 : Blurs the image using the Gaussian method.
 
-_imagine_.**BLUR\_GAUSSIAN** &#x279D; _number_
+_imagine_.**BLUR\_GAUSSIAN** &#x279D; _number_ {#imagine.BLUR_GAUSSIAN}
 : Blurs the image.
 
-_imagine_.**FLIP\_BOTH** &#x279D; _number_
+_imagine_.**FLIP\_BOTH** &#x279D; _number_ {#imagine.FLIP_BOTH}
 : Flip an image vertically and horizontally
 
-_imagine_.**FLIP\_HORIZONTAL** &#x279D; _number_
+_imagine_.**FLIP\_HORIZONTAL** &#x279D; _number_ {#imagine.FLIP_HORIZONTAL}
 : Flip an image horizontally
 
-_imagine_.**FLIP\_VERTICAL** &#x279D; _number_
+_imagine_.**FLIP\_VERTICAL** &#x279D; _number_ {#imagine.FLIP_VERTICAL}
 : Flip an image vertically
 
-_imagine_.**FONT\_SMALL** &#x279D; _ptr_
+_imagine_.**FONT\_SMALL** &#x279D; _ptr_ {#imagine.FONT_SMALL}
 : A small ISO-8859-2 raster font (5x8 pixels).
 
-_imagine_.**FONT\_REGULAR** &#x279D; _ptr_
+_imagine_.**FONT\_REGULAR** &#x279D; _ptr_ {#imagine.FONT_REGULAR}
 : The regular ISO-8859-2 raster font (6x13 pixels)
 
-_imagine_.**FONT\_MEDIUM** &#x279D; _ptr_
+_imagine_.**FONT\_MEDIUM** &#x279D; _ptr_ {#imagine.FONT_MEDIUM}
 : A medium bold ISO-8859-2 raster font (7x13 pixels).
 
-_imagine_.**FONT\_LARGE** &#x279D; _ptr_
+_imagine_.**FONT\_LARGE** &#x279D; _ptr_ {#imagine.FONT_LARGE}
 : A large ISO-8859-2 raster font (8x16 pixels).
 
-_imagine_.**FONT\_EXTRALARGE** &#x279D; _ptr_
+_imagine_.**FONT\_EXTRALARGE** &#x279D; _ptr_ {#imagine.FONT_EXTRALARGE}
 : An extra-large ISO-8859-2 raster font (9x15 pixels).
 
-_imagine_.**COLOR\_STYLED** &#x279D; _number_
+_imagine_.**COLOR\_STYLED** &#x279D; _number_ {#imagine.COLOR_STYLED}
 : Use the current style, see `set_style()`
 
-_imagine_.**COLOR\_BRUSHED** &#x279D; _number_
+_imagine_.**COLOR\_BRUSHED** &#x279D; _number_ {#imagine.COLOR_BRUSHED}
 : Use the current brush, see `set_brush()`
 
-_imagine_.**COLOR\_STYLED\_BRUSHED** &#x279D; _number_
+_imagine_.**COLOR\_STYLED\_BRUSHED** &#x279D; _number_ {#imagine.COLOR_STYLED_BRUSHED}
 : Use the current style and brush
 
-_imagine_.**COLOR\_TILED** &#x279D; _number_
+_imagine_.**COLOR\_TILED** &#x279D; _number_ {#imagine.COLOR_TILED}
 : Use the current tile, see `set_tile()`
 
-_imagine_.**COLOR\_TRANSPARENT** &#x279D; _number_
+_imagine_.**COLOR\_TRANSPARENT** &#x279D; _number_ {#imagine.COLOR_TRANSPARENT}
 : Indicate transparency, what is not the same as the transparent 
   color index; used for lines only
 
-_imagine_.**COLOR\_ANTI\_ALISED** &#x279D; _number_
+_imagine_.**COLOR\_ANTI\_ALISED** &#x279D; _number_ {#imagine.COLOR_ANTI_ALISED}
 : Draw anti aliased
 
-_imagine_.**INTERP\_DEFAULT** &#x279D; _number_
+_imagine_.**INTERP\_DEFAULT** &#x279D; _number_ {#imagine.INTERP_DEFAULT}
 : Default (Same as INTERP_BELL)
 
-_imagine_.**INTERP\_BELL** &#x279D; _number_
+_imagine_.**INTERP\_BELL** &#x279D; _number_ {#imagine.INTERP_BELL}
 : Bell
 
-_imagine_.**INTERP\_BESSEL** &#x279D; _number_
+_imagine_.**INTERP\_BESSEL** &#x279D; _number_ {#imagine.INTERP_BESSEL}
 : Bessel
 
-_imagine_.**INTERP\_BILINEAR\_FIXED** &#x279D; _number_
+_imagine_.**INTERP\_BILINEAR\_FIXED** &#x279D; _number_ {#imagine.INTERP_BILINEAR_FIXED}
 : Fixed point bilinear
 
-_imagine_.**INTERP\_BICUBIC** &#x279D; _number_
+_imagine_.**INTERP\_BICUBIC** &#x279D; _number_ {#imagine.INTERP_BICUBIC}
 : Bicubic
 
-_imagine_.**INTERP\_BICUBIC\_FIXED** &#x279D; _number_
+_imagine_.**INTERP\_BICUBIC\_FIXED** &#x279D; _number_ {#imagine.INTERP_BICUBIC_FIXED}
 : Fixed point bicubic integer
 
-_imagine_.**INTERP\_BLACKMAN** &#x279D; _number_
+_imagine_.**INTERP\_BLACKMAN** &#x279D; _number_ {#imagine.INTERP_BLACKMAN}
 : Blackman
 
-_imagine_.**INTERP\_BOX** &#x279D; _number_
+_imagine_.**INTERP\_BOX** &#x279D; _number_ {#imagine.INTERP_BOX}
 : Box
 
-_imagine_.**INTERP\_BSPLINE** &#x279D; _number_
+_imagine_.**INTERP\_BSPLINE** &#x279D; _number_ {#imagine.INTERP_BSPLINE}
 : BSpline
 
-_imagine_.**INTERP\_CATMULLROM** &#x279D; _number_
+_imagine_.**INTERP\_CATMULLROM** &#x279D; _number_ {#imagine.INTERP_CATMULLROM}
 : Catmullrom
 
-_imagine_.**INTERP\_GAUSSIAN** &#x279D; _number_
+_imagine_.**INTERP\_GAUSSIAN** &#x279D; _number_ {#imagine.INTERP_GAUSSIAN}
 : Gaussian
 
-_imagine_.**INTERP\_GENERALIZED\_CUBIC** &#x279D; _number_
+_imagine_.**INTERP\_GENERALIZED\_CUBIC** &#x279D; _number_ {#imagine.INTERP_GENERALIZED_CUBIC}
 : Generalized cubic
 
-_imagine_.**INTERP\_HERMITE** &#x279D; _number_
+_imagine_.**INTERP\_HERMITE** &#x279D; _number_ {#imagine.INTERP_HERMITE}
 : Hermite
 
-_imagine_.**INTERP\_HAMMING** &#x279D; _number_
+_imagine_.**INTERP\_HAMMING** &#x279D; _number_ {#imagine.INTERP_HAMMING}
 : Hamming
 
-_imagine_.**INTERP\_HANNING** &#x279D; _number_
+_imagine_.**INTERP\_HANNING** &#x279D; _number_ {#imagine.INTERP_HANNING}
 : Hannig
 
-_imagine_.**INTERP\_MITCHELL** &#x279D; _number_
+_imagine_.**INTERP\_MITCHELL** &#x279D; _number_ {#imagine.INTERP_MITCHELL}
 : Mitchell
 
-_imagine_.**INTERP\_NEAREST\_NEIGHBOUR** &#x279D; _number_
+_imagine_.**INTERP\_NEAREST\_NEIGHBOUR** &#x279D; _number_ {#imagine.INTERP_NEAREST_NEIGHBOUR}
 : Nearest neighbour interpolation
 
-_imagine_.**INTERP\_POWER** &#x279D; _number_
+_imagine_.**INTERP\_POWER** &#x279D; _number_ {#imagine.INTERP_POWER}
 : Power
 
-_imagine_.**INTERP\_QUADRATIC** &#x279D; _number_
+_imagine_.**INTERP\_QUADRATIC** &#x279D; _number_ {#imagine.INTERP_QUADRATIC}
 : Quadratic
 
-_imagine_.**INTERP\_SINC** &#x279D; _number_
+_imagine_.**INTERP\_SINC** &#x279D; _number_ {#imagine.INTERP_SINC}
 : Sinc
 
-_imagine_.**INTERP\_TRIANGLE** &#x279D; _number_
+_imagine_.**INTERP\_TRIANGLE** &#x279D; _number_ {#imagine.INTERP_TRIANGLE}
 : Triangle
 
-_imagine_.**INTERP\_WEIGHTED4** &#x279D; _number_
+_imagine_.**INTERP\_WEIGHTED4** &#x279D; _number_ {#imagine.INTERP_WEIGHTED4}
 : 4 pixels weighted bilinear interpolation
 
-_imagine_.**INTERP\_LINEAR** &#x279D; _number_
+_imagine_.**INTERP\_LINEAR** &#x279D; _number_ {#imagine.INTERP_LINEAR}
 : bilinear interpolation
 
-_imagine_.**LANCZOS3** &#x279D; _number_
+_imagine_.**LANCZOS3** &#x279D; _number_ {#imagine.LANCZOS3}
 : Lanczos 3
 
-_imagine_.**LANCZOS8** &#x279D; _number_
+_imagine_.**LANCZOS8** &#x279D; _number_ {#imagine.LANCZOS8}
 : Lanczos 8
 
-_imagine_.**BLACKMAN\_BESSEL** &#x279D; _number_
+_imagine_.**BLACKMAN\_BESSEL** &#x279D; _number_ {#imagine.BLACKMAN_BESSEL}
 : Blackman Bessel
 
-_imagine_.**BLACKMAN\_SINC** &#x279D; _number_
+_imagine_.**BLACKMAN\_SINC** &#x279D; _number_ {#imagine.BLACKMAN_SINC}
 : Blackman Sinc
 
-_imagine_.**QUADRATIC\_BSPLINE** &#x279D; _number_
+_imagine_.**QUADRATIC\_BSPLINE** &#x279D; _number_ {#imagine.QUADRATIC_BSPLINE}
 : Quadratic BSpline
 
-_imagine_.**CUBIC\_SPLINE** &#x279D; _number_
+_imagine_.**CUBIC\_SPLINE** &#x279D; _number_ {#imagine.CUBIC_SPLINE}
 : Cubic Spline
 
-_imagine_.**COSINE** &#x279D; _number_
+_imagine_.**COSINE** &#x279D; _number_ {#imagine.COSINE}
 : Cosine
 
-_imagine_.**WELSH** &#x279D; _number_
+_imagine_.**WELSH** &#x279D; _number_ {#imagine.WELSH}
 : Welsh
 
 
@@ -221,15 +326,19 @@ _imagine_.**WELSH** &#x279D; _number_
 _imagine_.true\_color(_r_, _g_, _b_, _a_) {#imagine.true_color}
 
 : Compose a truecolor value from its components.
-  
-   @param number? r - The red channel (0-255) - Default: 0
-   @param number? g - The green channel (0-255) - Default: 0
-   @param number? b - The blue channel (0-255) - Default: 0
-   @param number? a - The alpha channel (0-127, where 127 is 
-       fully transparent, and 0 is completely opaque) 
-       - Default: 0.
 
 
+  - **@params**:
+    - _number?_ **r** The red channel (0-255) - Default: 0
+
+    - _number?_ **g** The green channel (0-255) - Default: 0
+
+    - _number?_ **b** The blue channel (0-255) - Default: 0
+
+    - _number?_ **a** The alpha channel (0-127, where 127 is fully transparent, and 0 is completely opaque) - Default: 0.
+
+
+  {.params}
   - **@returns**: _number_
   {.returns}
 
@@ -254,6 +363,25 @@ _imagine_.decompose(_color_) {#imagine.decompose}
 
   {.params}
   - **@returns**: _dict_
+  {.returns}
+
+
+
+_imagine_.load(_path_) {#imagine.load}
+
+: Creates an image from any supported image file.
+  
+  As long as the file type is supported by Imagine, the file type 
+  will automatically be detected.
+  
+  This function is a shorthand for [Image.from_file](#imagine.Image.from_file).
+
+
+  - **@params**:
+    - _string|file_ **src**
+
+  {.params}
+  - **@returns**: _[ImageResource](#imagine.ImageResource)_
   {.returns}
 
 
@@ -429,15 +557,15 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _number_ **x** - The x coordinate of the upper left pixel.
+      - _number_ **x** The x coordinate of the upper left pixel.
 
-      - _number_ **y** - The y coordinate of the upper left pixel.
+      - _number_ **y** The y coordinate of the upper left pixel.
 
-      - _char_ **text** - The character.
+      - _char_ **text** The character.
 
-      - _font_ **font** - The raster font.
+      - _font_ **font** The raster font.
 
-      - _number_ **color** - The color.
+      - _number_ **color** The color.
 
 
     {.params}
@@ -449,15 +577,15 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _number_ **x** - The x coordinate of the upper left pixel.
+      - _number_ **x** The x coordinate of the upper left pixel.
 
-      - _number_ **y** - The y coordinate of the upper left pixel.
+      - _number_ **y** The y coordinate of the upper left pixel.
 
-      - _char_ **text** - The character.
+      - _char_ **text** The character.
 
-      - _font_ **font** - The raster font.
+      - _font_ **font** The raster font.
 
-      - _number_ **color** - The color.
+      - _number_ **color** The color.
 
 
     {.params}
@@ -469,15 +597,15 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _number_ **x** - The x coordinate of the upper left pixel.
+      - _number_ **x** The x coordinate of the upper left pixel.
 
-      - _number_ **y** - The y coordinate of the upper left pixel.
+      - _number_ **y** The y coordinate of the upper left pixel.
 
-      - _string_ **text** - The character string.
+      - _string_ **text** The character string.
 
-      - _font_ **font** - The raster font.
+      - _font_ **font** The raster font.
 
-      - _number_ **color** - The color.
+      - _number_ **color** The color.
 
 
     {.params}
@@ -489,15 +617,15 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
 
 
     - **@params**:
-      - _number_ **x** - The x coordinate of the upper left pixel.
+      - _number_ **x** The x coordinate of the upper left pixel.
 
-      - _number_ **y** - The y coordinate of the upper left pixel.
+      - _number_ **y** The y coordinate of the upper left pixel.
 
-      - _string_ **text** - The character string.
+      - _string_ **text** The character string.
 
-      - _font_ **font** - The raster font.
+      - _font_ **font** The raster font.
 
-      - _number_ **color** - The color.
+      - _number_ **color** The color.
 
 
     {.params}
@@ -1540,7 +1668,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
     - **@params**:
       - _string|file_ **dest**
       - _number_ **quality**
-      - _number_ **speed** - Default = 1
+      - _number_ **speed** Default = 1
 
 
     {.params}

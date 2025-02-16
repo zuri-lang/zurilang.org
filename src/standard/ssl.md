@@ -3,13 +3,13 @@ Provides OpenSSL bindings for Blade.
 
 ## Fields
 
-_ssl_.**SSL\_FILETYPE\_PEM**
+_ssl_.**SSL\_FILETYPE\_PEM** {#ssl.SSL_FILETYPE_PEM}
 : SSL_FILETYPE_PEM
 
-_ssl_.**SSL\_FILETYPE\_ASN1**
+_ssl_.**SSL\_FILETYPE\_ASN1** {#ssl.SSL_FILETYPE_ASN1}
 : SSL_FILETYPE_ASN1
 
-_ssl_.**SSL\_VERIFY\_NONE**
+_ssl_.**SSL\_VERIFY\_NONE** {#ssl.SSL_VERIFY_NONE}
 : Server mode:
   :  The server will not send a client certificate request to the client, 
      so the client will not send a certificate.
@@ -19,7 +19,7 @@ _ssl_.**SSL\_VERIFY\_NONE**
      the server will send a certificate which will be checked. The handshake 
      will be continued regardless of the verification result.
 
-_ssl_.**SSL\_VERIFY\_PEER**
+_ssl_.**SSL\_VERIFY\_PEER** {#ssl.SSL_VERIFY_PEER}
 : Server mode: 
   :  The server sends a client certificate request to the client. 
      The certificate returned (if any) is checked. If the verification process fails, 
@@ -34,7 +34,7 @@ _ssl_.**SSL\_VERIFY\_PEER**
      containing the reason for the verification failure. If no server certificate is sent, 
      because an anonymous cipher is used, SSL_VERIFY_PEER is ignored.
 
-_ssl_.**SSL\_VERIFY\_FAIL\_IF\_NO\_PEER\_CERT**
+_ssl_.**SSL\_VERIFY\_FAIL\_IF\_NO\_PEER\_CERT** {#ssl.SSL_VERIFY_FAIL_IF_NO_PEER_CERT}
 : Server mode:
   :  If the client did not return a certificate, the TLS/SSL handshake is immediately 
      terminated with a "handshake failure" alert. This flag must be used together 
@@ -43,7 +43,7 @@ _ssl_.**SSL\_VERIFY\_FAIL\_IF\_NO\_PEER\_CERT**
   Client mode: 
   :  Ignored
 
-_ssl_.**SSL\_VERIFY\_CLIENT\_ONCE**
+_ssl_.**SSL\_VERIFY\_CLIENT\_ONCE** {#ssl.SSL_VERIFY_CLIENT_ONCE}
 : Server mode:
   :  Only request a client certificate once during the connection. Do not 
      ask for a client certificate again during renegotiation or post-authentication if a 
@@ -53,7 +53,7 @@ _ssl_.**SSL\_VERIFY\_CLIENT\_ONCE**
   Client mode: 
   :  Ignored
 
-_ssl_.**SSL\_VERIFY\_POST\_HANDSHAKE**
+_ssl_.**SSL\_VERIFY\_POST\_HANDSHAKE** {#ssl.SSL_VERIFY_POST_HANDSHAKE}
 : Server mode: 
   :  The server will not send a client certificate request during the initial 
      handshake, but will send the request via SSL_verify_client_post_handshake(). This allows 
@@ -64,31 +64,31 @@ _ssl_.**SSL\_VERIFY\_POST\_HANDSHAKE**
   Client mode: 
   :  Ignored
 
-_ssl_.**TLS\_method**
+_ssl_.**TLS\_method** {#ssl.TLS_method}
 : TLS method
 
-_ssl_.**TLS\_client\_method**
+_ssl_.**TLS\_client\_method** {#ssl.TLS_client_method}
 : TLS client method
 
-_ssl_.**TLS\_server\_method**
+_ssl_.**TLS\_server\_method** {#ssl.TLS_server_method}
 : TLS server method
 
-_ssl_.**SSLv23\_method**
+_ssl_.**SSLv23\_method** {#ssl.SSLv23_method}
 : SSLv23 method
 
-_ssl_.**SSLv23\_client\_method**
+_ssl_.**SSLv23\_client\_method** {#ssl.SSLv23_client_method}
 : SSLv23 client method
 
-_ssl_.**SSLv23\_server\_method**
+_ssl_.**SSLv23\_server\_method** {#ssl.SSLv23_server_method}
 : SSLv23 server method
 
-_ssl_.**BIO\_CLOSE**
+_ssl_.**BIO\_CLOSE** {#ssl.BIO_CLOSE}
 : BIO_CLOSE
 
-_ssl_.**BIO\_NOCLOSE**
+_ssl_.**BIO\_NOCLOSE** {#ssl.BIO_NOCLOSE}
 : BIO_NOCLOSE
 
-_ssl_.**BIO\_f\_ssl**
+_ssl_.**BIO\_f\_ssl** {#ssl.BIO_f_ssl}
 : SSL BIO method f_ssl
   
   > I/O performed on an SSL BIO communicates using the SSL protocol 
@@ -96,14 +96,14 @@ _ssl_.**BIO\_f\_ssl**
   > established then an attempt is made to establish one on the first 
   > I/O call.
 
-_ssl_.**BIO\_s\_connect**
+_ssl_.**BIO\_s\_connect** {#ssl.BIO_s_connect}
 : SSL BIO method connect
   
   > Using connect BIOs, TCP/IP connections can be made and data 
   > transferred using only BIO routines. In this way any platform 
   > specific operations are hidden by the BIO abstraction.
 
-_ssl_.**BIO\_s\_accept**
+_ssl_.**BIO\_s\_accept** {#ssl.BIO_s_accept}
 : SSL BIO method accept
   
   > Using accept BIOs, TCP/IP connections can be accepted and data 
@@ -225,9 +225,9 @@ _class_ **SSL** {#ssl.SSL .class}
 
 
     - **@params**:
-      - _int?_ **length** : Default value is -1
+      - _int?_ **length** Default value is -1
 
-      - _bool?_ **is_blocking** : Default value is false
+      - _bool?_ **is_blocking** Default value is false
 
 
     {.params}
@@ -317,60 +317,60 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
     __@printable__
     {.class-props}
 
-  **.host** &#x279D; _string_
+  **.host** &#x279D; _string_ {#ssl.TLSSocket.host}
   : This property holds the host bound, to be bound to or connected to by the current socket.
     Whenever a host is not given, the host will default to localhost.
 
-  **.port** &#x279D; _number_
+  **.port** &#x279D; _number_ {#ssl.TLSSocket.port}
   : The port currently bound or connected to by the socket.
 
-  **.family** &#x279D; _number_
+  **.family** &#x279D; _number_ {#ssl.TLSSocket.family}
   : The socket family (which must be one of the `AF_` variables).
     The default family for the socket is AF_INET.
 
-  **.type** &#x279D; _number_
+  **.type** &#x279D; _number_ {#ssl.TLSSocket.type}
   : The type of socket stream used by the socket.
     The default socket type is `SOCK_STREAM`.
 
-  **.protocol** &#x279D; _number_
+  **.protocol** &#x279D; _number_ {#ssl.TLSSocket.protocol}
   : The current operating protocol of the socket that controls the 
     underlying behavior of the socket. The default is `IPPROTO_TCP`.
 
-  **.id** &#x279D; _number_
+  **.id** &#x279D; _number_ {#ssl.TLSSocket.id}
   : The file descriptor id of the current socket on the host machine.
 
-  **.is\_client** &#x279D; _bool_
+  **.is\_client** &#x279D; _bool_ {#ssl.TLSSocket.is_client}
   : `true` when the socket is a client to a server socket, `false` otherwise.
 
-  **.is\_bound** &#x279D; _bool_
+  **.is\_bound** &#x279D; _bool_ {#ssl.TLSSocket.is_bound}
   : `true` when the socket is bound to a given port on the device, `false` 
     otherwise.
 
-  **.is\_connected** &#x279D; _bool_
+  **.is\_connected** &#x279D; _bool_ {#ssl.TLSSocket.is_connected}
   : `true` when the socket is connected to a server socket, `false` otherwise.
 
-  **.is\_listening** &#x279D; _bool_
+  **.is\_listening** &#x279D; _bool_ {#ssl.TLSSocket.is_listening}
   : `true` when the socket is currently listening on a host device port as a 
     server, `false` otherwise.
 
-  **.is\_closed** &#x279D; _bool_
+  **.is\_closed** &#x279D; _bool_ {#ssl.TLSSocket.is_closed}
   : `true` when the socket is closed, `false` otherwise.
 
-  **.is\_shutdown** &#x279D; _bool_
+  **.is\_shutdown** &#x279D; _bool_ {#ssl.TLSSocket.is_shutdown}
   : `true` when the socket is shutdown, `false` otherwise.
 
-  **.is\_blocking** &#x279D; _bool_
+  **.is\_blocking** &#x279D; _bool_ {#ssl.TLSSocket.is_blocking}
   : `true` when the socket is running in a blocking mode, `false` otherwise.
 
-  **.shutdown\_reason** &#x279D; _number_
+  **.shutdown\_reason** &#x279D; _number_ {#ssl.TLSSocket.shutdown_reason}
   : The property holds the reason for which the last `shutdown` operation 
     was called or `-1` if `shutdown` was never requested.
 
-  **.send\_timeout** &#x279D; _number_
+  **.send\_timeout** &#x279D; _number_ {#ssl.TLSSocket.send_timeout}
   : The amount of time in milliseconds that the socket waits before it 
     terminates a `send` operation. This is equal to the `SO_SNDTIMEO`.
 
-  **.receive\_timeout** &#x279D; _number_
+  **.receive\_timeout** &#x279D; _number_ {#ssl.TLSSocket.receive_timeout}
   : The amount of time in milliseconds that the socket waits before it 
     terminates a `receive` operation. This is equal to the `SO_RCVTIMEO`.
 
@@ -397,7 +397,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
     - **@params**:
       - _string_ **host**
       - _int_ **port**
-      - _int?_ **timeout** : Default is 300,000ms (i.e. 300 seconds)
+      - _int?_ **timeout** Default is 300,000ms (i.e. 300 seconds)
 
 
     {.params}
@@ -476,7 +476,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
     > - Only use this function after a call to `receive()` has succeeded.
 
     - **@params**:
-      - _int?_ **length** : Default value is 1024.
+      - _int?_ **length** Default value is 1024.
 
 
     {.params}
@@ -503,7 +503,7 @@ _class_ **TLSSocket** {#ssl.TLSSocket .class}
     > - listen() call applies only to sockets of type `SOCK_STREAM` (which is the default).
 
     - **@params**:
-      - _int?_ **queue_length** : Default value is `SOMAXCONN`.
+      - _int?_ **queue_length** Default value is `SOMAXCONN`.
 
 
     {.params}
@@ -670,7 +670,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
     - **@params**:
       - _[SSL](#ssl.SSL)_ **ssl**
-      - _int?_ **option** : Default value is `BIO_NOCLOSE`
+      - _int?_ **option** Default value is `BIO_NOCLOSE`
 
 
     {.params}
@@ -833,7 +833,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
     - **@params**:
       - _int_ **fd**
-      - _int?_ **opt** : Default value is `BIO_NOCLOSE`
+      - _int?_ **opt** Default value is `BIO_NOCLOSE`
 
 
     {.params}
@@ -846,7 +846,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@params**:
-      - _bool?_ **is_blocking** : Default value is `true`.
+      - _bool?_ **is_blocking** Default value is `true`.
 
 
     {.params}
@@ -893,7 +893,7 @@ _class_ **BIO** {#ssl.BIO .class}
 
 
     - **@params**:
-      - _int?_ **length** : Default value is `1024`
+      - _int?_ **length** Default value is `1024`
 
 
     {.params}
@@ -1045,7 +1045,7 @@ _class_ **SSLContext** {#ssl.SSLContext .class}
 
     - **@params**:
       - _int_ **mode**
-      - _bool?_ **disable** - Default: false
+      - _bool?_ **disable** Default: false
 
 
     {.params}

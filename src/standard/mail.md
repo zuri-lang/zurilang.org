@@ -5,17 +5,17 @@ implementation for the SMTP, IMAP and POP3 mail exchange protocols.
 
 ## Fields
 
-_mail_.**TLS\_NONE**
+_mail_.**TLS\_NONE** {#mail.TLS_NONE}
 : Do not attempt to use SSL.
 
-_mail_.**TLS\_TRY**
+_mail_.**TLS\_TRY** {#mail.TLS_TRY}
 : Try using SSL, proceed as normal otherwise. Note that server 
   may close the connection if the negotiation does not succeed.
 
-_mail_.**TLS\_CONTROL**
+_mail_.**TLS\_CONTROL** {#mail.TLS_CONTROL}
 : Require SSL for the control connection or fail.
 
-_mail_.**TLS\_ALL**
+_mail_.**TLS\_ALL** {#mail.TLS_ALL}
 : Require SSL for all communication or fail.
 
 
@@ -123,11 +123,11 @@ _class_ **Mail** {#mail.Mail .class}
 
 
     - **@params**:
-      - _dict_ **headers** : A dictionary containing the key/value pair contained in the mail message header.
+      - _dict_ **headers** A dictionary containing the key/value pair contained in the mail message header.
 
-      - _dict_ **body** : A dictionary containing the different segments of a mail body such as its plain text and html counterpart.
+      - _dict_ **body** A dictionary containing the different segments of a mail body such as its plain text and html counterpart.
 
-      - _list[Attachment]_ **attachments** : A list of attachments contained in the Mail message.
+      - _list[Attachment]_ **attachments** A list of attachments contained in the Mail message.
 
 
     {.params}
@@ -160,8 +160,8 @@ _class_ **Transport** {#mail.Transport .class}
     - __port__: The port number of the SMTP server. (Default: 465)
     - __username__: The access username for the SMTP user.
     - __password__: The password for the connection user.
-    - __tls__: The TLS mode of the connection. One of [ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL](/standard/ssl#ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL), 
-       [ssl.TLS_ALL]] or [[ssl.TLS_NONE](/standard/ssl#ssl.TLS_ALL]] or [[ssl.TLS_NONE).
+    - __tls__: The TLS mode of the connection. One of [ssl.TLS_TRY](/standard/ssl#ssl.TLS_TRY) (default), [ssl.TLS_CONTROL](/standard/ssl#ssl.TLS_CONTROL), 
+       [ssl.TLS_ALL](/standard/ssl#ssl.TLS_ALL) or [ssl.TLS_NONE](/standard/ssl#ssl.TLS_NONE).
     - __debug__: Whether to print debug information or not. (Default: false)
     - __verify_peer__: If the peer certificate should be verified or not. (Default: false)
     - __verify_host__: If the host certificate should be verified or not. (Default: false)
@@ -248,8 +248,8 @@ _class_ **POP3** {#mail.POP3 .class}
     - __port__: The port number of the POP3 server. (Default: 110)
     - __username__: The access username for the POP3 user.
     - __password__: The password for the connection user.
-    - __tls__: The TLS mode of the connection. One of [ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL](/standard/ssl#ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL), 
-       [ssl.TLS_ALL]] or [[ssl.TLS_NONE](/standard/ssl#ssl.TLS_ALL]] or [[ssl.TLS_NONE).
+    - __tls__: The TLS mode of the connection. One of [ssl.TLS_TRY](/standard/ssl#ssl.TLS_TRY) (default), [ssl.TLS_CONTROL](/standard/ssl#ssl.TLS_CONTROL), 
+       [ssl.TLS_ALL](/standard/ssl#ssl.TLS_ALL) or [ssl.TLS_NONE](/standard/ssl#ssl.TLS_NONE).
     - __debug__: Whether to print debug information or not. (Default: false)
     - __verify_peer__: If the peer certificate should be verified or not. (Default: false)
     - __verify_host__: If the host certificate should be verified or not. (Default: false)
@@ -423,8 +423,8 @@ _class_ **Imap** {#mail.Imap .class}
     - __port__: The port number of the Imap server. (Default: 143)
     - __username__: The access username for the Imap user.
     - __password__: The password for the connection user.
-    - __tls__: The TLS mode of the connection. One of [ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL](/standard/ssl#ssl.TLS_TRY]] (default), [[ssl.TLS_CONTROL), 
-       [ssl.TLS_ALL]] or [[ssl.TLS_NONE](/standard/ssl#ssl.TLS_ALL]] or [[ssl.TLS_NONE).
+    - __tls__: The TLS mode of the connection. One of [ssl.TLS_TRY](/standard/ssl#ssl.TLS_TRY) (default), [ssl.TLS_CONTROL](/standard/ssl#ssl.TLS_CONTROL), 
+       [ssl.TLS_ALL](/standard/ssl#ssl.TLS_ALL) or [ssl.TLS_NONE](/standard/ssl#ssl.TLS_NONE).
     - __debug__: Whether to print debug information or not. (Default: false)
     - __verify_peer__: If the peer certificate should be verified or not. (Default: false)
     - __verify_host__: If the host certificate should be verified or not. (Default: false)

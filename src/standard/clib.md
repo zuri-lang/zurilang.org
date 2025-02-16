@@ -30,91 +30,91 @@ available types.)
 
 ## Fields
 
-_clib_.**void** &#x279D; _ptr_
+_clib_.**void** &#x279D; _ptr_ {#clib.void}
 : C void type
 
-_clib_.**bool** &#x279D; _ptr_
+_clib_.**bool** &#x279D; _ptr_ {#clib.bool}
 : C bool type
 
-_clib_.**uint8\_t** &#x279D; _ptr_
+_clib_.**uint8\_t** &#x279D; _ptr_ {#clib.uint8_t}
 : C uint8_t type
 
-_clib_.**int8\_t** &#x279D; _ptr_
+_clib_.**int8\_t** &#x279D; _ptr_ {#clib.int8_t}
 : C int8_t type
 
-_clib_.**byte** &#x279D; _ptr_
+_clib_.**byte** &#x279D; _ptr_ {#clib.byte}
 : C byte type
 
-_clib_.**ubyte** &#x279D; _ptr_
+_clib_.**ubyte** &#x279D; _ptr_ {#clib.ubyte}
 : C ubyte type
 
-_clib_.**uint16\_t** &#x279D; _ptr_
+_clib_.**uint16\_t** &#x279D; _ptr_ {#clib.uint16_t}
 : C uint16_t type
 
-_clib_.**int16\_t** &#x279D; _ptr_
+_clib_.**int16\_t** &#x279D; _ptr_ {#clib.int16_t}
 : C int16_t type
 
-_clib_.**uint32\_t** &#x279D; _ptr_
+_clib_.**uint32\_t** &#x279D; _ptr_ {#clib.uint32_t}
 : C uint32_t type
 
-_clib_.**int32\_t** &#x279D; _ptr_
+_clib_.**int32\_t** &#x279D; _ptr_ {#clib.int32_t}
 : C int32_t type
 
-_clib_.**uint64\_t** &#x279D; _ptr_
+_clib_.**uint64\_t** &#x279D; _ptr_ {#clib.uint64_t}
 : C uint64_t type
 
-_clib_.**int64\_t** &#x279D; _ptr_
+_clib_.**int64\_t** &#x279D; _ptr_ {#clib.int64_t}
 : C int64_t type
 
-_clib_.**ssize\_t** &#x279D; _ptr_
+_clib_.**ssize\_t** &#x279D; _ptr_ {#clib.ssize_t}
 : C ssize_t type
 
-_clib_.**float** &#x279D; _ptr_
+_clib_.**float** &#x279D; _ptr_ {#clib.float}
 : C float type
 
-_clib_.**double** &#x279D; _ptr_
+_clib_.**double** &#x279D; _ptr_ {#clib.double}
 : C double type
 
-_clib_.**uchar** &#x279D; _ptr_
+_clib_.**uchar** &#x279D; _ptr_ {#clib.uchar}
 : C uchar type
 
-_clib_.**char** &#x279D; _ptr_
+_clib_.**char** &#x279D; _ptr_ {#clib.char}
 : C char type
 
-_clib_.**ushort** &#x279D; _ptr_
+_clib_.**ushort** &#x279D; _ptr_ {#clib.ushort}
 : C ushort type
 
-_clib_.**short** &#x279D; _ptr_
+_clib_.**short** &#x279D; _ptr_ {#clib.short}
 : C short type
 
-_clib_.**uint** &#x279D; _ptr_
+_clib_.**uint** &#x279D; _ptr_ {#clib.uint}
 : C uint type
 
-_clib_.**int** &#x279D; _ptr_
+_clib_.**int** &#x279D; _ptr_ {#clib.int}
 : C int type
 
-_clib_.**ulong** &#x279D; _ptr_
+_clib_.**ulong** &#x279D; _ptr_ {#clib.ulong}
 : C ulong type
 
-_clib_.**long** &#x279D; _ptr_
+_clib_.**long** &#x279D; _ptr_ {#clib.long}
 : C long type
 
-_clib_.**size\_t** &#x279D; _ptr_
+_clib_.**size\_t** &#x279D; _ptr_ {#clib.size_t}
 : C size_t type
 
-_clib_.**long\_double** &#x279D; _ptr_
+_clib_.**long\_double** &#x279D; _ptr_ {#clib.long_double}
 : C long_double type
 
-_clib_.**char\_ptr** &#x279D; _ptr_
+_clib_.**char\_ptr** &#x279D; _ptr_ {#clib.char_ptr}
 : C char_ptr type
 
-_clib_.**uchar\_ptr** &#x279D; _ptr_
+_clib_.**uchar\_ptr** &#x279D; _ptr_ {#clib.uchar_ptr}
 : C uchar_ptr type
 
-_clib_.**ptr** &#x279D; _ptr_
+_clib_.**ptr** &#x279D; _ptr_ {#clib.ptr}
 : C ptr type
 
-_clib_.**function** &#x279D; _ptr_
+_clib_.**function** &#x279D; _ptr_ {#clib.function}
 : C closure/callback type
 
 

@@ -65,12 +65,16 @@ def cite(str, module) {
     return line
   }))
 
-  var local_refs = cite_root.matches('/(?<!(\\\\))\[\[(.*)\]\]/')
+  var local_refs = cite_root.matches('/(?<!(\\\\))\[\[([^ \]]+)\]\]/im')
   if local_refs {
     for local_ref in local_refs[0] {
       var ref_name = local_ref[2,-2].trim()
       if ref_name.starts_with('${module}.') {
         var ref_value = ref_name[module.length() + 1,]
+        if ref_value.ends_with('()') {
+          ref_name = ref_name[,-2]
+        }
+
         cite_root = cite_root.replace(local_ref, '[${ref_value}](#${ref_name})', false)
       } else if(ref_name.starts_with('#')) {
         var ref_value = ref_name.split('.').last()
@@ -81,7 +85,12 @@ def cite(str, module) {
         cite_root = cite_root.replace(local_ref, '[${ref_value}](#${ref_name})', false)
       } else {
         var ref_root = ref_name.split('.').first()
-        cite_root = cite_root.replace(local_ref, '[${ref_name}](/standard/${ref_root}#${ref_name})', false)
+        var ref_value = ref_name
+        if ref_value.ends_with('()') {
+          ref_name = ref_name[,-2]
+        }
+
+        cite_root = cite_root.replace(local_ref, '[${ref_value}](/standard/${ref_root}#${ref_name})', false)
       }
     }
   }
@@ -169,7 +178,7 @@ def get_function_docs(module, root_name, depth, function, is_static, from_class)
   var function_name = function.name.replace("_", "\_")
   var decl_line = (is_static ? (!from_class ? '_static_ ' : '_static_ .') : (from_class ? '.' : '_${root_name}_.')) + '${function_name}' + '(' + ', '.join(function.params.map(@(x){ return '_${x}_' })) + ')'
   
-  var param_lines = function.doc.matches('/^@params?[ ]+(?P<type>[^ :\\n]+)([ ]+(?P<name>[^ :\\n]+)([ ]*(?P<description>[^\\n]*))?)?$/m')
+  var param_lines = function.doc.matches('/^@params?[ ]+(?P<type>[^ :\\n]+)([ ]+(?P<name>[^ :\\n]+)([ :\-]*(?P<description>[^\\n]*))?)?$/m')
   var return_line = function.doc.match('/^@returns?[ ]+(?P<type>.*?)$/m')
   var example_line = function.doc.match('/^@example[ ]+(?P<sample>.*)$/m')
   var note_lines = function.doc.matches('/^@note[ ]+(?P<note>.*)$/m')
@@ -283,11 +292,13 @@ def get_var_docs(module, root_name, depth, var_data, is_static, from_class) {
 
   doc = doc.replace('/^@(readonly|type|static|note).*$/', '').trim()
 
-  var line = prefix(depth) + (is_static ? (from_class ? '_static_ .' : '_static_ ') : (!from_class ? '_${root_name}_.' : '')) + '**${from_class ? "." : ""}${var_data.name.replace("_", "\_")}**'
+  var line = prefix(depth) + (is_static ? '_static_ ' : (!from_class ? '_${root_name}_.' : '')) + '**${from_class ? "." : ""}${var_data.name.replace("_", "\_")}**'
   if is_static or readonly or type 
     line += ' &#x279D;'
   if readonly line += ' _readonly_'
   if type line += ' _${cite(type, module)}_'
+
+  line += ' {#${root_name}.${var_data.name}}'
 
   line += '\n' + prefix(depth) + ': ' 
   line += ident(cite(doc, module), depth)
@@ -351,7 +362,7 @@ def get_docs(module, parse_list) {
     if instance_of(parse_item, ast.DocDefn) and parse_item.file and
       (parse_item.file.ends_with('/index.b') or parse_item.file.ends_with('/${module}.b')) and 
       !result.doc {
-      result.doc = parse_item.data
+      result.doc = cite(parse_item.data, module)
     } else if instance_of(parse_item, ast.Decl) {
 
       if parse_item.doc {

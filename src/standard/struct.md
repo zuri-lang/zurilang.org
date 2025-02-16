@@ -85,7 +85,7 @@ _struct_.unpack(_format_, _data_, _offset_) {#struct.unpack}
   - **@params**:
     - _string_ **format**
     - _bytes|string_ **data**
-    - _number?_ **offset** : Default value is `0`
+    - _number?_ **offset** Default value is `0`
 
 
   {.params}

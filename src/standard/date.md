@@ -13,31 +13,31 @@ identified by its ordinal number within a calendar month within that year.
 
 ## Fields
 
-_date_.**MIN\_YEAR** &#x279D; _number_
+_date_.**MIN\_YEAR** &#x279D; _number_ {#date.MIN_YEAR}
 : Minimum year supported.
 
-_date_.**MAX\_YEAR** &#x279D; _number_
+_date_.**MAX\_YEAR** &#x279D; _number_ {#date.MAX_YEAR}
 : Maximum year supported.
 
-_date_.**MIN\_DAY** &#x279D; _number_
+_date_.**MIN\_DAY** &#x279D; _number_ {#date.MIN_DAY}
 : Minimum day supported.
 
-_date_.**MAX\_DAY** &#x279D; _number_
+_date_.**MAX\_DAY** &#x279D; _number_ {#date.MAX_DAY}
 : Maximum day supported.
 
-_date_.**MIN\_MONTH** &#x279D; _number_
+_date_.**MIN\_MONTH** &#x279D; _number_ {#date.MIN_MONTH}
 : Minimum month supported.
 
-_date_.**MAX\_MONTH** &#x279D; _number_
+_date_.**MAX\_MONTH** &#x279D; _number_ {#date.MAX_MONTH}
 : Maximum year supported.
 
-_date_.**MAX\_HOUR** &#x279D; _number_
+_date_.**MAX\_HOUR** &#x279D; _number_ {#date.MAX_HOUR}
 : Maximum hour supported.
 
-_date_.**MAX\_MINUTE** &#x279D; _number_
+_date_.**MAX\_MINUTE** &#x279D; _number_ {#date.MAX_MINUTE}
 : Maximum minute supported.
 
-_date_.**MAX\_SECONDS** &#x279D; _number_
+_date_.**MAX\_SECONDS** &#x279D; _number_ {#date.MAX_SECONDS}
 : Maximum seconds supported.
 
 

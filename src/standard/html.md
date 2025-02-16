@@ -48,34 +48,34 @@ By default, all these options are set to their exported values, adhering to the 
 
 ## Fields
 
-_html_.**name2codepoint** &#x279D; _dict_
+_html_.**name2codepoint** &#x279D; _dict_ {#html.name2codepoint}
 : Dictionary of HTML entity name to the Unicode code point
 
-_html_.**html5** &#x279D; _dict_
+_html_.**html5** &#x279D; _dict_ {#html.html5}
 : Dictionary of HTML5 named character references to the equivalent Unicode character(s).
 
-_html_.**codepoint2name** &#x279D; _dict_
+_html_.**codepoint2name** &#x279D; _dict_ {#html.codepoint2name}
 : Dictionary of Unicode code point to the HTML entity name
 
-_html_.**entitydefs**
+_html_.**entitydefs** {#html.entitydefs}
 : Dictionary of HTML entity name to the character
   (or a character reference if the character is outside the Latin-1 range)
 
-_html_.**childless\_tags** &#x279D; _readonly_ _list_
+_html_.**childless\_tags** &#x279D; _readonly_ _list_ {#html.childless_tags}
 : Tags which contain arbitrary non-parsed content
   For example: `<script>` JavaScript should not be parsed
 
-_html_.**closing\_tags** &#x279D; _readonly_ _list_
+_html_.**closing\_tags** &#x279D; _readonly_ _list_ {#html.closing_tags}
 : Tags which auto-close because they cannot be nested
   For example: `<p>Outer<p>Inner is <p>Outer</p><p>Inner</p>`
 
-_html_.**tag\_ancestors** &#x279D; _readonly_ _list_
+_html_.**tag\_ancestors** &#x279D; _readonly_ _list_ {#html.tag_ancestors}
 : Closing tags which have ancestor tags which may exist within 
   them which prevent the closing tag from auto-closing.
   For example: in `<li><ul><li></ul></li>`, the top-level `<li>` 
   should not auto-close.
 
-_html_.**void\_tags** &#x279D; _readonly_ _list_
+_html_.**void\_tags** &#x279D; _readonly_ _list_ {#html.void_tags}
 : Tags which do not need the closing tag
   For example: `<img>` does not need `</img>`
 

@@ -89,196 +89,196 @@ That been said, it gives the tools required to craft any request body of your ch
 
 ## Fields
 
-_http_.**CONTINUE** &#x279D; _readonly_ _int_
+_http_.**CONTINUE** &#x279D; _readonly_ _int_ {#http.CONTINUE}
 : 100 continue.
 
-_http_.**SWITCHING\_PROTOCOLS** &#x279D; _readonly_ _int_
+_http_.**SWITCHING\_PROTOCOLS** &#x279D; _readonly_ _int_ {#http.SWITCHING_PROTOCOLS}
 : 101 switching protocols.
 
-_http_.**PROCESSING** &#x279D; _readonly_ _int_
+_http_.**PROCESSING** &#x279D; _readonly_ _int_ {#http.PROCESSING}
 : 102 processing.
 
-_http_.**OK** &#x279D; _readonly_ _int_
+_http_.**OK** &#x279D; _readonly_ _int_ {#http.OK}
 : 200 ok.
 
-_http_.**CREATED** &#x279D; _readonly_ _int_
+_http_.**CREATED** &#x279D; _readonly_ _int_ {#http.CREATED}
 : 201 created.
 
-_http_.**ACCEPTED** &#x279D; _readonly_ _int_
+_http_.**ACCEPTED** &#x279D; _readonly_ _int_ {#http.ACCEPTED}
 : 202 accepted.
 
-_http_.**NON\_AUTHORITATIVE\_INFORMATION** &#x279D; _readonly_ _int_
+_http_.**NON\_AUTHORITATIVE\_INFORMATION** &#x279D; _readonly_ _int_ {#http.NON_AUTHORITATIVE_INFORMATION}
 : 203 non authoritative information.
 
-_http_.**NO\_CONTENT** &#x279D; _readonly_ _int_
+_http_.**NO\_CONTENT** &#x279D; _readonly_ _int_ {#http.NO_CONTENT}
 : 204 no content.
 
-_http_.**RESET\_CONTENT** &#x279D; _readonly_ _int_
+_http_.**RESET\_CONTENT** &#x279D; _readonly_ _int_ {#http.RESET_CONTENT}
 : 205 reset content.
 
-_http_.**PARTIAL\_CONTENT** &#x279D; _readonly_ _int_
+_http_.**PARTIAL\_CONTENT** &#x279D; _readonly_ _int_ {#http.PARTIAL_CONTENT}
 : 206 partial content.
 
-_http_.**MULTI\_STATUS** &#x279D; _readonly_ _int_
+_http_.**MULTI\_STATUS** &#x279D; _readonly_ _int_ {#http.MULTI_STATUS}
 : 207 multi status.
 
-_http_.**ALREADY\_REPORTED** &#x279D; _readonly_ _int_
+_http_.**ALREADY\_REPORTED** &#x279D; _readonly_ _int_ {#http.ALREADY_REPORTED}
 : 208 already reported.
 
-_http_.**IM\_USED** &#x279D; _readonly_ _int_
+_http_.**IM\_USED** &#x279D; _readonly_ _int_ {#http.IM_USED}
 : 226 im used.
 
-_http_.**MULTIPLE\_CHOICES** &#x279D; _readonly_ _int_
+_http_.**MULTIPLE\_CHOICES** &#x279D; _readonly_ _int_ {#http.MULTIPLE_CHOICES}
 : 300 multiple choices.
 
-_http_.**MOVED\_PERMANENTLY** &#x279D; _readonly_ _int_
+_http_.**MOVED\_PERMANENTLY** &#x279D; _readonly_ _int_ {#http.MOVED_PERMANENTLY}
 : 301 moved permanently.
 
-_http_.**FOUND** &#x279D; _readonly_ _int_
+_http_.**FOUND** &#x279D; _readonly_ _int_ {#http.FOUND}
 : 302 found.
 
-_http_.**SEE\_OTHER** &#x279D; _readonly_ _int_
+_http_.**SEE\_OTHER** &#x279D; _readonly_ _int_ {#http.SEE_OTHER}
 : 303 see other.
 
-_http_.**NOT\_MODIFIED** &#x279D; _readonly_ _int_
+_http_.**NOT\_MODIFIED** &#x279D; _readonly_ _int_ {#http.NOT_MODIFIED}
 : 304 not modified.
 
-_http_.**USE\_PROXY** &#x279D; _readonly_ _int_
+_http_.**USE\_PROXY** &#x279D; _readonly_ _int_ {#http.USE_PROXY}
 : 305 use proxy.
 
-_http_.**TEMPORARY\_REDIRECT** &#x279D; _readonly_ _int_
+_http_.**TEMPORARY\_REDIRECT** &#x279D; _readonly_ _int_ {#http.TEMPORARY_REDIRECT}
 : 307 temporary redirect.
 
-_http_.**PERMANENT\_REDIRECT** &#x279D; _readonly_ _int_
+_http_.**PERMANENT\_REDIRECT** &#x279D; _readonly_ _int_ {#http.PERMANENT_REDIRECT}
 : 308 permanent redirect.
 
-_http_.**BAD\_REQUEST** &#x279D; _readonly_ _int_
+_http_.**BAD\_REQUEST** &#x279D; _readonly_ _int_ {#http.BAD_REQUEST}
 : 400 bad request.
 
-_http_.**UNAUTHORIZED** &#x279D; _readonly_ _int_
+_http_.**UNAUTHORIZED** &#x279D; _readonly_ _int_ {#http.UNAUTHORIZED}
 : 401 unauthorized.
 
-_http_.**PAYMENT\_REQUIRED** &#x279D; _readonly_ _int_
+_http_.**PAYMENT\_REQUIRED** &#x279D; _readonly_ _int_ {#http.PAYMENT_REQUIRED}
 : 402 payment required.
 
-_http_.**FORBIDDEN** &#x279D; _readonly_ _int_
+_http_.**FORBIDDEN** &#x279D; _readonly_ _int_ {#http.FORBIDDEN}
 : 403 forbidden.
 
-_http_.**NOT\_FOUND** &#x279D; _readonly_ _int_
+_http_.**NOT\_FOUND** &#x279D; _readonly_ _int_ {#http.NOT_FOUND}
 : 404 not found.
 
-_http_.**METHOD\_NOT\_ALLOWED** &#x279D; _readonly_ _int_
+_http_.**METHOD\_NOT\_ALLOWED** &#x279D; _readonly_ _int_ {#http.METHOD_NOT_ALLOWED}
 : 405 method not allowed.
 
-_http_.**NOT\_ACCEPTABLE** &#x279D; _readonly_ _int_
+_http_.**NOT\_ACCEPTABLE** &#x279D; _readonly_ _int_ {#http.NOT_ACCEPTABLE}
 : 406 not acceptable.
 
-_http_.**PROXY\_AUTHENTICATION\_REQUIRED** &#x279D; _readonly_ _int_
+_http_.**PROXY\_AUTHENTICATION\_REQUIRED** &#x279D; _readonly_ _int_ {#http.PROXY_AUTHENTICATION_REQUIRED}
 : 407 proxy authentication required.
 
-_http_.**REQUEST\_TIMEOUT** &#x279D; _readonly_ _int_
+_http_.**REQUEST\_TIMEOUT** &#x279D; _readonly_ _int_ {#http.REQUEST_TIMEOUT}
 : 408 request timeout.
 
-_http_.**CONFLICT** &#x279D; _readonly_ _int_
+_http_.**CONFLICT** &#x279D; _readonly_ _int_ {#http.CONFLICT}
 : 409 conflict.
 
-_http_.**GONE** &#x279D; _readonly_ _int_
+_http_.**GONE** &#x279D; _readonly_ _int_ {#http.GONE}
 : 410 gone.
 
-_http_.**LENGTH\_REQUIRED** &#x279D; _readonly_ _int_
+_http_.**LENGTH\_REQUIRED** &#x279D; _readonly_ _int_ {#http.LENGTH_REQUIRED}
 : 411 length required.
 
-_http_.**PRECONDITION\_FAILED** &#x279D; _readonly_ _int_
+_http_.**PRECONDITION\_FAILED** &#x279D; _readonly_ _int_ {#http.PRECONDITION_FAILED}
 : 412 precondition failed.
 
-_http_.**PAYLOAD\_TOO\_LARGE** &#x279D; _readonly_ _int_
+_http_.**PAYLOAD\_TOO\_LARGE** &#x279D; _readonly_ _int_ {#http.PAYLOAD_TOO_LARGE}
 : 413 payload too large.
 
-_http_.**REQUEST\_URI\_TOO\_LONG** &#x279D; _readonly_ _int_
+_http_.**REQUEST\_URI\_TOO\_LONG** &#x279D; _readonly_ _int_ {#http.REQUEST_URI_TOO_LONG}
 : 414 request uri too long.
 
-_http_.**UNSUPPORTED\_MEDIA\_TYPE** &#x279D; _readonly_ _int_
+_http_.**UNSUPPORTED\_MEDIA\_TYPE** &#x279D; _readonly_ _int_ {#http.UNSUPPORTED_MEDIA_TYPE}
 : 415 unsupported media type.
 
-_http_.**REQUESTED\_RANGE\_NOT\_SATISFIABLE** &#x279D; _readonly_ _int_
+_http_.**REQUESTED\_RANGE\_NOT\_SATISFIABLE** &#x279D; _readonly_ _int_ {#http.REQUESTED_RANGE_NOT_SATISFIABLE}
 : 416 requested range not satisfiable.
 
-_http_.**EXPECTATION\_FAILED** &#x279D; _readonly_ _int_
+_http_.**EXPECTATION\_FAILED** &#x279D; _readonly_ _int_ {#http.EXPECTATION_FAILED}
 : 417 expectation failed.
 
-_http_.**TEAPOT** &#x279D; _readonly_ _int_
+_http_.**TEAPOT** &#x279D; _readonly_ _int_ {#http.TEAPOT}
 : 418 teapot.
 
-_http_.**MISDIRECTED\_REQUEST** &#x279D; _readonly_ _int_
+_http_.**MISDIRECTED\_REQUEST** &#x279D; _readonly_ _int_ {#http.MISDIRECTED_REQUEST}
 : 421 misdirected request.
 
-_http_.**UNPROCESSABLE\_ENTITY** &#x279D; _readonly_ _int_
+_http_.**UNPROCESSABLE\_ENTITY** &#x279D; _readonly_ _int_ {#http.UNPROCESSABLE_ENTITY}
 : 422 unprocessable entity.
 
-_http_.**LOCKED** &#x279D; _readonly_ _int_
+_http_.**LOCKED** &#x279D; _readonly_ _int_ {#http.LOCKED}
 : 423 locked.
 
-_http_.**FAILED\_DEPENDENCY** &#x279D; _readonly_ _int_
+_http_.**FAILED\_DEPENDENCY** &#x279D; _readonly_ _int_ {#http.FAILED_DEPENDENCY}
 : 424 failed dependency.
 
-_http_.**UPGRADE\_REQUIRED** &#x279D; _readonly_ _int_
+_http_.**UPGRADE\_REQUIRED** &#x279D; _readonly_ _int_ {#http.UPGRADE_REQUIRED}
 : 426 upgrade required.
 
-_http_.**PRECONDITION\_REQUIRED** &#x279D; _readonly_ _int_
+_http_.**PRECONDITION\_REQUIRED** &#x279D; _readonly_ _int_ {#http.PRECONDITION_REQUIRED}
 : 428 precondition required.
 
-_http_.**TOO\_MANY\_REQUESTS** &#x279D; _readonly_ _int_
+_http_.**TOO\_MANY\_REQUESTS** &#x279D; _readonly_ _int_ {#http.TOO_MANY_REQUESTS}
 : 429 too many requests.
 
-_http_.**REQUEST\_HEADER\_FIELDS\_TOO\_LARGE** &#x279D; _readonly_ _int_
+_http_.**REQUEST\_HEADER\_FIELDS\_TOO\_LARGE** &#x279D; _readonly_ _int_ {#http.REQUEST_HEADER_FIELDS_TOO_LARGE}
 : 431 request header fields too large.
 
-_http_.**CONNECTION\_CLOSED\_WITHOUT\_RESPONSE** &#x279D; _readonly_ _int_
+_http_.**CONNECTION\_CLOSED\_WITHOUT\_RESPONSE** &#x279D; _readonly_ _int_ {#http.CONNECTION_CLOSED_WITHOUT_RESPONSE}
 : 444 connection closed without response.
 
-_http_.**UNAVAILABLE\_FOR\_LEGAL\_REASONS** &#x279D; _readonly_ _int_
+_http_.**UNAVAILABLE\_FOR\_LEGAL\_REASONS** &#x279D; _readonly_ _int_ {#http.UNAVAILABLE_FOR_LEGAL_REASONS}
 : 451 unavailable for legal reasons.
 
-_http_.**CLIENT\_CLOSED\_REQUEST** &#x279D; _readonly_ _int_
+_http_.**CLIENT\_CLOSED\_REQUEST** &#x279D; _readonly_ _int_ {#http.CLIENT_CLOSED_REQUEST}
 : 499 client closed request.
 
-_http_.**INTERNAL\_SERVER\_ERROR** &#x279D; _readonly_ _int_
+_http_.**INTERNAL\_SERVER\_ERROR** &#x279D; _readonly_ _int_ {#http.INTERNAL_SERVER_ERROR}
 : 500 internal server error.
 
-_http_.**NOT\_IMPLEMENTED** &#x279D; _readonly_ _int_
+_http_.**NOT\_IMPLEMENTED** &#x279D; _readonly_ _int_ {#http.NOT_IMPLEMENTED}
 : 501 not implemented.
 
-_http_.**BAD\_GATEWAY** &#x279D; _readonly_ _int_
+_http_.**BAD\_GATEWAY** &#x279D; _readonly_ _int_ {#http.BAD_GATEWAY}
 : 502 bad gateway.
 
-_http_.**SERVICE\_UNAVAILABLE** &#x279D; _readonly_ _int_
+_http_.**SERVICE\_UNAVAILABLE** &#x279D; _readonly_ _int_ {#http.SERVICE_UNAVAILABLE}
 : 503 service unavailable.
 
-_http_.**GATEWAY\_TIMEOUT** &#x279D; _readonly_ _int_
+_http_.**GATEWAY\_TIMEOUT** &#x279D; _readonly_ _int_ {#http.GATEWAY_TIMEOUT}
 : 504 gateway timeout.
 
-_http_.**HTTP\_VERSION\_NOT\_SUPPORTED** &#x279D; _readonly_ _int_
+_http_.**HTTP\_VERSION\_NOT\_SUPPORTED** &#x279D; _readonly_ _int_ {#http.HTTP_VERSION_NOT_SUPPORTED}
 : 505 http version not supported.
 
-_http_.**VARIANT\_ALSO\_NEGOTIATES** &#x279D; _readonly_ _int_
+_http_.**VARIANT\_ALSO\_NEGOTIATES** &#x279D; _readonly_ _int_ {#http.VARIANT_ALSO_NEGOTIATES}
 : 506 variant also negotiates.
 
-_http_.**INSUFFICIENT\_STORAGE** &#x279D; _readonly_ _int_
+_http_.**INSUFFICIENT\_STORAGE** &#x279D; _readonly_ _int_ {#http.INSUFFICIENT_STORAGE}
 : 507 insufficient storage.
 
-_http_.**LOOP\_DETECTED** &#x279D; _readonly_ _int_
+_http_.**LOOP\_DETECTED** &#x279D; _readonly_ _int_ {#http.LOOP_DETECTED}
 : 508 loop detected.
 
-_http_.**NOT\_EXTENDED** &#x279D; _readonly_ _int_
+_http_.**NOT\_EXTENDED** &#x279D; _readonly_ _int_ {#http.NOT_EXTENDED}
 : 510 not extended.
 
-_http_.**NETWORK\_AUTHENTICATION\_REQUIRED** &#x279D; _readonly_ _int_
+_http_.**NETWORK\_AUTHENTICATION\_REQUIRED** &#x279D; _readonly_ _int_ {#http.NETWORK_AUTHENTICATION_REQUIRED}
 : 511 network authentication required.
 
-_http_.**NETWORK\_CONNECT\_TIMEOUT\_ERROR** &#x279D; _readonly_ _int_
+_http_.**NETWORK\_CONNECT\_TIMEOUT\_ERROR** &#x279D; _readonly_ _int_ {#http.NETWORK_CONNECT_TIMEOUT_ERROR}
 : 599 network connect timeout error.
 
-_http_.**map** &#x279D; _readonly_ _dictionary_
+_http_.**map** &#x279D; _readonly_ _dictionary_ {#http.map}
 : A map of status code to their string representation..
 
 
@@ -523,42 +523,42 @@ _class_ **HttpRequest** {#http.HttpRequest .class}
     __@printable__, __@serializable__
     {.class-props}
 
-  **.request\_uri** &#x279D; _string_
+  **.request\_uri** &#x279D; _string_ {#http.HttpRequest.request_uri}
   : The original request URL as sent in the raw request.
 
-  **.path** &#x279D; _string_
+  **.path** &#x279D; _string_ {#http.HttpRequest.path}
   : The requested path or file. E.g. if the Request URI is `/users?sort=desc`, 
     then the path is `/users`.
 
-  **.method** &#x279D; _string_
+  **.method** &#x279D; _string_ {#http.HttpRequest.method}
   : The HTTP method of the request: GET (the default), POST, PUT, etc.
 
-  **.host** &#x279D; _string_
+  **.host** &#x279D; _string_ {#http.HttpRequest.host}
   : The hostname derived from the `Host` header or the first instance of 
     `X-Forwarded-Host` if set.
 
-  **.ip** &#x279D; _string_
+  **.ip** &#x279D; _string_ {#http.HttpRequest.ip}
   : The IP address of the remote client that initiated the request.
 
-  **.ipv6** &#x279D; _string_
+  **.ipv6** &#x279D; _string_ {#http.HttpRequest.ipv6}
   : The IPv6 address of the remote client that initiated the request.
 
-  **.headers** &#x279D; _dictionary_
+  **.headers** &#x279D; _dictionary_ {#http.HttpRequest.headers}
   : A dictionary containing the headers sent with the request.
 
-  **.queries** &#x279D; _dictionary_
+  **.queries** &#x279D; _dictionary_ {#http.HttpRequest.queries}
   : A dictionary containing the entries of the URI query string.
 
-  **.cookies** &#x279D; _{list|dictionary_
+  **.cookies** &#x279D; _{list|dictionary_ {#http.HttpRequest.cookies}
   : A list or dictionary containing the cookies sent with the request.
 
-  **.body** &#x279D; _dictionary_
+  **.body** &#x279D; _dictionary_ {#http.HttpRequest.body}
   : A dictionary containing all data submitted in the request body.
 
-  **.files** &#x279D; _dictionary_
+  **.files** &#x279D; _dictionary_ {#http.HttpRequest.files}
   : A dictionary containing the data of all files uploaded in the request.
 
-  **.http\_version** &#x279D; _string_
+  **.http\_version** &#x279D; _string_ {#http.HttpRequest.http_version}
   : The HTTP version used for the request.
 
 
@@ -626,25 +626,25 @@ _class_ **HttpServer** {#http.HttpServer .class}
     __@printable__
     {.class-props}
 
-  **.host** &#x279D; _string_
+  **.host** &#x279D; _string_ {#http.HttpServer.host}
   : The host address to which this server will be bound. Default value is 
     socket.IP_LOCAL (127.0.0.1)
 
-  **.port** &#x279D; _number_
+  **.port** &#x279D; _number_ {#http.HttpServer.port}
   : The port to which this server will be bound to on the host.
 
-  **.socket** &#x279D; _[socket.Socket](/standard/socket#socket.Socket)_
+  **.socket** &#x279D; _[socket.Socket](/standard/socket#socket.Socket)_ {#http.HttpServer.socket}
   : The working Socket instance for the HttpServer.
 
-  **.reuse\_address** &#x279D; _bool_
+  **.reuse\_address** &#x279D; _bool_ {#http.HttpServer.reuse_address}
   : A boolean value indicating whether to reuse socket addresses or not.
     Default value is `true`.
 
-  **.read\_timeout** &#x279D; _number_
+  **.read\_timeout** &#x279D; _number_ {#http.HttpServer.read_timeout}
   : The timeout in milliseconds after which an attempt to read clients 
     request data will be terminated. Default value is 2,000 (2 seconds).
 
-  **.write\_timeout** &#x279D; _number_
+  **.write\_timeout** &#x279D; _number_ {#http.HttpServer.write_timeout}
   : The timeout in milliseconds after which an attempt to write response data to 
     clients will be terminated. 
     
@@ -822,15 +822,15 @@ _class_ **TLSServer** < _HttpServer_ {#http.TLSServer .class}
     __@printable__
     {.class-props}
 
-  **.cert\_file** &#x279D; _string_
+  **.cert\_file** &#x279D; _string_ {#http.TLSServer.cert_file}
   : The SSL/TLS certificate file that will be used be used by a secured server for
     serving requests.
 
-  **.private\_key\_file** &#x279D; _string_
+  **.private\_key\_file** &#x279D; _string_ {#http.TLSServer.private_key_file}
   : The SSL/TLS private key file that will be used be used by a secured server for 
     serving requests.
 
-  **.verify\_certs** &#x279D; _boolean_
+  **.verify\_certs** &#x279D; _boolean_ {#http.TLSServer.verify_certs}
   : This value controls whether the client certificate should be verified 
     or not.
 
@@ -878,41 +878,41 @@ _class_ **HttpClient** {#http.HttpClient .class}
   @note This client do not currently support the compress, deflate and gzip transfer encoding.
 
 
-  **.user\_agent** &#x279D; _string_
+  **.user\_agent** &#x279D; _string_ {#http.HttpClient.user_agent}
   : The user agent of the client used to make the request. 
     Default value &mdash; `Blade HTTP Client/1.0`.
 
-  **.follow\_redirect** &#x279D; _bool_
+  **.follow\_redirect** &#x279D; _bool_ {#http.HttpClient.follow_redirect}
   : Indicates if we receive a redirect from a server, this flag tells us whether 
     we should follow it or not. Default value is `true`.
 
-  **.verify\_hostname** &#x279D; _bool_
+  **.verify\_hostname** &#x279D; _bool_ {#http.HttpClient.verify_hostname}
   : Indicates if the site you're connecting to uses a different host name that what
     they have mentioned in their server certificate's commonName (or subjectAltName) 
     fields, connection will fail. You can skip this check by setting to true, but this 
     will make the connection less secure.
 
-  **.verify\_peer** &#x279D; _bool_
+  **.verify\_peer** &#x279D; _bool_ {#http.HttpClient.verify_peer}
   : Indicates if you want to connect to a site who isn't using a certificate that is
     signed by one of the certs in the CA bundle you have, you can skip the verification 
     of the server's certificate. This makes the connection A LOT LESS SECURE.
 
-  **.referer** &#x279D; _string_
+  **.referer** &#x279D; _string_ {#http.HttpClient.referer}
   : The site that refers us to the current site
 
-  **.ca\_cert** &#x279D; _string_
+  **.ca\_cert** &#x279D; _string_ {#http.HttpClient.ca_cert}
   : If you have a CA cert for the server stored someplace else than in the default bundle.
 
-  **.connect\_timeout** &#x279D; _number_
+  **.connect\_timeout** &#x279D; _number_ {#http.HttpClient.connect_timeout}
   : The connect timeout duration in milliseconds. Default value is 60,000 (1 minute).
 
-  **.receive\_timeout** &#x279D; _number_
+  **.receive\_timeout** &#x279D; _number_ {#http.HttpClient.receive_timeout}
   : The receive timeout duration in milliseconds. Default value is 2,000 (2 seconds).
 
-  **.headers** &#x279D; _dict_
+  **.headers** &#x279D; _dict_ {#http.HttpClient.headers}
   : A dictionary of headers sent along with the request.
 
-  **.no\_expect** &#x279D; _bool_
+  **.no\_expect** &#x279D; _bool_ {#http.HttpClient.no_expect}
   : Indicates whether to remove the expect header or not only applies to requests with 
     files in the body
 
@@ -924,7 +924,7 @@ _class_ **HttpClient** {#http.HttpClient .class}
 
 
     - **@params**:
-      - _string?_ **base_url** : The base url for the HTTP client requests
+      - _string?_ **base_url** The base url for the HTTP client requests
 
 
     {.params}
@@ -944,10 +944,10 @@ _class_ **HttpClient** {#http.HttpClient .class}
 
     - **@params**:
       - _string_ **uri**
-      - _string?_ **method** : Default value is `GET`.
+      - _string?_ **method** Default value is `GET`.
 
       - _string|dict|nil_ **data**
-      - _dict?_ **headers** : To override the instance options.
+      - _dict?_ **headers** To override the instance options.
 
       - _dict?_ **client** request options
 
@@ -1118,32 +1118,32 @@ _class_ **HttpResponse** {#http.HttpResponse .class}
     __@printable__, __@serializable__
     {.class-props}
 
-  **.version** &#x279D; _string_
+  **.version** &#x279D; _string_ {#http.HttpResponse.version}
   : The HTTP version of the response
 
-  **.status** &#x279D; _number_
+  **.status** &#x279D; _number_ {#http.HttpResponse.status}
   : The HTTP response status code
 
-  **.headers** &#x279D; _dictionary_
+  **.headers** &#x279D; _dictionary_ {#http.HttpResponse.headers}
   : The HTTP response headers
 
-  **.time\_taken** &#x279D; _number_
+  **.time\_taken** &#x279D; _number_ {#http.HttpResponse.time_taken}
   : Total time taken for the HTTP request that generated this HttpResponse to complete
 
-  **.redirects** &#x279D; _number_
+  **.redirects** &#x279D; _number_ {#http.HttpResponse.redirects}
   : The number of times the HTTP request that generated this HttpResponse was redirected.
 
-  **.responder** &#x279D; _string_
+  **.responder** &#x279D; _string_ {#http.HttpResponse.responder}
   : The final URL that provided the HttpResponse. This will sometimes 
     differ from the original request URI.
 
-  **.body** &#x279D; _bytes_
+  **.body** &#x279D; _bytes_ {#http.HttpResponse.body}
   : The content of the HTTP response as bytes
 
-  **.cookies** &#x279D; _list_
+  **.cookies** &#x279D; _list_ {#http.HttpResponse.cookies}
   : The cookies to be sent back to the client
 
-  **.certificate** &#x279D; _dict|nil_
+  **.certificate** &#x279D; _dict|nil_ {#http.HttpResponse.certificate}
   : The SSL certificate for the secure connection. This is only available 
     when visiting HTTPS/SSL/TLS secured websites.
 
