@@ -103,7 +103,7 @@ _enum_.enum(_data_, _unique_) {#enum.enum}
 
 : The default export of the enum module used to create enums.
   
-  See [Emum](#enum.Emum)
+  See [Enum](#enum.Enum)
 
 
 
@@ -113,7 +113,7 @@ _enum_.has(_enum_, _key_) {#enum.has}
 
 : Exported Enum.has static function for module access.
   
-  See [Emum.has](#enum.Emum.has)
+  See [Enum.has](#enum.Enum.has)
 
 
 
@@ -123,7 +123,7 @@ _enum_.keys(_enum_) {#enum.keys}
 
 : Exported Enum.keys static function for module access.
   
-  See [Emum.keys](#enum.Emum.keys)
+  See [Enum.keys](#enum.Enum.keys)
 
 
 
@@ -133,7 +133,7 @@ _enum_.values(_enum_) {#enum.values}
 
 : Exported Enum.values static function for module access.
   
-  See [Emum.values](#enum.Emum.values)
+  See [Enum.values](#enum.Enum.values)
 
 
 
@@ -143,7 +143,7 @@ _enum_.ensure(_enum_, _value_) {#enum.ensure}
 
 : Exported Enum.ensure static function for module access.
   
-  See [Emum.ensure](#enum.Emum.ensure)
+  See [Enum.ensure](#enum.Enum.ensure)
 
 
 
@@ -153,7 +153,7 @@ _enum_.to\_dict(_enum_) {#enum.to_dict}
 
 : Exported Enum.to_dict static function for module access.
   
-  See [Emum.to_dict](#enum.Emum.to_dict)
+  See [Enum.to_dict](#enum.Enum.to_dict)
 
 
 
@@ -163,7 +163,7 @@ _enum_.to\_value\_dict(_enum_) {#enum.to_value_dict}
 
 : Exported Enum.to_value_dict static function for module access.
   
-  See [Emum.to_value_dict](#enum.Emum.to_value_dict)
+  See [Enum.to_value_dict](#enum.Enum.to_value_dict)
 
 
 
