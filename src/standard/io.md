@@ -351,6 +351,18 @@ _class_ **TTY** {#io.TTY .class}
     {.returns}
 
 
+  .get\_size() {#io.TTY.get_size}
+
+  : Returns the size of the current TTY device as a dictionary of cols and rows.
+    
+    - `cols`: The number of text columns that can fit into the TTY device.
+    - `rows`: The number of text rows that can fit into the TTY device.
+
+
+    - **@returns**: _dict_
+    {.returns}
+
+
   .flush() {#io.TTY.flush}
 
   : Flushes the standard output and standard error interface
