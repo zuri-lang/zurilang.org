@@ -180,7 +180,7 @@ _os_.set\_env(_name_, _value_, _overwrite_) {#os.set_env}
 
 
   {.params}
-  - **@returns**: _string_
+  - **@returns**: _bool_
   {.returns}
 
 

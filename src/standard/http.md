@@ -776,6 +776,16 @@ _class_ **HttpServer** {#http.HttpServer .class}
 
   : Sets up a request handler that will be called when a request with the given method 
     has a path that matches the one specified.
+    
+    If the path ends with a `/`, it also matches all routes that starts with the path 
+    so long as there is no other path that matches the request better. The exception 
+    to this is when the path is an ordinary `/` (root path) in which case it won't 
+    match any other route except for the root path.
+    
+    For example, if the path is declared as `/user/`, it will match the request for 
+    `/user/record/1` unless another handle has been registered for `/user/record` in 
+    which case the handle for `/user/record` will handle the request since it is the 
+    handler for the closest path.
 
 
     - **@params**:
