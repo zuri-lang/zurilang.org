@@ -1,27 +1,21 @@
-# The Blade Language Documentation
+# The _Blade_ Language Documentation
 
+This documentation is a work in progress!
+{ style="color:red" }
 
 Welcome! This is the official documentation for Blade 0.0.87.
 
-> For the official package manager, test runner and repository server &mdash; [Nyssa](https://nyssa.bladelang.org), visit [https://nyssa.bladelang.org](https://nyssa.bladelang.org).
-
-<div style="color:red">This documentation is a work in progress!</div>
-
 [![Build Status](https://github.com/blade-lang/blade/actions/workflows/ci.yml/badge.svg)](https://github.com/blade-lang/blade/actions)
 [![Gitter](https://badges.gitter.im/blade-lang/community.svg)](https://gitter.im/blade-lang/community)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/blade-lang/blade/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/License-BSD_2--Clause-orange.svg)](https://github.com/blade-lang/blade/blob/master/LICENSE)
 [![Coverage Status](https://coveralls.io/repos/github/blade-lang/blade/badge.svg?branch=main)](https://coveralls.io/github/blade-lang/blade?branch=main)
 [![Version](https://img.shields.io/badge/version-0.0.87-green)](https://github.com/blade-lang/blade)
 
 
-
-<div class="fs-8">
-<a href="#download" class="btn btn-primary fs-4 mb-4 mb-md-0 mr-2">Installation <i class="fa-regular fa-circle-down"></i></a>
-<a href="/quick-learn" class="btn btn-red fs-4 mb-4 mb-md-0 mr-2">Quick Language Overview</a>
-<a href="/examples" class="btn btn-green fs-4 mb-4 mb-md-0 mr-2">Learn by Example</a>
-</div>
-
-<br>
+[&#x25B6; Try Online!](https://play.bladelang.org){.btn .fs-4 .mb-4 .mb-md-0 .mr-2}
+[&#x2913; Installation](#download){.btn .btn-2 .fs-4 .mb-4 .mb-md-0 .mr-2}
+[&#x1f4cc; Quick Overview](/quick-learn){.btn .btn-3 .fs-4 .mb-4 .mb-md-0 .mr-2}
+[&#x1f4a1; Examples](/examples){.btn .btn-4 .fs-4 .mb-4 .mb-md-0 .mr-2}
 
 The following code implements a simple backend API that runs on port 3000:
 
@@ -37,7 +31,7 @@ echo 'Listening on Port 3000...'
 server.listen()
 ```
 
-<br><br>
+<br>
 
 
 ## What is Blade?
@@ -77,13 +71,11 @@ While Blade focuses on Web and IoT, it is also great for general software develo
 
 ## Download
 
-<span>
-<a href="https://github.com/blade-lang/blade/releases/download/v0.0.87/blade-windows-v0.0.87.zip" class="btn btn-primary fs-6 mb-4 mb-md-0 mr-2">Windows &nbsp;<span class="fa-brands fa-windows"></span></a>
-<a href="https://github.com/blade-lang/blade/releases/download/v0.0.87/blade-linux-v0.0.87.zip" class="btn btn-linux fs-6 mb-4 mb-md-0 mr-2">Linux  &nbsp;<span class="fa-brands fa-linux"></span></a>
-<a href="https://github.com/blade-lang/blade/releases/download/v0.0.87/blade-macos-v0.0.87.zip" class="btn btn-gray fs-6 mb-4 mb-md-0 mr-2">MacOS  &nbsp;<span class="fa-brands fa-apple"></span></a>
-</span>
+[Windows](https://github.com/blade-lang/blade/releases/download/v0.0.87/blade-windows-v0.0.87.zip){.btn .btn-4 .fs-6 .mb-4 .mb-md-0 .mr-2 target="_blank"}
+[Linux](https://github.com/blade-lang/blade/releases/download/v0.0.87/blade-linux-v0.0.87.zip){.btn .btn-2 .fs-6 .mb-4 .mb-md-0 .mr-2 target="_blank"}
+[MacOS](https://github.com/blade-lang/blade/releases/download/v0.0.87/blade-macos-v0.0.87.zip){.btn .fs-6 .mb-4 .mb-md-0 .mr-2 target="_blank"}
 
-> Since version 0.0.87, Every Blade download/installation comes with `nyssa` &mdash; the official package manager, test runner and repository server for Blade.
+> Since version 0.0.86, Every Blade download/installation comes with `nyssa` &mdash; the official package manager, test runner and repository server for Blade.
 
 > - This downloads only support `x86-64` plaforms. 
 > - Apple M1 devices should install `Rosetta 2` to run the downloaded application or install from source.

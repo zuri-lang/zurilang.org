@@ -12,6 +12,8 @@ var files = os.read_dir(path)
 var dir = os.real_path(path)
 
 for f in files {
-  if f echo '${dir}${os.path_separator}${f}'
+  if f {
+    echo f == '.' ? dir : os.join_paths(dir, f)
+  }
 }
 ```
