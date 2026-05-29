@@ -11,7 +11,7 @@ _os_.**platform** &#x279D; _string_ {#os.platform}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> import os
   %> os.platform
   'osx'
@@ -24,7 +24,7 @@ _os_.**path\_separator** &#x279D; _string_ {#os.path_separator}
 : The standard path separator for the current operating system.
 
 _os_.**exe\_path** &#x279D; _string_ {#os.exe_path}
-: The full path to the running Blade executable.
+: The full path to the running Zuri executable.
 
 _os_.**DT\_UNKNOWN** &#x279D; _number_ {#os.DT_UNKNOWN}
 : Unknown file type
@@ -63,7 +63,7 @@ _os_.exec(_cmd_) {#os.exec}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> os.exec('ls -l')
   'total 48
   -rw-r--r--@ 1 username  staff  705 Aug 27  2021 buggy.b
@@ -93,7 +93,7 @@ _os_.info() {#os.info}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> os.info()
   {sysname: Darwin, nodename: MacBook-Pro.local, version: Darwin Kernel Version 
   21.1.0: Wed Oct 13 17:33:24 PDT 2021; root:xnu-8019.41.5~1/RELEASE_ARM64_T8101, 
@@ -125,7 +125,7 @@ _os_.get\_env(_name_) {#os.get_env}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> import os
   %> os.get_env('ENV1')
   '20'
@@ -147,7 +147,7 @@ _os_.set\_env(_name_, _value_, _overwrite_) {#os.set_env}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> os.set_env('ENV1', 'New value')
   true
   %> os.get_env('ENV1')
@@ -161,7 +161,7 @@ _os_.set\_env(_name_, _value_, _overwrite_) {#os.set_env}
   
   For example,
   
-  ```blade-repl
+  ```zuri-repl
   %> os.set_env('ENV1', 'New value again', true)
   true
   %> os.get_env('ENV1')
@@ -217,7 +217,7 @@ _os_.read\_dir(_path_) {#os.read_dir}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> os.read_dir('./tests')
   [., .., myprogram.b, single_thread.b, test.b, buggy.b]
   ```
@@ -326,7 +326,7 @@ _os_.dir\_exists(_path_) {#os.dir_exists}
 
 _os_.exit(_code_) {#os.exit}
 
-: Exit the current process and quits the Blade runtime.
+: Exit the current process and quits the Zuri runtime.
 
 
   - **@params**:
@@ -343,7 +343,7 @@ _os_.join\_paths(_..._) {#os.join_paths}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> os.join_paths('/home/user', 'path/to/myfile.ext')
   '/home/user/path/to/myfile.ext'
   ```

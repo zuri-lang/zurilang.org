@@ -3,7 +3,7 @@
 Generate Fibonacci series.
 
 
-```blade
+```zuri
 def generate_fibonacci(n) {
   var fib = [1] * n
   for i in 2..n {

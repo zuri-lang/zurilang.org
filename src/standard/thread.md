@@ -24,7 +24,7 @@ start function.
 For example, the following code creates and start a new thread by 
 creating an instance of the Thread class directly,
 
-```blade
+```zuri
 import thread
 
 var th = thread.Thread(@(t, name) {
@@ -35,11 +35,11 @@ th.start('John')
 ```
 
 The `thread()` function serves as a syntax sugar for this as well
-as a module function and like other blade module functions is the 
+as a module function and like other zuri module functions is the 
 conventional way to create an instance of a thread. The example 
 below is a rewrite of the previous example with the module function.
 
-```blade
+```zuri
 import thread
 
 var th = thread(@(t, name) {
@@ -61,7 +61,7 @@ to the delegate function.
 The example below rewrites the previous functionality by using the 
 start function.
 
-```blade
+```zuri
 import thread
 
 var th = thread.start(@(t, name) {
@@ -86,7 +86,7 @@ finish executing its task before continuing execution on the calling
 thread. This will block the current thread until the awaited thread has 
 exited.
 
-```blade
+```zuri
 import thread
 import os
 
@@ -107,7 +107,7 @@ thread method.
 
 The example below shows how to cancel a thread from the calling thread.
 
-```blade
+```zuri
 import thread
 import os
 
@@ -127,7 +127,7 @@ the thread wait for the specified 5 seconds.
 We can also cancel a thread from within its execution function. The example 
 below shows how to achieve this with the `thread.cancel()` method.
 
-```blade
+```zuri
 import thread
 import os
 
@@ -215,7 +215,7 @@ _class_ **Thread** {#thread.Thread .class}
     parameter _t_ in the delegate will receive the thread object 
     itself.
     
-    ```blade
+    ```zuri
     var th = Thread(@(t) {
       echo t.get_id()
     })
@@ -229,7 +229,7 @@ _class_ **Thread** {#thread.Thread .class}
     that the start argument was received starting from the second 
     argument.
     
-    ```blade
+    ```zuri
     var th = Thread(@(t, balance) {
       echo balance
     })

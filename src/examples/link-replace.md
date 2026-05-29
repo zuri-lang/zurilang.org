@@ -3,7 +3,7 @@
 Replaces links in a text with HTML anchor tags.
 
 
-```blade
+```zuri
 var data = 'http://www.google.com
 http://google.com
 

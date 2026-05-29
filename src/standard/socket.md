@@ -2,7 +2,7 @@
 This module provides access to the underlying system socket management 
 implementations. It is meant to be used to provide more controlled and 
 specific operating system features and for implementing various standard 
-and custom network protocols and specifications for which Blade does not 
+and custom network protocols and specifications for which Zuri does not 
 provide a built-in implementation for.
 
 This module defines a lot of constant that whose value complies with the 
@@ -27,7 +27,7 @@ network protocols are based on. Typically `0` or any of the `IP_` constants.
 
 A simple socket may be instantiated as follows:
 
-```blade
+```zuri
 import socket { Socket }
 var sock = Socket()
 ```
@@ -38,14 +38,14 @@ var sock = Socket()
 
 The example above instantiates a socket without any arguments, and it is equivalent to:
 
-```blade
+```zuri
 Socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)
 ```
 
 You can establish a connection with another socket with a known address and port 
 as follows:
 
-```blade
+```zuri
 var socket = Socket()
 socket.connect('127.0.0.1', 4000)
 ```
@@ -55,7 +55,7 @@ address 127.0.0.1. A connection is a pre-requisite to writing or reading from a 
 
 After connecting to a socket, you can read and write data as follows:
 
-```blade
+```zuri
 var socket = Socket()
 socket.connect('127.0.0.1', 4000)
 
@@ -69,7 +69,7 @@ actually sent.
 Due to resource limitations, its good practice to always ensure to close sockets when 
 done with it. Doing this is pretty simple.
 
-```blade
+```zuri
 socket.close()
 ```
 

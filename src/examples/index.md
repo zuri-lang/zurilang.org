@@ -1,4 +1,4 @@
 # Learn by Examples
 
 
-Check out sample Blade codes and try them out to get a feel of how Blade works.
+Check out sample Zuri codes and try them out to get a feel of how Zuri works.

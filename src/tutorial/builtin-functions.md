@@ -1,6 +1,6 @@
 # Built-in Functions
 
-Blade comes with an array of optimized built-in functions for simple tasks. Below is a list of the 
+Zuri comes with an array of optimized built-in functions for simple tasks. Below is a list of the 
 built-in functions followed by their respective documentations.
 
 

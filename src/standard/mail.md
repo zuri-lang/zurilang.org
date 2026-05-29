@@ -110,7 +110,7 @@ _class_ **Attachment** {#mail.Attachment .class}
 
 _class_ **Mail** {#mail.Mail .class}
 
-: The Mail class represents a mail message as a blade object with the following 
+: The Mail class represents a mail message as a zuri object with the following 
   properties.
 
 

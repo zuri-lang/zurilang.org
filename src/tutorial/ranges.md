@@ -6,7 +6,7 @@ number (non-inclusive) separated by a range operator (`..`).
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> 0..10
 <range 0-10>
 %> 10..5
@@ -17,7 +17,7 @@ Ranges are valid in any direction. That is, they can either ascend (end greater 
 descend (start greater than end). They are also evaluated in order. They can also be constructed 
 from variables or a mixture of constant number and variables as desired.
 
-```blade-repl
+```zuri-repl
 %> var a = 20
 %> 5..a
 <range 5-20>
@@ -38,7 +38,7 @@ The range object have the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> (10..100).lower()
   10
   ```
@@ -49,7 +49,7 @@ The range object have the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> (20..30).upper()
   30
   ```
@@ -60,7 +60,7 @@ The range object have the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> (21..93).range()
   72
   ```
@@ -68,7 +68,7 @@ The range object have the following methods:
   The result of range stays the same irrespective of the direction of the range. 
   For example, swapping the upper and lower limit of our previous range still returns the same result.
 
-  ```blade-repl
+  ```zuri-repl
   %> (21..93).range()
   72
   ```
@@ -79,7 +79,7 @@ The range object have the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> (93..21).within(103)
   false
   %> (93..21).within(57)
@@ -98,7 +98,7 @@ The range object have the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> (0..5).loop(@{
   ..   echo 'It is well'
   .. })
@@ -112,7 +112,7 @@ The range object have the following methods:
   We can capture the current position within the range during the loop using a parameter in 
   the function as follows:
 
-  ```blade-repl
+  ```zuri-repl
   %> (25..18).loop(@(i) {
   ..   echo i
   .. })

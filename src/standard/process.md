@@ -6,7 +6,7 @@ processors on a machine.
 
 Example Usage:
 
-```blade
+```zuri
 var paged = PagedValue()
 
 var pr = Process(@(p, s) {

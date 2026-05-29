@@ -1,9 +1,9 @@
 # template
 
-The template module contains classes and functions for working with Blade's `wire` 
+The template module contains classes and functions for working with Zuri's `wire` 
 templates. Wire templating is an extensible template system built on standard HTML5. 
 In fact, any valid HTML5 document is also a valid Wire template. Wire builds atop 
-the existing HTML5 language to provide template support for Web development in Blade 
+the existing HTML5 language to provide template support for Web development in Zuri 
 and makes extensive use of HTML attributes for condition and looping.
 
 Wire templates allow creation of custom HTML elements (such as the builtin `<include />` 
@@ -13,7 +13,7 @@ in a frontend framework such as VueJS.
 
 ### Basic Usage
 
-```blade
+```zuri
 import template
 
 var tpl = template()
@@ -22,7 +22,7 @@ echo tpl.render('mytemplate')
 
 Or to render from a string
 
-```blade
+```zuri
 echo tpl.render_string('<p>{{ name }}</p>', {name: 'Hello World'})
 ```
 
@@ -41,7 +41,7 @@ Wire is backend code.
 
 For example, the code below should return an empty string.
 
-```blade
+```zuri
 tpl.render_string('<!-- HTML or Wire comment? -->')
 ```
 
@@ -127,10 +127,10 @@ Wire implements conditionals via the `x-if` and `x-not` attribute that can be at
 element. This attributes are never returned in the compiled HTML output and decides whether an
 element will be printed or not. The `x-if` attribute evaluates a variable or expression and will only
 print the element to which it is attached and its children if the result of the expression or variable 
-evaluation returns a value that is boolean `true` in Blade. The `x-not` attribute does the reverse of
-this (i.e. it only prints if the evaluation returns Blade boolean `false`).
+evaluation returns a value that is boolean `true` in Zuri. The `x-not` attribute does the reverse of
+this (i.e. it only prints if the evaluation returns Zuri boolean `false`).
 
-```blade
+```zuri
 tpl.render_string('<div x-if="name">Hello</div>')
 ```
 
@@ -139,7 +139,7 @@ reverse is the case if the attribute was `x-not`.
 
 For example:
 
-```blade
+```zuri
 tpl.render_string('<div x-not="name">Hello</div>')
 ```
 
@@ -157,7 +157,7 @@ string, list, dictionary etc.).
 
 For example:
 
-```blade
+```zuri
 tpl.render_string('<div x-for="data">Ok</div>', {data: 0..3})
 ```
 
@@ -172,7 +172,7 @@ The code above will return the following:
 
 Here is an example using the `x-value` attribute to print the items in a list.
 
-```blade
+```zuri
 tpl.render_string('<div x-for="data" x-value="val">{{ val }}</div>', {data: ['apple', 'mango']})
 ```
 
@@ -184,7 +184,7 @@ The code above return
 
 We could decide to print the index as well by adding a new variable using the `x-key` attribute.
 
-```blade
+```zuri
 tpl.render_string('<div x-for="data" x-value="val" x-key="key">
   <span>{{ key }}</span>
   <span>{{ value }}</span>
@@ -251,7 +251,7 @@ Apart from the built-in value modifiers, Wire templates allow you to add custom 
 simple manner by registering them with the `register_function()` method. The example below 
 shows an example custom modifier __reverse__ that reverses the original value as a string.
 
-```blade
+```zuri
 tpl.register_function('reverse', @(value) {
   return ''.join(to_list(value).reverse())
 })
@@ -259,7 +259,7 @@ tpl.register_function('reverse', @(value) {
 
 The modifier __reverse__ can then be used in a Wire template like this:
 
-```blade
+```zuri
 tpl.render_string('<div>{{ fruit|reverse }}</div>', {fruit: 'mango'})
 ```
 
@@ -272,7 +272,7 @@ And the output HTML from the above code will be
 Modifier functions can also take a second argument which will receive any argument passed to the
 modifier. This is best expressed with an example.
 
-```blade
+```zuri
 tpl.register_function('reverse_weird', @(value, arg) {
   return '${arg}: ' + ''.join(to_list(value).reverse())
 })
@@ -294,7 +294,7 @@ Yes I know. It's weird. But if we passed in the same argument as the last, the o
 <p>Reversed: ognam</p>
 ```
 
-Like regular Blade code, the argument will be `nil` if not passed and this is 
+Like regular Zuri code, the argument will be `nil` if not passed and this is 
 important information if you intend to leverage this for a library that will be used by other 
 people. 
 
@@ -313,7 +313,7 @@ element and its behavior, you need to create a function that accepts two argumen
 register it with the `register_element()` method. When your custom element is matched in a 
 template, the registered function will be called with an instance of [Template](#template.Template) in the first 
 argument and the {{html}} decoded template as the second argument. Your function must then 
-return a string representing the processed tag or a valid HTML element Blade representation as 
+return a string representing the processed tag or a valid HTML element Zuri representation as 
 defined by the {{html}} module. 
 
 > NOTE: It's more memory efficient to modify and return the same element when returning an HTML
@@ -322,7 +322,7 @@ defined by the {{html}} module.
 The example below defines a custom tag _`link`_ that will always be rendered as an anchor 
 (`<a>`) element with the class `link`.
 
-```blade
+```zuri
 tpl.register_element('link', @(this, el) {
   return '<a href="${el.attributes[0].value}">${el.attributes[1].value}</a>'
 })
@@ -332,18 +332,18 @@ The simple tag defined above allows us to process the `<link />` tag in a Wire t
 For example,
 
 ```wire
-<link href="bladelang.com" text="Blade Website" />
+<link href="zurilang.com" text="Zuri Website" />
 ```
 
 The Wire template above will cause the following to be rendered.
 
 ```wire
-<a href="bladelang.com">Blade Website</a>
+<a href="zurilang.com">Zuri Website</a>
 ```
 
-Below is a more complex example that returns an HTML representation in Blade instead of a string.
+Below is a more complex example that returns an HTML representation in Zuri instead of a string.
 
-```blade
+```zuri
 tpl.register_element('link', @(this, el) {
   return {
     type: 'element',
@@ -369,7 +369,7 @@ invoked quite differently. To invoke a template function, you need to wrap them 
 
 For example, consider the following template function defined to return the base url of a website.
 
-```blade
+```zuri
 tpl.register_function('base_url', @{
   return  'https://localhost:8000'
 })
@@ -377,7 +377,7 @@ tpl.register_function('base_url', @{
 
 The function can be invoked as follows:
 
-```blade
+```zuri
 tpl.render_string('{! base_url !}')
 ```
 
@@ -567,7 +567,7 @@ _template_.title(_value_) {#template.title}
 _template_.alt(_value_, _alternative_) {#template.alt}
 
 : Template function to return a default string value if the value 
-  passed resolves to a Blade false expression. For example, when a 
+  passed resolves to a Zuri false expression. For example, when a 
   string is empty or nil.
   
   Example:
@@ -749,7 +749,7 @@ _class_ **Template** {#template.Template .class}
   
   You can render templates directly from strings
   
-  ```blade
+  ```zuri
   import template
   var tpl = template()
   
@@ -758,7 +758,7 @@ _class_ **Template** {#template.Template .class}
   
   Or from files located in your defined root directory. See [Template.set_root](/standard/Template#Template.set_root)
   
-  ```blade
+  ```zuri
   tpl.render('my_template', {name: 'John Doe'})
   ```
   
@@ -768,7 +768,7 @@ _class_ **Template** {#template.Template .class}
   
   For example,
   
-  ```blade
+  ```zuri
   var tpl = template(true)
   
   # Optionally set the root directory to another directory.
@@ -778,7 +778,7 @@ _class_ **Template** {#template.Template .class}
   The root directory will become the root search path for the `<include />` tag.
   
   The default extension for a template file is the `.html` extension. This extension 
-  allows furnishes the interoperability between Blade's Wire templates and HTML5 since the
+  allows furnishes the interoperability between Zuri's Wire templates and HTML5 since the
   former is based on the later anyway and allows us to leverage the already near 
   omnipresent support that HTML files have had over the years. This behavior can be 
   changed using the [Template.set_extension](/standard/Template#Template.set_extension) function to change the extension to any 
@@ -786,7 +786,7 @@ _class_ **Template** {#template.Template .class}
   
   For example,
   
-  ```blade
+  ```zuri
   tpl.set_extension('.wire')
   
   # render a template from file
@@ -855,7 +855,7 @@ _class_ **Template** {#template.Template .class}
     
     ##### Example
     
-    ```blade
+    ```zuri
     def firstname_function(value) {
       return value.split(' ')[0]
     }
@@ -886,7 +886,7 @@ _class_ **Template** {#template.Template .class}
     
     ##### Example
     
-    ```blade
+    ```zuri
     def inline_input(wire, value) {
       return ...
     }
@@ -925,7 +925,7 @@ _class_ **Template** {#template.Template .class}
     
     ##### Example
     
-    ```blade
+    ```zuri
     tpl.render_string('<div>{{ name }}</div>', {name: 'Johnson'})
     ```
     
@@ -960,7 +960,7 @@ _class_ **Template** {#template.Template .class}
     
     ##### Example
     
-    ```blade
+    ```zuri
     tpl.render('my_template')
     ```
     

@@ -1,6 +1,6 @@
 # html
 
-The html module provides interfaces for converting HTML to Blade and vice-versa.
+The html module provides interfaces for converting HTML to Zuri and vice-versa.
 
 ## Nodes: Simplifying HTML Representation
 
@@ -95,7 +95,7 @@ _html_.decode(_str_, _options_) {#html.decode}
   
   Example,
   
-  ```blade
+  ```zuri
   import html
   echo html.decode('<p>Hello World!</p>')
   ```
@@ -111,7 +111,7 @@ _html_.decode(_str_, _options_) {#html.decode}
   
   For example:
   
-  ```blade
+  ```zuri
   import html
   echo html.decode('<img>', {with_position: true})
   ```

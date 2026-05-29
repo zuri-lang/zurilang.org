@@ -3,7 +3,7 @@
 The sieve benchmark counts the number of primes below 600000.
 
 
-```blade
+```zuri
 def sieve(number) {
   var primes = to_list(0..(number + 1))
 

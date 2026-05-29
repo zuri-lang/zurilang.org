@@ -59,11 +59,11 @@ one of them &mdash; this is for you!
 
 ## Start in REPL mode
 
-Simple type `blade` in your terminal to launch REPL mode
+Simple type `zuri` in your terminal to launch REPL mode
 
 ```terminal
-$ blade
-Blade 0.0.87 (running on BladeVM 0.1.1), REPL/Interactive mode = ON
+$ zuri
+Zuri 0.0.87 (running on ZuriVM 0.1.1), REPL/Interactive mode = ON
 Clang 13.0.0, (Build time = Feb  8 2022, 02:47:36)
 Type ".exit" to quit or ".credits" for more information
 %> 
@@ -71,11 +71,11 @@ Type ".exit" to quit or ".credits" for more information
 
 ## Running a script
 
-Type `blade` followed by the path to the file in the terminal. <br>
-Blade scripts use the `.b` extension.
+Type `zuri` followed by the path to the file in the terminal. <br>
+Zuri scripts use the `.b` extension.
 
 ```terminal
-$ blade /path/to/file.b
+$ zuri /path/to/file.b
 ```
 
 
@@ -83,7 +83,7 @@ $ blade /path/to/file.b
 
 You can use the `echo` keyword to print any object to standard output or use the `print()` function to print one or more objects to standard output.
 
-```blade-repl
+```zuri-repl
 %> echo 'Hello, World'     # using echo keyword
 'Hello, World'
 %> print('Hello,', 'World\n')   # using the print function
@@ -97,7 +97,7 @@ Hello, World
 
 Use the `var` keyword to declare variables.
 
-```blade-repl
+```zuri-repl
 %> var a = 10
 %> a    # in the REPL mode, you can omit `echo` to do a quick print
 10
@@ -113,7 +113,7 @@ Use the `var` keyword to declare variables.
 
 Operators such as `+=`, `-=`, `++`, `--` are all supported.
 
-```blade-repl
+```zuri-repl
 %> a++
 %> b--
 %> a; b
@@ -132,7 +132,7 @@ Operators such as `+=`, `-=`, `++`, `--` are all supported.
 
 Single line comments begin with an `#`, multiline comments are wrapped in `/*` and `*/` and they can be nested.
 
-```blade
+```zuri
 # a single line comment
 
 /*
@@ -147,11 +147,11 @@ Single line comments begin with an `#`, multiline comments are wrapped in `/*` a
 
 ## String interpolation
 
-Blade strings allow you to evaluate expressions within strings using the interpolation syntax `${expression...}`.
+Zuri strings allow you to evaluate expressions within strings using the interpolation syntax `${expression...}`.
 
-> **_@note_:** Blade strings always support interpolation and can span multiple lines whether wrapped in `''` or `""`
+> **_@note_:** Zuri strings always support interpolation and can span multiple lines whether wrapped in `''` or `""`
 
-```blade-repl
+```zuri-repl
 %> var a = 93
 %> 'a is ${a}'
 'a is 93'
@@ -168,9 +168,9 @@ The arguments to _replace_ could have used `''` pairs too. We only used `""` for
 
 ## `if...else...` statements
 
-Blade has the standard `if... else...` you'll find in most C-like languages except that it doesn't require the parenthesis.
+Zuri has the standard `if... else...` you'll find in most C-like languages except that it doesn't require the parenthesis.
 
-```blade-repl
+```zuri-repl
 %> var a = 20
 %> if a > 20 {
 ..   echo 'a is greater than 20'
@@ -182,7 +182,7 @@ Blade has the standard `if... else...` you'll find in most C-like languages exce
 
 It can be inlined if only one statement follows
 
-```blade
+```zuri
 if a == 20 echo 'a is 20'
 else echo 'a is not 20'
 
@@ -198,7 +198,7 @@ else echo 'a is not 20'
 
 Simple expression time decisions are supported via ternary operators
 
-```blade-repl
+```zuri-repl
 %> var a = 10
 %> echo a < 10 ? 'Failed.' : 'Congrats!'
 'Congrats!'
@@ -210,7 +210,7 @@ Simple expression time decisions are supported via ternary operators
 
 This statement takes a value and matches it against a set of constants to run the piece of code associated with it.
 
-```blade-repl
+```zuri-repl
 %> var name = 'james'
 %> 
 %> using name {
@@ -229,7 +229,7 @@ This statement takes a value and matches it against a set of constants to run th
 
 ## `while` loop
 
-```blade-repl
+```zuri-repl
 %> var items = ['Apple', 'Mango', 'Banana', 'Peach']
 %> var index = 0
 %> 
@@ -247,7 +247,7 @@ This statement takes a value and matches it against a set of constants to run th
 
 ## `do...while` loop
 
-```blade-repl
+```zuri-repl
 %> var i = 5
 %> do {
 ..   echo i
@@ -264,9 +264,9 @@ This statement takes a value and matches it against a set of constants to run th
 
 ## `iter` loop
 
-Blade's version of C/JavaScript's _for_ loops. See [here](./) for why we didn't call it a for loop.
+Zuri's version of C/JavaScript's _for_ loops. See [here](./) for why we didn't call it a for loop.
 
-```blade-repl
+```zuri-repl
 %> iter var i = 0; i < 5; i++ {
 ..   echo 'Iteration ${i}'
 .. }
@@ -281,9 +281,9 @@ Blade's version of C/JavaScript's _for_ loops. See [here](./) for why we didn't 
 
 ## Ranges
 
-You can define numbers over a range using Blade's range operator `..` and they can be used with loops very easily.
+You can define numbers over a range using Zuri's range operator `..` and they can be used with loops very easily.
 
-```blade-repl
+```zuri-repl
 %> 0..5
 <range 0-5>
 %> 1..10
@@ -296,7 +296,7 @@ You can define numbers over a range using Blade's range operator `..` and they c
 
 ## `for` loop
 
-```blade-repl
+```zuri-repl
 %> var items = ['Nigeria', 'Ghanan', 'Senegal', 'Mali']
 %> for item in items {
 ..   echo '${item} is a country'
@@ -306,24 +306,24 @@ You can define numbers over a range using Blade's range operator `..` and they c
 'Senegal is a country'
 'Mali is a country'
 %> 
-%> var details = {name: 'Blade', version: 0.5, website: 'https://bladelang.org'} 
+%> var details = {name: 'Zuri', version: 0.5, website: 'https://zurilang.org'} 
 %> for key, value in details {
 ..   echo '${key} -> ${value}'
 .. }
-'name -> Blade'
+'name -> Zuri'
 'version -> 0.5'
-'website -> https://bladelang.org'
+'website -> https://zurilang.org'
 ```
 [More](./tutorial/loops)
 
 
 ## Iterables
 
-Blade comes with built-in support for strings, ranges, bytes, lists, and dictionaries as its primary iterables and they support all common operations such as indexing and slicing. The concepts shown below apply to all iterables with the exception that strings are immutable.
+Zuri comes with built-in support for strings, ranges, bytes, lists, and dictionaries as its primary iterables and they support all common operations such as indexing and slicing. The concepts shown below apply to all iterables with the exception that strings are immutable.
 
-```blade-repl
+```zuri-repl
 %> var list = [1, 'game', false]  # any data type can fit in...
-%> var dictionary = {name: 'Blade', version: '0.0.87'}
+%> var dictionary = {name: 'Zuri', version: '0.0.87'}
 %> var byte_array = bytes([104, 101, 108, 108, 111])  # hello
 %> var sized_bytes = bytes(10)   # a byte array of size 10 with all entries as 0x0
 %> 
@@ -339,7 +339,7 @@ Blade comes with built-in support for strings, ranges, bytes, lists, and diction
 %> list[0]++
 %> 
 %> echo dictionary
-{name: Blade, version: version 0.0.87}
+{name: Zuri, version: version 0.0.87}
 %> echo list
 [2, game, false]
 %> 
@@ -360,7 +360,7 @@ Blade comes with built-in support for strings, ranges, bytes, lists, and diction
 Use the `def` keyword to define a function.
 > **_@note_:** The default value of a parameter is `nil`. For this reason, parameters can be omitted when calling functions.
 
-```blade-repl
+```zuri-repl
 %> # define function name that takes one argument - name.
 %> def say_hello(name) {
 ..   echo 'Hi, ' + name
@@ -390,7 +390,7 @@ Use the `def` keyword to define a function.
 20
 ```
 
-Blade also has support for **Anonymous function**. Click more for information.
+Zuri also has support for **Anonymous function**. Click more for information.
 [More](./tutorial/functions)
 
 
@@ -398,7 +398,7 @@ Blade also has support for **Anonymous function**. Click more for information.
 
 You can check if a value is a type by calling the related built-in function all named as `is_...` or convert to that type by calling the built-in `to_...` functions. E.g.
 
-```blade-repl
+```zuri-repl
 %> is_string('hello')
 true
 %> to_list('hello')
@@ -412,7 +412,7 @@ true
 
 ## Class
 
-```blade-repl
+```zuri-repl
 %> class Person { /* class content goes here... */ }
 %> 
 %> # creating instance of a class...
@@ -423,7 +423,7 @@ true
 
 ## Class methods
 
-```blade-repl
+```zuri-repl
 %> class Person {
 ..   say_hello(name) {
 ..     return 'Hello, ${name}'
@@ -441,7 +441,7 @@ true
 
 Constructors are simply class methods bearing the same name as the class.
 
-```blade-repl
+```zuri-repl
 %> class Person {
 .. 
 ..   Person(name) {
@@ -462,7 +462,7 @@ Constructors are simply class methods bearing the same name as the class.
 
 ## Class fields
 
-```blade-repl
+```zuri-repl
 %> class Point {
 ..   var x = 2.143
 ..   var y = 7.941
@@ -477,7 +477,7 @@ Constructors are simply class methods bearing the same name as the class.
 
 ## Static class fields and methods
 
-```blade-repl
+```zuri-repl
 %> class Math {
 ..   static var PI = 3.142
 .. 
@@ -498,7 +498,7 @@ Constructors are simply class methods bearing the same name as the class.
 
 Class fields or methods whose name starts with an underscore (`_`) are private and only accessible from the current class.
 
-```blade-repl
+```zuri-repl
 %> class Class {
 ..   var _number_of_desks = 10
 .. 
@@ -524,7 +524,7 @@ Unhandled Exception: cannot call private property '_number_of_desks' from instan
 
 ## Inheritance
 
-```blade-repl
+```zuri-repl
 %> class Animal {
 ..   Animal(name) {
 ..     self.name = name
@@ -564,7 +564,7 @@ Unhandled Exception: cannot call private property '_number_of_desks' from instan
 
 These are methods meant to provide information on how to use the class and they cannot be called directly by instances of the said class.
 
-```blade-repl
+```zuri-repl
 %> class Class {
 ..   @decoration() {
 ..     return 1
@@ -578,7 +578,7 @@ These are methods meant to provide information on how to use the class and they 
 
 Simply create a decorator for the function.
 
-```blade-repl
+```zuri-repl
 %> class Person {
 ..   Person(name) {
 ..     self.name = name
@@ -616,7 +616,7 @@ Unhandled Exception: undefined method '@to_string' in Person
 
 To convert a class into an iterable, simply implement the `@iter()` and `@itern()` decoration. `@itern()` returns the current index and `@iter()` returns the current value.
 
-```blade-repl
+```zuri-repl
 %> class Iterable {
 ..   var items = ['Richard', 'Alex', 'Justina']
 .. 
@@ -647,7 +647,7 @@ To convert a class into an iterable, simply implement the `@iter()` and `@itern(
 
 ### Writing/Creating a file
 
-```blade-repl
+```zuri-repl
 %> var f = file('test.txt', 'w')
 %> var written = f.write('It works!')
 %> f.close()
@@ -658,7 +658,7 @@ To convert a class into an iterable, simply implement the `@iter()` and `@itern(
 
 ### Reading a file
 
-```blade-repl
+```zuri-repl
 %> file('test.txt').read()
 'It works!'
 ```
@@ -667,9 +667,9 @@ To convert a class into an iterable, simply implement the `@iter()` and `@itern(
 
 ## Throwing exceptions
 
-Blade comes with the built-in class `Exception` and all exceptions must derive from this class.
+Zuri comes with the built-in class `Exception` and all exceptions must derive from this class.
 
-```blade-repl
+```zuri-repl
 %> raise Exception('I died')
 Unhandled Exception: I died
   StackTrace:
@@ -680,7 +680,7 @@ Unhandled Exception: I died
 
 ## Handling exceptions
 
-```blade-repl
+```zuri-repl
 %> catch {
 ..   echo 'do something'
 ..   raise Exception('there was an exception here')
@@ -704,7 +704,7 @@ Unhandled Exception: I died
 
 Simply subclass `Exception` as follows.
 
-```blade-repl
+```zuri-repl
 %> class CustomError < Exception {}
 %> 
 %> raise CustomError('I died too!')
@@ -717,7 +717,7 @@ Unhandled CustomError: I died too!
 
 ## Asserts
 
-```blade-repl
+```zuri-repl
 %> assert 10 == 10
 %> assert 10 > 11
 Illegal State:
@@ -734,14 +734,14 @@ Illegal State: Failue!
 ## Importing packages and modules
 
 ### Import package/module
-```blade-repl
+```zuri-repl
 %> import http
 %> http
-<module http at /blade/libs/http/index.b>
+<module http at /zuri/libs/http/index.b>
 ```
 
 ### Import specific items from package/module
-```blade-repl
+```zuri-repl
 %> import http { HttpClient }
 %> HttpClient
 <class HttpClient at 0x143f1f060>
@@ -752,7 +752,7 @@ Unhandled Exception: 'http' is undefined in this scope
 ```
 
 ### Import all exported values into current namespace
-```blade-repl
+```zuri-repl
 %> import math { * }
 %> math
 Unhandled Exception: 'math' is undefined in this scope
@@ -763,23 +763,23 @@ Unhandled Exception: 'math' is undefined in this scope
 ```
 
 ### Rename package/module on import
-```blade-repl
+```zuri-repl
 %> import os as osystem
 %> os
 Unhandled Exception: 'os' is undefined in this scope
   StackTrace:
     <repl>:1 -> @.script()
 %> osystem
-<module osystem at /blade/libs/os.b>
+<module osystem at /zuri/libs/os.b>
 ```
 
 ### Import module/package in relative path
-```blade
+```zuri
 import .test  # prefix the import path with a dot
 import ..test # prefix path with a range (..) for the parent directory.
 ```
 
-> **_@note:_** Every Blade `.b` script is a module.
+> **_@note:_** Every Zuri `.b` script is a module.
 
 
 [More](./tutorial/modules)
@@ -799,21 +799,21 @@ Import as usual!
 
 ## Fist-class package management
 
-Blade allows you to download packages and libraries into your source code directory and
+Zuri allows you to download packages and libraries into your source code directory and
 call it from your code as if it were a standard library. It's simple.
 
-Simply create a directory `.blade/libs` at the root of your application and download 
-Blade modules and/or packages into the directory into that directory. For example, 
-create the directory `.blade/libs` in your current directory and create a file `test.b` 
+Simply create a directory `.zuri/libs` at the root of your application and download 
+Zuri modules and/or packages into the directory into that directory. For example, 
+create the directory `.zuri/libs` in your current directory and create a file `test.b` 
 in that directory. Paste the following code into it.
 
-```blade
+```zuri
 var name = 'Paula'
 ```
 
 Now create a new file `sample.b` in your current directory and save the following code in it:
 
-```blade
+```zuri
 import test
 echo test.name
 ```
@@ -821,10 +821,10 @@ echo test.name
 Now run your file using:
 
 ```terminal
-$ blade sample.b
+$ zuri sample.b
 ```
 
 You should see `Paula` printed in the console. Voila!
-> This features extends to C extensions created for Blade as well.
+> This features extends to C extensions created for Zuri as well.
 
 [More](./tutorial/modules)

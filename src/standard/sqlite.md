@@ -10,7 +10,7 @@ compartible with SQLite3.
 The `open()` function is the entry point to this module and must be called to create
 a valid SQLite3 connection to a valid database. The following example shows how to
 create a connection to a database.
-```blade
+```zuri
 import sqlite
 var con = sqlite.open('test.db')
 ```
@@ -19,14 +19,14 @@ Any valid file path is acceptable here. You can also open a kind of connection a
 that is stored completely in virtual memory, allowing you to use SQLite like an in-memory
 database (albeit relational). The following example shows how to open a that make SQLite
 behave like an in-memory database.
-```blade
+```zuri
 import sqlite
 var con = sqlite.open()
 ```
 Once a connection has been established, you can use the connection to run all sorts of
 queries. For example, you can run queries that do not return a result set (for example,
 a `CREATE TABLE` query) using the `exec()` function as shown in the example below.
-```blade
+```zuri
 # Create a new table
 con.exec('CREATE TABLE users (id integer primary key, name text, gender text)')
 # Insert data into the table
@@ -38,7 +38,7 @@ con.exec('INSERT INTO users (id, name, gender) VALUES (2, "Candy", "Non-Binary")
 This function will return `true` if the query was successful or `false` if it failed.
 You can retrieve the ID of the last insert query in the above command for example using
 the `last_insert_id()` function. For example,
-```blade
+```zuri
 con.last_insert_id()
 # 2
 ```
@@ -46,13 +46,13 @@ On the other hand, there are two ways to run queries that return a dataset.
 ### Using the `query()` method.
 This function returns a `SQLite3Cursor` that allows you iterate through the dataset
 and do as you wish with them. For example,
-```blade
+```zuri
 var result = con.query('SELECT * FROM users')
 ```
 There are two ways to loop through this result set. The first way is to use the `has_next()`
 function. This function automatically moves the cursor to the next datarow in the result set
 and return `true` or `false` when there are no more rows in the result set.
-```blade
+```zuri
 while result.has_next() {
   var name = result.get(1)
   var gender = result.get(2)
@@ -69,7 +69,7 @@ as an argument to the function.
 Another way to get the result entries in a SQLite3Cursor is obviously using the `for` loop as
 the class implements the _iterable_ decorators (as indicated in the class documentation below).
 For example,
-```blade
+```zuri
 for row in result {
   echo 'Name = ${row.name}, Gender = ${row.gender}'
 }
@@ -87,7 +87,7 @@ Unlike the `query()` function that allows you to lazily access the resultset of 
 the `fetch()` function retrieves all results into a dictionary as a flat object. This function
 is useful for returning all the data in the resultset.
 For example,
-```blade
+```zuri
 con.fetch('SELECT * FROM users')
 # ---- result ---------
 [
@@ -111,7 +111,7 @@ con.fetch('SELECT * FROM users')
 ### Parameterized Queries
 This module provides support for parameterized queries and as such offer protection against
 SQL injection. An example of a parameterized query is show below.
-```blade
+```zuri
 %> con.fetch('SELECT * FROM users WHERE name = ?', [ 'James' ])
 # ---- result ---------
 [
@@ -125,7 +125,7 @@ SQL injection. An example of a parameterized query is show below.
 You can also used a dictionary as an argument instead of a list for named parameterized
 queries. When you do this, the order or count of the parameters will not matter. Instead,
 parameters will be matched based on their value in the dictionary. For example,
-```blade
+```zuri
 con.fetch(
   'select * from users where name = :name and id = :id',
   {
@@ -144,7 +144,7 @@ con.fetch(
 ```
 It is also a very good practice to always close your connection once done with it.
 This is really simple.
-```blade
+```zuri
 con.close()
 ```
 _See below for more info_
@@ -264,14 +264,14 @@ _class_ **SQLite3** {#sqlite.SQLite3 .class}
     
     For example,
     
-    ```blade
+    ```zuri
     sqlite.query('SELECT FROM users WHERE id = ? AND name = ?', [3, 'James'])
      ```
     2. Or pass a dictionary as _params_ if you use named paramters
     
     For Example,
     
-    ```blade
+    ```zuri
     sqlite.query(
       'SELECT FROM user WHERE id = :id AND name = :name', 
        {':id': 1, ':name': 'James'}

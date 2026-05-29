@@ -1,6 +1,6 @@
 # Working with Files
 
-Let's look at files in Blade and the mechanism available for working with them. 
+Let's look at files in Zuri and the mechanism available for working with them. 
 
 ## Reference
 
@@ -15,10 +15,10 @@ Let's look at files in Blade and the mechanism available for working with them.
 
 ## The `file` object.
 
-The _file_ object makes it pretty easy to create, read and/or modify files in Blade and is accessible
+The _file_ object makes it pretty easy to create, read and/or modify files in Zuri and is accessible
 via the built-in function `file()`.
 
-```blade-repl
+```zuri-repl
 %> file('sample.txt')
 <file at sample.txt in mode r>
 ```
@@ -45,7 +45,7 @@ mode. This is the most effective mode for reading files.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> file('sample.txt').read()
 'This is a sample file.
 If you can read this file, then your code worked.'
@@ -64,7 +64,7 @@ automatically called.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> file('test.txt', 'w').write('It works!')
 true
 %> file('test.txt').read()  # reading the file to confirm
@@ -78,7 +78,7 @@ be appended to the mode.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> var data = bytes([
 ..   0x47, 0x49, 0x46, 0x38, 0x39, 0x61, 0x1, 0x0, 0x1, 0x0, 
 ..   0x80, 0x1, 0x0, 0xff, 0xff, 0xff, 0x0, 0x0, 0x0, 0x21, 
@@ -102,7 +102,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').exists()
   true
   ```
@@ -113,7 +113,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var f = file('sample.txt')
   %> f.close()
   ```
@@ -126,7 +126,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> f.open()
   ```
 
@@ -164,7 +164,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').number()
   6
   ```
@@ -175,7 +175,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').is_tty()
   false
   %> import io
@@ -191,7 +191,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').is_open()
   true
   ```
@@ -202,7 +202,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').is_closed()
   false
   ```
@@ -214,7 +214,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> w.flush()
   ```
 
@@ -224,7 +224,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').stats()
   {is_readable: true, is_writable: true, is_executable: false, is_symbolic: false, size: 72, mode: 33188, dev: 16777230, ino: 4865113, nlink: 1, uid: 501, gid: 20, mtime: 1631395239, atime: 1631395271, ctime: 1631395239, blocks: 8, blksize: 4096}
   ```
@@ -235,7 +235,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').symlink('sample2.txt')
   true
   ```
@@ -250,7 +250,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('test-2.b').delete()
   true
   ```
@@ -265,7 +265,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample copy.txt').rename('sample-2.txt')
   true
   ```
@@ -276,7 +276,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').path()
   'sample.txt'
   ```
@@ -287,9 +287,9 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').abs_path()
-  'C:\Users\username\blade-docs\sample.txt'
+  'C:\Users\username\zuri-docs\sample.txt'
   ```
 
 .copy(_path: string_) {#copy}
@@ -298,7 +298,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('./sample.txt').copy('samp.txt')
   true
   ```
@@ -310,7 +310,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('./samp.txt').truncate()
   true
   ```
@@ -324,7 +324,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').chmod(0c755)
   true
   ```
@@ -339,7 +339,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').set_times(time(), time())
   true
   %> file('sample.txt').stats()
@@ -353,7 +353,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> f.seek(5, io.SEEK_SET)
   true
   ```
@@ -364,7 +364,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> import io
   %> var f = file('sample.txt')
   %> f.seek(5, io.SEEK_SET)
@@ -379,7 +379,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('sample.txt').mode()
   'r'
   ```
@@ -390,7 +390,7 @@ The file object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> file('./sample.txt').name()
   'sample.txt'
   ```

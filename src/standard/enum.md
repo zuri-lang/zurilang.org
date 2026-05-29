@@ -1,6 +1,6 @@
 # enum
-This module provides support for enumerations in Blade.
-An enumeration in Blade is a set of unique values bound to symbolic
+This module provides support for enumerations in Zuri.
+An enumeration in Zuri is a set of unique values bound to symbolic
 names via an alias.
 Enums are single state instances similar to a dictionary but having
 automatically or distinctly assigned values.
@@ -13,7 +13,7 @@ starting from zero (0).
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> import enum
 %> 
 %> var Gender = enum(['Male', 'Female'])
@@ -30,7 +30,7 @@ number or a string.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> import enum
 %> 
 %> var Color = enum({
@@ -48,7 +48,7 @@ duplicate a key or value will raise an Exception.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> import enum
 %> 
 %> var Speed = enum({
@@ -65,7 +65,7 @@ To allow duplicate values in an enumeration if desired, you can pass
 a second argument _false_ after the initialization data to disable 
 uniqueness like below.
 
-```blade-repl
+```zuri-repl
 %> import enum
 %> 
 %> var Speed = enum({
@@ -85,7 +85,7 @@ uniqueness like below.
 The value of an enumeration key can be retrieved from the enumeration 
 object itself like in the example below.
 
-```blade-repl
+```zuri-repl
 %> import enum
 %> 
 %> # list initialization
@@ -200,7 +200,7 @@ _class_ **Enum** {#enum.Enum .class}
     
     For example:
     
-    ```blade-repl
+    ```zuri-repl
     %> var Color = enum({
     ..   Red: 'r',
     ..   Green: 'g',
@@ -226,7 +226,7 @@ _class_ **Enum** {#enum.Enum .class}
     
     For example:
     
-    ```blade-repl
+    ```zuri-repl
     %> var Gender = enum(['Male', 'Female'])
     %> 
     %> enum.values(Gender)
@@ -248,7 +248,7 @@ _class_ **Enum** {#enum.Enum .class}
     
     For example:
     
-    ```blade-repl
+    ```zuri-repl
     %> var Gender = enum(['Male', 'Female'])
     %> 
     %> enum.to_dict(Gender)
@@ -270,7 +270,7 @@ _class_ **Enum** {#enum.Enum .class}
     
     For example:
     
-    ```blade-repl
+    ```zuri-repl
     %> var Speed = enum({
     ..   Slow: 1,
     ..   Sluggish: 1,
@@ -306,7 +306,7 @@ _class_ **Enum** {#enum.Enum .class}
     
     For example:
     
-    ```blade-repl
+    ```zuri-repl
     %> var Holiday = enum([
     ..   'Christmas',
     ..   'Easter',
@@ -333,7 +333,7 @@ _class_ **Enum** {#enum.Enum .class}
 
   : Returns the value of an enumeration if it is a valid value for the enumeration
     
-    ```blade-repl
+    ```zuri-repl
     %> var Gender = enum(['Male', 'Female'])
     %> %> enum.ensure(Gender, 0)
     0
@@ -341,7 +341,7 @@ _class_ **Enum** {#enum.Enum .class}
     
     or raises Exception if the value is invalid.
     
-    ```blade-repl
+    ```zuri-repl
     %> var Gender = enum(['Male', 'Female'])
     %> enum.ensure(Gender, 2)
     Unhandled Exception: unknown key/value in specified enumeration

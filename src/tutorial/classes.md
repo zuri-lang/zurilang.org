@@ -1,6 +1,6 @@
 # Class
 
-Blade supports all features of the Object-Oriented Programming (OOP) paradigm except multiple inheritance. While Blade's 
+Zuri supports all features of the Object-Oriented Programming (OOP) paradigm except multiple inheritance. While Zuri's 
 support for OOP can be implemented with pure functions and closures, they are best implemented with classes.
 
 ## Reference
@@ -20,13 +20,13 @@ support for OOP can be implemented with pure functions and closures, they are be
 
 ## Declaring Classes
 
-Creating a _class_ in Blade is very simple.
+Creating a _class_ in Zuri is very simple.
 
-```blade-repl
+```zuri-repl
 %> class MyClass {}
 ```
 
-In Blade, classes are created at runtime and as such, **you can create a class directly anywhere in your code except in 
+In Zuri, classes are created at runtime and as such, **you can create a class directly anywhere in your code except in 
 another class**. For example, it's perfectly valid to create a class within an `if` statement or inside of a function. 
 Their definition must be executed before they can be used.
 
@@ -34,7 +34,7 @@ It's easy to create an instance of class too. Just call the class like a regular
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> var my_class = MyClass()
 %> my_class
 <class MyClass instance at 0x150708a10>
@@ -42,7 +42,7 @@ For example:
 
 ## Class Methods
 
-Classes are useless without the ability to use them to do wonderful things such as code reuse. In Blade, classes can have 
+Classes are useless without the ability to use them to do wonderful things such as code reuse. In Zuri, classes can have 
 methods. A method is a function only accessible via a class or any of it's instance. 
 
 Methods differ from functions also in how they are defined. To define a method in a class, create it like a regular function 
@@ -50,7 +50,7 @@ Methods differ from functions also in how they are defined. To define a method i
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> class MyClass {
 ..   do_something() {
 ..     echo 'I am a method'
@@ -61,7 +61,7 @@ For example:
 The methods on of a class can be called from an instance of the class by typing a dot (`.`) followed by the name of the 
 method and parenthesis (`()`) as you will do in a normal function.
 
-```blade-repl
+```zuri-repl
 %> MyClass().do_something()
 'I am a method'
 ```
@@ -72,7 +72,7 @@ method and parenthesis (`()`) as you will do in a normal function.
 
 ## Constructors
 
-When creating an instance of a class, Blade checks to see if a constructor was defined for the class and executes that after 
+When creating an instance of a class, Zuri checks to see if a constructor was defined for the class and executes that after 
 creating the instance. A constructor is a special function that will always be called when creating new instances of a class. 
 If a class defines a constructor, the constructor automatically defines the parameters to every new instance of the class.
 
@@ -80,7 +80,7 @@ To create a constructor, simply create a function within the class having the sa
 
 For example,
 
-```blade-repl
+```zuri-repl
 %> class Person {
 ..   Person(name) {
 ..     self.name = name
@@ -103,14 +103,14 @@ For example,
 
 ## Class Fields/Properties
 
-Blade classes can have fields (akin to fields in Java). This fields can be anything from a number to a function 
+Zuri classes can have fields (akin to fields in Java). This fields can be anything from a number to a function 
 (basically any value that can be assigned). 
 
 For example:
 
 > If you are a _`Cat`_ person... Sorry in advance!
 
-```blade-repl
+```zuri-repl
 %> class Animal {
 ..   var favorite = 'Dog'
 .. }
@@ -123,7 +123,7 @@ An instance of a class can declare custom fields or methods (known as _`properti
 
 For example, using our previous example; we can have:
 
-```blade-repl
+```zuri-repl
 %> my_animal.age = 13   # instance propery
 %> my_animal.age        # accessed like a class field
 13
@@ -137,12 +137,12 @@ For example, using our previous example; we can have:
 
 ## Inheritance
 
-Blade supports single inheritance via the inherit (or less-than &mdash; `<`) operator. A class can only inherit public members 
+Zuri supports single inheritance via the inherit (or less-than &mdash; `<`) operator. A class can only inherit public members 
 of the parent class.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> class Base {
 ..   run() {
 ..     echo 'I am a class'
@@ -157,7 +157,7 @@ For example:
 
 One can easily check if a class is derived from another using the [`is_instance()`](./builtin-functions#is_instance) function. For example:
 
-```blade-repl
+```zuri-repl
 %> var derived = Derived()
 %> is_instance(derived, Base)
 true
@@ -170,7 +170,7 @@ Members of a class can access or reference other members of the same class using
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> class MyClass {
 ..   var prop = 42
 .. 
@@ -194,7 +194,7 @@ calling the `parent()` function and pass arguments as defined by the parent clas
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> class Base {
 ..   Base() {
 ..     echo 'Called base class'
@@ -235,7 +235,7 @@ members in the class.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> class HasPrivate {
 ..   var _value = 31
 .. 
@@ -253,13 +253,13 @@ Unhandled Exception: cannot call private property '_value' from instance of HasP
     <repl>:1 -> @.script()
 ```
 
-Blade also support _static_ class members. A static member of a class is a member that can not only be accessed by instances 
-of the class, but they can be accessed directly by the class object themselves without having to create an instance. In Blade, 
+Zuri also support _static_ class members. A static member of a class is a member that can not only be accessed by instances 
+of the class, but they can be accessed directly by the class object themselves without having to create an instance. In Zuri, 
 static members are not static to the instance but rather to the class itself.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> class HasStatic {
 ..   static var my_static_field 
 .. 
@@ -280,7 +280,7 @@ Unhandled Exception: undefined property 'my_static_field'
 
 In a static class method, the _self_ keyword refers to the class itself. This is better explained with the following example:
 
-```blade-repl
+```zuri-repl
 %> class C {
 ..   test() {
 ..     echo self
@@ -300,7 +300,7 @@ In a static class method, the _self_ keyword refers to the class itself. This is
 
 ## Class Decorators
 
-Blade _decorators_ are special syntaxed functions that is used to provide details on how to interope a function with other 
+Zuri _decorators_ are special syntaxed functions that is used to provide details on how to interope a function with other 
 language features. 
 
 Along this course of this tutorial, we have seen how a for statement can be used loop through iterables and have defined a few 
@@ -308,18 +308,18 @@ iterables such as [strings](./strings), [lists](./lists), [dictionaries](./dicti
 
 Why are these objects iterables?
 
-The answer is simple. Because the implement certain _decorators_ that tells Blade how to use them in a for loop, namely 
+The answer is simple. Because the implement certain _decorators_ that tells Zuri how to use them in a for loop, namely 
 &mdash; `@iter()` and `@itern()`. This is also the same technique empolyed by almost all native functions that allows users 
 to override/alter how they behave (e.g. `@to_string()` overrides `to_string()`).
 
-Blade allows users to define decorators as desired. This gives library implementers a sleek way to offer streamlined features 
+Zuri allows users to define decorators as desired. This gives library implementers a sleek way to offer streamlined features 
 from their package/modules by offering custom behaviors defined by decorators.
 
 Decorators are regular class methods except that their name starts with the `@` sign. 
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> class DecoratorTest {
 ..   @my_decor() {
 ..     return 1
@@ -333,7 +333,7 @@ problems you may want to solve.
 
 Let's look at the following brilliant use of decorators as an example:
 
-```blade-repl
+```zuri-repl
 %> def show_docs(obj) {
 ..   var doc = getprop(obj, '@doc')
 ..   if doc {
@@ -348,7 +348,7 @@ Let's look at the following brilliant use of decorators as an example:
 .. }
 %> 
 %> # note that you cannot call this method yourself
-%> # or from any blade scipt
+%> # or from any zuri scipt
 %> MyLibraryImplementation().@docs()
 SyntaxError at '@docs': expected property name after '.'
   <repl>:1
@@ -363,7 +363,7 @@ Decorators open an endless possibility for libraries to implement beautiful feat
 
 ## Iterable Classes
 
-In Blade, any class can be converted into an iterable provided that the class implements the following iterators:
+In Zuri, any class can be converted into an iterable provided that the class implements the following iterators:
 
 - `@itern(x)` also known as the `iterator index decorator` which accepts a single value that is equal to the value returned by 
   the last call to `@itern()` or `nil` if there was no previous call to `@itern()` and returns a value equal to the current index or key in a consistent iteration of the object.
@@ -372,7 +372,7 @@ In Blade, any class can be converted into an iterable provided that the class im
 
 For example,
 
-```blade-repl
+```zuri-repl
 %> class Iterable {
 ..   var items = ['Richard', 'Alex', 'Justina']
 .. 
@@ -407,7 +407,7 @@ naming convenction are methods whose name are in the form `to_...` in which case
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> to_string(200)
 '200'
 %> 

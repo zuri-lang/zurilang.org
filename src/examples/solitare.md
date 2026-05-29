@@ -3,7 +3,7 @@
 This program solves the (English) [peg solitaire](http://en.wikipedia.org/wiki/Peg_solitaire) board game.
 
 
-```blade
+```zuri
 var N = 11 + 1 # length of a row (+1 for \n)
 
 # The board must be surrounded by 2 illegal

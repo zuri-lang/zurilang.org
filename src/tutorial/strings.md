@@ -1,6 +1,6 @@
 # Strings
 
-Blade has a very rich support for strings and they can be expressed in several ways. In Blade, 
+Zuri has a very rich support for strings and they can be expressed in several ways. In Zuri, 
 strings are denoted by enclosing characters in pairs of single quotes (`'...'`) or pairs of 
 double quotes (`"..."`) and they are essentially the same.
 
@@ -24,7 +24,7 @@ the backslash (`\`).
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> 'string in single quote'
 'string in single quote'
 %> "another version with double quotes"
@@ -35,10 +35,10 @@ For example:
 "It's the "\" character"
 ```
 
-> All Blade strings can span multiple lines whether created using single (`'`) or double (`"`) quotes.
+> All Zuri strings can span multiple lines whether created using single (`'`) or double (`"`) quotes.
 >
 > For example:
-> ```blade
+> ```zuri
 > # with single quotes
 > 'Hello...
 > World'
@@ -59,12 +59,12 @@ processing of the output.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> print("It's the \"\\\" character")
 It's the "\" character
 ```
 
-Blade strings support a lot of special characters called `escape sequence` for formatting and 
+Zuri strings support a lot of special characters called `escape sequence` for formatting and 
 they also need to be escaped with `\` as follows:
 
 | Sequence | Meaning |
@@ -94,12 +94,12 @@ they also need to be escaped with `\` as follows:
 
 ## Unicode and UTF-8
 
-As mentioned in the previous section, Blade strings fully supports unicode and are UTF-8 encoded by default.
+As mentioned in the previous section, Zuri strings fully supports unicode and are UTF-8 encoded by default.
 Unicode code points can be represented using Unicode `\u` and `\U` escape sequences.
 
 For example,
 
-```blade-repl
+```zuri-repl
 %> '\u00a9'
 '©'
 %> '10\u00B5s'
@@ -108,12 +108,12 @@ For example,
 '𫚕 is a chinese character'
 ```
 
-Unicode characters can also be written directly in strings. This means, that in a Blade string, you can
+Unicode characters can also be written directly in strings. This means, that in a Zuri string, you can
 actually use advanced texts like smilies, trademarks and many more directly in your source code.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> 'I am 😀'
 'I am 😀'
 %> 'Black ♞ rule'
@@ -128,26 +128,26 @@ To get the length of the string, we can call it's `length()` method.
 
 For example,
 
-```blade-repl
+```zuri-repl
 %> '名可名非常名'.length()
 6
 %> 'Hello, World'.length() # compared with English text
 12
 ```
 
-As you can see, Blade returns the correct length irrespective of the language of the source text.
+As you can see, Zuri returns the correct length irrespective of the language of the source text.
 
 
 ## String Interpolation
 
 As we write more code, we seldom find ourselves needing to join two strings together or at other times,
 join a string to a declared variable. Some other times, we want to have the result of an operation or 
-expression within our string. All of these operations can soon become pretty verbose and tedious. Blade
+expression within our string. All of these operations can soon become pretty verbose and tedious. Zuri
 allows _interpolation_ into string literals using the `$` character just as can be seen in Perl and Dart.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> 'Sum after addition = ${10 + 15}'
 'Sum after addition = 25'
 ```
@@ -159,7 +159,7 @@ For another example, let's say we have two variables `x` and `y` declared as `Nu
 respectively and we want to have them _concatenated_ to our string at some location, we can have 
 something like the following:
 
-```blade-repl
+```zuri-repl
 %> 'We have ${x} crates of ${y}'
 'We have 20 crates of eggs'
 ```
@@ -167,14 +167,14 @@ something like the following:
 To write the interpolation expression within a string without interpreting it, we need to escape the `$`
 with a backslash (`\`) as follows:
 
-```blade-repl
+```zuri-repl
 %> 'Sample interpolation: \${x * y}'
 'Sample interpolation: ${x * y}'
 ```
 
 ## Characters
 
-In Blade, _Characters_ are essentially strings with a length of one (1). No more, no less! However, there are 
+In Zuri, _Characters_ are essentially strings with a length of one (1). No more, no less! However, there are 
 times when we require Characters over Strings. For example, the builtin `ord()` function expects a character
 and not a String. While this distinction looks thin, it is a very important distinction that must be put
 to heart.
@@ -183,7 +183,7 @@ Characters are also UTF-8 compliant.
 
 The sample code below shows an example of the clear distinctive use of characters and strings.
 
-```blade-repl
+```zuri-repl
 %> echo ord('A')
 65
 %> echo ord('AB')
@@ -194,7 +194,7 @@ Unhandled Exception: ord() expects character as argument, string given
 
 A more complex example that skips a lot into the future of this tutorial is given as below for reference.
 
-```blade-repl
+```zuri-repl
 %> import types
 %> types.char('a')
 true
@@ -210,14 +210,14 @@ false
 
 ## String Operations
 
-Blade strings support multiple operations categorized into one of the following four groups.
+Zuri strings support multiple operations categorized into one of the following four groups.
 
 Two or more strings can be concatenated (glued together) via the `+` operator whether it's a literal or 
 a variable, and a specific string can be repeated by multiplying it with a number via the `*` operator. 
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> 'str' + 'ing'
 'string'
 %> 'abc' * 4 # repeating 'abc' four times
@@ -231,7 +231,7 @@ to a string.
 
 For example,
 
-```blade-repl
+```zuri-repl
 %> 5 + 'alive'
 '5alive'
 %> 'Base' + 64
@@ -240,7 +240,7 @@ For example,
 
 Strings can also be checked for equality or inequality as needed. For example:
 
-```blade-repl
+```zuri-repl
 %> "abracadabra" == "xylophone"
 false
 %> "Hello, world." != "Goodbye, world."
@@ -249,12 +249,12 @@ true
 true
 ```
 
-Strings indexes can be accessed. The first character of a Blade string have an index of `0`. The result of 
+Strings indexes can be accessed. The first character of a Zuri string have an index of `0`. The result of 
 string indexes are characters.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> 'Hello'[0]
 'H'
 %> 'Hello'[3]
@@ -267,7 +267,7 @@ where the first index will be `-1` (since -0 is the same as 0).
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> 'Hello'[-1]
 'o'
 %> 'Hello'[-4]
@@ -279,7 +279,7 @@ will result in an error.
 
 For example, the following code throws an exception.
 
-```blade-repl
+```zuri-repl
 %> 'Hello'[6]
 Unhandled Exception: string index 6 out of range
   StackTrace:
@@ -290,14 +290,14 @@ In addition to indexing, slicing is also supported. While indexing is used to ob
 
 For example:
 
-```blade-repl
-%> 'Blade'[0,3] # characters starting from index 0 to index 3 - 1 (2)
+```zuri-repl
+%> 'Zuri'[0,3] # characters starting from index 0 to index 3 - 1 (2)
 'Bla'
-%> 'Blade'[2,5] # characters from index 2 to index 5 - 1 (4)
+%> 'Zuri'[2,5] # characters from index 2 to index 5 - 1 (4)
 'ade'
 ```
 
-The general syntax for slicing in Blade is `[lower limit, upper limit]`. Both lower limit and upper limit
+The general syntax for slicing in Zuri is `[lower limit, upper limit]`. Both lower limit and upper limit
 can be omitted. When the lower limit is omitted, it defaults to `0` and when the upper limit is omitted,
 it defaults to the length of the object e.g. the string length.
 
@@ -311,42 +311,42 @@ returned.
 
 For example:
 
-```blade-repl
-%> 'Blade'[0,3]  # starting from index 0 to 2
+```zuri-repl
+%> 'Zuri'[0,3]  # starting from index 0 to 2
 'Bla'
-%> 'Blade'[2,5]  # starting from index 2 to 4
+%> 'Zuri'[2,5]  # starting from index 2 to 4
 'ade'
-%> 'Blade'[,]   # starting from index 0 to the end
-'Blade'
-%> 'Blade'[,-3]   # starting from index 0 to string length - 3
+%> 'Zuri'[,]   # starting from index 0 to the end
+'Zuri'
+%> 'Zuri'[,-3]   # starting from index 0 to string length - 3
 'Bl'
-%> 'Blade'[3,]  # starting from index 3 to the end
+%> 'Zuri'[3,]  # starting from index 3 to the end
 'de'
-%> 'Blade'[-1,]  # negative index in lower limit returns an empty string
+%> 'Zuri'[-1,]  # negative index in lower limit returns an empty string
 ''
-%> 'Blade'[,4]   # starting from index 0 to 3
+%> 'Zuri'[,4]   # starting from index 0 to 3
 'Blad'
-%> 'Blade'[,3] + 'Blade'[3,]     # in[,i] + in[i,]
-'Blade'
+%> 'Zuri'[,3] + 'Zuri'[3,]     # in[,i] + in[i,]
+'Zuri'
 ```
 
-Blade strings are immutable. Hence, a string cannot be changed. Assigning to an indexed position in the string results in an error:
+Zuri strings are immutable. Hence, a string cannot be changed. Assigning to an indexed position in the string results in an error:
 
 For example,
 
-```blade-repl
-> 'Blade'[0] = 'J'
+```zuri-repl
+> 'Zuri'[0] = 'J'
 Unhandled Exception: strings do not support object assignment
   StackTrace:
     <repl>:1 -> @.script()
 ```
 
 > You may notice how we are trying to assign to a string object directly instead of a variable and think
-> that's why it isn't working. That's not why! In blade, if string wasn't immutable (e.g. Lists aren't 
-> immutable), Blade will go ahead and do that assignment. The fact that you aren't storing that value 
+> that's why it isn't working. That's not why! In zuri, if string wasn't immutable (e.g. Lists aren't 
+> immutable), Zuri will go ahead and do that assignment. The fact that you aren't storing that value 
 > anywhere is up to you. But it's neither a syntax nor runtime error to do so.
 
-If you need to to modify a string, you need to create a new one. Don't worry, Blade is smart enough to 
+If you need to to modify a string, you need to create a new one. Don't worry, Zuri is smart enough to 
 know when you don't need a string anymore and will gracefully delete the string for memory when necessary.
 
 
@@ -357,7 +357,7 @@ the [Class](./class) tutorial._**
 
 ## String Methods
 
-Blade string comes with a lot of powerful text processing capabilities wrapped in methods described below.
+Zuri string comes with a lot of powerful text processing capabilities wrapped in methods described below.
 
 .length() {#length}
 
@@ -367,7 +367,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'This is a pretty long string'.length()
   28
   %> 'उनका एक समय'.length()
@@ -384,8 +384,8 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
-  %> 'blade'.upper()
+  ```zuri-repl
+  %> 'zuri'.upper()
   'BLADE'
   ```
 
@@ -395,9 +395,9 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
   
   For example:
 
-  ```blade-repl
-  %> 'Blade Is Bae'.lower()
-  'blade is bae'
+  ```zuri-repl
+  %> 'Zuri Is Bae'.lower()
+  'zuri is bae'
   ```
 
 .is_alpha() {#is_alpha}
@@ -407,7 +407,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'abracadabra'.is_alpha()
   true
   %> 'my tooth aches'.is_alpha()
@@ -423,7 +423,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> '3Idiots'.is_alnum()
   true
   %> 'Three Idiots'.is_alnum()
@@ -445,7 +445,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> '123.5'.is_number()
   false
   %> '1970'.is_number()
@@ -461,7 +461,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'all'.is_lower()
   true
   %> 'all...123'.is_lower()
@@ -479,7 +479,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'ALL'.is_upper()
   true
   %> 'ALL...123'.is_upper()
@@ -497,7 +497,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> '.     '.is_space()
   false
   %> '\r\n'.is_space()
@@ -518,7 +518,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> '  example  '.trim()
   'example'
   %> '  example  '.trim('e')
@@ -534,7 +534,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
   
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> '  example  '.ltrim()
   'example  '
   %> 'example'.ltrim('e')
@@ -548,7 +548,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
   
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> '  example  '.rtrim()
   '  example'
   %> 'example'.rtrim('e')
@@ -566,7 +566,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> ','.join(['ok', 1, true])
   'ok,1,true'
   %> '--'.join('name')
@@ -589,7 +589,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'name'.split('')
   [n, a, m, e]
   %> '1<>2<>3'.split('<>')
@@ -611,7 +611,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'hello, world'.index_of(' ')
   6
   %> 'hello, world'.index_of('e')
@@ -631,7 +631,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'hello, world'.starts_with('hello')
   true
   %> 'hello, world'.starts_with('hellios')
@@ -645,7 +645,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'gumtree'.ends_with('tree')
   true
   %> 'gumtree'.ends_with('mree')
@@ -658,11 +658,11 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
   
   _For those coming from Python who may consider this method similar to Python's own, this 
   method differs in that it does not allow specifying a start and end region for the operation. 
-  Blade considers this unnessary as the same can be accomplished by slicing the string._
+  Zuri considers this unnessary as the same can be accomplished by slicing the string._
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'Hallelujah'.count('l')
   3
   %> 'ding dong'.count('ng')
@@ -679,7 +679,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> '123.0 hell'.to_number()
   123
   %> '427 and 12'.to_number()
@@ -698,8 +698,8 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
-  %> 'Blade'.to_list()
+  ```zuri-repl
+  %> 'Zuri'.to_list()
   [B, l, a, d, e]
   %> 'Plantation'.to_list()
   [P, l, a, n, t, a, t, i, o, n]
@@ -709,12 +709,12 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
 : Returns the content of the string as a stream of `bytes`. 
   
-  > The Blade REPL _may_ trunctuate long bytes data when printing to console/terminal.
+  > The Zuri REPL _may_ trunctuate long bytes data when printing to console/terminal.
 
   For example:
 
-  ```blade-repl
-  %> 'Blade'.to_bytes()
+  ```zuri-repl
+  %> 'Zuri'.to_bytes()
   (42 6c 61 64 65)
   %> 'Plantation'.to_bytes()
   (50 6c 61 6e 74 61 74 69 6f 6e)
@@ -728,7 +728,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'cat'.lpad(5)
   '  cat'
   %> 'cat'.lpad(5, '-')
@@ -745,7 +745,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'Hmm'.rpad(6)
   'Hmm   '
   %> 'Hmm'.rpad(6, '.')
@@ -766,7 +766,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'gorilla'.match('go')      # regular string match
   true
   %> 'gorilla'.match('gox')     # regular string non-match
@@ -786,7 +786,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> '123 dollars'.matches('/[a-z]+|\d+/')
   {0: [123, dollars]}
   %> 'who is in the garden'.matches('/\w+/')
@@ -806,7 +806,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> 'lady friend'.replace('d', 'z')  # non-regex
   'lazy frienz'
   %> 'John is 26 years old'.replace('/(\d+)/', '1$1') # regex example
@@ -825,7 +825,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   The callback function is defined as follows:
 
-  ```blade
+  ```zuri
   def replacer(match, p1, p2, /* …, */ pN, offset, string) {
     return replacement
   }
@@ -850,7 +850,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> echo 'name'.replace_with('/m/', @(match, offset) {
   ..   return match + '-'
   .. })
@@ -859,7 +859,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   Below is another example that uses a capture group:
 
-  ```blade-repl
+  ```zuri-repl
   %> var text = 'all is well'
   %> 
   %> echo text.replace_with('/([a-z]+)/', @(match, val) {
@@ -875,7 +875,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> echo 'string'.each(@{
   ..   echo 'a string iteration'
   .. })
@@ -893,7 +893,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> echo 'man'.each(@(x){
   ..   echo x
   .. })
@@ -907,7 +907,7 @@ Blade string comes with a lot of powerful text processing capabilities wrapped i
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> echo 'man'.each(@(x, i){
   ..   echo 'The character at index ${i} is ${x}'
   .. })
@@ -922,18 +922,18 @@ we'll talk about in details under the _[Class](./class)_ lesson.
 
 ## Regular Expressions
 
-Regular expressions in Blade are simply special patterns expressed in a string following a few guidlines
+Regular expressions in Zuri are simply special patterns expressed in a string following a few guidlines
 that allow them to be distinguished by methods requiring them. We'll be using the term `regex` or `regexes` 
 henceforth for the rest of this tutorial and most likely for the rest of the documentation.
 
-Blade's _regex_ is built on-top the _PCRE2_ library, an excellent library that already powers regular 
+Zuri's _regex_ is built on-top the _PCRE2_ library, an excellent library that already powers regular 
 expression in many programming languages and have been around for decades. It feels like a better choice
-for now for Blade to depend on this library rather than invest years building one robust enough to match
+for now for Zuri to depend on this library rather than invest years building one robust enough to match
 the library's capabilites.
 
-In simple words, Blade's _regex_ is PCRE compatible.
+In simple words, Zuri's _regex_ is PCRE compatible.
 
-To create a valid _regex_ in Blade, **your regex pattern must be surrounded by identical non-word characters**.
+To create a valid _regex_ in Zuri, **your regex pattern must be surrounded by identical non-word characters**.
 
 For example, `/\d+/`. Note here how we surround our pattern `\d+` with forward slashes (`/`).
 
@@ -942,12 +942,12 @@ written on that topic as well as many online tools for learning them in greater 
 in this tutorial. Majority of them based on the same engine we are using. So here's 
 [one of them](https://regexr.com/)for your reference.
 
-Most languages support different modifiers for regular expressions, and Blade has some too. Modifiers
+Most languages support different modifiers for regular expressions, and Zuri has some too. Modifiers
 are placed after a valid regex to control how the pattern is executed by the language. For example, in
-Blade, the pattern `/[a-z]/i` is a pattern modified with the `i` modifier telling the interpreter to
+Zuri, the pattern `/[a-z]/i` is a pattern modified with the `i` modifier telling the interpreter to
 make sure the matching is done case insensitive.
 
-The following table lists Blade modifiers.
+The following table lists Zuri modifiers.
 
 | Modifier | Definition |
 |----------|------------|
@@ -968,14 +968,14 @@ can perform a multi-line and case-insensitive modification for our former sample
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> 'The side bar includes a Cheatsheet'.matches('/([A-Z])\w+/')
 {0: [The, Cheatsheet], 1: [T, C]}
 ```
 
 Or the same query with modifiers,
 
-```blade-repl
+```zuri-repl
 %> 'The side bar includes a Cheatsheet'.matches('/([A-Z])\w+/sim')
 {0: [The, side, bar, includes, Cheatsheet], 1: [T, s, b, i, C]}
 ```

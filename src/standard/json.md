@@ -6,8 +6,8 @@ the ECMAScript Programming Language Standard.  JSON defines a small
 set of formatting rules for the portable representation of structured
 data.
 This implementation complies with [RFC 8259](https://datatracker.ietf.org/doc/html/rfc8259).
-### JSON to Blade value mapping
-| JSON | Blade |
+### JSON to Zuri value mapping
+| JSON | Zuri |
 |------|-------|
 | Null | Nil |
 | String | String |
@@ -15,8 +15,8 @@ This implementation complies with [RFC 8259](https://datatracker.ietf.org/doc/ht
 | Boolean | Boolean |
 | Array | List |
 | Object | Dict |
-### Blade to JSON object mapping
-| Blade | JSON |
+### Zuri to JSON object mapping
+| Zuri | JSON |
 |-------|------|
 | `nil` | Null |
 | Integer | Number |
@@ -27,17 +27,17 @@ This implementation complies with [RFC 8259](https://datatracker.ietf.org/doc/ht
 | Dict | Object |
 | Instance of class implementing `to_json()` decorator | Any |
 Example,
-```blade-repl
+```zuri-repl
 %> import json
 %> json.encode([1, 2, 3])
 '[1,2,3]'
 %>
-%> json.encode({name: 'Blade', version: '0.0.7'})
-'{"name":"Blade","version":"0.0.7"}'
+%> json.encode({name: 'Zuri', version: '0.0.7'})
+'{"name":"Zuri","version":"0.0.7"}'
 %>
-%> json.encode({name: 'Blade', version: '0.0.7'}, false)
+%> json.encode({name: 'Zuri', version: '0.0.7'}, false)
 '{
-  "name": "Blade",
+  "name": "Zuri",
   "version": "0.0.7"
 }'
 ```
@@ -72,7 +72,7 @@ _json_.encode(_value_, _compact_, _max_depth_) {#json.encode}
 
 _json_.decode(_value_, _allow_comments_) {#json.decode}
 
-: Decodes the input JSON string into Blade objects
+: Decodes the input JSON string into Zuri objects
 
 
   - **@params**:
@@ -105,7 +105,7 @@ _json_.parse(_path_) {#json.parse}
 
 _class_ **Encoder** {#json.Encoder .class}
 
-: Blade to JSON encoding class
+: Zuri to JSON encoding class
 
 
 

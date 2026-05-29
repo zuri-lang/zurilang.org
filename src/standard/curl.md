@@ -12,7 +12,7 @@ proxy tunneling and more!
 The following example shows the basic usage that visits a website 
 and prints the output.
 
-```blade
+```zuri
 import curl
 
 var c = curl.Curl()

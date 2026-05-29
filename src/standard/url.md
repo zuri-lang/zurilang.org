@@ -13,7 +13,7 @@ Constructing a URL is vey simple. Here is an example.
 
 ### Example
 
-```blade-repl
+```zuri-repl
 %> import url
 %> var link = url.Url('https', 'example.com', 9000)
 %> link.absolute_url()
@@ -25,7 +25,7 @@ What each function and class method does are easy to deduce from their names.
 For example, we can use the `parse()` function to convert a URL string into a URL 
 instance like below.
 
-```blade-repl
+```zuri-repl
 %> link = url.parse('https://example.com:9000')
 %> link.scheme
 'https'

@@ -1,6 +1,6 @@
 # struct
 
-This module provides functions for converting between Blade values and C
+This module provides functions for converting between Zuri values and C
 structs and vice-versa in the binary format.
 
 ## Functions

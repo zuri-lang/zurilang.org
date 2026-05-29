@@ -15,7 +15,7 @@ _mime_.detect\_from\_name(_name_) {#mime.detect_from_name}
   
   Example,
   
-  ```blade
+  ```zuri
   import mime
   echo mime.detect_from_name('myimage.png')
   ```
@@ -43,7 +43,7 @@ _mime_.detect\_from\_header(_file_) {#mime.detect_from_header}
   
   Example,
   
-  ```blade
+  ```zuri
   import mime
   var f = file('my_file.ext', 'rb')
   echo mime.detect_from_header(f)
@@ -79,7 +79,7 @@ _mime_.detect(_file_) {#mime.detect}
   
   Example,
   
-  ```blade
+  ```zuri
   import mime
   var f = file('myfile', 'rb')
   
@@ -111,7 +111,7 @@ _mime_.extend(_extension_, _format_) {#mime.extend}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> import mime
   %> mime.detect_from_name('myfile.ppk')
   'application/octet-stream'

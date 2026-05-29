@@ -1,8 +1,8 @@
 # Working with Binary data
 
-Working with binary data in Blade is a simple as working with _lists_ and this can be 
+Working with binary data in Zuri is a simple as working with _lists_ and this can be 
 done using `bytes`. A `bytes` (meaning Byte stream) is an iterable in-memory contiguous 
-list of numbers. Blade allows easily creating _bytes_ from strings and vice-versa and 
+list of numbers. Zuri allows easily creating _bytes_ from strings and vice-versa and 
 they are the primary medium of reading and writing binary data into and from the OS.
 
 ## Reference
@@ -19,7 +19,7 @@ they are the primary medium of reading and writing binary data into and from the
 
 The built-in `bytes()` function can be used to create a byte stream. For example,
 
-```blade-repl
+```zuri-repl
 %> bytes(5)
 (0 0 0 0 0)
 ```
@@ -27,7 +27,7 @@ The built-in `bytes()` function can be used to create a byte stream. For example
 The above code creates a byte stream containing five bytes all initialized to zero (0).
 You can also create byte stream from a list of numbers as well. For example,
 
-```blade-repl
+```zuri-repl
 %> bytes([72, 69, 76, 76, 79])
 (48 45 4c 4c 4f)
 ```
@@ -43,7 +43,7 @@ the binary mode and the most basic way of providing it with such data is by usin
 
 For example,
 
-```blade-repl
+```zuri-repl
 %> file('dummy.txt', 'wb').write(bytes([72, 69, 76, 76, 79]))
 true
 %> file('dummy.txt').read()
@@ -57,7 +57,7 @@ In the above sample, we wrote the bytes we created ealier into a file and read i
 > will be equal to `(number % 255) - 1`.
 > 
 > E.g.
-> ```blade-repl
+> ```zuri-repl
 > %> bytes([256])
 > (0)
 > %> bytes([386])
@@ -71,11 +71,11 @@ In the above sample, we wrote the bytes we created ealier into a file and read i
 
 ## Byte stream indexing
 
-Like _Lists_, _Strings_ and _Dictionaries_, Byte streams can also be indexed in Blade. We can retrieve an index in a byte stream using the same operators as others (`[]`) and we can use this to access or modify the contents of a byte stream.
+Like _Lists_, _Strings_ and _Dictionaries_, Byte streams can also be indexed in Zuri. We can retrieve an index in a byte stream using the same operators as others (`[]`) and we can use this to access or modify the contents of a byte stream.
 
 For example,
 
-```blade-repl
+```zuri-repl
 %> var g = bytes([31, 47, 83, 105, 72])
 %> g
 (1f 2f 53 69 48)
@@ -103,7 +103,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes(5)
   (0 0 0 0 0)
   %> bytes([65, 66, 67, 68, 69])
@@ -116,7 +116,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([25, 57]).length()
   2
   ```
@@ -127,7 +127,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = bytes([0x40, 0x75])
   %> a.append(0x16)
   %> echo a
@@ -140,7 +140,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([19, 11]).clone()
   (13 b)
   ```
@@ -151,7 +151,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = bytes([33, 91, 126])
   %> var b = bytes([119, 42])
   %> a
@@ -176,7 +176,7 @@ The byte stram object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([5, 10, 21, 22]).index_of(10)
   1
   %> bytes([1, 2, 3, 1, 2, 3]).index_of(1, 2)
@@ -191,7 +191,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = bytes([79, 43, 9])
   %> a.pop()
   9
@@ -205,7 +205,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = bytes([79, 43, 9, 139])
   %> a.remove(1)
   43
@@ -219,7 +219,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([1, 2, 3, 4, 5]).reverse()
   (5 4 3 2 1)
   ```
@@ -230,7 +230,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([14, 93, 37]).first()
   14
   ```
@@ -241,7 +241,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([14, 93, 37]).last()
   37
   ```
@@ -252,7 +252,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([1, 2, 3, 4, 5]).get(3)
   4
   ```
@@ -263,7 +263,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes(0).split(bytes(0))
   []
   %> echo 'test'.to_bytes().split(bytes(0))
@@ -276,7 +276,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([25, 57]).is_alpha()
   false
   %> bytes([65, 66]).is_alpha()
@@ -289,7 +289,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([25, 57]).is_alnum()
   false
   %> bytes([65, 66]).is_alnum()
@@ -304,7 +304,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([60, 61]).is_number()
   false
   %> bytes([49, 51]).is_number()
@@ -317,7 +317,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([97]).is_lower()
   true
   %> bytes([77]).is_lower()
@@ -330,7 +330,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([97]).is_upper()
   false
   %> bytes([67]).is_upper()
@@ -343,7 +343,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([13]).is_space() # 13 is the character number for ENTER
   true
   %> bytes([33]).is_space()
@@ -360,7 +360,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = bytes([13, 36])
   %> a.dispose()
   %> a
@@ -373,7 +373,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([0x31, 0x55, 0x149, 0x215]).to_list()
   [49, 85, 73, 21]
   ```
@@ -384,7 +384,7 @@ The byte stram object contains the following methods:
 
   For example,
 
-  ```blade-repl
+  ```zuri-repl
   %> bytes([65, 66, 67, 68, 69]).to_string()
   'ABCDE'
   ```
@@ -396,7 +396,7 @@ The byte stram object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var binary = bytes([101, 230, 47])
   %> 
   %> binary.each(@{
@@ -413,7 +413,7 @@ The byte stram object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var binary = bytes([211, 146, 92])
   %> 
   %> binary.each(@(byte) {
@@ -429,7 +429,7 @@ The byte stram object contains the following methods:
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var binary = bytes([41, 233, 128])
   %> 
   %> binary.each(@(byte, index) {
@@ -444,8 +444,8 @@ The byte stram object contains the following methods:
 <br><br><br>
 <hr>
 
-**_If you've come this far then you are already a Blade master! What you've learnt so far coupled with the standard library 
-opens the door to endless possiblities. Remember that Blade is a growing language and stuffs are bound to change so we 
+**_If you've come this far then you are already a Zuri master! What you've learnt so far coupled with the standard library 
+opens the door to endless possiblities. Remember that Zuri is a growing language and stuffs are bound to change so we 
 plead with you to keep up to date with this documentation to follow the development of the language of Ninjas._**
 
 

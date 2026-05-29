@@ -8,7 +8,7 @@ describe(name, fn) {#describe}
 
 : `describe(name, fn)` creates a block that groups together several related tests. It is the Test Suite. For example, if you have a `myBeverage` object that is supposed to be delicious but not sour, you could test it with:
 
-  ```blade
+  ```zuri
   var myBeverage = {
     delicious: true,
     sour: false,
@@ -27,7 +27,7 @@ describe(name, fn) {#describe}
 
   You can also nest `describe` blocks if you have a hierarchy of tests:
 
-  ```blade
+  ```zuri
   var binay_string_to_number = @( bin_string ) {
     if !bin_string.match('/^[01]+$/') {
       raise CustomError('Not a binary number.')
@@ -59,7 +59,7 @@ it(name, fn) {#it}
 
 : The `it(name, fn)` function is the entry point for tests in a test suite. For example, let's say there's a function `inches_of_rain()` that should return zero. Your whole test could be:
 
-  ```blade
+  ```zuri
   it('did not rain', @{
     expect(inches_of_rain()).to_be(0)
   })
@@ -82,7 +82,7 @@ before_all(function) {#before_all}
 
   For example:
 
-  ```blade
+  ```zuri
   var global_db = make_global_db()
 
   before_all(@{
@@ -111,7 +111,7 @@ after_all(function) {#after_all}
 
   For example:
 
-  ```blade
+  ```zuri
   var global_db = make_global_db()
 
   def clean_up_db(db) {
@@ -147,7 +147,7 @@ before_each(function) {#before_each}
 
   For example:
 
-  ```blade
+  ```zuri
   var global_db = make_global_db()
 
   before_each(@{
@@ -179,7 +179,7 @@ after_each(function) {#after_each}
 
   For example:
 
-  ```blade
+  ```zuri
   var global_db = make_global_db()
 
   def clean_up_db(db) {

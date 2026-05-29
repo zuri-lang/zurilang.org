@@ -1,6 +1,6 @@
 # Error Handling
 
-In this chapter, we'll be discussing the exceptions and error handling in Blade. Their types and how to raise and handle them.
+In this chapter, we'll be discussing the exceptions and error handling in Zuri. Their types and how to raise and handle them.
 
 ## Reference
 
@@ -9,26 +9,26 @@ In this chapter, we'll be discussing the exceptions and error handling in Blade.
   - [Exceptions](#exceptions)
   - [Custom Exceptions](#custom-exceptions)
   - [Catching Exceptions](#catching-exceptions)
-      - [Why Blade doesn't have a Try..Catch mechanism.](#why-blade-doesnt-have-a-trycatch-mechanism)
-      - [Catching Exceptions in Blade](#catching-exceptions-in-blade)
+      - [Why Zuri doesn't have a Try..Catch mechanism.](#why-zuri-doesnt-have-a-trycatch-mechanism)
+      - [Catching Exceptions in Zuri](#catching-exceptions-in-zuri)
   - [Asserts](#asserts)
 
 
-There are generally two types of errors that can occur in Blade &mdash; `Syntax Errors` and `Runtime Exceptions`. 
+There are generally two types of errors that can occur in Zuri &mdash; `Syntax Errors` and `Runtime Exceptions`. 
 A Syntax error occurs when you attempt to run an invalid program, while a Runtime Exception is any error that occurs during the execution of the program. 
 
-Blade typically reports Syntax errors looking like the below.
+Zuri typically reports Syntax errors looking like the below.
 
 > **_@note:_** Syntax errors cannot be handled.
 
-```blade-repl
+```zuri-repl
 SyntaxError at ':': end of statement expected
   <repl>:1
 ```
 
 While Runtime Exceptions are reported similar to the following.
 
-```blade-repl
+```zuri-repl
 Unhandled Exception: only functions and classes can be called
   StackTrace:
     <repl>:1 -> @.script()
@@ -37,20 +37,20 @@ Unhandled Exception: only functions and classes can be called
 
 ## Exceptions
 
-Blade comes with the built-in _class_ `Exception` which is raised everytime a Runtime Exception occurs. For example,
+Zuri comes with the built-in _class_ `Exception` which is raised everytime a Runtime Exception occurs. For example,
 
-```blade-repl
+```zuri-repl
 %> [1,2,3][5]
 Unhandled Exception: list index 5 out of range
   StackTrace:
     <repl>:1 -> @.script()
 ```
 
-Blade allows us to manually trigger a Runtime Exception at any point in a program as well using the `raise` keyword. The raise keyword must be followed by an exception or a variable that contains an exception.
+Zuri allows us to manually trigger a Runtime Exception at any point in a program as well using the `raise` keyword. The raise keyword must be followed by an exception or a variable that contains an exception.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> raise Exception('I was manually triggered')
 Unhandled Exception: I was manually triggered
   StackTrace:
@@ -60,12 +60,12 @@ Unhandled Exception: I was manually triggered
 
 ## Custom Exceptions
 
-You can define custom Exception classes by subclassing the class `Exception`. All custom Exceptions in Blade must descend 
+You can define custom Exception classes by subclassing the class `Exception`. All custom Exceptions in Zuri must descend 
 from the built-in `Exception` class.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> class MyCustomException < Exception {}
 %> raise MyCustomException('Something happened')
 Unhandled MyCustomException: Something happened
@@ -76,13 +76,13 @@ Unhandled MyCustomException: Something happened
 
 ## Catching Exceptions
 
-Unlike most languages, Blade takes a unique approach to catching exceptions. Before we delve into how to catch exceptions in Blade, it is important to know the fundational reasons why Blade does it exactly the way it does.
+Unlike most languages, Zuri takes a unique approach to catching exceptions. Before we delve into how to catch exceptions in Zuri, it is important to know the fundational reasons why Zuri does it exactly the way it does.
 
-#### Why Blade doesn't have a Try..Catch mechanism.
+#### Why Zuri doesn't have a Try..Catch mechanism.
 
-A lot of C-like languages like Blade have a `try...catch..(finally...)` expression or a mechanism that implements the same. Other languages like Rust and Go have opted to implement a recover or unwind function. Blade does none of the above for simple reasons.
+A lot of C-like languages like Zuri have a `try...catch..(finally...)` expression or a mechanism that implements the same. Other languages like Rust and Go have opted to implement a recover or unwind function. Zuri does none of the above for simple reasons.
 
-To more understand Blade's approach, it is important to understand the need for a try...catch...finally... construct in the first place and why most programming languages have it.
+To more understand Zuri's approach, it is important to understand the need for a try...catch...finally... construct in the first place and why most programming languages have it.
 
 In any system that is capable of producing an error and/or raising an exception, users of the system will always find themselves in a situation where they need to recover from such errors and that is essentially what the try..catch.. construct attempts to solve.
 
@@ -99,27 +99,27 @@ If you take a careful and close look at the list above, you'll soon notice that 
 - Understand the error's origin and context.
 - Define error handling logic.
 
-#### Catching Exceptions in Blade
+#### Catching Exceptions in Zuri
 
-Blade's approach to error handling is as simple as it gets. Blade's error handling system is centered on what the user actually needs &mdash; **The catch block**.
+Zuri's approach to error handling is as simple as it gets. Zuri's error handling system is centered on what the user actually needs &mdash; **The catch block**.
 
-The center of Blade's exception handling is the catch block itself. In Blade, any code surrounded by the catch block never raise and exception. Rather, any exception raised within the catch block is passed on to the optional `catch variable` and the execution of code skips to the end of the catch block.
+The center of Zuri's exception handling is the catch block itself. In Zuri, any code surrounded by the catch block never raise and exception. Rather, any exception raised within the catch block is passed on to the optional `catch variable` and the execution of code skips to the end of the catch block.
 
 The code below uses the catch block to make sure tha the exception raised never fires.
 
-```blade-repl
+```zuri-repl
 %> catch {
 ..   raise Exception('Nothing happens!')
 .. }
 ```
 
-To recover the exception raised in the catch block, Blade allows naming catch blocks and turn it into a regular variable by following the catch block with the `as` keyword followed by the variable name of the catch block. 
+To recover the exception raised in the catch block, Zuri allows naming catch blocks and turn it into a regular variable by following the catch block with the `as` keyword followed by the variable name of the catch block. 
 
 This variable will hold the exception raised in the catch block and can be treated by the caller at anytime in the lifetime of the application they choose to.
 
 The code below modifies the previous example by assigning a name to the catch block.
 
-```blade-repl
+```zuri-repl
 %> catch {
 ..   raise Exception('Nothing happens!')
 .. } as e
@@ -129,7 +129,7 @@ The code below modifies the previous example by assigning a name to the catch bl
 
 We can now handle the exception at any time in the application. The code below extract the type of the exception, the error message and the stacktrace.
 
-```blade-repl
+```zuri-repl
 %> if e {
 ..   echo e.type
 ..   echo e.message
@@ -144,7 +144,7 @@ You can also check the type of exceptions using the `instance_of()` built-in fun
 
 The code below uses the instance function to check the exception type while handling the error.
 
-```blade-repl
+```zuri-repl
 %> class MyCustomException < Exception {}
 %> 
 %> var x = 50
@@ -173,11 +173,11 @@ The code below uses the instance function to check the exception type while hand
 
 Often times, we want to verify that one or more conditions are true before we continue execution otherwise, termiate the 
 function and/or process and stop it from going further. This can be achieved using complicated and/or nested `if...else...` 
-blocks with a messy use of the `raise` command, but Blade offers a more intuitive approach via the `assert` command.
+blocks with a messy use of the `raise` command, but Zuri offers a more intuitive approach via the `assert` command.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> assert 10 == 5
 Illegal State:
   StackTrace:
@@ -193,7 +193,7 @@ and the message by a comma (`,`). None string error messages will be converted t
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> assert 5 > 25, 'Bad mathematician!'
 Illegal State: Bad mathematician!
   StackTrace:

@@ -21,7 +21,7 @@ clients and servers. The module also provides a few generic abstractions
 for simple HTTP operations such as a GET request.
 ### Examples
 The example below shows making a GET request to fetch a webpage.
-```blade
+```zuri
 import http_curl
 echo http_curl.get('http://example.com')
 # <class HttpResponse instance at 0x600002adacd0>
@@ -31,7 +31,7 @@ above and they are documented below.
 For a more controlled HTTP request, you should use the HttpClient class.
 Below is an example of such implementation that sets the timeout for
 receiving response back from the server to 30 seconds.
-```blade
+```zuri
 import http_curl
 var client = http_curl.HttpClient()
 client.receive_timeout = 30000 # Optional
@@ -41,7 +41,7 @@ echo res.body.to_string()
 Creating a server with the `http_curl` module is also a breeze.
 The example below shows an implementation of an HTTP API server listening on port
 3000 and simple returns the JSON of the request object itself.
-```blade
+```zuri
 import http_curl
 import json
 var server = http_curl.server(3000)
@@ -259,7 +259,7 @@ _http_curl_.set\_headers(_headers_) {#http_curl.set_headers}
   This function returns HttpClient in order to allow for idiomatic 
   chaining such as:
   
-  ```blade
+  ```zuri
   import http_curl
   echo http_curl.set_headers({
     'Authorization': 'Bearer SomeAPIBearerToken',
@@ -693,7 +693,7 @@ _class_ **HttpClient** {#http_curl.HttpClient .class}
 
   **.user\_agent** &#x279D; _string_ {#http_curl.HttpClient.user_agent}
   : The user agent of the client used to make the request. 
-    Default value &mdash; `Blade HTTP Client/1.0`.
+    Default value &mdash; `Zuri HTTP Client/1.0`.
 
   **.follow\_redirect** &#x279D; _bool_ {#http_curl.HttpClient.follow_redirect}
   : Indicates if we receive a redirect from a server, this flag tells us whether 

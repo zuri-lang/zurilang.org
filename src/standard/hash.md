@@ -3,7 +3,7 @@ This module provides a framework for cryptographic and non-cryptographic encrypt
 
 Examples,
 
-```blade-repl
+```zuri-repl
 %> import hash
 %> 
 %> hash.md5('Hello, World')

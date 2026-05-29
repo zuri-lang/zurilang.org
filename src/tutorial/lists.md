@@ -1,8 +1,8 @@
 # Lists
 
-Lists in Blade are sequence types that is used to hold zero or more values in a single storage. 
+Lists in Zuri are sequence types that is used to hold zero or more values in a single storage. 
 Each item in a list is assigned a number (index) starting from zero (`0`) for the first item. 
-Blade Lists are comma (`,`) separated list of different values of different or same type. For example, 
+Zuri Lists are comma (`,`) separated list of different values of different or same type. For example, 
 a list can contain only number, another can contain a mixture of numbers and strings and yet another 
 can contain lists as well.
 
@@ -23,7 +23,7 @@ the list if any, all separated by commas and close it all with a right square br
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> [1, 2, 3]
 [1, 2, 3]
 %> ['Lane', 21, nil]
@@ -42,7 +42,7 @@ List supports additions, slicing, iteration and methods too.
 
 Working with Lists is a breeze. For example, adding two lists together looks like this:
 
-```blade-repl
+```zuri-repl
 %> [1, 2] + [3, 4]
 [1, 2, 3, 4]
 %> ['Hello'] + ['World']
@@ -54,7 +54,7 @@ not go into the whole academic stuffs anymore.
 
 Just for a quick run-through, accessing indexes in _Lists_ will look like this:
 
-```blade-repl
+```zuri-repl
 %> var names = ['John', 'Wick', 'III']
 %> names[1]
 'Wick'
@@ -64,7 +64,7 @@ Just for a quick run-through, accessing indexes in _Lists_ will look like this:
 
 And slicing _Lists_ just like [Strings](./strings#string-operations) will look like this:
 
-```blade-repl
+```zuri-repl
 %> var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 %> numbers[,]
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -83,13 +83,13 @@ And slicing _Lists_ just like [Strings](./strings#string-operations) will look l
 
 ## Looping thorugh Lists
 
-Lists can be iterated using any of the looping techniques available in Blade. However, the `iter` 
+Lists can be iterated using any of the looping techniques available in Zuri. However, the `iter` 
 and the `for` loop are the recommended as they will require fewer moving parts, and Lists are 
 optimized for those looping techniques.
 
 For example, you can use the `iter` loop like this:
 
-```blade-repl
+```zuri-repl
 %> var users = ['Gabriel', 'Anna', 'Cindarella']
 %> iter var i = 0; i < users.length(); i++ {
 ..   echo users[i]
@@ -105,7 +105,7 @@ variable.
 
 We can do the same with the `for` loop using even fewer code schematics. For example,
 
-```blade-repl
+```zuri-repl
 %> users = ['James', 'Lucy', 'Estonia']
 %> for user in users {
 ..   echo user
@@ -117,7 +117,7 @@ We can do the same with the `for` loop using even fewer code schematics. For exa
 
 We can also use the `while` loop to iterate through a list. For example,
 
-```blade-repl
+```zuri-repl
 %> users = ['Odin', 'Parker', 'Kent']
 %> var i = 0
 %> while i < users.length() {
@@ -139,7 +139,7 @@ Lists support methods operations too. Here are a list of all the methods support
     
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> ['A', 'B', 'C'].length()
   3
   ```
@@ -151,7 +151,7 @@ Lists support methods operations too. Here are a list of all the methods support
     
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = [1,2,3]
   %> a.append(4)
   %> a
@@ -165,7 +165,7 @@ Lists support methods operations too. Here are a list of all the methods support
     
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = [1,2,3,4,5]
   %> a
   [1, 2, 3, 4, 5]
@@ -182,7 +182,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = [1, 2, 3]
   %> var b = a.clone()
   %> a.append(4)
@@ -199,7 +199,7 @@ Lists support methods operations too. Here are a list of all the methods support
     
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> [1, 2, 1, 3, 2, 1, 1].count(1)
   4
   ```
@@ -212,7 +212,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = [1, 2, 3]
   %> var b = [4, 5, 6]
   %> a.extend(b)
@@ -230,7 +230,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> [1,2].index_of(3)
   -1
   %> [4,5,6,5].index_of(5)
@@ -251,7 +251,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = [1,2,3]
   %> a.insert(4, 0)
   %> a
@@ -274,7 +274,7 @@ Lists support methods operations too. Here are a list of all the methods support
     
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = [4, 5, 6]
   %> a.pop()
   6
@@ -297,7 +297,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
   %> a.shift()
   9
@@ -320,7 +320,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = [1, 2, 3, 4, 5]
   %> a.remove_at(3)
   4
@@ -343,7 +343,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = ['Kirk', 'Tasha', 'Emily', 'Kirk']
   %> a.remove('Kirk')
   %> a
@@ -359,7 +359,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = ['apple', 'mango', 'banana', 'orange', 'peach']
   %> a.reverse()
   [peach, orange, banana, mango, apple]
@@ -381,7 +381,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a  = ['A', 5, false, nil, [21, 13, 46]]
   %> a.sort()
   %> a
@@ -400,7 +400,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %>  ['dog', 'cat', 'wolf', 'tiger'].contains('cat')
   true
   %>  ['dog', 'cat', 'wolf', 'tiger'].contains('giraffe')
@@ -416,7 +416,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   %> a.delete(3, 6)
   4
@@ -435,7 +435,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> ['c', 'd', 'a', 'b'].first()
   'c'
   ```
@@ -447,7 +447,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> ['c', 'd', 'a', 'b'].last()
   'b'
   ```
@@ -459,7 +459,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> [1, 2].is_empty()
   false
   %> [].is_empty()
@@ -474,7 +474,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
   %> a.take(4)
   [10, 11, 12, 13]
@@ -493,7 +493,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> [13, 14, 15, 16].get(1)
   14
   %> [13, 14, 15, 16].get(6)
@@ -509,7 +509,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> [21, nil, 14, 'age', nil, nil, [], 11].compact()
   [21, 14, age, [], 11]
   ```
@@ -521,7 +521,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> [1, 1, 3, 5].unique()
   [1, 3, 5]
   ```
@@ -538,7 +538,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var a = [4, 5, 6]
   %> var b = [7, 8, 9]
   %> [1, 2, 3].zip(a, b)
@@ -563,7 +563,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> [1, 2].zip_from([[3, 4]])
   [[1, 3], [2, 4]]
   ```
@@ -575,7 +575,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> ['English', 'French', 'Spanish'].to_dict()
   {0: English, 1: French, 2: Spanish}
   ```
@@ -587,7 +587,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> echo ['apple', 'mango', 'orange'].each(@{
   ..   echo 'A list iteration'
   .. })
@@ -602,7 +602,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var fruits = ['apple', 'mango', 'orange']
   %> 
   %> fruits.each(@(fruit){
@@ -618,7 +618,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> fruits.each(@(fruit, index){
   ..   echo '${fruit} is in the list at index ${index}'
   .. })
@@ -640,7 +640,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var roots = [3, 9, 12]
   %> 
   %> echo roots.map(@(root) {
@@ -664,7 +664,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> # remove all even numbers
   %> echo [1, 2, 3, 4, 5, 6].filter(@(x) { 
   ..   return x % 2 != 0 
@@ -674,7 +674,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   Below is an example that filters a list of number and returns only the prime numbers:
 
-  ```blade-repl
+  ```zuri-repl
   %> var list = [
   ..   -3, -2, -1, 0, 1, 2, 3, 4, 5, 
   ..   6, 7, 8, 9, 10, 11, 12, 13
@@ -705,7 +705,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> # checks to see if the list contains an odd number
   %> echo [1, 2, 3, 4, 5].some(@(x) { 
   ..   return x % 2 != 0 
@@ -724,7 +724,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> # checks to see if all the list are odd numbers
   %> echo [1, 2, 3, 4, 5].every(@(x) { 
   ..   return x % 2 != 0 
@@ -759,7 +759,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   For example:
 
-  ```blade-repl
+  ```zuri-repl
   %> var list = [1, 2, 3, 4]
   %> 
   %> var sum = list.reduce(@(initial_value, current_value) {
@@ -772,7 +772,7 @@ Lists support methods operations too. Here are a list of all the methods support
 
   The following example illustrates how the `reduce()` method works in the abscence of an initial value.
 
-  ```blade-repl
+  ```zuri-repl
   %> var list = [15, 16, 17, 18, 19]
   %> 
   %> def reducer(initial_value, current_value, index) {

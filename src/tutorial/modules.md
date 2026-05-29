@@ -1,13 +1,13 @@
 # Modules and Packages
 
-A `module` is any Blade script file that ends with the `.b` extension. Remember we noted earlier in this tutorial that Blade 
-scripts do not require any extension, but a Blade script with a `.b` extension in Blade's world is a `Module`.
+A `module` is any Zuri script file that ends with the `.b` extension. Remember we noted earlier in this tutorial that Zuri 
+scripts do not require any extension, but a Zuri script with a `.b` extension in Zuri's world is a `Module`.
 
-A `package` is a collection of Blade modules grouped together into the same directory for ease of reuse and import. However, 
-you should note that there are requirements for converting grouped modules into a package. For all Blade cares, they could as 
+A `package` is a collection of Zuri modules grouped together into the same directory for ease of reuse and import. However, 
+you should note that there are requirements for converting grouped modules into a package. For all Zuri cares, they could as 
 well just be multiple modules stored somewhere.
 
-So far in this tutorial, whenever we talked about putting Blade codes into a file and running it, we've been talking about 
+So far in this tutorial, whenever we talked about putting Zuri codes into a file and running it, we've been talking about 
 a module.
 
 ## Reference
@@ -42,8 +42,8 @@ my_package
 
 You can add as many modules into your package as you need, but the `index.b` module is **required** for a valid package.
 
-> **_@note:_** The Blade runtime does not make a distinction between the two and calls them all `module` because ideally, a package 
-> is a "super module" &mdash; that name is allowed in the Blade world.
+> **_@note:_** The Zuri runtime does not make a distinction between the two and calls them all `module` because ideally, a package 
+> is a "super module" &mdash; that name is allowed in the Zuri world.
 
 
 > The package `index.b` file is where you define what is exported from your package as only the objects in visible in the 
@@ -52,12 +52,12 @@ You can add as many modules into your package as you need, but the `index.b` mod
 
 ## Importing Modules and Packages
 
-To import a module or package in Blade, we use an `import` statement (which is essentially the keyword `import` followed by 
+To import a module or package in Zuri, we use an `import` statement (which is essentially the keyword `import` followed by 
 the name of the nmodule we want to import).
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> import http  # importing the built-in http package
 ```
 
@@ -66,7 +66,7 @@ package/module with the `.` separator (instead of the native `/` or `\` used byb
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> import http.status
 %> status.OK
 200
@@ -85,19 +85,19 @@ optional `as` keyword that allows you to rename the imported module/package.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> import math as m
 %> m.factorial(50)
 3.041409320171338e+64
 %> m
-<module m at /blade/libs/math.b>
+<module m at /zuri/libs/math.b>
 %> math
 Unhandled Exception: 'math' is undefined in this scope
   StackTrace:
     <repl>:1 -> @.script()
 ```
 
-In the above example, the `math` variable wasn't defined because we asked Blade to name it `m` instead. So it's a runtime 
+In the above example, the `math` variable wasn't defined because we asked Zuri to name it `m` instead. So it's a runtime 
 error to try and access it.
 
 
@@ -105,7 +105,7 @@ error to try and access it.
 
 Take a look at the following directory structure, let's say you are in the file `module.b` and want to import the module 
 `another_module.b` or `sub_module.b`, if you try to import it directly, you'll get a module not found error because by 
-default, Blade attempts to import modules and packages that can be found in `%BLADE_INSTALL_ROOT%/libs`. 
+default, Zuri attempts to import modules and packages that can be found in `%BLADE_INSTALL_ROOT%/libs`. 
 
 ```
 my_package
@@ -122,31 +122,31 @@ importing script or a `..` if it is in a parent path.
 
 To import `another_module.b` from `module.b`,
 
-```blade-repl
+```zuri-repl
 %> import .another_module
 ```
 
 And to import `sub_module.b` from `module.b`,
 
-```blade-repl
+```zuri-repl
 %> import ..module
 ```
 
-Blade allows multiple `..` in a relative import path and simply translates them to a `../` or `..\` depending on the 
+Zuri allows multiple `..` in a relative import path and simply translates them to a `../` or `..\` depending on the 
 operating system.
 
-```blade-repl
+```zuri-repl
 %> import ..package..root_package..module
 ```
 
 
 ## Selective Import
 
-Sometimes, we don't want to import an entire module but rather individual objects from the module. To do this in Blade, 
+Sometimes, we don't want to import an entire module but rather individual objects from the module. To do this in Zuri, 
 there is the selective import statement. For example, to import the `md5()` function from the `hash` module, we can do 
 the following.
 
-```blade-repl
+```zuri-repl
 %> import hash { md5 }
 %> md5('hello, world')
 'e4d7f1b4ed2e42d15898f4b27b019da4'
@@ -156,7 +156,7 @@ You can specify more than one object for selective importation by simply separat
 comma. For example, to import the `crc32()` function and the md5 function at the same time from the hash library, the 
 import statement will look like the following:
 
-```blade-repl
+```zuri-repl
 %> import hash { crc32, md5 }
 ```
 
@@ -164,7 +164,7 @@ Another form of the selective `import` statement imports _`all`_ objects from th
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> import math { * }
 %> cos(10)
 -0.8390715290764524
@@ -174,47 +174,47 @@ For example:
 
 ## First-Class Package Management
 
-For Blade, package management is such an important and integral part to software development 
+For Zuri, package management is such an important and integral part to software development 
 that we decided to add package management as a language feature by offering first-class 
 support fo it.
 
-Blade lets you download packages and libraries into your source code directory and
+Zuri lets you download packages and libraries into your source code directory and
 call it from your code as if it were a standard library. Making it available for all 
 applications and files that will be called from or created within that directory.
 
-For every directory where you call the `blade` command to run programs, Blade looks for the 
+For every directory where you call the `zuri` command to run programs, Zuri looks for the 
 following directory structure and marks all modules and packages in that directory as part 
 of the built-in library.
 
 ```sh
-.blade
+.zuri
 |__ libs
 |____ ...
 |__ bin
 |____ ...
 ```
 
-Blade modules and packages in `.blade/libs` will be importable like a standard library 
-package/module, while `C` extensions found in the `.blade/bin` directory will be loaded 
-when Blade starts up. If a module/package is a mixture of `C` extensions and standard 
-Blade module/package, such module or package should be added to the `.blade/libs` directory 
-while the object file of the `C` extension should go into `.blade/bin`.
+Zuri modules and packages in `.zuri/libs` will be importable like a standard library 
+package/module, while `C` extensions found in the `.zuri/bin` directory will be loaded 
+when Zuri starts up. If a module/package is a mixture of `C` extensions and standard 
+Zuri module/package, such module or package should be added to the `.zuri/libs` directory 
+while the object file of the `C` extension should go into `.zuri/bin`.
 
 > It is important to note that modules and libraries having a conflicting name with a 
 > standard library will take precedence and will be loaded instead of the standard library.
 > This is not a drawback in anyway. Rather, it provides the user with the choice of 
 > overriding any of the standard libraries with any preferred alternative.
 
-For example, create the directory `.blade/libs` in your current directory and create a 
+For example, create the directory `.zuri/libs` in your current directory and create a 
 file `sample.b` in that directory. Paste the following code into it.
 
-```blade
+```zuri
 var version = '1.0.0'
 ```
 
 Now create a new file `test.b` in your current directory and save the following code in it:
 
-```blade
+```zuri
 import sample
 echo sample.version
 ```
@@ -222,7 +222,7 @@ echo sample.version
 Now run your file using:
 
 ```terminal
-$ blade sample.b
+$ zuri sample.b
 ```
 
 You should see `1.0.0` printed in the console. Voila!
@@ -233,13 +233,13 @@ You should see `1.0.0` printed in the console. Voila!
 
 ## Default Exports and Imports
 
-In Blade, modules and packages can export a default function that will be called if when a user 
+In Zuri, modules and packages can export a default function that will be called if when a user 
 instantiates a module or package as they would instantiate a function or class by simply declaring 
 a function whose name is the same as the module or package's.
 
 For example, a module `jump` can declare a function `jump()` in itself like this:
 
-```blade
+```zuri
 # jump.b
 def jump(x) {
   return x + 1
@@ -248,7 +248,7 @@ def jump(x) {
 
 A user of this module can call the `jump()` function without using `jump.jump(100)` by just calling the module itself directly.
 
-```blade
+```zuri
 # jump_test.b
 import jump
 
@@ -270,7 +270,7 @@ For example, if the `jump` module also declares the function `slowly()` to allow
 well as the `jump()` function for a default kind of jump, you can choose to not default to the default 
 jump but rather default to a slow jump if you wish.
 
-```blade
+```zuri
 # jump.b
 
 def jump(x) {
@@ -285,7 +285,7 @@ def slow(x) {
 When you import the `jump` module without renaming it, the `jump()` function will become available to 
 you via the module name directly. To change this behavior to use the `slow()`, we can import it like this:
 
-```blade
+```zuri
 # jump_test.b
 import jump as slow
 
@@ -297,10 +297,10 @@ echo slow(15)
 
 ## Module level variables
 
-Module level variables are special variables in Blade that are defined in every module but can only be 
+Module level variables are special variables in Zuri that are defined in every module but can only be 
 accessed in the same module (i.e. they cannot be referenced from an imported module).
 
-As of now, Blade defined two module level variables:
+As of now, Zuri defined two module level variables:
 
 - `__file__`: This is the full path to the module file.
 - `__root__`: This is the full path to the file serving as the entry point for the entire application.
@@ -314,7 +314,7 @@ any side-effects and allowing them to be run as applications on their own.
 
 The example below shows this strategy and its benefits.
 
-```blade
+```zuri
 # my_module.b
 
 def test_function() {
@@ -327,7 +327,7 @@ if __file__ == __root__ {
 ```
 
 If you were to `import my_module`, you'll notice that nothing will ever be printed to the console. 
-However, it you were to run `my_module.b` itself (e.g. `blade my_module.b`), then you'll see `4` printed 
+However, it you were to run `my_module.b` itself (e.g. `zuri my_module.b`), then you'll see `4` printed 
 to the console.
 
 

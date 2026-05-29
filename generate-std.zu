@@ -42,9 +42,9 @@ class ParsedClass {
   var doc = ''
 }
 
-def cite(str) {
+def cite(str, module) {
   var indenting = []
-  return '\n'.join(str.trim().split('/\n/', false).map(@(line) {
+  var cite_root = '\n'.join(str.trim().split('/\n/', false).map(@(line) {
     var has_indent_level = line.trim().match('/^>{3,}/')
     var has_outdent_level = line.trim().match('/^<{3,}/')
     if has_indent_level {
@@ -64,14 +64,50 @@ def cite(str) {
 
     return line
   }))
+
+  var local_refs = cite_root.matches('/(?<!(\\\\))\[\[([^ \]]+)\]\]/im')
+  if local_refs {
+    for local_ref in local_refs[0] {
+      var ref_name = local_ref[2,-2].trim()
+      if ref_name.starts_with('${module}.') {
+        var ref_value = ref_name[module.length() + 1,]
+        if ref_value.ends_with('()') {
+          ref_name = ref_name[,-2]
+        }
+
+        cite_root = cite_root.replace(local_ref, '[${ref_value}](#${ref_name})', false)
+      } else if(ref_name.starts_with('#')) {
+        var ref_value = ref_name.split('.').last()
+        if ref_value.ends_with('()') {
+          ref_name = ref_name[,-2]
+        }
+
+        cite_root = cite_root.replace(local_ref, '[${ref_value}](#${ref_name})', false)
+      } else {
+        var ref_root = ref_name.split('.').first()
+        var ref_value = ref_name
+        if ref_value.ends_with('()') {
+          ref_name = ref_name[,-2]
+        }
+
+        cite_root = cite_root.replace(local_ref, '[${ref_value}](/standard/${ref_root}#${ref_name})', false)
+      }
+    }
+  }
+  
+  # TODO: handle non-local reference processing here...
+
+  return cite_root
 }
 
-def get_class_docs(module, klass) {
-  var result = "### _class_ ${klass.name.replace("_", "\_")}"
+var ident_level = 0
+
+def get_class_docs(module, klass, depth) {
+  var class_name = klass.name.replace("_", "\_")
+  var result = "_class_ **${class_name}**"
   if klass.superclass and !klass.superclass.starts_with('_') {
     result += ' < _${klass.superclass.replace("_", "\_")}_'
   }
-  result += '\n\n'
 
   var is_printable = klass.doc.match('/^@printable\s*$/m')
   var is_serializable = klass.doc.match('/^@serializable\s*$/m')
@@ -81,61 +117,72 @@ def get_class_docs(module, klass) {
   # skip classes marked as internal in the documentation.
   if is_internal return ''
 
-  var doc = klass.doc.replace('/^@(printable|serializable|internal|iterable|number).*\\n?/m', '')
+  var doc = klass.doc.replace('/^@(printable|serializable|internal|iterable|number).*\\n?/m', '').trim()
 
-  result += '${doc}\n\n'
+  
+  result += ' {#${module}.${klass.name} .class}\n\n'
+  if doc.trim() {
+    result += prefix(depth) + ': '
+    result += ident(cite(doc, module), depth) + '\n\n'
+  }
 
   if is_printable or is_serializable or is_iterable {
-    result += '#### Properties\n\n'
-    if is_printable result += ' - __@printable__\n'
-    if is_serializable result += ' - __@serializable__\n'
-    if is_iterable result += ' - __@iterable__\n'
-    result += '\n'
+    var tmp_result = []
+    if is_printable tmp_result.append('__@printable__')
+    if is_serializable tmp_result.append('__@serializable__')
+    if is_iterable tmp_result.append('__@iterable__')
+    result += prefix(depth + 2) + ', '.join(tmp_result) + '\n'
+    result += prefix(depth + 2) + '{.class-props}\n\n'
   }
 
   if klass.properties {
-    var props = []
+    if klass.properties {
+      for index, prop in klass.properties {
+        if prop.doc {
+          var doc_line = get_var_docs(module, '${module}.${class_name}', depth + 1, prop, prop.is_static, true)
 
-    for prop in klass.properties {
-      if prop.doc {
-        props.append(get_var_docs(0, prop, prop.is_static))
+          if doc {
+            result += doc_line + '\n'
+          } else if index == 0 {
+            result += doc_line.trim() + '\n'
+          } else {
+            result += doc_line + '\n'
+          }
+        }
       }
-    }
-
-
-    if props {
-      result += '#### Fields\n\n'
-      result += '\n'.join(props).trim() + '\n\n'
+      result += '\n'
     }
   }
 
   if klass.methods {
-    var methods = []
-
-    for method in klass.methods {
+    for index, method in klass.methods {
       if method.doc {
-        methods.append(get_function_docs(0, method, method.is_static))
-      }
-    }
+        var doc_line = get_function_docs(module, '${module}.${class_name}', depth + 1, method, method.is_static, true)
 
-    if methods {
-      result += '#### Methods\n\n'
-      result += ''.join(methods).trim() + '\n\n'
+        if doc {
+          result += doc_line + '\n'
+        } else if index == 0 and !klass.properties {
+          result += doc_line.trim() + '\n'
+        } else {
+          result += doc_line + '\n'
+        }
+      }
     }
   }
 
   return result
 }
 
-def get_function_docs(depth, function, is_static) {
+def get_function_docs(module, root_name, depth, function, is_static, from_class) {
 
-  var decl_line = function.name.replace("_", "\_") + '(' + ', '.join(function.params) + ')'
+  var function_name = function.name.replace("_", "\_")
+  var decl_line = (is_static ? (!from_class ? '_static_ ' : '_static_ .') : (from_class ? '.' : '_${root_name}_.')) + '${function_name}' + '(' + ', '.join(function.params.map(@(x){ return '_${x}_' })) + ')'
   
-  var param_lines = function.doc.matches('/^@params?[ ]+(?P<type>[^ :\\n]+)([ ]+(?P<name>[^ :\\n]+)([ ]*(?P<description>[^\\n]*))?)?$/m')
+  var param_lines = function.doc.matches('/^@params?[ ]+(?P<type>[^ :\\n]+)([ ]+(?P<name>[^ :\\n]+)([ :\-]*(?P<description>[^\\n]*))?)?$/m')
   var return_line = function.doc.match('/^@returns?[ ]+(?P<type>.*?)$/m')
   var example_line = function.doc.match('/^@example[ ]+(?P<sample>.*)$/m')
   var note_lines = function.doc.matches('/^@note[ ]+(?P<note>.*)$/m')
-  var throw_lines = function.doc.matches('/^@raises?[ ]+(?P<type>[^ ]+)[ ]+(?P<exception>.*)$/m')
+  var throw_lines = function.doc.matches('/^@raises?[ ]+(?P<type>[^ \\n]+)([ ]+(?P<exception>[^\\n]*))?$/m')
 
   var is_constructor = function.doc.match('/^@constructor\s*$/m')
   var is_default = function.doc.match('/^@default\s*$/m')
@@ -145,69 +192,91 @@ def get_function_docs(depth, function, is_static) {
   # skip functions marked as internal in the documentation.
   if is_internal return ''
 
-  var doc = function.doc.replace('/^@(params?|returns?|example|note|constructor|default|internal|raises?).*$/m', '').trim()
+  var doc = function.doc.replace('/^@(params?|returns?|example|note|constructor|default|internal|raises?|deprecated).*$/m', '').trim()
   
-  var result = '#### ${decl_line}'
+  var result = prefix(depth) + decl_line
   if is_constructor {
-    result += ' &#8674; Constructor'
+    result += ' &#x279D; _Constructor_'
   } else if is_default {
-    result += ' &#8674; Exported'
+    result += ' &#x279D; _Exported_'
   }
 
-  result += '\n\n'
+  if !doc {
+    if is_constructor {
+      doc = '${root_name} constructor\n\n'
+    } else if is_default {
+      doc = '${root_name} default export function\n\n'
+    }
+  }
+
+  result += ' {#${root_name}.${function.name}}\n\n'
+  result += prefix(depth) + ': '
+  if doc {
+    result += ident(cite(doc, module), depth) + '\n\n'
+  }
+
+  if note_lines {
+    result += (doc ? prefix(depth + 1) : '') + '> **@notes**:\n'
+    result += prefix(depth + 1) + '> \n'
+    iter var i = 0; i < note_lines[0].length(); i++ {
+      result += prefix(depth + 1) + '> - ${ident(cite(note_lines.note[i], module), depth + 2)}\n'
+    }
+  }
 
   if deprecated {
-    result += '> @deprecated: '
+    result += (doc or note_lines ? prefix(depth + 1) : '') + '- **@depreciated**: '
     if deprecated.info {
-      result += deprecated.info
+      result += cite(deprecated.info, module)
     } else {
       result += 'This function has been depreciated'
     }
-    result += '\n\n'
+    result += '\n'
   }
 
-  result += '${doc}\n\n'
-
   if param_lines {
-    result += '##### Parameters\n\n'
+    result += (doc or note_lines or deprecated ? prefix(depth + 1) : '') + '- **@params**:\n'
 
     iter var i = 0; i < param_lines[0].length(); i++ {
-      result += '-'
-      if param_lines.type[i] result += ' _${param_lines.type[i]}_'
+      result += prefix(depth + 2) + '-'
+      if param_lines.type[i] result += ' _${cite(param_lines.type[i], module)}_'
       if param_lines.name[i] result += ' **${param_lines.name[i]}**'
-      if param_lines.description[i] result += ': ${param_lines.description[i]}'
+      if param_lines.description[i] result += ' ${ident(cite(param_lines.description[i], module), depth + 2)}'
       result += '\n'
     }
 
     result += '\n'
+    result += prefix(depth + 1) + '{.params}'
+    result += '\n'
   }
 
   if return_line {
-    result += '##### Returns\n\n'
-    result +=  '- ${return_line.type}\n'
-  }
-
-  if note_lines {
-    result += '##### Notes\n\n'
-
-    iter var i = 0; i < note_lines[0].length(); i++ {
-      result += '- ${note_lines.note[i]}\n'
-    }
+    result += (doc or note_lines or deprecated or param_lines ?
+        prefix(depth + 1) : '') + '- **@returns**: _${cite(return_line.type, module)}_\n'
+    result += prefix(depth + 1) + '{.returns}'
+    result += '\n'
   }
 
   if throw_lines {
-    result += '##### Raises Exception\n\n'
+    result += (doc or note_lines or deprecated or param_lines or return_line ?
+      prefix(depth + 1) : '') + '- **@raises**:\n'
 
     iter var i = 0; i < throw_lines[0].length(); i++ {
-      result += '- ${throw_lines.type[i]}\n'
+      result += prefix(depth + 2) + '- ${cite(throw_lines.type[i], module)}\n'
     }
+    result += prefix(depth + 1) + '{.raises}'
+    result += '\n'
   }
 
   return result + '\n'
 }
 
-def get_var_docs(depth, var_data, is_static) {
+def get_var_docs(module, root_name, depth, var_data, is_static, from_class) {
   var doc = var_data.doc, type = '', readonly = false
+
+  var is_internal = doc.match('/^@internal\s*$/m')
+
+  # skip variables marked as internal in the documentation.
+  if is_internal return ''
 
   var type_declared = doc.match('/^@type (\{?)(?P<type>[^ }\\n]+)\1/m')
   if type_declared {
@@ -221,18 +290,29 @@ def get_var_docs(depth, var_data, is_static) {
     doc = (doc + '\n').replace('/^@readonly[^\\n]*\\n?/m', '\n').trim()
   }
 
-  doc = doc.replace('/^@(readonly|type|static|note).*$/', '')
+  doc = doc.replace('/^@(readonly|type|static|note).*$/', '').trim()
 
-  var line = (' ' * depth) + '- **${var_data.name.replace("_", "\_")}**'
+  var line = prefix(depth) + (is_static ? '_static_ ' : (!from_class ? '_${root_name}_.' : '')) + '**${from_class ? "." : ""}${var_data.name.replace("_", "\_")}**'
   if is_static or readonly or type 
-    line += ' &#8674;'
-  if is_static line += ' _static_'
+    line += ' &#x279D;'
   if readonly line += ' _readonly_'
-  if type line += ' _${type}_'
-  line += ':\n\n  ${cite(doc)}\n'
+  if type line += ' _${cite(type, module)}_'
+
+  line += ' {#${root_name}.${var_data.name}}'
+
+  line += '\n' + prefix(depth) + ': ' 
+  line += ident(cite(doc, module), depth)
 
   return line
 }
+
+def prefix(depth) {
+  return ('  ' * depth)
+}
+
+def ident(data, level) {
+  return ('\n' + prefix(level + 1)).join(data.split('\n')) + '\n'
+} 
 
 def create_module_doc(sitemap, base_endpoint, module_name, docs) {
 
@@ -251,7 +331,7 @@ def create_module_doc(sitemap, base_endpoint, module_name, docs) {
   var content = '${module_description}\n\n'
 
   if docs.variables {
-    content += '## Properties\n\n'
+    content += '## Fields\n\n'
     content += '\n'.join(docs.variables.compact()) + '\n\n'
   }
 
@@ -280,21 +360,21 @@ def get_docs(module, parse_list) {
   for i, parse_item in parse_list {
     # we are only interested in declarations
     if instance_of(parse_item, ast.DocDefn) and parse_item.file and
-      (parse_item.file.ends_with('/index.b') or parse_item.file.ends_with('/${module}.b')) and 
+      (parse_item.file.ends_with('/index.zu') or parse_item.file.ends_with('/${module}.zu')) and 
       !result.doc {
-      result.doc = parse_item.data
+      result.doc = cite(parse_item.data, module)
     } else if instance_of(parse_item, ast.Decl) {
 
       if parse_item.doc {
         if instance_of(parse_item, ast.VarDecl) {
           if !parse_item.name.starts_with('_') and parse_item.doc
-            result.variables.append(get_var_docs(0, parse_item))
+            result.variables.append(get_var_docs(module, module, 0, parse_item))
         } else if instance_of(parse_item, ast.FunctionDecl) {
           if !parse_item.name.starts_with('_') and !parse_item.name.starts_with('@') and parse_item.doc
-            result.functions.append(get_function_docs(0, parse_item))
+            result.functions.append(get_function_docs(module, module, 0, parse_item))
         } else if instance_of(parse_item, ast.ClassDecl) { 
           if !parse_item.name.starts_with('_') and parse_item.doc
-            result.classes.append(get_class_docs(module, parse_item))
+            result.classes.append(get_class_docs(module, parse_item, 0))
         }
       }
     }
@@ -320,7 +400,7 @@ def run(root_dir, submodule, max_nesting) {
     var index_file = os.join_paths(os.dir_name(__file__), 'src', 'standard', 'index.md')
     var index_file_content = '# Standard Library\n\n'+
       'This section contains the documentation for the '+
-      'Blade standard library.'
+      'Zuri standard library.'
 
     if !sitemap.contains(base_endpoint) {
       sitemap[base_endpoint] = {
@@ -342,13 +422,13 @@ def run(root_dir, submodule, max_nesting) {
     sources.sort()
   
     if submodule {
-      inform('Started generating Blade standard library documentation for module ${submodule}...')
+      inform('Started generating Zuri standard library documentation for module ${submodule}...')
     } else {
-      inform('Started generating Blade standard library documentation...')
+      inform('Started generating Zuri standard library documentation...')
     }
   
     iter var i = 0; i < sources.length(); i++ {
-      var source = sources[i], module_name = source.replace('/\\.b/', '')
+      var source = sources[i], module_name = source.replace('/\\.zu/', '')
   
       # ignore the other modules if single module is selected.
       if submodule and !source.starts_with(submodule)
@@ -360,7 +440,7 @@ def run(root_dir, submodule, max_nesting) {
   
       var working_source = '${root_dir.rtrim("/")}/${source}'
   
-      if source.ends_with('.b') and !source.starts_with('_') { # it's a file
+      if source.ends_with('.zu') and !source.starts_with('_') { # it's a file
         process_line(working_source)
   
         var parse_list = ast.parse(file(working_source).read(), working_source)
@@ -379,7 +459,7 @@ def run(root_dir, submodule, max_nesting) {
                 if !f.starts_with('.') and !f.starts_with('_') {
                   var ff = '${depth_root.rtrim("/")}/${f}'
                   
-                  if !os.is_dir(ff) and ff.ends_with('.b') {
+                  if !os.is_dir(ff) and ff.ends_with('.zu') {
                     process_line(ff)
                     parsed.append(ast.parse(file(ff).read(), ff))
                   } else if os.is_dir(ff) and (nested_times < max_nesting or max_nesting == -1) {
@@ -409,13 +489,13 @@ def run(root_dir, submodule, max_nesting) {
   
     file(sitemap_file, 'w').write(json.encode(sitemap, false))
   
-    echo success('- Successfully generated Blade standard library documentation!', true)
+    echo success('- Successfully generated Zuri standard library documentation!', true)
   }
 }
 
 
-var parser = args.Parser('generate-std.b')
-parser.add_option('root', 'The root to your Blade installation.', {
+var parser = args.Parser('generate-std.zu')
+parser.add_option('root', 'The root to your Zuri installation.', {
   short_name: 'r',
   type: args.STRING,
   value: '',

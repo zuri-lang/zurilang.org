@@ -1,5 +1,5 @@
 # ssl
-Provides OpenSSL bindings for Blade.
+Provides OpenSSL bindings for Zuri.
 
 ## Fields
 

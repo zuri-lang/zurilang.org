@@ -51,7 +51,7 @@ _math_.factorial(_n_) {#math.factorial}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> import math
   %> math.factorial(60)
   8.320987112741392e+81
@@ -70,7 +70,7 @@ _math_.sin(_n_) {#math.sin}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.sin(46)
   0.9017883476488092
   ```
@@ -92,7 +92,7 @@ _math_.cos(_n_) {#math.cos}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.cos(93)
   0.3174287015197017
   ```
@@ -114,7 +114,7 @@ _math_.tan(_n_) {#math.tan}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.tan(11.43)
   -2.155225644164932
   ```
@@ -135,7 +135,7 @@ _math_.sinh(_n_) {#math.sinh}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.sinh(1.4)
   1.904301501451534
   ```
@@ -156,7 +156,7 @@ _math_.cosh(_n_) {#math.cosh}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.cosh(1.91)
   3.450584592563374
   ```
@@ -177,7 +177,7 @@ _math_.tanh(_n_) {#math.tanh}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.tanh(2.19)
   0.975
   
@@ -203,7 +203,7 @@ _math_.asin(_n_) {#math.asin}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.asin(0.123)
   0.123312275191872
   ```
@@ -226,7 +226,7 @@ _math_.acos(_n_) {#math.acos}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.acos(0.471)
   1.080372275769021
   ```
@@ -247,7 +247,7 @@ _math_.atan(_n_) {#math.atan}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.atan(math.Infinity)
   1.570796326794897
   ```
@@ -270,7 +270,7 @@ _math_.atan2(_x_, _y_) {#math.atan2}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.atan2(math.Infinity, -math.Infinity)
   2.356194490192345
   %> math.atan2(1, 2)
@@ -299,7 +299,7 @@ _math_.asinh(_n_) {#math.asinh}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.asinh(3.42)
   1.943507380182802
   ```
@@ -320,7 +320,7 @@ _math_.acosh(_n_) {#math.acosh}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.acosh(1.21)
   0.637237379754108
   ```
@@ -341,7 +341,7 @@ _math_.atanh(_n_) {#math.atanh}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.atanh(0.11)
   0.1104469157900971
   ```
@@ -364,7 +364,7 @@ _math_.exp(_n_) {#math.exp}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.exp(4)
   54.59815003314424
   ```
@@ -386,7 +386,7 @@ _math_.expm1(_n_) {#math.expm1}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.expm1(1)
   1.718281828459045
   ```
@@ -407,7 +407,7 @@ _math_.ceil(_n_) {#math.ceil}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.ceil(1.65)
   2
   %> math.ceil(1.01)
@@ -430,7 +430,7 @@ _math_.round(_n_) {#math.round}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.round(103.51)
   104
   %> math.round(103.49)
@@ -453,7 +453,7 @@ _math_.log(_n_) {#math.log}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.log(45)
   3.80666248977032
   ```
@@ -481,7 +481,7 @@ _math_.log2(_n_) {#math.log2}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.log2(45)
   5.491853096329675
   ```
@@ -503,7 +503,7 @@ _math_.log10(_n_) {#math.log10}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.log10(45)
   1.653212513775344
   ```
@@ -541,7 +541,7 @@ _math_.log1p(_n_) {#math.log1p}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.log1p(45)
   3.828641396489095
   ```
@@ -562,7 +562,7 @@ _math_.cbrt(_n_) {#math.cbrt}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.cbrt(64)
   4
   ```
@@ -585,7 +585,7 @@ _math_.sign(_n_) {#math.sign}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.sign(10)
   1
   %> math.sign(-20)
@@ -613,7 +613,7 @@ _math_.floor(_n_) {#math.floor}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.floor(1.92)
   1
   ```
@@ -651,7 +651,7 @@ _math_.is\_inf(_n_) {#math.is_inf}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.is_inf(math.Infinity)
   true
   %> math.is_inf(-math.Infinity)
@@ -676,7 +676,7 @@ _math_.is\_finite(_n_) {#math.is_finite}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.is_finite(0)
   true
   %> math.is_finite(math.NaN)
@@ -701,7 +701,7 @@ _math_.trunc(_n_) {#math.trunc}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.trunc(1.92)
   1
   %> math.trunc(1.0)
@@ -728,7 +728,7 @@ _math_.sqrt(_n_) {#math.sqrt}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.sqrt(100)
   10
   ```
@@ -751,7 +751,7 @@ _math_.sum(_arg_) {#math.sum}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.sum([1, 2, [3, 4, [5, 6]]])
   21
   ```
@@ -774,7 +774,7 @@ _math_.product(_arg_) {#math.product}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.product([1, 2, [3, 4, [5, 6]]])
   720
   ```
@@ -796,7 +796,7 @@ _math_.fraction(_n_) {#math.fraction}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> math.fraction(1.92)
   92
   ```

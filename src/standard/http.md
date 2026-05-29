@@ -8,7 +8,7 @@ routing.
 
 The example below shows making a GET request to fetch a webpage.
 
-```blade
+```zuri
 import http
 
 echo http.get('http://example.com')
@@ -22,7 +22,7 @@ For a more controlled HTTP request, you should use the HttpClient class.
 Below is an example of such implementation that sets the timeout for 
 receiving response back from the server to 30 seconds.
 
-```blade
+```zuri
 import http
 
 var client = http.HttpClient()
@@ -35,7 +35,7 @@ Creating a server with the `http` module is also a breeze.
 The example below shows an implementation of an HTTP API server listening on port 
 3000 and simple returns the JSON of the request object itself.
 
-```blade
+```zuri
 import http
 import json
 
@@ -51,7 +51,7 @@ a TLS/HTTPS server with few modifications.
 
 The following code creates a TLS version of the same server we created above.
 
-```blade
+```zuri
 import http
 import json
 
@@ -291,7 +291,7 @@ _http_.set\_headers(_headers_) {#http.set_headers}
   This function returns HttpClient in order to allow for idiomatic 
   chaining such as:
   
-  ```blade
+  ```zuri
   import http
   echo http.set_headers({
     'Authorization': 'Bearer SomeAPIBearerToken',
@@ -902,7 +902,7 @@ _class_ **HttpClient** {#http.HttpClient .class}
 
   **.user\_agent** &#x279D; _string_ {#http.HttpClient.user_agent}
   : The user agent of the client used to make the request. 
-    Default value &mdash; `Blade HTTP Client/1.0`.
+    Default value &mdash; `Zuri HTTP Client/1.0`.
 
   **.follow\_redirect** &#x279D; _bool_ {#http.HttpClient.follow_redirect}
   : Indicates if we receive a redirect from a server, this flag tells us whether 
@@ -1282,9 +1282,9 @@ _class_ **HttpResponse** {#http.HttpResponse .class}
 
   .render(_path_, _variables_) {#http.HttpResponse.render}
 
-  : A shorthand method that renders a template using  Blade's template
+  : A shorthand method that renders a template using  Zuri's template
     module default settings.
-    Follow the [template module documentation](https://bladelang.org/standard/template)
+    Follow the [template module documentation](https://zurilang.org/standard/template)
     to know more about setting up your project to render from templates.
     >*NOTE**
      >

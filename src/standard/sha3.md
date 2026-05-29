@@ -8,7 +8,7 @@ functions to compute SHA3/Keccak family of functions.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> import sha3
 %> 
 %> sha3.sha3_256('hello')
@@ -20,7 +20,7 @@ to your preference.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> import sha3
 %> 
 %> var h = sha3.Keccak(256, 1)

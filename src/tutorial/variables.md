@@ -16,13 +16,13 @@ with values within a codespace that can be used to refer to the said value latte
 
 ## Declaraing Variables
 
-In Blade, the process of declaring a variable and assigning to a value to it are two distinct and 
+In Zuri, the process of declaring a variable and assigning to a value to it are two distinct and 
 non-dependent actions. To declare a variable, use the `var` keyword. Any variable declared without a 
 value will automatically be assigned the value `nil`.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> var a 
 %> a
 ```
@@ -30,7 +30,7 @@ For example:
 To assign or reassign/overwrite the value of a declared variable, you can simply use the `=` operator. 
 For example,
 
-```blade-repl
+```zuri-repl
 %> a = 25
 %> a
 25
@@ -39,21 +39,21 @@ For example,
 'Hello, World'
 ```
 
-Due to the frequent need to declare and assign values to variables, Blade allows you to declare a variable
+Due to the frequent need to declare and assign values to variables, Zuri allows you to declare a variable
 and assign value to it using a continious statement as follows:
 
-```blade-repl
+```zuri-repl
 %> var a = 'Great!'
 %> a
 'Great!'
 ```
 
-Blade also allows chaining variable declarations as well as it's assignment form discussed just now using
+Zuri also allows chaining variable declarations as well as it's assignment form discussed just now using
 a comma (`,`) as a separator.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> var animal, food   # declaration without assignment
 %> animal
 %> food
@@ -71,7 +71,7 @@ Anything can be assigned to a value.
 
 ## Valid variable names
 
-A valid variable name in Blade follows the C convention. A variable name must start with either an ASCII alphabet (`A to Z` 
+A valid variable name in Zuri follows the C convention. A variable name must start with either an ASCII alphabet (`A to Z` 
 whether in the lower or upper case) or and underscore (`_`), followed by zero or more combinations of ASCII alphabets, numbers 
 or underscore.
 
@@ -83,7 +83,7 @@ For example:
 
 The following variable declaration is bound to fail as it makes use of a reserved word and will trigger a `SyntaxError`.
 
-```blade-repl
+```zuri-repl
 %> echo = 'Failure!'
 SyntaxError at '=': expected expression
   <repl>:1
@@ -91,9 +91,9 @@ SyntaxError at '=': expected expression
 
 ## Variable scopes
 
-Blade variables are scoped to their parent block and do not override or hide variables declared outside the given block. For example:
+Zuri variables are scoped to their parent block and do not override or hide variables declared outside the given block. For example:
 
-```blade-repl
+```zuri-repl
 %> var a = 200
 %> {
 ..   var a = 100
@@ -120,8 +120,8 @@ Scopes are in the following hierarchy in _descending_ order.
 
 ## Naming Convention
 
-While Blade as a language does not restrict the user to any particular naming convention, throughout
-this tutorial and the entire documentation, the following conventions will be adhered to. The Blade
+While Zuri as a language does not restrict the user to any particular naming convention, throughout
+this tutorial and the entire documentation, the following conventions will be adhered to. The Zuri
 community is adviced but not required to try to comply with the convention.
 
 > **_The convention stated below is subject to improvement and all suggestions are welcomed and 
@@ -146,13 +146,13 @@ community is adviced but not required to try to comply with the convention.
 
 ## Statements
 
-A statement is a unit of a code that expresses some actions to be carried out and programs are built on statements. In Blade, statements should be terminated with a new line or a semi-colon (`;`). Most of 
+A statement is a unit of a code that expresses some actions to be carried out and programs are built on statements. In Zuri, statements should be terminated with a new line or a semi-colon (`;`). Most of 
 our examples so far have used new lines and that's what we'll use for most of the documentation. But 
 you should know that statements can also be terminated by semicolons.
 
 For example, we can have multiple variable assignment on the same line as follows:
 
-```blade-repl
+```zuri-repl
 %> var a, b   # this statement is separated from the next one using a newline
 %> a = 20; b = 35  # two statements on a line separated using a semi-colon
 %> a; b

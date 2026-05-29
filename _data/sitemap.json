@@ -9,7 +9,7 @@
   }, 
   "/tutorial": {
     "source": "tutorial/index", 
-    "title": "Blade Tutorial", 
+    "title": "Zuri Tutorial", 
     "children": {
       "/tutorial/hello": {
         "source": "tutorial/hello", 

@@ -1,10 +1,10 @@
 # Decision Making
 
-Blade wouldn't be a complete usable language if all you can do is manipulating strings and numbers. 
-Blade let's you do more. Blade has powerful features to help you make decisions, control the flow 
+Zuri wouldn't be a complete usable language if all you can do is manipulating strings and numbers. 
+Zuri let's you do more. Zuri has powerful features to help you make decisions, control the flow 
 of executables and more like you'll expect in any programming language worth using at all.
 
-For this chapter, we'll be focusing on the tools Blade has in it's arsenal for making decisions.
+For this chapter, we'll be focusing on the tools Zuri has in it's arsenal for making decisions.
 
 ## Reference
 
@@ -19,11 +19,11 @@ For this chapter, we'll be focusing on the tools Blade has in it's arsenal for m
 
 From previous experience in other programming languages, the `if` statement is by far the most popular 
 and used control flow in any programming language. For anyone coming from lanaguages like Java or C++, 
-Blade's _if_ statement will be directly intuitive to you and maybe even more familiar to a Go developer.
+Zuri's _if_ statement will be directly intuitive to you and maybe even more familiar to a Go developer.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> var a = 25
 %> if a > 10 {
 ..   print('a is greater than 10')
@@ -31,7 +31,7 @@ For example:
 a is greater than 10
 ```
 
-> **Important:** In a Blade block, the last statement can ommit the newline before closing the block 
+> **Important:** In a Zuri block, the last statement can ommit the newline before closing the block 
 > with the right brace (`}`)
 
 Now, take a moment and consider the code above. For those familiar with Java, C++ or similar languages, 
@@ -40,7 +40,7 @@ round it's condition, but it can be used if desired for grouping.
 
 For example, we can rewrite the above _if_ statement as follows:
 
-```blade-repl
+```zuri-repl
 %> if (a > 10) {
 ..   print('a is greater than 10')
 .. }
@@ -53,7 +53,7 @@ the condition in the `if` statement is not true.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> var age = 93
 %> if age < 65 {
 ..   echo 'User is not retired'
@@ -65,7 +65,7 @@ For example:
 
 The `else` statement can have another `if` statement as it's own block. For example:
 
-```blade-repl
+```zuri-repl
 %> if a < 18 {
 ..   echo 'User is a child'
 .. } else if age > 65 {
@@ -81,14 +81,14 @@ you can ommit the braces (`{}`) completely**
  
 For example:
  
-```blade-repl
+```zuri-repl
 %> if age == 93 echo 'User is 93'
 'User is 93'
 ```
 
 Another example that explores using a semi-colon (`;`) as a statement terminator:
 
-```blade-repl
+```zuri-repl
 %> if age == 5 echo 'User is 5'; else echo 'User is 93'
 'User is 93'
 ```
@@ -96,7 +96,7 @@ Another example that explores using a semi-colon (`;`) as a statement terminator
 Multiple conditions can be evaluated together using `and` and `or` as applicable to the statement. 
 For example:
 
-```blade-repl
+```zuri-repl
 %> var a = 20
 %> if a > 5 and a <= 20 {
 ..   echo 'Both conditions are true'
@@ -119,7 +119,7 @@ The tenary (or conditional) operator like in most languages that supports it tak
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> 10 ? 'ok' : 'no'
 'ok'
 %> var a = 10 > 5 ? 21 : 19  # used to determine variable value
@@ -129,19 +129,19 @@ For example:
 
 ## using Statements
 
-The _using_ statement in Blade is akin to the _switch_ statement in C/C++ (or Java if you insist I 
+The _using_ statement in Zuri is akin to the _switch_ statement in C/C++ (or Java if you insist I 
 mention it). When there are two or more **_predefined_** options to react to or decide on, the 
 `using` statement offers superior speed when compared to multiple/nested _if_ blocks. The emphasis 
 here is on _predefined_. 
 
 `using` statements are simply lookup tables for a predefined set of options and code bound to each 
 option. Each option must be defined using the `when` keyword followed by the option value, then a 
-statement or block of code to execute. Blade will only execute a matching block or do nothing if no 
+statement or block of code to execute. Zuri will only execute a matching block or do nothing if no 
 match is found.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> var name = 'Larry'
 %> using name {
 ..   when 'James' echo 'My name is James'
@@ -153,7 +153,7 @@ For example:
 The values given to the `when` keyword must be constants, i.e. expressions such as `2 + 2` or using 
 a variable will raise a syntax error. For example:
 
-```blade-repl
+```zuri-repl
 %> using true {
 ..   when (2 * 5) echo 'Bug'
 .. }
@@ -166,7 +166,7 @@ SyntaxError at '}': expected expression
 For those coming from the Java or C++, take notice that there is no use of the `break` keyword. 
 In fact, it is a syntax error to use a break keyword here. For example,
 
-```blade-repl
+```zuri-repl
 %> using 1 {
 ..   when 1 break
 .. }
@@ -177,7 +177,7 @@ SyntaxError at 'break': 'break' can only be used in a loop
 The using statement also support a `default` case which will be executed if given whenever a match 
 could not be found. For example:
 
-```blade-repl
+```zuri-repl
 %> var a = 25 
 %> using a {
 ..   when true echo 'It\'s true'
@@ -189,7 +189,7 @@ could not be found. For example:
 
 To have more than one statement in the `when` option, simply use a block. For example:
 
-```blade-repl
+```zuri-repl
 %> var age = 30 
 %> using age {
 ..   when 25 {

@@ -1,11 +1,11 @@
 # ast
-Provides interface for parsing Blade code into Abstract Syntax Trees.
+Provides interface for parsing Zuri code into Abstract Syntax Trees.
 
 ## Functions
 
 _ast_.parse(_source_, _path_) {#ast.parse}
 
-: Parses a given source code and outputs Blade AST objects.
+: Parses a given source code and outputs Zuri AST objects.
 
 
   - **@params**:
@@ -91,7 +91,7 @@ _class_ **ParseResult** {#ast.ParseResult .class}
 
 _class_ **Scanner** {#ast.Scanner .class}
 
-: Blade source code scanner.
+: Zuri source code scanner.
 
 
     __@printable__
@@ -128,7 +128,7 @@ _class_ **Scanner** {#ast.Scanner .class}
 
 _class_ **Token** {#ast.Token .class}
 
-: Blade source code token.
+: Zuri source code token.
 
 
     __@printable__, __@serializable__
@@ -578,7 +578,7 @@ _class_ **DocDefn** < _Defn_ {#ast.DocDefn .class}
 
 _class_ **Parser** {#ast.Parser .class}
 
-: Parses raw Blade tokens and produces an Abstract Syntax Tree.
+: Parses raw Zuri tokens and produces an Abstract Syntax Tree.
 
 
     __@printable__

@@ -4,7 +4,7 @@
 Lists the aboslute path of all files in the given path.
 
 
-```blade
+```zuri
 import os
 
 var path = os.args.length() > 2 ? os.args[2] : '.'

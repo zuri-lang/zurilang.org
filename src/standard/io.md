@@ -4,7 +4,7 @@ This module provides interfaces for working with to I/O stream and TTYs
 as well as expose the operating system standard I/O for easy access.
 
 Some I/O operations that should belong to this module have been merged as 
-core features and offered as built-in functions for Blade. Specifically 
+core features and offered as built-in functions for Zuri. Specifically 
 file I/O features that can be accessed via the built-in `file()` function. 
 
 The standard I/O streams are also files and you can call almost all file 
@@ -16,7 +16,7 @@ message telling you that such operation is not supported for standard streams.
 The following example shows how to use the `io` module for accepting user name 
 and printing the result.
 
-```blade
+```zuri
 import io
 
 var name = io.readline('What is your name?')
@@ -319,7 +319,7 @@ _class_ **TTY** {#io.TTY .class}
     >  __NOTE__: 
     > - _option_ must be one ot the TCSA options above (see their description above)
     > - _attrs_ must be a dictionary of the TTY_ flags listed above
-    > - one can safely omit any of the TTY_ flags listed above and Blade will
+    > - one can safely omit any of the TTY_ flags listed above and Zuri will
     >   fill in the default values as it exists.
     > - This flags will be merged and not overwritten
 

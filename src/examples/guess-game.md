@@ -3,7 +3,7 @@
 A simple guessing game.
 
 
-```blade
+```zuri
 import io { readline }
 
 echo '== Guess the number =='

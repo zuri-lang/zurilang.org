@@ -10,7 +10,7 @@ for valid/invalid arguments.
 
 The below is a simple program that shows a typical use of the module.
 
-```blade
+```zuri
 import args
 
 var parser = args.Parser('myprogram')
@@ -23,7 +23,7 @@ We can simply print help information for the above program if it were saved
 in a file `myprogram.b` as follows.
 
 ```sh
-$ blade myprogram.b -h 
+$ zuri myprogram.b -h 
 Usage: myprogram [ [-h] | [--name NAME] ] [COMMAND]
 
 OPTIONS:
@@ -38,27 +38,27 @@ if we change the last line of the program to `echo parser.parse()` so that we
 can see the result of the parsing, the following CLI call will yield the given result.
 
 ```terminal
-$ blade myprogram.b --name 25
+$ zuri myprogram.b --name 25
 {options: {name: 25}, command: nil}
 
-$ blade myprogram.b call  
+$ zuri myprogram.b call  
 {options: {}, command: {name: call, value: nil}}
 
-$ blade myprogram.b call --name 25
+$ zuri myprogram.b call --name 25
 {options: {name: 25}, command: {name: call, value: nil}}
 ```
 
 Calling name without an option will yield the following result/error.
 
 ```sh
-$ blade myprogram.b --name   
+$ zuri myprogram.b --name   
 error: Option "name" expects a value
 ```
 
 You may even get help on a command directly like below:
 
 ```sh
-$ blade myprogram.b --help call
+$ zuri myprogram.b --help call
 Usage: myprogram call
 
   Make a phone call
@@ -210,7 +210,7 @@ _class_ **Parser** {#args.Parser .class}
     For example, parsing the commandline
     
     ```
-    blade test.b install 5 --verbose
+    zuri test.b install 5 --verbose
     ``` 
     
     may yield such a result as similar to the one below.

@@ -1,6 +1,6 @@
 # Reserved Words
 
-The following list of words are reserved words in the Blade programming language and cannot be used 
+The following list of words are reserved words in the Zuri programming language and cannot be used 
 as an identifier anywhere in your code whether as variable, class, function or method name. This 
 reserved words (also refered to as Keywords in the rest of the documentation) must be written exactly 
 as shown here. 

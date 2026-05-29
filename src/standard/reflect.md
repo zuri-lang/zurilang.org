@@ -8,7 +8,7 @@ that is heavily dependent on decorators (e.g. the `json` module).
 
 We can call a decorator using the `reflect` module like this.
 
-```blade
+```zuri
 class A {
   @custom_decorator() {
     echo 'It works!'

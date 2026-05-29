@@ -34,7 +34,7 @@ transformations and various filters.
 
 The following create a PNG image filled with color red.
 
-```blade
+```zuri
 import imagine { * }
 
 # create empty image handle
@@ -59,7 +59,7 @@ coventionally advice way to use `Image` instances is via
 
 The example below demonstartes the former example with `.use` pattern.
 
-```blade
+```zuri
 import imagine { * }
 
 Image.new(100, 100, true).use(@(img) {
@@ -77,7 +77,7 @@ The example below loads a PNG image and saves a copy as a JPEG file
 (for sake of continuity, we're using the image we just created but feel 
 free to play around with your own images).
 
-```blade
+```zuri
 import imagine { * }
 
 Image.from_png('image.png').use(@(img) {
@@ -89,7 +89,7 @@ Image can create transparent images as well as images containig texts.
 The example below shows creates a simple transparent PNG image with the 
 text `A simple text string` written in it. 
 
-```blade
+```zuri
 import imagine { * }
 
 Image.new(130, 20, true).use(@(im) {
@@ -1554,7 +1554,7 @@ _class_ **ImageResource** {#imagine.ImageResource .class}
     
     For example,
     
-    ```blade
+    ```zuri
     var result = image1.compare(image2)
     
     var both_transparent = !(result & CMP_TRANSPARENT)

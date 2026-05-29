@@ -4,7 +4,7 @@ Comments in any programming language that supports them are a way to tell a
 compiler or an interpreter to ignore certain parts of a code or script and 
 not execcute them.
 
-Blade supports like most languages a Single Line Comment and a Multi-line 
+Zuri supports like most languages a Single Line Comment and a Multi-line 
 Comment (otherwise known as Block Comments).
 
 ## Reference
@@ -17,10 +17,10 @@ Comment (otherwise known as Block Comments).
 
 ## Single line comments
 
-A single line comment in Blade starts with an hash (`#`) character and can appear anywhere in a REPL session or a script except between two single (`'`) or double (`"`) quotation marks. A single line comment can start the entire line or be inserted later in a line.
+A single line comment in Zuri starts with an hash (`#`) character and can appear anywhere in a REPL session or a script except between two single (`'`) or double (`"`) quotation marks. A single line comment can start the entire line or be inserted later in a line.
 
-```blade-repl
-%> # this is my first Blade single line comment
+```zuri-repl
+%> # this is my first Zuri single line comment
 %> echo 'Not a #comment'    # assigning x to 15
 'Not a #comment'
 %> # and I am just inserting the comment for fun
@@ -44,7 +44,7 @@ many alike, a multi-line or block comment is preferred.
 
 You can create block comments as follows:
 
-```blade
+```zuri
 /*
 This 
 is a comment 
@@ -56,11 +56,11 @@ lines
 
 A multi-line/block comment starts with a `/*` and ends with a `*/`.
 
-One important thing to note is that block comments in Blade can be nested within one another.
+One important thing to note is that block comments in Zuri can be nested within one another.
 This support was added to allow commenting out a portion of code that when uncommented do not lead
 to uncommenting another code within it's path that would lead to unintended bugs.
 
-```blade
+```zuri
 /* 
 This is a block
     /* 
@@ -77,7 +77,7 @@ another block comment
 > So in a REPL session, the above sample may fails. But you can definitely
 > write something like:
 >
-> ```blade-repl
+> ```zuri-repl
 > %> /* A block comment */
 > ```
 

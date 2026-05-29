@@ -1,6 +1,6 @@
 # Loops
 
-Loops are programmatic constructs for repeated evaluation and execution. Blade has three statements 
+Loops are programmatic constructs for repeated evaluation and execution. Zuri has three statements 
 that are used to support looping over data. 
 
 ## Reference
@@ -33,7 +33,7 @@ a condition is true, execute the following.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> var age = 13
 %> while age < 18 {
 ..   echo 'Happy ${age}th birthday'
@@ -60,7 +60,7 @@ once before evaluating the condition.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> var i = 10
 %> do {
 ..   echo 'Iteration ${i}'
@@ -84,8 +84,8 @@ the responsiblility to evaluate the condition to false is on the user.
 
 ## Iter Loops
 
-Ah! We are here... Iter loops (sighs!). Iter loops in Blade are akin to `for loops` in C or JavaScript. 
-And soon enough, you'll understand why Blade introduced an new keyword (`iter`) instead of just calling it a for loop.
+Ah! We are here... Iter loops (sighs!). Iter loops in Zuri are akin to `for loops` in C or JavaScript. 
+And soon enough, you'll understand why Zuri introduced an new keyword (`iter`) instead of just calling it a for loop.
 
 Iter loops are simple to construct. An iter loop requires an initializer (variable declaration), a 
 condition and a loop control statement (usually an increment/decrement statement); all three being 
@@ -93,7 +93,7 @@ optional and separated by a semi-colon (`;`).
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> iter var i = 0; i < 5; i++ {
 ..   echo 'Iteration ${i}'
 .. }
@@ -104,12 +104,12 @@ For example:
 'Iteration 4'
 ```
 
-When the initializer is not given, Blade assumes it has been declared somewhere in the code. If it 
+When the initializer is not given, Zuri assumes it has been declared somewhere in the code. If it 
 wasn't, trust that your code will run into one of many syntax error or exception depending on your code.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> iter ; i < 10; i++ {
 ..   echo i
 .. }
@@ -120,7 +120,7 @@ Unhandled Exception: 'i' is undefined in this scope
 
 A good practice would look something like the below:
 
-```blade-repl
+```zuri-repl
 %> var i = 4
 %> iter ; i < 10; i++ {
 ..   echo i
@@ -135,7 +135,7 @@ A good practice would look something like the below:
 
 When the condition or loop control is not is not given, your code will most likely run infinitely
 
-```blade-repl
+```zuri-repl
 %> iter var i = 0; ; i++ {
 ..   echo i
 .. }
@@ -150,7 +150,7 @@ When the condition or loop control is not is not given, your code will most like
 
 Unless you have a `break` statement somewhere in your code.
 
-```blade-repl
+```zuri-repl
 %> iter var i = 0; ;i++ {
 ..   echo i
 ..   if i == 5 break
@@ -163,12 +163,12 @@ Unless you have a `break` statement somewhere in your code.
 5
 ```
 
-> **_@note:_** `break` and `continue` are statements in Blade not expressions.
+> **_@note:_** `break` and `continue` are statements in Zuri not expressions.
 
 A simple way to write an infinite loop that runs until you decide to end it within the block is 
 like this.
 
-```blade-repl
+```zuri-repl
 %> iter ;; {
 ..   echo i
 .. }
@@ -181,7 +181,7 @@ nice that we show how the `continue` statement to skip running the rest of an it
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> iter var i  = 0; i < 10; i++ {
 ..   if i <= 5 
 ..     continue
@@ -196,17 +196,17 @@ For example:
 
 ## For Loops
 
-I promised you'll soon find out why Blade didn't name the `iter` loop for loops. Here is why. 
+I promised you'll soon find out why Zuri didn't name the `iter` loop for loops. Here is why. 
 The construct of the iter loop is familiar with programmers coming from C-like languages, but not 
 so much for those coming from non-C background. The construct of the `iter` loop make it monstrous 
-and for this reason, Blade's `for` loop is much simplier and easier to write and use.
+and for this reason, Zuri's `for` loop is much simplier and easier to write and use.
 
 Rather than iterating arithemetic progressions, _`for`_ loops iterate over items in an iterable 
 in the order in which they appear in the iterable.
 
 For example (Rhymes...):
 
-```blade-repl
+```zuri-repl
 %> for i in 1..10 {
 ..   echo i
 .. }
@@ -221,14 +221,14 @@ For example (Rhymes...):
 9
 ```
 
-The above example have makes use of another basic datatype in Blade &mdash; [a range](./ranges). 
+The above example have makes use of another basic datatype in Zuri &mdash; [a range](./ranges). 
 We'll talk about ranges more in the next chapter. For now, its sufficient to know that its a 
 simple data type that can be iterated.
 
 The `for` keyword _MUST_ be paired with the `in` keyword. The _for_ loop works for all iterable 
 items. For example, we can iterate the elements of the string `Hello` as follows:
 
-```blade-repl
+```zuri-repl
 %> for x in 'hello' {
 ..   echo 'Letter ${x}'
 .. }
@@ -243,7 +243,7 @@ That's the basic idea. We'll show more examples as we go through the different i
 come across in the tutorial. 
 
 
-**_Infact, we'll like to get you exited ahead of time by sharing a simple secret &mdash; In Blade, 
+**_Infact, we'll like to get you exited ahead of time by sharing a simple secret &mdash; In Zuri, 
 you can convert any [class](./class) into an iterable simply by implementing two 
 [decorators](./class#class-decorators) and it'll work perfectly with the for loop._**
 

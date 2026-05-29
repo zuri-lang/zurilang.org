@@ -1,6 +1,6 @@
 # Functions
 
-Blade like most high-level programming languages allows the creation of reuseable blocks of code
+Zuri like most high-level programming languages allows the creation of reuseable blocks of code
 of various kinds, most notable being `functions`. 
 
 ## Reference
@@ -16,13 +16,13 @@ of various kinds, most notable being `functions`.
 
 ## Declaring Functions
 
-A blade function can be declared using the `def` (meaning define) keyword followed by the 
+A zuri function can be declared using the `def` (meaning define) keyword followed by the 
 function name and an options list of arguments/parameters enclosed within parenthesis `()` and 
 followed by a block of code.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> def fn() {
 ..   echo 'Hello, World'
 .. }
@@ -35,14 +35,14 @@ opening parenthesis `(`, followed by one or more arguments if applicable and a c
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> fn()   # calling the fn function declared above
 'Hello, World'
 ```
 
 Below is another example with a function accepting arguments and how it can be called.
 
-```blade-repl
+```zuri-repl
 %> def print_info(name, age) {
 ..   echo '${name} is ${age} years old'
 .. }
@@ -54,12 +54,12 @@ Below is another example with a function accepting arguments and how it can be c
 > local variables. If you need anything more than that, it's time you start looking at breaking up 
 > your function into smaller functions.
 
-The default value of a blade function parameter is `nil`. With this in mind, when calling a 
+The default value of a zuri function parameter is `nil`. With this in mind, when calling a 
 function, one can all or the rest of the arguments to the function without raising an exception.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> def show(book, author) {
 ..   echo 'Book name = ${book}'
 ..   echo 'Author name = ${author}'
@@ -75,12 +75,12 @@ For example:
 'Author name = Andrea'
 ```
 
-In Blade, functions are first-class objects and can be use like any other value. Functions can be 
+In Zuri, functions are first-class objects and can be use like any other value. Functions can be 
 assigned, they can even be used as arguments to other functions.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> def example() {
 ..   echo 'It works!'
 .. }
@@ -93,11 +93,11 @@ For example:
 ## Returning Values
 
 The `return` keyword can be called anywhere in a function to halt the function and return the specified value back 
-to the calling function or script. However, Blade does not require that a value must be returned from a function.
+to the calling function or script. However, Zuri does not require that a value must be returned from a function.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> def return_a_number() {
 ..   return 25 * 31
 .. }
@@ -110,9 +110,9 @@ For example:
 
 ## Anonymous Functions
 
-Anonymnous functions in Blade are functions without a name and are meant purely to be treated as 
+Anonymnous functions in Zuri are functions without a name and are meant purely to be treated as 
 a value. They can be assigned, called and/or returned as value from functions just like a regular 
-function. All anonymous functions are automatically assigned the name `@` by the BladeVM.
+function. All anonymous functions are automatically assigned the name `@` by the ZuriVM.
 
 Anonymous functions differ from standard functions only by syntax.
 
@@ -123,7 +123,7 @@ Anonymous functions differ from standard functions only by syntax.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> @{} # empty anonymous function
 <function @(0) at 0x147711160>
 %> @{} # another empty anonymous function
@@ -133,11 +133,11 @@ For example:
 .. }
 ```
 
-> The anonymous function syntax was changed from using vertical bars (`|`) to using the `@` prefix in Blade `v0.0.87`. The compiler will continue to support the old version till we reach version `v0.1.0` for backward compartibility, but it will no longer be documented.
+> The anonymous function syntax was changed from using vertical bars (`|`) to using the `@` prefix in Zuri `v0.0.87`. The compiler will continue to support the old version till we reach version `v0.1.0` for backward compartibility, but it will no longer be documented.
 
 Anonymous functions as discussed can be called,
 
-```blade-repl
+```zuri-repl
 %> @(name, age) {
 ..   echo '${name} is ${age} years old'
 .. }('Pete', 46)
@@ -146,7 +146,7 @@ Anonymous functions as discussed can be called,
 
 or assigned to variable, 
 
-```blade-repl
+```zuri-repl
 %> var get_info = @(name, age) {
 ..   echo '${name} is ${age} years old'
 .. }
@@ -156,7 +156,7 @@ or assigned to variable,
 
 and passed as argument to functions.
 
-```blade-repl
+```zuri-repl
 %> def call(fn) {
 ..   fn('Lionel')
 .. }
@@ -169,31 +169,31 @@ and passed as argument to functions.
 
 ## Closures
 
-A closure gives you access to an outer function’s scope from an inner function. In Blade, all 
-functions are closures. In Blade, closures are scoped to the current function and top level 
+A closure gives you access to an outer function’s scope from an inner function. In Zuri, all 
+functions are closures. In Zuri, closures are scoped to the current function and top level 
 functions are scoped to the current module.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> def init() {
-..   var name = 'Blade'     # local name variable in function init
+..   var name = 'Zuri'     # local name variable in function init
 ..   def show_name() {      # inner function, a closure
 ..     echo name            # use of variable declared in parent
 ..   }
 ..   show_name()
 .. }
 %> init()
-'Blade'
+'Zuri'
 ```
 
-While Blade is lexically scoped, inner functions in Blade have access to variables declared in 
+While Zuri is lexically scoped, inner functions in Zuri have access to variables declared in 
 their parent functions. Let's see another example that shows clearly how the variables declared 
 in the parent survives until the inner function even after the outer function is out of scope.
 
-```blade-repl
+```zuri-repl
 %> def make_fn() {
-..   var name = 'Blade'
+..   var name = 'Zuri'
 ..   def show_name() {
 ..     echo name
 ..   }
@@ -201,17 +201,17 @@ in the parent survives until the inner function even after the outer function is
 .. }
 %> var fn = make_fn()
 %> fn()
-'Blade'
+'Zuri'
 ```
 
 Once `make_fn()` finishes executing, you might expect that the name variable would no longer be 
-accessible. However, in Blade they still work. This is because the name variable lives long enough 
+accessible. However, in Zuri they still work. This is because the name variable lives long enough 
 into the inner function.
 
 Here is a slightly more interesting example borrowed from Mozilla's JavaScript documentation as 
 JavaScript is another language that supports closures.
 
-```blade-repl
+```zuri-repl
 %> def make_adder(x) {
 ..   return @(y) {
 ..     return x + y
@@ -229,7 +229,7 @@ JavaScript is another language that supports closures.
 
 And another slightly more complex one.
 
-```blade-repl
+```zuri-repl
 %> var e = 10   # global scope
 %> def sum(a) {
 ..   return @(b) {
@@ -249,7 +249,7 @@ And another slightly more complex one.
 
 In many situations, it becomes quite convienent to write a function that accepts an arbitary number 
 of arguments. This kind of functions are variadic functions i.e. functions accepting variable 
-arguments. To accept variable arguments in a Blade function, simple indicate it by using the tridot 
+arguments. To accept variable arguments in a Zuri function, simple indicate it by using the tridot 
 (`...`) operator.
 
 A few notes apply to variadic functions.
@@ -263,7 +263,7 @@ named `__args__`.
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> def concat(...) {
 ..   return ' '.join(__args__)  # __args__ is a list
 .. }
@@ -274,7 +274,7 @@ For example:
 The tridot operator isn't necessarily the first parameter in the function, but must be the last 
 parameter in the function.
 
-```blade-repl
+```zuri-repl
 %> def test2(name, age, ...) {
 ..   echo name
 ..   echo age
@@ -291,7 +291,7 @@ Trying to add another parameter after the tridot operator (`...`) will result in
 
 For example:
 
-```blade-repl
+```zuri-repl
 %> def test(name, ..., age) {
 ..   echo name
 .. }

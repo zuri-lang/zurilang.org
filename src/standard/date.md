@@ -1,6 +1,6 @@
 # date
 
-This modules provides Blade's implementation of date and time
+This modules provides Zuri's implementation of date and time
 manipulation methods. This module implements civil dates as well as julian dates.
 
 ### Definitions
@@ -50,7 +50,7 @@ _date_.gmtime() {#date.gmtime}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> echo date.gmtime()
   {year: 2022, month: 3, day: 5, week_day: 6, year_day: 63, hour: 17, minute: 30, 
   seconds: 55, microseconds: 620290, is_dst: false, zone: UTC, gmt_offset: 0}
@@ -69,7 +69,7 @@ _date_.localtime() {#date.localtime}
   
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> echo date.localtime()
   {year: 2022, month: 3, day: 5, week_day: 6, year_day: 63, hour: 18, minute: 18, 
   seconds: 35, microseconds: 598166, is_dst: false, zone: WAT, gmt_offset: 3600}
@@ -90,7 +90,7 @@ _date_.mktime(_year_, _month_, _day_, _hour_, _minute_, _seconds_, _is_dst_) {#d
   <br>
   Example:
   
-  ```blade-repl
+  ```zuri-repl
   %> import date
   %> echo date.mktime(2021, 2, 12, 13, 43, 11, false)
   1613133791
@@ -118,7 +118,7 @@ _date_.from\_time(_time_) {#date.from_time}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> to_string(date.from_time(time()))
   '<Date year: 2022, month: 3, day: 5, hour: 18, minute: 34, seconds: 1>'
   ```
@@ -143,7 +143,7 @@ _date_.from\_jd(_jdate_) {#date.from_jd}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> to_string(date.from_jd(22063))
   '<Date year: 2022, month: 3, day: 5, hour: 18, minute: 35, seconds: 0>'
   ```
@@ -193,7 +193,7 @@ _class_ **Date** {#date.Date .class}
   
   Example,
   
-  ```blade-repl
+  ```zuri-repl
   %> import date
   %> var d = date(2021)
   %> to_string(d)
@@ -237,7 +237,7 @@ _class_ **Date** {#date.Date .class}
     
     Example,
     
-    ```blade-repl
+    ```zuri-repl
     %> date(2018).is_leap()
     false
     %> date(2020).is_leap()
@@ -256,7 +256,7 @@ _class_ **Date** {#date.Date .class}
     
     Example,
     
-    ```blade-repl
+    ```zuri-repl
     %> date(2021, 5, 11).days_before_month(7)
     142
     ```
@@ -272,7 +272,7 @@ _class_ **Date** {#date.Date .class}
     
     Example,
     
-    ```blade-repl
+    ```zuri-repl
     %> date(2021, 5, 11).days_before_year(2024)
     811
     ```
@@ -292,7 +292,7 @@ _class_ **Date** {#date.Date .class}
     
     Example,
     
-    ```blade-repl
+    ```zuri-repl
     %> date(2021, 6).days_in_month()
     30
     ```
@@ -308,7 +308,7 @@ _class_ **Date** {#date.Date .class}
     
     Example,
     
-    ```blade-repl
+    ```zuri-repl
     %> date(2021, 5, 11).weekday()
     2
     ```
@@ -324,7 +324,7 @@ _class_ **Date** {#date.Date .class}
     
     Example,
     
-    ```blade-repl
+    ```zuri-repl
     %> date(2021, 5, 11).week_number()
     19
     ```
@@ -338,7 +338,7 @@ _class_ **Date** {#date.Date .class}
 
   : Formats the current date based on the specified string
     
-    Blade's Date formatting table
+    Zuri's Date formatting table
     
     Character | Description                                               | Example
     ----------|-----------------------------------------------------------|-----------------------------------
@@ -380,7 +380,7 @@ _class_ **Date** {#date.Date .class}
     
     Example,
     
-    ```blade-repl
+    ```zuri-repl
     %> date().format('F d, Y g:i A')
     'March 05, 2022 6:24 PM'
     ```
@@ -391,7 +391,7 @@ _class_ **Date** {#date.Date .class}
     
     For example:
     
-    ```blade-repl
+    ```zuri-repl
     %> date().format('l jS \o\\f F Y h:i:s A')
     'Wednesday 17th of May 2021 01:39:08 PM'
     ```
@@ -411,7 +411,7 @@ _class_ **Date** {#date.Date .class}
     
     For example,
     
-    ```blade-repl
+    ```zuri-repl
     %> date().http()
     'Sat, 05 Mar 2022 06:23:32 GMT'
     ```
@@ -427,7 +427,7 @@ _class_ **Date** {#date.Date .class}
     
     Example,
     
-    ```blade-repl
+    ```zuri-repl
     %> date(2021, 5, 11).jd()
     2459345
     ```
