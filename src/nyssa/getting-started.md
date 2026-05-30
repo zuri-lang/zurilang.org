@@ -2,7 +2,7 @@
 
 ## Installing Nyssa
 
-Nyssa comes prepackaged with all Zuri versions since `v0.0.87` and needs no further installation action. You'll need to upgrade your Zuri installation if you are on a version of Zuri lower than `v0.0.87`.
+Nyssa comes prepackaged with all Zuri versions since `v0.1.0` and needs no further installation action. You'll need to upgrade your Zuri installation if you are on a version of Zuri lower than `v0.1.0`.
 
 The best way to enjoy the power of Nyssa is to add your Zuri installation path to your shell/terminal environment. If yo have installed Zuri on a UNIX/Linux device using the installation link, you should already have `zuri` and `nyssa` in your path. 
 

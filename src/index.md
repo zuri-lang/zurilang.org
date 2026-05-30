@@ -71,9 +71,9 @@ While Zuri focuses on Web and IoT, it is also great for general software develop
 
 ## Download
 
-[Windows](https://github.com/zuri-lang/zuri/releases/download/v0.0.87/zuri-windows-v0.0.87.zip){.btn .btn-4 .fs-6 .mb-4 .mb-md-0 .mr-2 target="_blank"}
-[Linux](https://github.com/zuri-lang/zuri/releases/download/v0.0.87/zuri-linux-v0.0.87.zip){.btn .btn-2 .fs-6 .mb-4 .mb-md-0 .mr-2 target="_blank"}
-[MacOS](https://github.com/zuri-lang/zuri/releases/download/v0.0.87/zuri-macos-v0.0.87.zip){.btn .fs-6 .mb-4 .mb-md-0 .mr-2 target="_blank"}
+[Windows](https://github.com/zuri-lang/zuri/releases/download/v0.1.0/zuri-windows-v0.1.0.zip){.btn .btn-4 .fs-6 .mb-4 .mb-md-0 .mr-2 target="_blank"}
+[Linux](https://github.com/zuri-lang/zuri/releases/download/v0.1.0/zuri-linux-v0.1.0.zip){.btn .btn-2 .fs-6 .mb-4 .mb-md-0 .mr-2 target="_blank"}
+[MacOS](https://github.com/zuri-lang/zuri/releases/download/v0.1.0/zuri-macos-v0.1.0.zip){.btn .fs-6 .mb-4 .mb-md-0 .mr-2 target="_blank"}
 
 > Since version 0.0.86, Every Zuri download/installation comes with `nyssa` &mdash; the official package manager, test runner and repository server for Zuri.
 
